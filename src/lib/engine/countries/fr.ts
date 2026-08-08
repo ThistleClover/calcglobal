@@ -122,7 +122,8 @@ export function calculate(inputs: TaxInput): TaxResult {
     if (period === 'monthly') brutAnnuel = rawSalary * 12;
     else if (period === 'annual_13') brutAnnuel = rawSalary;
 
-    const brutMensuel = brutAnnuel / 12;
+    const monthsInYear = period === 'annual_13' ? 13 : 12;
+    const brutMensuel = brutAnnuel / monthsInYear;
 
     // Cotisations salariales moyennes 2026
     const rateSalarial = statut === 'cadre' ? 0.248 : (statut === 'fonctionnaire' ? 0.165 : 0.217);
@@ -133,7 +134,7 @@ export function calculate(inputs: TaxInput): TaxResult {
     const trSalarie = (parseFloat(String(inps.tickets_restaurant_part_salarie || 0)) || 0) * 12;
 
     const netAvantImpotAnnuel = Math.max(0, brutAnnuel - cotisSalariales - mutuelleSalarie - trSalarie);
-    const netAvantImpotMensuel = netAvantImpotAnnuel / 12;
+    const netAvantImpotMensuel = netAvantImpotAnnuel / monthsInYear;
 
     // Net imposable (net avant impôt + CSG non déductible 2.9% sur 98.25% brut + part patronale mutuelle)
     const csgNonDeductible = brutAnnuel * 0.9825 * 0.029;
@@ -142,7 +143,7 @@ export function calculate(inputs: TaxInput): TaxResult {
     // Impôt à la source (PAS)
     const impotPASAnnuel = netImposableAnnuel * pasRate;
     const netAPayerAnnuel = Math.max(0, netAvantImpotAnnuel - impotPASAnnuel);
-    const netAPayerMensuel = netAPayerAnnuel / 12;
+    const netAPayerMensuel = netAPayerAnnuel / monthsInYear;
 
     // Cotisations patronales & Réduction Fillon (2026)
     const smicAnnuel2026 = 1802 * 12; // SMIC brut 2026 ~ 1 802 €/mois
@@ -153,12 +154,10 @@ export function calculate(inputs: TaxInput): TaxResult {
       reductionFillon = brutAnnuel * coeffFillon;
     }
 
-    const basePatronalRate = statut === 'cadre' ? 0.44 : 0.42;
-    const cotisPatronalesBrutes = brutAnnuel * basePatronalRate;
-    const cotisPatronalesNettes = Math.max(0, cotisPatronalesBrutes - reductionFillon);
-
-    const coutEmployeurTotalAnnuel = brutAnnuel + cotisPatronalesNettes + mutuelleSalarie;
-    const coutEmployeurTotalMensuel = coutEmployeurTotalAnnuel / 12;
+    const companySize = String(inps.company_size || 'less_11');
+    const basePatronalRate = (statut === 'cadre' ? 0.44 : 0.42) + (companySize === 'more_11' ? 0.03 : 0);
+    const coutEmployeurTotalAnnuel = brutAnnuel * (1 + basePatronalRate) + mutuelleSalarie;
+    const coutEmployeurTotalMensuel = coutEmployeurTotalAnnuel / monthsInYear;
 
     const totalDeductions = cotisSalariales + impotPASAnnuel;
     const effectiveRate = brutAnnuel > 0 ? totalDeductions / brutAnnuel : 0;
@@ -173,17 +172,13 @@ export function calculate(inputs: TaxInput): TaxResult {
       ...(impotPASAnnuel > 0 ? [{ label: `Prélèvement à la source PAS (${(pasRate * 100).toFixed(1)}%)`, value: impotPASAnnuel, isDeduction: true }] : []),
       { label: `Salaire net à payer après impôt (mensuel)`, value: netAPayerMensuel, isFinal: true },
       { label: `Net imposable annuel (base PAS)`, value: netImposableAnnuel, isTotal: true },
-      { label: `Cotisations patronales (nettes de réductions bas salaires)`, value: cotisPatronalesNettes, isDeduction: true },
       { label: `Coût total employeur (annuel)`, value: coutEmployeurTotalAnnuel, isTotal: true },
       { label: `Coût total employeur (mensuel)`, value: coutEmployeurTotalMensuel, isTotal: true },
     ];
 
     const insights = [
       `Pour un salaire brut mensuel de ${Math.round(brutMensuel).toLocaleString('fr-FR')} €, votre salaire net mensuel avant impôt est de ${Math.round(netAvantImpotMensuel).toLocaleString('fr-FR')} €.`,
-      `Le coût total pour l'entreprise est de ${Math.round(coutEmployeurTotalMensuel).toLocaleString('fr-FR')} € par mois.`,
-      reductionFillon > 0
-        ? `Votre salaire bénéficie de la réduction générale des cotisations patronales (ex-Fillon) d'un montant estimé à ${Math.round(reductionFillon).toLocaleString('fr-FR')} €/an.`
-        : `Les cotisations patronales représentent environ ${(basePatronalRate * 100).toFixed(0)}% en sus du salaire brut.`
+      `Le coût total pour l'entreprise est de ${Math.round(coutEmployeurTotalMensuel).toLocaleString('fr-FR')} € par mois.`
     ];
 
     return {
@@ -236,9 +231,17 @@ export function calculate(inputs: TaxInput): TaxResult {
 
     const netEstime = Math.max(0, indemniteBrute - csgAmount);
 
-    // Contribution patronale spécifique rupture conventionnelle: 30% sur part exonérée de cotisations sociales
-    const isRuptureConv = typeRupture === 'rupture_conventionnelle' || typeRupture === 'legal';
-    const contributionPatronale = isRuptureConv ? partExonereeSociale * 0.30 : 0;
+    // Contribution patronale spécifique rupture
+    let contributionPatronale = 0;
+    if (typeRupture === 'syntec') {
+      const supraLegale = Math.max(0, indemniteBrute - indemniteLegale);
+      contributionPatronale = supraLegale * 0.30;
+    } else if (typeRupture === 'rupture_conventionnelle' || typeRupture === 'legal') {
+      contributionPatronale = partExonereeSociale * 0.30;
+    } else {
+      const supraLegale = Math.max(0, indemniteBrute - indemniteLegale);
+      contributionPatronale = supraLegale * 0.30;
+    }
     const coutEmployeurTotal = indemniteBrute + contributionPatronale;
 
     const effectiveRate = indemniteBrute > 0 ? csgAmount / indemniteBrute : 0;
@@ -287,8 +290,17 @@ export function calculate(inputs: TaxInput): TaxResult {
     const acqOption = String(inps.acquisition_costs_option || 'standard_75');
     const worksOption = String(inps.construction_works_option || 'standard_15');
 
-    // Exonération totale si résidence principale ou prix <= 15k
-    if (exemptionReason === 'main_residence' || exemptionReason === 'price_under_15k' || salePrice <= 15000) {
+    if (
+      exemptionReason === 'main_residence' ||
+      exemptionReason === 'first_sale_reinvestment' ||
+      exemptionReason === 'price_under_15k' ||
+      salePrice <= 15000
+    ) {
+      let labelExemption = 'Exonération légale';
+      if (exemptionReason === 'main_residence') labelExemption = 'Résidence Principale';
+      else if (exemptionReason === 'first_sale_reinvestment') labelExemption = 'Première cession avec réemploi (résidence principale)';
+      else labelExemption = 'Prix ≤ 15 000 €';
+
       return {
         grossIncome: salePrice,
         netIncome: salePrice,
@@ -296,7 +308,7 @@ export function calculate(inputs: TaxInput): TaxResult {
         effectiveRate: 0,
         breakdown: [
           { label: `Prix de vente net vendeur`, value: salePrice },
-          { label: `Motif d'exonération (${exemptionReason === 'main_residence' ? 'Résidence Principale' : 'Prix ≤ 15 000 €'})`, value: 0 },
+          { label: `Motif d'exonération (${labelExemption})`, value: 0 },
           { label: `Impôt sur la plus-value (Exonération 100%)`, value: 0, isDeduction: true },
           { label: `Net perçu par le vendeur`, value: salePrice, isFinal: true },
         ],
@@ -308,16 +320,8 @@ export function calculate(inputs: TaxInput): TaxResult {
       };
     }
 
-    // Frais d'acquisition (7.5% forfaitaire ou réels)
-    const fraisAcq = acqOption === 'standard_75' ? (purchasePrice * 0.075) : (parseFloat(String(inps.frais_acquisition || 0)) || purchasePrice * 0.075);
-
-    // Frais de travaux (15% forfaitaire si détention > 5 ans ou réels)
-    let fraisTravaux = 0;
-    if (worksOption === 'standard_15' && years >= 5) {
-      fraisTravaux = purchasePrice * 0.15;
-    } else if (worksOption === 'real_works') {
-      fraisTravaux = parseFloat(String(inps.travaux_realises || 0)) || 0;
-    }
+    const fraisAcq = acqOption === 'standard_75' ? (purchasePrice * 0.075) : Math.max(0, parseFloat(String(inps.frais_acquisition || 0)) || 0);
+    const fraisTravaux = worksOption === 'standard_15' && years >= 5 ? (purchasePrice * 0.15) : worksOption === 'real_works' ? Math.max(0, parseFloat(String(inps.travaux_realises || 0)) || 0) : 0;
 
     const prixAcquisitionCorrigee = purchasePrice + fraisAcq + fraisTravaux;
     const pvBrute = Math.max(0, salePrice - prixAcquisitionCorrigee);
@@ -406,7 +410,7 @@ export function calculate(inputs: TaxInput): TaxResult {
     const vlActive = String(inps.versement_liberatoire || 'no') === 'yes';
     const period = String(inps.period || 'monthly');
 
-    const caAnnuel = period === 'monthly' ? caInput * 12 : caInput;
+    const caAnnuel = period === 'monthly' ? caInput * 12 : (period === 'quarterly' ? caInput * 4 : caInput);
     const config = ACTIVITY[activityType] || ACTIVITY.bnc_liberal;
 
     const urssafRate = acreActive ? config.urssafRateACRE : config.urssafRate;
@@ -436,6 +440,7 @@ export function calculate(inputs: TaxInput): TaxResult {
       ...(!vlActive && irEstime > 0 ? [{ label: `Impôt sur le revenu estimé (après abattement ${(config.abattementIR * 100).toFixed(0)}%)`, value: irEstime, isDeduction: true }] : []),
       { label: 'Revenu Net Final', value: netFinal, isFinal: true },
       ...(period === 'monthly' ? [{ label: 'Revenu net mensuel estimé', value: netFinal / 12, isTotal: true }] : []),
+      ...(period === 'quarterly' ? [{ label: 'Revenu net trimestriel estimé', value: netFinal / 4, isTotal: true }] : []),
     ];
 
     const insights: string[] = [];
@@ -471,8 +476,9 @@ export function calculate(inputs: TaxInput): TaxResult {
     case 'rupture-conventionnelle':
       return calculateSeverance(inputs);
     case 'calculateur-plus-value-immobiliere':
-    case 'tva-auto-entrepreneur':
       return calculateCapitalGains(inputs);
+    case 'tva-auto-entrepreneur':
+    case 'urssaf-cotisations-micro-entreprise':
     default:
       return calculatePrimary(inputs);
   }

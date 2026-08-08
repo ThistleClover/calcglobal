@@ -77,7 +77,7 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
   // Medicare: 2.9% on all SE income
   const medicareTax = seTaxableIncome * 0.029;
   // Additional Medicare: 0.9% above threshold
-  const amtThreshold = filingStatus === 'married_joint' ? 250000 : 200000;
+  const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
   const totalEarnings = profit + w2Income;
   const amtBase = Math.max(0, totalEarnings - amtThreshold);
   const additionalMedicare = amtBase > 0 ? Math.min(seTaxableIncome, amtBase) * 0.009 : 0;
@@ -166,7 +166,7 @@ function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
   const llcTaxable = profit * 0.9235;
   const llcSS = Math.min(llcTaxable, SS_WAGE_BASE_2026) * 0.124;
   const llcMedicare = llcTaxable * 0.029;
-  const amtThreshold = filingStatus === 'married_joint' ? 250000 : 200000;
+  const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
   const llcAddlMedicare = profit > amtThreshold ? Math.min(llcTaxable, profit - amtThreshold) * 0.009 : 0;
   const llcTotalSETax = llcSS + llcMedicare + llcAddlMedicare;
 
@@ -234,7 +234,7 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
   // Employee FICA (on gross salary before 401k)
   const ssTax = Math.min(grossAnnual, SS_WAGE_BASE_2026) * 0.062;
   const medicareTax = grossAnnual * 0.0145;
-  const amtThreshold = filingStatus === 'married_joint' ? 250000 : 200000;
+  const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
   const addlMedicare = grossAnnual > amtThreshold ? (grossAnnual - amtThreshold) * 0.009 : 0;
   const totalFica = ssTax + medicareTax + addlMedicare;
 
@@ -324,7 +324,8 @@ function calculateHomeSale(inputs: TaxInput): TaxResult {
 
       const chunk15 = Math.max(0, Math.min(taxableGain, limit15) - limit0);
       const chunk20 = Math.max(0, taxableGain - limit15);
-      const niit = taxableGain > 200000 ? (taxableGain - 200000) * 0.038 : 0;
+      const niitThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
+  const niit = taxableGain > niitThreshold ? (taxableGain - niitThreshold) * 0.038 : 0;
 
       capGainsTax = chunk15 * 0.15 + chunk20 * 0.20 + niit;
     }
@@ -400,7 +401,7 @@ function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
     { label: 'Monthly Base Rent & Occupancy Cost', value: monthlyRent, isDeduction: true },
     { label: 'Other Monthly Operating Expenses', value: otherExpenses, isDeduction: true },
     { label: 'Monthly Net Operating Profit / (Loss)', value: monthlyOperatingIncome, isTotal: true },
-    { label: 'Required Monthly Break-Even Revenue', value: breakEvenMonthlyRevenue, isFinal: true },
+    { label: 'Required Monthly Break-Even Revenue', value: breakEvenMonthlyRevenue, isTotal: true },
     { label: 'Annual Pre-Tax Profit', value: annualPreTaxProfit, isTotal: true },
     { label: `Estimated Business Tax (21% Fed + ${(stateTaxRate * 100).toFixed(1)}% State)`, value: annualTax, isDeduction: true },
     { label: 'Annual Net Profit After Tax', value: annualNetProfit, isFinal: true },

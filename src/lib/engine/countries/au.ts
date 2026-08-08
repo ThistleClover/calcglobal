@@ -28,14 +28,12 @@ function applyLITO(incomeTax: number, taxable: number): number {
 
 function calcMedicare(taxable: number, privateHealth: boolean, residency: string): number {
   if (residency !== 'resident') return 0;
-  // Medicare Levy: 2%, reduced for low income
+  // Medicare Levy: 2%, smoothly phased in over $22,801 at 10% of excess
   let levy = 0;
-  if (taxable > 26000) {
-    levy = taxable * 0.02;
-  } else if (taxable > 22801) {
-    levy = (taxable - 22801) * 0.10; // Phase-in
+  if (taxable > 22801) {
+    levy = Math.min(taxable * 0.02, (taxable - 22801) * 0.10);
   }
-  // Medicare Levy Surcharge (if no private health and income > $93,000)
+  // Medicare Levy Surcharge
   let surcharge = 0;
   if (!privateHealth && taxable > 93000) {
     if (taxable <= 108000) surcharge = taxable * 0.01;
@@ -43,6 +41,13 @@ function calcMedicare(taxable: number, privateHealth: boolean, residency: string
     else surcharge = taxable * 0.015;
   }
   return levy + surcharge;
+}
+
+function applyWorkingHolidayTax(taxable: number): number {
+  if (taxable <= 45000) return taxable * 0.15;
+  if (taxable <= 135000) return 6750 + (taxable - 45000) * 0.325;
+  if (taxable <= 190000) return 36000 + (taxable - 135000) * 0.37;
+  return 56350 + (taxable - 190000) * 0.45;
 }
 
 function calcHECS(income: number): { amount: number; rate: number } {
@@ -85,7 +90,9 @@ function calculatePrimary(inputs: TaxInput): TaxResult {
   const privateHealth = String(inputs.private_health || 'no') === 'yes';
 
   // Tax on taxable income
-  const incomeTax = residency === 'resident'
+  const incomeTax = residency === 'working_holiday'
+    ? applyWorkingHolidayTax(grossAnnual)
+    : residency === 'resident'
     ? applyResidentTax(grossAnnual)
     : applyNonResidentTax(grossAnnual);
 
@@ -148,6 +155,8 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
   const vehicleCost = Math.max(0, parseFloat(String(inputs.vehicle_cost)) || 0);
   const vehicleBusinessPct = Math.min(100, Math.max(0, parseFloat(String(inputs.vehicle_business_pct)) || 0)) / 100;
   const voluntarySuper = Math.max(0, parseFloat(String(inputs.super_concessional_contribution)) || 0);
+  const residency = String(inputs.residency || 'resident');
+  const privateHealth = String(inputs.private_health || 'no') === 'yes';
 
   const homeOfficeDeduction = homeOfficeCost * homeOfficePct;
   const vehicleDeduction = vehicleCost * vehicleBusinessPct;
@@ -157,7 +166,12 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
   const deductibleSuper = Math.min(30000, voluntarySuper);
   const taxableIncome = Math.max(0, grossBusinessProfit - deductibleSuper);
 
-  const incomeTax = applyResidentTax(taxableIncome);
+  const incomeTax = residency === 'working_holiday'
+    ? applyWorkingHolidayTax(taxableIncome)
+    : residency === 'resident'
+    ? applyResidentTax(taxableIncome)
+    : applyNonResidentTax(taxableIncome);
+
   const lito = applyLITO(incomeTax, taxableIncome);
   const taxAfterLITO = Math.max(0, incomeTax - lito);
 
@@ -165,7 +179,7 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
   const sbito = Math.min(1000, taxAfterLITO * 0.16);
   const taxAfterSBITO = Math.max(0, taxAfterLITO - sbito);
 
-  const medicare = calcMedicare(taxableIncome, false, 'resident');
+  const medicare = calcMedicare(taxableIncome, privateHealth, residency);
   const totalTax = taxAfterSBITO + medicare;
 
   const netIncome = Math.max(0, taxableIncome - totalTax);
@@ -465,15 +479,16 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
     currIncome *= (1 + growthRate);
   }
 
+  const isPaidOff = balance <= 0;
   const totalRepaid = totalCompulsory + totalVoluntary;
   const effectiveRate = income > 0 ? firstYearHecs.amount / income : 0;
 
   const breakdown = [
     { label: 'Initial HECS/HELP Debt Balance', value: initialDebt },
     { label: 'Current Annual Repayment Income', value: income },
-    { label: `Year 1 Compulsory Repayment Rate (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearHecs.amount, isDeduction: true },
+    { label: `Year 1 Compulsory Repayment (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearHecs.amount, isDeduction: true },
     ...(voluntaryPayment > 0 ? [{ label: 'Year 1 Voluntary Repayment', value: voluntaryPayment, isDeduction: true }] : []),
-    { label: 'Projected Years to Debt-Free', value: years, isTotal: true },
+    { label: isPaidOff ? 'Projected Years to Debt-Free' : 'Will never pay off (30+ years)', value: isPaidOff ? years : null, isTotal: true },
     { label: 'Total Compulsory Repayments Paid', value: totalCompulsory, isDeduction: true },
     ...(totalVoluntary > 0 ? [{ label: 'Total Voluntary Repayments Paid', value: totalVoluntary, isDeduction: true }] : []),
     { label: 'Total Indexation Added (CPI ~3.8%/yr)', value: totalIndexation, isDeduction: true },
@@ -483,8 +498,10 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
   const insights: string[] = [];
   if (initialDebt === 0) {
     insights.push('You have no outstanding HECS/HELP debt.');
-  } else if (income < 54435) {
-    insights.push(`Your annual income (A$${income.toLocaleString()}) is below the minimum A$54,435 threshold. No compulsory repayments are required this year, but indexation will still apply on 1 June.`);
+  } else if (firstYearHecs.amount === 0) {
+    insights.push(`Your annual income (A$${income.toLocaleString()}) is below the minimum A$54,435 threshold. No compulsory repayments are required this year, but indexation will still apply.`);
+  } else if (!isPaidOff) {
+    insights.push('At your current income level and projected salary growth, your HECS/HELP debt will not be paid off within 30 years.');
   } else {
     insights.push(`At your current income level and projected salary growth, your HECS/HELP debt will be completely paid off in ${years} year${years > 1 ? 's' : ''}.`);
   }

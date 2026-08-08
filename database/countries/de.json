@@ -93,7 +93,7 @@
           "answer": "Der GKV-Zusatzbeitrag variiert je nach Krankenkasse. 2026 liegt der durchschnittliche Zusatzbeitrag bei ca. 1,7%. Die Techniker Krankenkasse (TK) liegt bei ca. 1,2%, die AOK Bayern bei ca. 1,9%. Der Beitrag wird je zur Hälfte von Arbeitgeber und Arbeitnehmer getragen."
         },
         {
-          "question": "Ab wann gilt der Solidaritätszuschlag noch?",
+          "question": "Wer muss 2026 noch Solidaritätszuschlag zahlen?",
           "answer": "Seit 2021 wurde der Soli für ca. 90% aller Steuerzahler abgeschafft. Er fällt nur noch an, wenn die Einkommensteuer mehr als 17.543 € (Ledige) bzw. 35.086 € (Verheiratete) beträgt."
         },
         {
@@ -186,8 +186,8 @@
           "answer": "Nach § 35 EStG wird die gezahlte Gewerbesteuer pauschaliert auf die persönliche Einkommensteuer angerechnet — und zwar bis maximal zum 4,0-Fachen des Gewerbesteuer-Messbetrags. Bei Gemeinden mit einem Hebesatz von genau 400 % gleicht die Anrechnung die Gewerbesteuer im Ergebnis vollständig aus."
         },
         {
-          "question": "Zahlen Freiberufler Gewerbesteuer?",
-          "answer": "Nein, Freiberufler im Sinne des § 18 EStG (z. B. Ärzte, Rechtsanwälte, Steuerberater, Architekten, Journalisten, Programmierer) unterliegen nicht der Gewerbesteuer und müssen kein Gewerbe anmelden."
+          "question": "Sind Freiberufler von der Gewerbesteuer befreit?",
+          "answer": "Ja, Angehörige der Katalogberufe (§ 18 EStG) wie Ärzte, Anwälte, Steuerberater, Architekten, Journalisten und IT-Freiberufler sind vollständig von der Gewerbesteuer befreit und müssen kein Gewerbe beim Gewerbeamt anmelden."
         }
       ],
       "affiliate_targets": [

@@ -29,6 +29,59 @@ function applyUKIncomeTax(income: number, personalAllowance: number): number {
   return Math.max(0, tax);
 }
 
+// Helper for Scottish Income Tax (2026/27)
+function applyScottishIncomeTax(income: number, personalAllowance: number): number {
+  const taperedPA = income > 100000
+    ? Math.max(0, personalAllowance - Math.floor((income - 100000) / 2))
+    : personalAllowance;
+
+  if (income <= taperedPA) return 0;
+
+  const starterUpper = taperedPA + 2306;
+  const basicUpper = taperedPA + 13991;
+  const intermediateUpper = taperedPA + 31092;
+  const higherUpper = 75000;
+  const advancedUpper = 125140;
+
+  let tax = 0;
+
+  // Starter (19%)
+  const inStarter = Math.max(0, Math.min(income, starterUpper) - taperedPA);
+  tax += inStarter * 0.19;
+
+  // Basic (20%)
+  if (income > starterUpper) {
+    const inBasic = Math.max(0, Math.min(income, basicUpper) - Math.max(taperedPA, starterUpper));
+    tax += inBasic * 0.20;
+  }
+
+  // Intermediate (21%)
+  if (income > basicUpper) {
+    const inIntermediate = Math.max(0, Math.min(income, intermediateUpper) - Math.max(taperedPA, basicUpper));
+    tax += inIntermediate * 0.21;
+  }
+
+  // Higher (42%)
+  if (income > intermediateUpper) {
+    const inHigher = Math.max(0, Math.min(income, higherUpper) - Math.max(taperedPA, intermediateUpper));
+    tax += inHigher * 0.42;
+  }
+
+  // Advanced (45%)
+  if (income > higherUpper) {
+    const inAdvanced = Math.max(0, Math.min(income, advancedUpper) - Math.max(taperedPA, higherUpper));
+    tax += inAdvanced * 0.45;
+  }
+
+  // Top (48%)
+  if (income > advancedUpper) {
+    const inTop = Math.max(0, income - Math.max(taperedPA, advancedUpper));
+    tax += inTop * 0.48;
+  }
+
+  return Math.max(0, tax);
+}
+
 function applyEmployeeNI(income: number): number {
   // 2026/27: 8% on £12,570–£50,270; 2% above
   const pt = 12570; // Primary Threshold
@@ -56,6 +109,9 @@ function calculateIR35(inputs: TaxInput): TaxResult {
   const pensionContribution = Math.max(0, parseFloat(String(inputs.pension_contribution_annual)) || 0);
   const otherIncome = Math.max(0, parseFloat(String(inputs.other_taxable_income)) || 0);
 
+  const locStr = String(inputs.tax_region || inputs.tax_location || inputs.location || '').toLowerCase();
+  const isScotland = locStr.includes('scotland') || String(inputs.is_scotland || '').toLowerCase() === 'yes' || String(inputs.is_scotland || '').toLowerCase() === 'true';
+
   const PA = 12570;
   const grossRevenue = dayRate * workingDays;
   const weeksWorked = workingDays / 5;
@@ -82,10 +138,12 @@ function calculateIR35(inputs: TaxInput): TaxResult {
 
   // Dividend Tax
   const dividendAboveAllowance = Math.max(0, retainedProfit - dividendAllowance);
-  const dividendInBasicBand = Math.min(dividendAboveAllowance, Math.max(0, PA + 37700 - directorSalary - otherIncome));
+  const nonDivIncome = directorSalary + otherIncome;
+  const dividendInBasicBand = Math.min(dividendAboveAllowance, Math.max(0, PA + 37700 - nonDivIncome));
+  const higherRateSpace = Math.max(0, 125140 - Math.max(PA + 37700, nonDivIncome));
   const dividendInHigherBand = Math.min(
     Math.max(0, dividendAboveAllowance - dividendInBasicBand),
-    Math.max(0, 125140 - (PA + 37700))
+    higherRateSpace
   );
   const dividendInAdditional = Math.max(0, dividendAboveAllowance - dividendInBasicBand - dividendInHigherBand);
   const dividendTax = dividendInBasicBand * 0.0875 + dividendInHigherBand * 0.3375 + dividendInAdditional * 0.3935;
@@ -102,7 +160,7 @@ function calculateIR35(inputs: TaxInput): TaxResult {
   const grossAfterPension = Math.max(0, grossEmployeeWage - pensionContribution);
 
   const employeeNI = applyEmployeeNI(grossAfterPension);
-  const incomeTax = applyUKIncomeTax(grossAfterPension + otherIncome, PA);
+  const incomeTax = isScotland ? applyScottishIncomeTax(grossAfterPension + otherIncome, PA) : applyUKIncomeTax(grossAfterPension + otherIncome, PA);
   const insideNetTakeHome = Math.max(0, grossAfterPension - employeeNI - incomeTax) + pensionContribution;
 
   const saving = outsideNetTakeHome - (insideNetTakeHome - pensionContribution);
@@ -356,6 +414,9 @@ function calculateGrossToNet(inputs: TaxInput): TaxResult {
   const studentPlan = String(inputs.student_loan_plan || 'none').toLowerCase();
   const blindAllowance = String(inputs.blind_persons_allowance || 'no').toLowerCase() === 'yes';
 
+  const locStr = String(inputs.tax_region || inputs.tax_location || inputs.location || inputs.region || studentPlan || '').toLowerCase();
+  const isScotland = locStr.includes('scotland') || locStr.includes('plan4') || String(inputs.is_scotland || '').toLowerCase() === 'yes' || String(inputs.is_scotland || '').toLowerCase() === 'true';
+
   // Pension deduction via Salary Sacrifice
   const pensionAnnual = grossAnnual * (pensionPct / 100);
   const taxableGross = Math.max(0, grossAnnual - pensionAnnual);
@@ -366,26 +427,67 @@ function calculateGrossToNet(inputs: TaxInput): TaxResult {
     ? Math.max(0, basePA - Math.floor((taxableGross - 100000) / 2))
     : basePA;
 
-  // Income Tax Calculation (2026/27 England/NI/Wales)
-  const basicUpper = taperedPA + 37700;
-  const higherUpper = 125140;
-
+  let incomeTax = 0;
   let basicTax = 0;
   let higherTax = 0;
   let additionalTax = 0;
 
-  if (taxableGross > taperedPA) {
-    const inBasic = Math.min(taxableGross, basicUpper) - taperedPA;
-    basicTax = Math.max(0, inBasic) * 0.20;
+  let starterTax = 0;
+  let intermediateTax = 0;
+  let advancedTax = 0;
+  let topTax = 0;
+
+  if (isScotland) {
+    const starterUpper = taperedPA + 2306;
+    const basicUpper = taperedPA + 13991;
+    const intermediateUpper = taperedPA + 31092;
+    const higherUpper = 75000;
+    const advancedUpper = 125140;
+
+    if (taxableGross > taperedPA) {
+      const inStarter = Math.max(0, Math.min(taxableGross, starterUpper) - taperedPA);
+      starterTax = inStarter * 0.19;
+    }
+    if (taxableGross > starterUpper) {
+      const inBasic = Math.max(0, Math.min(taxableGross, basicUpper) - Math.max(taperedPA, starterUpper));
+      basicTax = inBasic * 0.20;
+    }
+    if (taxableGross > basicUpper) {
+      const inIntermediate = Math.max(0, Math.min(taxableGross, intermediateUpper) - Math.max(taperedPA, basicUpper));
+      intermediateTax = inIntermediate * 0.21;
+    }
+    if (taxableGross > intermediateUpper) {
+      const inHigher = Math.max(0, Math.min(taxableGross, higherUpper) - Math.max(taperedPA, intermediateUpper));
+      higherTax = inHigher * 0.42;
+    }
+    if (taxableGross > higherUpper) {
+      const inAdvanced = Math.max(0, Math.min(taxableGross, advancedUpper) - Math.max(taperedPA, higherUpper));
+      advancedTax = inAdvanced * 0.45;
+    }
+    if (taxableGross > advancedUpper) {
+      const inTop = Math.max(0, taxableGross - Math.max(taperedPA, advancedUpper));
+      topTax = inTop * 0.48;
+    }
+
+    incomeTax = starterTax + basicTax + intermediateTax + higherTax + advancedTax + topTax;
+  } else {
+    // Income Tax Calculation (2026/27 England/NI/Wales)
+    const basicUpper = taperedPA + 37700;
+    const higherUpper = 125140;
+
+    if (taxableGross > taperedPA) {
+      const inBasic = Math.min(taxableGross, basicUpper) - taperedPA;
+      basicTax = Math.max(0, inBasic) * 0.20;
+    }
+    if (taxableGross > basicUpper) {
+      const inHigher = Math.min(taxableGross, higherUpper) - basicUpper;
+      higherTax = Math.max(0, inHigher) * 0.40;
+    }
+    if (taxableGross > higherUpper) {
+      additionalTax = (taxableGross - higherUpper) * 0.45;
+    }
+    incomeTax = basicTax + higherTax + additionalTax;
   }
-  if (taxableGross > basicUpper) {
-    const inHigher = Math.min(taxableGross, higherUpper) - basicUpper;
-    higherTax = Math.max(0, inHigher) * 0.40;
-  }
-  if (taxableGross > higherUpper) {
-    additionalTax = (taxableGross - higherUpper) * 0.45;
-  }
-  const incomeTax = basicTax + higherTax + additionalTax;
 
   // Employee National Insurance (Class 1 Primary: 8% £12,570–£50,270, 2% above)
   const employeeNI = applyEmployeeNI(taxableGross);
@@ -409,13 +511,24 @@ function calculateGrossToNet(inputs: TaxInput): TaxResult {
   const netMonthly = netAnnual / 12;
   const effectiveRate = grossAnnual > 0 ? (incomeTax + employeeNI + studentLoan) / grossAnnual : 0;
 
+  const taxBreakdownLines = isScotland ? [
+    ...(starterTax > 0 ? [{ label: 'Scottish Starter Rate Tax (19%)', value: starterTax, isDeduction: true }] : []),
+    ...(basicTax > 0 ? [{ label: 'Scottish Basic Rate Tax (20%)', value: basicTax, isDeduction: true }] : []),
+    ...(intermediateTax > 0 ? [{ label: 'Scottish Intermediate Rate Tax (21%)', value: intermediateTax, isDeduction: true }] : []),
+    ...(higherTax > 0 ? [{ label: 'Scottish Higher Rate Tax (42%)', value: higherTax, isDeduction: true }] : []),
+    ...(advancedTax > 0 ? [{ label: 'Scottish Advanced Rate Tax (45%)', value: advancedTax, isDeduction: true }] : []),
+    ...(topTax > 0 ? [{ label: 'Scottish Top Rate Tax (48%)', value: topTax, isDeduction: true }] : []),
+  ] : [
+    ...(basicTax > 0 ? [{ label: 'Basic Rate Tax (20%)', value: basicTax, isDeduction: true }] : []),
+    ...(higherTax > 0 ? [{ label: 'Higher Rate Tax (40%)', value: higherTax, isDeduction: true }] : []),
+    ...(additionalTax > 0 ? [{ label: 'Additional Rate Tax (45%)', value: additionalTax, isDeduction: true }] : []),
+  ];
+
   const breakdown = [
     { label: 'Gross Annual Salary', value: grossAnnual },
     { label: `Pension Contribution (${pensionPct}% Salary Sacrifice)`, value: pensionAnnual, isDeduction: true },
     { label: 'Personal Allowance (2026/27)', value: taperedPA },
-    { label: 'Basic Rate Tax (20%)', value: basicTax, isDeduction: true },
-    ...(higherTax > 0 ? [{ label: 'Higher Rate Tax (40%)', value: higherTax, isDeduction: true }] : []),
-    ...(additionalTax > 0 ? [{ label: 'Additional Rate Tax (45%)', value: additionalTax, isDeduction: true }] : []),
+    ...taxBreakdownLines,
     { label: 'Total Income Tax (PAYE)', value: incomeTax, isTotal: true },
     { label: 'Employee National Insurance (8%/2%)', value: employeeNI, isDeduction: true },
     ...(studentLoan > 0 ? [{ label: 'Student Loan Repayments', value: studentLoan, isDeduction: true }] : []),
@@ -432,6 +545,9 @@ function calculateGrossToNet(inputs: TaxInput): TaxResult {
   }
   if (studentLoan > 0) {
     insights.push(`Student loan repayment is deducted at 9% on income above your plan threshold (£${Math.round(studentLoan).toLocaleString()}/year).`);
+  }
+  if (isScotland) {
+    insights.push('Scottish Income Tax rates and bands applied (Starter 19%, Basic 20%, Intermediate 21%, Higher 42%, Advanced 45%, Top 48%).');
   }
 
   return {
@@ -481,12 +597,12 @@ function calculateDirectorOptimiser(inputs: TaxInput): TaxResult {
   const dividendAboveAllowance = Math.max(0, retainedProfit - dividendAllowance);
 
   // Band calculations for dividends sitting on top of £12,570 salary + otherIncome
-  const higherBandLimit = 125140 - 50270; // £50,270 to £125,140 = 74,870
   const personalIncomeBeforeDiv = directorSalary + otherIncome;
   const basicRemaining = Math.max(0, 50270 - Math.max(12570, personalIncomeBeforeDiv));
+  const higherRemaining = Math.max(0, 125140 - Math.max(50270, personalIncomeBeforeDiv));
 
   const divInBasic = Math.min(dividendAboveAllowance, basicRemaining);
-  const divInHigher = Math.min(Math.max(0, dividendAboveAllowance - divInBasic), higherBandLimit);
+  const divInHigher = Math.min(Math.max(0, dividendAboveAllowance - divInBasic), higherRemaining);
   const divInAdditional = Math.max(0, dividendAboveAllowance - divInBasic - divInHigher);
 
   const dividendTax = divInBasic * 0.0875 + divInHigher * 0.3375 + divInAdditional * 0.3935;
@@ -548,6 +664,10 @@ function calculateRedundancy(inputs: TaxInput): TaxResult {
   const age = Math.max(0, parseFloat(String(inputs.age_at_redundancy)) || 0);
   const exGratia = Math.max(0, parseFloat(String(inputs.ex_gratia_severance_offer)) || 0);
   const pilon = Math.max(0, parseFloat(String(inputs.pilon_payment)) || 0);
+  const otherIncome = Math.max(0, parseFloat(String(inputs.other_income || inputs.other_taxable_income || inputs.gross_annual || inputs.gross_salary)) || 0);
+
+  const locStr = String(inputs.tax_region || inputs.tax_location || inputs.location || '').toLowerCase();
+  const isScotland = locStr.includes('scotland');
 
   // Statutory Rules 2026/27
   const cappedWeekly = Math.min(700, grossWeekly); // 2026 statutory cap £700/week
@@ -555,7 +675,7 @@ function calculateRedundancy(inputs: TaxInput): TaxResult {
 
   let totalWeeks = 0;
   if (yearsService >= 2) {
-    const yearsOver41 = Math.max(0, Math.min(effectiveService, age - 40));
+    const yearsOver41 = Math.max(0, Math.min(effectiveService, age - 41));
     const remainingService1 = effectiveService - yearsOver41;
     const years22To40 = Math.max(0, Math.min(remainingService1, age >= 41 ? 19 : Math.max(0, age - 21)));
     const yearsUnder22 = Math.max(0, remainingService1 - years22To40);
@@ -569,10 +689,18 @@ function calculateRedundancy(inputs: TaxInput): TaxResult {
   // Tax treatment: Section 401 ITEPA 2003 £30,000 exemption on qualifying termination payments
   const taxFreeSeverance = Math.min(30000, totalSeverance);
   const taxableSeverance = Math.max(0, totalSeverance - 30000);
-  const severanceTax = taxableSeverance * 0.20; // Basic rate estimate on excess over £30k
 
-  // PILON (Pay in Lieu of Notice) is 100% taxable earnings
-  const pilonTax = pilon * 0.20;
+  // Marginal income tax calculation based on total income
+  const calcTax = (inc: number) => isScotland ? applyScottishIncomeTax(inc, 12570) : applyUKIncomeTax(inc, 12570);
+
+  const baseTax = calcTax(otherIncome);
+  const taxWithPilon = calcTax(otherIncome + pilon);
+  const taxWithSeverance = calcTax(otherIncome + pilon + taxableSeverance);
+
+  const pilonTax = taxWithPilon - baseTax;
+  const severanceTax = taxWithSeverance - taxWithPilon;
+
+  // PILON National Insurance
   const pilonNI = applyEmployeeNI(pilon);
   const netPilon = Math.max(0, pilon - pilonTax - pilonNI);
 
@@ -588,7 +716,7 @@ function calculateRedundancy(inputs: TaxInput): TaxResult {
     { label: 'Total Termination Severance Package', value: totalSeverance, isTotal: true },
     { label: 'Section 401 Tax-Free Exemption (up to £30,000)', value: taxFreeSeverance },
     ...(taxableSeverance > 0 ? [{ label: 'Taxable Severance Portion (above £30k)', value: taxableSeverance, isDeduction: true }] : []),
-    ...(severanceTax > 0 ? [{ label: 'Estimated Tax on Severance (> £30k)', value: severanceTax, isDeduction: true }] : []),
+    ...(severanceTax > 0 ? [{ label: 'Tax on Severance (> £30k)', value: severanceTax, isDeduction: true }] : []),
     ...(pilon > 0 ? [{ label: 'Pay in Lieu of Notice (PILON - Taxable)', value: pilon }] : []),
     ...(pilon > 0 ? [{ label: 'Tax & NI on PILON', value: pilonTax + pilonNI, isDeduction: true }] : []),
     { label: 'Total Net Settlement Take-Home', value: totalTakeHome, isFinal: true },

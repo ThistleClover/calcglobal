@@ -7,12 +7,12 @@
 import type { TaxInput, TaxResult } from '../types';
 
 /** German progressive income tax using §32a EStG 2026 zones */
-function einkommensteuer(zvE: number, doubled: boolean = false): number {
+function einkommensteuer(zvE: number, doubled: boolean = false, noPA: boolean = false): number {
   if (doubled) {
     // Splittingverfahren: halve, compute, double
-    return einkommensteuer(zvE / 2) * 2;
+    return einkommensteuer(zvE / 2, false, noPA) * 2;
   }
-  const x = zvE;
+  const x = noPA && zvE > 0 ? zvE + 12096 : zvE;
   if (x <= 12096) return 0;
   if (x <= 17404) {
     const y = (x - 12096) / 10000;
@@ -61,7 +61,7 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
   const rvBase = Math.min(grossAnnual, BBG_RV_WEST_2026);
   const rv = rvBase * 0.093;                    // Rentenversicherung 9.3%
   const av = rvBase * 0.013;                    // Arbeitslosenversicherung 1.3%
-  const pvBase = grossAnnual;                   // Pflegeversicherung
+  const pvBase = Math.min(grossAnnual, BBG_KV_WEST_2026); // Pflegeversicherung
   const pvRate = 0.018 + 0.006;                 // 1.8% + 0.6% Kinderlosenzuschlag
   const pv = pvBase * pvRate;
 
@@ -89,7 +89,7 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
     case '6': noPA = true; break;
   }
 
-  const est = einkommensteuer(Math.round(zvE), splitting);
+  const est = einkommensteuer(Math.round(zvE), splitting, noPA);
 
   // ─── Solidaritätszuschlag ───
   const soli = est > 17543 ? est * 0.055 : est > 16956 ? (est - 16956) * 0.199 : 0;

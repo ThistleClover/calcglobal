@@ -197,15 +197,15 @@
       "affiliate_targets": [
         {
           "name": "Halifax Mortgages",
-          "type": "accounting",
           "url": "https://www.halifax.co.uk/mortgages.html?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Leading UK mortgage lender offering competitive fixed and tracker rates for home movers and first-time buyers."
+          "type": "mortgage",
+          "logo": "🏦"
         },
         {
           "name": "L&C Mortgages (London & Country)",
-          "type": "accounting",
           "url": "https://www.landc.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "UK's largest fee-free mortgage broker comparing rates across over 90 lenders."
+          "type": "mortgage",
+          "logo": "🏠"
         },
         {
           "name": "Habito",
@@ -260,6 +260,15 @@
           "label_native": "Pension Contribution (%)",
           "type": "number",
           "options": []
+        },
+        {
+          "name": "tax_region",
+          "label_native": "Tax Region / Location",
+          "type": "select",
+          "options": [
+            { "value": "rUK", "label": "England / Wales / Northern Ireland" },
+            { "value": "scotland", "label": "Scotland (Scottish Income Tax)" }
+          ]
         },
         {
           "name": "student_loan_plan",

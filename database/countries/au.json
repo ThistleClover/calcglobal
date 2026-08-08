@@ -161,6 +161,25 @@
           "type": "number"
         },
         {
+          "name": "residency",
+          "label_native": "Tax Residency Status",
+          "type": "select",
+          "options": [
+            { "value": "resident", "label": "Australian Resident for Tax Purposes" },
+            { "value": "non_resident", "label": "Foreign Resident" },
+            { "value": "working_holiday", "label": "Working Holiday Maker (417/462)" }
+          ]
+        },
+        {
+          "name": "private_health",
+          "label_native": "Do you have Private Patient Hospital Cover?",
+          "type": "select",
+          "options": [
+            { "value": "no", "label": "No (May pay Medicare Levy Surcharge)" },
+            { "value": "yes", "label": "Yes" }
+          ]
+        },
+        {
           "name": "super_concessional_contribution",
           "label_native": "Voluntary Super Contribution (Deductible A$)",
           "type": "number"
@@ -193,16 +212,22 @@
           "description": "Leading accounting software for sole traders with direct ATO BAS filing, invoicing, and deduction tracking."
         },
         {
-          "name": "Xero Australia",
-          "type": "software",
-          "url": "https://www.xero.com/au/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Automated business accounting software for Australian ABN sole traders and small businesses."
+          "name": "QuickBooks Australia",
+          "url": "https://quickbooks.intuit.com/au/?utm_source=calcglobal&utm_medium=affiliate",
+          "type": "accounting",
+          "logo": "📊"
         },
         {
           "name": "H&R Block Australia",
-          "type": "accounting",
           "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "type": "accounting",
+          "logo": "💼",
           "description": "Sole trader tax return experts — ensure maximum business deductions and compliance."
+        },
+        {
+          "name": "Aussiesure",
+          "url": "https://www.aussiesure.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "type": "insurance"
         },
         {
           "name": "Etax Online",

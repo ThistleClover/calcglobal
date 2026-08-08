@@ -597,23 +597,26 @@
           ]
         },
         {
+          "name": "frais_acquisition",
+          "label_native": "Montant des frais d'acquisition réels (€, si frais réels)",
+          "type": "number",
+          "options": []
+        },
+        {
           "name": "construction_works_option",
           "label_native": "Prise en compte des travaux de rénovation/agrandissement",
           "type": "select",
           "options": [
-            {
-              "value": "standard_15",
-              "label": "Forfait légal de 15 % du prix d'achat (Si détention supérieure à 5 ans)"
-            },
-            {
-              "value": "real_works",
-              "label": "Frais réels de travaux sur factures d'entreprises"
-            },
-            {
-              "value": "none",
-              "label": "Aucun travaux déductibles"
-            }
+            { "value": "none", "label": "Aucun ou détention < 5 ans (0 €)" },
+            { "value": "standard_15", "label": "Forfait (15% du prix d'achat, si détenu > 5 ans)" },
+            { "value": "real_works", "label": "Frais réels justifiés par factures d'entreprises" }
           ]
+        },
+        {
+          "name": "travaux_realises",
+          "label_native": "Montant des travaux réels sur factures (€, si frais réels)",
+          "type": "number",
+          "options": []
         }
       ],
       "last_updated": "Août 2026",
