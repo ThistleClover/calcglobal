@@ -10,6 +10,7 @@ const site = process.env.SITE || 'https://calcglobal.com';
 // https://astro.build/config
 export default defineConfig({
   site,
+  base: '/calcglobal',
   integrations: [
     tailwind(),
     react(),

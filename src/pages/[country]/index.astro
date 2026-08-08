@@ -32,6 +32,8 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 2, "name": data.country, "item": `https://calcglobal.com/${slug}/` }
   ]
 };
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -44,7 +46,7 @@ const breadcrumbSchema = {
   <div class="bg-slate-800 text-white pt-14 pb-20 px-4">
     <div class="max-w-5xl mx-auto">
       <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
         <span class="text-white font-medium">{data.country}</span>
       </nav>
@@ -67,7 +69,7 @@ const breadcrumbSchema = {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
       {data.calculators.map((calc: any) => (
         <a
-          href={`/${slug}/${calc.id}`}
+          href={`${base}/${slug}/${calc.id}`}
           class="group bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col gap-4"
         >
           <div class="flex items-start justify-between">

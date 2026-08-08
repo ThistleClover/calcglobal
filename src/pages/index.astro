@@ -34,6 +34,8 @@ const orgSchema = {
   "url": "https://calcglobal.com",
   "description": "Free, accurate tax and financial calculators for professionals worldwide."
 };
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
 <Layout 
@@ -58,7 +60,7 @@ const orgSchema = {
       </p>
       <div class="flex flex-wrap justify-center gap-3">
         {activeCountries.map(c => (
-          <a href={`/${c.slug}`} class="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-slate-100 transition-colors shadow-sm">
+          <a href={`${base}/${c.slug}`} class="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-slate-100 transition-colors shadow-sm">
             <img src={`https://flagcdn.com/w20/${c.slug === 'uk' ? 'gb' : c.slug}.png`} alt="" class="w-5 h-3.5 object-cover rounded-sm" />
             {c.name}
           </a>
@@ -79,7 +81,7 @@ const orgSchema = {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 divide-x divide-y divide-slate-100">
           {activeCountries.map((country) => (
             <a 
-              href={`/${country.slug}`} 
+              href={`${base}/${country.slug}`} 
               class="flex flex-col p-6 hover:bg-slate-50 transition-colors group"
             >
               <div class="flex items-center gap-3 mb-4">

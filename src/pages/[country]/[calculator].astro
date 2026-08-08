@@ -80,6 +80,8 @@ const breadcrumbSchema = {
     { "@type": "ListItem", "position": 3, "name": calcData.title_en || calcData.title_native, "item": `https://calcglobal.com/${slug}/${calcData.id}/` }
   ]
 };
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
 <Layout
@@ -97,9 +99,9 @@ const breadcrumbSchema = {
     <div class="max-w-4xl mx-auto">
       <!-- Breadcrumb -->
       <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2 flex-wrap">
-        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
         <span>/</span>
-        <a href={`/${slug}`} class="hover:text-white transition-colors flex items-center gap-1.5">
+        <a href={`${base}/${slug}`} class="hover:text-white transition-colors flex items-center gap-1.5">
           <img src={`https://flagcdn.com/w20/${flagCode}.png`} alt="" class="w-4 h-3 object-cover rounded-sm" />
           {countryData.country}
         </a>

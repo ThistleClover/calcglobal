@@ -20,6 +20,7 @@ const {
 
 const siteName = 'CalcGlobal';
 const siteUrl = 'https://calcglobal.com';
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
 <!doctype html>
@@ -47,7 +48,7 @@ const siteUrl = 'https://calcglobal.com';
     
     <!-- Technical -->
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -79,19 +80,19 @@ const siteUrl = 'https://calcglobal.com';
     <!-- Header -->
     <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="/" class="flex items-center gap-2.5 group">
+        <a href={`${base}/`} class="flex items-center gap-2.5 group">
           <div class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-base tracking-tight group-hover:bg-slate-700 transition-colors">
             CG
           </div>
           <span class="font-bold text-lg tracking-tight text-slate-900">CalcGlobal</span>
         </a>
         <nav class="hidden sm:flex items-center gap-1">
-          <a href="/" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">All Countries</a>
-          <a href="/us" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
-          <a href="/uk" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
-          <a href="/fr" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
-          <a href="/de" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
-          <a href="/au" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
+          <a href={`${base}/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">All Countries</a>
+          <a href={`${base}/us`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
+          <a href={`${base}/uk`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
+          <a href={`${base}/fr`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
+          <a href={`${base}/de`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
+          <a href={`${base}/au`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
         </nav>
       </div>
     </header>
@@ -118,19 +119,19 @@ const siteUrl = 'https://calcglobal.com';
           <div>
             <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Calculators</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/us" class="hover:text-white transition-colors">🇺🇸 United States</a></li>
-              <li><a href="/uk" class="hover:text-white transition-colors">🇬🇧 United Kingdom</a></li>
-              <li><a href="/fr" class="hover:text-white transition-colors">🇫🇷 France</a></li>
-              <li><a href="/de" class="hover:text-white transition-colors">🇩🇪 Germany</a></li>
-              <li><a href="/au" class="hover:text-white transition-colors">🇦🇺 Australia</a></li>
+              <li><a href={`${base}/us`} class="hover:text-white transition-colors">🇺🇸 United States</a></li>
+              <li><a href={`${base}/uk`} class="hover:text-white transition-colors">🇬🇧 United Kingdom</a></li>
+              <li><a href={`${base}/fr`} class="hover:text-white transition-colors">🇫🇷 France</a></li>
+              <li><a href={`${base}/de`} class="hover:text-white transition-colors">🇩🇪 Germany</a></li>
+              <li><a href={`${base}/au`} class="hover:text-white transition-colors">🇦🇺 Australia</a></li>
             </ul>
           </div>
           <div>
             <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="/disclaimer" class="hover:text-white transition-colors">Tax Disclaimer</a></li>
+              <li><a href={`${base}/privacy`} class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href={`${base}/terms`} class="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href={`${base}/disclaimer`} class="hover:text-white transition-colors">Tax Disclaimer</a></li>
             </ul>
           </div>
         </div>
