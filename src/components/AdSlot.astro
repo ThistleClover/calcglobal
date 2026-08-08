@@ -1,0 +1,46 @@
+---
+interface Props {
+  slotId?: string; // If using specific ad units later
+  format?: 'auto' | 'horizontal' | 'rectangle';
+  className?: string;
+}
+
+const { slotId, format = 'auto', className = 'my-8' } = Astro.props;
+
+// Default publisher ID (User must replace this with their real pub- ID)
+const PUBLISHER_ID = 'ca-pub-6264279528687703';
+---
+
+<div class={`adsense-wrapper flex justify-center w-full min-h-[90px] ${className}`}>
+  <ins class="adsbygoogle w-full"
+       style="display:block"
+       data-ad-client={PUBLISHER_ID}
+       data-ad-slot={slotId}
+       data-ad-format={format}
+       data-full-width-responsive="true"></ins>
+  <script is:inline>
+    // Initialize the ad slot
+    // We wrap it in a try-catch to prevent errors if AdSense is blocked by an AdBlocker
+    (function() {
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.warn('AdSense blocked or failed to load');
+      }
+    })();
+  </script>
+</div>
+
+<style>
+  /* Fallback styling if ads are blocked so we don't leave an ugly blank space */
+  .adsense-wrapper {
+    overflow: hidden;
+  }
+  .adsense-wrapper:empty,
+  .adsense-wrapper ins:empty {
+    display: none !important;
+    min-height: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+</style>
