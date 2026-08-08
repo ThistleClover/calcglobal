@@ -2,7 +2,8 @@
 
 > **Free, hyper-accurate tax & financial calculators — 2026/27 tax year data**
 
-[![Deploy to GitHub Pages](https://github.com/USERNAME/calcglobal/actions/workflows/deploy.yml/badge.svg)](https://github.com/USERNAME/calcglobal/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/ThistleClover/calcglobal/actions/workflows/deploy.yml/badge.svg)](https://github.com/ThistleClover/calcglobal/actions/workflows/deploy.yml)
+[![Live Site](https://img.shields.io/badge/Live%20Site-thistleclover.github.io%2Fcalcglobal-brightgreen)](https://thistleclover.github.io/calcglobal/)
 
 ## 🌍 Live Calculators
 
@@ -57,7 +58,7 @@ database/
 
 GitHub Actions automatically builds and deploys on every push to `main`. 
 
-Enable GitHub Pages in **Settings → Pages → Source: GitHub Actions**.
+Enable GitHub Pages in **[Settings → Pages → Source: GitHub Actions](https://github.com/ThistleClover/calcglobal/settings/pages)**.
 
 ## 📜 License
 
