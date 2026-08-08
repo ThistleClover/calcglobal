@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
 import { getEngineKeyForCalc } from '../../lib/engine/factory';
+import { getTranslatedCategory } from '../../utils/translations';
 
 export function getStaticPaths() {
   const dbDir = path.join(process.cwd(), 'database', 'countries');
@@ -111,8 +112,8 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
       <!-- Title row -->
       <div class="flex items-start gap-3 flex-wrap">
-        <span class="inline-block mt-1 px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md uppercase tracking-wide border border-slate-600">
-          {calcData.category}
+        <span class="inline-block mt-1 px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md tracking-wide border border-slate-600">
+          {getTranslatedCategory(calcData.category, meta.lang)}
         </span>
         {calcData.last_updated && (
           <span class="inline-block mt-1 px-2.5 py-1 bg-green-900/60 text-green-300 text-xs font-semibold rounded-md border border-green-800">
@@ -133,6 +134,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-10">
 
     <!-- The Interactive Calculator (React Island) -->
+    <!-- Interactive Calculator (React Island) -->
     <InteractiveCalculator
       client:load
       calc={calcData}
@@ -140,35 +142,6 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       locale={meta.locale}
       currencySymbol={meta.currencySymbol}
     />
-
-    <!-- Affiliate Partners -->
-    {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
-      <div class="mt-12">
-        <h2 class="text-lg font-bold text-slate-900 mb-4">Recommended Tools & Services</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {calcData.affiliate_targets.map((partner: any) => (
-            <a
-              href={partner.url || '#'}
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              class="group bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col gap-3"
-            >
-              <div class="flex items-start justify-between">
-                <div>
-                  <span class="inline-block px-2 py-0.5 bg-slate-100 text-slate-500 text-xs font-medium rounded uppercase tracking-wide mb-2">{partner.type}</span>
-                  <h3 class="font-bold text-slate-900 group-hover:text-slate-700 text-base">{partner.name}</h3>
-                </div>
-                <span class="text-slate-300 group-hover:text-slate-500 transition-colors mt-1">↗</span>
-              </div>
-              <p class="text-sm text-slate-500 leading-relaxed">{partner.description}</p>
-              <span class="inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-100 rounded-lg px-3 py-1.5 w-fit group-hover:bg-slate-200 transition-colors">
-                Get Started →
-              </span>
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
 
     <!-- FAQ / Article Content -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (

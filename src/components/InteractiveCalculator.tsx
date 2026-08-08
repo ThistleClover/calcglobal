@@ -17,6 +17,7 @@ interface Props {
     formula_explanation: string;
     currency?: string;
     currencySymbol?: string;
+    affiliate_targets?: any[];
   };
   /** Serialized calculate function — passed as a string from build-time Astro */
   engineCode: string;
@@ -222,7 +223,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
               )}
 
               {result.additionalInsights && result.additionalInsights.length > 0 && (
-                <ul className="space-y-2">
+                <ul className="space-y-2 mb-6">
                   {result.additionalInsights.map((insight, i) => (
                     <li key={i} className="text-xs text-slate-600 flex items-start gap-2 bg-blue-50 rounded-lg px-3 py-2 border border-blue-100">
                       <span className="text-blue-500 mt-0.5">ℹ</span>
@@ -230,6 +231,33 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                     </li>
                   ))}
                 </ul>
+              )}
+
+              {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
+                <div className="mt-6 pt-6 border-t border-slate-200">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Recommended Tools</p>
+                  <div className="flex flex-col gap-3">
+                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => (
+                      <a
+                        key={idx}
+                        href={partner.url || '#'}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm transition-all"
+                      >
+                        <div className="pr-4">
+                          <h4 className="font-bold text-slate-900 text-sm group-hover:text-slate-700 transition-colors">{partner.name}</h4>
+                          <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">{partner.description}</p>
+                        </div>
+                        <span className="shrink-0 text-slate-300 group-hover:text-slate-600 transition-colors">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
               )}
             </div>
           )}
