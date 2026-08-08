@@ -172,7 +172,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <!-- FAQ / Article Content -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (
       <section class="mt-14">
-        <h2 class="text-xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+        <h2 class="text-xl font-bold text-slate-900 mb-6">{getUITranslation('FAQ_TITLE', meta.lang)}</h2>
         <div class="space-y-6">
           {calcData.article_faq.map((faq: any, i: number) => (
             <div class="bg-white rounded-xl border border-slate-200 p-6">
@@ -186,11 +186,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
     <!-- Legal Disclaimer -->
     <div class="mt-12 bg-amber-50 border border-amber-200 rounded-xl px-6 py-5">
-      <p class="text-xs text-amber-800 leading-relaxed">
-        <strong>Disclaimer:</strong> Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. 
-        Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. 
-        Always consult a qualified tax professional or accountant for advice specific to your situation.
-      </p>
+      <p class="text-xs text-amber-800 leading-relaxed" set:html={getUITranslation('DISCLAIMER_TEXT', meta.lang).replace('Disclaimer:', '<strong>Disclaimer:</strong>').replace('Avertissement :', '<strong>Avertissement :</strong>').replace('Haftungsausschluss:', '<strong>Haftungsausschluss:</strong>')} />
     </div>
   </div>
 </Layout>

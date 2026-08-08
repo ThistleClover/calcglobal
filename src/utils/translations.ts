@@ -46,15 +46,21 @@ export function getTranslatedCategory(categoryKey: string, langCode: string): st
 export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
   'fr': {
     'RECOMMENDED_TOOLS': 'Outils recommandés pour vous',
-    'GET_STARTED': 'Découvrir →'
+    'GET_STARTED': 'Découvrir →',
+    'FAQ_TITLE': 'Questions Fréquemment Posées',
+    'DISCLAIMER_TEXT': 'Avertissement : Les résultats sont des estimations basées sur les règles fiscales standard pour l\'année fiscale 2026 et sont fournis à titre informatif uniquement. Votre situation individuelle (déductions, crédits, règles locales) peut affecter considérablement votre impôt réel. Consultez toujours un professionnel de la fiscalité qualifié.'
   },
   'de': {
     'RECOMMENDED_TOOLS': 'Empfohlene Tools für Sie',
-    'GET_STARTED': 'Loslegen →'
+    'GET_STARTED': 'Loslegen →',
+    'FAQ_TITLE': 'Häufig Gestellte Fragen',
+    'DISCLAIMER_TEXT': 'Haftungsausschluss: Die Ergebnisse sind Schätzungen basierend auf den Standardsteuervorschriften für das Steuerjahr 2026 und dienen nur zu Informationszwecken. Ihre individuelle Situation kann Ihre tatsächliche Steuerschuld erheblich beeinflussen. Konsultieren Sie immer einen qualifizierten Steuerberater.'
   },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools for You',
-    'GET_STARTED': 'Get Started →'
+    'GET_STARTED': 'Get Started →',
+    'FAQ_TITLE': 'Frequently Asked Questions',
+    'DISCLAIMER_TEXT': 'Disclaimer: Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. Always consult a qualified tax professional or accountant for advice specific to your situation.'
   }
 };
 
