@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
 import { getEngineKeyForCalc } from '../../lib/engine/factory';
-import { getTranslatedCategory } from '../../utils/translations';
+import { getTranslatedCategory, getUITranslation } from '../../utils/translations';
 
 export function getStaticPaths() {
   const dbDir = path.join(process.cwd(), 'database', 'countries');
@@ -142,6 +142,32 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       locale={meta.locale}
       currencySymbol={meta.currencySymbol}
     />
+
+    <!-- Affiliate Partners (Static List) -->
+    {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
+      <div class="mt-16 border-t border-slate-200 pt-12">
+        <h2 class="text-lg font-bold text-slate-900 mb-6">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {calcData.affiliate_targets.map((partner: any) => (
+            <a
+              href={partner.url || '#'}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block bg-white rounded-xl border border-slate-200 p-5 hover:border-slate-300 hover:shadow-sm transition-all"
+            >
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-bold text-slate-900 group-hover:text-slate-700 text-sm">{partner.name}</h3>
+                <span class="text-slate-300 group-hover:text-slate-500 transition-colors">↗</span>
+              </div>
+              <p class="text-sm text-slate-500 leading-relaxed mb-4">{partner.description}</p>
+              <span class="inline-block text-xs font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
+                {getUITranslation('GET_STARTED', meta.lang)}
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
 
     <!-- FAQ / Article Content -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (

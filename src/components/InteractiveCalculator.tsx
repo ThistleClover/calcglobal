@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import type { TaxInput, TaxResult, TaxBreakdownLine } from '../lib/engine/types';
+import { getUITranslation } from '../utils/translations';
 
 interface CalcInput {
   name: string;
@@ -235,7 +236,9 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
 
               {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
                 <div className="mt-6 pt-6 border-t border-slate-200">
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Recommended Tools</p>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+                    {getUITranslation('RECOMMENDED_TOOLS', locale)}
+                  </p>
                   <div className="flex flex-col gap-3">
                     {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => (
                       <a
@@ -243,13 +246,13 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                         href={partner.url || '#'}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex items-center justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm transition-all"
+                        className="group flex items-start justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm transition-all"
                       >
                         <div className="pr-4">
                           <h4 className="font-bold text-slate-900 text-sm group-hover:text-slate-700 transition-colors">{partner.name}</h4>
-                          <p className="text-xs text-slate-500 mt-0.5 line-clamp-1">{partner.description}</p>
+                          <p className="text-sm text-slate-500 mt-1 leading-relaxed">{partner.description}</p>
                         </div>
-                        <span className="shrink-0 text-slate-300 group-hover:text-slate-600 transition-colors">
+                        <span className="shrink-0 text-slate-300 group-hover:text-slate-600 transition-colors mt-0.5">
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
                           </svg>
