@@ -2,28 +2,66 @@
 interface Props {
   partner: {
     name: string;
-    type: string;
+    type?: string;
     description: string;
+    url?: string;
+    logo?: string;
+    cta?: string;
   };
+  ctaText?: string;
 }
 
-const { partner } = Astro.props;
+const { partner, ctaText } = Astro.props;
+
+// Determine logo icon or emoji based on logo field or partner type
+let logoIcon = partner.logo;
+if (!logoIcon) {
+  const type = (partner.type || '').toLowerCase();
+  if (type.includes('bank') || type.includes('neo')) logoIcon = '🏦';
+  else if (type.includes('soft') || type.includes('account')) logoIcon = '💻';
+  else if (type.includes('insur')) logoIcon = '🛡️';
+  else if (type.includes('leg') || type.includes('incorp')) logoIcon = '⚖️';
+  else if (type.includes('pay') || type.includes('hr')) logoIcon = '💼';
+  else if (type.includes('real') || type.includes('mortg')) logoIcon = '🏠';
+  else logoIcon = '⚡';
+}
+
+// CTA text logic
+const buttonText = partner.cta || ctaText || (partner.type === 'software' ? 'Try Free' : 'Get Started');
+const targetUrl = partner.url || '#';
 ---
 
-<div class="bg-corporate-50 rounded-xl p-6 border border-corporate-200 mt-8 relative overflow-hidden">
-  <div class="absolute top-0 right-0 p-4">
-    <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
-      Recommended Partner
-    </span>
+<div class="group relative bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-slate-300 hover:-translate-y-0.5 transition-all duration-200 flex flex-col justify-between h-full">
+  <div>
+    <!-- Top Row: Logo & Sponsored Badge -->
+    <div class="flex items-center justify-between mb-4">
+      <div class="w-10 h-10 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition-transform">
+        {logoIcon}
+      </div>
+      <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-100/80 px-2 py-0.5 rounded border border-slate-200/60">
+        Sponsored
+      </span>
+    </div>
+
+    <!-- Partner Title -->
+    <h3 class="text-base font-bold text-slate-900 group-hover:text-slate-800 mb-2 transition-colors">
+      {partner.name}
+    </h3>
+
+    <!-- Description -->
+    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
+      {partner.description}
+    </p>
   </div>
-  <h3 class="text-lg font-semibold text-corporate-900 mb-2">Take Action with {partner.name}</h3>
-  <p class="text-sm text-corporate-600 mb-4 pr-32">
-    {partner.description} Start saving time and ensuring 100% compliance with local regulations today.
-  </p>
-  <a 
-    href="#" 
-    class="inline-flex justify-center items-center rounded-md bg-corporate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-corporate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corporate-900 transition-colors"
+
+  <!-- CTA Button -->
+  <a
+    href={targetUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="inline-flex items-center justify-center w-full rounded-lg bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 transition-colors gap-1.5"
   >
-    Get Started with {partner.name} <span class="ml-2">→</span>
+    <span>{buttonText}</span>
+    <span class="text-slate-400 group-hover:translate-x-0.5 transition-transform">→</span>
   </a>
 </div>

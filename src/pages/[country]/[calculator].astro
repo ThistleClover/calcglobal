@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import InteractiveCalculator from '../../components/InteractiveCalculator';
 import AdSlot from '../../components/AdSlot.astro';
+import AffiliateCard from '../../components/AffiliateCard.astro';
 import fs from 'fs';
 import path from 'path';
 import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
@@ -134,9 +135,6 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
   <!-- Calculator Area -->
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-10">
 
-    <!-- Top AdSlot (Leaderboard) -->
-    <AdSlot format="horizontal" />
-
     <!-- The Interactive Calculator (React Island) -->
     <InteractiveCalculator
       client:load
@@ -146,42 +144,38 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       currencySymbol={meta.currencySymbol}
     />
 
-    <!-- In-Article AdSlot -->
-    <AdSlot format="rectangle" />
+    <!-- Strategic AdSlot 1: Rectangle above Recommended Tools -->
+    <AdSlot variant="rectangle" className="my-10" />
 
-    <!-- Affiliate Partners (Static List) -->
+    <!-- Affiliate Partners (Prominent Recommended Tools Section) -->
     {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
-      <div class="mt-16 border-t border-slate-200 pt-12">
-        <h2 class="text-lg font-bold text-slate-900 mb-6">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {calcData.affiliate_targets.map((partner: any) => (
-            <a
-              href={partner.url || '#'}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="group block bg-white rounded-xl border border-slate-200 p-5 hover:border-slate-300 hover:shadow-sm transition-all"
-            >
-              <div class="flex items-start justify-between mb-2">
-                <h3 class="font-bold text-slate-900 group-hover:text-slate-700 text-sm">{partner.name}</h3>
-                <span class="text-slate-300 group-hover:text-slate-500 transition-colors">↗</span>
-              </div>
-              <p class="text-sm text-slate-500 leading-relaxed mb-4">{partner.description}</p>
-              <span class="inline-block text-xs font-semibold text-slate-600 group-hover:text-slate-900 transition-colors">
-                {getUITranslation('GET_STARTED', meta.lang)}
-              </span>
-            </a>
+      <section class="mt-10">
+        <div class="flex items-center justify-between mb-6">
+          <h2 class="text-xl font-bold text-slate-900">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
+          <span class="text-xs text-slate-400 font-medium">Verified Partners</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {calcData.affiliate_targets.slice(0, 3).map((partner: any) => (
+            <AffiliateCard partner={partner} />
           ))}
         </div>
-      </div>
+        <!-- Subtle Affiliate Disclosure -->
+        <p class="text-center text-xs text-slate-400 mt-6 max-w-xl mx-auto leading-relaxed">
+          {getUITranslation('AFFILIATE_DISCLOSURE', meta.lang)}
+        </p>
+      </section>
     )}
+
+    <!-- Strategic AdSlot 2: In-Article between Recommended Tools and FAQ -->
+    <AdSlot variant="in-article" className="my-12" />
 
     <!-- FAQ / Article Content -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (
-      <section class="mt-14">
+      <section class="mt-10">
         <h2 class="text-xl font-bold text-slate-900 mb-6">{getUITranslation('FAQ_TITLE', meta.lang)}</h2>
         <div class="space-y-6">
-          {calcData.article_faq.map((faq: any, i: number) => (
-            <div class="bg-white rounded-xl border border-slate-200 p-6">
+          {calcData.article_faq.map((faq: any) => (
+            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
               <h3 class="font-bold text-slate-900 text-base mb-3">{faq.question}</h3>
               <p class="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
             </div>

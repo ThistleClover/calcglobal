@@ -243,29 +243,50 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
 
               {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
                 <div className="mt-6 pt-6 border-t border-slate-200">
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
-                    {getUITranslation('RECOMMENDED_TOOLS', locale)}
-                  </p>
+                  <div className="flex items-center justify-between mb-3">
+                    <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
+                      {getUITranslation('RECOMMENDED_TOOLS', locale)}
+                    </p>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-100/80 px-2 py-0.5 rounded border border-slate-200/60">
+                      Sponsored
+                    </span>
+                  </div>
                   <div className="flex flex-col gap-3">
-                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => (
-                      <a
-                        key={idx}
-                        href={partner.url || '#'}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex items-start justify-between p-4 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm transition-all"
-                      >
-                        <div className="pr-4">
-                          <h4 className="font-bold text-slate-900 text-sm group-hover:text-slate-700 transition-colors">{partner.name}</h4>
-                          <p className="text-sm text-slate-500 mt-1 leading-relaxed">{partner.description}</p>
-                        </div>
-                        <span className="shrink-0 text-slate-300 group-hover:text-slate-600 transition-colors mt-0.5">
-                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </span>
-                      </a>
-                    ))}
+                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => {
+                      let logoIcon = partner.logo;
+                      if (!logoIcon) {
+                        const type = (partner.type || '').toLowerCase();
+                        if (type.includes('bank') || type.includes('neo')) logoIcon = '🏦';
+                        else if (type.includes('soft') || type.includes('account')) logoIcon = '💻';
+                        else if (type.includes('insur')) logoIcon = '🛡️';
+                        else if (type.includes('leg') || type.includes('incorp')) logoIcon = '⚖️';
+                        else if (type.includes('pay') || type.includes('hr')) logoIcon = '💼';
+                        else if (type.includes('real') || type.includes('mortg')) logoIcon = '🏠';
+                        else logoIcon = '⚡';
+                      }
+                      return (
+                        <a
+                          key={idx}
+                          href={partner.url || '#'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex items-start gap-3 p-3.5 rounded-xl border border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm transition-all"
+                        >
+                          <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center text-base shrink-0 group-hover:scale-105 transition-transform">
+                            {logoIcon}
+                          </div>
+                          <div className="flex-1 min-w-0 pr-1">
+                            <div className="flex items-center justify-between gap-2">
+                              <h4 className="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-slate-700 transition-colors truncate">{partner.name}</h4>
+                              <span className="shrink-0 text-xs font-semibold text-slate-700 group-hover:text-slate-900 flex items-center gap-0.5">
+                                {partner.type === 'software' ? 'Try Free' : 'Get Started'} <span className="text-slate-400">→</span>
+                              </span>
+                            </div>
+                            <p className="text-xs text-slate-500 mt-0.5 leading-relaxed line-clamp-2">{partner.description}</p>
+                          </div>
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               )}

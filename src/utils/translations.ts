@@ -45,10 +45,11 @@ export function getTranslatedCategory(categoryKey: string, langCode: string): st
 
 export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
   'fr': {
-    'RECOMMENDED_TOOLS': 'Outils recommandés pour vous',
+    'RECOMMENDED_TOOLS': 'Outils recommandés',
     'GET_STARTED': 'Découvrir →',
     'FAQ_TITLE': 'Questions Fréquemment Posées',
     'DISCLAIMER_TEXT': 'Avertissement : Les résultats sont des estimations basées sur les règles fiscales standard pour l\'année fiscale 2026 et sont fournis à titre informatif uniquement. Votre situation individuelle (déductions, crédits, règles locales) peut affecter considérablement votre impôt réel. Consultez toujours un professionnel de la fiscalité qualifié.',
+    'AFFILIATE_DISCLOSURE': 'Certains liens sont des liens d\'affiliation. Nous pouvons recevoir une commission sans aucun coût supplémentaire pour vous.',
     'ENTER_DETAILS': 'Entrez vos informations',
     'CALCULATE': 'Calculer',
     'CALCULATING': 'Calcul en cours...',
@@ -61,10 +62,11 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Échéances: 15 Avr · 16 Juin · 15 Sep · 15 Jan'
   },
   'de': {
-    'RECOMMENDED_TOOLS': 'Empfohlene Tools für Sie',
+    'RECOMMENDED_TOOLS': 'Empfohlene Tools',
     'GET_STARTED': 'Loslegen →',
     'FAQ_TITLE': 'Häufig Gestellte Fragen',
     'DISCLAIMER_TEXT': 'Haftungsausschluss: Die Ergebnisse sind Schätzungen basierend auf den Standardsteuervorschriften für das Steuerjahr 2026 und dienen nur zu Informationszwecken. Ihre individuelle Situation kann Ihre tatsächliche Steuerschuld erheblich beeinflussen. Konsultieren Sie immer einen qualifizierten Steuerberater.',
+    'AFFILIATE_DISCLOSURE': 'Einige Links sind Affiliate-Partnerschaften. Wir erhalten möglicherweise eine Provision ohne zusätzliche Kosten für Sie.',
     'ENTER_DETAILS': 'Geben Sie Ihre Daten ein',
     'CALCULATE': 'Berechnen',
     'CALCULATING': 'Wird berechnet...',
@@ -77,10 +79,11 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Fällig: 15. Apr · 16. Jun · 15. Sep · 15. Jan'
   },
   'en': {
-    'RECOMMENDED_TOOLS': 'Recommended Tools for You',
+    'RECOMMENDED_TOOLS': 'Recommended Tools',
     'GET_STARTED': 'Get Started →',
     'FAQ_TITLE': 'Frequently Asked Questions',
     'DISCLAIMER_TEXT': 'Disclaimer: Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. Always consult a qualified tax professional or accountant for advice specific to your situation.',
+    'AFFILIATE_DISCLOSURE': 'Some links are affiliate partnerships. We may earn a commission at no cost to you.',
     'ENTER_DETAILS': 'Enter Your Details',
     'CALCULATE': 'Calculate',
     'CALCULATING': 'Calculating...',

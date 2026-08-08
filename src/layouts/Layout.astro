@@ -7,20 +7,21 @@ interface Props {
   lang?: string;
   canonical?: string;
   ogImage?: string;
-  structuredData?: object;
+  structuredData?: object | object[];
 }
 
 const { 
   title, 
   description, 
   lang = 'en',
-  canonical = Astro.url.href,
+  canonical,
   ogImage,
   structuredData
 } = Astro.props;
 
 const siteName = 'CalcGlobal';
 const siteUrl = Astro.site ? Astro.site.origin : 'https://calcglobal.org';
+const pageCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 const defaultOgImage = `${siteUrl}/og-image.png`;
 ---
@@ -37,7 +38,7 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
     <!-- Primary SEO -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <link rel="canonical" href={pageCanonical} />
     
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
@@ -49,7 +50,7 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
+    <meta property="og:url" content={pageCanonical} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteName} />
@@ -63,7 +64,6 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
     
     <!-- Technical -->
     <meta name="generator" content={Astro.generator} />
-    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,9 +71,13 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     
     <!-- Structured Data -->
-    {structuredData && (
+    {Array.isArray(structuredData) ? (
+      structuredData.map(schema => (
+        <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+      ))
+    ) : structuredData ? (
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-    )}
+    ) : null}
     
     <!-- Website Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -81,13 +85,10 @@ const defaultOgImage = `${siteUrl}/og-image.png`;
       "@type": "WebSite",
       "name": siteName,
       "url": siteUrl,
-      "description": "Hyper-localized tax, payroll, and financial calculators for global professionals",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": `${siteUrl}/search?q={search_term_string}`,
-        "query-input": "required name=search_term_string"
-      }
+      "description": "Hyper-localized tax, payroll, and financial calculators for global professionals"
     })} />
+
+    <slot name="head" />
   </head>
   
   <body class="bg-stone-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
