@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+---
+
+<Layout 
+  title="Tax Disclaimer | CalcGlobal" 
+  description="Tax and Legal Disclaimer for CalcGlobal."
+>
+  <div class="bg-slate-800 text-white pt-14 pb-20 px-4">
+    <div class="max-w-3xl mx-auto">
+      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2">
+        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white font-medium">Tax Disclaimer</span>
+      </nav>
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">Tax Disclaimer</h1>
+      <p class="text-slate-400 mt-2 text-base">Last updated: August 2026</p>
+    </div>
+  </div>
+
+  <div class="max-w-3xl mx-auto px-4 py-12 prose prose-slate">
+    <div class="bg-amber-50 border border-amber-200 rounded-xl px-6 py-5 not-prose mb-8">
+      <p class="text-sm text-amber-800 leading-relaxed font-medium">
+        The information and calculators provided on CalcGlobal are for educational and informational purposes only. They do not constitute financial, legal, or tax advice.
+      </p>
+    </div>
+    
+    <h3>No Professional Advice</h3>
+    <p>The calculators on this website are designed to provide estimates based on generalized tax laws for the 2026/2027 fiscal year. While we strive to ensure the formulas are accurate and sourced from official government authorities (such as the IRS, HMRC, URSSAF, ATO), tax laws are highly complex and change frequently.</p>
+    
+    <p>Your specific tax liability or financial situation may be influenced by factors not accounted for in these calculators, including but not limited to:</p>
+    <ul>
+      <li>Specific local or state taxes</li>
+      <li>Individual deductions, credits, or exemptions</li>
+      <li>Changes in legislation after the publication of our data</li>
+      <li>Your personal or business accounting methods</li>
+    </ul>
+
+    <h3>Consult a Professional</h3>
+    <p>You should not rely upon the material or information on the website as a basis for making any business, legal, or any other decisions. We highly recommend consulting a certified public accountant (CPA), tax attorney, or registered tax professional in your jurisdiction before filing taxes or making financial decisions.</p>
+  </div>
+</Layout>
