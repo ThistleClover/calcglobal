@@ -48,19 +48,49 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'RECOMMENDED_TOOLS': 'Outils recommandés pour vous',
     'GET_STARTED': 'Découvrir →',
     'FAQ_TITLE': 'Questions Fréquemment Posées',
-    'DISCLAIMER_TEXT': 'Avertissement : Les résultats sont des estimations basées sur les règles fiscales standard pour l\'année fiscale 2026 et sont fournis à titre informatif uniquement. Votre situation individuelle (déductions, crédits, règles locales) peut affecter considérablement votre impôt réel. Consultez toujours un professionnel de la fiscalité qualifié.'
+    'DISCLAIMER_TEXT': 'Avertissement : Les résultats sont des estimations basées sur les règles fiscales standard pour l\'année fiscale 2026 et sont fournis à titre informatif uniquement. Votre situation individuelle (déductions, crédits, règles locales) peut affecter considérablement votre impôt réel. Consultez toujours un professionnel de la fiscalité qualifié.',
+    'ENTER_DETAILS': 'Entrez vos informations',
+    'CALCULATE': 'Calculer',
+    'CALCULATING': 'Calcul en cours...',
+    'ENTER_DETAILS_CALCULATE': 'Entrez vos informations et cliquez sur Calculer',
+    'ESTIMATED_NET': 'Revenu Net Estimé',
+    'EFFECTIVE_RATE': 'Taux d\'imposition effectif :',
+    'TAX_BREAKDOWN': 'Détail des Taxes',
+    'QUARTERLY_PAYMENT': 'Paiement Trimestriel Estimé',
+    'METHODOLOGY': 'Méthodologie de calcul',
+    'QUARTERLY_DUE': 'Échéances: 15 Avr · 16 Juin · 15 Sep · 15 Jan'
   },
   'de': {
     'RECOMMENDED_TOOLS': 'Empfohlene Tools für Sie',
     'GET_STARTED': 'Loslegen →',
     'FAQ_TITLE': 'Häufig Gestellte Fragen',
-    'DISCLAIMER_TEXT': 'Haftungsausschluss: Die Ergebnisse sind Schätzungen basierend auf den Standardsteuervorschriften für das Steuerjahr 2026 und dienen nur zu Informationszwecken. Ihre individuelle Situation kann Ihre tatsächliche Steuerschuld erheblich beeinflussen. Konsultieren Sie immer einen qualifizierten Steuerberater.'
+    'DISCLAIMER_TEXT': 'Haftungsausschluss: Die Ergebnisse sind Schätzungen basierend auf den Standardsteuervorschriften für das Steuerjahr 2026 und dienen nur zu Informationszwecken. Ihre individuelle Situation kann Ihre tatsächliche Steuerschuld erheblich beeinflussen. Konsultieren Sie immer einen qualifizierten Steuerberater.',
+    'ENTER_DETAILS': 'Geben Sie Ihre Daten ein',
+    'CALCULATE': 'Berechnen',
+    'CALCULATING': 'Wird berechnet...',
+    'ENTER_DETAILS_CALCULATE': 'Geben Sie Ihre Daten ein und klicken Sie auf Berechnen',
+    'ESTIMATED_NET': 'Geschätztes Nettoeinkommen',
+    'EFFECTIVE_RATE': 'Effektiver Steuersatz:',
+    'TAX_BREAKDOWN': 'Steueraufschlüsselung',
+    'QUARTERLY_PAYMENT': 'Geschätzte vierteljährliche Zahlung',
+    'METHODOLOGY': 'Berechnungsmethode',
+    'QUARTERLY_DUE': 'Fällig: 15. Apr · 16. Jun · 15. Sep · 15. Jan'
   },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools for You',
     'GET_STARTED': 'Get Started →',
     'FAQ_TITLE': 'Frequently Asked Questions',
-    'DISCLAIMER_TEXT': 'Disclaimer: Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. Always consult a qualified tax professional or accountant for advice specific to your situation.'
+    'DISCLAIMER_TEXT': 'Disclaimer: Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. Always consult a qualified tax professional or accountant for advice specific to your situation.',
+    'ENTER_DETAILS': 'Enter Your Details',
+    'CALCULATE': 'Calculate',
+    'CALCULATING': 'Calculating...',
+    'ENTER_DETAILS_CALCULATE': 'Enter your details and click Calculate',
+    'ESTIMATED_NET': 'Estimated Net Income',
+    'EFFECTIVE_RATE': 'Effective tax rate:',
+    'TAX_BREAKDOWN': 'Tax Breakdown',
+    'QUARTERLY_PAYMENT': 'Quarterly Estimated Payment',
+    'METHODOLOGY': 'How this was calculated (Methodology)',
+    'QUARTERLY_DUE': 'Due: Apr 15 · Jun 16 · Sep 15 · Jan 15'
   }
 };
 

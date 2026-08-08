@@ -130,9 +130,14 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
         
         {/* LEFT: Inputs */}
         <div className="p-6 md:p-8 border-b lg:border-b-0 lg:border-r border-slate-100">
-          <h2 className="text-lg font-bold text-slate-900 mb-6">Enter Your Details</h2>
+          <h2 className="text-lg font-bold text-slate-900 mb-6">{getUITranslation('ENTER_DETAILS', locale)}</h2>
           <div className="space-y-5">
-            {calc.inputs.map(input => (
+            {calc.inputs.map(input => {
+              if (input.type === 'hidden' || input.name === 'calculator_id') return null;
+              
+              const isCurrency = input.label_native.includes('€') || input.label_native.includes('$') || input.label_native.includes('£');
+
+              return (
               <div key={input.name}>
                 <label htmlFor={input.name} className="block text-sm font-semibold text-slate-700 mb-1.5">
                   {input.label_native}
@@ -151,7 +156,9 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                   </select>
                 ) : (
                   <div className="relative">
-                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm select-none">{currencySymbol}</span>
+                    {isCurrency && (
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm select-none">{currencySymbol}</span>
+                    )}
                     <input
                       id={input.name}
                       type="number"
@@ -159,12 +166,12 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                       onChange={e => handleChange(input.name, e.target.value)}
                       placeholder="0"
                       min="0"
-                      className="block w-full rounded-lg border border-slate-300 py-2.5 pl-7 pr-4 text-slate-900 text-sm focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition"
+                      className={`block w-full rounded-lg border border-slate-300 py-2.5 pr-4 text-slate-900 text-sm focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition ${isCurrency ? 'pl-7' : 'pl-3'}`}
                     />
                   </div>
                 )}
               </div>
-            ))}
+            )})}
           </div>
 
           <button
@@ -178,9 +185,9 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                 </svg>
-                Calculating...
+                {getUITranslation('CALCULATING', locale)}
               </>
-            ) : 'Calculate'}
+            ) : getUITranslation('CALCULATE', locale)}
           </button>
 
           {error && (
@@ -195,31 +202,31 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
               <div className="w-16 h-16 rounded-full bg-slate-200 flex items-center justify-center mb-4 text-3xl">
                 🧮
               </div>
-              <p className="text-sm font-medium">Enter your details and click Calculate</p>
+              <p className="text-sm font-medium">{getUITranslation('ENTER_DETAILS_CALCULATE', locale)}</p>
             </div>
           ) : (
             <div>
               <div className="flex items-start justify-between mb-6">
                 <div>
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Estimated Net Income</p>
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">{getUITranslation('ESTIMATED_NET', locale)}</p>
                   <p className="text-4xl font-extrabold text-slate-900 tabular-nums">
                     {sym}{formatNum(result.netIncome, locale)}
                   </p>
-                  <p className="text-sm text-slate-500 mt-1">Effective tax rate: <strong className="text-slate-700">{(result.effectiveRate * 100).toFixed(1)}%</strong></p>
+                  <p className="text-sm text-slate-500 mt-1">{getUITranslation('EFFECTIVE_RATE', locale)} <strong className="text-slate-700">{(result.effectiveRate * 100).toFixed(1)}%</strong></p>
                 </div>
                 <DonutChart netPct={netPct} taxPct={taxPct} />
               </div>
 
               <div className="mb-6">
-                <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Tax Breakdown</h3>
+                <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">{getUITranslation('TAX_BREAKDOWN', locale)}</h3>
                 <BreakdownTable lines={result.breakdown} sym={sym} locale={locale} />
               </div>
 
               {result.quarterlyPayment && (
                 <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-4">
-                  <p className="text-sm font-semibold text-amber-800">Quarterly Estimated Payment</p>
+                  <p className="text-sm font-semibold text-amber-800">{getUITranslation('QUARTERLY_PAYMENT', locale)}</p>
                   <p className="text-xl font-bold text-amber-900">{sym}{formatNum(result.quarterlyPayment, locale)}</p>
-                  <p className="text-xs text-amber-700 mt-1">Due: Apr 15 · Jun 16 · Sep 15 · Jan 15</p>
+                  <p className="text-xs text-amber-700 mt-1">{getUITranslation('QUARTERLY_DUE', locale)}</p>
                 </div>
               )}
 
@@ -273,7 +280,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
           onClick={() => setShowMethodology(m => !m)}
           className="w-full flex items-center justify-between px-6 py-4 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors"
         >
-          <span>📐 How this was calculated (Methodology)</span>
+          <span>📐 {getUITranslation('METHODOLOGY', locale)}</span>
           <span className="text-slate-400">{showMethodology ? '▲' : '▼'}</span>
         </button>
         {showMethodology && (
