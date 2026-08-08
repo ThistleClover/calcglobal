@@ -1,0 +1,63 @@
+{
+  "country": "Kenya",
+  "country_code": "KE",
+  "languages": [
+    "sw",
+    "en"
+  ],
+  "currency": "KES",
+  "calculators": [
+    {
+      "id": "ke-tax-payroll-calculator",
+      "title_native": "Kenya KRA PAYE Tax, SHIF & Housing Levy Calculator",
+      "title_en": "Kenya KRA PAYE Tax, SHIF & Housing Levy Calculator",
+      "search_terms_native": [
+        "kenya tax calculator",
+        "kenya salary calculator",
+        "income tax ke"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Kenya.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (KES)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Kenya revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "M-Pesa",
+          "type": "software",
+          "description": "Top financial tool in Kenya"
+        },
+        {
+          "name": "KCB",
+          "type": "software",
+          "description": "Top financial tool in Kenya"
+        },
+        {
+          "name": "Equity Bank",
+          "type": "software",
+          "description": "Top financial tool in Kenya"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "country": "Bosnia and Herzegovina",
+  "country_code": "BA",
+  "languages": [
+    "bs",
+    "hr",
+    "sr"
+  ],
+  "currency": "BAM",
+  "calculators": [
+    {
+      "id": "ba-tax-payroll-calculator",
+      "title_native": "Bosnia and Herzegovina Kalkulator Plate & Porez na Dohodak",
+      "title_en": "Bosnia and Herzegovina Kalkulator Plate & Porez na Dohodak",
+      "search_terms_native": [
+        "bosnia and herzegovina tax calculator",
+        "bosnia and herzegovina salary calculator",
+        "income tax ba"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Bosnia and Herzegovina.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BAM)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bosnia and Herzegovina revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Sparkasse BiH",
+          "type": "software",
+          "description": "Top financial tool in Bosnia and Herzegovina"
+        },
+        {
+          "name": "Raiffeisen BiH",
+          "type": "software",
+          "description": "Top financial tool in Bosnia and Herzegovina"
+        }
+      ]
+    }
+  ]
+}

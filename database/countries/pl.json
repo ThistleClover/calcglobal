@@ -1,0 +1,327 @@
+{
+  "country": "Poland",
+  "country_code": "PL",
+  "languages": ["pl", "en"],
+  "calculators": [
+    {
+      "id": "b2b-vs-uop-poland",
+      "title_native": "Kalkulator B2B vs Umowa o Pracę (UoP vs JDG)",
+      "title_en": "B2B Sole Proprietorship vs Employment Contract Calculator",
+      "search_terms_native": [
+        "kalkulator b2b vs umowa o pracę",
+        "kalkulator jdg vs uop",
+        "kalkulator wynagrodzeń uop czy b2b",
+        "porównanie uop i b2b ryczałt",
+        "ile na rękę b2b a umowa o pracę"
+      ],
+      "description_native": "Porównaj dochód netto 'na rękę' oraz całkowite koszty pracodawcy/zleceniodawcy między umową o pracę (UoP) a jednoosobową działalnością gospodarczą (JDG / B2B) z uwzględnieniem form opodatkowania (Skala, Liniowy, Ryczałt) i ulg ZUS.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary_or_b2b_net_invoice",
+          "label_native": "Kwota brutto UoP / Kwota netto na fakturze B2B (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "b2b_tax_form",
+          "label_native": "Forma opodatkowania B2B",
+          "type": "select",
+          "options": ["Skala podatkowa (12%/32%)", "Podatek liniowy (19%)", "Ryczałt ewidencjonowany"]
+        },
+        {
+          "name": "ryczalt_rate",
+          "label_native": "Stawka ryczałtu (jeśli wybrany ryczałt)",
+          "type": "select",
+          "options": ["12% (IT / Oprogramowanie)", "15% (Doradztwo / Zarządzanie)", "8.5% (Usługi ogólne)", "5.5% (Budownictwo / Produkcja)", "17% (Wolne zawody)"]
+        },
+        {
+          "name": "zus_relief_b2b",
+          "label_native": "Ulga ZUS na B2B",
+          "type": "select",
+          "options": ["Ulga na start (tylko składka zdrowotna)", "Preferencyjny ZUS (Mały ZUS przez 24 miesiące)", "Pełny ZUS (Duży ZUS)"]
+        },
+        {
+          "name": "b2b_business_expenses",
+          "label_native": "Miesięczne koszty uzyskania przychodu na B2B (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "under_26_uop",
+          "label_native": "Wiek poniżej 26 lat (Ulga dla młodych na UoP)",
+          "type": "select",
+          "options": ["Nie", "Tak"]
+        }
+      ],
+      "formula_explanation": "Dla Umowy o Pracę (UoP): Koszty społeczne pracownika ZUS = 13,71% brutto (emerytalne 9,76%, rentowe 1,5%, chorobowe 2,45%). Podstawa składki zdrowotnej = Brutto - ZUS społeczne. Składka zdrowotna = 9% podstawy. Podstawa opodatkowania = Brutto - ZUS społeczne - Koszty uzyskania przychodu (250 zł standard). Podatek PIT = (Podstawa * 12%) - 300 zł (kwota zmniejszająca podatek 3600 zł/rok), powyżej 120 000 zł podatek wynosi 10 800 zł + 32% nadwyżki. Wynagrodzenie netto = Brutto - ZUS społeczne - Zdrowotne - PIT. Dla B2B (JDG): Przychód = Kwota netto faktury. Podstawa dochodu = Przychód - Koszty - ZUS społeczne (odliczalne). Na Skali (12%/32%): Zdrowotne = 9% dochodu (min. ~381,78 zł). Na Liniowym (19%): Zdrowotne = 4,9% dochodu (min. ~381,78 zł). Na Ryczałcie: Zdrowotne zależy od progu przychodu rocznego (<60k zł ~419 zł/mc, 60k-300k zł ~699 zł/mc, >300k zł ~1258 zł/mc); 50% zapłaconej składki zdrowotnej pomniejsza przychód pod opodatkowanie ryczałtem. Wynagrodzenie netto B2B = Przychód - ZUS społeczne - Zdrowotne - PIT/Ryczałt - Koszty własne.",
+      "affiliate_targets": [
+        {
+          "name": "inFakt",
+          "type": "accounting",
+          "description": "Wiodąca platforma do księgowości online i zakładania JDG z obsługą ryczałtu i skali."
+        },
+        {
+          "name": "mBank / mBiznes",
+          "type": "neobank",
+          "description": "Darmowe konto firmowe z premią na start dla samozatrudnionych przechodzących na B2B."
+        },
+        {
+          "name": "Useme",
+          "type": "software",
+          "description": "Rozliczanie zleceń B2B bez konieczności zakładania własnej firmy (wystawianie faktur VAT)."
+        }
+      ]
+    },
+    {
+      "id": "ryczalt-zus-calculator",
+      "title_native": "Kalkulator Ryczałtu i Składki Zdrowotnej ZUS",
+      "title_en": "Lump-Sum Tax & ZUS Health Insurance Tier Calculator",
+      "search_terms_native": [
+        "kalkulator ryczałtu 2026",
+        "składka zdrowotna ryczałt kalkulator",
+        "kalkulator podatku ryczałtowego",
+        "ile podatku na ryczałcie",
+        "progi składki zdrowotnej ryczałt"
+      ],
+      "description_native": "Oblicz podatek ryczałtowy od przychodów ewidencjonowanych, miesięczną i roczną składkę zdrowotną ZUS według 3 progów przychodowych oraz kwotę odliczenia zdrowotnego od przychodu.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "monthly_revenue",
+          "label_native": "Szacowany miesięczny przychód netto (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ryczalt_tax_rate",
+          "label_native": "Stawka ryczałtu",
+          "type": "select",
+          "options": ["12% (Programiści, IT, doradztwo techniczne)", "8.5% (Usługi, wynajem, przychód do 100k)", "15% (Zarządzanie, doradztwo prawne/biznesowe)", "5.5% (Roboty budowlane, produkcja)", "3% (Handel, gastronomia)", "17% (Wolne zawody bez osobowości prawnej)"]
+        },
+        {
+          "name": "social_zus_type",
+          "label_native": "Wariant składki społecznej ZUS",
+          "type": "select",
+          "options": ["Pełny ZUS (z chorobowym ~1600 PLN)", "Preferencyjny ZUS (~400 PLN)", "Ulga na start (0 PLN społecznych)"]
+        },
+        {
+          "name": "months_in_year",
+          "label_native": "Liczba miesięcy prowadzenia działalności w roku",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Roczny przychód = Miesięczny przychód * Liczba miesięcy. Określenie progu składki zdrowotnej w ryczałcie (podstawa to przeciętne miesięczne wynagrodzenie w sektorze przedsiębiorstw w IV kwartale r. poprz. W): 1) Przychód do 60 000 zł: podstawa = 60% W, składka miesięczna = 9% * podstawa. 2) Przychód 60 000 zł - 300 000 zł: podstawa = 100% W, składka miesięczna = 9% * podstawa. 3) Przychód powyżej 300 000 zł: podstawa = 180% W, składka miesięczna = 9% * podstawa. Odliczenie zdrowotne: 50% zapłaconych składek zdrowotnych odejmuje się od przychodu przed naliczeniem podatku ryczałtowego. Składki społeczne ZUS w całości odliczane są od przychodu. Podatek ryczałtowy miesięczny = (Przychód miesięczny - ZUS społeczne miesięczne - 50% Składki zdrowotnej miesięcznej) * Stawka ryczałtu. Dochód czysty = Przychód - ZUS społeczne - Zdrowotne - Podatek ryczałtowy.",
+      "affiliate_targets": [
+        {
+          "name": "wFirma",
+          "type": "software",
+          "description": "Kompleksowy program do księgowości ryczałtowej z automatycznym naliczaniem składek ZUS i rocznym rozliczeniem."
+        },
+        {
+          "name": "TaxCare / iFirma",
+          "type": "accounting",
+          "description": "Dedykowane biuro rachunkowe dla programistów i freelancerów na ryczałcie 12% i 8.5%."
+        },
+        {
+          "name": "Nest Bank",
+          "type": "neobank",
+          "description": "Zawsze darmowe konto firmowe Nest Konta BIZNES bez opłat warunkowych z integracją ZUS/US."
+        }
+      ]
+    },
+    {
+      "id": "umowa-zlecenie-dzielo",
+      "title_native": "Kalkulator Umowy Zlecenie i Umowy o Dzieło",
+      "title_en": "Civil Law Contracts Calculator (Mandate & Specific Work)",
+      "search_terms_native": [
+        "kalkulator umowy zlecenie",
+        "umowa zlecenie student kalkulator",
+        "umowa o dzieło 50% kup kalkulator",
+        "netto z brutto zlecenie",
+        "ile na rękę zlecenie 2026"
+      ],
+      "description_native": "Wylicz wynagrodzenie netto z umowy zlecenie oraz umowy o dzieło z uwzględnieniem statusu studenta poniżej 26 lat, składek ZUS, autorskich kosztów uzyskania przychodów (50% KUP) oraz oświadczenia PIT-2.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "contract_type",
+          "label_native": "Rodzaj umowy",
+          "type": "select",
+          "options": ["Umowa Zlecenie", "Umowa o Dzieło"]
+        },
+        {
+          "name": "gross_amount",
+          "label_native": "Kwota brutto umowy (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_student_under_26",
+          "label_native": "Status ucznia/studenta do 26 roku życia",
+          "type": "select",
+          "options": ["Nie", "Tak"]
+        },
+        {
+          "name": "is_main_job_elsewhere",
+          "label_native": "Inny tytuł do ubezpieczeń (np. praca na etat z wynagrodzeniem >= płaca minimalna)",
+          "type": "select",
+          "options": ["Nie (Zlecenie jedynym źródłem dochodu)", "Tak (Zwolnienie ze składek społecznych ZUS)"]
+        },
+        {
+          "name": "voluntary_sickness_insurance",
+          "label_native": "Dobrowolne ubezpieczenie chorobowe ZUS (2,45%)",
+          "type": "select",
+          "options": ["Tak", "Nie"]
+        },
+        {
+          "name": "kup_rate",
+          "label_native": "Koszty uzyskania przychodu (KUP)",
+          "type": "select",
+          "options": ["20% (Standardowe KUP)", "50% (Autorskie KUP - przeniesienie praw autorskich)"]
+        },
+        {
+          "name": "pit2_submitted",
+          "label_native": "Złożony PIT-2 (Kwota wolna od podatku 300 PLN/mc)",
+          "type": "select",
+          "options": ["Tak", "Nie"]
+        }
+      ],
+      "formula_explanation": "1) Dla Studenta < 26 lat na Umowie Zlecenie: Brak składek ZUS (społecznych i zdrowotnych) oraz 0% PIT w ramach ulgi dla młodych (do 85 528 zł rocznie). Kwota Netto = Kwota Brutto. 2) Standardowa Umowa Zlecenie: ZUS społeczne (Emerytalne 9,76%, Rentowe 1,5%, Chorobowe 2,45% opcjonalnie). Podstawa ZUS zdrowotnego = Brutto - ZUS społeczne. Składka zdrowotna = 9% podstawy. Podstawa zaliczki PIT = Brutto - ZUS społeczne - KUP (20% lub 50% od Brutto pomniejszonego o ZUS społeczne). Zaliczka PIT = (Podstawa PIT * 12%) - (300 zł jeśli PIT-2). Netto = Brutto - ZUS społeczne - Składka zdrowotna - Zaliczka PIT. 3) Umowa o Dzieło: Dzieło nie podlega oskładkowaniu ZUS. KUP wynosi 20% lub 50%. Podstawa PIT = Brutto - KUP. PIT = Podstawa PIT * 12% (minus 300 zł jeśli PIT-2). Netto = Brutto - PIT.",
+      "affiliate_targets": [
+        {
+          "name": "Useme",
+          "type": "software",
+          "description": "Automatyczne zawieranie i rozliczanie umów o dzieło z 50% KUP bez konieczności wizyty u księgowego."
+        },
+        {
+          "name": "Santander / Pekao Konto dla Młodych",
+          "type": "neobank",
+          "description": "Konta osobiste z premią gotówkową dla studentów i osób poniżej 26 roku życia."
+        },
+        {
+          "name": "Nationale-Nederlanden / PZU",
+          "type": "insurance",
+          "description": "Prywatne ubezpieczenia zdrowotne i NNW dla osób pracujących na umowach cywilnoprawnych bez pełnego ZUS."
+        }
+      ]
+    },
+    {
+      "id": "pcc-notary-real-estate-poland",
+      "title_native": "Kalkulator PCC i Kosztów Notarialnych Zakupu Nieruchomości",
+      "title_en": "Property Transaction Fee, PCC Tax & Notary Cost Calculator",
+      "search_terms_native": [
+        "kalkulator pcc mieszkanie",
+        "koszty notarialne zakupu mieszkania kalkulator",
+        "kalkulator taksy notarialnej",
+        "rynek wtórny koszty zakupu",
+        "podatek od czynności cywilnoprawnych mieszkanie"
+      ],
+      "description_native": "Oblicz wszystkie opłaty przy zakupie mieszkania lub domu w Polsce: podatek PCC (2%), maksymalną taksę notarialną, 23% VAT od taksy oraz wpisy do Księgi Wieczystej (KW) z uwzględnieniem zwolnienia dla pierwszego mieszkania.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_value",
+          "label_native": "Cena rynkowa nieruchomości / kwota transakcji (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "market_type",
+          "label_native": "Rynek nieruchomości",
+          "type": "select",
+          "options": ["Rynek wtórny (od osoby prywatnej)", "Rynek pierwotny (od dewelopera z VAT)"]
+        },
+        {
+          "name": "first_home_exemption",
+          "label_native": "Pierwsze mieszkanie w życiu (Zwolnienie z PCC 2% na rynku wtórnym)",
+          "type": "select",
+          "options": ["Nie (Obowiązuje PCC 2%)", "Tak (Zwolnienie z PCC 2% na mocy Art. 9 pkt 17)"]
+        },
+        {
+          "name": "mortgage_financing",
+          "label_native": "Zakup finansowany kredytem hipotecznym",
+          "type": "select",
+          "options": ["Tak (Wpis hipoteki do KW + 19 PLN PCC-3)", "Nie (Zakup za gotówkę)"]
+        }
+      ],
+      "formula_explanation": "1) Podatek PCC (Podatek od czynności cywilnoprawnych): Na rynku pierwotnym PCC = 0% (transakcja opodatkowana VAT). Na rynku wtórnym PCC wynosi 2% wartości nieruchomości, chyba że kupujący korzysta ze zwolnienia z PCC na pierwsze mieszkanie/dom. 2) Taksa notarialna (maksymalne stawki z Rozporządzenia Ministra Sprawiedliwości): Do 3000 zł = 100 zł; 3000-10000 zł = 100 zł + 3% nadwyżki > 3000 zł; 10000-30000 zł = 310 zł + 2% nadwyżki > 10000 zł; 30000-60000 zł = 710 zł + 1% nadwyżki > 3000 zł; 60000-1000000 zł = 1010 zł + 0,4% nadwyżki > 60000 zł; 1000000-2000000 zł = 4770 zł + 0,2% nadwyżki > 1000000 zł; powyżej 2000000 zł = 6770 zł + 0,25% nadwyżki > 2000000 zł (max 10 000 zł). 3) VAT od taksy notarialnej = Taksa * 23%. 4) Opłaty sądowe w Księdze Wieczystej: Wpis prawa własności = 200 zł; Wpis hipoteki = 200 zł (jeśli dotyczy); PCC-3 od ustanowienia hipoteki = 19 zł. Suma opłat okołotransakcyjnych = PCC + Taksa notarialna brutto + Opłaty sądowe.",
+      "affiliate_targets": [
+        {
+          "name": "Credipass / Rankomat Hipoteki",
+          "type": "software",
+          "description": "Porównywarka kredytów hipotecznych i bezpłatne wsparcie eksperta kredytowego przy zakupie nieruchomości."
+        },
+        {
+          "name": "PKO Bank Polski / ING Bank Śląski",
+          "type": "neobank",
+          "description": "Wiodące banki hipoteczne w Polsce z ofertami kredytów mieszkaniowych z wkładem własnym od 10%."
+        },
+        {
+          "name": "PZÚ Dom / Mieszkanie",
+          "type": "insurance",
+          "description": "Ubezpieczenie murów i stałych elementów nieruchomości wymagane przez banki do kredytu hipotecznego."
+        }
+      ]
+    },
+    {
+      "id": "vat-split-payment-poland",
+      "title_native": "Kalkulator VAT i Split Payment (Mechanizm Podzielonej Płatności)",
+      "title_en": "VAT Invoice & Mandatory Split Payment Calculator",
+      "search_terms_native": [
+        "kalkulator vat netto brutto",
+        "obliczanie vat z kwoty brutto",
+        "kalkulator split payment",
+        "mechanizm podzielonej płatności kalkulator",
+        "przelicznik vat 23% 8% 5%"
+      ],
+      "description_native": "Szybko przelicz kwoty Netto, VAT i Brutto dla polskich stawek podatku VAT (23%, 8%, 5%, 0%) oraz sprawdź, czy transakcja B2B podlega obowiązkowemu mechanizmowi podzielonej płatności (Split Payment / MPP).",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "input_amount_type",
+          "label_native": "Wprowadzana kwota",
+          "type": "select",
+          "options": ["Netto", "Brutto"]
+        },
+        {
+          "name": "amount_value",
+          "label_native": "Wartość kwoty (PLN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "vat_rate",
+          "label_native": "Stawka podatku VAT",
+          "type": "select",
+          "options": ["23% (Podstawowa)", "8% (Zmniejszona - budownictwo mieszkaniowe, usługi gastronomiczne)", "5% (Zmniejszona - żywność, książki)", "0% (Eksport, dostawy wewnątrzunijne)", "zw. (Zwolniony z VAT)", "np. (Nie podlega opodatkowaniu)"]
+        },
+        {
+          "name": "sensitive_goods_annex15",
+          "label_native": "Towary/usługi wrażliwe (Załącznik nr 15 do Ustawy o VAT - np. elektronika, złom, budowlanka, części auto)",
+          "type": "select",
+          "options": ["Nie", "Tak"]
+        }
+      ],
+      "formula_explanation": "1) Od Netto do Brutto: Kwota VAT = Kwota Netto * Stawka VAT. Kwota Brutto = Kwota Netto + Kwota VAT. 2) Od Brutto do Netto: Kwota Netto = Kwota Brutto / (1 + Stawka VAT). Kwota VAT = Kwota Brutto - Kwota Netto. 3) Warunki obowiązkowego Split Payment (MPP): Obowiązek rozdzielenia płatności na rachunek rozliczeniowy i rachunek VAT występuje, gdy: a) Kwota brutto faktury wynosi co najmniej 15 000 PLN (lub równowartość w walucie obcej), ORAZ b) Przynajmniej jedna pozycja na fakturze dotyczy towarów lub usług wrażliwych z Załącznika nr 15 do ustawy o VAT, ORAZ c) Transakcja dokonywana jest pomiędzy podatnikami (B2B). W przelewie MPP: Kwota netto trafia na konto zwykłe sprzedawcy, a kwota VAT bezpośrednio na wydzielone konto VAT.",
+      "affiliate_targets": [
+        {
+          "name": "Fakturownia.pl",
+          "type": "software",
+          "description": "Najpopularniejszy program do wystawiania faktur online z automatycznym oznaczaniem MPP, KSeF i weryfikacją Białej Listy."
+        },
+        {
+          "name": "inFakt Fakturowanie",
+          "type": "software",
+          "description": "Darmowe wystawianie faktur VAT i zaliczkowych z przyciskiem szybkiej płatności dla klientów."
+        },
+        {
+          "name": "Kontomatik / Santander Fakturowanie",
+          "type": "neobank",
+          "description": "Integracje bankowe automatyzujące rozliczanie mechanizmu split payment na kontach firmowych."
+        }
+      ]
+    }
+  ]
+}

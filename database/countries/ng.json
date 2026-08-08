@@ -1,0 +1,402 @@
+{
+  "country": "Nigeria",
+  "country_code": "NG",
+  "languages": [
+    "en-NG",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "ng-paye-salary-tax-calculator",
+      "title_native": "Nigeria PAYE Salary & Income Tax Calculator (PITA, Pension, NHF & Net Pay)",
+      "title_en": "Nigeria PAYE Salary & Income Tax Calculator (PITA, Pension, NHF & Net Pay)",
+      "search_terms_native": [
+        "paye calculator nigeria",
+        "salary calculator after tax nigeria",
+        "income tax calculator lagos pita",
+        "pension nhf calculation nigeria",
+        "net salary calculator nigeria 2026"
+      ],
+      "description_native": "Calculate monthly net take-home salary in Nigeria after statutory deductions including Personal Income Tax (PAYE under PITA), RSA Pension (8%), National Housing Fund (NHF 2.5%), and Consolidated Relief Allowance (CRA).",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Gross Salary Amount (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Pay Frequency",
+          "type": "select",
+          "options": [
+            "monthly",
+            "annual"
+          ]
+        },
+        {
+          "name": "basic_salary",
+          "label_native": "Monthly Basic Salary (₦ or leave 0 for standard 50% split)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "housing_allowance",
+          "label_native": "Monthly Housing Allowance (₦ or leave 0 for standard 30% split)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "transport_allowance",
+          "label_native": "Monthly Transport Allowance (₦ or leave 0 for standard 15% split)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "deduct_pension",
+          "label_native": "Deduct Contributory Pension (8% of BHT)",
+          "type": "select",
+          "options": [
+            "yes",
+            "no"
+          ]
+        },
+        {
+          "name": "deduct_nhf",
+          "label_native": "Deduct National Housing Fund (2.5% of Basic)",
+          "type": "select",
+          "options": [
+            "yes",
+            "no"
+          ]
+        },
+        {
+          "name": "life_assurance_premium",
+          "label_native": "Annual Life Assurance Premium Paid (₦)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Annual Gross Income: Converted to annual basis if monthly salary is entered.\n2. Basic, Housing & Transport (BHT) Breakdown: If specific values are not provided, standard Nigerian payroll default splits are applied (Basic = 50%, Housing = 30%, Transport = 15% of Gross Income).\n3. Statutory Pre-Tax Exempt Deductions:\n   - Employee Pension Contribution = 8% of annual BHT (if enabled).\n   - National Housing Fund (NHF) = 2.5% of annual Basic Salary (if enabled).\n   - Life Assurance Premium = Actual annual premium paid.\n4. Consolidated Relief Allowance (CRA):\n   - CRA = Max(₦200,000, 1% of Gross Income) + (20% of Gross Income).\n5. Total Tax Deductions = CRA + Pension + NHF + Life Assurance.\n6. Chargeable / Taxable Income = Max(0, Gross Income - Total Tax Deductions).\n7. Progressive Income Tax Bands under PITA (Personal Income Tax Act):\n   - First ₦300,000 @ 7% (Max ₦21,000)\n   - Next ₦300,000 @ 11% (Max ₦33,000)\n   - Next ₦500,000 @ 15% (Max ₦75,000)\n   - Next ₦500,000 @ 19% (Max ₦95,000)\n   - Next ₦1,600,000 @ 21% (Max ₦336,000)\n   - Excess over ₦3,200,000 @ 24%\n8. Minimum Tax Override: Under PITA, if taxable income results in a calculated tax of less than 1% of Gross Income (or if taxable income is zero), a minimum tax of 1% of Gross Income is assessed.\n9. Net Take-Home Pay (Annual) = Gross Income - PAYE Tax - Pension - NHF.\n10. Monthly Net Take-Home = Annual Net Take-Home / 12.",
+      "affiliate_targets": [
+        {
+          "name": "PiggyVest",
+          "type": "neobank",
+          "description": "High intent for Nigerian salary earners automating monthly automated savings and high-yield target lockups directly from net take-home pay."
+        },
+        {
+          "name": "Kuda Bank",
+          "type": "neobank",
+          "description": "Popular zero-fee Nigerian salary bank account offering instant transfers, budgeting tools, and auto-save features."
+        },
+        {
+          "name": "Stanbic IBTC Pension Managers",
+          "type": "accounting",
+          "description": "Leading Pension Fund Administrator (PFA) in Nigeria for employee RSA pension account opening and statutory compliance."
+        }
+      ]
+    },
+    {
+      "id": "ng-company-income-tax-cit-calculator",
+      "title_native": "Nigeria Companies Income Tax (CIT), TETFund Tax & Small Business Tax Calculator",
+      "title_en": "Nigeria Companies Income Tax (CIT), TETFund Tax & Small Business Tax Calculator",
+      "search_terms_native": [
+        "cit tax calculator nigeria",
+        "company income tax calculator fct lagos",
+        "small business tax exemption nigeria finance act",
+        "tertiary education tax calculator nigeria",
+        "corporate tax rate nigeria 2026"
+      ],
+      "description_native": "Calculate Nigerian corporate tax obligations (CIT rate 0%, 20%, or 30%), Tertiary Education Tax (TETFund at 3%), and Withholding Tax credits under the latest Finance Act provisions.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_turnover",
+          "label_native": "Annual Gross Turnover / Revenue (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "gross_profit",
+          "label_native": "Gross Operating Profit before Allowable Expenses (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "allowable_expenses",
+          "label_native": "Tax-Deductible Operating Expenses (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "capital_allowance",
+          "label_native": "Capital Allowances Claimed on Assets (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "wht_credit_notes",
+          "label_native": "Withholding Tax (WHT) Credit Notes Deducted at Source (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_category",
+          "label_native": "Company Size Classification",
+          "type": "select",
+          "options": [
+            "Auto-detect by Turnover",
+            "Small Company (Turnover ≤ ₦25m)",
+            "Medium Company (Turnover ₦25m - ₦100m)",
+            "Large Company (Turnover > ₦100m)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Company Classification & Tax Rates (Finance Act 2020 / 2023):\n   - Small Company (Turnover ≤ ₦25,000,000): CIT Rate = 0%, Tertiary Education Tax (TET) Rate = 0%.\n   - Medium Company (Turnover ₦25,000,001 - ₦100,000,000): CIT Rate = 20%, TET Rate = 3% of Assessable Profit.\n   - Large Company (Turnover > ₦100,000,000): CIT Rate = 30%, TET Rate = 3% of Assessable Profit.\n2. Assessable Profit = Gross Profit - Tax-Deductible Operating Expenses.\n3. Total Taxable Profit = Max(0, Assessable Profit - Capital Allowance).\n4. Tertiary Education Tax (TETFund) = Assessable Profit × TET Rate (3% for medium and large companies).\n5. Companies Income Tax (CIT) = Total Taxable Profit × CIT Rate (0%, 20%, or 30%).\n6. Total Gross Corporate Tax Liability = CIT + TET.\n7. Net Corporate Tax Payable to FIRS = Max(0, Total Gross Corporate Tax Liability - WHT Credit Notes).\n8. Net Profit After Corporate Taxes = Assessable Profit - Total Gross Corporate Tax Liability.",
+      "affiliate_targets": [
+        {
+          "name": "Moniepoint Microfinance Bank",
+          "type": "neobank",
+          "description": "Leading business banking provider in Nigeria offering seamless corporate bank accounts, card payments, and POS terminals for SMEs."
+        },
+        {
+          "name": "Zoho Books Nigeria",
+          "type": "software",
+          "description": "FIRS-compliant cloud accounting and invoicing software tailored for Nigerian small and medium businesses."
+        },
+        {
+          "name": "Brass Business Account",
+          "type": "neobank",
+          "description": "Digital corporate banking platform designed for modern Nigerian startups and high-growth SMEs needing automated expense management."
+        }
+      ]
+    },
+    {
+      "id": "ng-cac-business-incorporation-calculator",
+      "title_native": "Nigeria CAC Business Registration & FIRS Stamp Duty Cost Calculator",
+      "title_en": "Nigeria CAC Business Registration & FIRS Stamp Duty Cost Calculator",
+      "search_terms_native": [
+        "cac registration fee calculator",
+        "cost of registering business name in nigeria",
+        "company incorporation cost nigeria standard share capital",
+        "stamp duty on share capital calculator firs",
+        "cac limited liability registration cost lagos"
+      ],
+      "description_native": "Calculate official Corporate Affairs Commission (CAC) filing fees, FIRS Stamp Duty, name reservation, and legal perfection costs for Business Name or Private Limited (Ltd) company incorporation.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "entity_type",
+          "label_native": "Business Entity Structure",
+          "type": "select",
+          "options": [
+            "Business Name (Enterprise / Sole Proprietorship)",
+            "Private Limited Company (Ltd - Local Owned)",
+            "Private Limited Company (Ltd - Foreign Owned)"
+          ]
+        },
+        {
+          "name": "authorized_share_capital",
+          "label_native": "Authorized Share Capital (₦) - Default ₦1,000,000 for standard local company",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "number_of_directors",
+          "label_native": "Number of Directors / Proprietors",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "include_status_report",
+          "label_native": "Include Certified Electronic Status Report (CTC)",
+          "type": "select",
+          "options": [
+            "yes (₦5,000)",
+            "no"
+          ]
+        },
+        {
+          "name": "use_legal_practitioner",
+          "label_native": "Accredited Legal / CAC Professional Agent Filing Fee",
+          "type": "select",
+          "options": [
+            "yes (Professional Agent Fee ~₦35,000)",
+            "no (Self Direct Filing)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Business Name Registration (Sole Proprietorship / Partnership):\n   - CAC Name Reservation Fee = ₦500.\n   - CAC Official Registration Filing Fee = ₦10,000 fixed.\n   - Electronic Status Report / Certificate = ₦5,000 (if selected).\n   - FIRS Stamp Duty = ₦0 (Business Names do not carry share capital).\n2. Private Limited Company (Ltd - Local / Foreign Owned):\n   - CAC Name Reservation Fee = ₦500.\n   - Statutory Share Capital Threshold Verification: Minimum ₦100,000 for local companies; Minimum ₦100,000,000 for foreign-owned companies (Ministry of Interior NIPC mandate).\n   - CAC Incorporation Filing Fee: ₦10,000 for the first ₦1,000,000 share capital + ₦5,000 for every additional ₦1,000,000 share capital (or part thereof).\n   - FIRS Stamp Duty on Share Capital: 0.75% of total Authorized Share Capital (e.g., ₦7,500 per ₦1,000,000 share capital).\n   - CAC Electronic Certificate & Status Report = ₦5,000.\n   - Professional Accreditation / Legal Agent Execution Fee = ₦35,000 (if selected).\n3. Total Official Government Fees = Name Reservation + CAC Filing Fee + FIRS Stamp Duty + Status Report.\n4. Total All-Inclusive Incorporation Cost = Total Official Government Fees + Legal/Agent Fee.",
+      "affiliate_targets": [
+        {
+          "name": "Sidebrief",
+          "type": "legal",
+          "description": "Automated legal compliance and business registration platform for incorporating companies and managing CAC annual returns in Nigeria."
+        },
+        {
+          "name": "Nomba",
+          "type": "neobank",
+          "description": "B2B financial ecosystem offering immediate corporate bank accounts and payment tools for newly registered Nigerian businesses."
+        },
+        {
+          "name": "Prospa",
+          "type": "neobank",
+          "description": "All-in-one business management application providing built-in CAC business incorporation services and corporate banking."
+        }
+      ]
+    },
+    {
+      "id": "ng-lagos-property-governors-consent-calculator",
+      "title_native": "Nigeria Property Perfection, Governor's Consent & Title Stamp Duty Calculator",
+      "title_en": "Nigeria Property Perfection, Governor's Consent & Title Stamp Duty Calculator",
+      "search_terms_native": [
+        "governors consent fee calculator lagos",
+        "cost of perfecting title land lagos state",
+        "stamp duty deed of assignment nigeria",
+        "capital gains tax property sale nigeria",
+        "property legal fees calculator nigeria lagos"
+      ],
+      "description_native": "Calculate total legal fees, Governor's Consent fee, FIRS/State Stamp Duty, Capital Gains Tax, and registration perfection costs when buying or transferring real estate in Lagos State and across Nigeria.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_value",
+          "label_native": "Property Purchase Price / Assessed Market Value (₦)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "state_location",
+          "label_native": "Property Location / State Jurisdiction",
+          "type": "select",
+          "options": [
+            "Lagos State (State Lands Registry Schedule)",
+            "FCT Abuja (AGIS Schedule)",
+            "Rivers State",
+            "Other Nigerian States"
+          ]
+        },
+        {
+          "name": "transaction_type",
+          "label_native": "Property Transaction Structure",
+          "type": "select",
+          "options": [
+            "Deed of Assignment (Outright Purchase)",
+            "Deed of Mortgage (Bank Mortgage)",
+            "Deed of Lease"
+          ]
+        },
+        {
+          "name": "include_cgt",
+          "label_native": "Include Vendor Capital Gains Tax (CGT 10%)",
+          "type": "select",
+          "options": [
+            "yes (Seller CGT calculated)",
+            "no (Buyer perfection fees only)"
+          ]
+        },
+        {
+          "name": "legal_conveyancing_rate",
+          "label_native": "Legal Conveyancing Attorney Fee Percentage",
+          "type": "select",
+          "options": [
+            "5% (Standard Scale)",
+            "7.5% (Negotiated Scale)",
+            "10% (Complex Title Verification)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Lagos State Title Perfection Rate Schedule (applied on assessed/fair market property value):\n   - Governor's Consent Fee: 1.5% of Property Value.\n   - Stamp Duty on Deed: 1.5% of Property Value.\n   - Perfection Capital Gains Assessment: 0.5% of Property Value (under Lagos Land Registry schedule).\n   - Land Registration Fee: 0.5% of Property Value.\n   - Charting & Survey Verification Fee: ₦50,000 fixed assessment.\n2. FCT Abuja & Other States Schedule:\n   - Consent Fee: 2.0% - 2.5% of Property Value.\n   - Stamp Duty: 1.5% of Property Value.\n   - Registration Fee: 1.0% of Property Value.\n3. Vendor Capital Gains Tax (CGT): 10% on net capital gains (if seller side liability is enabled).\n4. Legal Conveyancing Attorney Fee = Property Value × Selected Legal Rate (5%, 7.5%, or 10%).\n5. Real Estate Agent Commission = Standard 5% to 10% of Property Purchase Price.\n6. Total Buyer Perfection & Legal Closing Cost = Consent Fee + Stamp Duty + Registration Fee + Charting Fee + Legal Conveyancing Fee.\n7. Total Capital Required for Acquisition = Property Purchase Price + Total Buyer Perfection & Legal Closing Cost.",
+      "affiliate_targets": [
+        {
+          "name": "Buyletlive",
+          "type": "software",
+          "description": "Leading Nigerian real estate marketplace connecting buyers and investors with verified property listings and legal title verification."
+        },
+        {
+          "name": "Estate Intel",
+          "type": "software",
+          "description": "Real estate market intelligence platform providing accurate property valuation reports and development data across Nigeria."
+        },
+        {
+          "name": "Stanbic IBTC Home Loans",
+          "type": "insurance",
+          "description": "Major mortgage lender in Nigeria offering structured home financing and title perfection advisory services."
+        }
+      ]
+    },
+    {
+      "id": "ng-freelancer-remote-worker-tax-calculator",
+      "title_native": "Nigeria Remote Worker USD/FX Net Earnings & Withholding Tax (WHT) Calculator",
+      "title_en": "Nigeria Remote Worker USD/FX Net Earnings & Withholding Tax (WHT) Calculator",
+      "search_terms_native": [
+        "remote job tax calculator nigeria usd",
+        "wht withholding tax calculator freelance nigeria",
+        "payoneer grey geegpay naira conversion calculator",
+        "usd freelancer net salary lagos tax",
+        "self assessment tax calculation remote developer nigeria"
+      ],
+      "description_native": "Calculate net Naira earnings for remote software engineers, freelancers, and contractors in Nigeria receiving foreign currencies (USD/EUR/GBP), factoring in FX conversion platforms (Grey, Geegpay, Payoneer), collection fees, and Nigerian Personal Income Tax (PIT).",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_usd_income",
+          "label_native": "Monthly USD Foreign Gross Earnings ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "payout_platform",
+          "label_native": "Foreign FX Collection & Payout Platform",
+          "type": "select",
+          "options": [
+            "Grey.co (1.0% fee + Parallel Rate Offramp)",
+            "Geegpay (0.9% fee + Parallel Rate Offramp)",
+            "Payoneer (2.0% fee + Bank FX Offramp)",
+            "Direct Domiciliary Wire (Bank Swift Fee ~$25/mo)"
+          ]
+        },
+        {
+          "name": "fx_exchange_rate",
+          "label_native": "FX Exchange Rate (NGN per 1 USD, e.g., ₦1,550)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "client_type",
+          "label_native": "Client Jurisdiction / Employer Location",
+          "type": "select",
+          "options": [
+            "Foreign Employer / Client (0% Local WHT Deducted)",
+            "Nigerian Corporate Client (5% WHT Deducted at Source)"
+          ]
+        },
+        {
+          "name": "monthly_work_expenses_usd",
+          "label_native": "Monthly Tax-Deductible Work Expenses ($)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Gross Annual USD Income = Monthly USD Income × 12.\n2. Platform FX Fee Calculation:\n   - Grey: 1.0% of Gross USD.\n   - Geegpay: 0.9% of Gross USD.\n   - Payoneer: 2.0% of Gross USD.\n   - Direct Wire: Fixed ~$25/month ($300/year).\n3. Net USD Received = Max(0, Gross USD Income - Platform Fees - (Monthly Work Expenses USD × 12)).\n4. Gross NGN Income = Net USD Received × FX Exchange Rate.\n5. Withholding Tax (WHT) Credit:\n   - If Nigerian Corporate Client: 5% WHT deducted at source (serves as advance tax credit against annual PITA liability).\n   - If Foreign Client: 0% WHT deducted at source.\n6. Personal Income Tax (PITA Self-Assessment Calculation):\n   - Consolidated Relief Allowance (CRA) = Max(₦200,000, 1% of Gross NGN) + 20% of Gross NGN.\n   - Taxable Income = Max(0, Gross NGN - CRA).\n   - Progressive PITA Tax calculated using standard Nigerian tax bands (7% to 24%).\n7. Net Annual Tax Payable = Max(0, Calculated PITA Tax - WHT Tax Credits).\n8. Net Monthly Take-Home in Naira = (Gross NGN Income - Net Annual Tax Payable) / 12.",
+      "affiliate_targets": [
+        {
+          "name": "Grey.co",
+          "type": "neobank",
+          "description": "Leading multi-currency virtual account provider for African remote workers receiving USD, EUR, and GBP payouts."
+        },
+        {
+          "name": "Geegpay by Raenest",
+          "type": "neobank",
+          "description": "Popular financial platform for African freelancers offering foreign bank accounts, instant virtual cards, and FX offramps."
+        },
+        {
+          "name": "Deel",
+          "type": "software",
+          "description": "Global HR and compliance platform used by international tech companies to pay remote contractors in Nigeria compliant with local tax laws."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "country": "Tanzania",
+  "country_code": "TZ",
+  "languages": [
+    "sw",
+    "en"
+  ],
+  "currency": "TZS",
+  "calculators": [
+    {
+      "id": "tz-tax-payroll-calculator",
+      "title_native": "Tanzania TRA PAYE Tax & NSSF Calculator",
+      "title_en": "Tanzania TRA PAYE Tax & NSSF Calculator",
+      "search_terms_native": [
+        "tanzania tax calculator",
+        "tanzania salary calculator",
+        "income tax tz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Tanzania.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (TZS)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Tanzania revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "CRDB Bank",
+          "type": "software",
+          "description": "Top financial tool in Tanzania"
+        },
+        {
+          "name": "Vodacom M-Pesa",
+          "type": "software",
+          "description": "Top financial tool in Tanzania"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "country": "Rwanda",
+  "country_code": "RW",
+  "languages": [
+    "rw",
+    "fr",
+    "en"
+  ],
+  "currency": "RWF",
+  "calculators": [
+    {
+      "id": "rw-tax-payroll-calculator",
+      "title_native": "Rwanda RRA PIT Tax & RSSB Pension Calculator",
+      "title_en": "Rwanda RRA PIT Tax & RSSB Pension Calculator",
+      "search_terms_native": [
+        "rwanda tax calculator",
+        "rwanda salary calculator",
+        "income tax rw"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Rwanda.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (RWF)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Rwanda revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "BK Rwanda",
+          "type": "software",
+          "description": "Top financial tool in Rwanda"
+        },
+        {
+          "name": "MTN MoMo Rwanda",
+          "type": "software",
+          "description": "Top financial tool in Rwanda"
+        }
+      ]
+    }
+  ]
+}

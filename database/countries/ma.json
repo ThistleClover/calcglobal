@@ -1,0 +1,369 @@
+{
+  "country": "Morocco",
+  "country_code": "MA",
+  "languages": [
+    "French",
+    "Arabic"
+  ],
+  "calculators": [
+    {
+      "id": "ma-salary-payroll-calculator",
+      "title_native": "Calculateur de Salaire Net / Brut Maroc (IR, CNSS, AMO) | حاسبة الراتب الصافي والخام بالمغرب",
+      "title_en": "Moroccan Salary Net-to-Gross & Payroll Calculator",
+      "search_terms_native": [
+        "calcul salaire net brut maroc",
+        "calculateur ir maroc 2026",
+        "bareme ir maroc loi de finances",
+        "cotisation cnss amo maroc",
+        "حساب الراتب الصافي المغرب",
+        "حاسبة الضريبة على الدخل المغرب"
+      ],
+      "description_native": "Calculez votre salaire net à partir du salaire brut mensuel au Maroc selon le Code Général des Impôts (Loi de Finances 2025/2026). Calcule l'IR, les cotisations CNSS et AMO (salariales et patronales), ainsi que l'abattement pour frais professionnels et les déductions pour charges de famille.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Salaire Brut Mensuel (MAD) / الراتب الخام الشهري",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "exempt_allowances",
+          "label_native": "Indemnités Exonérées Mensuelles (MAD) / التعويضات المعفاة من الضريبة",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "marital_status",
+          "label_native": "Situation Familiale / الوضعية العائلية",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "Célibataire / أعزب"
+            },
+            {
+              "value": "married",
+              "label": "Marié(e) / متزوج(ة)"
+            }
+          ]
+        },
+        {
+          "name": "dependents",
+          "label_native": "Nombre de personnes à charge (max 6) / عدد الأشخاص تحت الكفالة",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Calcul basé sur le barème progressif IR 2025/2026 : 1) Cotisations salariales : CNSS = 4,48% plafonné à 6 000 MAD (max 268,80 MAD/mois) ; AMO = 2,26% non plafonné. 2) Abattement forfaitaire pour frais professionnels = 25% du Salaire Brut Imposable (plafonné à 35 000 MAD/an soit 2 916,67 MAD/mois). 3) Revenu Net Imposable (RNI) = SBI - Cotisations salariales - Frais professionnels. 4) IR Brut calculé via le barème mensuel : 0% (<=3333.33), 10% (3333.34-5000, déduction 333.33), 20% (5000.01-6666.67, déduction 833.33), 30% (6666.68-8333.33, déduction 1500), 34% (8333.34-15000, déduction 1833.33), 37% (>15000, déduction 2283.33). 5) Réduction pour charges de famille = 41,67 MAD/mois par personne à charge (max 6). 6) Cotisations patronales : CNSS prestations 8,98% (plafond 6000 DH), CNSS allocations familiales 6,40%, Taxe formation pro 1,60%, AMO patronale 4,11%.",
+      "affiliate_targets": [
+        {
+          "name": "Attijariwafa Bank / CIH Bank",
+          "type": "neobank",
+          "description": "Ouverture de comptes bancaires professionnels et formules de virement de salaires pour entreprises et employés au Maroc."
+        },
+        {
+          "name": "Sage Maroc / Workday / PayFit",
+          "type": "software",
+          "description": "Logiciels de paie et de gestion des ressources humaines conformes à la réglementation marocaine du travail et au CGI."
+        },
+        {
+          "name": "Wafa Assurance / Sanlam Maroc",
+          "type": "insurance",
+          "description": "Contrats d'assurance maladie complémentaire (Mutuelle) et régimes de retraite complémentaire (CIMR) pour salariés."
+        }
+      ]
+    },
+    {
+      "id": "ma-auto-entrepreneur-tax",
+      "title_native": "Calculateur Impôt & Cotisation CNSS Auto-Entrepreneur Maroc | حاسبة المقاول الذاتي بالمغرب",
+      "title_en": "Moroccan Auto-Entrepreneur Tax & CNSS Calculator",
+      "search_terms_native": [
+        "impot auto entrepreneur maroc",
+        "calcul cotisations ae maroc 2026",
+        "plafond auto entrepreneur maroc",
+        "retenue a la source auto entrepreneur maroc 80000",
+        "حساب ضريبة المقاول الذاتي المغرب"
+      ],
+      "description_native": "Simulez l'impôt sur le revenu (0,5% ou 1%), les cotisations CNSS (AMO) et la retenue à la source de 30% pour les chiffres d'affaires dépassant 80 000 DH avec un seul client sous le statut Auto-Entrepreneur au Maroc (Loi 114-13 & LF 2025/2026).",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "activity_type",
+          "label_native": "Type d'activité / نوع النشاط",
+          "type": "select",
+          "options": [
+            {
+              "value": "commercial_artisan",
+              "label": "Commerciale, industrielle, artisanale (Taux 0,5% - Plafond 500 000 DH) / تجارية، صناعية، حرفية"
+            },
+            {
+              "value": "services",
+              "label": "Prestation de services (Taux 1,0% - Plafond 200 000 DH) / تقديم الخدمات"
+            }
+          ]
+        },
+        {
+          "name": "annual_turnover",
+          "label_native": "Chiffre d'affaires annuel total (MAD) / رقم المعاملات السنوي الإجمالي",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "max_single_client_ca",
+          "label_native": "Chiffre d'affaires réalisé avec un seul client (MAD) / رقم المعاملات مع زبون واحد",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1) Contrôle des plafonds réglementaires : 500 000 DH/an pour le commerce/artisanat et 200 000 DH/an pour les services. 2) Taux IR standard : 0,5% du CA pour commerce/artisanat et 1% pour les services. 3) Règle du client unique (LF 2023 à 2026) : La tranche du CA annuel réalisé avec un même client dépassant 80 000 DH est soumise à une retenue à la source (RAS) de 30% effectuée par la société cliente. Impôt total IR = (CA non soumis à RAS * Taux standard) + (Excédent > 80 000 DH * 30%). 4) Cotisation AMO CNSS Travailleurs Non Salariés (TNS) : Forfait mensuel selon le barème du revenu forfaitaire (environ 100 à 400 MAD/mois).",
+      "affiliate_targets": [
+        {
+          "name": "CFG Bank / Bank of Africa (BMCE)",
+          "type": "neobank",
+          "description": "Comptes bancaires professionnels adaptés aux auto-entrepreneurs et indépendants au Maroc avec services de facturation."
+        },
+        {
+          "name": "SahlCompta / QuickBooks / Sage",
+          "type": "software",
+          "description": "Outils de facturation, de suivi du chiffre d'affaires et de préparation des déclarations trimestrielles RNAE."
+        },
+        {
+          "name": "Sanlam / AXA Assurance Maroc",
+          "type": "insurance",
+          "description": "Assurance responsabilité civile professionnelle (RC Pro) et prévoyance maladie pour indépendants."
+        }
+      ]
+    },
+    {
+      "id": "ma-real-estate-notary-fees",
+      "title_native": "Calculateur de Frais de Notaire & Conservation Foncière Maroc | حاسبة مصاريف الموثق والتحفيظ العقاري",
+      "title_en": "Moroccan Real Estate Acquisition & Notary Fees Calculator",
+      "search_terms_native": [
+        "frais de notaire maroc calcul",
+        "frais conservation fonciere maroc 1.5",
+        "droits enregistrement achat appartement maroc",
+        "calcul frais achat immobilier maroc 2026",
+        "حساب مصاريف الموثق المغرب",
+        "مصاريف المحافظة العقارية والتحفيظ بالمغرب"
+      ],
+      "description_native": "Estimez la totalité des frais d'achat d'un bien immobilier au Maroc : droits d'enregistrement (4%), conservation foncière ANCFCC (1,5%), honoraires du notaire barème dégressif, TVA (10%) et frais de dossier/hypothèque.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Prix d'achat du bien (MAD) / ثمن شراء العقار",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_type",
+          "label_native": "Type de bien immobilier / نوع العقار",
+          "type": "select",
+          "options": [
+            {
+              "value": "built",
+              "label": "Bien construit (Appartement, Villa, Commerce) / عقار مبني"
+            },
+            {
+              "value": "land_build",
+              "label": "Terrain nu à bâtir / أرض للبناء"
+            },
+            {
+              "value": "social_housing",
+              "label": "Logement Social / السكن الاجتماعي"
+            }
+          ]
+        },
+        {
+          "name": "financing_type",
+          "label_native": "Mode de financement / طريقة التمويل",
+          "type": "select",
+          "options": [
+            {
+              "value": "cash",
+              "label": "Comptant / تمويل ذاتي"
+            },
+            {
+              "value": "mortgage",
+              "label": "Crédit immobilier bancaire / قروض عقارية"
+            }
+          ]
+        },
+        {
+          "name": "loan_amount",
+          "label_native": "Montant du crédit hypothécaire (MAD) / مبلغ القرض العقاري",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1) Droits d'Enregistrement : 4% du prix d'achat du bien (Paiement bancaire traçable requis selon LF 2026 pour éviter la pénalité de 2%). 2) Conservation Foncière (ANCFCC) : 1,5% du prix du bien + 500 MAD de frais fixes et certificat de propriété. 3) Honoraires du Notaire (Barème dégressif légal) : 4000 DH pour bien <= 300 000 DH ; 1,5% de 300 001 à 1 000 000 DH ; 1,25% de 1 000 001 à 5 000 000 DH ; 0,75% de 5 000 001 à 10 000 000 DH ; 0,5% au-delà de 10 000 000 DH. 4) TVA sur honoraires de notaire : 10%. 5) Timbres et débours administratifs : forfait 2 000 MAD. 6) En cas de crédit bancaire : Frais d'inscription d'hypothèque ANCFCC (0,5% du prêt + 200 DH) et honoraires d'acte d'hypothèque.",
+      "affiliate_targets": [
+        {
+          "name": "CIH Bank / Attijariwafa Bank / BMCE",
+          "type": "neobank",
+          "description": "Offres de crédit immobilier et simulation de prêt bancaire à taux compétitif au Maroc."
+        },
+        {
+          "name": "Mubawab / Avito Immobilier",
+          "type": "software",
+          "description": "Portails d'annonces immobilières et mise en relation acheteurs-vendeurs au Maroc."
+        },
+        {
+          "name": "AXA Assurance / RMA / Sanlam",
+          "type": "insurance",
+          "description": "Assurance multirisque habitation (MRH) et assurance emprunteur pour crédit immobilier."
+        }
+      ]
+    },
+    {
+      "id": "ma-corporate-tax-is",
+      "title_native": "Calculateur Impôt sur les Sociétés (IS) & Cotisation Minimale Maroc 2026 | حاسبة الضريبة على الشركات بالمغرب",
+      "title_en": "Moroccan Corporate Tax (IS) & Minimum Contribution Calculator",
+      "search_terms_native": [
+        "calcul is maroc 2026",
+        "cotisation minimale maroc 0.25",
+        "taux impot sur les societes maroc",
+        "bareme is loi de finances maroc",
+        "حساب الضريبة على الشركات المغرب"
+      ],
+      "description_native": "Calculez l'Impôt sur les Sociétés (IS) au Maroc selon les taux unifiés définitifs 2026 (20% et 35%) et déterminez le montant exigible comparé à la Cotisation Minimale (0,25% du CA, minimum 3000 DH).",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "taxable_net_profit",
+          "label_native": "Bénéfice Net Fiscal Imposable (MAD) / النتيجة الصافية الجبائية",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "turnover_ht",
+          "label_native": "Chiffre d'affaires HT (MAD) / رقم المعاملات دون احتساب الرسوم",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_type",
+          "label_native": "Catégorie d'entreprise / صنف الشركة",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard",
+              "label": "Société de droit commun - Bénéfice < 100M DH (Taux 20%) / شركة عادية"
+            },
+            {
+              "value": "large_corporate",
+              "label": "Grande entreprise - Bénéfice >= 100M DH (Taux 35%) / شركة كبرى"
+            },
+            {
+              "value": "financial_inst",
+              "label": "Banques & Assurances (Taux 40%) / بنك أو شركة تأمين"
+            },
+            {
+              "value": "cfc_export",
+              "label": "CFC / Zone d'accélération industrielle (Taux 15%) / قطاع مالي أو تصدير"
+            }
+          ]
+        },
+        {
+          "name": "is_new_company",
+          "label_native": "Ancienneté de la société / عمر الشركة",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label": "Plus de 36 mois d'activité / أكثر من 36 شهرا من النشاط"
+            },
+            {
+              "value": "yes",
+              "label": "Moins de 36 mois d'activité (Exonération de Cotisation Minimale) / حديثة التأسيس"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1) Calcul de l'IS Théorique (Reform 2026 unifiée) : Taux de 20% si Bénéfice Net Fiscal < 100M DH ; Taux de 35% si Bénéfice Net Fiscal >= 100M DH ; Taux de 40% pour établissements de crédit et assurances ; Taux réduit 15% pour statut CFC/Export après exonération. IS = Bénéfice Net Fiscal * Taux. 2) Calcul de la Cotisation Minimale (CM) : CM = Max(3000 DH, Chiffre d'affaires HT * 0,25%). En cas d'entreprise nouvellement créée (< 36 mois d'activité), la CM est égale à 0 DH. 3) IS Exigible = Max(IS Théorique, Cotisation Minimale).",
+      "affiliate_targets": [
+        {
+          "name": "SahlCompta / L'ExpertComptable.ma",
+          "type": "accounting",
+          "description": "Logiciel de comptabilité en ligne et de télédéclaration fiscale sur le portail SIMPL-IS de la DGI Maroc."
+        },
+        {
+          "name": "Attijariwafa Bank / Banque Populaire / BMCE",
+          "type": "neobank",
+          "description": "Services bancaires corporate, lignes de crédit d'exploitation et gestion de trésorerie d'entreprise au Maroc."
+        },
+        {
+          "name": "PwC / Deloitte / EY / KPMG Maroc",
+          "type": "accounting",
+          "description": "Services d'expertise comptable, d'audit légal et de conseil fiscal pour PME et grandes entreprises."
+        }
+      ]
+    },
+    {
+      "id": "ma-mortgage-borrowing-capacity",
+      "title_native": "Simulateur de Crédit Immobilier & Capacité d'Endettement Maroc | حاسبة القروض العقارية بالمغرب",
+      "title_en": "Moroccan Mortgage & Debt-to-Income Capacity Calculator",
+      "search_terms_native": [
+        "simulateur credit immobilier maroc",
+        "taux endettement max maroc 40",
+        "calcul mensualite pret logement maroc",
+        "taux d interet credit immobilier maroc 2026",
+        "حساب قسط القرض العقاري المغرب",
+        "نسبة الاقتطاع من الراتب المغرب"
+      ],
+      "description_native": "Calculez vos mensualités de crédit immobilier au Maroc, votre capacité d'emprunt maximale basée sur le taux d'endettement autorisé (40%), et incluez l'assurance décès-invalidité (ADI) obligatoire.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "net_monthly_income",
+          "label_native": "Revenu mensuel net du foyer (MAD) / الدخل الشهر الصافي للمنزل",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "existing_monthly_debts",
+          "label_native": "Mensualités de crédits existants (MAD) / أقساط الديون الحالية",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "loan_term_years",
+          "label_native": "Durée du prêt (Années - 10 à 25 ans) / مدة القرض بالسنوات",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_interest_rate",
+          "label_native": "Taux d'intérêt annuel hors assurance (%) / نسبة الفائدة السنوية",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "adi_insurance_rate",
+          "label_native": "Taux d'assurance ADI annuel (%) / نسبة تأمين القرض",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1) Taux d'endettement maximal autorisé au Maroc (Recommandation Bank Al-Maghrib) : 40% du revenu net mensuel. Mensualité maximale autorisée = (Revenu mensuel net * 40%) - Dettes mensuelles existantes. 2) Calcul de la mensualité de remboursement : Mensualité hors assurance = Capital * [i / (1 - (1 + i)^(-n))] où i = Taux annuel / 12 / 100 et n = Durée en mois. Mensualité assurance ADI = Capital * (Taux ADI / 100) / 12. Mensualité totale = Mensualité hors assurance + Mensualité ADI. 3) Capacité d'emprunt maximale calculée en inversant la formule avec la mensualité maximale autorisée.",
+      "affiliate_targets": [
+        {
+          "name": "Affinox / Direct Credit Brokers",
+          "type": "software",
+          "description": "Courtiers en crédit immobilier au Maroc comparant gratuitement les meilleures offres bancaires (CIH, Attijari, BCP, BMCE)."
+        },
+        {
+          "name": "CIH Bank / Banque Populaire",
+          "type": "neobank",
+          "description": "Solutions d'emprunt logement pour résidents et Marocains du Monde (MRE) avec frais de dossier réduits."
+        },
+        {
+          "name": "RMA Assurance / AXA Assurance Maroc",
+          "type": "insurance",
+          "description": "Assurance Emprunteur (Décès / Invalidité ADI) et assurance Multirisque Habitation."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,372 @@
+{
+  "country": "Peru",
+  "country_code": "PE",
+  "languages": [
+    "es"
+  ],
+  "calculators": [
+    {
+      "id": "sueldo-neto-quinta-categoria-peru",
+      "title_native": "Calculadora de Sueldo Bruto a Neto y Retención de Quinta Categoría SUNAT (Planilla 2026)",
+      "title_en": "Peru Net Salary & 5th Category Income Tax Calculator",
+      "search_terms_native": [
+        "calculadora sueldo bruto a neto peru",
+        "calculadora impuesto a la renta quinta categoria sunat",
+        "calcular retencion de quinta categoria 2026",
+        "descuento afp onp planilla peru",
+        "calculo de sueldo liquido en planilla sunat"
+      ],
+      "description_native": "Calcula tu sueldo neto mensual en planilla bancaria tras aplicar el descuento del sistema de pensiones (AFP u ONP) y la retención mensual del Impuesto a la Renta de Quinta Categoría de la SUNAT, incluyendo la deducción legal fija de 7 UIT y deducciones adicionales (hasta 3 UIT).",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "Sueldo bruto mensual computable (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pension_system",
+          "label_native": "Sistema previsional / de pensiones",
+          "type": "select",
+          "options": [
+            "ONP - Oficina de Normalización Previsional (13.00%)",
+            "AFP Integra (Fondo 10% + Seguro 1.70% + Comisión flujo 1.55%)",
+            "AFP Prima (Fondo 10% + Seguro 1.70% + Comisión flujo 1.60%)",
+            "AFP Profuturo (Fondo 10% + Seguro 1.70% + Comisión flujo 1.69%)",
+            "AFP Habitat (Fondo 10% + Seguro 1.70% + Comisión flujo 1.47%)"
+          ]
+        },
+        {
+          "name": "family_allowance",
+          "label_native": "Asignación familiar (hijos menores o universitarios)",
+          "type": "select",
+          "options": [
+            "No aplica",
+            "Sí aplica (10% de la RMV - S/ 102.50)"
+          ]
+        },
+        {
+          "name": "annual_gratifications_count",
+          "label_native": "Número de gratificaciones anuales por ley",
+          "type": "select",
+          "options": [
+            "2 gratificaciones ordinarias (Fiestas Patrias y Navidad)",
+            "Sin gratificaciones (Régimen agrario / Régimen especial en sueldo básico)"
+          ]
+        },
+        {
+          "name": "additional_deductions_uit",
+          "label_native": "Deducciones adicionales acreditadas SUNAT (hasta 3 UIT - restaurantes, alquiler, profesionales) (S/)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Renta Bruta Anual Proyectada (RBA) = (Sueldo Bruto + Asignación Familiar) * 12 + Gratificación de Julio + Gratificación de Diciembre + Bonificación Extraordinaria del 9% Ley N° 30334 sobre Gratificaciones. 2. Deducción Legal Fija de 7 UIT (UIT 2026 = S/ 5,500). Renta Neta Imponible = Max(0, RBA - (7 * 5,500) - Deducciones Adicionales [máximo 3 UIT]). 3. Tramos Progresivos SUNAT de 5ta Categoría: Hasta 5 UIT (8%), >5 a 20 UIT (14%), >20 a 35 UIT (17%), >35 a 45 UIT (20%), Más de 45 UIT (30%). 4. Impuesto Anual Quinta Categoría = Sumatoria del impuesto por tramos. Retención Mensual = Impuesto Anual / 12 (con ajustes de factor según mes SUNAT). 5. Descuento Pensión: ONP (13%) o AFP (10% aporte obligatorio + ~1.70% prima seguro SIS + comisión sobre flujo). 6. Sueldo Neto Mensual = Sueldo Bruto + Asignación Familiar - Descuento Pensión - Retención 5ta Categoría SUNAT.",
+      "affiliate_targets": [
+        {
+          "name": "Buk Perú",
+          "type": "software",
+          "description": "Software líder en gestión de personas, cálculo automático de planilla, boletas de pago y retenciones SUNAT en Perú."
+        },
+        {
+          "name": "Cuenta Sueldo BCP / Interbank",
+          "type": "neobank",
+          "description": "Cuentas bancarias de depósito de nómina con beneficios en transferencias de CTS, adelanto de sueldo y promociones locales."
+        },
+        {
+          "name": "Rextie",
+          "type": "software",
+          "description": "Plataforma fintech peruana líder para cambio de divisas (USD/PEN) a tipo de cambio preferencial interbancario."
+        },
+        {
+          "name": "Payfit Perú",
+          "type": "software",
+          "description": "Plataforma de automatización de nóminas y cumplimiento tributario laboral con la SUNAT y el MINTRA."
+        }
+      ]
+    },
+    {
+      "id": "liquidacion-beneficios-sociales-peru",
+      "title_native": "Calculadora de Liquidación Laboral y Beneficios Sociales (CTS, Gratificación y Vacaciones Perú)",
+      "title_en": "Peru Employee Severance & Final Pay Settlement Calculator (CTS, Bonus & Holidays)",
+      "search_terms_native": [
+        "calculadora liquidacion laboral peru",
+        "calculo de cts y gratificacion trunca",
+        "calculadora indemnizacion despido arbitrario peru",
+        "como calcular mi liquidacion por renuncia sunat",
+        "calculadora beneficios sociales mintra peru"
+      ],
+      "description_native": "Calcula el monto exacto de la liquidación de beneficios sociales que corresponde por ley al finalizar una relación laboral en Perú: Compensación por Tiempo de Servicios (CTS trunca), Gratificación trunca con Bonificación Extraordinaria del 9%, Vacaciones truncas y la indemnización por despido arbitrario.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_base_salary",
+          "label_native": "Última remuneración básica mensual computable (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "family_allowance",
+          "label_native": "Percibe asignación familiar",
+          "type": "select",
+          "options": [
+            "No",
+            "Sí (10% RMV - S/ 102.50)"
+          ]
+        },
+        {
+          "name": "termination_reason",
+          "label_native": "Motivo del cese laboral",
+          "type": "select",
+          "options": [
+            "Renuncia Voluntaria",
+            "Despido Arbitrario / Injustificado (Contrato Indeterminado)",
+            "Vencimiento de Contrato Sujeto a Modalidad (Plazo Fijo)",
+            "Mutuo Disenso / Acuerdo Mutuo"
+          ]
+        },
+        {
+          "name": "worked_months_current_cts",
+          "label_native": "Meses completos trabajados en el periodo CTS actual (May-Oct o Nov-Abr)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "worked_months_current_gratification",
+          "label_native": "Meses completos trabajados en el semestre de Gratificación actual (Ene-Jun o Jul-Dic)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pending_vacation_days",
+          "label_native": "Días de vacaciones truncas o vencidas no gozadas acumuladas",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_years_worked",
+          "label_native": "Años completos trabajados en la empresa (para cálculo de indemnización)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Remuneración Computable CTS = Sueldo Básico + Asignación Familiar + (Última Gratificación / 6). 2. CTS Trunca = (Remuneración Computable CTS / 12) * Meses completos trabajados en el semestre. 3. Gratificación Trunca (Ley N° 27735) = [(Sueldo Básico + Asignación Familiar) / 6] * Meses calendarios completos trabajados en el semestre correspondiente. 4. Bonificación Extraordinaria Ley N° 30334 = 9.00% del monto de la Gratificación Trunca (Aporte de EsSalud devuelto al trabajador). 5. Vacaciones Truncas y Vencidas (D.L. 713) = [(Sueldo Básico + Asignación Familiar) / 12] * Meses + [(Sueldo Básico + Asignación Familiar) / 360] * Días. 6. Indemnización por Despido Arbitrario (D.L. 728 Art. 38): 1.5 sueldos mensuales por cada año completo de servicios con tope máximo legal de 12 sueldos. 7. Total Liquidación Bruta = CTS Trunca + Gratificación Trunca + Bonificación Extraordinaria 9% + Vacaciones Truncas + Indemnización por Despido.",
+      "affiliate_targets": [
+        {
+          "name": "Buk Perú",
+          "type": "software",
+          "description": "Sistema de gestión humana y nóminas que automatiza el cálculo de liquidaciones, cartas de cese y certificados de trabajo."
+        },
+        {
+          "name": "Nomina360",
+          "type": "software",
+          "description": "Software especializado en liquidación de beneficios sociales y boletas de pago conforme a SUNAT y MINTRA."
+        },
+        {
+          "name": "RebajaTusCuentas",
+          "type": "neobank",
+          "description": "Plataforma de consolidación de deudas y créditos con garantía hipotecaria para liquidez en periodos de transición laboral."
+        },
+        {
+          "name": "Kambista",
+          "type": "software",
+          "description": "Casa de cambio digital peruana para inversión y preservación en dólares del fondo de liquidación o CTS liberado."
+        }
+      ]
+    },
+    {
+      "id": "recibo-por-honorarios-cuarta-categoria",
+      "title_native": "Calculadora de Recibo por Honorarios y Retención del 8% de Cuarta Categoría SUNAT",
+      "title_en": "Peru Freelance Independent Contractor Tax Calculator (4th Category SUNAT)",
+      "search_terms_native": [
+        "calculadora recibo por honorarios peru",
+        "calculo retencion 8 por ciento cuarta categoria sunat",
+        "monto bruto a neto recibo por honorarios",
+        "suspension de retenciones cuarta categoria 2026",
+        "impuesto a la renta independiente peru"
+      ],
+      "description_native": "Calcula el monto neto a cobrar en tu Recibo por Honorarios Electrónico (RHE) de la SUNAT, aplicando la retención del 8% de Cuarta Categoría cuando corresponda y simulando la declaración anual de Impuesto a la Renta con deducción del 20% y 7 UIT.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_amount",
+          "label_native": "Monto bruto pactado del Recibo por Honorarios (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "has_retention_suspension",
+          "label_native": "Cuenta con Formulario SUNAT 1609 de Suspensión de Retenciones",
+          "type": "select",
+          "options": [
+            "No (Aplica retención del 8% si el recibo supera S/ 1,500)",
+            "Sí (Suspensión aprobada por SUNAT - Retención 0%)"
+          ]
+        },
+        {
+          "name": "projected_annual_4th_income",
+          "label_native": "Ingreso bruto anual proyectado por servicios independientes (4ta categoría) (S/)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Retención Puntual por Recibo: Si el comprobante supera los S/ 1,500 y el profesional NO cuenta con la constancia de Suspensión de Retenciones de 4ta Categoría de la SUNAT: Retención del 8% = Monto Bruto * 0.08. Si el recibo es <= S/ 1,500 o posee suspensión, la retención retenida es S/ 0.00. 2. Monto Neto a Cobrar = Monto Bruto - Retención 8%. 3. Liquidación Anual Renta de 4ta Categoría: Renta Bruta Anual 4ta Categoría menos deducción fija del 20% (con tope de 24 UIT). Renta Neta 4ta = Renta Bruta * 0.80. Deducción de 7 UIT (S/ 38,500) y deducciones adicionales (hasta 3 UIT). A la Renta Neta Imponible resultante se le aplican los tramos progresivos del Impuesto a la Renta SUNAT (8%, 14%, 17%, 20%, 30%). Saldo a Favor o Impuesto a Pagar = Impuesto Calculado - Retenciones acumuladas del 8%.",
+      "affiliate_targets": [
+        {
+          "name": "Alegra Perú",
+          "type": "software",
+          "description": "Software contable y de facturación en la nube para profesionales independientes, trabajadores de 4ta categoría y PYMEs."
+        },
+        {
+          "name": "Yape Empresa / BCP",
+          "type": "neobank",
+          "description": "Plataforma de cobros digitales inmediatos e inclusión financiera para freelancers y consultores independientes en Perú."
+        },
+        {
+          "name": "Rextie",
+          "type": "software",
+          "description": "Plataforma de cambio de moneda preferencial para trabajadores independientes que cobran servicios al exterior en USD."
+        },
+        {
+          "name": "Taxo Perú",
+          "type": "accounting",
+          "description": "Servicio de automatización tributaria y presentación de Declaración Jurada Anual ante la SUNAT para independientes."
+        }
+      ]
+    },
+    {
+      "id": "impuesto-alcabala-gastos-inmobiliarios-peru",
+      "title_native": "Calculadora de Impuesto de Alcabala y Gastos Notariales / Registrales SUNARP",
+      "title_en": "Peru Property Transfer Tax (Alcabala) & Notary/Registry Fees Calculator",
+      "search_terms_native": [
+        "calculadora impuesto alcabala peru",
+        "como calcular la alcabala en lima sat sunarp",
+        "gastos notariales y registrales compraventa inmueble peru",
+        "alcabala 10 uit tramo exonerado",
+        "impuesto transferencia de propiedad inmueble peru"
+      ],
+      "description_native": "Calcula el Impuesto de Alcabala a cargo del comprador en la compraventa de inmuebles urbanos o rústicos en Perú (aplicando el tramo exonerado de 10 UIT), e incluye la estimación de derechos registrales de SUNARP y honorarios notariales.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_sale_price_pen",
+          "label_native": "Precio de venta pactado del inmueble en Soles (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "municipal_autovaluo_pen",
+          "label_native": "Valor del autovalúo municipal ajustado por el IPM (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "transaction_type",
+          "label_native": "Tipo de transferencia de propiedad",
+          "type": "select",
+          "options": [
+            "Venta de Inmueble Usado / Segunda Mano (Afecto a Alcabala, Inafecto a IGV)",
+            "Primera Venta por Empresa Constructora / Proyecto en Plano (Inafecto a Alcabala, Afecto a IGV 18%)",
+            "Transferencia por Sucesión Intestada o Anticipo de Legítima (Exonerado de Alcabala)"
+          ]
+        },
+        {
+          "name": "estimated_notary_fee",
+          "label_native": "Honorarios notariales de la Escritura Pública estimados (S/)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Base Imponible de Alcabala = El mayor valor entre el Precio de Venta acordado en Soles y el Valor del Autovalúo municipal ajustado por el Índice de Precios al Por Mayor (IPM). 2. Tramo Inafecto / Exonerado (Ley de Tributación Municipal D.S. N° 156-2004-EF) = Las primeras 10 UIT (10 * S/ 5,500 = S/ 55,000 en 2026) están 100% inafectas. 3. Base Afecta = Max(0, Base Imponible - 10 UIT). 4. Impuesto de Alcabala = Base Afecta * 3.00% (Tasa plana del 3% a cargo exclusivo del comprador). 5. Derechos Registrales SUNARP = Tasa de calificación de título de compraventa + Tasa de inscripción registral (~0.15% a 0.30% del valor pactado). 6. Costo Total de Cierre de Transferencia = Impuesto de Alcabala + Gastos Notariales + Tasas Registrales SUNARP.",
+      "affiliate_targets": [
+        {
+          "name": "RebajaTusCuentas",
+          "type": "neobank",
+          "description": "Asesoría y comparación de créditos hipotecarios y préstamos con garantía inmobiliaria con desembolso rápido en Perú."
+        },
+        {
+          "name": "BCP Crédito Hipotecario / MiVivienda",
+          "type": "neobank",
+          "description": "Financiamiento hipotecario bancario tradicional y bono del buen pagador del Fondo MIVIVIENDA."
+        },
+        {
+          "name": "Urbania Perú",
+          "type": "software",
+          "description": "Portal inmobiliario líder en Perú para la búsqueda, tasación comparativa y estimación de costos de compraventa de inmuebles."
+        },
+        {
+          "name": "Rextie",
+          "type": "software",
+          "description": "Casa de cambio digital para conversión preferencial USD/PEN al concretar el pago de la cuota inicial e impuestos notariales."
+        }
+      ]
+    },
+    {
+      "id": "regimen-tributario-pyme-sunat-peru",
+      "title_native": "Calculadora de Régimen Tributario MIPE vs RER vs General SUNAT (Comparador de Impuestos PYME)",
+      "title_en": "Peru Small Business Tax Regime Comparison Calculator (MIPE, RER, RUS & General SUNAT)",
+      "search_terms_native": [
+        "calculadora regimen mipe tributario sunat",
+        "comparador de regimenes tributarios peru",
+        "cuanto paga de impuesto una pyme en peru",
+        "calculo igv y pago a cuenta renta mipe",
+        "regimen especial rer vs mipe tributario rmt"
+      ],
+      "description_native": "Compara las obligaciones fiscales y determina el régimen tributario de la SUNAT más conveniente para tu empresa o PYME en Perú (Nuevo RUS, Régimen Especial RER, Régimen MIPE Tributario RMT o Régimen General), calculando Pagos a Cuenta de Impuesto a la Renta e IGV.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "projected_annual_sales",
+          "label_native": "Ventas o ingresos brutos anuales proyectados (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "projected_annual_deductible_purchases",
+          "label_native": "Compras y gastos operativos deducibles anuales con factura (S/)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "client_target",
+          "label_native": "Tipo de cliente principal al que vende",
+          "type": "select",
+          "options": [
+            "Consumidor final exclusivamente (Emite solo boletas de venta)",
+            "Empresas y entidades corporativas (Requiere emitir facturas electrónicas)"
+          ]
+        },
+        {
+          "name": "employee_count",
+          "label_native": "Número de trabajadores contratados en planilla",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Evaluación de Requisitos y Topes Régimen SUNAT: - Nuevo RUS: Solo si ingresos <= S/ 96,000/año (S/ 8,000/mes) y solo emite boletas. Cuota mensual fija S/ 20 (hasta S/ 5k) o S/ 50 (hasta S/ 8k). Sin crédito fiscal de IGV. - RER (Régimen Especial): Si ingresos <= S/ 525,000/año. Impuesto a la Renta mensual = 1.5% plano sobre ingresos netos sin regularización anual. IGV Neto = 18% (Débito fiscal - Crédito fiscal). - RMT (Régimen MIPE Tributario): Si ingresos <= 1,700 UIT (S/ 9,350,000). Pago a cuenta mensual Renta = 1.0% de ingresos netos (si ingresos <= 300 UIT) o 1.5%/coeficiente (si > 300 UIT). Impuesto Anual a la Renta = 10% sobre las primeras 15 UIT de Renta Neta Imponible + 29.5% por el exceso de 15 UIT. IGV Neto = 18%. - Régimen General: Sin límite de ingresos. Pago a cuenta mensual = 1.5% o coeficiente. Impuesto Anual = 29.5% plano sobre la Renta Neta Imponible. 2. Renta Neta Imponible = Ventas Anuales - Compras Deducibles - Gastos de Planilla/Operativos. 3. Comparativo Final = Suma Anual del Impuesto a la Renta + IGV Neto a Pagar por Régimen.",
+      "affiliate_targets": [
+        {
+          "name": "Alegra Perú",
+          "type": "software",
+          "description": "Sistema de facturación electrónica SUNAT y contabilidad integrada en la nube para pequeñas empresas en Perú."
+        },
+        {
+          "name": "Siigo Perú",
+          "type": "software",
+          "description": "Software contable y administrativo integral con gestión de inventarios, reportes gerenciales y conexión directa al SIRE SUNAT."
+        },
+        {
+          "name": "Nubefact",
+          "type": "software",
+          "description": "Plataforma de facturación electrónica de alta velocidad y conexión API para emisión masiva de comprobantes tributarios."
+        },
+        {
+          "name": "BCP Pyme / Interbank Empresas",
+          "type": "neobank",
+          "description": "Cuentas corrientes bancarias empresariales con herramientas de recaudación, pago de proveedores y factoring."
+        }
+      ]
+    }
+  ]
+}

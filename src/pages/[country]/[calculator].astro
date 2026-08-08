@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InteractiveCalculator from '../../components/InteractiveCalculator';
+import fs from 'fs';
+import path from 'path';
+import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
+import { getEngineKeyForCalc } from '../../lib/engine/factory';
+
+export function getStaticPaths() {
+  const dbDir = path.join(process.cwd(), 'database', 'countries');
+  const files = fs.readdirSync(dbDir).filter(f => f.endsWith('.json'));
+  const paths: any[] = [];
+
+  files.forEach(file => {
+    const raw = fs.readFileSync(path.join(dbDir, file), 'utf-8');
+    const data = JSON.parse(raw);
+    const slug = data.country_code.toLowerCase();
+    if (!ACTIVE_COUNTRIES.includes(slug as any)) return;
+
+    data.calculators.forEach((calc: any) => {
+      paths.push({
+        params: { country: slug, calculator: calc.id },
+        props: { countryData: data, calcData: calc },
+      });
+    });
+  });
+
+  return paths;
+}
+
+const { countryData, calcData } = Astro.props;
+const slug = countryData.country_code.toLowerCase();
+const meta = COUNTRY_METADATA[slug] || { lang: 'en', locale: 'en-US', currencySymbol: '$' };
+const engineKey = getEngineKeyForCalc(calcData.id) ?? slug;
+
+// Serialize the real engine function at build time so it can be evaluated client-side
+// This avoids dynamic import() with template literals which breaks Vite's bundler
+let engineCode = 'return { grossIncome: 0, netIncome: 0, totalTax: 0, effectiveRate: 0, breakdown: [], currency: "USD", currencySymbol: "$" };';
+try {
+  const engineModule = await import(`../../lib/engine/countries/${engineKey}.ts`);
+  // Serialize the calculate function body to a string that new Function('inputs', code) can execute
+  const fnStr = engineModule.calculate.toString();
+  // Extract function body (everything between first { and last })
+  const bodyStart = fnStr.indexOf('{') + 1;
+  const bodyEnd = fnStr.lastIndexOf('}');
+  engineCode = fnStr.substring(bodyStart, bodyEnd);
+} catch (e) {
+  console.warn(`[CalcGlobal] No engine for ${engineKey}, using fallback`);
+}
+
+const flagCode = slug === 'uk' ? 'gb' : slug;
+
+// SEO Structured Data
+const calcSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": calcData.title_en || calcData.title_native,
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "All",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": countryData.currency || "USD" },
+  "description": calcData.description_native,
+};
+
+const faqSchema = calcData.article_faq && calcData.article_faq.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": calcData.article_faq.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+  }))
+} : null;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.com/" },
+    { "@type": "ListItem", "position": 2, "name": countryData.country, "item": `https://calcglobal.com/${slug}/` },
+    { "@type": "ListItem", "position": 3, "name": calcData.title_en || calcData.title_native, "item": `https://calcglobal.com/${slug}/${calcData.id}/` }
+  ]
+};
+---
+
+<Layout
+  title={`${calcData.title_en || calcData.title_native} | ${countryData.country} | CalcGlobal`}
+  description={calcData.description_native}
+  lang={meta.lang}
+  structuredData={breadcrumbSchema}
+>
+  <!-- Extra structured data injected inline -->
+  <script type="application/ld+json" set:html={JSON.stringify(calcSchema)} slot="head" />
+  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />}
+
+  <!-- Page Header -->
+  <div class="bg-slate-800 text-white pt-12 pb-20 px-4">
+    <div class="max-w-4xl mx-auto">
+      <!-- Breadcrumb -->
+      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2 flex-wrap">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <a href={`/${slug}`} class="hover:text-white transition-colors flex items-center gap-1.5">
+          <img src={`https://flagcdn.com/w20/${flagCode}.png`} alt="" class="w-4 h-3 object-cover rounded-sm" />
+          {countryData.country}
+        </a>
+        <span>/</span>
+        <span class="text-slate-300 truncate">{calcData.title_native}</span>
+      </nav>
+
+      <!-- Title row -->
+      <div class="flex items-start gap-3 flex-wrap">
+        <span class="inline-block mt-1 px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md uppercase tracking-wide border border-slate-600">
+          {calcData.category}
+        </span>
+        {calcData.last_updated && (
+          <span class="inline-block mt-1 px-2.5 py-1 bg-green-900/60 text-green-300 text-xs font-semibold rounded-md border border-green-800">
+            ✓ Updated {calcData.last_updated}
+          </span>
+        )}
+      </div>
+      <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-3 leading-tight">
+        {calcData.title_en || calcData.title_native}
+      </h1>
+      <p class="text-slate-400 mt-3 max-w-2xl text-base leading-relaxed">
+        {calcData.description_native}
+      </p>
+    </div>
+  </div>
+
+  <!-- Calculator Area -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-10">
+
+    <!-- The Interactive Calculator (React Island) -->
+    <InteractiveCalculator
+      client:load
+      calc={calcData}
+      engineCode={engineCode}
+      locale={meta.locale}
+      currencySymbol={meta.currencySymbol}
+    />
+
+    <!-- Affiliate Partners -->
+    {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
+      <div class="mt-12">
+        <h2 class="text-lg font-bold text-slate-900 mb-4">Recommended Tools & Services</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {calcData.affiliate_targets.map((partner: any) => (
+            <a
+              href={partner.url || '#'}
+              target="_blank"
+              rel="noopener noreferrer sponsored"
+              class="group bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col gap-3"
+            >
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="inline-block px-2 py-0.5 bg-slate-100 text-slate-500 text-xs font-medium rounded uppercase tracking-wide mb-2">{partner.type}</span>
+                  <h3 class="font-bold text-slate-900 group-hover:text-slate-700 text-base">{partner.name}</h3>
+                </div>
+                <span class="text-slate-300 group-hover:text-slate-500 transition-colors mt-1">↗</span>
+              </div>
+              <p class="text-sm text-slate-500 leading-relaxed">{partner.description}</p>
+              <span class="inline-flex items-center text-xs font-semibold text-slate-700 bg-slate-100 rounded-lg px-3 py-1.5 w-fit group-hover:bg-slate-200 transition-colors">
+                Get Started →
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- FAQ / Article Content -->
+    {calcData.article_faq && calcData.article_faq.length > 0 && (
+      <section class="mt-14">
+        <h2 class="text-xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-6">
+          {calcData.article_faq.map((faq: any, i: number) => (
+            <div class="bg-white rounded-xl border border-slate-200 p-6">
+              <h3 class="font-bold text-slate-900 text-base mb-3">{faq.question}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Legal Disclaimer -->
+    <div class="mt-12 bg-amber-50 border border-amber-200 rounded-xl px-6 py-5">
+      <p class="text-xs text-amber-800 leading-relaxed">
+        <strong>Disclaimer:</strong> Results are estimates based on standard tax rules for the 2026 tax year and are provided for informational purposes only. 
+        Individual circumstances (deductions, credits, specific state/local rules) may significantly affect your actual tax liability. 
+        Always consult a qualified tax professional or accountant for advice specific to your situation.
+      </p>
+    </div>
+  </div>
+</Layout>

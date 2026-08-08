@@ -1,0 +1,401 @@
+{
+  "country": "Czech Republic",
+  "country_code": "CZ",
+  "languages": [
+    "cs",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "kalkulacka-ciste-mzdy-ceska-republika",
+      "title_native": "Kalkulačka čisté mzdy a nákladů zaměstnavatele 2026",
+      "title_en": "Czech Republic Gross to Net Salary & Employer Cost Calculator",
+      "search_terms_native": [
+        "kalkulačka čisté mzdy 2026",
+        "výpočet čisté mzdy čr",
+        "hrubá a čistá mzda kalkulačka",
+        "mzdová kalkulačka 2026",
+        "odvody zaměstnavatele kalkulačka",
+        "daňové zvýhodnění na děti kalkulačka"
+      ],
+      "description_native": "Vypočítejte si čistou mzdu v ČR, odvoďte zálohu na daň z příjmů, zdravotní a sociální pojištění zaměstnance (včetně nemocenského pojištění 0,6 %) a celkové náklady zaměstnavatele s přihlédnutím k daňovým slevám a zvýhodněním na děti.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Hrubá měsíční mzda (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tax_payer_discount",
+          "label_native": "Uplatnit slevu na poplatníka (2 570 Kč/měsíc)",
+          "type": "select",
+          "options": [
+            "Ano (podepsané Prohlášení poplatníka)",
+            "Ne"
+          ]
+        },
+        {
+          "name": "children_count",
+          "label_native": "Počet vyživovaných dětí (daňové zvýhodnění)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "spouse_discount",
+          "label_native": "Sleva na manželku/manžela bez příjmů (pečující o dítě do 3 let)",
+          "type": "select",
+          "options": [
+            "Ne",
+            "Ano"
+          ]
+        },
+        {
+          "name": "disability_degree",
+          "label_native": "Stupeň invalidity / ZTP/P",
+          "type": "select",
+          "options": [
+            "Bez invalidity",
+            "Invalidita 1. nebo 2. stupně",
+            "Invalidita 3. stupně",
+            "Průkaz ZTP/P"
+          ]
+        }
+      ],
+      "formula_explanation": "Employee Social Insurance (Sociální pojištění zaměstnance) = 7.1% of Gross Salary (6.5% pension + 0.6% sickness insurance introduced under Konsolidační balíček). Employee Health Insurance (Zdravotní pojištění zaměstnance) = 4.5% of Gross Salary. Tax Base (Základ daně) = Gross Salary rounded up to hundreds. Progressive Personal Income Tax (Daň z příjmů Fyzických Osob - DPFO): 15% rate on monthly tax base up to 36x monthly average wage threshold (~131,901 CZK/month), 23% rate on portion above threshold. Tax Credits (Slevy na dani): Basic taxpayer discount = 2,570 CZK/mo (30,840 CZK/yr); Disability 1st/2nd degree = 210 CZK/mo; 3rd degree = 420 CZK/mo; ZTP/P card = 1,345 CZK/mo; Spouse with annual income under 68,000 CZK caring for child under 3 years = 2,070 CZK/mo (4,140 CZK/mo if ZTP/P). Child Tax Relief (Daňové zvýhodnění na děti): 1st child = 1,267 CZK/mo, 2nd child = 1,860 CZK/mo, 3rd+ child = 2,320 CZK/mo. If tax liability after non-refundable discounts is lower than child credit, the excess becomes a tax bonus (daňový bonus) paid to the employee. Net Salary (Čistá mzda) = Gross Salary - Employee Social - Employee Health - Tax (or + Tax Bonus). Employer Costs (Náklady zaměstnavatele): Employer Social = 24.8% of Gross, Employer Health = 9.0% of Gross. Total Employer Cost = Gross Salary * 1.338.",
+      "affiliate_targets": [
+        {
+          "name": "Fakturoid",
+          "type": "software",
+          "description": "Popular Czech invoicing & accounting automation software for small businesses hiring staff."
+        },
+        {
+          "name": "Air Bank",
+          "type": "neobank",
+          "description": "Leading Czech modern retail bank offering zero-fee accounts with fast payroll deposits."
+        },
+        {
+          "name": "mBank Česká republika",
+          "type": "neobank",
+          "description": "Digital bank offering free current accounts and overdraft lines for salaried employees."
+        },
+        {
+          "name": "Generali Česká pojišťovna",
+          "type": "insurance",
+          "description": "Major Czech provider of supplementary commercial health and life insurance."
+        }
+      ]
+    },
+    {
+      "id": "kalkulacka-osvc-pausalni-dan-vs-skutecne-vydaje",
+      "title_native": "Kalkulačka OSVČ 2026: Paušální daň vs. Paušální výdaje vs. Skutečné výdaje",
+      "title_en": "Czech OSVČ Sole Proprietor Tax & Flat Tax Regime Calculator",
+      "search_terms_native": [
+        "kalkulačka osvč 2026",
+        "paušální daň kalkulačka",
+        "výpočet daně osvč",
+        "paušální výdaje kalkulačka",
+        "odvody sociální a zdravotní pojištění osvč",
+        "přehled o příjmech a výdajích osvč"
+      ],
+      "description_native": "Porovnejte si čistý zisk OSVČ v ČR při využití Paušální daně (1., 2. a 3. pásmo), Paušálních výdajů podle druhu živnosti (80 %, 60 %, 50 %, 40 %) nebo Skutečných výdajů. Kalkulačka spočítá daň z příjmů i zálohy na sociální a zdravotní pojištění.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Roční příjmy OSVČ (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "expense_mode",
+          "label_native": "Způsob uplatnění výdajů",
+          "type": "select",
+          "options": [
+            "Paušální výdaje 80 % (řemeslné živnosti, zemědělství)",
+            "Paušální výdaje 60 % (ostatní živnosti, volná živnost)",
+            "Paušální výdaje 50 % (autorské honoráře, svobodná povolání)",
+            "Paušální výdaje 40 % (pronájem nemovitostí)",
+            "Skutečné výdaje (daňová evidence)"
+          ]
+        },
+        {
+          "name": "actual_expenses",
+          "label_native": "Skutečné roční výdaje v Kč (pokud jsou zvoleny skutečné výdaje)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "osvc_activity_type",
+          "label_native": "Typ činnosti OSVČ",
+          "type": "select",
+          "options": [
+            "Hlavní činnost",
+            "Vedlejší činnost (při zaměstnání/studiu/důchodu)"
+          ]
+        },
+        {
+          "name": "apply_taxpayer_discount",
+          "label_native": "Uplatnit slevu na poplatníka (30 840 Kč/rok)",
+          "type": "select",
+          "options": [
+            "Ano",
+            "Ne"
+          ]
+        },
+        {
+          "name": "pausalni_rezim_band",
+          "label_native": "Posoudit Paušální daň (Paušální režim)",
+          "type": "select",
+          "options": [
+            "Nevyužívat paušální daň",
+            "1. pásmo (příjmy do 1 mil. Kč / do 1.5 mil. s 80% paušálem)",
+            "2. pásmo (příjmy do 1.5 mil. Kč / do 2 mil. s 80% paušálem)",
+            "3. pásmo (příjmy do 2 mil. Kč)"
+          ]
+        }
+      ],
+      "formula_explanation": "Standard OSVČ Calculation: Tax Base (Základ daně) = Revenues - Expenses (capped by law: 80% capped at 1.6M expense, 60% capped at 1.2M expense, 50% capped at 1M expense, 40% capped at 800k expense). Income Tax = 15% on Tax Base up to 36x average monthly wage, 23% on excess, minus basic taxpayer discount (30,840 CZK/year). Social Insurance (Sociální pojištění OSVČ) = 29.2% of Social Assessment Base (Vyměřovací základ = 55% of Tax Base for main activity). Must respect annual minimum assessment base (~30% of average wage). Health Insurance (Zdravotní pojištění OSVČ) = 13.5% of Health Assessment Base (Vyměřovací základ = 50% of Tax Base). Must respect annual minimum assessment base (~50% of average wage). Flat Tax Regime (Paušální daň): Single monthly payment covering health insurance, minimum social insurance (+15%), and 100 CZK income tax. Band 1 (~7,498 CZK/month), Band 2 (~16,745 CZK/month), Band 3 (~27,139 CZK/month). No annual tax return or social/health overview required. Net Annual Income = Revenues - Taxes - Social Insurance - Health Insurance (or Revenues - 12 * Monthly Flat Tax).",
+      "affiliate_targets": [
+        {
+          "name": "iDoklad",
+          "type": "software",
+          "description": "Leading Czech invoicing and financial management application designed specifically for OSVČ."
+        },
+        {
+          "name": "Fakturoid",
+          "type": "software",
+          "description": "Automated invoicing, expense tracking, and tax overview generator for Czech freelancers."
+        },
+        {
+          "name": "Fio banka",
+          "type": "neobank",
+          "description": "Popular Czech bank offering completely free business accounts with transparent API access for OSVČ."
+        },
+        {
+          "name": "MONETA Money Bank",
+          "type": "neobank",
+          "description": "Top Czech business neobank offering instant digital business account creation for sole proprietors."
+        }
+      ]
+    },
+    {
+      "id": "kalkulacka-dpp-dpc-zdaneni-odvody",
+      "title_native": "Kalkulačka DPP a DPČ 2026 (Dohoda o provedení práce a pracovní činnosti)",
+      "title_en": "Czech DPP & DPČ Work Agreement Tax & Social Contribution Calculator",
+      "search_terms_native": [
+        "kalkulačka dpp a dpč 2026",
+        "dohoda o provedení práce daně",
+        "limit dpp odvody 2026",
+        "dohoda o pracovní činnosti kalkulačka",
+        "zdanění dpp bez podepsaného prohlášení",
+        "srážková daň dpp"
+      ],
+      "description_native": "Spočítejte si čistou odměnu, odvod daně z příjmů a povinné sociální a zdravotní pojištění u Dohody o provedení práce (DPP) a Dohody o pracovní činnosti (DPČ) podle aktuálních legislativních limitů 2026.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "agreement_type",
+          "label_native": "Typ dohody",
+          "type": "select",
+          "options": [
+            "DPP (Dohoda o provedení práce)",
+            "DPČ (Dohoda o pracovní činnosti)"
+          ]
+        },
+        {
+          "name": "monthly_remuneration",
+          "label_native": "Měsíční odměna (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tax_declaration_signed",
+          "label_native": "Podepsané prohlášení k dani (\"Růžový papír\")",
+          "type": "select",
+          "options": [
+            "Ano (uplatnit slevu na poplatníka 2 570 Kč)",
+            "Ne"
+          ]
+        },
+        {
+          "name": "other_dpp_employers",
+          "label_native": "Souběh s další DPP u jiného zaměstnavatele",
+          "type": "select",
+          "options": [
+            "Ne",
+            "Ano"
+          ]
+        }
+      ],
+      "formula_explanation": "DPP (Dohoda o provedení práce): Monthly threshold = 10,500 CZK per employer (or regulatory aggregate limit). Under threshold: No social insurance (0%) and no health insurance (0%) are deducted from employee or employer. If Tax Declaration signed, 15% advance tax minus 2,570 CZK taxpayer credit (often resulting in 0 CZK tax). If Tax Declaration NOT signed, 15% withholding tax (srážková daň) is deducted at source. Over threshold (>= 10,501 CZK): Subject to standard social (7.1% employee, 24.8% employer) and health insurance (4.5% employee, 9.0% employer) + 15% income tax with/without taxpayer discount. DPČ (Dohoda o pracovní činnosti): Monthly threshold = 4,000 CZK (rozhodný příjem). Under 4,000 CZK: No social/health insurance; 15% withholding tax (if declaration not signed) or advance tax with credit. From 4,000 CZK onwards: Standard social insurance (7.1% emp / 24.8% empor) and health insurance (4.5% emp / 9.0% empor) apply. Net Payout = Gross Remuneration - Employee Social - Employee Health - Income Tax.",
+      "affiliate_targets": [
+        {
+          "name": "Useme",
+          "type": "software",
+          "description": "Service allowing Czech freelancers and agreement workers to invoice clients legally without complex bureaucracy."
+        },
+        {
+          "name": "mBank Česká republika",
+          "type": "neobank",
+          "description": "Zero-maintenance account for part-time workers, students, and DPP/DPČ contractors."
+        },
+        {
+          "name": "Dostupný Advokát",
+          "type": "legal",
+          "description": "Czech online legal service providing compliant employment and DPP/DPČ contract templates."
+        }
+      ]
+    },
+    {
+      "id": "kalkulacka-hypoteky-a-dane-z-pronajmu",
+      "title_native": "Kalkulačka hypotéky, výnosu z pronájmu a daně z nemovitostí",
+      "title_en": "Czech Mortgage Repayment, Rental Yield & Property Tax Calculator",
+      "search_terms_native": [
+        "hypoteční kalkulačka 2026",
+        "daň z pronájmu kalkulačka",
+        "výpočet splátky hypotéky",
+        "daň z nemovitostí kalkulačka",
+        "paušální výdaje pronájem nemovitosti 30%",
+        "čistý výnos z pronájmu čr"
+      ],
+      "description_native": "Vypočítejte si měsíční splátku hypotéky v ČR, čistý roční výnos z pronájmu po odečtení daně z příjmů (§ 9 ZDP - paušál 30 % nebo skutečné výdaje), poplatků katastru a odhadu daně z nemovitých věcí.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Kupní cena nemovitosti (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "down_payment",
+          "label_native": "Vlastní zdroje / Akontace (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "loan_duration_years",
+          "label_native": "Doba splácení (roky)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "interest_rate",
+          "label_native": "Roční úroková sazba (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "expected_monthly_rent",
+          "label_native": "Očekávaný měsíční nájem (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "rental_expense_method",
+          "label_native": "Uplatnění výdajů u pronájmu (§ 9)",
+          "type": "select",
+          "options": [
+            "Paušální výdaje 30 % (max. 300 000 Kč)",
+            "Skutečné výdaje (úroky z hypotéky, odpisy, opravy)"
+          ]
+        },
+        {
+          "name": "annual_actual_expenses",
+          "label_native": "Skutečné roční výdaje v Kč (pokud zvoleno)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Mortgage Annuity Calculation: Loan Principal P = Property Price - Down Payment. Monthly interest rate r = Annual Rate / 12 / 100. Total payment periods n = Loan Duration Years * 12. Monthly Repayment A = P * [r(1+r)^n] / [(1+r)^n - 1]. Total Paid = A * n. Mortgage Interest Deductibility: Interest paid on mortgage for primary residence is tax-deductible up to 150,000 CZK/year tax base reduction. Rental Income Tax (§ 9 ZDP): Annual Gross Rental Income = Monthly Rent * 12. Deductible Expenses = 30% of Gross Rental (capped at 300,000 CZK) OR Actual Expenses (mortgage interest, property depreciation/odpisy, insurance, maintenance). Tax Base = Gross Rental Income - Expenses. Income Tax = 15% on Tax Base (or 23% if total income exceeds 36x average wage threshold). Real Estate Property Tax (Daň z nemovitých věcí): Annual local land/building tax based on floor area and municipal coefficient. Net Rental Yield (%) = [(Annual Gross Rent - Annual Expenses - Rental Tax - Property Tax) / Property Price] * 100.",
+      "affiliate_targets": [
+        {
+          "name": "Partners Banka",
+          "type": "neobank",
+          "description": "Czech advice-led neobank offering competitive mortgage rates and property financing solutions."
+        },
+        {
+          "name": "ePojisteni.cz",
+          "type": "software",
+          "description": "Leading Czech comparison platform for property insurance, home loans, and household coverage."
+        },
+        {
+          "name": "Raiffeisenbank ČR",
+          "type": "neobank",
+          "description": "Major Czech bank offering mortgage refinancing, property evaluation, and tailored real estate loans."
+        },
+        {
+          "name": "Dostupný Advokát",
+          "type": "legal",
+          "description": "Specialized Czech online legal firm providing real estate purchase contract review and escrow (úschova) services."
+        }
+      ]
+    },
+    {
+      "id": "kalkulacka-sro-zdaneni-zisku-a-dividend",
+      "title_native": "Kalkulačka s.r.o.: Zdanění zisku, podíl na zisku (dividendy) a srovnání s OSVČ",
+      "title_en": "Czech Corporate (s.r.o.) Tax, Dividend Distribution & OSVČ Comparison Calculator",
+      "search_terms_native": [
+        "kalkulačka zdanění sro 2026",
+        "vyplácení zisku sro kalkulačka",
+        "daň z příjmů právnických osob 21%",
+        "srážková daň z dividend sro",
+        "srovnání sro a osvč",
+        "odměna jednatele zdanění"
+      ],
+      "description_native": "Spočítejte efektivní zdanění zisku v s.r.o. v ČR s využitím 21% korporátní daně (DPPO) a 15% srážkové daně z dividend (vyplácení podílu na zisku). Porovnejte čistý výnos s odměnou jednatele nebo podnikáním jako OSVČ.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Roční tržby s.r.o. bez DPH (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_operating_costs",
+          "label_native": "Roční provozní náklady společnosti bez DPH (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "managing_director_fee",
+          "label_native": "Hrubá měsíční odměna jednatele / společníka (Kč)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "distribution_percentage",
+          "label_native": "Procento zisku po zdanění určené k výplatě dividend (%)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Corporate Tax Base (Základ daně s.r.o.) = Revenues - Operating Costs - Director Remuneration & Employer Contributions. Corporate Income Tax (Daň z příjmů právnických osob - DPPO) = 21% of Corporate Tax Base (rate updated under Konsolidační balíček). Net Corporate Profit after DPPO = Tax Base * (1 - 0.21). Dividend Distribution (Podíl na zisku): Distributed Amount = Net Profit * (Distribution Percentage / 100). Dividend Withholding Tax (Srážková daň z dividend) = 15% of Distributed Amount (for Czech tax resident individuals). Net Received Dividend = Distributed Amount * 0.85. Combined Effective Tax Rate on Distributed Profit = 21% DPPO + 15% withholding on remaining 79% = 32.85%. Alternative Director Remuneration (Odměna jednatele): Subject to social insurance (7.1% emp / 24.8% empor), health insurance (4.5% emp / 9.0% empor), and personal income tax (15%/23%), but fully deductible from s.r.o. corporate tax base. Calculator compares total net funds in owner's personal pocket from Dividend path vs Director Fee path vs OSVČ flat tax/rate equivalent.",
+      "affiliate_targets": [
+        {
+          "name": "ZaložSiSRO.cz",
+          "type": "legal",
+          "description": "Leading Czech online portal for fast, hassle-free s.r.o. company formation and notary coordination."
+        },
+        {
+          "name": "Fakturoid",
+          "type": "software",
+          "description": "Automated Czech accounting & invoicing tool with s.r.o. tax support and VAT (DPH) reports."
+        },
+        {
+          "name": "Raiffeisenbank ČR Business",
+          "type": "neobank",
+          "description": "Business account tailored for Czech s.r.o. companies with accounting software integrations."
+        },
+        {
+          "name": "ucto.cz",
+          "type": "accounting",
+          "description": "Professional Czech online accounting and tax advisory service for small s.r.o. businesses."
+        }
+      ]
+    }
+  ]
+}

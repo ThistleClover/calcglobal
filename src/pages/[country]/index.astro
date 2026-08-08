@@ -1,0 +1,100 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import fs from 'fs';
+import path from 'path';
+import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
+
+export function getStaticPaths() {
+  const dbDir = path.join(process.cwd(), 'database', 'countries');
+  const files = fs.readdirSync(dbDir).filter(f => f.endsWith('.json'));
+
+  return files
+    .map(file => {
+      const raw = fs.readFileSync(path.join(dbDir, file), 'utf-8');
+      const data = JSON.parse(raw);
+      const slug = data.country_code.toLowerCase();
+      if (!ACTIVE_COUNTRIES.includes(slug as any)) return null;
+      return { params: { country: slug }, props: { data } };
+    })
+    .filter(Boolean);
+}
+
+const { data } = Astro.props;
+const slug = data.country_code.toLowerCase();
+const meta = COUNTRY_METADATA[slug] || { lang: 'en', locale: 'en-US', currencySymbol: '$' };
+const flagCode = slug === 'uk' ? 'gb' : slug;
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.com/" },
+    { "@type": "ListItem", "position": 2, "name": data.country, "item": `https://calcglobal.com/${slug}/` }
+  ]
+};
+---
+
+<Layout
+  title={`${data.country} Tax Calculators 2026 | CalcGlobal`}
+  description={`Free, accurate ${data.country} tax, payroll and financial calculators updated for the 2026 tax year. Trusted by professionals.`}
+  lang={meta.lang}
+  structuredData={breadcrumbSchema}
+>
+  <!-- Hero -->
+  <div class="bg-slate-800 text-white pt-14 pb-20 px-4">
+    <div class="max-w-5xl mx-auto">
+      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2">
+        <a href="/" class="hover:text-white transition-colors">Home</a>
+        <span>/</span>
+        <span class="text-white font-medium">{data.country}</span>
+      </nav>
+      <div class="flex items-center gap-5">
+        <img
+          src={`https://flagcdn.com/w80/${flagCode}.png`}
+          alt={`${data.country} flag`}
+          class="w-16 h-12 object-cover rounded-lg shadow-lg border border-slate-600"
+        />
+        <div>
+          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">{data.country} Financial Calculators</h1>
+          <p class="text-slate-400 mt-2 text-base">2026/27 Tax Year — Verified rates from official authorities</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calculators Grid -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {data.calculators.map((calc: any) => (
+        <a
+          href={`/${slug}/${calc.id}`}
+          class="group bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col gap-4"
+        >
+          <div class="flex items-start justify-between">
+            <span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md uppercase tracking-wide">
+              {calc.category}
+            </span>
+            <span class="text-slate-300 group-hover:text-slate-500 transition-colors text-xl font-light">→</span>
+          </div>
+          <div>
+            <h2 class="text-base font-bold text-slate-900 group-hover:text-slate-700 transition-colors mb-2 leading-snug">
+              {calc.title_native}
+            </h2>
+            <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">
+              {calc.description_native}
+            </p>
+          </div>
+          {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
+            <div class="pt-3 border-t border-slate-100 flex items-center gap-2 flex-wrap">
+              {calc.affiliate_targets.slice(0, 3).map((p: any) => (
+                <span class="text-xs text-slate-400 bg-slate-50 border border-slate-200 px-2 py-1 rounded">
+                  {p.name}
+                </span>
+              ))}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>

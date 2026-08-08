@@ -1,0 +1,57 @@
+{
+  "country": "Jordan",
+  "country_code": "JO",
+  "languages": [
+    "ar"
+  ],
+  "currency": "JOD",
+  "calculators": [
+    {
+      "id": "jo-tax-payroll-calculator",
+      "title_native": "Jordan حاسبة ضريبة الدخل والضمان الاجتماعي الأردن",
+      "title_en": "Jordan حاسبة ضريبة الدخل والضمان الاجتماعي الأردن",
+      "search_terms_native": [
+        "jordan tax calculator",
+        "jordan salary calculator",
+        "income tax jo"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Jordan.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (JOD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Jordan revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Arab Bank",
+          "type": "software",
+          "description": "Top financial tool in Jordan"
+        },
+        {
+          "name": "Bank al Etihad",
+          "type": "software",
+          "description": "Top financial tool in Jordan"
+        }
+      ]
+    }
+  ]
+}

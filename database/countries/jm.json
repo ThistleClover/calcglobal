@@ -1,0 +1,57 @@
+{
+  "country": "Jamaica",
+  "country_code": "JM",
+  "languages": [
+    "en"
+  ],
+  "currency": "JMD",
+  "calculators": [
+    {
+      "id": "jm-tax-payroll-calculator",
+      "title_native": "Jamaica PAYE Income Tax & NHT Contribution Calculator",
+      "title_en": "Jamaica PAYE Income Tax & NHT Contribution Calculator",
+      "search_terms_native": [
+        "jamaica tax calculator",
+        "jamaica salary calculator",
+        "income tax jm"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Jamaica.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (JMD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Jamaica revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "NCB Jamaica",
+          "type": "software",
+          "description": "Top financial tool in Jamaica"
+        },
+        {
+          "name": "Sagicor",
+          "type": "software",
+          "description": "Top financial tool in Jamaica"
+        }
+      ]
+    }
+  ]
+}

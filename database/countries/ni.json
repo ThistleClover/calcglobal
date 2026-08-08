@@ -1,0 +1,57 @@
+{
+  "country": "Nicaragua",
+  "country_code": "NI",
+  "languages": [
+    "es"
+  ],
+  "currency": "NIO",
+  "calculators": [
+    {
+      "id": "ni-tax-payroll-calculator",
+      "title_native": "Nicaragua Calculadora IR e INSS Nicaragua",
+      "title_en": "Nicaragua Calculadora IR e INSS Nicaragua",
+      "search_terms_native": [
+        "nicaragua tax calculator",
+        "nicaragua salary calculator",
+        "income tax ni"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Nicaragua.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (NIO)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Nicaragua revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Banpro",
+          "type": "software",
+          "description": "Top financial tool in Nicaragua"
+        },
+        {
+          "name": "Lafise",
+          "type": "software",
+          "description": "Top financial tool in Nicaragua"
+        }
+      ]
+    }
+  ]
+}

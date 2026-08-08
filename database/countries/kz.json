@@ -1,0 +1,58 @@
+{
+  "country": "Kazakhstan",
+  "country_code": "KZ",
+  "languages": [
+    "kk",
+    "ru"
+  ],
+  "currency": "KZT",
+  "calculators": [
+    {
+      "id": "kz-tax-payroll-calculator",
+      "title_native": "Kazakhstan IPN Tax & OSMS Health Insurance Calculator",
+      "title_en": "Kazakhstan IPN Tax & OSMS Health Insurance Calculator",
+      "search_terms_native": [
+        "kazakhstan tax calculator",
+        "kazakhstan salary calculator",
+        "income tax kz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Kazakhstan.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (KZT)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Kazakhstan revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Kaspi.kz",
+          "type": "software",
+          "description": "Top financial tool in Kazakhstan"
+        },
+        {
+          "name": "Halyk Bank",
+          "type": "software",
+          "description": "Top financial tool in Kazakhstan"
+        }
+      ]
+    }
+  ]
+}

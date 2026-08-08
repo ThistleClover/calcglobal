@@ -1,0 +1,631 @@
+{
+  "country": "Indonesia",
+  "country_code": "ID",
+  "languages": [
+    "id",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "id-personal-income-tax-pph21-ter",
+      "title_native": "Kalkulator Pajak Penghasilan PPh 21 TER & PTKP Terbaru",
+      "title_en": "Indonesia Personal Income Tax & PPh 21 TER Monthly Withholding Calculator",
+      "search_terms_native": [
+        "kalkulator pph 21 ter 2024",
+        "kalkulator pajak penghasilan pph 21",
+        "hitung pph 21 ter pmk 168",
+        "kalkulator ptkp pajak 2024",
+        "cara hitung pajak penghasilan karyawan",
+        "simulasi pajak pph 21 online"
+      ],
+      "description_native": "Kalkulator pajak penghasilan orang pribadi (PPh 21) dan Tarif Efektif Rata-Rata (TER) bulanan sesuai PP 58/2023 dan PMK 168/2023. Hitung PTKP, potongan biaya jabatan, dan kewajiban pajak tahunan.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "Gaji Kotor & Tunjangan Bulanan (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_bonus_thr",
+          "label_native": "Bonus, THR & Tunjangan Hari Raya Tahunan (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ptkp_status",
+          "label_native": "Status Perkawinan & Tanggungan (PTKP)",
+          "type": "select",
+          "options": [
+            {
+              "value": "tk_0",
+              "label": "TK/0 - Tidak Kawin, 0 Tanggungan (Rp 54.000.000)"
+            },
+            {
+              "value": "tk_1",
+              "label": "TK/1 - Tidak Kawin, 1 Tanggungan (Rp 58.500.000)"
+            },
+            {
+              "value": "tk_2",
+              "label": "TK/2 - Tidak Kawin, 2 Tanggungan (Rp 63.000.000)"
+            },
+            {
+              "value": "tk_3",
+              "label": "TK/3 - Tidak Kawin, 3 Tanggungan (Rp 67.500.000)"
+            },
+            {
+              "value": "k_0",
+              "label": "K/0 - Kawin, 0 Tanggungan (Rp 58.500.000)"
+            },
+            {
+              "value": "k_1",
+              "label": "K/1 - Kawin, 1 Tanggungan (Rp 63.000.000)"
+            },
+            {
+              "value": "k_2",
+              "label": "K/2 - Kawin, 2 Tanggungan (Rp 67.500.000)"
+            },
+            {
+              "value": "k_3",
+              "label": "K/3 - Kawin, 3 Tanggungan (Rp 72.000.000)"
+            },
+            {
+              "value": "k_i_0",
+              "label": "K/I/0 - Kawin, Istri Bekerja Digabung (Rp 112.500.000)"
+            }
+          ]
+        },
+        {
+          "name": "has_npwp",
+          "label_native": "Kepemilikan NPWP / NIK Terintegrasi",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Memiliki NPWP / NIK Valid (Tarif Normal)"
+            },
+            {
+              "value": "no",
+              "label": "Tidak Memiliki NPWP (+20% Lebih Tinggi untuk PPh Non-TER)"
+            }
+          ]
+        },
+        {
+          "name": "occupational_deduction",
+          "label_native": "Potongan Biaya Jabatan (5% dari Gaji)",
+          "type": "select",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Otomatis Hitung (5% maks Rp 500.000/bulan atau Rp 6.000.000/tahun)"
+            },
+            {
+              "value": "none",
+              "label": "Tidak Ada (Bukan Pegawai Tetap / Tenaga Lepas)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates Indonesia Personal Income Tax (PPh 21) under UU Harmonisasi Peraturan Perpajakan (HPP) and Government Regulation PP 58/2023 / PMK 168/2023 TER (Tarif Efektif Rata-Rata) withholding scheme. 1. Annual Gross Income = (Monthly Gross Salary * 12) + Annual Bonus/THR. 2. Deductions: Biaya Jabatan = Min(5% * Annual Gross Salary, Rp 6,000,000). 3. Annual Net Income = Annual Gross Income - Biaya Jabatan. 4. Chargeable Income (PKP - Penghasilan Kena Pajak) = Max(0, Annual Net Income - PTKP Amount). 5. UU HPP Annual Tax Brackets: First Rp 60,000,000 @ 5%; Next Rp 190,000,000 (Rp 60,000,001 to Rp 250,000,000) @ 15%; Next Rp 250,000,000 (Rp 250,000,001 to Rp 500,000,000) @ 25%; Next Rp 4,500,000,000 (Rp 500,000,001 to Rp 5,000,000,000) @ 30%; Portion exceeding Rp 5,000,000,000 @ 35%. Non-NPWP penalty adds 20% to final tax liability for non-TER regular calculations. 6. Monthly Withholding TER Category: Category A (TK/0, TK/1, K/0); Category B (TK/2, TK/3, K/1, K/2); Category C (K/3). Monthly TER rate is applied directly to monthly gross income for months 1-11, with month 12 reconciling the annual progressive tax.",
+      "affiliate_targets": [
+        {
+          "name": "OnlinePajak",
+          "type": "software",
+          "description": "Leading Indonesian cloud tax compliance platform for preparing, paying, and e-Filing SPT PPh 21."
+        },
+        {
+          "name": "Mekari Jurnal",
+          "type": "software",
+          "description": "Integrated cloud accounting and payroll management software compliant with PMK 168 TER PPh 21."
+        },
+        {
+          "name": "Bibit.id",
+          "type": "software",
+          "description": "OJK-registered robo-advisor helping Indonesian taxpayers build wealth through tax-advantaged mutual funds and SBR bonds."
+        },
+        {
+          "name": "Bank Jago",
+          "type": "neobank",
+          "description": "Indonesian digital bank providing automated pocket budgeting for personal income tax reserves."
+        }
+      ]
+    },
+    {
+      "id": "id-net-salary-bpjs-payroll",
+      "title_native": "Kalkulator Gaji Bersih (Take-Home Pay) & Potongan BPJS Ketenagakerjaan/Kesehatan",
+      "title_en": "Indonesia Net Salary (Take-Home Pay) & BPJS Statutory Deductions Calculator",
+      "search_terms_native": [
+        "kalkulator gaji bersih indonesia",
+        "kalkulator bpjs ketenagakerjaan dan kesehatan",
+        "hitung gaji bersih take home pay",
+        "kalkulator potongan bpjs karyawan",
+        "simulasi gaji bersih pph 21",
+        "kalkulator gaji kotor ke bersih"
+      ],
+      "description_native": "Hitung gaji bersih yang diterima pekerja (take-home pay) setelah dipotong BPJS Kesehatan (1%), BPJS Ketenagakerjaan (JHT 2%, JP 1%), dan pajak PPh 21 TER bulanan serta kewajiban iuran perusahaan.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_base_salary",
+          "label_native": "Gaji Pokok & Tunjangan Tetap Bulanan (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ptkp_status",
+          "label_native": "Status PTKP (Kategori TER PPh 21)",
+          "type": "select",
+          "options": [
+            {
+              "value": "tk_0",
+              "label": "TK/0 (Kategori A TER)"
+            },
+            {
+              "value": "tk_1",
+              "label": "TK/1 (Kategori A TER)"
+            },
+            {
+              "value": "k_0",
+              "label": "K/0 (Kategori A TER)"
+            },
+            {
+              "value": "tk_2",
+              "label": "TK/2 (Kategori B TER)"
+            },
+            {
+              "value": "tk_3",
+              "label": "TK/3 (Kategori B TER)"
+            },
+            {
+              "value": "k_1",
+              "label": "K/1 (Kategori B TER)"
+            },
+            {
+              "value": "k_2",
+              "label": "K/2 (Kategori B TER)"
+            },
+            {
+              "value": "k_3",
+              "label": "K/3 (Kategori C TER)"
+            }
+          ]
+        },
+        {
+          "name": "bpjs_kesehatan_enrolled",
+          "label_native": "Status BPJS Kesehatan (5% total: 1% Karyawan, 4% Perusahaan)",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ya (Batas Gaji Maksimal Rp 12.000.000)"
+            },
+            {
+              "value": "no",
+              "label": "Tidak"
+            }
+          ]
+        },
+        {
+          "name": "bpjs_jp_enrolled",
+          "label_native": "Status BPJS Jaminan Pensiun (JP) (3% total: 1% Karyawan, 2% Perusahaan)",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Ya (Batas Gaji Maksimal Rp 10.042.300)"
+            },
+            {
+              "value": "no",
+              "label": "Tidak"
+            }
+          ]
+        },
+        {
+          "name": "jkk_risk_grade",
+          "label_native": "Tingkat Risiko BPJS JKK (Iuran Perusahaan)",
+          "type": "select",
+          "options": [
+            {
+              "value": "very_low",
+              "label": "Sangat Rendah (0.24% dari Gaji)"
+            },
+            {
+              "value": "low",
+              "label": "Rendah (0.54% dari Gaji)"
+            },
+            {
+              "value": "medium",
+              "label": "Sedang (0.89% dari Gaji)"
+            },
+            {
+              "value": "high",
+              "label": "Tinggi (1.27% dari Gaji)"
+            },
+            {
+              "value": "very_high",
+              "label": "Sangat Tinggi (1.74% dari Gaji)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates monthly net take-home salary and statutory employer/employee social security contributions under Law No. 24 of 2011 (BPJS) and labor regulations. 1. Employee BPJS Deductions: BPJS Kesehatan = 1% * Min(Monthly Base Salary, Rp 12,000,000); BPJS JHT (Jaminan Hari Tua) = 2% * Monthly Base Salary (no cap); BPJS JP (Jaminan Pensiun) = 1% * Min(Monthly Base Salary, Rp 10,042,300). 2. Employer BPJS Contributions: BPJS Kesehatan = 4% * Min(Monthly Base Salary, Rp 12,000,000); BPJS JHT = 3.7% * Monthly Base Salary; BPJS JP = 2% * Min(Monthly Base Salary, Rp 10,042,300); BPJS JKK = Selected Risk Rate (0.24% to 1.74%) * Monthly Base Salary; BPJS JK (Jaminan Kematian) = 0.30% * Monthly Base Salary. 3. Monthly Tax Deduction (PPh 21 TER): Calculated based on monthly gross taxable salary applied against PMK 168/2023 TER withholding tables for Category A, B, or C. 4. Net Monthly Salary (Take-Home Pay) = Monthly Base Salary - Employee BPJS Kesehatan - Employee JHT - Employee JP - Monthly PPh 21 TER Tax. Total Employer Cost of Employment = Monthly Base Salary + Employer BPJS Total.",
+      "affiliate_targets": [
+        {
+          "name": "Mekari Talenta",
+          "type": "software",
+          "description": "Indonesian cloud payroll & HR platform automating monthly BPJS Ketenagakerjaan/Kesehatan and PPh 21 TER withholdings."
+        },
+        {
+          "name": "Gadjian",
+          "type": "software",
+          "description": "Payroll software tailored for Indonesian SMEs to simplify BPJS compliance and direct salary disbursement."
+        },
+        {
+          "name": "Paper.id",
+          "type": "software",
+          "description": "Digital invoicing and automated business payment platform for managing team payroll and contractor disbursements."
+        },
+        {
+          "name": "Wise Indonesia",
+          "type": "neobank",
+          "description": "Multi-currency business account for paying Indonesian employee salaries and international contractors with low conversion fees."
+        }
+      ]
+    },
+    {
+      "id": "id-severance-pay-uu-ciptakerja",
+      "title_native": "Kalkulator Pesangon PHK & Uang Penghargaan Masa Kerja (UU Cipta Kerja / PP 35)",
+      "title_en": "Indonesia Severance Pay & Employee Termination Compensation Calculator (PP 35/2021)",
+      "search_terms_native": [
+        "kalkulator pesangon phk",
+        "hitung pesangon uu cipta kerja pp 35",
+        "kalkulator uang penghargaan masa kerja upmk",
+        "simulasi pesangon pensiun dan phk",
+        "pajak pph 21 final pesangon",
+        "kalkulator kompensasi pkwt"
+      ],
+      "description_native": "Hitung estimasi Uang Pesangon (UP), Uang Penghargaan Masa Kerja (UPMK), Uang Penggantian Hak (UPH), dan Pajak PPh 21 Final atas Pesangon berdasarkan PP No. 35 Tahun 2021 (UU Cipta Kerja).",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "monthly_wage",
+          "label_native": "Upah Bulanan (Gaji Pokok + Tunjangan Tetap) (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "Masa Kerja (Tahun)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "months_of_service_extra",
+          "label_native": "Sisa Bulan Masa Kerja (0-11 Bulan)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "termination_reason",
+          "label_native": "Alasan Pemutusan Hubungan Kerja (PHK)",
+          "type": "select",
+          "options": [
+            {
+              "value": "effisiensi_kerugian",
+              "label": "Efisiensi karena Perusahaan Rugi / Tutup (UP 1x, UPMK 1x)"
+            },
+            {
+              "value": "effisiensi_cegah_rugi",
+              "label": "Efisiensi untuk Mencegah Kerugian (UP 1x, UPMK 1x)"
+            },
+            {
+              "value": "peleburan_penggabungan",
+              "label": "Peleburan / Penggabungan Perusahaan (UP 1x, UPMK 1x)"
+            },
+            {
+              "value": "perusahaan_pailit",
+              "label": "Perusahaan Pailit / Bankrut (UP 0.5x, UPMK 1x)"
+            },
+            {
+              "value": "pensiun",
+              "label": "Pekerja Memasuki Usia Pensiun (UP 1.75x, UPMK 1x)"
+            },
+            {
+              "value": "pekerja_sakit_menahun",
+              "label": "Pekerja Sakit Menahun / Cacat Total (UP 2x, UPMK 1x)"
+            },
+            {
+              "value": "pekerja_meninggal",
+              "label": "Pekerja Meninggal Dunia (UP 2x, UPMK 1x)"
+            },
+            {
+              "value": "pelanggaran_sp",
+              "label": "Pelanggaran Surat Peringatan SP3 (UP 0.5x, UPMK 1x)"
+            },
+            {
+              "value": "resign_voluntary",
+              "label": "Resign / Mengundurkan Diri Sukarela (Hanya UPH & Uang Pisah)"
+            }
+          ]
+        },
+        {
+          "name": "unused_leave_days",
+          "label_native": "Jumlah Hari Cuti Tahunan Belum Diambil",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "working_days_per_month",
+          "label_native": "Jumlah Hari Kerja per Bulan (untuk Hitung Cuti)",
+          "type": "select",
+          "options": [
+            {
+              "value": "21",
+              "label": "21 Hari Kerja (5 Hari Kerja/Minggu)"
+            },
+            {
+              "value": "25",
+              "label": "25 Hari Kerja (6 Hari Kerja/Minggu)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates employee termination compensation under Government Regulation PP No. 35 Year 2021 (implementing Law No. 11/2020 & Perppu 2/2022 Job Creation / UU Cipta Kerja) and Final PPh 21 tax withholding rules. 1. Base Severance Pay (Uang Pesangon - UP): Service < 1 year = 1 month wage; 1 to <2 years = 2 months; 2 to <3 years = 3 months; 3 to <4 years = 4 months; 4 to <5 years = 5 months; 5 to <6 years = 6 months; 6 to <7 years = 7 months; 7 to <8 years = 8 months; >= 8 years = 9 months. Base UP is multiplied by the specific termination reason factor (0.5x, 1.0x, 1.75x, or 2.0x). 2. Service Recognition Pay (Uang Penghargaan Masa Kerja - UPMK): Service < 3 years = 0; 3 to <6 years = 2 months; 6 to <9 years = 3 months; 9 to <12 years = 4 months; 12 to <15 years = 5 months; 15 to <18 years = 6 months; 18 to <21 years = 7 months; 21 to <24 years = 8 months; >= 24 years = 10 months. UPMK is multiplied by the termination reason factor (typically 1.0x). 3. Rights Compensation Pay (Uang Penggantian Hak - UPH): (Unused Annual Leave Days / Working Days per Month) * Monthly Wage + Relocation/Repatriation Cost. 4. Gross Severance Package = Adjusted UP + Adjusted UPMK + UPH. 5. Final Tax on Severance (PPh 21 Final atas Pesangon): First Rp 50,000,000 @ 0%; Rp 50,000,001 to Rp 100,000,000 @ 5%; Rp 100,000,001 to Rp 500,000,000 @ 15%; Amount exceeding Rp 500,000,000 @ 25%. Net Severance Received = Gross Severance Package - Final Tax.",
+      "affiliate_targets": [
+        {
+          "name": "Justika",
+          "type": "legal",
+          "description": "Indonesian online legal platform providing expert labor law consultations and severance dispute resolution services."
+        },
+        {
+          "name": "Kontrak Hukum",
+          "type": "legal",
+          "description": "Legal tech service offering formal company employment termination agreements and labor compliance advisory."
+        },
+        {
+          "name": "Mekari Talenta",
+          "type": "software",
+          "description": "Enterprise HR software automating statutory severance payouts and tax withholdings compliant with PP 35/2021."
+        },
+        {
+          "name": "Pluang",
+          "type": "software",
+          "description": "Multi-asset investment app for newly severed employees to safeguard capital in government securities, gold, and mutual funds."
+        }
+      ]
+    },
+    {
+      "id": "id-umkm-final-tax-nppn-freelance",
+      "title_native": "Kalkulator Pajak UMKM (PPh Final 0.5%) & Pajak Freelancer / Pekerja Bebas (NPPN)",
+      "title_en": "Indonesia MSME Final Tax (0.5%) & Freelance Net Calculation (NPPN) Calculator",
+      "search_terms_native": [
+        "kalkulator pajak umkm 0 5 persen",
+        "kalkulator pajak freelancer nppn",
+        "hitung pph final pp 55 2022",
+        "bebas pajak umkm 500 juta",
+        "kalkulator pajak pekerja lepas indonesia",
+        "simulasi pph umkm per bulan"
+      ],
+      "description_native": "Kira pajak penghasilan untuk UMKM (PPh Final 0.5% PP 55/2022 dengan batas bebas pajak Rp 500 juta bagi WP OP) dan pajak freelancer/tenaga ahli menggunakan Norma Penghitungan Penghasilan Netto (NPPN).",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "taxpayer_type",
+          "label_native": "Kategori Wajib Pajak",
+          "type": "select",
+          "options": [
+            {
+              "value": "umkm_individual",
+              "label": "UMKM Orang Pribadi (WP OP - Bebas Pajak s.d Rp 500 Juta/Tahun)"
+            },
+            {
+              "value": "umkm_corporate",
+              "label": "UMKM Badan (CV / PT - PPh Final 0.5% dari Omzet)"
+            },
+            {
+              "value": "freelancer_nppn",
+              "label": "Freelancer / Pekerja Bebas / Tenaga Ahli (Norma NPPN)"
+            }
+          ]
+        },
+        {
+          "name": "annual_gross_revenue",
+          "label_native": "Omzet / Peredaran Bruto Tahunan (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "freelancer_profession_category",
+          "label_native": "Kategori Profesi Freelancer (Norma NPPN)",
+          "type": "select",
+          "options": [
+            {
+              "value": "consultant_lawyer_accounting",
+              "label": "Konsultan / Pengacara / Akuntan / Dokter (Norma Netto 50%)"
+            },
+            {
+              "value": "designer_programmer_writer",
+              "label": "Desainer / Programmer / Penulis / Creator (Norma Netto 50%)"
+            },
+            {
+              "value": "agent_broker",
+              "label": "Agen Asuransi / Perantara / Broker (Norma Netto 50%)"
+            },
+            {
+              "value": "art_entertainer",
+              "label": "Seniman / Artis / Musisi (Norma Netto 50%)"
+            },
+            {
+              "value": "other_services",
+              "label": "Jasa Pekerjaan Bebas Lainnya (Norma Netto 45%)"
+            }
+          ]
+        },
+        {
+          "name": "ptkp_status",
+          "label_native": "Status PTKP (Khusus Freelancer NPPN)",
+          "type": "select",
+          "options": [
+            {
+              "value": "tk_0",
+              "label": "TK/0 - Tidak Kawin, 0 Tanggungan (Rp 54.000.000)"
+            },
+            {
+              "value": "tk_1",
+              "label": "TK/1 - Tidak Kawin, 1 Tanggungan (Rp 58.500.000)"
+            },
+            {
+              "value": "k_0",
+              "label": "K/0 - Kawin, 0 Tanggungan (Rp 58.500.000)"
+            },
+            {
+              "value": "k_1",
+              "label": "K/1 - Kawin, 1 Tanggungan (Rp 63.000.000)"
+            },
+            {
+              "value": "k_2",
+              "label": "K/2 - Kawin, 2 Tanggungan (Rp 67.500.000)"
+            },
+            {
+              "value": "k_3",
+              "label": "K/3 - Kawin, 3 Tanggungan (Rp 72.000.000)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates small business and freelancer income tax liabilities under Government Regulation PP 55/2022 (replacing PP 23/2018) and DGT Regulation PER-17/PJ/2015 for Net Income Calculation Norms (NPPN). 1. Individual MSME (WP OP UMKM): Under PP 55/2022, gross annual revenue up to Rp 500,000,000 is 100% EXEMPT from income tax. Any gross turnover above Rp 500,000,000 (up to the Rp 4.8 Billion annual ceiling) is taxed at 0.5% Final PPh rate. 2. Corporate MSME (CV/PT): 0.5% Final PPh applies directly to 100% of gross annual turnover without the Rp 500,000,000 exemption. 3. Independent Freelancer / Professional (NPPN): Net Income = Annual Gross Revenue * Applicable NPPN Rate (typically 50% for 10 major provincial capitals like Jakarta, Surabaya, Bandung). Chargeable Income (PKP) = Max(0, Net Income - Selected PTKP Amount). Income tax is computed using UU HPP progressive tax brackets (5% up to 60M, 15% 60M-250M, 25% 250M-500M, 30% 500M-5B, 35% >5B).",
+      "affiliate_targets": [
+        {
+          "name": "Paper.id",
+          "type": "software",
+          "description": "Invoicing, payment processing, and digital bookkeeping app designed for Indonesian MSMEs and independent freelancers."
+        },
+        {
+          "name": "Aspire Indonesia",
+          "type": "neobank",
+          "description": "All-in-one business account and expense management platform tailored for Indonesian startups and MSMEs."
+        },
+        {
+          "name": "OnlinePajak",
+          "type": "software",
+          "description": "Cloud tax compliance platform for generating e-Billing payment codes and filing annual PPh Final 0.5% and SPT 1770."
+        },
+        {
+          "name": "Legaligo",
+          "type": "legal",
+          "description": "Digital legal portal for registering PT / CV business entities and obtaining NIB licensing in Indonesia."
+        }
+      ]
+    },
+    {
+      "id": "id-property-bphtb-pphat-notary-fee",
+      "title_native": "Kalkulator BPHTB, Pajak Penjual PPh 2.5% & Biaya Notaris PPAT Jual Beli Rumah",
+      "title_en": "Indonesia Property Transaction Tax (BPHTB & PPh Final 2.5%) & Legal Fees Calculator",
+      "search_terms_native": [
+        "kalkulator bphtb jual beli rumah",
+        "kalkulator pajak penjual dan pembeli rumah",
+        "hitung bphtb npoptkp jakarta",
+        "biaya notaris ppat akta jual beli ajb",
+        "pajak pph 2 5 persen pengalihan hak tanah",
+        "kalkulator balik nama sertifikat rumah"
+      ],
+      "description_native": "Kira biaya transaksi jual beli rumah di Indonesia: Bea Perolehan Hak atas Tanah dan Bangunan (BPHTB) pembeli, PPh Final 2.5% penjual, biaya akta Notaris/PPAT, dan PNBP balik nama sertifikat.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "transaction_price",
+          "label_native": "Harga Transaksi Jual Beli / Nilai Perolehan Objek Pajak (NPOP in Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "njop_value",
+          "label_native": "Nilai Jual Objek Pajak (NJOP) PBB (Rp)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "region_npoptkp",
+          "label_native": "Lokasi Wilayah & Nilai NPOPTKP (Batas Bebas Pajak Pembeli)",
+          "type": "select",
+          "options": [
+            {
+              "value": "jakarta",
+              "label": "DKI Jakarta (NPOPTKP Rp 80.000.000 / Waris Rp 350.000.000)"
+            },
+            {
+              "value": "bogor_depok_tangerang_bekasi",
+              "label": "Bodetabek (NPOPTKP Rp 60.000.000)"
+            },
+            {
+              "value": "surabaya_bandung_medan",
+              "label": "Kota Besar (Surabaya / Bandung / Medan - NPOPTKP Rp 60.000.000)"
+            },
+            {
+              "value": "other_region",
+              "label": "Wilayah Lainnya (NPOPTKP Standard Rp 60.000.000)"
+            }
+          ]
+        },
+        {
+          "name": "acquisition_type",
+          "label_native": "Jenis Perolehan Hak",
+          "type": "select",
+          "options": [
+            {
+              "value": "jual_beli",
+              "label": "Jual Beli Biasa (Standard Property Purchase)"
+            },
+            {
+              "value": "hibah_waris",
+              "label": "Hibah Wasiat / Waris (Inheritance / Gift)"
+            }
+          ]
+        },
+        {
+          "name": "ppat_fee_rate",
+          "label_native": "Biaya Pembuatan Akta PPAT (Notaris)",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard_1",
+              "label": "1.0% (Batas Maksimal Permen ATR/BPN No. 33/2021)"
+            },
+            {
+              "value": "negotiated_0_75",
+              "label": "0.75% (Kadar Negosiasi Standard)"
+            },
+            {
+              "value": "discount_0_5",
+              "label": "0.5% (Kadar Diskon Transaksi Besar)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates property acquisition taxes and legal fees for real estate transactions in Indonesia under Law No. 1 of 2022 (HKPD), Government Regulation PP 34/2016, and ATR/BPN Ministry Regulation No. 33/2021. 1. Base Property Valuation (NPOP - Nilai Perolehan Objek Pajak): Higher of Transaction Price or Government NJOP Value. 2. Buyer Tax (BPHTB - Bea Perolehan Hak atas Tanah dan Bangunan): Taxable NPOP (NPOPKP) = Max(0, NPOP - Selected Region NPOPTKP). BPHTB Payable = NPOPKP * 5%. 3. Seller Tax (PPh Final Pengalihan Hak atas Tanah dan/atau Bangunan): 2.5% of Gross NPOP. 4. Notary / PPAT Fee (Biaya Akta Jual Beli - AJB): NPOP * Selected PPAT Rate (0.5% to 1.0%) + 11% PPN (VAT) on service fee. 5. BPN Certificate Title Transfer Administrative Fee (PNBP Balik Nama Sertifikat): PNBP = (NPOP / 1,000) + Rp 50,000 + Rp 50,000 (Title Verification). Total Upfront Buyer Cash Required = Transaction Price + BPHTB + PPAT Fees + PNBP Balik Nama. Net Cash Received by Seller = Transaction Price - Seller PPh Final (2.5%) - Seller Agent/Legal Fees.",
+      "affiliate_targets": [
+        {
+          "name": "Rumah123",
+          "type": "software",
+          "description": "Indonesia's leading real estate marketplace for property buyers, sellers, and KPR mortgage pre-approval."
+        },
+        {
+          "name": "Lamudi Indonesia",
+          "type": "software",
+          "description": "Premier online property portal connecting Indonesian home buyers with developers and legal advisors."
+        },
+        {
+          "name": "BCA KPR",
+          "type": "neobank",
+          "description": "Largest private mortgage lender in Indonesia offering competitive KPR interest rates and online approval."
+        },
+        {
+          "name": "Bank Mandiri KPR",
+          "type": "neobank",
+          "description": "State-owned Indonesian bank providing comprehensive property financing and appraisal services."
+        }
+      ]
+    }
+  ]
+}

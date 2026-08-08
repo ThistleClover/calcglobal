@@ -1,0 +1,62 @@
+{
+  "country": "Nepal",
+  "country_code": "NP",
+  "languages": [
+    "ne"
+  ],
+  "currency": "NPR",
+  "calculators": [
+    {
+      "id": "np-tax-payroll-calculator",
+      "title_native": "Nepal Income Tax & Social Security Fund SSF Calculator",
+      "title_en": "Nepal Income Tax & Social Security Fund SSF Calculator",
+      "search_terms_native": [
+        "nepal tax calculator",
+        "nepal salary calculator",
+        "income tax np"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Nepal.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (NPR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Nepal revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "eSewa",
+          "type": "software",
+          "description": "Top financial tool in Nepal"
+        },
+        {
+          "name": "Khalti",
+          "type": "software",
+          "description": "Top financial tool in Nepal"
+        },
+        {
+          "name": "Nabil Bank",
+          "type": "software",
+          "description": "Top financial tool in Nepal"
+        }
+      ]
+    }
+  ]
+}

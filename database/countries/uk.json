@@ -1,0 +1,532 @@
+{
+  "country": "United Kingdom",
+  "country_code": "UK",
+  "languages": [
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "ir35-inside-outside-calculator",
+      "title_native": "UK IR35 Status & Take-Home Pay Calculator (Inside vs Outside IR35)",
+      "title_en": "UK IR35 Status & Take-Home Pay Calculator (Inside vs Outside IR35)",
+      "search_terms_native": [
+        "ir35 calculator 2026",
+        "inside vs outside ir35 take home pay calculator",
+        "contractor dividend calculator uk",
+        "umbrella company pay calculator",
+        "off payroll working tax calculation",
+        "ir35 net pay comparison calculator"
+      ],
+      "description_native": "Calculate and compare your net take-home pay as a UK IT/engineering contractor working Inside IR35 (via PAYE or Umbrella Company with Employer's NI, Apprenticeship Levy, and fee margins) versus Outside IR35 (via Personal Service Company / Ltd Company with optimal salary £12,570, Corporation Tax, and Dividend Tax).",
+      "category": "employment",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "ir35-inside-outside-calculator"
+        },
+        {
+          "name": "day_rate",
+          "label_native": "Daily Contract Rate (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "working_days_per_year",
+          "label_native": "Working Days Per Year (e.g. 220-230)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "umbrella_margin_weekly",
+          "label_native": "Umbrella Company Weekly Margin Fee (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_expenses_annual",
+          "label_native": "Allowable Annual Business Expenses for PSC (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pension_contribution_annual",
+          "label_native": "Annual Pension Contribution via PSC Salary Sacrifice / Company Contribution (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_taxable_income",
+          "label_native": "Other Personal Taxable Income (£/year)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Outside IR35 (PSC): Director Salary £12,570 (uses Personal Allowance, no Employee NI). Corporation Tax 19% on profits up to £50k, 25% over £250k, with Marginal Relief between £50k-£250k. Dividend allowance £500, with dividend tax at 8.75% basic, 33.75% higher, and 39.35% additional rate. Inside IR35 (Umbrella): Deducts Umbrella fee, Employer NI (13.8% above £9,100), and Apprenticeship Levy (0.5%) from gross rate before calculating employee PAYE income tax and Employee NI (8%/2%).",
+      "article_faq": [
+        {
+          "question": "What is IR35 and how does it affect contractors?",
+          "answer": "IR35 (the 'Off-Payroll Working Rules') is UK tax legislation designed to prevent contractors from avoiding income tax and National Insurance by operating through a Personal Service Company (PSC). If HMRC determines your contract is 'inside IR35', you are treated as a deemed employee — paying Income Tax and NICs via PAYE just like an employee. If you are 'outside IR35', you run a Ltd company, pay yourself an optimal salary and dividends, resulting in higher net take-home pay."
+        },
+        {
+          "question": "What is the Corporation Tax rate for a PSC in 2026/27?",
+          "answer": "Corporation Tax for 2026/27 is 19% on profits up to £50,000, and 25% on profits above £250,000. For profits between £50,000 and £250,000, Marginal Relief applies, creating an effective rate that tapers from 19% to 25%. The optimal director salary for a PSC is £12,570 (equal to the Personal Allowance) as it triggers no Income Tax and no Employee NI, while maintaining State Pension credits."
+        },
+        {
+          "question": "What is the dividend allowance and dividend tax rates for 2026/27?",
+          "answer": "The dividend allowance for 2026/27 is £500 — dividends up to this amount are tax-free. Above the allowance, dividend tax rates are 8.75% (Basic Rate band), 33.75% (Higher Rate band), and 39.35% (Additional Rate for income above £125,140)."
+        },
+        {
+          "question": "What are the Employer NI and Apprenticeship Levy rates in 2026/27?",
+          "answer": "Under inside IR35 (umbrella company), Employer's National Insurance is 13.8% on earnings above the Secondary Threshold (£9,100/year). The Apprenticeship Levy adds a further 0.5% of total gross wage. These employer costs are deducted from your gross assignment fee before paying your employee salary."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Crunch Accounting",
+          "type": "accounting",
+          "url": "https://www.crunch.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Specialist UK contractor accounting packages with full IR35 guidance, PSC setup, and proactive tax planning."
+        },
+        {
+          "name": "PayStream",
+          "type": "software",
+          "url": "https://www.paystream.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "FCSA-accredited top UK umbrella company for compliant inside IR35 payroll with clear fee structures."
+        },
+        {
+          "name": "Qdos Contractor",
+          "type": "insurance",
+          "url": "https://qdoscontractor.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading UK IR35 contract review, SDS status determination, and tax investigation insurance for contractors."
+        },
+        {
+          "name": "Tide Business Banking",
+          "type": "neobank",
+          "url": "https://www.tide.co/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK digital business account with instant setup, free bank transfers, and seamless Xero/FreeAgent integration."
+        },
+        {
+          "name": "FreeAgent",
+          "type": "software",
+          "url": "https://www.freeagent.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Award-winning UK cloud accounting built for contractors — handles CT600, Self Assessment, VAT returns, and dividend management."
+        }
+      ]
+    },
+    {
+      "id": "sdlt-lbtt-ltt-stamp-duty-calculator",
+      "title_native": "UK Stamp Duty Land Tax (SDLT / LBTT / LTT) Property Calculator",
+      "title_en": "UK Stamp Duty Land Tax (SDLT / LBTT / LTT) Property Calculator",
+      "search_terms_native": [
+        "stamp duty calculator uk 2026",
+        "sdlt calculator england",
+        "lbtt calculator scotland property tax",
+        "land transaction tax calculator wales",
+        "first time buyer stamp duty relief",
+        "buy to let additional property stamp duty surcharge"
+      ],
+      "description_native": "Calculate property transaction taxes across all UK nations: Stamp Duty Land Tax (SDLT in England & NI), Land and Buildings Transaction Tax (LBTT in Scotland), and Land Transaction Tax (LTT in Wales), accounting for First-Time Buyer relief, additional residential property surcharges (3% / 6%), and non-UK resident surcharges.",
+      "category": "real_estate",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "sdlt-lbtt-ltt-stamp-duty-calculator"
+        },
+        {
+          "name": "property_price",
+          "label_native": "Property Purchase Price (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_location",
+          "label_native": "UK Jurisdiction",
+          "type": "select",
+          "options": [
+            { "value": "england_ni", "label": "England & Northern Ireland (SDLT)" },
+            { "value": "scotland", "label": "Scotland (LBTT)" },
+            { "value": "wales", "label": "Wales (LTT)" }
+          ]
+        },
+        {
+          "name": "buyer_type",
+          "label_native": "Buyer Status",
+          "type": "select",
+          "options": [
+            { "value": "first_time", "label": "First-Time Buyer (Main Residence)" },
+            { "value": "next_home", "label": "Moving Home / Standard Residential Purchaser" },
+            { "value": "additional_property", "label": "Additional Property (Buy-to-Let / Second Home)" },
+            { "value": "company", "label": "Company / Corporate Purchaser" }
+          ]
+        },
+        {
+          "name": "is_non_uk_resident",
+          "label_native": "Is the buyer a Non-UK Resident?",
+          "type": "select",
+          "options": [
+            { "value": "no", "label": "No (UK Resident)" },
+            { "value": "yes", "label": "Yes (+2% SDLT Surcharge in England/NI)" }
+          ]
+        }
+      ],
+      "formula_explanation": "England & Northern Ireland SDLT 2026/27: Standard rates: £0–£125k 0%, £125k–£250k 2%, £250k–£925k 5%, £925k–£1.5m 10%, >£1.5m 12%. First-Time Buyer Relief: 0% up to £425,000, 5% on £425,000–£625,000 (no relief above £625k). Additional Property / Company Surcharge: +3% across all bands. Non-UK Resident Surcharge: +2% extra. Scotland LBTT: £0–£145k 0%, £145k–£250k 2%, £250k–£325k 5%, £325k–£750k 10%, >£750k 12% (FTB relief threshold £175k). Scotland Additional Dwelling Supplement (ADS): flat 6% surcharge on total price for second homes. Wales LTT: £0–£225k 0%, £225k–£400k 6%, £400k–£750k 7.5%, £750k–£1.5m 10%, >£1.5m 12% (Higher rates for additional properties: 4% to 16%).",
+      "article_faq": [
+        {
+          "question": "What are the SDLT tax rates for England and Northern Ireland in 2026/27?",
+          "answer": "For main residence buyers in England & NI, standard SDLT rates are: 0% on the first £125,000, 2% from £125,001 to £250,000, 5% from £250,001 to £925,000, 10% from £925,001 to £1,500,000, and 12% on the portion above £1.5 million."
+        },
+        {
+          "question": "How does First-Time Buyer Stamp Duty relief work in 2026?",
+          "answer": "First-time buyers in England & NI pay 0% SDLT on property purchases up to £425,000 and 5% on the portion between £425,000 and £625,000. If the purchase price exceeds £625,000, no relief is available and standard SDLT rates apply to the entire amount. In Scotland, LBTT FTB relief raises the zero-tax threshold to £175,000."
+        },
+        {
+          "question": "What is the additional property surcharge for buy-to-let or second homes?",
+          "answer": "In England and Northern Ireland, purchasing an additional residential property (or via a limited company) incurs a 3% surcharge on top of standard SDLT rates. In Scotland, the Additional Dwelling Supplement (ADS) is a 6% flat surcharge on the total purchase price. In Wales, Higher Residential Rates apply starting at 4%."
+        },
+        {
+          "question": "When must Stamp Duty be paid after completing a property purchase?",
+          "answer": "SDLT / LBTT / LTT returns must be submitted and tax paid to HMRC / Revenue Scotland / Welsh Revenue Authority within 14 days of property transaction completion. Conveyancing solicitors usually submit this on your behalf."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Halifax Mortgages",
+          "type": "accounting",
+          "url": "https://www.halifax.co.uk/mortgages.html?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading UK mortgage lender offering competitive fixed and tracker rates for home movers and first-time buyers."
+        },
+        {
+          "name": "L&C Mortgages (London & Country)",
+          "type": "accounting",
+          "url": "https://www.landc.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK's largest fee-free mortgage broker comparing rates across over 90 lenders."
+        },
+        {
+          "name": "Habito",
+          "type": "software",
+          "url": "https://www.habito.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Digital mortgage broker and conveyancing service providing instant property buyer quotes."
+        },
+        {
+          "name": "Mortgage Advice Bureau",
+          "type": "accounting",
+          "url": "https://www.mortgageadvicebureau.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Award-winning UK network of independent mortgage advisers."
+        },
+        {
+          "name": "Conveyancing Direct",
+          "type": "insurance",
+          "url": "https://www.conveyancingdirect.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Specialist UK residential property conveyancing solicitors with fixed transparent fees."
+        }
+      ]
+    },
+    {
+      "id": "uk-gross-net-salary-pension-calculator",
+      "title_native": "UK Take-Home Salary & Tax Calculator (Income Tax, NI & Pension)",
+      "title_en": "UK Take-Home Salary & Tax Calculator (Income Tax, NI & Pension)",
+      "search_terms_native": [
+        "salary calculator uk 2026",
+        "take home pay calculator uk",
+        "scottish income tax calculator",
+        "student loan repayment calculator uk plan 2 plan 5",
+        "salary sacrifice pension tax savings calculator",
+        "tax code 1257l calculator monthly net"
+      ],
+      "description_native": "Calculate your exact monthly and annual net salary in the UK across England, Wales, Northern Ireland, and Scotland. Features full support for Tax Code adjustments, Salary Sacrifice pensions, Student Loan Plans 1/2/4/5 & PG, and the £100k Personal Allowance taper trap.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "uk-gross-net-salary-pension-calculator"
+        },
+        {
+          "name": "gross_annual",
+          "label_native": "Annual Gross Salary (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pension_contribution_pct",
+          "label_native": "Pension Contribution (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "student_loan_plan",
+          "label_native": "Student Loan Repayment Plan",
+          "type": "select",
+          "options": [
+            { "value": "none", "label": "No Student Loan" },
+            { "value": "plan1", "label": "Plan 1 (Threshold £24,990 - 9%)" },
+            { "value": "plan2", "label": "Plan 2 (Threshold £27,295 - 9%)" },
+            { "value": "plan4", "label": "Plan 4 - Scotland (Threshold £31,395 - 9%)" },
+            { "value": "plan5", "label": "Plan 5 - Post-2023 (Threshold £25,000 - 9%)" },
+            { "value": "postgrad", "label": "Postgraduate Loan (Threshold £21,000 - 6%)" }
+          ]
+        },
+        {
+          "name": "blind_persons_allowance",
+          "label_native": "Claim Blind Person's Allowance?",
+          "type": "select",
+          "options": [
+            { "value": "no", "label": "No" },
+            { "value": "yes", "label": "Yes (+£3,130 Allowance)" }
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Salary minus Salary Sacrifice Pension Contribution = Taxable/NIable Gross. Personal Allowance 2026/27 = £12,570 (+£3,130 for Blind Person's Allowance). Allowance Taper: For income > £100,000, PA is reduced by £1 for every £2 over £100k (0 at £125,140, creating 60% effective marginal tax). Income Tax: Basic 20% (£12,570–£50,270), Higher 40% (£50,270–£125,140), Additional 45% (>£125,140). Employee NI (Class 1 Primary): 8% on £12,570–£50,270, 2% above £50,270. Student Loan: 9% above threshold (Plan 1: £24,990, Plan 2: £27,295, Plan 5: £25,000) or 6% for Postgraduate (threshold £21,000). Net Take-Home = Gross - Pension - Income Tax - Employee NI - Student Loan.",
+      "article_faq": [
+        {
+          "question": "What are the UK Income Tax bands and rates for 2026/27?",
+          "answer": "The standard Personal Allowance for 2026/27 is £12,570. Taxable income above PA is taxed at: 20% (Basic Rate: £12,571 to £50,270), 40% (Higher Rate: £50,271 to £125,140), and 45% (Additional Rate: above £125,140)."
+        },
+        {
+          "question": "What is the Employee National Insurance rate for 2026/27?",
+          "answer": "Employee National Insurance (Class 1) is 8% on annual earnings between the Primary Threshold (£12,570) and the Upper Earnings Limit (£50,270). Any earnings above £50,270 are subject to a 2% NI rate."
+        },
+        {
+          "question": "How does pension Salary Sacrifice save on tax and NI?",
+          "answer": "Under Salary Sacrifice, your pension contribution is deducted from your gross salary before Income Tax and National Insurance are calculated. This reduces both your Income Tax bill (saving 20%, 40%, or 45%) AND your Employee NI bill (saving 8% or 2%)."
+        },
+        {
+          "question": "What is the £100,000 Personal Allowance taper trap?",
+          "answer": "If your taxable income exceeds £100,000, your Personal Allowance (£12,570) drops by £1 for every £2 earned above £100,000, disappearing completely at £125,140. This creates an effective marginal tax rate of 60% (40% income tax + 20% loss of allowance) on earnings between £100k and £125,140."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Monzo",
+          "type": "neobank",
+          "url": "https://www.monzo.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Popular UK neobank offering Salary Sorter, fee-free budgeting, and automated savings pots."
+        },
+        {
+          "name": "Starling Bank",
+          "type": "neobank",
+          "url": "https://www.starlingbank.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Award-winning UK digital current account with zero foreign fees and instant spending notifications."
+        },
+        {
+          "name": "Penfold Pension",
+          "type": "software",
+          "url": "https://getpenfold.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK digital pension provider allowing employees and self-employed workers to combine and grow workplace pensions."
+        },
+        {
+          "name": "Nutmeg",
+          "type": "neobank",
+          "url": "https://www.nutmeg.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading UK robo-advisor for Stocks & Shares ISAs, General Investment Accounts, and SIPPs."
+        },
+        {
+          "name": "Taxfix UK",
+          "type": "software",
+          "url": "https://taxfix.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK self-assessment tax return software for reclaiming overpaid employee PAYE tax."
+        }
+      ]
+    },
+    {
+      "id": "uk-limited-company-director-salary-dividend-calculator",
+      "title_native": "UK Limited Company Director Salary vs Dividend Tax Optimizer",
+      "title_en": "UK Limited Company Director Salary vs Dividend Tax Optimizer",
+      "search_terms_native": [
+        "optimum salary and dividend calculator 2026 uk",
+        "limited company tax calculator director pay",
+        "corporation tax marginal relief calculator uk",
+        "small business dividend tax calculator",
+        "director salary secondary threshold 9100 vs 12570",
+        "how much tax do i pay on dividends limited company"
+      ],
+      "description_native": "Optimize director remuneration for UK limited companies. Calculate the optimal split between Director's Salary (£9,100 vs £12,570) and Dividends, taking into account Corporation Tax main rate (25%), small profits rate (19%), marginal relief, Employer/Employee NI, Personal Allowance, and Dividend Tax bands.",
+      "category": "business",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "uk-limited-company-director-salary-dividend-calculator"
+        },
+        {
+          "name": "annual_company_profit",
+          "label_native": "Company Net Profit Before Director Pay (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_income",
+          "label_native": "Other Personal Taxable Income (£/year)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pension_company_contribution",
+          "label_native": "Company Pension Contribution (£/year)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Company Level: Optimal Director Salary = £12,570. Employer NI @ 13.8% applies on salary above Secondary Threshold (£9,100) = £478.86. Total Employment Cost = £13,048.86. Taxable Corporate Profit = Profit - Pension - Employment Cost. Corporation Tax: 19% up to £50k, 25% over £250k, Marginal Relief between £50k and £250k. Retained Profit = Taxable Profit - CT. Director Personal Level: Salary £12,570 utilizes Personal Allowance (£0 Income Tax & £0 Employee NI). First £500 dividends tax-free. Taxable Dividends taxed at 8.75% basic rate, 33.75% higher rate, 39.35% additional rate. Net Take-Home = Salary + Dividends - Dividend Tax.",
+      "article_faq": [
+        {
+          "question": "Why is £12,570 the optimal director salary in 2026/27?",
+          "answer": "A director salary of £12,570 equals the standard Personal Allowance for 2026/27. At this level, you pay £0 Income Tax and £0 Employee NI. While Employer's NI of £478.86 (13.8% above £9,100) is payable by the company, the full salary and Employer NI are tax-deductible expenses for Corporation Tax, and the salary qualifies you for a UK State Pension qualifying year."
+        },
+        {
+          "question": "What are the Corporation Tax rates and Marginal Relief bands for 2026/27?",
+          "answer": "Corporation Tax is 19% on taxable company profits up to £50,000 (Small Profits Rate) and 25% on profits over £250,000 (Main Rate). Profits between £50,000 and £250,000 receive Marginal Relief, resulting in an effective tax rate between 19% and 25%."
+        },
+        {
+          "question": "What is the dividend tax allowance and dividend tax rates for 2026/27?",
+          "answer": "The UK dividend tax allowance is £500 for 2026/27. Dividends above £500 are taxed at: 8.75% within the Basic Rate band, 33.75% within the Higher Rate band, and 39.35% within the Additional Rate band."
+        },
+        {
+          "question": "Can a limited company make direct pension contributions for directors?",
+          "answer": "Yes. Direct company contributions to a director's pension are treated as allowable business expenses, reducing taxable profit for Corporation Tax while incurring no Income Tax or National Insurance for the director."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Crunch Accounting",
+          "type": "accounting",
+          "url": "https://www.crunch.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Specialist UK contractor & limited company accounting packages with full CT600 tax planning."
+        },
+        {
+          "name": "FreeAgent",
+          "type": "software",
+          "url": "https://www.freeagent.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Award-winning UK cloud accounting software built for limited companies and directors."
+        },
+        {
+          "name": "Xero UK",
+          "type": "software",
+          "url": "https://www.xero.com/uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading cloud accounting software for UK small business owners and limited company directors."
+        },
+        {
+          "name": "QuickBooks UK",
+          "type": "software",
+          "url": "https://quickbooks.intuit.com/uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Comprehensive small business invoicing, payroll, and corporate tax software in the UK."
+        },
+        {
+          "name": "Tide Business Account",
+          "type": "neobank",
+          "url": "https://www.tide.co/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Free UK business bank account with direct Xero/QuickBooks sync and expense management."
+        }
+      ]
+    },
+    {
+      "id": "uk-statutory-redundancy-settlement-calculator",
+      "title_native": "UK Statutory Redundancy Pay & Settlement Agreement Tax Calculator",
+      "title_en": "UK Statutory Redundancy Pay & Settlement Agreement Tax Calculator",
+      "search_terms_native": [
+        "redundancy pay calculator uk 2026",
+        "statutory redundancy pay formula capped weekly rate",
+        "settlement agreement 30000 tax exemption uk",
+        "pay in lieu of notice pilon tax calculation",
+        "compromise agreement tax calculator employment law",
+        "how much statutory redundancy do i get"
+      ],
+      "description_native": "Calculate your statutory redundancy pay entitlement under UK employment law, assess ex-gratia payments, and calculate tax/NI obligations for settlement agreements including the £30,000 tax-free exemption under Section 401 ITEPA 2003 and PILON rules.",
+      "category": "legal",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "uk-statutory-redundancy-settlement-calculator"
+        },
+        {
+          "name": "weekly_pay",
+          "label_native": "Actual Gross Weekly Pay (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "Years of Continuous Service (max 20)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "age_at_redundancy",
+          "label_native": "Employee Age at Redundancy Date",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ex_gratia_severance_offer",
+          "label_native": "Enhanced / Ex-Gratia Severance Pay Offered (£)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pilon_payment",
+          "label_native": "Pay in Lieu of Notice (PILON) (£)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Statutory Redundancy Pay (Employment Rights Act 1996): Minimum 2 years continuous service required (max 20 years counted). Weekly pay capped at £700/week (2026 cap). Multiplier by age: 0.5 week per year worked under age 22; 1.0 week per year worked aged 22–40; 1.5 weeks per year worked aged 41+. Maximum statutory payout = 30 weeks × £700 = £21,000. Section 401 ITEPA 2003 Exemption: Statutory redundancy and enhanced ex-gratia payments are 100% tax-free up to £30,000. Excess over £30,000 is subject to Income Tax. PILON (Pay in Lieu of Notice) is 100% taxable earnings under PAYE.",
+      "article_faq": [
+        {
+          "question": "What is the statutory redundancy pay formula for 2026?",
+          "answer": "To qualify, you must have at least 2 full years of continuous service. Your weekly pay is statutorily capped at £700 per week, and a maximum of 20 years of service is counted. You receive: 0.5 week's pay for each year worked under age 22; 1 week's pay for each year worked aged 22 to 40; and 1.5 weeks' pay for each year worked aged 41 or over. The maximum statutory redundancy payment is £21,000."
+        },
+        {
+          "question": "Is redundancy pay tax-free in the UK?",
+          "answer": "Under Section 401 ITEPA 2003, statutory redundancy pay and genuine ex-gratia severance payments are tax-free up to £30,000. Any severance amount exceeding £30,000 is subject to Income Tax at your marginal rate, but remains exempt from Employee National Insurance."
+        },
+        {
+          "question": "Is Pay in Lieu of Notice (PILON) taxable?",
+          "answer": "Yes. Pay in Lieu of Notice (PILON) and accrued holiday pay are classified as Post-Employment Notice Pay (PENP) and standard earnings, making them fully subject to PAYE Income Tax and Employee National Insurance."
+        },
+        {
+          "question": "Do I qualify for redundancy pay if I have worked less than 2 years?",
+          "answer": "Under UK employment law, employees with less than 2 years of continuous service have no statutory entitlement to redundancy pay, though your employment contract or settlement agreement may offer contractual severance."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Slater and Gordon Lawyers UK",
+          "type": "accounting",
+          "url": "https://www.slatergordon.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading UK employment law firm advising employees on settlement agreements and redundancy negotiations."
+        },
+        {
+          "name": "Samuels Solicitors",
+          "type": "accounting",
+          "url": "https://www.samuels-solicitors.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Specialist UK employment law practice reviewing compromise agreements with employer-paid fee coverage."
+        },
+        {
+          "name": "DAS Legal Expenses Insurance",
+          "type": "insurance",
+          "url": "https://www.das.co.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK's premier legal protection insurer providing coverage for employment tribunals and redundancy disputes."
+        },
+        {
+          "name": "Unison Legal",
+          "type": "insurance",
+          "url": "https://www.unison.org.uk/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "UK trade union legal advice network for workplace rights and redundancy representation."
+        }
+      ]
+    }
+  ]
+}

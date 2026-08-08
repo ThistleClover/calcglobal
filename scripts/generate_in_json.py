@@ -1,0 +1,541 @@
+import json
+
+data = {
+  "country": "India",
+  "country_code": "IN",
+  "languages": [
+    "en",
+    "hi"
+  ],
+  "calculators": [
+    {
+      "id": "income-tax-new-vs-old-regime-india",
+      "title_native": "आयकर कैलकुलेटर: नई बनाम पुरानी कर व्यवस्था (FY 2025-26 / AY 2026-27)",
+      "title_en": "India Income Tax Calculator (New vs. Old Tax Regime FY 2025-26)",
+      "search_terms_native": [
+        "आयकर कैलकुलेटर 2025-26",
+        "income tax calculator new vs old regime india",
+        "new tax regime slab 2025-26 calculator",
+        "incometax calculator fy 2025 26",
+        "HRA and 80C tax saving calculator",
+        "धारा 87A छूट कैलकुलेटर"
+      ],
+      "description_native": "वित्तीय वर्ष 2025-26 (कर निर्धारण वर्ष 2026-27) के लिए नई कर व्यवस्था और पुरानी कर व्यवस्था के तहत आयकर देयता, 80C/80D कटौती, एचआरए छूट और धारा 87A रिबेट की सटीक तुलना करें।",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_annual_salary",
+          "label_native": "Gross Annual Income / कुल वार्षिक आय (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "age_category",
+          "label_native": "Age Group / आयु वर्ग",
+          "type": "select",
+          "options": [
+            {
+              "value": "below_60",
+              "label": "Below 60 years (सामान्य नागरिक)"
+            },
+            {
+              "value": "senior_60_to_80",
+              "label": "Senior Citizen (60 to 80 years)"
+            },
+            {
+              "value": "super_senior_above_80",
+              "label": "Super Senior Citizen (Above 80 years)"
+            }
+          ]
+        },
+        {
+          "name": "basic_salary_annual",
+          "label_native": "Annual Basic Salary / वार्षिक मूल वेतन (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "hra_received_annual",
+          "label_native": "HRA Received per Annum / मकान किराया भत्ता (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "rent_paid_annual",
+          "label_native": "Actual Annual Rent Paid / वार्षिक किराए का भुगतान (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_metro_city",
+          "label_native": "City of Residence for HRA / निवास स्थान (एचआरए हेतु)",
+          "type": "select",
+          "options": [
+            {
+              "value": "metro",
+              "label": "Metro City (Delhi, Mumbai, Kolkata, Chennai - 50%)"
+            },
+            {
+              "value": "non_metro",
+              "label": "Non-Metro City (Other Cities - 40%)"
+            }
+          ]
+        },
+        {
+          "name": "section_80c_deductions",
+          "label_native": "Section 80C Investments (PPF, ELSS, EPF, LIC) / धारा 80C (₹, max 1.5L)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "section_80d_health_insurance",
+          "label_native": "Section 80D Medical Insurance Premiums / धारा 80D स्वास्थ्य बीमा (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "home_loan_interest_sec24b",
+          "label_native": "Home Loan Interest u/s 24(b) / गृह ऋण ब्याज (₹, max 2L)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "nps_sec_80ccd_1b",
+          "label_native": "NPS Investment u/s 80CCD(1B) / एनपीएस अतिरिक्त योगदान (₹, max 50k)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Compares income tax liability under the New Tax Regime (Default for FY 2025-26 / AY 2026-27) and the Old Tax Regime.\n\n1. New Tax Regime Calculation:\n- Standard Deduction u/s 16(ia) = ₹75,000 for salaried employees.\n- Taxable Income (New) = Gross Salary - ₹75,000.\n- Slabs (FY 2025-26):\n  * ₹0 to ₹3,00,000: Nil (0%)\n  * ₹3,00,001 to ₹7,00,000: 5%\n  * ₹7,00,001 to ₹10,00,000: 10%\n  * ₹10,00,001 to ₹12,00,000: 15%\n  * ₹12,00,001 to ₹15,00,000: 20%\n  * Above ₹15,00,000: 30%\n- Section 87A Tax Rebate (New Regime): If Net Taxable Income <= ₹7,00,000, full tax rebate up to ₹25,000 is granted (Net Tax = ₹0). Marginal relief is computed if income marginally exceeds ₹7,00,000. Combined with ₹75,00,000 standard deduction, gross income up to ₹7,75,000 incurs zero tax liability.\n\n2. Old Tax Regime Calculation:\n- Standard Deduction = ₹50,000.\n- HRA Exemption u/s 10(13A) = Minimum of:\n  a) Actual HRA Received\n  b) Rent Paid - 10% of Basic Salary\n  c) 50% of Basic Salary (Metro) or 40% (Non-Metro)\n- Deductions Allowed: Section 80C (Capped at ₹1,50,000), Section 80D (Capped at ₹25,000 for self/family + ₹25,000/₹50,000 for parents), Section 24(b) Home Loan Interest (Capped at ₹2,00,000 for self-occupied), Section 80CCD(1B) NPS (Capped at ₹50,000).\n- Total Deductions (Old) = ₹50,000 + HRA Exemption + 80C + 80D + Sec 24(b) + 80CCD(1B).\n- Taxable Income (Old) = Max(0, Gross Salary - Total Deductions).\n- Slabs (Old Regime - Below 60 yrs):\n  * ₹0 to ₹2,50,000: Nil (0%)\n  * ₹2,50,001 to ₹5,00,000: 5%\n  * ₹5,00,001 to ₹10,00,000: 20%\n  * Above ₹10,00,000: 30%\n- Section 87A Rebate (Old Regime): If Net Taxable Income <= ₹5,00,000, full tax rebate up to ₹12,500 is granted.\n\n3. Cess & Final Tax Comparison:\n- Health & Education Cess of 4% is added to the calculated tax (after 87A rebate and applicable surcharge) in both regimes.\n- The calculator outputs net tax under both regimes and highlights exact tax savings.",
+      "affiliate_targets": [
+        {
+          "name": "ClearTax India",
+          "type": "software",
+          "description": "India's leading income tax filing platform for salaried employees, freelancers, and investors with auto-import from Form 16."
+        },
+        {
+          "name": "Quicko",
+          "type": "software",
+          "description": "Modern tax planning and ITR filing portal tailored for salaried individuals, stock market traders, and crypto investors."
+        },
+        {
+          "name": "Policybazaar",
+          "type": "insurance",
+          "description": "India's top insurance marketplace to purchase Section 80D health insurance and Section 80C term insurance tax-saving plans."
+        },
+        {
+          "name": "RazorpayX",
+          "type": "neobank",
+          "description": "Business banking and automated payroll processing with built-in TDS and Form 16 generation."
+        }
+      ]
+    },
+    {
+      "id": "gratuity-act-calculation-india",
+      "title_native": "पेमेंट ऑफ ग्रेच्युटी एक्ट 1972 कैलकुलेटर - Gratuity Calculation India",
+      "title_en": "Payment of Gratuity Act Calculation India",
+      "search_terms_native": [
+        "ग्रेच्युटी कैलकुलेटर भारत",
+        "gratuity formula calculator india 15/26",
+        "payment of gratuity act tax exemption 20 lakhs",
+        "gratuity calculation after 5 years",
+        "ग्रेच्युटी की गणना कैसे करें",
+        "eosb gratuity calculator india"
+      ],
+      "description_native": "पेमेंट ऑफ ग्रेच्युटी एक्ट 1972 के तहत अपनी ग्रेच्युटी राशि और धारा 10(10) के तहत ₹20 लाख तक कर-मुक्त (Tax-Free) छूट सीमा की तुरंत गणना करें।",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "last_drawn_basic_da",
+          "label_native": "Last Drawn Monthly Basic + DA / अंतिम मासिक मूल वेतन एवं महंगाई भत्ता (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "completed_years_service",
+          "label_native": "Completed Years of Service / कुल सेवा वर्ष",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "remaining_months_service",
+          "label_native": "Additional Months Served in Final Year / अंतिम वर्ष के अतिरिक्त महीने (0-11)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "establishment_coverage",
+          "label_native": "Establishment Coverage / संस्थान का प्रकार",
+          "type": "select",
+          "options": [
+            {
+              "value": "covered_under_act",
+              "label": "Covered under Gratuity Act 1972 (10+ employees - 15/26 rule)"
+            },
+            {
+              "value": "not_covered",
+              "label": "Not Covered under Gratuity Act (15/30 rule)"
+            },
+            {
+              "value": "government_employee",
+              "label": "Central / State Government Employee (100% Tax Free)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates statutory gratuity payable upon resignation, retirement, or termination under the Payment of Gratuity Act, 1972 and computes income tax exemption under Section 10(10) of the Income Tax Act.\n\n1. Eligibility Condition:\n- Minimum 5 years of continuous service with the same employer is mandatory (waived in cases of death or permanent disablement).\n\n2. Rounding of Service Tenure (Covered Employees):\n- Under Section 4(2) of the Act, if the employee has served more than 6 months in the final incomplete year, it is rounded up to 1 full year (e.g., 7 years 7 months = 8 years). If <= 6 months, extra months are discarded.\n\n3. Formula for Covered Establishment (10+ Employees):\n- Gratuity Amount = (15 / 26) * (Last Drawn Monthly Basic Salary + Dearness Allowance) * Effective Tenure Years.\n- Here, 15 represents days of salary and 26 represents working days per month.\n\n4. Formula for Non-Covered Establishment:\n- Effective Tenure = Completed full years only (no rounding up of months).\n- Gratuity Amount = (15 / 30) * (Average Monthly Salary of Last 10 Months) * Completed Years.\n\n5. Income Tax Exemption u/s 10(10):\n- For Central/State Government employees, 100% of gratuity is tax-exempt.\n- For Non-Government employees, tax-exempt gratuity is the MINIMUM of:\n  a) Actual Gratuity Amount Received\n  b) Statutory Gratuity Formula Amount\n  c) Lifetime Statutory Ceiling Cap of ₹20,00,000 (₹20 Lakhs).\n- Taxable Gratuity = Actual Gratuity Received - Tax-Exempt Gratuity.",
+      "affiliate_targets": [
+        {
+          "name": "Keka HR",
+          "type": "software",
+          "description": "India's leading payroll and HRMS platform with automated gratuity ledger tracking and statutory compliance."
+        },
+        {
+          "name": "Razorpay Payroll",
+          "type": "software",
+          "description": "Automated payroll for Indian businesses managing EPF, ESI, TDS, and gratuity payouts seamlessly."
+        },
+        {
+          "name": "HDFC Life / NPS",
+          "type": "insurance",
+          "description": "Retirement annuity and annuity plan providers for reinvesting lump-sum gratuity tax-free."
+        }
+      ]
+    },
+    {
+      "id": "section-44ada-44ad-presumptive-taxation-india",
+      "title_native": "धारा 44ADA और 44AD अनुमानित कर कैलकुलेटर - Section 44ADA & 44AD Presumptive Tax Calculator",
+      "title_en": "Section 44ADA & 44AD Presumptive Taxation Calculator for Freelancers & SMEs",
+      "search_terms_native": [
+        "section 44ada tax calculator 2025-26",
+        "44ad 6 percent 8 percent tax calculation",
+        "फ्रीलांसर इनकम टैक्स कैलकुलेटर 50%",
+        "presumptive tax calculator for software developers india",
+        "44ada turn over limit 75 lakh rule",
+        "छोटा व्यापार अनुमानित कर कैलकुलेटर"
+      ],
+      "description_native": "आईटी फ्रीलांसर्स, डॉक्टरों, वकीलों (44ADA - 50% आय) और छोटे व्यापारियों (44AD - 6%/8% आय) के लिए अनुमानित कर (Presumptive Tax) व्यवस्था के तहत कर देयता की गणना करें।",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "tax_scheme",
+          "label_native": "Presumptive Tax Section / आयकर धारा का चयन",
+          "type": "select",
+          "options": [
+            {
+              "value": "sec_44ada",
+              "label": "Section 44ADA - Specified Professionals (Freelancers, IT Consultants, Doctors, Lawyers)"
+            },
+            {
+              "value": "sec_44ad",
+              "label": "Section 44AD - Small Businesses & Retail Traders"
+            }
+          ]
+        },
+        {
+          "name": "digital_gross_receipts",
+          "label_native": "Digital / Bank Receipts / ऑनलाइन एवं बैंक ट्रांजैक्शन से प्राप्त आय (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "cash_gross_receipts",
+          "label_native": "Cash Gross Receipts / नकद प्राप्त आय (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "chosen_tax_regime",
+          "label_native": "Income Tax Regime / कर व्यवस्था",
+          "type": "select",
+          "options": [
+            {
+              "value": "new_regime",
+              "label": "New Tax Regime (Default)"
+            },
+            {
+              "value": "old_regime",
+              "label": "Old Tax Regime (With 80C/80D Deductions)"
+            }
+          ]
+        },
+        {
+          "name": "old_regime_deductions",
+          "label_native": "Deductions u/s 80C/80D for Old Regime / पुरानी व्यवस्था की कटौतियां (₹)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Computes presumptive taxable income and final tax liability for professionals (u/s 44ADA) and small businesses (u/s 44AD) under the Indian Income Tax Act 1961.\n\n1. Section 44ADA Rules (Specified Professionals):\n- Eligible Professions: IT consultants, software engineers, doctors, lawyers, architects, interior decorators, chartered accountants.\n- Turnover Threshold: Gross receipts up to ₹75,00,000 (₹75 Lakhs) if aggregate digital/banking receipts >= 95% of total receipts; otherwise threshold is ₹50,00,000 (₹50 Lakhs).\n- Presumptive Income Rate: 50% of total gross receipts (Digital + Cash). Assessee can voluntarily declare higher profit.\n- Key Benefit: Exemption from maintaining detailed books of accounts u/s 44AA and tax audit u/s 44AB.\n\n2. Section 44AD Rules (Small Businesses):\n- Eligible Businesses: Retail traders, wholesalers, manufacturers, service providers (excluding specified professionals and agency/commission agents).\n- Turnover Threshold: Gross turnover up to ₹3,00,00,000 (₹3 Crores) if digital receipts >= 95%; otherwise threshold is ₹2,00,00,000 (₹2 Crores).\n- Presumptive Income Rate: 6% for digital/account payee banking receipts + 8% for cash receipts.\n\n3. Tax Liability & Advance Tax Computation:\n- Under New Regime: Net Taxable Income = Deemed Income - ₹75,000 Standard Deduction (if individual/HUF). Tax applied per New Regime Slabs & 87A Rebate.\n- Under Old Regime: Net Taxable Income = Max(0, Deemed Income - Std Ded - 80C/80D Deductions). Tax applied per Old Slabs & 87A Rebate.\n- Advance Tax Requirement: Assessees under 44ADA/44AD must pay 100% of their estimated advance tax liability on or before 15th March of the financial year to avoid interest penalties u/s 234C.",
+      "affiliate_targets": [
+        {
+          "name": "ClearTax India",
+          "type": "software",
+          "description": "Automated ITR-4 filing software built for Section 44ADA freelancers and Section 44AD small business proprietors."
+        },
+        {
+          "name": "Zoho Books",
+          "type": "accounting",
+          "description": "GST-compliant cloud accounting software ideal for managing digital invoices, bank reconciliations, and 95% digital receipts threshold tracking."
+        },
+        {
+          "name": "RazorpayX",
+          "type": "neobank",
+          "description": "Digital business banking account with automated vendor payouts, tax payments, and freelance invoicing."
+        },
+        {
+          "name": "IndiaFilings",
+          "type": "legal",
+          "description": "Assisted legal service for sole proprietorship and LLP tax filing, GST registration, and compliance."
+        }
+      ]
+    },
+    {
+      "id": "stamp-duty-property-registration-tds-194ia-india",
+      "title_native": "संपत्ति पंजीकरण, स्टांप शुल्क एवं धारा 194IA TDS कैलकुलेटर - Property Registration & TDS Calculator",
+      "title_en": "India Property Stamp Duty, Registration & Section 194IA TDS Calculator",
+      "search_terms_native": [
+        "stamp duty and registration charges calculator india",
+        "tds on property purchase calculator 194ia 1 percent",
+        "मकान रजिस्ट्री खर्चा कैलकुलेटर 2026",
+        "property stamp duty calculator maharashtra delhi karnataka",
+        "50 lakh property tds calculation form 26QB",
+        "महिला संपत्ति स्टांप शुल्क छूट"
+      ],
+      "description_native": "भारत के विभिन्न राज्यों में मकान या जमीन खरीद पर स्टांप शुल्क (Stamp Duty), पंजीकरण शुल्क (Registration Fee) और 50 लाख रुपये से अधिक की संपत्ति पर धारा 194IA के तहत 1% TDS की गणना करें।",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_sale_value",
+          "label_native": "Property Agreement Value / संपत्ति का अनुबंध मूल्य (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_state",
+          "label_native": "State / राज्य का चयन",
+          "type": "select",
+          "options": [
+            {
+              "value": "maharashtra",
+              "label": "Maharashtra (Stamp Duty 5%-7%, Reg 1% max 30k)"
+            },
+            {
+              "value": "delhi",
+              "label": "Delhi NCR (Stamp Duty 4%-6%, Reg 1%)"
+            },
+            {
+              "value": "karnataka",
+              "label": "Karnataka (Stamp Duty 3%-5%, Reg 1%)"
+            },
+            {
+              "value": "tamil_nadu",
+              "label": "Tamil Nadu (Stamp Duty 7%, Reg 4%)"
+            },
+            {
+              "value": "uttar_pradesh",
+              "label": "Uttar Pradesh (Stamp Duty 7%, Reg 1%)"
+            },
+            {
+              "value": "haryana",
+              "label": "Haryana (Stamp Duty 5%-7%, Reg 1%)"
+            },
+            {
+              "value": "west_bengal",
+              "label": "West Bengal (Stamp Duty 4%-6%, Reg 1%)"
+            },
+            {
+              "value": "gujarat",
+              "label": "Gujarat (Stamp Duty 4.9%, Reg 1%)"
+            }
+          ]
+        },
+        {
+          "name": "buyer_ownership",
+          "label_native": "Buyer Gender / क्रेता का प्रकार",
+          "type": "select",
+          "options": [
+            {
+              "value": "male_owner",
+              "label": "Male Owner (Full Stamp Duty Rate)"
+            },
+            {
+              "value": "female_owner",
+              "label": "Female Owner (1%-2% State Discount)"
+            },
+            {
+              "value": "joint_male_female",
+              "label": "Joint Ownership (Male & Female Concession)"
+            }
+          ]
+        },
+        {
+          "name": "seller_pan_status",
+          "label_native": "Seller PAN Availability / विक्रेता पैन कार्ड स्थिति",
+          "type": "select",
+          "options": [
+            {
+              "value": "pan_available",
+              "label": "PAN Provided (Standard 1% TDS u/s 194IA)"
+            },
+            {
+              "value": "pan_missing",
+              "label": "No PAN / Invalid PAN (20% Higher TDS u/s 206AA)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates total upfront cash outflow for real estate property acquisition in India including Stamp Duty, Registration Charges, and mandatory Section 194IA Tax Deducted at Source (TDS).\n\n1. Stamp Duty Calculation:\n- Varies by State and Gender Concessions:\n  * Maharashtra: 6% Male / 5% Female (includes 1% Local Body Tax / Metro Cess in municipal areas).\n  * Delhi: 6% Male / 4% Female / 5% Joint.\n  * Karnataka: 5% for property value > ₹45L, 4% for ₹21L-₹45L.\n  * Tamil Nadu: 7% Stamp Duty.\n  * Uttar Pradesh: 7% Male / 6% Female (Female rebate up to ₹10L property value).\n  * Haryana: 7% Male (Urban) / 5% Female (Urban).\n  * West Bengal: 6% Urban (>₹40L) / 5% Urban (<=₹40L).\n  * Gujarat: 4.9% uniform rate.\n- Stamp Duty Amount = Property Sale Value * Applicable Stamp Duty Rate %.\n\n2. Registration Fee Calculation:\n- Standard 1% of Property Sale Value across most states, capped at ₹30,000 in Maharashtra. Tamil Nadu charges 4% registration fee.\n\n3. Section 194IA TDS Compliance:\n- Mandatory under Income Tax Act for any immovable property purchase (except agricultural land) where sale consideration >= ₹50,00,000 (₹50 Lakhs).\n- If Sale Value >= ₹50,00,000 and Seller PAN is provided: TDS = 1% of Total Sale Value.\n- If Seller PAN is NOT provided: TDS = 20% of Total Sale Value u/s 206AA.\n- The Buyer must withhold this TDS amount, deposit it with the Government using Form 26QB within 30 days, and issue Form 16B certificate to the seller.\n\n4. Net Cash Outflow:\n- Net Cash Required = Property Sale Value + Stamp Duty + Registration Fee - TDS Withheld.",
+      "affiliate_targets": [
+        {
+          "name": "NoBroker Legal Services",
+          "type": "legal",
+          "description": "End-to-end property registration, stamp duty payment, sale deed drafting, and title verification in major metro cities."
+        },
+        {
+          "name": "Vakilsearch",
+          "type": "legal",
+          "description": "Online legal portal for property document check, sale deed review, and Form 26QB TDS deposit filing."
+        },
+        {
+          "name": "HDFC Home Loans",
+          "type": "neobank",
+          "description": "Premier Indian home loan financier offering up to 80% property value funding and online loan approval."
+        },
+        {
+          "name": "Magicbricks / Housing.com",
+          "type": "software",
+          "description": "Property valuation and home buying portals integrated with legal title checks."
+        }
+      ]
+    },
+    {
+      "id": "gst-composition-vs-regular-tax-calculator-india",
+      "title_native": "GST कंपोजीशन स्कीम बनाम रेगुलर डीलर कैलकुलेटर - GST Composition Scheme Calculator",
+      "title_en": "India GST Composition Scheme vs. Regular Tax Calculator",
+      "search_terms_native": [
+        "gst composition scheme calculator 2026 india",
+        "composition vs regular gst comparison calculator",
+        "जीएसटी कंपोजीशन स्कीम 1 प्रतिशत 5 प्रतिशत गणना",
+        "gst input tax credit itc calculator small business",
+        "1.5 crore gst composition turnover limit",
+        "छोटे व्यवसाय जीएसटी टैक्स बचत कैलकुलेटर"
+      ],
+      "description_native": "छोटे व्यापारियों और निर्माताओं के लिए GST कंपोजीशन स्कीम (1%/5%/6% फ्लैट दर) और रेगुलर GST (ITC इनपुट टैक्स क्रेडिट के साथ) में से सबसे लाभदायक विकल्प की तुलना करें।",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_turnover",
+          "label_native": "Annual Business Turnover / कुल वार्षिक टर्नओवर (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_category",
+          "label_native": "Business Category / व्यवसाय की श्रेणी",
+          "type": "select",
+          "options": [
+            {
+              "value": "trader_manufacturer",
+              "label": "Manufacturer & Retail Trader (Composition Rate: 1% of turnover)"
+            },
+            {
+              "value": "restaurant_non_alcohol",
+              "label": "Restaurant (Non-Alcoholic) (Composition Rate: 5% of turnover)"
+            },
+            {
+              "value": "service_provider_sec10_2a",
+              "label": "Service Provider u/s 10(2A) (Composition Rate: 6% of turnover)"
+            }
+          ]
+        },
+        {
+          "name": "b2b_sales_percent",
+          "label_native": "Percentage of Sales to GST Registered Businesses (B2B) / B2B बिक्री प्रतिशत (0-100%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_b2b_purchases",
+          "label_native": "Annual Purchases with GST / जीएसटी युक्त कुल खरीदारी मूल्य (₹)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "purchase_gst_rate",
+          "label_native": "Average GST Rate Paid on Purchases / खरीदारी पर औसत जीएसटी दर",
+          "type": "select",
+          "options": [
+            {
+              "value": "5",
+              "label": "5% GST"
+            },
+            {
+              "value": "12",
+              "label": "12% GST"
+            },
+            {
+              "value": "18",
+              "label": "18% GST"
+            },
+            {
+              "value": "28",
+              "label": "28% GST"
+            }
+          ]
+        },
+        {
+          "name": "regular_sale_gst_rate",
+          "label_native": "Applicable GST Rate on Sales (Regular Scheme) / बिक्री पर रेगुलर जीएसटी दर",
+          "type": "select",
+          "options": [
+            {
+              "value": "5",
+              "label": "5% GST"
+            },
+            {
+              "value": "12",
+              "label": "12% GST"
+            },
+            {
+              "value": "18",
+              "label": "18% GST"
+            },
+            {
+              "value": "28",
+              "label": "28% GST"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Compares total tax burden, Input Tax Credit (ITC) benefits, and net profit margins under the GST Composition Scheme vs. Regular GST Registration under the CGST Act 2017.\n\n1. Statutory Eligibility Thresholds:\n- Manufacturers & Goods Traders: Aggregate turnover <= ₹1,50,00,000 (₹1.5 Crore); <= ₹75,00,000 for Special Category North-East states.\n- Service Providers u/s 10(2A): Aggregate turnover <= ₹50,00,000 (₹50 Lakhs).\n- Composition Restrictions: Dealers cannot make inter-state sales, cannot issue GST Tax Invoices, cannot collect GST from customers, and cannot claim Input Tax Credit (ITC).\n\n2. Composition Scheme Calculation:\n- Tax Payable = Annual Turnover * Flat Composition Rate % (1% for Traders/Manufacturers, 5% for Restaurants, 6% for Service Providers).\n- Input Tax Credit (ITC) = ₹0 (GST paid on business purchases becomes a non-creditable cost).\n- Net Business Cost = Annual Purchases + Purchase GST Paid.\n- Net Business Profit (Composition) = Annual Turnover - Purchases (incl. GST paid) - Composition Tax Payable.\n\n3. Regular GST Scheme Calculation:\n- Output GST Collected = Annual Sales Turnover * Sale GST Rate %.\n- Input Tax Credit (ITC) Earned = Annual Purchases * Purchase GST Rate %.\n- Net Cash GST Payable = Max(0, Output GST Collected - ITC Earned).\n- Net Business Profit (Regular) = Annual Turnover - Purchases - Net Cash GST Payable.\n\n4. Business Recommendation Logic:\n- If B2B sales percentage > 20%, Regular Scheme is recommended because B2B business customers cannot claim ITC on Composition bills of supply.\n- If Purchase GST Rate > Sale GST Rate or heavy capital investment is involved, Regular Scheme yields significantly higher net profit due to ITC utilization.",
+      "affiliate_targets": [
+        {
+          "name": "Zoho Books GST",
+          "type": "accounting",
+          "description": "Complete GST-compliant cloud accounting software supporting CMP-08 composition filing, GSTR-1, GSTR-3B, and auto ITC reconciliation."
+        },
+        {
+          "name": "Vyapar App",
+          "type": "software",
+          "description": "Mobile and desktop billing app for small Indian retail shopkeepers, Kirana owners, and composition dealers."
+        },
+        {
+          "name": "ClearTax GST",
+          "type": "software",
+          "description": "Automated GST filing software with direct GSTN portal integration and GSTR-2B ITC matching engine."
+        },
+        {
+          "name": "Khatabook",
+          "type": "software",
+          "description": "Popular ledger and digital payment app for small Indian business merchants."
+        }
+      ]
+    }
+  ]
+}
+
+with open("database/countries/in.json", "w", encoding="utf-8") as f:
+  json.dump(data, f, ensure_ascii=False, indent=2)
+
+print("Saved in.json successfully")

@@ -1,0 +1,667 @@
+{
+  "country": "France",
+  "country_code": "FR",
+  "languages": [
+    "fr"
+  ],
+  "calculators": [
+    {
+      "id": "urssaf-cotisations-micro-entreprise",
+      "title_native": "Simulateur de Cotisations Auto-Entrepreneur (URSSAF & Net)",
+      "title_en": "URSSAF Micro-Entreprise Net Revenue & Social Tax Simulator",
+      "search_terms_native": [
+        "calcul cotisations urssaf auto entrepreneur",
+        "simulateur charges micro entreprise 2026",
+        "calcul salaire net micro entrepreneur bnc bic",
+        "calcul versement liberatoire urssaf",
+        "taux cotisations sociales auto entrepreneur"
+      ],
+      "description_native": "Calculez le montant exact de vos cotisations sociales URSSAF, la Contribution à la Formation Professionnelle (CFP), le versement libératoire de l'impôt et votre revenu net disponible selon votre domaine d'activité (BNC, BIC, Achat/Vente) et le bénéfice de l'ACRE.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "urssaf-cotisations-micro-entreprise"
+        },
+        {
+          "name": "gross_revenue",
+          "label_native": "Chiffre d'affaires brut HT (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "activity_type",
+          "label_native": "Domaine d'activité principal",
+          "type": "select",
+          "options": [
+            {
+              "value": "bnc_liberal",
+              "label": "Professions Libérales / Prestations BNC (ex: Développeur, Consultant, Graphiste)"
+            },
+            {
+              "value": "bic_services",
+              "label": "Prestations de Services Commerciales ou Artisanales BIC (ex: Coiffeur, Artisan)"
+            },
+            {
+              "value": "achat_vente",
+              "label": "Achat / Vente de marchandises, Restauration à emporter, Hébergement BIC"
+            },
+            {
+              "value": "liberal_cipav",
+              "label": "Professions Libérales Réglementées CIPAV (ex: Architecte, Géomètre)"
+            }
+          ]
+        },
+        {
+          "name": "acre_benefit",
+          "label_native": "Bénéficiez-vous de l'ACRE (exonération de début d'activité) ?",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label": "Non (Taux de cotisations standard)"
+            },
+            {
+              "value": "yes",
+              "label": "Oui (Taux de cotisations réduit ACRE 50%)"
+            }
+          ]
+        },
+        {
+          "name": "versement_liberatoire",
+          "label_native": "Option pour le Versement Libératoire de l'Impôt sur le Revenu ?",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label": "Non (Impôt sur le revenu classique au barème progressif)"
+            },
+            {
+              "value": "yes",
+              "label": "Oui (Prélèvement libératoire inclus avec la déclaration URSSAF)"
+            }
+          ]
+        },
+        {
+          "name": "period",
+          "label_native": "Périodicité des déclarations",
+          "type": "select",
+          "options": [
+            {
+              "value": "monthly",
+              "label": "Mensuelle (Chiffre d'affaires par mois)"
+            },
+            {
+              "value": "quarterly",
+              "label": "Trimestrielle (Chiffre d'affaires par trimestre)"
+            }
+          ]
+        }
+      ],
+      "last_updated": "Août 2026",
+      "article_faq": [
+        {
+          "question": "Quels sont les taux de cotisations URSSAF auto-entrepreneur en 2026 ?",
+          "answer": "En 2026, les taux de cotisations sociales URSSAF pour les auto-entrepreneurs sont : 23,1 % pour les professions libérales BNC (SSI/URSSAF), 21,2 % pour les prestations de services BIC, 12,3 % pour l'achat-revente de marchandises, et 23,2 % pour les professions libérales réglementées relevant de la CIPAV. Ces taux s'appliquent directement sur le chiffre d'affaires brut HT. Avec l'ACRE (aide à la création), les taux sont réduits de 50 % pendant la première période d'activité."
+        },
+        {
+          "question": "Qu'est-ce que le versement libératoire de l'impôt sur le revenu ?",
+          "answer": "Le versement libératoire (VL) permet de payer l'impôt sur le revenu en même temps que les cotisations URSSAF, sous forme d'un taux fixe appliqué sur le chiffre d'affaires (1 % pour l'achat-vente, 1,7 % pour les services BIC, 2,2 % pour les BNC). Cette option simplifie la gestion fiscale mais nécessite que votre revenu fiscal de référence soit inférieur à 27 794 € par part fiscale (2026). Elle est avantageuse si votre taux marginal d'imposition est élevé."
+        },
+        {
+          "question": "Quels sont les plafonds de chiffre d'affaires pour le régime micro-entreprise en 2026 ?",
+          "answer": "En 2026, les seuils de chiffre d'affaires pour rester sous le régime de la micro-entreprise sont : 188 700 € pour les activités d'achat-revente de marchandises, vente à consommer sur place et fourniture de logement ; et 77 700 € pour les prestations de services relevant des BIC et BNC, ainsi que les professions libérales. Au-delà de ces seuils (sur deux années consécutives), vous basculez automatiquement vers le régime réel."
+        },
+        {
+          "question": "Qu'est-ce que l'ACRE et comment en bénéficier ?",
+          "answer": "L'ACRE (Aide aux Créateurs et Repreneurs d'Entreprise) permet aux nouveaux auto-entrepreneurs de bénéficier d'une réduction de 50 % sur leurs cotisations URSSAF. Pour en bénéficier, vous devez en faire la demande lors de la création de votre activité auprès de l'URSSAF. L'exonération est totale la première année d'activité (taux réduit de moitié). Elle est accessible aux demandeurs d'emploi, jeunes de moins de 26 ans, bénéficiaires de minima sociaux, et autres profils spécifiques."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Qonto",
+          "type": "neobank",
+          "url": "https://qonto.com/fr?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Compte professionnel certifié pour auto-entrepreneurs avec déclaration et paiement URSSAF automatique depuis l'application."
+        },
+        {
+          "name": "Shine",
+          "type": "neobank",
+          "url": "https://shine.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Compte pro pour indépendants avec outil de facturation intégré, calcul des charges en temps réel et tableau de bord fiscal."
+        },
+        {
+          "name": "Abby",
+          "type": "software",
+          "url": "https://abby.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Logiciel de gestion et de comptabilité 100 % dédié aux auto-entrepreneurs français — facturation, déclarations URSSAF, suivi du CA."
+        },
+        {
+          "name": "Dougs",
+          "type": "accounting",
+          "url": "https://dougs.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Expert-comptable en ligne pour optimiser votre passage de micro-entreprise vers SASU ou EURL au bon moment."
+        }
+      ]
+    },
+
+    {
+      "id": "frais-de-notaire-immobilier",
+      "title_native": "Simulateur de Frais de Notaire & Droits de Mutation Immobilier",
+      "title_en": "French Real Estate Notary Fees & Stamp Duty Calculator",
+      "search_terms_native": [
+        "calcul frais de notaire 2026",
+        "simulateur frais d acquisition immobilier",
+        "droits de mutation achat immobilier ancien neuf",
+        "emoluments notaire bareme reglemente",
+        "calcul frais de notaire par departement"
+      ],
+      "description_native": "Estimez les frais d'acquisition immobilière (communément appelés 'frais de notaire') lors de l'achat d'un bien immobilier en France. Comparez l'immobilier ancien et neuf, visualisez le détail des droits d'enregistrement départementaux, émoluments du notaire et débours.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "frais-de-notaire-immobilier"
+        },
+        {
+          "name": "property_price",
+          "label_native": "Prix d'achat du bien immobilier (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_type",
+          "label_native": "Type de bien immobilier",
+          "type": "select",
+          "options": [
+            {
+              "value": "ancien",
+              "label": "Logement ancien / Bien existant (Frais ~ 7 % à 8,5 %)"
+            },
+            {
+              "value": "neuf",
+              "label": "Logement neuf / Vente en l'État Futur d'Achèvement - VEFA (Frais ~ 2 % à 3 %)"
+            },
+            {
+              "value": "terrain",
+              "label": "Terrain à bâtir (Droits de mutation standards ~ 7 % à 8 %)"
+            }
+          ]
+        },
+        {
+          "name": "department_tax_rate",
+          "label_native": "Taux de taxe départementale sur les droits de mutation",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard_45",
+              "label": "Taux standard (4,50 % - total droits d'enregistrement = 5,81 %)"
+            },
+            {
+              "value": "increased_50",
+              "label": "Taux majoré Loi de Finances (5,00 % - total droits d'enregistrement = 6,31 %)"
+            },
+            {
+              "value": "reduced_38",
+              "label": "Taux réduit (3,80 % - Indre, Mayotte, Isère - total = 5,09 %)"
+            }
+          ]
+        },
+        {
+          "name": "mortgage_guarantee",
+          "label_native": "Garantie de prêt immobilier envisagée",
+          "type": "select",
+          "options": [
+            {
+              "value": "none",
+              "label": "Apport personnel pur / Sans prêt hypothécaire"
+            },
+            {
+              "value": "caution",
+              "label": "Caution par organisme tiers (Crédit Logement, CAMCA, SACCEF)"
+            },
+            {
+              "value": "hypotheque",
+              "label": "Hypothèque conventionnelle ou Privilège de Prêteur de Deniers (PPD)"
+            }
+          ]
+        }
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "Les frais d'acquisition immobilière se décomposent en 3 parties principales :\n1) Droits de mutation / Droits d'enregistrement (Biens anciens) :\n   - Taxe départementale (4,50 % ou 5,00 % selon le département).\n   - Taxe communale : 1,20 %.\n   - Frais d'assiette et de recouvrement de l'État : 2,37 % du montant de la taxe départementale.\n   - Total Droits d'enregistrement ≈ 5,81 % à 6,31 % du prix d'achat.\n   (Pour le neuf : Taxe de publicité foncière réduite à 0,715 % + TVA 20 % déjà incluse dans le prix).\n2) Émoluments du notaire (Barème réglementé par décret) :\n   - De 0 € à 6 500 € : 3,870 %\n   - De 6 500 € à 17 000 € : 1,596 %\n   - De 17 000 € à 60 000 € : 1,030 %\n   - Au-delà de 60 000 € : 0,799 %\n   - TVA de 20 % appliquée sur les émoluments HT.\n3) Débours et démarches administratives : Forfait estimé à environ 800 € à 1 200 € (cadastre, géomètre, pièces d'état civil).\n4) Contribution de Sécurité Immobilière (CSI) : 0,10 % du prix du bien (minimum 15 €).\n5) Garantie financière prêt : ~1 % à 1,5 % du montant du prêt en cas d'hypothèque ou PPD.",
+      "article_faq": [
+        {
+          "question": "Quels sont les frais de notaire pour l'achat d'un bien immobilier en 2026 ?",
+          "answer": "Pour un bien ancien, les frais de notaire s'élèvent en moyenne entre 7 % et 8,5 % du prix d'achat. Pour un bien neuf (VEFA), ils sont réduits entre 2 % et 3 % du prix de vente."
+        },
+        {
+          "question": "Comment se décomposent les frais de notaire ?",
+          "answer": "Les frais de notaire comprennent : les droits de mutation et taxes d'enregistrement (reversements à l'État et collectivités locaux ~80% du total), les émoluments du notaire (tarif réglementé dégressif par décret ~10-15%), les débours et la Contribution de Sécurité Immobilière (CSI)."
+        },
+        {
+          "question": "Pourquoi les frais de notaire sont-ils plus faibles dans le neuf ?",
+          "answer": "Dans l'immobilier neuf, la vente est soumise à la TVA (20 % déjà incluse dans le prix). Par conséquent, l'État applique un taux de taxe de publicité foncière réduit (0,715 %) au lieu des droits d'enregistrement classiques (5,80 %)."
+        },
+        {
+          "question": "Comment sont calculés les émoluments du notaire en 2026 ?",
+          "answer": "Les émoluments sont fixés par un barème national dégressif : 3,870 % de 0 à 6 500 €, 1,596 % de 6 500 à 17 000 €, 1,030 % de 17 000 à 60 000 €, et 0,799 % au-delà de 60 000 €, soumis à une TVA de 20 %."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Pretto",
+          "type": "broker",
+          "url": "https://www.pretto.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Courtier en prêt immobilier 100% en ligne pour comparer les meilleurs taux d'emprunt"
+        },
+        {
+          "name": "Meilleurtaux",
+          "type": "broker",
+          "url": "https://www.meilleurtaux.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Comparateur leader de crédit immobilier et d'assurance emprunteur"
+        },
+        {
+          "name": "Luko / Lemonade",
+          "type": "insurance",
+          "url": "https://www.lemonade.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Assurance habitation propriétaire non-occupant et assurance de prêt immobilier"
+        },
+        {
+          "name": "Beanstock",
+          "type": "software",
+          "url": "https://www.beanstock.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Plateforme d'investissement immobilier locatif clé en main avec simulation bancaire"
+        }
+      ]
+    },
+    {
+      "id": "calculateur-salaire-brut-net-cout-employeur",
+      "title_native": "Calculateur Salaire Brut en Net & Coût Employeur (Cadre / Non-Cadre)",
+      "title_en": "France Gross-to-Net Salary & Employer Total Cost Calculator",
+      "search_terms_native": [
+        "calcul salaire brut en net 2026",
+        "simulateur salaire cadre non cadre net apres impot",
+        "cout global employeur salaire smic et cadres",
+        "calcul prelevement a la source salaire fr",
+        "convertisseur brut net mensuel annuel"
+      ],
+      "description_native": "Convertissez votre salaire brut en net et net après impôt à la source pour salariés cadres et non-cadres en France. Évaluez également le coût total employeur incluant la réduction générale de cotisations patronales (ex-Fillon).",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "calculateur-salaire-brut-net-cout-employeur"
+        },
+        {
+          "name": "gross_salary",
+          "label_native": "Salaire brut (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "period",
+          "label_native": "Périodicité de la rémunération",
+          "type": "select",
+          "options": [
+            {
+              "value": "monthly",
+              "label": "Mensuelle (sur 12 mois)"
+            },
+            {
+              "value": "annual",
+              "label": "Annuelle (sur 12 mois)"
+            },
+            {
+              "value": "annual_13",
+              "label": "Annuelle (sur 13 mois)"
+            }
+          ]
+        },
+        {
+          "name": "status",
+          "label_native": "Statut professionnel du salarié",
+          "type": "select",
+          "options": [
+            {
+              "value": "non_cadre",
+              "label": "Non-cadre (Retenues salariales sociales standards ~22%)"
+            },
+            {
+              "value": "cadre",
+              "label": "Cadre (Cotisations AGIRC-ARRCO et APEC renforcées ~25%)"
+            },
+            {
+              "value": "fonctionnaire",
+              "label": "Fonctionnaire / Agent public (~15% à 17% de retenues)"
+            }
+          ]
+        },
+        {
+          "name": "pas_rate",
+          "label_native": "Taux personnalisé de Prélèvement à la Source PAS (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_size",
+          "label_native": "Taille de l'entreprise (seuil de cotisations)",
+          "type": "select",
+          "options": [
+            {
+              "value": "less_11",
+              "label": "Moins de 11 salariés (Forfait transport/FNAL réduit)"
+            },
+            {
+              "value": "more_11",
+              "label": "11 salariés et plus (Contribution FNAL taux plein et versement mobilité)"
+            }
+          ]
+        }
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "Conversion du Salaire Brut au Net et Coût Employeur :\n1) Retenues Salariales Sociales :\n   - Non-cadre : environ 22 % du salaire brut (Santé 0,75 %, Retraite de base 6,90 %, AGIRC-ARRCO tranche 1 3,15 %, CSG/CRDS 9,80 % sur 98,25 % du brut).\n   - Cadre : environ 25 % du salaire brut (ajoute cotisation APEC 0,024 %, CEG 0,86 %, tranche 2 AGIRC-ARRCO).\n2) Salaire Net Imposable :\n   - Net Imposable = Net avant impôt + CSG/CRDS non déductible (2,90 % sur 98,25 % du brut) + Part patronale de mutuelle obligatoire d'entreprise (estimée à 40 €/mois).\n3) Net Après Impôt à la Source (PAS) :\n   - Net Après Impôt = Net avant impôt - (Net Imposable * Taux PAS / 100).\n4) Coût Total Employeur :\n   - Cotisations patronales brutes : environ 42 % à 45 % du salaire brut pour rémunérations moyennes/hautes.\n   - Pour les bas salaires (entre 1 et 1,6 SMIC) : Réduction générale des cotisations patronales (ex-réduction Fillon) qui déduit jusqu'à 32 % de charges patronales au niveau du SMIC.",
+      "article_faq": [
+        {
+          "question": "Quelle est la différence entre salaire brut, net imposable et net à payer en 2026 ?",
+          "answer": "Le salaire brut est la rémunération fixée par le contrat avant retenues. Le salaire net avant impôt est le montant perçu après déduction des cotisations sociales. Le net imposable sert d'assiette au prélèvement à la source (incluant la CSG non déductible et la part patronale de mutuelle). Le net à payer est la somme effectivement versée sur le compte bancaire après prélèvement de l'impôt."
+        },
+        {
+          "question": "Quel est le pourcentage de cotisations sociales entre brut et net pour un cadre et non-cadre ?",
+          "answer": "Pour un salarié non-cadre, les cotisations salariales représentent environ 22 % du salaire brut. Pour un cadre, elles s'élèvent à environ 25 % en raison des cotisations spécifiques pour la retraite complémentaire AGIRC-ARRCO et la prévoyance/APEC."
+        },
+        {
+          "question": "Comment est calculé le coût total employeur d'un salarié ?",
+          "answer": "Le coût employeur total correspond au salaire brut auquel s'ajoutent les cotisations patronales (environ 40 % à 45 % du brut) ainsi que la part patronale de mutuelle d'entreprise et de titres-restaurant, réduits le cas échéant par la réduction générale de cotisations sur les bas salaires (ex-réduction Fillon)."
+        },
+        {
+          "question": "Comment fonctionne le prélèvement à la source (PAS) en 2026 ?",
+          "answer": "L'employeur applique directement votre taux individuel transmis par la Direction Générale des Finances Publiques (DGFiP) sur votre salaire net imposable. L'impôt est ainsi déduit automatiquement avant le virement de votre salaire mensuel."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "PayFit",
+          "type": "software",
+          "url": "https://payfit.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Logiciel de paie et de gestion RH automatisé pour PME françaises"
+        },
+        {
+          "name": "Alan",
+          "type": "insurance",
+          "url": "https://alan.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Assurance santé d'entreprise et mutuelle 100% digitale pour salariés et dirigeants"
+        },
+        {
+          "name": "Pennylane",
+          "type": "software",
+          "url": "https://www.pennylane.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Plateforme de gestion financière de la paie et comptabilité d'entreprise"
+        },
+        {
+          "name": "Swile",
+          "type": "software",
+          "url": "https://www.swile.co/fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Carte et solution d'avantages salariés (titres-restaurant, chèques-cadeaux)"
+        }
+      ]
+    },
+    {
+      "id": "indemnite-rupture-conventionnelle-licenciement",
+      "title_native": "Simulateur d'Indemnité de Rupture Conventionnelle & Licenciement",
+      "title_en": "French Severance & Mutual Agreement Compensation Calculator",
+      "search_terms_native": [
+        "calcul indemnite rupture conventionnelle 2026",
+        "simulateur indemnite legale licenciement",
+        "calcul salaire de reference rupture conventionnelle",
+        "cout rupture conventionnelle employeur forfait social",
+        "bareme indemnite licenciement code du travail"
+      ],
+      "description_native": "Calculez le montant exact de l'indemnité légale ou conventionnelle due en cas de rupture conventionnelle homologuée ou de licenciement (hors faute grave). Obtenez le coût brut salarié et le coût total pour l'employeur incluant la contribution spécifique.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "indemnite-rupture-conventionnelle-licenciement"
+        },
+        {
+          "name": "reference_salary",
+          "label_native": "Salaire de référence brut mensuel (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "seniority_years",
+          "label_native": "Nombre d'années d'ancienneté révolues",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "seniority_months",
+          "label_native": "Nombre de mois d'ancienneté supplémentaires (0 à 11)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "convention_type",
+          "label_native": "Barème de calcul applicable",
+          "type": "select",
+          "options": [
+            {
+              "value": "legal",
+              "label": "Barème légal du Code du Travail (Article L1234-9)"
+            },
+            {
+              "value": "syntec",
+              "label": "Convention Collective Syntec / Numérique / Conseil"
+            },
+            {
+              "value": "metallurgie",
+              "label": "Convention Collective de la Métallurgie (Nouveau barème)"
+            },
+            {
+              "value": "custom_multiplier",
+              "label": "Accord transactionnel / Sur-mesure (Négocié)"
+            }
+          ]
+        }
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "Calcul de l'indemnité minimale légale et fiscale (Code du Travail Art. R1234-2) :\n1) Détermination du Salaire de Référence (Brut) :\n   Le montant le plus avantageux entre :\n   - La moyenne des 12 derniers mois précédant la rupture.\n   - La moyenne des 3 derniers mois (les primes annuelles ou exceptionnelles étant proratisées).\n2) Barème Légal de l'Indemnité (Code du Travail) :\n   - Pour les 10 premières années d'ancienneté : 1/4 de mois de salaire par année d'ancienneté (0,25 * SalaireRéférence * Années).\n   - À partir de la 11ème année d'ancienneté : 1/3 de mois de salaire par année d'ancienneté (0,3333 * SalaireRéférence * Années supplémentaires).\n   - Les mois de présence au-delà des années complètes sont calculés au prorata (N/12).\n3) Régime Fiscal et Social du Salarié :\n   L'indemnité est exonérée d'Impôt sur le Revenu et de cotisations sociales jusqu'au plus élevé des 3 montants :\n   - Le montant légal ou conventionnel.\n   - 2 fois le salaire brut annuel perçu l'année précédente (dans la limite de 6 fois le PASS).\n   - 50 % du montant total de l'indemnité perçue.\n4) Coût Employeur (Contribution Spécifique) :\n   L'employeur est soumis à une contribution spécifique patronale de 30 % sur la part d'indemnité exonérée de cotisations sociales pour les ruptures conventionnelles.",
+      "article_faq": [
+        {
+          "question": "Comment est calculée l'indemnité légale de rupture conventionnelle ou de licenciement ?",
+          "answer": "L'indemnité légale minimale est fixée par le Code du travail : 1/4 de mois de salaire par année d'ancienneté pour les 10 premières années, puis 1/3 de mois par année au-delà de la 10ème année. L'ancienneté s'apprécie en mois révolus."
+        },
+        {
+          "question": "L'indemnité de rupture conventionnelle est-elle imposable ?",
+          "answer": "L'indemnité est exonérée d'impôt sur le revenu dans la limite du montant le plus élevé entre : le montant légal/conventionnel, 2 fois la rémunération brute annuelle, ou 50 % du montant de l'indemnité, plafonné à 6 fois le PASS (278 208 € en 2026)."
+        },
+        {
+          "question": "Quel est le coût d'une rupture conventionnelle pour l'employeur en 2026 ?",
+          "answer": "En plus de l'indemnité versée au salarié, l'employeur doit s'acquitter d'une contribution spécifique patronale de 30 % sur la part d'indemnité exonérée de cotisations sociales."
+        },
+        {
+          "question": "Comment déterminer le salaire de référence pour le calcul ?",
+          "answer": "Le salaire de référence retenu est le montant le plus avantageux pour le salarié entre la moyenne des 12 derniers mois de salaire brut et la moyenne des 3 derniers mois (avec proratisation des primes annuelles)."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Captain Contrat",
+          "type": "legal",
+          "url": "https://www.captaincontrat.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Service d'assistance juridique pour rédaction de convention de rupture et conseil RH"
+        },
+        {
+          "name": "LegalPlace",
+          "type": "legal",
+          "url": "https://www.legalplace.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Plateforme d'accompagnement juridique et gestion de rupture conventionnelle d'employés"
+        },
+        {
+          "name": "Dougs",
+          "type": "accounting",
+          "url": "https://dougs.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Gestion de la paie, solde de tout compte et conseil social pour employeurs"
+        },
+        {
+          "name": "Juritravail",
+          "type": "legal",
+          "url": "https://www.juritravail.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Modèles d'actes et consultation d'avocat spécialisé en droit du travail"
+        }
+      ]
+    },
+    {
+      "id": "calculateur-plus-value-immobiliere",
+      "title_native": "Simulateur de Plus-Value Immobilière & Abattements de Détention",
+      "title_en": "French Real Estate Capital Gains Tax & Exemption Calculator",
+      "search_terms_native": [
+        "calcul plus value immobiliere 2026",
+        "abattement duree detention plus value immobiliere",
+        "simulateur impot plus value residence secondaire",
+        "calcul exoneration plus value residence principale",
+        "taxe sur les hautes plus-values immobilieres"
+      ],
+      "description_native": "Calculez l'impôt sur la plus-value immobilière lors de la vente d'une résidence secondaire ou d'un bien locatif en France. Prenez en compte les abattements par année de détention (impôt sur le revenu et prélèvements sociaux) et les surtaxes.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "calculateur-plus-value-immobiliere"
+        },
+        {
+          "name": "sale_price",
+          "label_native": "Prix de vente net vendeur (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "purchase_price",
+          "label_native": "Prix d'achat initial du bien (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "holding_years",
+          "label_native": "Nombre d'années complètes de détention du bien",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "exemption_reason",
+          "label_native": "Motif d'exonération éventuel",
+          "type": "select",
+          "options": [
+            {
+              "value": "none",
+              "label": "Aucune exonération (Résidence secondaire / Investissement locatif)"
+            },
+            {
+              "value": "main_residence",
+              "label": "Exonération Résidence Principale (Exonération totale 100%)"
+            },
+            {
+              "value": "first_sale_reinvestment",
+              "label": "Première cession d'un logement sous condition de réemploi pour la résidence principale"
+            },
+            {
+              "value": "price_under_15k",
+              "label": "Prix de vente inférieur ou égal à 15 000 € (Exonération totale)"
+            }
+          ]
+        },
+        {
+          "name": "acquisition_costs_option",
+          "label_native": "Prise en compte des frais d'acquisition",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard_75",
+              "label": "Forfait légal de 7,5 % du prix d'achat"
+            },
+            {
+              "value": "real_costs",
+              "label": "Frais réels sur justificatifs (Notaire, droits de mutation)"
+            }
+          ]
+        },
+        {
+          "name": "construction_works_option",
+          "label_native": "Prise en compte des travaux de rénovation/agrandissement",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard_15",
+              "label": "Forfait légal de 15 % du prix d'achat (Si détention supérieure à 5 ans)"
+            },
+            {
+              "value": "real_works",
+              "label": "Frais réels de travaux sur factures d'entreprises"
+            },
+            {
+              "value": "none",
+              "label": "Aucun travaux déductibles"
+            }
+          ]
+        }
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "Calcul de l'Impôt et des Prélèvements Sociaux sur la Plus-Value Immobilière des Particuliers :\n1) Prix d'Acquisition Corrigé = Prix d'achat + Frais d'acquisition (7,5 % forfaitaire ou réels) + Travaux (15 % forfaitaire si > 5 ans de détention ou réels sur factures).\n2) Plus-Value Brute = Prix de vente - Prix d'acquisition corrigé.\n3) Abattements pour durée de détention sur l'Impôt sur le Revenu (IR - Taux 19 %) :\n   - Moins de 6 ans : 0 % d'abattement.\n   - De la 6ème à la 21ème année : 6 % par an.\n   - 22ème année révolue : 4 % (soit 100 % d'exonération d'IR après 22 ans).\n4) Abattements pour durée de détention sur les Prélèvements Sociaux (PS - Taux 17,2 %) :\n   - Moins de 6 ans : 0 % d'abattement.\n   - De la 6ème à la 21ème année : 1,65 % par an.\n   - 22ème année révolue : 1,60 %.\n   - De la 23ème à la 30ème année : 9 % par an (soit 100 % d'exonération de PS après 30 ans).\n5) Surtaxe sur les plus-values élevées (Article 1609 nonies G du CGI) :\n   - Si la plus-value imposable à l'IR excède 50 000 €, une surtaxe progressive de 2 % à 6 % s'applique.\n6) Impôt Total = (Plus-Value Net IR * 19 %) + Surtaxe + (Plus-Value Net PS * 17,2 %).\n7) Net pour le vendeur = Prix de vente - Impôt Total.",
+      "article_faq": [
+        {
+          "question": "Au bout de combien d'années est-on exonéré d'impôt sur la plus-value immobilière ?",
+          "answer": "Vous bénéficiez d'une exonération totale d'impôt sur le revenu (IR) après 22 ans de détention du bien. L'exonération totale des prélèvements sociaux (17,2 %) est acquise après 30 ans de détention."
+        },
+        {
+          "question": "La résidence principale est-elle soumise à l'impôt sur la plus-value ?",
+          "answer": "Non, la vente de votre résidence principale est totalement exonérée d'impôt sur la plus-value, quel que soit le montant du gain réalisé et la durée de détention."
+        },
+        {
+          "question": "Comment sont pris en compte les frais d'acquisition et de travaux ?",
+          "answer": "Pour calculer la plus-value brute, le prix d'achat est majoré des frais d'acquisition (forfait de 7,5 % ou frais réels sur justificatifs) et des frais de travaux (forfait de 15 % si le bien est détenu depuis plus de 5 ans ou factures réelles)."
+        },
+        {
+          "question": "Quels sont les taux d'imposition applicables sur la plus-value imposable en 2026 ?",
+          "answer": "La plus-value imposable est soumise au taux forfaitaire d'impôt sur le revenu de 19 % et aux prélèvements sociaux de 17,2 % (soit un taux global de 36,2 %). Une surtaxe progressive de 2 % à 6 % s'ajoute si la plus-value nette imposable dépasse 50 000 €."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Climb (ex-Tacotax)",
+          "type": "software",
+          "url": "https://climb.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Plateforme d'optimisation fiscale et d'accompagnement en gestion de patrimoine"
+        },
+        {
+          "name": "Legalstart",
+          "type": "legal",
+          "url": "https://www.legalstart.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Accompagnement juridique pour la déclaration fiscale et la création de SCI immobilière"
+        },
+        {
+          "name": "Beanstock",
+          "type": "software",
+          "url": "https://www.beanstock.fr/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Plateforme de réinvestissement locatif d'actifs immobiliers post-cession"
+        },
+        {
+          "name": "Meilleurtaux",
+          "type": "broker",
+          "url": "https://www.meilleurtaux.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Courtage pour réinvestissement en parts de SCPI ou nouveau projet immobilier"
+        }
+      ]
+    }
+  ]
+}

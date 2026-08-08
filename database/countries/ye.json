@@ -1,0 +1,57 @@
+{
+  "country": "Yemen",
+  "country_code": "YE",
+  "languages": [
+    "ar"
+  ],
+  "currency": "YER",
+  "calculators": [
+    {
+      "id": "ye-tax-payroll-calculator",
+      "title_native": "Yemen حاسبة ضريبة الأجور والمرتبات اليمن",
+      "title_en": "Yemen حاسبة ضريبة الأجور والمرتبات اليمن",
+      "search_terms_native": [
+        "yemen tax calculator",
+        "yemen salary calculator",
+        "income tax ye"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Yemen.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (YER)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Yemen revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "TBY",
+          "type": "software",
+          "description": "Top financial tool in Yemen"
+        },
+        {
+          "name": "Yemen Kuwait Bank",
+          "type": "software",
+          "description": "Top financial tool in Yemen"
+        }
+      ]
+    }
+  ]
+}

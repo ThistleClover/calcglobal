@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows System Inspection & Process Organizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0d14;
+      --bg-card: rgba(18, 24, 38, 0.75);
+      --bg-card-hover: rgba(26, 35, 56, 0.85);
+      --border-color: rgba(255, 255, 255, 0.08);
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-emerald: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-rose: #f43f5e;
+      --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(192, 132, 252, 0.12) 0px, transparent 50%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 24px;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .logo-area h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-top: 4px;
+    }
+
+    .system-status-pills {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+    }
+
+    .pill-dot.warning { background: var(--accent-amber); }
+
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: var(--glass-shadow);
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .stat-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-desc {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      margin-top: 4px;
+    }
+
+    /* Tabs & Controls */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tabs {
+      display: flex;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 7px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .tab-btn.active {
+      background: var(--accent-cyan);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      max-width: 380px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 14px 9px 38px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .search-box input:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Data Table */
+    .table-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--glass-shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    th {
+      background: rgba(15, 23, 42, 0.8);
+      color: var(--text-muted);
+      font-weight: 600;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: var(--bg-card-hover);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .badge-port { background: rgba(56, 189, 248, 0.15); color: var(--accent-cyan); border: 1px solid rgba(56, 189, 248, 0.3); }
+    .badge-pid { background: rgba(192, 132, 252, 0.15); color: var(--accent-purple); border: 1px solid rgba(192, 132, 252, 0.3); }
+    .badge-mem { background: rgba(251, 191, 36, 0.15); color: var(--accent-amber); border: 1px solid rgba(251, 191, 36, 0.3); }
+    .badge-running { background: rgba(52, 211, 153, 0.15); color: var(--accent-emerald); border: 1px solid rgba(52, 211, 153, 0.3); }
+
+    .code-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-cyan);
+    }
+
+    .path-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      max-width: 320px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Grid layout for Health & Config section */
+    .grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .info-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .info-box h3 {
+      font-size: 1.1rem;
+      margin-bottom: 14px;
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.88rem;
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .script-block {
+      background: #0f172a;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent-emerald);
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo-area">
+      <h1>🛡️ Windows System Inspector & Process Organizer</h1>
+      <div class="subtitle">Real-time Windows Services, Listening Ports & Process Diagnostic Center</div>
+    </div>
+    <div class="system-status-pills">
+      <div class="pill"><div class="pill-dot"></div> Host IP: 192.168.1.250</div>
+      <div class="pill"><div class="pill-dot warning"></div> WARP Tunnel: 172.16.0.2</div>
+    </div>
+  </header>
+
+  <!-- Summary Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-title">Active Listening Ports</div>
+      <div class="stat-value" id="stat-ports">10+</div>
+      <div class="stat-desc">TCP/UDP Endpoints Correlated</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">System Services</div>
+      <div class="stat-value">326</div>
+      <div class="stat-desc">142 Active / 184 Stopped</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Top Memory Process</div>
+      <div class="stat-value">701 MB</div>
+      <div class="stat-desc">Antigravity (PID 8896)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-title">Jellyfin Server Check</div>
+      <div class="stat-value">192.168.1.2</div>
+      <div class="stat-desc">Target Port: 8096</div>
+    </div>
+  </div>
+
+  <!-- Navigation & Search Controls -->
+  <div class="controls-bar">
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('ports')">🔌 Listening Ports</button>
+      <button class="tab-btn" onclick="switchTab('processes')">⚡ Active Processes</button>
+      <button class="tab-btn" onclick="switchTab('services')">⚙️ Services Overview</button>
+      <button class="tab-btn" onclick="switchTab('network')">🌐 Network & WARP</button>
+    </div>
+
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Filter by name, PID, or port..." oninput="filterData()">
+    </div>
+  </div>
+
+  <!-- Tab 1: Listening Ports -->
+  <div id="tab-ports" class="tab-content">
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Port</th>
+            <th>Protocol / Address</th>
+            <th>PID</th>
+            <th>Process Name</th>
+            <th>Executable Location</th>
+          </tr>
+        </thead>
+        <tbody id="ports-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tab 2: Active Processes -->
+  <div id="tab-processes" class="tab-content hidden">
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>PID</th>
+            <th>Process Name</th>
+            <th>RAM Usage (MB)</th>
+            <th>CPU Time (s)</th>
+            <th>Executable Path</th>
+          </tr>
+        </thead>
+        <tbody id="processes-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tab 3: Services Overview -->
+  <div id="tab-services" class="tab-content hidden">
+    <div class="table-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Service Name</th>
+            <th>Display Name</th>
+            <th>Status</th>
+            <th>Startup Type</th>
+          </tr>
+        </thead>
+        <tbody id="services-table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Tab 4: Network & System Config -->
+  <div id="tab-network" class="tab-content hidden">
+    <div class="grid-2col">
+      <div class="info-box">
+        <h3>🌐 Network Adapter Configuration</h3>
+        <div class="info-item">
+          <span>Ethernet IPv4 Address</span>
+          <span class="code-text">192.168.1.250 / 24</span>
+        </div>
+        <div class="info-item">
+          <span>Cloudflare WARP Tunnel IP</span>
+          <span class="code-text">172.16.0.2 / 32</span>
+        </div>
+        <div class="info-item">
+          <span>Apple Mobile Device Service</span>
+          <span class="badge badge-running">RUNNING</span>
+        </div>
+        <div class="info-item">
+          <span>Jellyfin Local Listener (8096)</span>
+          <span class="badge" style="background: rgba(148, 163, 184, 0.2); color: var(--text-muted);">REMOTE HOST (192.168.1.2)</span>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <h3>💻 PowerShell Diagnostic Command Snippet</h3>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Run this command in PowerShell to inspect live process port bindings anytime:</p>
+        <div class="script-block">
+Get-NetTCPConnection -State Listen | ForEach-Object {<br>
+&nbsp;&nbsp;$p = Get-Process -Id $_.OwningProcess -EA 0<br>
+&nbsp;&nbsp;[PSCustomObject]@{<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Port = $_.LocalPort;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;PID  = $_.OwningProcess;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Name = $p.ProcessName<br>
+&nbsp;&nbsp;}<br>
+} | Sort-Object Port | Out-GridView
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const portsData = [
+    { port: 53, addr: '127.0.2.2:53', pid: 11532, name: 'warp-svc', path: 'Cloudflare WARP DNS Service' },
+    { port: 53, addr: '127.0.2.3:53', pid: 11532, name: 'warp-svc', path: 'Cloudflare WARP DNS Service' },
+    { port: 50911, addr: '127.0.0.1:50911', pid: 4752, name: 'ss_conn_service', path: 'Samsung Connection Service' },
+    { port: 50912, addr: '127.0.0.1:50912', pid: 4684, name: 'ss_conn_service2', path: 'Connection Service' },
+    { port: 52098, addr: '127.0.0.1:52098', pid: 10664, name: 'Antigravity', path: 'AppData\\Local\\Programs\\antigravity\\Antigravity.exe' },
+    { port: 52100, addr: '127.0.0.1:52100', pid: 18248, name: 'language_server', path: 'AppData\\Local\\Programs\\antigravity\\resources\\bin\\language_server.exe' },
+    { port: 52101, addr: '127.0.0.1:52101', pid: 18248, name: 'language_server', path: 'AppData\\Local\\Programs\\antigravity\\resources\\bin\\language_server.exe' },
+    { port: 56462, addr: '::56462', pid: 28588, name: 'adskflex', path: 'Autodesk Licensing Daemon' },
+    { port: 63199, addr: '0.0.0.0:63199', pid: 25944, name: 'LogiOptionsMgr', path: 'ProgramData\\Logishrd\\LogiOptions\\LogiOptionsMgr.exe' },
+    { port: 63294, addr: '127.0.0.1:63294', pid: 4840, name: 'AdskLicensingService', path: 'Autodesk Desktop Licensing' }
+  ];
+
+  const processData = [
+    { pid: 8896, name: 'Antigravity', mem: '701.16 MB', cpu: '179.72 s', path: 'C:\\Users\\Tk\\AppData\\Local\\Programs\\antigravity\\Antigravity.exe' },
+    { pid: 23844, name: 'PhoneExperienceHost', mem: '541.00 MB', cpu: '49.02 s', path: 'C:\\Program Files\\WindowsApps\\Microsoft.YourPhone' },
+    { pid: 31260, name: 'MsMpEng', mem: '509.25 MB', cpu: '0.00 s', path: 'Windows Defender Antivirus' },
+    { pid: 18248, name: 'language_server', mem: '393.27 MB', cpu: '75.84 s', path: 'C:\\Users\\Tk\\AppData\\Local\\Programs\\antigravity\\resources\\bin\\language_server.exe' },
+    { pid: 33632, name: 'zen', mem: '357.49 MB', cpu: '25.33 s', path: 'C:\\Program Files\\Zen Browser\\zen.exe' },
+    { pid: 27768, name: 'explorer', mem: '282.09 MB', cpu: '32.33 s', path: 'C:\\WINDOWS\\Explorer.EXE' },
+    { pid: 10144, name: 'zen', mem: '228.04 MB', cpu: '6.62 s', path: 'C:\\Program Files\\Zen Browser\\zen.exe' },
+    { pid: 28312, name: 'Microsoft.CmdPal.UI', mem: '211.38 MB', cpu: '24.33 s', path: 'C:\\Program Files\\WindowsApps\\Microsoft.CommandPalette' },
+    { pid: 2020, name: 'GoogleDriveFS', mem: '200.25 MB', cpu: '174.61 s', path: 'C:\\Program Files\\Google\\Drive File Stream\\GoogleDriveFS.exe' },
+    { pid: 30056, name: 'NVIDIA Overlay', mem: '197.13 MB', cpu: '6.19 s', path: 'C:\\Program Files\\NVIDIA Corporation\\NVIDIA Overlay.exe' }
+  ];
+
+  const servicesData = [
+    { name: 'Apple Mobile Device Service', display: 'Apple Mobile Device Service', status: 'Running', start: 'Automatic' },
+    { name: 'CloudflareWARP', display: 'Cloudflare One Client', status: 'Running', start: 'Automatic' },
+    { name: 'CloudflareWARPUpdater', display: 'Cloudflare One Client Updater', status: 'Running', start: 'Automatic' },
+    { name: 'AdskLicensingService', display: 'Autodesk Desktop Licensing Service', status: 'Running', start: 'Automatic' },
+    { name: 'ClickToRunSvc', display: 'Microsoft Office Click-to-Run Service', status: 'Running', start: 'Automatic' },
+    { name: 'AudioEndpointBuilder', display: 'Audio Endpoint Builder', status: 'Running', start: 'Automatic' },
+    { name: 'BITS', display: 'Background Intelligent Transfer Service', status: 'Running', start: 'Automatic' }
+  ];
+
+  function renderPorts(data) {
+    const tbody = document.getElementById('ports-table-body');
+    tbody.innerHTML = data.map(p => `
+      <tr>
+        <td><span class="badge badge-port">${p.port}</span></td>
+        <td class="code-text">${p.addr}</td>
+        <td><span class="badge badge-pid">${p.pid}</span></td>
+        <td><strong>${p.name}</strong></td>
+        <td class="path-text" title="${p.path}">${p.path}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderProcesses(data) {
+    const tbody = document.getElementById('processes-table-body');
+    tbody.innerHTML = data.map(p => `
+      <tr>
+        <td><span class="badge badge-pid">${p.pid}</span></td>
+        <td><strong>${p.name}</strong></td>
+        <td><span class="badge badge-mem">${p.mem}</span></td>
+        <td>${p.cpu}</td>
+        <td class="path-text" title="${p.path}">${p.path}</td>
+      </tr>
+    `).join('');
+  }
+
+  function renderServices(data) {
+    const tbody = document.getElementById('services-table-body');
+    tbody.innerHTML = data.map(s => `
+      <tr>
+        <td class="code-text">${s.name}</td>
+        <td><strong>${s.display}</strong></td>
+        <td><span class="badge badge-running">${s.status}</span></td>
+        <td>${s.start}</td>
+      </tr>
+    `).join('');
+  }
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+    event.target.classList.add('active');
+    document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+  }
+
+  function filterData() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    
+    const filteredPorts = portsData.filter(p => 
+      p.name.toLowerCase().includes(query) || 
+      p.port.toString().includes(query) || 
+      p.pid.toString().includes(query)
+    );
+    renderPorts(filteredPorts);
+
+    const filteredProcs = processData.filter(p => 
+      p.name.toLowerCase().includes(query) || 
+      p.pid.toString().includes(query)
+    );
+    renderProcesses(filteredProcs);
+
+    const filteredServices = servicesData.filter(s => 
+      s.name.toLowerCase().includes(query) || 
+      s.display.toLowerCase().includes(query)
+    );
+    renderServices(filteredServices);
+  }
+
+  // Initial Render
+  renderPorts(portsData);
+  renderProcesses(processData);
+  renderServices(servicesData);
+</script>
+
+</body>
+</html>

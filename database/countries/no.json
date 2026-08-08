@@ -1,0 +1,406 @@
+{
+  "country": "Norway",
+  "country_code": "NO",
+  "languages": [
+    "no",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "skatt-netto-lonn-norge",
+      "title_native": "Lønnskalkulator og Skatteberegning (Netto Lønn & Trinnskatt)",
+      "title_en": "Norwegian Net Salary & Income Tax Calculator",
+      "search_terms_native": [
+        "kalkulator netto lønn",
+        "skatteetaten lønnskalkulator",
+        "skattekort beregning lønn",
+        "hvor mye får jeg utbetalt i lønn",
+        "beregne trinnskatt og trygdeavgift"
+      ],
+      "description_native": "Beregn utbetalt måneds- og årslønn (netto) etter inntektsskatt (22 %), trygdeavgift (7,8 %) og trinnskatt (trinn 1–5), inkludert minstefradrag og personfradrag.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Årlig bruttolønn (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tax_zone",
+          "label_native": "Skattevis sone / Bosted",
+          "type": "select",
+          "options": [
+            "Standard (Øvrige Norge)",
+            "Troms og Finnmark (Tiltakssonen)"
+          ]
+        },
+        {
+          "name": "employment_type",
+          "label_native": "Inntektstype",
+          "type": "select",
+          "options": [
+            "Lønnsmottaker (Fast ansatt)",
+            "Pensjonist",
+            "Næringsinntekt (Selvstendig næringsdrivende)"
+          ]
+        },
+        {
+          "name": "pension_contribution_pct",
+          "label_native": "Egen pensjonssparing / OTP (% av lønn)",
+          "type": "select",
+          "options": [
+            "2%",
+            "3%",
+            "4%",
+            "5%",
+            "6%",
+            "7%"
+          ]
+        },
+        {
+          "name": "deductions_annual",
+          "label_native": "Andre årlige fradrag (f.eks. renter på boliglån, fagforening) (NOK)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Trygdeavgift: Beregnes av personinntekt (bruttolønn uten fradrag). For lønnsmottaker = 7,8 %. For selvstendig næringsdrivende = 11,0 %. For pensjonister = 4,6 %. Low-income threshold (nedre grense for trygdeavgift) = NOK 99 650; trappeformel med 25 % av inntekt over 99 650 kr inntil full trygdeavgift oppnås. 2. Trinnskatt (Progressiv skatt på personinntekt): Trinn 1 (NOK 208 050 - 292 850): 1,7 %; Trinn 2 (NOK 292 850 - 670 000): 4,0 %; Trinn 3 (NOK 670 000 - 937 900): 13,6 % (11,6 % i Troms og Finnmark); Trinn 4 (NOK 937 900 - 1 350 000): 16,6 %; Trinn 5 (Over NOK 1 350 000): 17,6 %. 3. Alminnelig inntekt & Skatt på alminnelig inntekt (22 %): Minstefradrag i egen lønn: 46 % av bruttolønn, opptil maksimalt NOK 104 450. Personfradrag: Flatt fradrag på NOK 88 250 (Skattemessig klasse 1). Alminnelig inntekt = Bruttolønn - Minstefradrag - Personfradrag - Andre fradrag (fagforeningsfradrag opptil kr 8 000, boliglånsrenter). Skatt på alminnelig inntekt = Max(0, Alminnelig inntekt * 22 %). I Troms og Finnmark er skattesatsen 18,5 %. 4. Total skatt = Trygdeavgift + Trinnskatt + Skatt på alminnelig inntekt. 5. Netto utbetalt årslønn = Bruttolønn - Pensjonstrekk (OTP) - Total skatt. Netto månedslønn (12 måneder) = Årslønn netto / 12.",
+      "affiliate_targets": [
+        {
+          "name": "Fiken",
+          "type": "accounting",
+          "description": "Norges ledende regnskapsprogram for enkeltpersonforetak og småbedrifter med automatisk skattemelding."
+        },
+        {
+          "name": "Bulder Bank",
+          "type": "neobank",
+          "description": "Heldigital bank med automatisk rentekutt på boliglån og gebyrfri sparekonto."
+        },
+        {
+          "name": "Kron (Storebrand)",
+          "type": "software",
+          "description": "Investerings- og pensjonsplattform med lave honorarer for Aksjesparekonto (ASK) og IPS."
+        },
+        {
+          "name": "Lendo Norway",
+          "type": "software",
+          "description": "Sammenligningstjeneste for boliglån og forbrukslån fra over 15 norske banker."
+        }
+      ]
+    },
+    {
+      "id": "enk-vs-as-skatt-norge",
+      "title_native": "ENK vs AS Kalkulator – Skattesammenligning & Overskudd",
+      "title_en": "Sole Proprietorship (ENK) vs Corporation (AS) Tax Calculator Norway",
+      "search_terms_native": [
+        "enk vs as kalkulator",
+        "skatt enkeltpersonforetak vs aksjeselskap",
+        "hva er mest lønnsomt enk eller as",
+        "beregne utbytteskatt og selskapsskatt as",
+        "skattemelding næring enk aksjeselskap"
+      ],
+      "description_native": "Sammenlign netto utbetalt inntekt og total skattebelastning mellom Enkeltpersonforetak (ENK) og Aksjeselskap (AS) basert på overskudd, utbytte, lønn og arbeidsgiveravgift.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_profit_before_tax",
+          "label_native": "Forventet årlig overskudd før skatt og lønn (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "aga_zone",
+          "label_native": "Arbeidsgiveravgiftssone (AGA-sone)",
+          "type": "select",
+          "options": [
+            "Sone 1 (Sentral-Norge / Sentrale strøk: 14,1 %)",
+            "Sone 1a (Overgangssone: 10,6 %)",
+            "Sone 2 (Distriktssone: 10,6 %)",
+            "Sone 3 (Distriktssone: 6,4 %)",
+            "Sone 4 (Distriktssone: 5,1 %)",
+            "Sone 5 (Tiltakssonen Finnmark/Nord-Troms: 0,0 %)"
+          ]
+        },
+        {
+          "name": "as_owner_salary",
+          "label_native": "Planlagt lønnsuttak fra AS (resten som utbytte) (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "skjermingsfradrag_as",
+          "label_native": "Estimert skjermingsfradrag for aksjer (NOK)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. ENK (Enkeltpersonforetak): Netto næringsinntekt skattlegges direkte på eierens hånd. Trygdeavgift for næringsinntekt = 11,0 % av overskuddet. Trinnskatt beregnes av samlet næringsinntekt (Trinn 1 til 5 fra 1,7 % til 17,6 %). Skatt på alminnelig inntekt = (Overskudd - Personfradrag NOK 88 250) * 22 %. Total skatt ENK = Trygdeavgift (11 %) + Trinnskatt + Skatt alminnelig inntekt (22 %). Netto til eier ENK = Overskudd - Total skatt ENK. 2. AS (Aksjeselskap): Hvis eier tar ut lønn (S): AS må betale Arbeidsgiveravgift (AGA) = S * AGA-sats (f.eks. 14,1 %). Lønnskostnad for AS = S * (1 + AGA-sats). Eier skattlegges som lønnsmottaker på lønn (S): Trygdeavgift (7,8 %) + Trinnskatt + Skatt alminnelig inntekt (22 % på S - minstefradrag - personfradrag). Skattepliktig overskudd i AS = Opprinnelig overskudd - Lønnskostnad. Selskapsskatt (22 %) = Max(0, Skattepliktig overskudd * 22 %). Disponibelt til utbytte = Skattepliktig overskudd - Selskapsskatt. Utbytteskatt: Utbytte utover skjermingsfradrag multipliseres med oppjusteringsfaktor (1,72) og skattlegges med 22 %. Effektiv utbytteskattesats = 22 % * 1,72 = 37,84 %. Utbytteskatt = Max(0, (Utbytte - Skjermingsfradrag) * 37,84 %). Netto til eier AS = Netto lønn utbetalt + Netto utbytte utbetalt (Utbytte - Utbytteskatt).",
+      "affiliate_targets": [
+        {
+          "name": "Fiken",
+          "type": "accounting",
+          "description": "Brukervennlig regnskapssystem tilpasset oppstart av både ENK og AS med integrert stiftelsesmodul."
+        },
+        {
+          "name": "DNB Bedrift",
+          "type": "neobank",
+          "description": "Norges største bedriftsbank for aksjekapitalinnskudd, bedriftskonto og bankintegrert regnskap."
+        },
+        {
+          "name": "Folkeinvest",
+          "type": "software",
+          "description": "Norsk plattform for aksjeemisjoner og folkefinansiering av unoterte aksjeselskaper (AS)."
+        },
+        {
+          "name": "Tripletex",
+          "type": "accounting",
+          "description": "Modulbasert regnskapsprogram med lønn, timeføring og prosjektstyring for vekstbedrifter."
+        }
+      ]
+    },
+    {
+      "id": "dokumentavgift-boligkjop-norge",
+      "title_native": "Dokumentavgift og Kjøpsomkostninger ved Boligkjøp",
+      "title_en": "Norwegian Property Stamp Duty (Dokumentavgift) & Buying Costs Calculator",
+      "search_terms_native": [
+        "dokumentavgift kalkulator",
+        "hvor mye er dokumentavgift",
+        "omkostninger ved kjøp av selveier",
+        "beregne tinglysingsgebyr og dokumentavgift",
+        "dokumentavgift nybygg tomteverdi"
+      ],
+      "description_native": "Beregn den statlige dokumentavgiften (2,5 %), tinglysingsgebyr og totalt egenkapitalbehov ved kjøp av selveierbolig, nybygg eller borettslagsleilighet i Norge.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "purchase_price",
+          "label_native": "Kjøpesum / Avtalt pris på boligen (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_type",
+          "label_native": "Boligtype / Eierform",
+          "type": "select",
+          "options": [
+            "Selveier (Eierseksjon / Enkeltbolig)",
+            "Nybygg selveier (Avgift kun av tomteverdi)",
+            "Borettslag / Aksjeleilighet (Ingen dokumentavgift)"
+          ]
+        },
+        {
+          "name": "plot_value_newbuild",
+          "label_native": "Ideell tomteverdi (kun gjeldende for Nybygg selveier) (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "mortgage_documents_count",
+          "label_native": "Antall pantedokumenter som tinglyses",
+          "type": "select",
+          "options": [
+            "1 (Standard boliglån)",
+            "2 (Sikkerhet i 2 eiendommer)",
+            "0 (Kjøpes uten lån)"
+          ]
+        },
+        {
+          "name": "registration_method",
+          "label_native": "Tinglysingsmåte (Kartverket)",
+          "type": "select",
+          "options": [
+            "Elektronisk tinglysing (500 kr skjøte / 500 kr pant)",
+            "Papirinnsending (500 kr skjøte / 500 kr pant)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Dokumentavgift (Statlig avgift til Kartverket): For Selveier (Bruktbolig): 2,5 % av boligens salgsverdi/kjøpesum. Formel: Dokumentavgift = Kjøpesum * 0,025. For Nybygg selveier: 2,5 % beregnes kun av tomteverdien som tinglyses for første gang. Formel: Dokumentavgift = Tomteverdi * 0,025. For Borettslag / Aksjeleilighet: Kr 0 (Fritatt for dokumentavgift ved hjemmelsovergang). 2. Tinglysingsgebyr Kartverket: Tinglysing av skjøte (hjemmelsovergang) = Kr 500. Tinglysing per pantedokument (pantobligasjon) = Kr 500 per dokument. 3. Ytterligere eierskifteomkostninger: Gebyr for eierskifte til forretningsfører (borettslag/sameie) ≈ Kr 5 800. Boligkjøperforsikring (valgfritt) ≈ Kr 14 000 for selveier, kr 11 500 for borettslag. 4. Totale omkostninger = Dokumentavgift + Skjøtegebyr + (Antall pantedokumenter * Pantebrevgebyr) + Eierskiftegebyr + Boligkjøperforsikring. 5. Totalt kapitalbehov = Kjøpesum + Totale omkostninger. Minimum egenkapitalkrav (Utlånsforskriften): 15 % egenkapital av kjøpesum + 100 % av kjøpsomkostninger.",
+      "affiliate_targets": [
+        {
+          "name": "Bulder Bank",
+          "type": "neobank",
+          "description": "Kåret til Norges beste boliglånsbank med automatiske rentekutt basert på boligens verdiutvikling."
+        },
+        {
+          "name": "Lendo Boliglån",
+          "type": "software",
+          "description": "Sammenligner boliglånstilbud uforpliktende fra flere norske bankforbindelser for lavest mulig rente."
+        },
+        {
+          "name": "HELP Forsikring",
+          "type": "insurance",
+          "description": "Norges ledende advokat- og boligkjøperforsikring mot skjulte feil og mangler ved boligkjøp."
+        },
+        {
+          "name": "Renteradar",
+          "type": "software",
+          "description": "Gratis tjeneste som overvåker boliglånsrenten din mot markedets beste bankpriser."
+        }
+      ]
+    },
+    {
+      "id": "dagpenger-sykepenger-nav",
+      "title_native": "NAV Dagpenger, Sykepenger & Folketrygden 6G-Kalkulator",
+      "title_en": "Norwegian Unemployment (Dagpenger) & Sick Pay (Sykepenger) Calculator",
+      "search_terms_native": [
+        "kalkulator dagpenger nav",
+        "hvor mye får jeg i dagpenger",
+        "sykepenger beregning 6g",
+        "folketrygden grunnbeløp g 2026",
+        "permittering lønn nav utbetaling"
+      ],
+      "description_native": "Beregn forventede utbetalinger fra NAV for dagpenger ved arbeidsledighet/permittering eller sykepenger, basert på 6G-taket i Folketrygden og barnetillegg.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_income_last_12m",
+          "label_native": "Brutto arbeidsinntekt siste 12 måneder (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "gross_income_avg_36m",
+          "label_native": "Gjennomsnittlig bruttoinntekt siste 36 måneder (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "g_base_amount",
+          "label_native": "Folketrygdets grunnbeløp (1G) (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "benefit_type",
+          "label_native": "Ytelsestype",
+          "type": "select",
+          "options": [
+            "Dagpenger (Arbeidsledighet / Permittering)",
+            "Sykepenger (Lønnsmottaker)",
+            "Sykepenger (Selvstendig næringsdrivende uten tilleggsforsikring)"
+          ]
+        },
+        {
+          "name": "children_under_18",
+          "label_native": "Antall forsørgede barn under 18 år",
+          "type": "select",
+          "options": [
+            "0 barn",
+            "1 barn",
+            "2 barn",
+            "3 barn",
+            "4+ barn"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Folketrygdets Grunnbeløp (G): 1G per 1. mai 2024/2025 utgjør NOK 124 028 (justeres årlig i mai). 6G-taket utgjør 6 * G = NOK 744 168. 2. Dagpenger ved Arbeidsledighet / Permittering: Dagpengegrunnlag = Høyeste verdi av (Siste 12 mnd inntekt begrenset til max 6G) ELLER (Gjennomsnittlig inntekt siste 36 mnd begrenset til max 6G per år). Minstekrav til inntekt: Inntekt må overstige 1,5G (NOK 186 042) siste 12 mnd eller 3G (NOK 372 084) siste 36 mnd. Dagsats uten barn = (Dagpengegrunnlag * 62,4 %) / 260 arbeidsdager i året. Barnetillegg = Kr 37 per barn per dag (5 dager i uken = kr 185 per uke per barn). Totalt utbetalt per uke = (Dagsats * 5) + (Barnetillegg * Antall barn * 5). Månedlig brutto = Totalt utbetalt per uke * 4,33. 3. Sykepenger for Lønnsmottaker: Arbeidsgiver dekker de første 16 kalenderdagene (100 % lønn). Fra dag 17 yter NAV sykepenger tilsvarende 100 % av sykepengegrunnlaget begrenset til maksimalt 6G (NOK 744 168 per år / NOK 62 014 per mnd). Inntekt over 6G dekkes ikke av NAV (med mindre arbeidsgiver har tariffavtale). 4. Sykepenger for Selvstendig Næringsdrivende (ENK): Ingen sykepenger fra NAV de første 16 dagene. Fra dag 17 dekker NAV 80 % av næringsinntekten begrenset til max 80 % av 6G (NOK 595 334 per år), med mindre frivillig tilleggsforsikring for 100 % dekning er tegnet.",
+      "affiliate_targets": [
+        {
+          "name": "Tryg Forsikring",
+          "type": "insurance",
+          "description": "Tilleggsforsikring for sykepenger og inntektssikring skreddersydd for selvstendig næringsdrivende."
+        },
+        {
+          "name": "If Skadeforsikring",
+          "type": "insurance",
+          "description": "Uføre- og inntektsforsikring som dekker lønnstap utover Folketrygdets 6G-begrensning."
+        },
+        {
+          "name": "Smarte Penger",
+          "type": "software",
+          "description": "Uavhengig forbruker- og økonomiportal for beregning av trygdeytelser og privatøkonomi."
+        },
+        {
+          "name": "Storebrand Livsforsikring",
+          "type": "insurance",
+          "description": "Kollektiv inntekts- og uføreforsikring for ansatte og frilansere i Norge."
+        }
+      ]
+    },
+    {
+      "id": "firmabil-skatt-norge",
+      "title_native": "Firmabilskatt & Elbil Kalkulator",
+      "title_en": "Norwegian Company Car Tax & EV Benefit Calculator",
+      "search_terms_native": [
+        "firmabil skatt kalkulator",
+        "skatt på firmabil elbil 2026",
+        "beregne firmabilbeskatning tabell",
+        "firmabil listepris redusert beregningsgrunnlag",
+        "elbil firmabil skatteetaten regler"
+      ],
+      "description_native": "Beregn den månedlige og årlige skattepliktige inntektsfordelen ved å bruke firmabil (elbil, hybrid, bensin/diesel), samt netto skattebelastning for den ansatte og arbeidsgiveravgift.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "car_list_price",
+          "label_native": "Bilens listepris som ny inkl. fabrikkmontert ekstrautstyr og mva (NOK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "powertrain",
+          "label_native": "Drivlinje / Biltype",
+          "type": "select",
+          "options": [
+            "Elbil",
+            "Ladbar hybrid (Plug-in hybrid)",
+            "Bensin / Diesel / Hybrid"
+          ]
+        },
+        {
+          "name": "car_age_over_3_years",
+          "label_native": "Bilens alder (Registrert for mer enn 3 år siden)",
+          "type": "select",
+          "options": [
+            "Nei (Nyere enn 3 år)",
+            "Ja (Eldre enn 3 år pr. 1. januar)"
+          ]
+        },
+        {
+          "name": "annual_business_km_over_40k",
+          "label_native": "Yrkeskjøring over 40 000 km per år i jobben",
+          "type": "select",
+          "options": [
+            "Nei (Standard yrkeskjøring)",
+            "Ja (Dokumentert kjøring over 40 000 km)"
+          ]
+        },
+        {
+          "name": "employee_marginal_tax_rate",
+          "label_native": "Den ansattes marginalskattesats (%)",
+          "type": "select",
+          "options": [
+            "35 % (Inntekt under trinn 3)",
+            "43,4 % (Inntekt trinn 3: 670k-937k)",
+            "46,4 % (Inntekt trinn 4: 937k-1,35M)",
+            "47,4 % (Inntekt trinn 5: over 1,35M)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Beregningsgrunnlag (Skattemessig listepris): Utgangspunkt er bilens originale listepris som ny (inkludert mva og fabrikkmontert ekstrautstyr). Hvis bilen er eldre enn 3 år pr 1. januar i inntektsåret: Listepris reduseres til 75 % av nypris. Hvis yrkeskjøring i jobben overstiger 40 000 km i inntektsåret: Listepris reduseres til 75 % av nypris. Hvis BÅDE bilen er eldre enn 3 år OG yrkeskjøring er over 40 000 km: Listepris reduseres til 56,25 % av nypris (75 % * 75 %). Elbil skattlegges etter ordinært beregningsgrunnlag (100 % av listepris). 2. Sjablongmodell for fordelsberegning (Årlig skattepliktig inntektstillegg): Inntektsgrense (sjablongterskel) = NOK 351 700. Del 1: 30 % av beregningsgrunnlag opp til NOK 351 700. Del 2: 13 % av beregningsgrunnlag som overstiger NOK 351 700. Formel: Årlig skattepliktig fordel = Min(Beregningsgrunnlag, 351 700) * 0,30 + Max(0, Beregningsgrunnlag - 351 700) * 0,13. 3. Netto skatt for den ansatte: Månedlig skattepliktig inntektstillegg = Årlig skattepliktig fordel / 12. Månedlig skattebelastning = Månedlig fordel * (Marginalskattesats / 100). 4. Arbeidsgiveravgift for bedriften: Bedriften betaler arbeidsgiveravgift (f.eks. 14,1 %) av den årlige skattepliktige fordelen.",
+      "affiliate_targets": [
+        {
+          "name": "Autolease Norway",
+          "type": "software",
+          "description": "Komplett flåtestyring, biladministrasjon og næringsleasing for norske bedrifter."
+        },
+        {
+          "name": "Ayvens (LeasePlan Norway)",
+          "type": "software",
+          "description": "Norges største biladministrasjonsselskap for bedriftsbiler, elbiler og yrkesbiler."
+        },
+        {
+          "name": "DNB Biladministrasjon",
+          "type": "neobank",
+          "description": "Administrasjons- og finansieringsløsning for firmabiler integrert med bedriftens bankforbindelse."
+        },
+        {
+          "name": "Smarte Penger",
+          "type": "software",
+          "description": "Kalkulator og sammenligningstjeneste for firmabil vs. kjøregodtgjørelse og privatbil."
+        }
+      ]
+    }
+  ]
+}

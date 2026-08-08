@@ -1,0 +1,58 @@
+{
+  "country": "Cameroon",
+  "country_code": "CMR",
+  "languages": [
+    "fr",
+    "en"
+  ],
+  "currency": "XAF",
+  "calculators": [
+    {
+      "id": "cmr-tax-payroll-calculator",
+      "title_native": "Cameroon Calculateur IRPP & CNPS Cameroun",
+      "title_en": "Cameroon Calculateur IRPP & CNPS Cameroun",
+      "search_terms_native": [
+        "cameroon tax calculator",
+        "cameroon salary calculator",
+        "income tax cmr"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Cameroon.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (XAF)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Cameroon revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Afriland First Bank",
+          "type": "software",
+          "description": "Top financial tool in Cameroon"
+        },
+        {
+          "name": "Orange Money",
+          "type": "software",
+          "description": "Top financial tool in Cameroon"
+        }
+      ]
+    }
+  ]
+}

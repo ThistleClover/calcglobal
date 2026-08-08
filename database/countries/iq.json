@@ -1,0 +1,58 @@
+{
+  "country": "Iraq",
+  "country_code": "IQ",
+  "languages": [
+    "ar",
+    "ku"
+  ],
+  "currency": "IQD",
+  "calculators": [
+    {
+      "id": "iq-tax-payroll-calculator",
+      "title_native": "Iraq حاسبة ضريبة الدخل والتقاعد العراق",
+      "title_en": "Iraq حاسبة ضريبة الدخل والتقاعد العراق",
+      "search_terms_native": [
+        "iraq tax calculator",
+        "iraq salary calculator",
+        "income tax iq"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Iraq.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (IQD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Iraq revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Trade Bank of Iraq",
+          "type": "software",
+          "description": "Top financial tool in Iraq"
+        },
+        {
+          "name": "ZainCash",
+          "type": "software",
+          "description": "Top financial tool in Iraq"
+        }
+      ]
+    }
+  ]
+}

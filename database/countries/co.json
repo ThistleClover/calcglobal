@@ -1,0 +1,433 @@
+{
+  "country": "Colombia",
+  "country_code": "CO",
+  "languages": [
+    "es",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "liquidacion-laboral-nomina-colombia",
+      "title_native": "Calculadora de Liquidación Laboral y Nómina Mensual en Colombia",
+      "title_en": "Colombia Labor Settlement & Monthly Payroll Calculator",
+      "search_terms_native": [
+        "calculadora liquidacion laboral colombia",
+        "calcular prima de servicios y cesantias",
+        "liquidación de contrato de trabajo colombia",
+        "calculadora nomina colombia deducciones",
+        "cuanto me corresponde de liquidacion por despido"
+      ],
+      "description_native": "Calcula el valor de la liquidación final del contrato de trabajo (prima de servicios, cesantías, intereses sobre cesantías, vacaciones no disfrutadas e indemnización por despido) y el desglose de nómina mensual en Colombia.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_salary",
+          "label_native": "Salario mensual base (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "transport_allowance",
+          "label_native": "¿Aplica auxilio de transporte? (Salario <= 2 SMLMV)",
+          "type": "select",
+          "options": [
+            "Sí (Recibe Auxilio de Transporte)",
+            "No (Supera 2 SMLMV o Salario Integral)"
+          ]
+        },
+        {
+          "name": "contract_type",
+          "label_native": "Tipo de contrato de trabajo",
+          "type": "select",
+          "options": [
+            "Término Indefinido",
+            "Término Fijo",
+            "Obra o Labor"
+          ]
+        },
+        {
+          "name": "settlement_reason",
+          "label_native": "Motivo de terminación del contrato",
+          "type": "select",
+          "options": [
+            "Renuncia Voluntaria / Terminación por Mutuo Acuerdo",
+            "Despido Sin Justa Causa",
+            "Despido Con Justa Causa",
+            "Vencimiento de Contrato / Fin de Obra"
+          ]
+        },
+        {
+          "name": "days_worked_period",
+          "label_native": "Días trabajados a liquidar en el año/semestre",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "unused_vacation_days",
+          "label_native": "Días de vacaciones pendientes de disfrutar",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "Antigüedad total en la empresa (años trabajados para indemnización)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Nómina Mensual: Salario Base + Auxilio de Transporte (si salario <= 2 SMLMV) - Salud al empleado (4% sobre salario) - Pensión al empleado (4% sobre salario) - Fondo de Solidaridad Pensional (1% a 2% si salario >= 4 SMLMV). Salario Neto Mensual = Salario Base + Auxilio de Transporte - deducciones obligatorias. 2. Prestaciones Sociales en Liquidación: A) Prima de Servicios = (Salario Base + Auxilio de Transporte) × Días Trabajados en el semestre / 360. B) Cesantías = (Salario Base + Auxilio de Transporte) × Días Trabajados en el año / 360. C) Intereses sobre Cesantías = (Cesantías × Días Trabajados en el año × 12%) / 360. D) Vacaciones = Salario Base × Días Trabajados / 720 (no se incluye auxilio de transporte). 3. Indemnización por Despido Sin Justa Causa (Art. 64 Código Sustantivo del Trabajo): A) Contrato Indefinido con salario < 10 SMLMV: 30 días de salario por el 1er año + 20 días adicionales por cada año siguiente (o proporción). B) Contrato Indefinido con salario >= 10 SMLMV: 20 días por el 1er año + 15 días por años adicionales. C) Contrato a Término Fijo: Salarios correspondientes al tiempo sobrante para vencer el contrato.",
+      "affiliate_targets": [
+        {
+          "name": "Nominapp",
+          "type": "software",
+          "description": "Software de nómina electrónica en la nube 100% automatizado y habilitado ante la DIAN para PYMES colombianas."
+        },
+        {
+          "name": "Siigo",
+          "type": "software",
+          "description": "Líder en Colombia en soluciones de nómina electrónica, facturación y contabilidad integrada."
+        },
+        {
+          "name": "Alegra Colombia",
+          "type": "software",
+          "description": "Plataforma contable y de liquidación de nómina fácil e intuitiva para microempresas y contadores."
+        },
+        {
+          "name": "Buk Colombia",
+          "type": "software",
+          "description": "Sistema integral de recursos humanos, gestión del talento y nómina corporativa."
+        }
+      ]
+    },
+    {
+      "id": "seguridad-social-independientes-colombia",
+      "title_native": "Calculadora de Seguridad Social y Retención para Independientes (PILA)",
+      "title_en": "Colombia Freelance Social Security & Retención Tax Calculator",
+      "search_terms_native": [
+        "calculadora seguridad social independientes colombia",
+        "calcular aportes salud y pension prestacion de servicios",
+        "cuanto paga un independiente de seguridad social colombia",
+        "ibc retencion en la fuente independientes",
+        "calculadora contrato prestacion de servicios colombia"
+      ],
+      "description_native": "Calcula el Ingreso Base de Cotización (IBC del 40%), los aportes obligatorios a Salud (12.5%), Pensión (16%), ARL y la Retención en la Fuente para contratistas e independientes por prestación de servicios en Colombia.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_contract_amount",
+          "label_native": "Valor mensual del contrato o honorarios brutos (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "independent_type",
+          "label_native": "Modalidad de trabajador independiente",
+          "type": "select",
+          "options": [
+            "Contrato de Prestación de Servicios Personales (IBC 40%)",
+            "Cuenta Propia / Contratista con costos (Presunción de costos UGPP)",
+            "Rentista de Capital"
+          ]
+        },
+        {
+          "name": "arl_risk_level",
+          "label_native": "Nivel de Riesgo ARL (Administradora de Riesgos Laborales)",
+          "type": "select",
+          "options": [
+            "Riesgo I (0.522% - Oficinas, actividades administrativas)",
+            "Riesgo II (1.044% - Comercio, manufactura ligera)",
+            "Riesgo III (2.436% - Procesos industriales, transporte)",
+            "Riesgo IV (4.350% - Operación de maquinaria pesada)",
+            "Riesgo V (6.960% - Minería, construcción, alto riesgo)"
+          ]
+        },
+        {
+          "name": "withholding_tax_regime",
+          "label_native": "Esquema de Retención en la Fuente aplicable",
+          "type": "select",
+          "options": [
+            "Depuración Renta de Trabajo (Art. 383 ET - Con 25% Renta Exenta)",
+            "Tarifa Fija Honorarios / Servicios (10% u 11%)",
+            "No declara renta / Ingresos inferiores a tope de retención"
+          ]
+        },
+        {
+          "name": "smlmv_value",
+          "label_native": "Valor del Salario Mínimo Legal Mensual Vigente (SMLMV COP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Ingreso Base de Cotización (IBC): Se calcula aplicando el 40% al valor bruto mensual de los honorarios o del contrato. El IBC no puede ser inferior a 1 SMLMV ni superior a 25 SMLMV. Para independientes por cuenta propia se puede descontar la tabla de costos presuntos fijada por la UGPP. 2. Aportes Obligatorios al Sistema de Seguridad Social Integral (PILA): A) Salud = 12.5% sobre el IBC. B) Pensión = 16.0% sobre el IBC. C) ARL = Porcentaje según nivel de riesgo (0.522% a 6.960%) sobre el IBC. Total Seguridad Social = Salud + Pensión + ARL. 3. Depuración de Retención en la Fuente (Art. 383 Estatuto Tributario): Se toma el valor bruto del contrato, se restan los aportes obligatorios a salud y pensión pagados, y se deduce el 25% de Renta Exenta Laboral (con tope mensual). La base neta resultante se convierte a UVT y se le aplica la tarifa progresiva (0% hasta 95 UVT, 19%, 28%, 33%, etc.). 4. Honorarios Netos a Recibir = Valor Bruto del Contrato - Total Seguridad Social - Retención en la Fuente.",
+      "affiliate_targets": [
+        {
+          "name": "MiPlanilla / PILA",
+          "type": "software",
+          "description": "Operador de información autorizado para la liquidación y pago en línea de aportes a seguridad social PILA en Colombia."
+        },
+        {
+          "name": "Tributi",
+          "type": "software",
+          "description": "Plataforma digital para la planeación tributaria y presentación de la declaración de renta de independientes y profesionales."
+        },
+        {
+          "name": "Nu Colombia / Lulo Bank",
+          "type": "neobank",
+          "description": "Cuentas de ahorro de alto rendimiento y cero cuota de manejo para gestionar el flujo de caja de profesionales independientes."
+        },
+        {
+          "name": "Bold Colombia",
+          "type": "software",
+          "description": "Datáfonos independientes e integración de pagos digitales sin contratos de permanencia."
+        }
+      ]
+    },
+    {
+      "id": "retencion-fuente-salarios-colombia",
+      "title_native": "Calculadora de Retención en la Fuente sobre Salarios y Rentas de Trabajo (Art. 383 ET)",
+      "title_en": "Colombia Salary Income Tax Withholding Calculator (UVT)",
+      "search_terms_native": [
+        "calculadora retencion en la fuente colombia",
+        "calcular retencion salarios art 383 estatuto tributario",
+        "tabla de retencion en la fuente uvt",
+        "calculo depuración de renta de trabajo retencion",
+        "retencion en la fuente empleados colombia"
+      ],
+      "description_native": "Calcula la depuración de la base gravable en UVT y la retención en la fuente mensual por salarios en Colombia, aplicando medicina prepagada, dependientes, intereses de vivienda y la renta exenta del 25%.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_monthly_income",
+          "label_native": "Ingreso o Salario mensual bruto (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "health_pension_mandatory",
+          "label_native": "Aportes obligatorios a Salud (4%) y Pensión (4%) en el mes (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "voluntary_pension_afc",
+          "label_native": "Aportes voluntarios a Fondo de Pensiones (FVP) o AFC en el mes (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "prepaid_health_deduction",
+          "label_native": "Pagos por Medicina Prepagada o Planes Complementarios (COP $, Máx 16 UVT/mes)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dependents_deduction_flag",
+          "label_native": "¿Tiene dependientes a cargo? (Deducción 10% del ingreso bruto, Máx 32 UVT/mes)",
+          "type": "select",
+          "options": [
+            "Sí (Aplica deducción por dependiente)",
+            "No"
+          ]
+        },
+        {
+          "name": "mortgage_interest_deduction",
+          "label_native": "Intereses pagados por Crédito de Vivienda / Leasing Habitacional (COP $, Máx 100 UVT/mes)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "uvt_value",
+          "label_native": "Valor de la UVT del año vigente (Unidad de Valor Tributario COP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Ingreso Bruto Mensual (Salario, comisiones, horas extras, bonificaciones gravadas). 2. Ingresos No Constitutivos de Renta (INCR): Se restan los aportes obligatorios a Salud (4%), Pensión (4%) y Fondo de Solidaridad Pensional (FSP). Subtotal 1 = Ingreso Bruto - INCR. 3. Deducciones Imputables Mensuales: A) Intereses de vivienda/leasing (hasta 100 UVT/mes). B) Medicina prepagada/salud complementaria (hasta 16 UVT/mes). C) Deducción por dependientes (10% del ingreso bruto, hasta 32 UVT/mes). Subtotal 2 = Subtotal 1 - Deducciones. 4. Rentas Exentas: A) Aportes a FVP / AFC (hasta 30% del ingreso bruto sin exceder 3.800 UVT anuales). B) Renta Exenta Laboral del 25% calculada sobre (Subtotal 2 - FVP/AFC), con tope mensual vigente (~65.83 UVT/mes equivalente a 790 UVT/año). 5. Límite General (Art. 336 ET): La suma total de deducciones y rentas exentas no puede superar el 40% del Subtotal 1 (ni el límite en UVT aplicable). 6. Base Gravable en UVT = Base Gravable COP / Valor UVT. 7. Aplicación de la Tabla Progresiva del Art. 383 del Estatuto Tributario: Rango de 0 a 95 UVT (0%); >95 a 150 UVT ((Base - 95) × 19%); >150 a 360 UVT ((Base - 150) × 28% + 10.45 UVT); >360 a 640 UVT ((Base - 360) × 33% + 69.25 UVT); >640 a 940 UVT ((Base - 640) × 35% + 161.65 UVT); >940 a 2300 UVT ((Base - 940) × 37% + 266.65 UVT); >2300 UVT ((Base - 2300) × 39% + 769.85 UVT). 8. Valor Retención en Pesos = Retención en UVT × Valor UVT.",
+      "affiliate_targets": [
+        {
+          "name": "Tributi",
+          "type": "software",
+          "description": "Asesoría y software de declaración de renta para empleados que buscan optimizar retenciones y deducciones."
+        },
+        {
+          "name": "Skandia Colombia",
+          "type": "insurance",
+          "description": "Fondos de pensiones voluntarias FVP y cuentas AFC para reducir la base gravable de retención en la fuente."
+        },
+        {
+          "name": "Protección / Porvenir",
+          "type": "insurance",
+          "description": "Planes de ahorro voluntario para asalariados con beneficios de deducción fiscal."
+        },
+        {
+          "name": "SURA / Colmédica",
+          "type": "insurance",
+          "description": "Planes de medicina prepagada deducibles de la retención en la fuente laboral."
+        }
+      ]
+    },
+    {
+      "id": "gastos-escrituracion-inmuebles-colombia",
+      "title_native": "Calculadora de Gastos de Escrituración, Impuesto de Registro y Retención Inmobiliaria",
+      "title_en": "Colombia Real Estate Closing Costs & Notary Fees Calculator",
+      "search_terms_native": [
+        "calculadora gastos de escrituracion colombia",
+        "gastos notariales y registro compraventa inmueble colombia",
+        "retencion en la fuente por venta de inmueble",
+        "cuanto se paga de notaria y registro compra casa colombia",
+        "impuesto de registro y beneficencia inmueble colombia"
+      ],
+      "description_native": "Calcula el desglose de los gastos notariales, impuesto de registro (beneficencia), retención en la fuente del vendedor (1%) y derechos de registro para la compraventa de vivienda en Colombia.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Precio total de venta del inmueble (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "department_location",
+          "label_native": "Departamento / Ciudad de ubicación del inmueble",
+          "type": "select",
+          "options": [
+            "Bogotá D.C. (Impuesto Registro 1.0%)",
+            "Antioquia / Medellín (Impuesto Registro 1.0%)",
+            "Valle del Cauca / Cali (Impuesto Registro 1.0%)",
+            "Cundinamarca (Impuesto Registro 1.0%)",
+            "Atlántico / Barranquilla (Impuesto Registro 1.0%)",
+            "Otros Departamentos (Impuesto Registro 0.7% - 1.0%)"
+          ]
+        },
+        {
+          "name": "housing_type",
+          "label_native": "Tipo de vivienda / inmueble",
+          "type": "select",
+          "options": [
+            "Vivienda No VIS / Inmueble Comercial",
+            "Vivienda VIS (Interés Social - Tarifas Notariales y Registro Preferenciales)",
+            "Vivienda VIP (Interés Prioritario)"
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "Monto del crédito hipotecario o leasing habitacional (COP $, 0 si es de contado)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Derechos Notariales sobre la Escritura de Compraventa: Regidos por la Resolución anual de la Superintendencia de Notariado y Registro (SNR). Corresponden aproximadamente al 3.0 por mil (0.3% a 0.35%) sobre el valor de la compraventa + 19% IVA notarial. Legalmente se asumen 50% por el comprador y 50% por el vendedor. 2. Retención en la Fuente por Venta de Inmueble: 1.0% sobre el precio de venta (a cargo 100% del vendedor, retenido y consignado directamente por la notaría). 3. Impuesto de Registro (Beneficencia): Impuesto departamental administrado por las gobernaciones, cobrado a una tarifa entre el 0.7% y el 1.0% del valor del inmueble (generalmente pagado 100% por el comprador o 50/50 según pacto). 4. Derechos de Registro (ORIP): Tarifas del registro de instrumentos públicos (aprox. 0.5% al 0.7% según cuantía). 5. Gastos por Crédito Hipotecario: Si requiere hipoteca, los derechos notariales y de registro de la escritura de hipoteca (aprox. 0.3% notaría + 0.5% registro sobre el valor de la garantía) son asumidos por el comprador. 6. Gastos Fotocopias, Hoja de Papel Notarial y Certificado de Libertad y Tradición (CLT): Tarifa fija entre $150,000 y $300,000 COP.",
+      "affiliate_targets": [
+        {
+          "name": "Bancolombia / Davivienda / Lulo Bank",
+          "type": "neobank",
+          "description": "Entidades bancarias con portafolio de créditos hipotecarios y leasing habitacional con tasas competitivas."
+        },
+        {
+          "name": "Habi",
+          "type": "software",
+          "description": "Comprador instantáneo de vivienda usada y plataforma de avalúos comerciales en Colombia."
+        },
+        {
+          "name": "La Haus",
+          "type": "software",
+          "description": "Plataforma inmobiliaria especializada en la compra de vivienda nueva y gestión de créditos."
+        },
+        {
+          "name": "Seguros Bolívar / SURA",
+          "type": "insurance",
+          "description": "Seguros de hogar, vida e incendio obligatorios para el otorgamiento de créditos hipotecarios."
+        }
+      ]
+    },
+    {
+      "id": "regimen-simple-tributacion-rst",
+      "title_native": "Calculadora del Régimen Simple de Tributación (RST) vs. Régimen Ordinario de Renta",
+      "title_en": "Colombia SIMPLE Tax Regime vs Ordinary Tax Calculator",
+      "search_terms_native": [
+        "calculadora regimen simple de tributacion colombia",
+        "simulador rst vs regimen ordinario dian",
+        "cuanto se paga de impuesto en el regimen simple",
+        "tarifas rst colombia 2026",
+        "impuesto unificado regimen simple de tributacion"
+      ],
+      "description_native": "Compara la carga tributaria entre el Régimen Simple de Tributación (RST) y el Régimen Ordinario de Renta en Colombia, evaluando la tarifa unificada de impuestos (RST + ICA consolidado) y el ahorro fiscal estimado.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "taxpayer_legal_form",
+          "label_native": "Forma jurídica del contribuyente",
+          "type": "select",
+          "options": [
+            "Persona Jurídica (Empresa / S.A.S. - Renta 35%)",
+            "Persona Natural Comerciante / Empresario"
+          ]
+        },
+        {
+          "name": "annual_gross_revenue",
+          "label_native": "Ingresos brutos anuales estimados (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_deductible_costs",
+          "label_native": "Costos y gastos deducibles anuales estimados (COP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "rst_activity_group",
+          "label_native": "Grupo de actividad económica en el Régimen Simple (RST)",
+          "type": "select",
+          "options": [
+            "Grupo 1: Tiendas pequeñas, minimercados, peluquerías (Tarifas 1.2% - 5.6%)",
+            "Grupo 2: Comercio al por mayor y menor, servicios técnicos, construcción (Tarifas 1.6% - 4.5%)",
+            "Grupo 3: Servicios profesionales, de consultoría y científicos (Tarifas 3.7% - 8.3%)",
+            "Grupo 4: Actividades industriales, agropecuarias, transporte, comidas y bebidas (Tarifas 1.6% - 4.5%)"
+          ]
+        },
+        {
+          "name": "employer_pension_contributions",
+          "label_native": "Aportes a pensión a cargo del empleador pagados en el año (COP $, Deducible 100% del RST)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "electronic_payment_volume",
+          "label_native": "Volumen de ventas cobradas por medios electrónicos (Débito/Crédito COP $, Descuento del 0.5%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "uvt_value",
+          "label_native": "Valor de la UVT del año vigente (COP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Régimen Ordinario de Renta: A) Renta Líquida Gravable = Ingresos Brutos Anuales - Costos y Gastos Deducibles. B) Impuesto de Renta Persona Jurídica = 35% sobre la Renta Líquida Gravable. Para Personas Naturales = Tabla progresiva Art. 241 ET. C) Impuesto de Industria y Comercio (ICA) municipal = Ingresos Brutos × Tarifa ICA (aprox. 4.14‰ a 11.04‰ según municipio). D) Total Régimen Ordinario = Impuesto Renta + ICA. 2. Régimen Simple de Tributación (RST): A) Verificación de límite de ingreso (Máximo 100,000 UVT/año para pertenecer al RST). B) Ingresos Brutos expresados en UVT = Ingresos Brutos / Valor UVT. C) Impuesto Unificado RST Bruto = Ingresos Brutos × Tarifa % correspondiente al grupo de actividad y rango de UVT. D) Descuento por Aportes Patronales a Pensión = 100% de los aportes pagados por el empleador a pensión de sus trabajadores. E) Descuento por Pagos Electrónicos = 0.5% del valor de los ingresos recibidos a través de tarjetas de débito/crédito u otros medios electrónicos habilitados. F) Impuesto Neto a Pagar RST = Impuesto RST Bruto - Descuento Pensión Employer - Descuento Medios Electrónicos. 3. El RST sustituye el Impuesto sobre la Renta, e integra el ICA consolidado y el Impuesto Nacional al Consumo (en expendio de comidas/bebidas). Además, los contribuyentes del RST no están sujetos a retenciones en la fuente a título de renta ni ICA.",
+      "affiliate_targets": [
+        {
+          "name": "Alegra Colombia",
+          "type": "software",
+          "description": "Software de contabilidad y facturación electrónica con reportes automatizados para contribuyentes del Régimen Simple (RST)."
+        },
+        {
+          "name": "Siigo",
+          "type": "software",
+          "description": "ERP contable y administrativo líder en Colombia para el manejo de inventarios, impuestos e informes DIAN."
+        },
+        {
+          "name": "Loggro",
+          "type": "software",
+          "description": "Software de gestión empresarial en la nube con soporte integral para PYMES y liquidación tributaria."
+        },
+        {
+          "name": "PayU Colombia / Bold",
+          "type": "software",
+          "description": "Pasarelas de pagos digitales y datáfonos que permiten acreditar el beneficio fiscal del 0.5% de descuento en el RST."
+        }
+      ]
+    }
+  ]
+}

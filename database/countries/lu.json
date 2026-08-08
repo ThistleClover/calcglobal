@@ -1,0 +1,59 @@
+{
+  "country": "Luxembourg",
+  "country_code": "LU",
+  "languages": [
+    "fr",
+    "de",
+    "lb"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "lu-tax-payroll-calculator",
+      "title_native": "Luxembourg Calculatrice Salaire Brut Net Luxembourg",
+      "title_en": "Luxembourg Calculatrice Salaire Brut Net Luxembourg",
+      "search_terms_native": [
+        "luxembourg tax calculator",
+        "luxembourg salary calculator",
+        "income tax lu"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Luxembourg.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Luxembourg revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "BGL BNP Paribas",
+          "type": "software",
+          "description": "Top financial tool in Luxembourg"
+        },
+        {
+          "name": "BCEE",
+          "type": "software",
+          "description": "Top financial tool in Luxembourg"
+        }
+      ]
+    }
+  ]
+}

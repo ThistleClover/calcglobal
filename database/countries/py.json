@@ -1,0 +1,57 @@
+{
+  "country": "Paraguay",
+  "country_code": "PY",
+  "languages": [
+    "es"
+  ],
+  "currency": "PYG",
+  "calculators": [
+    {
+      "id": "py-tax-payroll-calculator",
+      "title_native": "Paraguay Calculadora IRE, IRP y IPS Paraguay",
+      "title_en": "Paraguay Calculadora IRE, IRP y IPS Paraguay",
+      "search_terms_native": [
+        "paraguay tax calculator",
+        "paraguay salary calculator",
+        "income tax py"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Paraguay.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (PYG)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Paraguay revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "SET Paraguay",
+          "type": "software",
+          "description": "Top financial tool in Paraguay"
+        },
+        {
+          "name": "Itaú Paraguay",
+          "type": "software",
+          "description": "Top financial tool in Paraguay"
+        }
+      ]
+    }
+  ]
+}

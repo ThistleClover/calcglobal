@@ -1,0 +1,59 @@
+{
+  "country": "Sri Lanka",
+  "country_code": "LK",
+  "languages": [
+    "si",
+    "ta",
+    "en"
+  ],
+  "currency": "LKR",
+  "calculators": [
+    {
+      "id": "lk-tax-payroll-calculator",
+      "title_native": "Sri Lanka APIT Income Tax & EPF/ETF Calculator",
+      "title_en": "Sri Lanka APIT Income Tax & EPF/ETF Calculator",
+      "search_terms_native": [
+        "sri lanka tax calculator",
+        "sri lanka salary calculator",
+        "income tax lk"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Sri Lanka.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (LKR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Sri Lanka revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Commercial Bank LK",
+          "type": "software",
+          "description": "Top financial tool in Sri Lanka"
+        },
+        {
+          "name": "Sampath",
+          "type": "software",
+          "description": "Top financial tool in Sri Lanka"
+        }
+      ]
+    }
+  ]
+}

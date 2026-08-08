@@ -1,0 +1,62 @@
+{
+  "country": "Slovakia",
+  "country_code": "SK",
+  "languages": [
+    "sk"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "sk-tax-payroll-calculator",
+      "title_native": "Slovakia Čistá mzda & Paušálne výdavky SZČO",
+      "title_en": "Slovakia Čistá mzda & Paušálne výdavky SZČO",
+      "search_terms_native": [
+        "slovakia tax calculator",
+        "slovakia salary calculator",
+        "income tax sk"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Slovakia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Slovakia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "SuperFaktura",
+          "type": "software",
+          "description": "Top financial tool in Slovakia"
+        },
+        {
+          "name": "KROS",
+          "type": "software",
+          "description": "Top financial tool in Slovakia"
+        },
+        {
+          "name": "Tatra banka",
+          "type": "software",
+          "description": "Top financial tool in Slovakia"
+        }
+      ]
+    }
+  ]
+}

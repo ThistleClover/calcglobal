@@ -1,0 +1,57 @@
+{
+  "country": "Libya",
+  "country_code": "LY",
+  "languages": [
+    "ar"
+  ],
+  "currency": "LYD",
+  "calculators": [
+    {
+      "id": "ly-tax-payroll-calculator",
+      "title_native": "Libya حاسبة ضريبة الدخل والضمان الاجتماعي ليبيا",
+      "title_en": "Libya حاسبة ضريبة الدخل والضمان الاجتماعي ليبيا",
+      "search_terms_native": [
+        "libya tax calculator",
+        "libya salary calculator",
+        "income tax ly"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Libya.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (LYD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Libya revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Jumhouria Bank",
+          "type": "software",
+          "description": "Top financial tool in Libya"
+        },
+        {
+          "name": "Sahara Bank",
+          "type": "software",
+          "description": "Top financial tool in Libya"
+        }
+      ]
+    }
+  ]
+}

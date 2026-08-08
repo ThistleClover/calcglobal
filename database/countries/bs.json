@@ -1,0 +1,57 @@
+{
+  "country": "Bahamas",
+  "country_code": "BS",
+  "languages": [
+    "en"
+  ],
+  "currency": "BSD",
+  "calculators": [
+    {
+      "id": "bs-tax-payroll-calculator",
+      "title_native": "Bahamas NIB National Insurance & NIB Rate Calculator",
+      "title_en": "Bahamas NIB National Insurance & NIB Rate Calculator",
+      "search_terms_native": [
+        "bahamas tax calculator",
+        "bahamas salary calculator",
+        "income tax bs"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Bahamas.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BSD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bahamas revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "RBC Bahamas",
+          "type": "software",
+          "description": "Top financial tool in Bahamas"
+        },
+        {
+          "name": "Scotiabank",
+          "type": "software",
+          "description": "Top financial tool in Bahamas"
+        }
+      ]
+    }
+  ]
+}

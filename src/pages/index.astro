@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fs from 'fs';
+import path from 'path';
+import { ACTIVE_COUNTRIES } from '../config';
+
+const dbDir = path.join(process.cwd(), 'database', 'countries');
+const files = fs.readdirSync(dbDir).filter(f => f.endsWith('.json'));
+
+const allCountries = files.map(file => {
+  const raw = fs.readFileSync(path.join(dbDir, file), 'utf-8');
+  const data = JSON.parse(raw);
+  return {
+    name: data.country,
+    code: data.country_code,
+    slug: data.country_code.toLowerCase(),
+    calculatorCount: data.calculators?.length || 0,
+    active: ACTIVE_COUNTRIES.includes(data.country_code.toLowerCase() as any),
+  };
+}).sort((a, b) => {
+  // Active countries first, then alphabetical
+  if (a.active && !b.active) return -1;
+  if (!a.active && b.active) return 1;
+  return a.name.localeCompare(b.name);
+});
+
+const activeCountries = allCountries.filter(c => c.active);
+const comingSoonCountries = allCountries.filter(c => !c.active);
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "CalcGlobal",
+  "url": "https://calcglobal.com",
+  "description": "Free, accurate tax and financial calculators for professionals worldwide."
+};
+---
+
+<Layout 
+  title="CalcGlobal | Free Localized Tax & Financial Calculators" 
+  description="Access hyper-accurate, localized tax, payroll, and financial calculators for the US, UK, France, Germany, Australia, and more. Updated for the 2026 tax year."
+  structuredData={orgSchema}
+>
+  <!-- Hero -->
+  <div class="bg-slate-900 pt-20 pb-28 px-4 text-center relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="relative max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full mb-6 border border-slate-700">
+        <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
+        Updated for 2026/27 Tax Year
+      </div>
+      <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-5 leading-tight">
+        Financial Calculators Built for<br class="hidden md:block" /> 
+        <span class="text-slate-300">Your Country's Rules</span>
+      </h1>
+      <p class="text-lg text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
+        Tax, payroll, and compliance calculators using the exact rates and brackets from local authorities. No guesswork — just precise numbers.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        {activeCountries.map(c => (
+          <a href={`/${c.slug}`} class="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-slate-100 transition-colors shadow-sm">
+            <img src={`https://flagcdn.com/w20/${c.slug === 'uk' ? 'gb' : c.slug}.png`} alt="" class="w-5 h-3.5 object-cover rounded-sm" />
+            {c.name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 pb-20">
+    
+    <!-- Active Countries (Full Coverage) -->
+    <section class="mb-16">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="px-8 pt-8 pb-6 border-b border-slate-100">
+          <h2 class="text-xl font-bold text-slate-900">Full Coverage — 5 Countries</h2>
+          <p class="text-sm text-slate-500 mt-1">Complete, professionally verified calculators with accurate 2026 tax law.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 divide-x divide-y divide-slate-100">
+          {activeCountries.map((country) => (
+            <a 
+              href={`/${country.slug}`} 
+              class="flex flex-col p-6 hover:bg-slate-50 transition-colors group"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <img 
+                  src={`https://flagcdn.com/w40/${country.slug === 'uk' ? 'gb' : country.slug}.png`}
+                  alt={`${country.name} flag`}
+                  class="w-10 h-7 object-cover rounded shadow-sm border border-slate-100"
+                  loading="lazy"
+                />
+                <span class="w-2 h-2 rounded-full bg-green-400 ml-auto"></span>
+              </div>
+              <span class="font-bold text-slate-900 text-base group-hover:text-slate-700 mb-1">{country.name}</span>
+              <span class="text-sm text-slate-500">{country.calculatorCount} calculators</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Signals -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+      <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <div class="text-2xl mb-3">⚖️</div>
+        <h3 class="font-bold text-slate-900 mb-2">Official Tax Rules</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Every formula is sourced from official government authorities — IRS, HMRC, URSSAF, Bundesfinanzministerium, and ATO.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <div class="text-2xl mb-3">🔄</div>
+        <h3 class="font-bold text-slate-900 mb-2">Updated for 2026/27</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Tax thresholds, NIC rates, personal allowances, and contribution ceilings are updated each fiscal year.</p>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <div class="text-2xl mb-3">🌍</div>
+        <h3 class="font-bold text-slate-900 mb-2">Localized Results</h3>
+        <p class="text-sm text-slate-500 leading-relaxed">Calculators display results in local currency and terminology — not a one-size-fits-all approximation.</p>
+      </div>
+    </section>
+
+  </div>
+</Layout>

@@ -1,0 +1,57 @@
+{
+  "country": "Angola",
+  "country_code": "AGO",
+  "languages": [
+    "pt"
+  ],
+  "currency": "AOA",
+  "calculators": [
+    {
+      "id": "ago-tax-payroll-calculator",
+      "title_native": "Angola Calculadora IRT Imposto sobre Rendimentos",
+      "title_en": "Angola Calculadora IRT Imposto sobre Rendimentos",
+      "search_terms_native": [
+        "angola tax calculator",
+        "angola salary calculator",
+        "income tax ago"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Angola.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (AOA)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Angola revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Banco BAI",
+          "type": "software",
+          "description": "Top financial tool in Angola"
+        },
+        {
+          "name": "BFA Angola",
+          "type": "software",
+          "description": "Top financial tool in Angola"
+        }
+      ]
+    }
+  ]
+}

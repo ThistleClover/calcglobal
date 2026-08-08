@@ -1,0 +1,58 @@
+{
+  "country": "Bahrain",
+  "country_code": "BH",
+  "languages": [
+    "ar",
+    "en"
+  ],
+  "currency": "BHD",
+  "calculators": [
+    {
+      "id": "bh-tax-payroll-calculator",
+      "title_native": "Bahrain Bahrain SIO Social Insurance & EOSB Calculator",
+      "title_en": "Bahrain Bahrain SIO Social Insurance & EOSB Calculator",
+      "search_terms_native": [
+        "bahrain tax calculator",
+        "bahrain salary calculator",
+        "income tax bh"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Bahrain.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BHD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bahrain revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "NBB",
+          "type": "software",
+          "description": "Top financial tool in Bahrain"
+        },
+        {
+          "name": "Bank of Bahrain and Kuwait",
+          "type": "software",
+          "description": "Top financial tool in Bahrain"
+        }
+      ]
+    }
+  ]
+}

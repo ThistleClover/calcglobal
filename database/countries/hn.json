@@ -1,0 +1,57 @@
+{
+  "country": "Honduras",
+  "country_code": "HN",
+  "languages": [
+    "es"
+  ],
+  "currency": "HNL",
+  "calculators": [
+    {
+      "id": "hn-tax-payroll-calculator",
+      "title_native": "Honduras Calculadora ISR e IHSS Honduras",
+      "title_en": "Honduras Calculadora ISR e IHSS Honduras",
+      "search_terms_native": [
+        "honduras tax calculator",
+        "honduras salary calculator",
+        "income tax hn"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Honduras.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (HNL)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Honduras revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Ficohsa",
+          "type": "software",
+          "description": "Top financial tool in Honduras"
+        },
+        {
+          "name": "Bac Honduras",
+          "type": "software",
+          "description": "Top financial tool in Honduras"
+        }
+      ]
+    }
+  ]
+}

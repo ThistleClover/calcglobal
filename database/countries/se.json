@@ -1,0 +1,424 @@
+{
+  "country": "Sweden",
+  "country_code": "SE",
+  "languages": [
+    "sv",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "se-netto-lon-kalkylator",
+      "title_native": "Lön Efter Skatt Kalkylator 2026 (Nettolön & Jobbskatteavdrag)",
+      "title_en": "Sweden Net Salary & Income Tax Calculator",
+      "search_terms_native": [
+        "räkna ut lön efter skatt 2026",
+        "nettolön kalkylator skatteverket",
+        "löneräknare kommunalskatt",
+        "hur mycket skatt betalar jag på min lön",
+        "jobbskatteavdrag beräkna",
+        "statlig inkomstskatt brytpunkt 2026"
+      ],
+      "description_native": "Beräkna din nettolön efter kommunalskatt, statlig inkomstskatt, jobbskatteavdrag, grundavdrag samt kyrko- och begravningsavgift baserat på din hemkommun och ålder.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary_monthly",
+          "label_native": "Månadslön före skatt (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "municipal_tax_rate",
+          "label_native": "Kommunalskatt (%) [Genomsnitt 32,38%]",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "birth_year_category",
+          "label_native": "Ålderskategori vid årets ingång",
+          "type": "select",
+          "options": [
+            "Under 66 år vid årets ingång",
+            "66 år eller äldre"
+          ]
+        },
+        {
+          "name": "church_fee_included",
+          "label_native": "Medlem i Svenska kyrkan (Kyrkoavgift ~1%)",
+          "type": "select",
+          "options": [
+            "nej",
+            "ja"
+          ]
+        },
+        {
+          "name": "burial_fee_rate",
+          "label_native": "Begravningsavgift (%) [Normalt ~0,277%]",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Betalningsintervall",
+          "type": "select",
+          "options": [
+            "månad",
+            "år"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Gross Annual Income = Monthly Gross Salary × 12.\n2. Basic Deduction (Grundavdrag): Calculated via Skatteverket formulas based on Price Base Amount (Prisbasbelopp PBB = 58,800 SEK for 2026). Ranges between ~16,800 SEK and ~40,500 SEK for earners under 66, and enhanced basic deduction up to ~130,000 SEK for earners aged 66+.\n3. Taxable Earned Income = Gross Annual Income - Grundavdrag.\n4. Municipal Tax (Kommunalskatt): Municipal Tax Rate % × Taxable Earned Income. (Includes municipal + regional tax + burial fee + optional church fee).\n5. Earned Income Tax Credit (Jobbskatteavdrag): Calculated as a direct credit against municipal tax based on earned income and PBB. Extended in 2026 with no high-income taper reduction.\n6. State Income Tax (Statlig inkomstskatt): 20% on Taxable Earned Income exceeding the skiktgräns (643,000 SEK taxable income / brytpunkt 660,400 SEK gross annual income for under 66; 760,500 SEK gross annual income for age 66+).\n7. Total Personal Income Tax = Municipal Tax - Jobbskatteavdrag + State Income Tax.\n8. Net Annual Income = Gross Annual Income - Total Personal Income Tax. Net Monthly Take-Home Pay = Net Annual Income / 12.",
+      "affiliate_targets": [
+        {
+          "name": "Revolut Sweden",
+          "type": "neobank",
+          "description": "Popular Swedish neobank offering instant salary deposits, free multi-currency accounts, and automated budgeting tools."
+        },
+        {
+          "name": "Unionen",
+          "type": "insurance",
+          "description": "Sweden's largest trade union providing white-collar workers with income insurance (inkomstförsäkring) covering up to 80% of salary upon job loss."
+        },
+        {
+          "name": "Avanza Bank",
+          "type": "software",
+          "description": "Leading Swedish digital investment bank and ISK broker targeting net salary monthly auto-savers."
+        },
+        {
+          "name": "Lunar Sweden",
+          "type": "neobank",
+          "description": "Nordic mobile bank with high-yield savings accounts and automated pay-check splitting features."
+        }
+      ]
+    },
+    {
+      "id": "se-aktiebolag-utdelning-lon",
+      "title_native": "Aktiebolag Lön vs Utdelning Kalkylator (3:12-reglerna & K10)",
+      "title_en": "Swedish Limited Company Director Salary vs Dividend Calculator (3:12 Rules)",
+      "search_terms_native": [
+        "3 12 regler utdelning beräkna",
+        "förenklingsregeln gränsbelopp 2026",
+        "lön vs utdelning aktiebolag kalkylator",
+        "k10 gränsbelopp huvudregeln",
+        "skatt på utdelning fåmansbolag",
+        "optimal lön fåmansföretag 2026"
+      ],
+      "description_native": "Optimera uttag av lön och utdelning för fåmansbolagsägare enligt 3:12-reglerna (Förenklingsregeln vs Huvudregeln/nya 2026-modellen) för lägsta totala skatt.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "company_gross_profit",
+          "label_native": "Bolagets vinst före löner och skatt (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "owner_salary_annual",
+          "label_native": "Planerad årsbruttolön till ägare (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_company_payroll",
+          "label_native": "Totalt löneunderlag i bolaget exkl. ägarförmåner (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "calculation_rule_year",
+          "label_native": "Tillämpat regelverk för 3:12",
+          "type": "select",
+          "options": [
+            "2026 Reformerad sammanhållen 3:12-modell",
+            "2025 Förenklingsregeln (Schablon)",
+            "2025 Huvudregeln (Lönebaserat utrymme)"
+          ]
+        },
+        {
+          "name": "ownership_share_pct",
+          "label_native": "Ägarandel i bolaget (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "municipal_tax_rate",
+          "label_native": "Ägarens kommunalskatt (%) [Standard 32%]",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Employer Social Security Contributions (Arbetsgivaravgifter): 31.42% of Gross Director Salary. Total Payroll Cost = Gross Salary × 1.3142.\n2. Taxable Corporate Profit = Company Gross Profit - Total Payroll Cost - Business Expenses.\n3. Corporate Tax (Bolagsskatt): 20.6% × Taxable Corporate Profit. Net Distributable Profit = Taxable Corporate Profit × (1 - 0.206).\n4. K10 Dividend Allowance (Gränsbelopp):\n   - 2025 Förenklingsregeln: 2.75 × Inkomstbasbelopp (IBB) (209,550 SEK for 2025) × Ownership Share %.\n   - 2025 Huvudregeln: 50% of qualifying company payroll (subject to owner salary requirement: 6 IBB + 5% payroll or 9.6 IBB) × Ownership Share %.\n   - 2026 Unified Model: Base threshold (4 IBB = 322,400 SEK for 2026) + Salary-based space (payroll minus 8 IBB deduction) × Ownership Share %.\n5. Dividend Taxation:\n   - Dividends within Gränsbelopp: Taxed at favorable 20% capital rate (2/3 of 30%).\n   - Dividends exceeding Gränsbelopp (up to 90 IBB cap): Taxed as earned income (tjänsteinkomst) at marginal tax rate (~32-52%), but exempt from employer contributions.\n   - Dividends exceeding 90 IBB: Taxed at standard 30% capital tax rate.\n6. Total Net Combined Take-Home = Net Director Salary (after income tax & jobbskatteavdrag) + Net Distributed Dividends (after 20% / marginal dividend tax).",
+      "affiliate_targets": [
+        {
+          "name": "Fortnox",
+          "type": "software",
+          "description": "Dominant Swedish cloud accounting software for limited companies (Aktiebolag) featuring automated payroll and K10 dividend reporting."
+        },
+        {
+          "name": "Bokio",
+          "type": "software",
+          "description": "Popular automated accounting, invoicing, and corporate tax return platform tailored for Swedish small business owners."
+        },
+        {
+          "name": "Mynt",
+          "type": "neobank",
+          "description": "Swedish corporate smart credit card offering high limits, accounting synchronization, and expense management for Aktiebolag directors."
+        },
+        {
+          "name": "Qred",
+          "type": "neobank",
+          "description": "Leading Nordic business finance platform providing fast corporate loans and credit lines for growth companies."
+        }
+      ]
+    },
+    {
+      "id": "se-enskild-firma-skatt",
+      "title_native": "Enskild Firma & Egenanställning Skattekalkylator 2026",
+      "title_en": "Swedish Sole Trader & Freelancer Net Income Tax Calculator",
+      "search_terms_native": [
+        "enskild firma skatt beräkna",
+        "egenavgifter 2026 kalkylator",
+        "räkna ut lön egenanställning",
+        "schablonavdrag egenavgifter 25 procent",
+        "frilans skatt nettolön sverige",
+        "egenfirma överskott skatt"
+      ],
+      "description_native": "Beräkna nettoinkomst, egenavgifter (28,97%), schablonavdrag, kommunalskatt och jobbskatteavdrag för enskild näringsverksamhet och egenanställda frilansare.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_revenue_annual",
+          "label_native": "Årlig omsättning / fakturerat belopp exkl. moms (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_expenses",
+          "label_native": "Godkända verksamhetskostnader exkl. moms (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "employment_type",
+          "label_native": "Verksamhetsform",
+          "type": "select",
+          "options": [
+            "Enskild firma (Egenavgifter)",
+            "Egenanställning (Frilans Finans/Cool Company ~6% avgift)"
+          ]
+        },
+        {
+          "name": "municipal_tax_rate",
+          "label_native": "Kommunalskatt (%) [Genomsnitt 32,38%]",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "periodiseringsfond_pct",
+          "label_native": "Avsättning till periodiseringsfond (%) [Max 30%]",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "birth_year_category",
+          "label_native": "Ålderskategori vid årets ingång",
+          "type": "select",
+          "options": [
+            "Född 1959 eller senare (Fulla egenavgifter 28,97%)",
+            "Född 1958 eller tidigare (Sänkt egenavgift 10,21%)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Gross Business Operating Profit = Annual Gross Revenues - Business Expenses. (If umbrella employment, deduct umbrella commission fee of ~6% first).\n2. Allocation to Tax Allocation Reserve (Periodiseringsfond): Maximum 30% of operating profit can be deferred for up to 6 tax years. Net Business Profit (Överskott) = Operating Profit - Tax Reserve Deduction.\n3. Standard Allowance for Social Contributions (Schablonavdrag för egenavgifter): 25% standard deduction on Net Profit for age <67 (or 10% for age 67+). Estimated Taxable Base = Net Business Profit / 1.25.\n4. Self-Employed Social Security Contributions (Egenavgifter): 28.97% × Estimated Taxable Base (or 10.21% pension fee for age 67+).\n5. Taxable Earned Income (Beskattningsbar förvärvsinkomst) = Net Business Profit - Actual Egenavgifter - Basic Deduction (Grundavdrag).\n6. Personal Income Tax = Municipal Tax Rate × Taxable Earned Income - Jobbskatteavdrag + State Income Tax (20% above 643,000 SEK taxable income threshold).\n7. Net Take-Home Freelance Income = Net Business Profit - Actual Egenavgifter - Personal Income Tax.",
+      "affiliate_targets": [
+        {
+          "name": "Frilans Finans",
+          "type": "software",
+          "description": "Sweden's leading umbrella organization enabling freelancers to invoice client companies without registering a business entity."
+        },
+        {
+          "name": "Zervant",
+          "type": "software",
+          "description": "User-friendly electronic invoicing and expense tracking platform designed specifically for Nordic sole traders."
+        },
+        {
+          "name": "Svea Bank",
+          "type": "neobank",
+          "description": "Swedish business bank offering dedicated Enskild firma accounts with tax buffer savings sub-accounts and factoring."
+        },
+        {
+          "name": "Trygg-Hansa",
+          "type": "insurance",
+          "description": "Comprehensive commercial general liability (ansvarsförsäkring) and legal protection insurance for sole proprietors."
+        }
+      ]
+    },
+    {
+      "id": "se-bostadsvinstskatt-lagfart",
+      "title_native": "Bostadsvinstskatt, Lagfart & Pantbrev Kalkylator",
+      "title_en": "Swedish Real Estate Capital Gains Tax & Mortgage Fee Calculator",
+      "search_terms_native": [
+        "bostadsvinstskatt beräkna 2026",
+        "reavinstskatt bostadsrätt hus",
+        "uppskov bostadsförsäljning ränta",
+        "stämpelskatt lagfart beräkna",
+        "pantbrev kostnad kalkylator",
+        "avdrag mäklararvode renovering"
+      ],
+      "description_native": "Beräkna vinstskatt (22%) vid försäljning av bostad, avdragsgilla renoveringar och mäklararvodet, uppskovsmöjligheter samt köparens stämpelskatt för lagfart (1,5%) och pantbrev (2%).",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_type",
+          "label_native": "Typ av bostad",
+          "type": "select",
+          "options": [
+            "Bostadsrätt (Lägenhet)",
+            "Fastighet (Villa/Småhus)"
+          ]
+        },
+        {
+          "name": "sale_price",
+          "label_native": "Försäljningspris (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "purchase_price",
+          "label_native": "Inköpspris / Anskaffningsvärde (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "broker_fee",
+          "label_native": "Mäklararvode & försäljningskostnader (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "renovation_costs",
+          "label_native": "Avdragsgilla förbättrings- och renoveringskostnader (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "new_mortgage_amount",
+          "label_native": "Belopp för nya pantbrev vid köp (SEK) [Gäller endast Fastighet]",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "apply_deferral",
+          "label_native": "Ansöka om uppskov med vinsten",
+          "type": "select",
+          "options": [
+            "nej",
+            "ja (Max 3 000 000 kr)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Gross Capital Profit = Sale Price - Purchase Price.\n2. Total Allowable Deductions = Broker Commission + Sales Marketing Expenses + Qualified Renovation Expenses (Grundförbättringar full value within last 5 years + Reparationer/Underhåll bringing property to improved standard).\n3. Net Capital Gain (Vinst/Förlust) = Gross Capital Profit - Total Allowable Deductions.\n4. Capital Gains Tax on Private Residence (Vinstskatt privatbostad): Taxed at 22% effective rate (22/30 of profit subject to 30% capital tax). If capital loss, tax reduction is 50% of loss up to 100,000 SEK, plus 30% on loss exceeding 100,000 SEK.\n5. Tax Deferral (Uppskov med vinstskatt): Sellers purchasing a replacement dwelling can defer up to 3,000,000 SEK of capital gains. Annual deferral tax rate is 0% (abolished since 2021).\n6. Stamp Duty on Property Ownership Transfer (Stämpelskatt för lagfart): 1.5% of Sale Price (or tax assessment value if higher) + 825 SEK registration fee for individuals (4.25% for corporate buyers).\n7. New Mortgage Deed Fee (Pantbrev): 2% of new mortgage deed amount issued + 375 SEK administration fee per pantbrev.",
+      "affiliate_targets": [
+        {
+          "name": "SBAB",
+          "type": "neobank",
+          "description": "State-owned Swedish mortgage bank offering competitive interest rates and transparent online mortgage approvals."
+        },
+        {
+          "name": "Hemnet",
+          "type": "software",
+          "description": "Sweden's main property marketplace and home valuation portal for prospective home buyers and sellers."
+        },
+        {
+          "name": "Ordna Bolån",
+          "type": "software",
+          "description": "Digital mortgage brokerage platform comparing home loan offers across major Swedish commercial banks."
+        },
+        {
+          "name": "Mäklarhuset",
+          "type": "legal",
+          "description": "Established real estate brokerage network providing home valuation assessments and conveyancing assistance."
+        }
+      ]
+    },
+    {
+      "id": "se-rot-rut-avdrag",
+      "title_native": "ROT & RUT-avdrag Kalkylator 2026",
+      "title_en": "Swedish ROT & RUT Home Improvement Tax Deduction Calculator",
+      "search_terms_native": [
+        "rotavdrag beräkna 2026",
+        "rutavdrag gräns och regler",
+        "hur mycket rotavdrag får man",
+        "rot rut max per person 75000",
+        "arbetskostnad rotavdrag 30 procent",
+        "rotavdrag fönsterbyte badrum"
+      ],
+      "description_native": "Beräkna nettoägarkostnad och skattereduktion för hantverkstjänster (ROT 30%) och hushållsnära tjänster (RUT 50%) under 2026 års gällande tak per person.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "service_type",
+          "label_native": "Typ av tjänst",
+          "type": "select",
+          "options": [
+            "ROT-arbete (Bygg, renovering, el, vvs - 30% avdrag)",
+            "RUT-arbete (Städning, trädgård, flytt, barnpassning - 50% avdrag)"
+          ]
+        },
+        {
+          "name": "labor_cost_incl_vat",
+          "label_native": "Arbetskostnad inkl. moms (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "material_and_travel_cost",
+          "label_native": "Material-, utrustnings- och resekostnad inkl. moms (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "previous_rot_used_year",
+          "label_native": "Tidigare utnyttjat ROT-avdrag i år per person (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "previous_rut_used_year",
+          "label_native": "Tidigare utnyttjat RUT-avdrag i år per person (SEK)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "number_of_owners",
+          "label_native": "Antal delägare/personer i hushållet som nyttjar avdraget",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Gross Invoice Amount = Labor Cost + Material and Travel Expenses.\n2. Potential ROT Tax Reduction: 30% × Labor Cost. Maximum ROT cap = 50,000 SEK per person per tax year.\n3. Potential RUT Tax Reduction: 50% × Labor Cost. Maximum total combined ROT + RUT cap = 75,000 SEK per person per tax year.\n4. Household Combined Capacity: Max ROT ceiling = 50,000 SEK × Number of Eligible Owners. Max total ROT+RUT ceiling = 75,000 SEK × Number of Eligible Owners.\n5. Remaining Household Allowance: ROT Cap Remaining = Min(50,000 SEK - Previous ROT, 75,000 SEK - Total Previous ROT+RUT) × Owners. RUT Cap Remaining = (75,000 SEK - Total Previous ROT+RUT) × Owners.\n6. Granted Tax Reduction = Min(Potential Tax Reduction, Remaining Allowance). Note: Tax reduction is limited by individual's total paid municipal/state tax for the year.\n7. Customer Payable Net Amount = Gross Invoice Amount - Granted Tax Reduction.",
+      "affiliate_targets": [
+        {
+          "name": "Offerta",
+          "type": "software",
+          "description": "Sweden's premier quotation network matching homeowners with certified contractors eligible for ROT and RUT tax deductions."
+        },
+        {
+          "name": "Bygghemma",
+          "type": "software",
+          "description": "Leading Nordic e-commerce store for building supplies, fixtures, and renovation materials."
+        },
+        {
+          "name": "Lendo",
+          "type": "neobank",
+          "description": "Dominant Swedish financial loan comparison platform for home improvement and renovation financing."
+        },
+        {
+          "name": "Freska",
+          "type": "software",
+          "description": "Popular home services platform specializing in recurring RUT-deductible home cleaning."
+        }
+      ]
+    }
+  ]
+}

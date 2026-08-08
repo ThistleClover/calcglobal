@@ -1,0 +1,57 @@
+{
+  "country": "Costa Rica",
+  "country_code": "CR",
+  "languages": [
+    "es"
+  ],
+  "currency": "CRC",
+  "calculators": [
+    {
+      "id": "cr-tax-payroll-calculator",
+      "title_native": "Costa Rica Calculadora Impuesto sobre la Renta y CCSS",
+      "title_en": "Costa Rica Calculadora Impuesto sobre la Renta y CCSS",
+      "search_terms_native": [
+        "costa rica tax calculator",
+        "costa rica salary calculator",
+        "income tax cr"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Costa Rica.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (CRC)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Costa Rica revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "BAC Credomatic",
+          "type": "software",
+          "description": "Top financial tool in Costa Rica"
+        },
+        {
+          "name": "Factura Feliz",
+          "type": "software",
+          "description": "Top financial tool in Costa Rica"
+        }
+      ]
+    }
+  ]
+}

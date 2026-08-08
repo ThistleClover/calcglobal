@@ -1,0 +1,62 @@
+{
+  "country": "China",
+  "country_code": "CN",
+  "languages": [
+    "zh"
+  ],
+  "currency": "CNY",
+  "calculators": [
+    {
+      "id": "cn-tax-payroll-calculator",
+      "title_native": "China Individual Income Tax (IIT) & 5 Insurances 1 Fund",
+      "title_en": "China Individual Income Tax (IIT) & 5 Insurances 1 Fund",
+      "search_terms_native": [
+        "china tax calculator",
+        "china salary calculator",
+        "income tax cn"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for China.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (CNY)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on China revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Ping An",
+          "type": "software",
+          "description": "Top financial tool in China"
+        },
+        {
+          "name": "Alipay",
+          "type": "software",
+          "description": "Top financial tool in China"
+        },
+        {
+          "name": "Kingdee",
+          "type": "software",
+          "description": "Top financial tool in China"
+        }
+      ]
+    }
+  ]
+}

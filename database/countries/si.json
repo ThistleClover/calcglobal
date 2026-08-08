@@ -1,0 +1,62 @@
+{
+  "country": "Slovenia",
+  "country_code": "SI",
+  "languages": [
+    "sl"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "si-tax-payroll-calculator",
+      "title_native": "Slovenia Kalkulator Neto Plače & Normirani SP",
+      "title_en": "Slovenia Kalkulator Neto Plače & Normirani SP",
+      "search_terms_native": [
+        "slovenia tax calculator",
+        "slovenia salary calculator",
+        "income tax si"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Slovenia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Slovenia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "eNovice",
+          "type": "software",
+          "description": "Top financial tool in Slovenia"
+        },
+        {
+          "name": "NLB",
+          "type": "software",
+          "description": "Top financial tool in Slovenia"
+        },
+        {
+          "name": "Minimax",
+          "type": "software",
+          "description": "Top financial tool in Slovenia"
+        }
+      ]
+    }
+  ]
+}

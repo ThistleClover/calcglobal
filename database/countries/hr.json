@@ -1,0 +1,62 @@
+{
+  "country": "Croatia",
+  "country_code": "HR",
+  "languages": [
+    "hr"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "hr-tax-payroll-calculator",
+      "title_native": "Croatia Kalkulator Plaće Neto/Bruto & Paušalni Obrt",
+      "title_en": "Croatia Kalkulator Plaće Neto/Bruto & Paušalni Obrt",
+      "search_terms_native": [
+        "croatia tax calculator",
+        "croatia salary calculator",
+        "income tax hr"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Croatia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Croatia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "MojPosao",
+          "type": "software",
+          "description": "Top financial tool in Croatia"
+        },
+        {
+          "name": "RBA",
+          "type": "software",
+          "description": "Top financial tool in Croatia"
+        },
+        {
+          "name": "Minimax",
+          "type": "software",
+          "description": "Top financial tool in Croatia"
+        }
+      ]
+    }
+  ]
+}

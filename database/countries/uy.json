@@ -1,0 +1,62 @@
+{
+  "country": "Uruguay",
+  "country_code": "UY",
+  "languages": [
+    "es"
+  ],
+  "currency": "UYU",
+  "calculators": [
+    {
+      "id": "uy-tax-payroll-calculator",
+      "title_native": "Uruguay Calculadora IRPF y BPS Uruguay",
+      "title_en": "Uruguay Calculadora IRPF y BPS Uruguay",
+      "search_terms_native": [
+        "uruguay tax calculator",
+        "uruguay salary calculator",
+        "income tax uy"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Uruguay.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (UYU)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Uruguay revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "BPS",
+          "type": "software",
+          "description": "Top financial tool in Uruguay"
+        },
+        {
+          "name": "Itaú Uruguay",
+          "type": "software",
+          "description": "Top financial tool in Uruguay"
+        },
+        {
+          "name": "Memory",
+          "type": "software",
+          "description": "Top financial tool in Uruguay"
+        }
+      ]
+    }
+  ]
+}

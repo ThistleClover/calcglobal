@@ -1,0 +1,58 @@
+{
+  "country": "Uganda",
+  "country_code": "UG",
+  "languages": [
+    "en",
+    "sw"
+  ],
+  "currency": "UGX",
+  "calculators": [
+    {
+      "id": "ug-tax-payroll-calculator",
+      "title_native": "Uganda URA PAYE Tax & NSSF Calculator",
+      "title_en": "Uganda URA PAYE Tax & NSSF Calculator",
+      "search_terms_native": [
+        "uganda tax calculator",
+        "uganda salary calculator",
+        "income tax ug"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Uganda.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (UGX)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Uganda revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "MTN MoMo Uganda",
+          "type": "software",
+          "description": "Top financial tool in Uganda"
+        },
+        {
+          "name": "Stanbic UG",
+          "type": "software",
+          "description": "Top financial tool in Uganda"
+        }
+      ]
+    }
+  ]
+}

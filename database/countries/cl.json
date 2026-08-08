@@ -1,0 +1,428 @@
+{
+  "country": "Chile",
+  "country_code": "CL",
+  "languages": [
+    "es"
+  ],
+  "calculators": [
+    {
+      "id": "sueldo-liquido-chile",
+      "title_native": "Calculadora de Sueldo Líquido y Descuentos Previsionales Chile",
+      "title_en": "Chile Net Salary & Social Security Deduction Calculator",
+      "search_terms_native": [
+        "calculadora sueldo liquido chile",
+        "calcular salario neto chile",
+        "descuentos afp fonasa isapre",
+        "calculadora sueldo bruto a liquido 2026",
+        "impuesto unico segunda categoria calculadora"
+      ],
+      "description_native": "Calcula el sueldo líquido mensual a partir del sueldo bruto en Chile, descontando AFP (según la administradora), sistema de salud (Fonasa 7% o Isapre en UF), Seguro de Cesantía y el Impuesto Único de Segunda Categoría (IUSC) según el valor de la UTM.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Sueldo Bruto Mensual (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "gratification_type",
+          "label_native": "Gratificación Legal",
+          "type": "select",
+          "options": [
+            "Incluida en el sueldo bruto (25% con tope de 4.75 IMM / 12)",
+            "Pactada semestral o anualmente",
+            "Sin gratificación legal"
+          ]
+        },
+        {
+          "name": "afp_name",
+          "label_native": "Administradora de Fondos de Pensiones (AFP)",
+          "type": "select",
+          "options": [
+            "AFP Uno (10.49% total)",
+            "AFP Modelo (10.58% total)",
+            "AFP Planvital (11.16% total)",
+            "AFP Habitat (11.27% total)",
+            "AFP Capital (11.44% total)",
+            "AFP Cuprum (11.44% total)",
+            "AFP ProVida (11.45% total)"
+          ]
+        },
+        {
+          "name": "health_system",
+          "label_native": "Sistema de Salud",
+          "type": "select",
+          "options": [
+            "Fonasa (7% cotización obligatoria)",
+            "Isapre (Monto pactado en UF)"
+          ]
+        },
+        {
+          "name": "isapre_amount_uf",
+          "label_native": "Monto pactado plan Isapre en UF (si aplica)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "contract_type",
+          "label_native": "Tipo de Contrato Laboral",
+          "type": "select",
+          "options": [
+            "Contrato Indefinido (0.6% Seguro Cesantía cargo trabajador)",
+            "Plazo Fijo / Por Obra o Faena (0% cargo trabajador, 3% cargo empleador)"
+          ]
+        },
+        {
+          "name": "uf_value",
+          "label_native": "Valor de la UF (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "utm_value",
+          "label_native": "Valor de la UTM mensual (CLP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Base Imponible Previsional = Min(Sueldo Bruto, Tope Imponible AFP/Salud de 84.3 UF aprox). 2. Descuento AFP = Base Imponible × (10% obligatorio + Comisión AFP elegida, ej. Uno 0.49%, ProVida 1.45%). 3. Descuento Salud = Para Fonasa: Base Imponible × 7%. Para Isapre: Max(Base Imponible × 7%, Monto Plan UF × Valor UF). 4. Descuento Seguro de Cesantía = Si es contrato indefinido: Min(Sueldo Bruto, Tope Imponible Cesantía 126.6 UF) × 0.6%. Si es plazo fijo: 0% cargo trabajador. 5. Renta Imponible Tributable = Sueldo Bruto - Cotizaciones Previsionales Obligatorias (AFP + Salud + Seguro Cesantía). 6. Impuesto Único de Segunda Categoría (IUSC): Se convierte la Renta Imponible a UTM y se aplica la tabla progresiva de IUSC (Tramos en UTM: <13.5 Exento; 13.5-30 4% - 0.54 rebaja; 30-50 8% - 1.74 rebaja; 50-70 13.5% - 4.49 rebaja; 70-90 23% - 11.14 rebaja; 90-120 30.4% - 17.8 rebaja; 120-310 35% - 23.32 rebaja; >310 40% - 38.82 rebaja). 7. Sueldo Líquido Final = Sueldo Bruto - Descuento AFP - Descuento Salud - Seguro Cesantía - IUSC.",
+      "affiliate_targets": [
+        {
+          "name": "Buk",
+          "type": "software",
+          "description": "Software integral líder en Chile para el cálculo de liquidaciones de sueldo, gestión de nóminas y cumplimiento con Previred."
+        },
+        {
+          "name": "Nubox Remuneraciones",
+          "type": "software",
+          "description": "Plataforma cloud para PYMEs que automatiza el cálculo de sueldos, contratos y cotizaciones ante las AFPs e Isapres."
+        },
+        {
+          "name": "Fintual",
+          "type": "software",
+          "description": "Administradora general de fondos y APV (Ahorro Previsional Voluntario) que optimiza el pago del Impuesto Único mediante beneficios tributarios (Art. 42 bis LIR)."
+        },
+        {
+          "name": "Global66",
+          "type": "neobank",
+          "description": "Cuenta global multi-divisa sin costos ocultos para recibir sueldos y realizar giros en pesos chilenos y moneda extranjera."
+        }
+      ]
+    },
+    {
+      "id": "boleta-honorarios-retencion-chile",
+      "title_native": "Calculadora de Boleta de Honorarios y Retención de Impuesto Chile (Ley 21.133)",
+      "title_en": "Chile Freelance Invoice & Tax Withholding Calculator",
+      "search_terms_native": [
+        "calculadora boleta de honorarios chile",
+        "retencion boleta honorarios 2026",
+        "calcular liquido honorarios chile 15.25",
+        "boleta de honorarios SII bruto a liquido",
+        "operacion renta cotizaciones independientes"
+      ],
+      "description_native": "Calcula el valor bruto, el líquido a recibir y la retención de impuestos (15.25% vigente para 2026 según la Ley N° 21.133) al emitir boletas de honorarios electrónicas ante el SII en Chile.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "calculation_mode",
+          "label_native": "Modo de Cálculo",
+          "type": "select",
+          "options": [
+            "Calcular desde Líquido deseado a Bruto a facturar",
+            "Calcular desde Valor Bruto a Líquido a recibir"
+          ]
+        },
+        {
+          "name": "amount",
+          "label_native": "Monto de Ingreso (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "withholder_type",
+          "label_native": "Receptor de la Boleta",
+          "type": "select",
+          "options": [
+            "Empresa / Persona Jurídica (Retiene el 15.25% de forma automática)",
+            "Particular / Empresa Extranjera (El trabajador realiza la autoretención mediante Formulario F29)"
+          ]
+        },
+        {
+          "name": "coverage_option",
+          "label_native": "Modalidad de Cotización Previsional (Operación Renta)",
+          "type": "select",
+          "options": [
+            "Cobertura Total (100% de la retención destina a salud, AFP, accidentabilidad y Ley SANNA)",
+            "Cobertura Parcial (Porcentaje menor a previsión con devolución de remanente)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Según la escala gradual de la Ley N° 21.133, la tasa de retención de impuestos sobre Boletas de Honorarios para el año 2026 es del 15.25%. 2. De Bruto a Líquido: Retención SII = Valor Bruto × 0.1525. Monto Líquido = Valor Bruto × (1 - 0.1525) = Valor Bruto × 0.8475. 3. De Líquido a Bruto: Valor Bruto = Monto Líquido / (1 - 0.1525) = Monto Líquido / 0.8475. Retención SII = Valor Bruto - Monto Líquido. 4. Operación Renta anual (Abril): El total retenido por el SII financia las cotizaciones obligatorias para independientes (Seguro de Accidentes del Trabajo, Ley SANNA, Salud 7%, AFP hasta el tope imponible y Seguro de Invalidez y Sobrevivencia - SIS). Si la retención supera las cotizaciones, el remanente se devuelve al trabajador mediante transferencia bancaria.",
+      "affiliate_targets": [
+        {
+          "name": "Chipax",
+          "type": "software",
+          "description": "Herramienta de control financiero y conciliación bancaria automática para profesionales independientes y emprendedores."
+        },
+        {
+          "name": "Nubox Facturación",
+          "type": "software",
+          "description": "Sistema de emisión de comprobantes y facturación electrónica directamente sincronizado con el SII."
+        },
+        {
+          "name": "Tenpo",
+          "type": "neobank",
+          "description": "Cuenta digital y tarjeta prepago/débito gratuita en Chile ideal para recibir pagos de honorarios y transferencias."
+        },
+        {
+          "name": "Global66",
+          "type": "neobank",
+          "description": "Cuenta global en dólares y euros para cobrar a clientes del exterior y abonar en cuentas bancarias chilenas a tipo de cambio transparente."
+        }
+      ]
+    },
+    {
+      "id": "finiquito-indemnizacion-chile",
+      "title_native": "Calculadora de Finiquito e Indemnización por Años de Servicio Chile",
+      "title_en": "Chile Severance Settlement & Notice Compensation Calculator",
+      "search_terms_native": [
+        "calculadora de finiquito chile",
+        "calcular indemnizacion años de servicio codigo del trabajo",
+        "calculo feriado proporcional inspeccion del trabajo",
+        "finiquito por necesidades de la empresa",
+        "indemnizacion sustitutiva aviso previo chile"
+      ],
+      "description_native": "Calcula el monto total del finiquito por desvinculación laboral en Chile, incluyendo la indemnización por años de servicio (Art. 163 del Código del Trabajo), indemnización sustitutiva de aviso previo, feriado proporcional (vacaciones) y sueldo del mes pendiente.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "monthly_base_salary",
+          "label_native": "Última Remuneración Mensual Imponible (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "start_date",
+          "label_native": "Fecha de Inicio de la Relación Laboral",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "end_date",
+          "label_native": "Fecha de Término de Contrato",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dismissal_reason",
+          "label_native": "Causal de Término de Contrato (Código del Trabajo)",
+          "type": "select",
+          "options": [
+            "Art. 161: Necesidades de la Empresa (Con derecho a indemnización)",
+            "Art. 159 N° 2: Renuncia Voluntaria (Sin indemnización por años de servicio)",
+            "Art. 159 N° 4: Vencimiento del Plazo Convenido (Sin indemnización por años de servicio)",
+            "Despido Injustificado / Imputado (Con recargo legal del 30% al 50%)"
+          ]
+        },
+        {
+          "name": "notice_given",
+          "label_native": "Aviso Previo por Escrito",
+          "type": "select",
+          "options": [
+            "Sí (Notificado con 30 días de anticipación)",
+            "No (Corresponde Indemnización Sustitutiva de 1 mes de sueldo)"
+          ]
+        },
+        {
+          "name": "pending_vacation_days",
+          "label_native": "Días hábiles de vacaciones pendientes de años anteriores",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "uf_value",
+          "label_native": "Valor de la UF (CLP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Antigüedad Laboral: Se computan los años completos trabajados. Las fracciones superiores a 6 meses se consideran como 1 año completo adicional. 2. Tope de Remuneración Mensual (Art. 172 Código del Trabajo): El salario mensual base para la indemnización no puede exceder el tope de 90 UF (salvo pacto individual o colectivo superior). 3. Indemnización por Años de Servicio (Art. 163): Salario mensual ajustado (máx 90 UF) × Número de años servidos (hasta un máximo de 11 años / 11 meses de sueldo). 4. Indemnización Sustitutiva de Aviso Previo: 1 mes de salario completo si no se avisó por escrito con 30 días de anticipación bajo Art. 161. 5. Feriado Proporcional (Vacaciones): El trabajador devenga 1.25 días hábiles de descanso por mes trabajado (15 días hábiles al año, o 20 en zonas extremas). Se computan los días hábiles acumulados más los días inhábiles (sábados, domingos y festivos) que comprenda el período de descanso simulado × Valor día hábil (Remuneración / 30). 6. Sueldo Pendiente: (Remuneración / 30) × Días efectivamente trabajados del mes del despido. Total Finiquito = Indemnización Años de Servicio + Aviso Previo + Feriado Proporcional + Sueldo Pendiente.",
+      "affiliate_targets": [
+        {
+          "name": "Buk",
+          "type": "software",
+          "description": "Software de RRHH que emite borradores de finiquito y cartas de aviso conformes a las exigencias de la Inspección del Trabajo (DT)."
+        },
+        {
+          "name": "LegalChile",
+          "type": "insurance",
+          "description": "Servicio de asesoría y representación jurídica especializada en la revisión de finiquitos y demandas laborales."
+        },
+        {
+          "name": "Talana",
+          "type": "software",
+          "description": "Plataforma de gestión laboral y nóminas en Chile para procesar finiquitos e indemnizaciones de trabajadores."
+        },
+        {
+          "name": "Deel",
+          "type": "software",
+          "description": "Plataforma global de contratación y nóminas para la desvinculación y pago de finiquitos en cumplimiento de las leyes locales chilenas."
+        }
+      ]
+    },
+    {
+      "id": "gastos-compra-vivienda-credito-hipotecario-chile",
+      "title_native": "Calculadora de Gastos Operacionales e Impuesto a la Compra de Vivienda Chile",
+      "title_en": "Chile Home Mortgage Fees & Stamp Duty Calculator",
+      "search_terms_native": [
+        "calculadora gastos operacionales credito hipotecario chile",
+        "impuesto timbres y estampillas calculadora",
+        "gastos conservador de bienes raices escritura",
+        "gastos notaria compraventa casa chile",
+        "simulador dividendo hipotecario uf"
+      ],
+      "description_native": "Calcula el desembolso total en gastos operacionales asociados a la compra de una propiedad y solicitud de un crédito hipotecario en Chile: Impuesto de Timbres y Estampillas (ITE), honorarios del Conservador de Bienes Raíces (CBR), notaría, tasación y estudio de títulos.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price_uf",
+          "label_native": "Precio de la Propiedad (en UF)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "mortgage_percentage",
+          "label_native": "Porcentaje de Financiamiento Hipotecario",
+          "type": "select",
+          "options": [
+            "80% Financiamiento (Pie 20%)",
+            "90% Financiamiento (Pie 10%)",
+            "70% Financiamiento (Pie 30%)",
+            "100% Pago al Contado (Sin crédito hipotecario)"
+          ]
+        },
+        {
+          "name": "is_dfl2",
+          "label_native": "Clasificación Habitacional del Inmueble",
+          "type": "select",
+          "options": [
+            "Vivienda DFL 2 - 1ª Transferencia (Superficie < 140 m², ITE preferencial 0.2%)",
+            "Vivienda General / 2ª Transferencia en adelante (Tasa ITE general 0.8%)"
+          ]
+        },
+        {
+          "name": "uf_value_clp",
+          "label_native": "Valor de la UF (CLP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Monto del Crédito (UF) = Precio Propiedad UF × % Financiamiento. Pie (Enganche) = Precio Propiedad UF × (1 - % Financiamiento). 2. Impuesto de Timbres y Estampillas (ITE - D.L. 3475): Aplica sobre el monto prestado por el banco. Tasa General: 0.8% del crédito hipotecario. Tasa Reducida DFL 2 (1ª venta de casas/depto de <140 m²): 0.2% del crédito hipotecario. Si la compra es 100% contado, ITE = 0. 3. Conservador de Bienes Raíces (CBR): Arancel por inscripción de dominio, hipoteca y prohibiciones (promedio 0.2% a 0.3% del valor total del inmueble, aprox. 3 a 6 UF). 4. Gastos Notariales: Arancel de confección y firma de la escritura pública en notaría (aprox. 2.5 a 5 UF / $80.000 a $180.000 CLP). 5. Tasación Comercial del Inmueble: Peritaje de la propiedad exigido por la institución bancaria (aprox. 2.5 a 4 UF). 6. Estudio de Títulos y Borrador de Escritura: Honorarios legales de los abogados de la entidad financiera (aprox. 4 a 8 UF). Total Gastos Operacionales = Impuesto Timbres + CBR + Notaría + Tasación + Estudio Títulos.",
+      "affiliate_targets": [
+        {
+          "name": "ComparaOnline Hipotecarios",
+          "type": "insurance",
+          "description": "Comparador digital de créditos hipotecarios y seguros obligatorios de desgravamen e incendio en Chile."
+        },
+        {
+          "name": "Fintual",
+          "type": "software",
+          "description": "Plataforma de inversión de bajo costo para acumular el Pie de la vivienda en fondos mutuos nominados en UF."
+        },
+        {
+          "name": "Banco Falabella Hipotecario",
+          "type": "neobank",
+          "description": "Entidad financiera privada con simulación directa y aprobación rápida de créditos para la primera y segunda vivienda."
+        },
+        {
+          "name": "Portal Inmobiliario",
+          "type": "software",
+          "description": "Portal líder en Chile para cotizar propiedades nuevas y usadas con conexión a ejecutivos hipotecarios."
+        }
+      ]
+    },
+    {
+      "id": "impuesto-pyme-f29-chile",
+      "title_native": "Calculadora Impuesto Renta Pyme (Régimen 14 D3 / 14 D8) e IVA F29 Chile",
+      "title_en": "Chile SME Corporate Income Tax & Monthly VAT (F29) Calculator",
+      "search_terms_native": [
+        "calculadora impuesto pyme chile 14 d3 d8",
+        "calculo f29 iva mensual chile",
+        "pago provisional mensual ppm calculadora",
+        "impuesto primera categoria pyme 2026",
+        "regimen pro pyme general transparente"
+      ],
+      "description_native": "Calcula el Impuesto de Primera Categoría (IDPC) anual para PYMEs en Chile bajo los regímenes Pro Pyme General (14 D3) y Pro Pyme Transparente (14 D8), junto con la liquidación mensual de IVA (19%) y los Pagos Provisionales Mensuales (PPM) en el Formulario F29.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "tax_regime",
+          "label_native": "Régimen Tributario de la Empresa (SII)",
+          "type": "select",
+          "options": [
+            "Pro Pyme General (Art. 14 D3 - Tasa IDPC 25% con 100% imputación a socios)",
+            "Pro Pyme Transparente (Art. 14 D8 - Exento de IDPC empresa, tributa en Global Complementario)"
+          ]
+        },
+        {
+          "name": "annual_revenues",
+          "label_native": "Ingresos Anuales Percibidos sin IVA (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_expenses",
+          "label_native": "Gastos Anuales Deducibles Pagados sin IVA (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ppm_rate",
+          "label_native": "Tasa de Pago Provisional Mensual (PPM)",
+          "type": "select",
+          "options": [
+            "0.25% (Tasa reducida preferencial Pyme en primer año)",
+            "0.50% (Tasa general estándar Pro Pyme)",
+            "1.00% o superior (Tasa ajustada por ingresos anteriores)"
+          ]
+        },
+        {
+          "name": "monthly_sales_vat_base",
+          "label_native": "Ventas Netas Mensuales Promedio (CLP $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "monthly_purchases_vat_base",
+          "label_native": "Compras/Gastos Netos Mensuales Promedio con IVA Crédito Fiscal (CLP $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Renta Líquida Imponible (RLI) Pyme = Ingresos Anuales Percibidos - Gastos Anuales Pagados Deducibles. 2. Impuesto de Primera Categoría (IDPC Anual en F22): En Régimen Pro Pyme General (14 D3), IDPC = RLI × 25%. Los socios obtienen el 100% de crédito del IDPC al retirar utilidades en su Impuesto Global Complementario. En Régimen Pro Pyme Transparente (14 D8), IDPC = 0%, la RLI se asigna directamente a los socios para tributar a nivel personal. 3. Pagos Provisionales Mensuales (PPM): PPM Mensual = Ventas Netas Mensuales × Tasa PPM seleccionada (0.25% o 0.50%). El total acumulado en el año se resta del IDPC anual; si el monto de PPM supera el IDPC a pagar, el SII devuelve la diferencia a la Pyme. 4. Formulario F29 (IVA Mensual): IVA Débito Fiscal (Ventas) = Ventas Netas Mensuales × 19%. IVA Crédito Fiscal (Compras) = Compras Netas Mensuales × 19%. IVA a Pagar = Max(0, IVA Débito - IVA Crédito) + PPM Mensual.",
+      "affiliate_targets": [
+        {
+          "name": "Nubox Contabilidad",
+          "type": "software",
+          "description": "Software contable y tributario completo que autogenera el Formulario F29 y prepara la Renta F22 para Pymes chilenas."
+        },
+        {
+          "name": "Chipax",
+          "type": "software",
+          "description": "Plataforma de finanzas y tesorería conectada con el SII que sincroniza facturas de compra/venta para proyección de IVA y PPM."
+        },
+        {
+          "name": "Kame ERP",
+          "type": "software",
+          "description": "ERP integral en la nube con gestión de inventario, facturación electrónica, contabilidad y remuneraciones para empresas."
+        },
+        {
+          "name": "Mercado Pago Empresas",
+          "type": "neobank",
+          "description": "Plataforma de pagos y terminales POS con cuenta de empresa, remuneración diaria de saldos y reporte de ventas."
+        }
+      ]
+    }
+  ]
+}

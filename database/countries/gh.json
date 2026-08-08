@@ -1,0 +1,57 @@
+{
+  "country": "Ghana",
+  "country_code": "GH",
+  "languages": [
+    "en"
+  ],
+  "currency": "GHS",
+  "calculators": [
+    {
+      "id": "gh-tax-payroll-calculator",
+      "title_native": "Ghana GRA PAYE Income Tax & SSNIT Pension Calculator",
+      "title_en": "Ghana GRA PAYE Income Tax & SSNIT Pension Calculator",
+      "search_terms_native": [
+        "ghana tax calculator",
+        "ghana salary calculator",
+        "income tax gh"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Ghana.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (GHS)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ghana revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "MTN MoMo",
+          "type": "software",
+          "description": "Top financial tool in Ghana"
+        },
+        {
+          "name": "Ecobank Ghana",
+          "type": "software",
+          "description": "Top financial tool in Ghana"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "country": "Guyana",
+  "country_code": "GY",
+  "languages": [
+    "en"
+  ],
+  "currency": "GYD",
+  "calculators": [
+    {
+      "id": "gy-tax-payroll-calculator",
+      "title_native": "Guyana PAYE Income Tax & NIS Guyana Calculator",
+      "title_en": "Guyana PAYE Income Tax & NIS Guyana Calculator",
+      "search_terms_native": [
+        "guyana tax calculator",
+        "guyana salary calculator",
+        "income tax gy"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Guyana.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (GYD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Guyana revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "GBTI",
+          "type": "software",
+          "description": "Top financial tool in Guyana"
+        },
+        {
+          "name": "Demerara Bank",
+          "type": "software",
+          "description": "Top financial tool in Guyana"
+        }
+      ]
+    }
+  ]
+}

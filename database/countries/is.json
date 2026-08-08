@@ -1,0 +1,57 @@
+{
+  "country": "Iceland",
+  "country_code": "IS",
+  "languages": [
+    "is"
+  ],
+  "currency": "ISK",
+  "calculators": [
+    {
+      "id": "is-tax-payroll-calculator",
+      "title_native": "Iceland Launareikningur & Staðgreiðsla Skatts",
+      "title_en": "Iceland Launareikningur & Staðgreiðsla Skatts",
+      "search_terms_native": [
+        "iceland tax calculator",
+        "iceland salary calculator",
+        "income tax is"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Iceland.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (ISK)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Iceland revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Arion banki",
+          "type": "software",
+          "description": "Top financial tool in Iceland"
+        },
+        {
+          "name": "Landsbankinn",
+          "type": "software",
+          "description": "Top financial tool in Iceland"
+        }
+      ]
+    }
+  ]
+}

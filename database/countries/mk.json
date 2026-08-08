@@ -1,0 +1,57 @@
+{
+  "country": "North Macedonia",
+  "country_code": "MK",
+  "languages": [
+    "mk"
+  ],
+  "currency": "MKD",
+  "calculators": [
+    {
+      "id": "mk-tax-payroll-calculator",
+      "title_native": "North Macedonia Калкулатор за Плата & Персонален Данок",
+      "title_en": "North Macedonia Калкулатор за Плата & Персонален Данок",
+      "search_terms_native": [
+        "north macedonia tax calculator",
+        "north macedonia salary calculator",
+        "income tax mk"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for North Macedonia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (MKD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on North Macedonia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "NLB Banka MK",
+          "type": "software",
+          "description": "Top financial tool in North Macedonia"
+        },
+        {
+          "name": "Halkbank",
+          "type": "software",
+          "description": "Top financial tool in North Macedonia"
+        }
+      ]
+    }
+  ]
+}

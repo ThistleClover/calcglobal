@@ -1,0 +1,417 @@
+{
+  "country": "Japan",
+  "country_code": "JP",
+  "languages": [
+    "ja"
+  ],
+  "calculators": [
+    {
+      "id": "kojin-jigyo-tax-calculator",
+      "title_native": "個人事業主の所得税・住民税・国民健康保険料計算シミュレーター (2026年最新)",
+      "title_en": "Japan Sole Proprietorship Tax & Social Insurance Calculator",
+      "search_terms_native": [
+        "個人事業主 税金 計算 シミュレーション",
+        "青色申告 65万円控除 計算",
+        "国民健康保険料 計算 個人事業主 2026",
+        "個人事業税 控除 計算"
+      ],
+      "description_native": "個人事業主やフリーランスの年間売上・経費から、青色申告特別控除、所得税、住民税、個人事業税、国民健康保険料（国保）を一括計算し、手取り額を算出します。",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_revenue",
+          "label_native": "年間売上高 (円)",
+          "type": "number"
+        },
+        {
+          "name": "expenses",
+          "label_native": "年間必要経費 (円)",
+          "type": "number"
+        },
+        {
+          "name": "blue_deduction",
+          "label_native": "青色申告特別控除",
+          "type": "select",
+          "options": [
+            {
+              "value": "650000",
+              "label": "65万円控除 (e-Tax電子申告/電子帳簿保存)"
+            },
+            {
+              "value": "550000",
+              "label": "55万円控除 (複式記帳・紙提出)"
+            },
+            {
+              "value": "100000",
+              "label": "10万円控除 (簡易記帳/白色申告)"
+            },
+            {
+              "value": "0",
+              "label": "控除なし (白色申告)"
+            }
+          ]
+        },
+        {
+          "name": "business_category",
+          "label_native": "個人事業税の業種区分",
+          "type": "select",
+          "options": [
+            {
+              "value": "type1_5pct",
+              "label": "第1種事業 (物品販売・飲食・製造・デザイン等: 5%)"
+            },
+            {
+              "value": "type2_4pct",
+              "label": "第2種事業 (畜産業・水産業等: 4%)"
+            },
+            {
+              "value": "type3_5pct",
+              "label": "第3種事業 (医業・弁護士・税理士等: 5%)"
+            },
+            {
+              "value": "type3_3pct",
+              "label": "第3種事業 (あん摩・マッサージ・鍼灸等: 3%)"
+            },
+            {
+              "value": "exempt",
+              "label": "非課税業種 (ライター・プログラマー・エンジニア等: 0%)"
+            }
+          ]
+        },
+        {
+          "name": "dependents_count",
+          "label_native": "扶養親族の人数 (人)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Net Business Income = Gross Revenue - Expenses - Blue Deduction. Taxable Income = Net Business Income - Basic Exemption (480,000 yen for income <= 24M yen) - Dependent Allowance (380,000 yen per qualifying dependent). National Income Tax = Taxable Income * Tax Bracket Rate (5% to 45%) - Progressive Deduction + 2.1% Reconstruction Special Income Tax. Local Residence Tax = Taxable Income * 10% + Per Capita Flat Rate (~5,000 yen). Personal Business Tax = (Net Business Income + Blue Deduction - 2,900,000 yen Owner Allowance) * Business Tax Rate (0% to 5%). National Health Insurance (NHI) = Income-based levy (~7%-10% of prior year net income) + Per-head levy (~40,000 yen/person) capped by municipal upper limit (~1,040,000 yen/year). Net Take-Home Pay = Net Business Income - Income Tax - Residence Tax - Business Tax - NHI.",
+      "affiliate_targets": [
+        {
+          "name": "freee (フリー確定申告)",
+          "type": "software",
+          "description": "国内シェアNo.1のクラウド個人事業主向け確定申告・会計ソフト"
+        },
+        {
+          "name": "マネーフォワード クラウド確定申告",
+          "type": "software",
+          "description": "銀行口座・クレジットカード連携に強い青色申告ソフト"
+        },
+        {
+          "name": "GMOあおぞらネット銀行",
+          "type": "neobank",
+          "description": "個人事業主・フリーランス向け手数料最安級の事業用ネット銀行口座"
+        },
+        {
+          "name": "やよいの青色申告 オンライン",
+          "type": "software",
+          "description": "初年度無料で初心者に人気トップクラスの確定申告ソフト"
+        }
+      ]
+    },
+    {
+      "id": "furusato-nozei-calculator",
+      "title_native": "ふるさと納税 控除上限額・限度額計算シミュレーター (2026年)",
+      "title_en": "Japan Furusato Nozei (Hometown Tax Donation) Cap Calculator",
+      "search_terms_native": [
+        "ふるさと納税 限度額 計算",
+        "ふるさと納税 上限額 シミュレーション 2026",
+        "年収 ふるさと納税 控除額 扶養",
+        "ワンストップ特例 ふるさと納税 計算"
+      ],
+      "description_native": "給料年収、配偶者控除、扶養家族、iDeCo掛金などから、自己負担額実質2,000円で寄附できるふるさと納税の年間控除限度額（上限額）を正確に試算します。",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_gross_salary",
+          "label_native": "給料・年収（額面） (円)",
+          "type": "number"
+        },
+        {
+          "name": "marital_deduction",
+          "label_native": "配偶者控除の有無",
+          "type": "select",
+          "options": [
+            {
+              "value": "single_or_working_spouse",
+              "label": "独身 / 配偶者控除なし（共働き等）"
+            },
+            {
+              "value": "spouse_deduction",
+              "label": "配偶者控除あり (配偶者の年収103万円以下)"
+            },
+            {
+              "value": "special_spouse_deduction",
+              "label": "配偶者特別控除あり (配偶者の年収103万〜150万円)"
+            }
+          ]
+        },
+        {
+          "name": "dependents_16_18",
+          "label_native": "一般扶養親族人数 (16歳〜18歳) (人)",
+          "type": "number"
+        },
+        {
+          "name": "dependents_19_22",
+          "label_native": "特定扶養親族人数 (19歳〜22歳) (人)",
+          "type": "number"
+        },
+        {
+          "name": "ideco_monthly_contribution",
+          "label_native": "iDeCo (個人型確定拠出年金) 月額掛金 (円)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Residence Tax Income Portion (住民税所得割額) = (Gross Salary - Employment Income Deduction - Social Insurance Deduction - Basic Exemption - Dependent Deductions - Annual iDeCo) * 10%. Furusato Max Limit = (Residence Tax Income Portion * 20%) / (90% - Marginal Income Tax Rate * 1.021) + 2,000 yen. Edge case: Total tax deduction cannot exceed total residence tax + income tax paid. Actual out-of-pocket cost is exactly 2,000 yen when donation is within calculated limit.",
+      "affiliate_targets": [
+        {
+          "name": "楽天ふるさと納税",
+          "type": "software",
+          "description": "お買い物マラソンやSPUで最大30%相当の楽天ポイントが還元される最大手ポータル"
+        },
+        {
+          "name": "さとふる (Satofull)",
+          "type": "software",
+          "description": "認知度No.1・配送スピードと限定返礼品が豊富なふるさと納税サイト"
+        },
+        {
+          "name": "ふるなび (Furunavi)",
+          "type": "software",
+          "description": "家電・電化製品や金券・旅行券などの高還元返礼品に強みを持つポータル"
+        }
+      ]
+    },
+    {
+      "id": "take-home-pay-calculator",
+      "title_native": "会社員の手取り給与・社会保険料・税金計算シミュレーター",
+      "title_en": "Japan Employment Take-Home Pay & Social Security Calculator",
+      "search_terms_native": [
+        "額面 手取り 計算",
+        "給料 手取り シミュレーション 2026",
+        "社会保険料 計算 会社員",
+        "月給 手取り 控除 内訳"
+      ],
+      "description_native": "月額の額面給与および賞与（ボーナス）から、健康保険料、厚生年金、雇用保険、介護保険、所得税、住民税を自動計算し、最終的な手取り支給額と控除内訳を表示します。",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "月額総支給額 (額面) (円)",
+          "type": "number"
+        },
+        {
+          "name": "annual_bonus",
+          "label_native": "年間賞与 (ボーナス額面) (円)",
+          "type": "number"
+        },
+        {
+          "name": "age_group",
+          "label_native": "年齢区分 (介護保険料の対象区分)",
+          "type": "select",
+          "options": [
+            {
+              "value": "under_40",
+              "label": "40歳未満 (介護保険なし)"
+            },
+            {
+              "value": "40_to_64",
+              "label": "40歳以上65歳未満 (介護保険第2号被保険者)"
+            },
+            {
+              "value": "65_and_over",
+              "label": "65歳以上 (介護保険は原則市区町村より直接徴収)"
+            }
+          ]
+        },
+        {
+          "name": "prefecture",
+          "label_native": "勤務地都道府県 (協会けんぽ料率区分)",
+          "type": "select",
+          "options": [
+            {
+              "value": "tokyo",
+              "label": "東京都 (健康保険料率 9.98%)"
+            },
+            {
+              "value": "osaka",
+              "label": "大阪府 (健康保険料率 10.29%)"
+            },
+            {
+              "value": "aichi",
+              "label": "愛知県 (健康保険料率 9.87%)"
+            },
+            {
+              "value": "kanagawa",
+              "label": "神奈川県 (健康保険料率 9.92%)"
+            },
+            {
+              "value": "other",
+              "label": "その他都道府県 (全国平均料率 約10.0%)"
+            }
+          ]
+        },
+        {
+          "name": "dependents_count",
+          "label_native": "源泉控除対象配偶者・扶養親族の数 (人)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Standard Monthly Remuneration (標準報酬月額) calculated from Monthly Gross Salary. Health Insurance Premium = Standard Remuneration * Prefectural Health Rate / 2 (Employee half). Welfare Pension (厚生年金) = Standard Remuneration * 18.3% / 2 (9.15% Employee share, capped at 650,000 yen/month grade). Nursing Care Insurance (介護保険, ages 40-64) = Standard Remuneration * 1.60% / 2 (0.80% Employee share). Employment Insurance (雇用保険) = Gross Salary * 0.6% (General Industry Employee share). Income Tax Withholding = Calculated from National Tax Agency Compensation Withholding Table based on (Gross Salary - Social Insurance Deductions) and Dependent Count. Residence Tax = (Prior Year Income - Deductions) * 10% / 12 months. Monthly Take-Home Pay = Monthly Gross Salary - (Health Insurance + Pension + Nursing + Employment + Income Tax + Residence Tax).",
+      "affiliate_targets": [
+        {
+          "name": "リクルートエージェント (Recruit Agent)",
+          "type": "software",
+          "description": "日本最大級の転職エージェント。手取り・年収アップを目指す会社員向け高成約アフィリエイト"
+        },
+        {
+          "name": "ビズリーチ (BizReach)",
+          "type": "software",
+          "description": "年収600万円以上のハイクラス・ミドル層向けスカウト型転職サービス"
+        },
+        {
+          "name": "マイナビエージェント",
+          "type": "software",
+          "description": "20代〜30代の若手・中堅社会人向け手厚い転職サポート"
+        }
+      ]
+    },
+    {
+      "id": "real-estate-tax-registration-calculator",
+      "title_native": "不動産取得税・所有権移転登記費用シミュレーター",
+      "title_en": "Japan Real Estate Acquisition & Registration Tax Calculator",
+      "search_terms_native": [
+        "不動産取得税 計算 シミュレーション",
+        "登記費用 不動産購入 計算",
+        "住宅ローン 抵当権設定 登録免許税",
+        "固定資産税評価額 取得税 軽減措置"
+      ],
+      "description_native": "土地・建物の購入時や新築時にかかる「不動産取得税」と「登録免許税（所有権移転・保存・抵当権設定登記）」、および司法書士報酬目安を一括試算します。",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_category",
+          "label_native": "物件区分",
+          "type": "select",
+          "options": [
+            {
+              "value": "new_home",
+              "label": "新築住宅 (専有面積50㎡〜240㎡・自己居住用)"
+            },
+            {
+              "value": "used_home",
+              "label": "中古住宅 (耐震基準適合・自己居住用)"
+            },
+            {
+              "value": "land_only",
+              "label": "宅地・土地 (住宅建設予定地)"
+            },
+            {
+              "value": "commercial",
+              "label": "店舗・オフィス・事業用不動産"
+            }
+          ]
+        },
+        {
+          "name": "building_assessed_value",
+          "label_native": "建物の固定資産税評価額 (円)",
+          "type": "number"
+        },
+        {
+          "name": "land_assessed_value",
+          "label_native": "土地の固定資産税評価額 (円)",
+          "type": "number"
+        },
+        {
+          "name": "mortgage_borrowing_amount",
+          "label_native": "住宅ローン借入額 (円)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Real Estate Acquisition Tax (不動産取得税): Building Tax = (Building Assessed Value - 12,000,000 yen Special Reduction for qualifying residential property) * 3% (Residential tax rate). Land Tax = (Land Assessed Value * 1/2 [Residential Tax Base Tax Reduction] * 3%) - Tax Credit (minimum 45,000 yen or Land m2 value * 1/2 * 3% * Building Floor Area * 2). Registration License Tax (登録免許税): Building Ownership Preservation/Transfer Tax = Building Assessed Value * 0.15% (New home reduced) or 0.3% (Used home reduced). Land Ownership Transfer Tax = Land Assessed Value * 1.5% (Residential reduced rate). Mortgage Registration Tax = Mortgage Amount * 0.1% (Residential reduced rate for mortgage creation). Judicial Scrivener Fee (司法書士報酬) estimated at 80,000 to 150,000 yen.",
+      "affiliate_targets": [
+        {
+          "name": "モゲチェック (Mogecheck)",
+          "type": "fintech",
+          "description": "住宅ローンの一括比較・最適な金利プランの事前審査・提案サービス"
+        },
+        {
+          "name": "SUUMO 注文住宅 / 新築一戸建て",
+          "type": "software",
+          "description": "不動産購入・建築見積もり比較の日本最大手ポータル"
+        },
+        {
+          "name": "PayPay銀行 住宅ローン",
+          "type": "neobank",
+          "description": "業界最安水準の変動金利とネット完結手続きを提供するネオバンク住宅ローン"
+        },
+        {
+          "name": "ソニー銀行 住宅ローン",
+          "type": "neobank",
+          "description": "がん保障充実・手数料優遇でマイホーム購入者に人気のネット銀行"
+        }
+      ]
+    },
+    {
+      "id": "inheritance-gift-tax-calculator",
+      "title_native": "相続税・贈与税 基礎控除・税額計算シミュレーター",
+      "title_en": "Japan Inheritance Tax & Gift Tax Calculator",
+      "search_terms_native": [
+        "相続税 計算 シミュレーション",
+        "相続税 基礎控除 2026",
+        "配偶者控除 相続税 計算",
+        "生前贈与 暦年課税 贈与税率"
+      ],
+      "description_native": "遺産総額と法定相続人の構成（配偶者の有無、子の人数）から、基礎控除額、各相続人の法定相続分に応じた相続税額、配偶者の税額軽減（1億6,000万円枠）適用後の実質納付額を試算します。",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "total_estate_taxable_value",
+          "label_native": "正味の遺産総額 (不動産・預貯金・有価証券の合計) (円)",
+          "type": "number"
+        },
+        {
+          "name": "has_spouse",
+          "label_native": "配偶者の有無",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "あり (法定相続分 1/2)"
+            },
+            {
+              "value": "no",
+              "label": "なし (全額を子または他の相続人で分配)"
+            }
+          ]
+        },
+        {
+          "name": "children_count",
+          "label_native": "法定相続人となる子の数 (人)",
+          "type": "number"
+        },
+        {
+          "name": "spouse_actual_share_pct",
+          "label_native": "配偶者の実際の取得割合 (%)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Inheritance Tax Basic Exemption (基礎控除額) = 30,000,000 yen + (6,000,000 yen * Number of Statutory Heirs). Taxable Estate Net = Total Estate Value - Basic Exemption. If Taxable Estate Net <= 0, Total Tax is 0. Statutory Share Allocation: If spouse and children present, Spouse gets 50%, Children share 50% equally. Progressive Tax Table applied to each statutory share (10% under 10M yen up to 55% over 600M yen minus tax bracket deduction). Sum of all statutory taxes forms Total Inheritance Tax Pot. Allocated to each heir by actual inheritance percentage. Spouse Tax Credit (配偶者の税額軽減): Spouse pays 0 yen if Spouse's acquired portion <= max(160,000,000 yen, Spouse Statutory Share Value). Total Payable Tax = Sum of (Heir Allocated Tax - Applicable Credits).",
+      "affiliate_targets": [
+        {
+          "name": "税理士ドットコム (Zeirishi Dot Com)",
+          "type": "accounting",
+          "description": "日本最大級の税理士紹介・相談マッチングサービス (相続税申告の高単価成果報酬)"
+        },
+        {
+          "name": "三井住友信託銀行 (遺言信託・相続手続き)",
+          "type": "accounting",
+          "description": "資産家の相続手続き代行・遺言信託・事業承継サービス"
+        },
+        {
+          "name": "クラウド相続税申告サービス (Better Place / AI相続)",
+          "type": "software",
+          "description": "税理士に頼まず自分で相続税申告書を作成できるクラウドソフトウェア"
+        }
+      ]
+    }
+  ]
+}

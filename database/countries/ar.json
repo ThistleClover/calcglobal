@@ -1,0 +1,462 @@
+{
+  "country": "Argentina",
+  "country_code": "AR",
+  "languages": [
+    "es",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "sueldo-neto-argentina",
+      "title_native": "Calculadora de Sueldo Bruto a Neto Argentina (Recibo de Sueldo y Ganancias)",
+      "title_en": "Argentina Net Salary & Payroll Tax Calculator",
+      "search_terms_native": [
+        "calculadora sueldo bruto a neto argentina",
+        "calcular sueldo neto argentina 2026",
+        "simulador recibo de sueldo arca",
+        "descuentos sueldo bruto jubilacion obra social",
+        "calculadora retencion ganancias cuarta categoria"
+      ],
+      "description_native": "Calcula el salario neto de bolsillo en Argentina a partir del sueldo bruto mensual, deduciendo aportes de jubilación (11%), Obra Social (3%), Ley 19.032 (3%), aportes sindicales y la retención del Impuesto a las Ganancias (4ta Categoría) según SIRADIG ARCA.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary_monthly",
+          "label_native": "Sueldo bruto mensual ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_structure",
+          "label_native": "Modalidad de cobro de Aguinaldo (SAC)",
+          "type": "select",
+          "options": [
+            "Sueldo regular mensual (sin SAC en este mes)",
+            "Incluye cobro de Aguinaldo (50% del mejor sueldo en Junio/Diciembre)"
+          ]
+        },
+        {
+          "name": "marital_status",
+          "label_native": "Cargas de familia (Estado civil impositivo)",
+          "type": "select",
+          "options": [
+            "Soltero / Sin cónyuge a cargo",
+            "Casado (Cónyuge a cargo sin ingresos declarados)"
+          ]
+        },
+        {
+          "name": "children_count",
+          "label_native": "Número de hijos menores de 18 años o incapacitados a cargo",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "monthly_rent_deduction",
+          "label_native": "Alquiler mensual abonado de vivienda habitual ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "domestic_service_deduction",
+          "label_native": "Gastos mensuales en personal de casas particulares / servicio doméstico ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "union_member",
+          "label_native": "Aporte sindical obligatorio / convenio colectivo",
+          "type": "select",
+          "options": [
+            "Sin aporte sindical (0%)",
+            "Afiliado / Convenio de trabajo (2% sobre sueldo bruto)",
+            "Aporte sindical (3% sobre sueldo bruto)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Aportes de Seguridad Social a cargo del empleado (17% obligatorio): Jubilación (11%), INSSJP / Ley 19.032 (3%), Obra Social (3%). Se aplican sobre el sueldo bruto hasta el Tope Imponible ANSES vigente. 2. Aporte Sindical (si corresponde): 2% o 3% sobre el sueldo bruto. 3. Base Sujeta a Impuesto a las Ganancias = Sueldo Bruto - Aportes Seg. Social (17%) - Aporte Sindical - Mínimo No Imponible (MNI) mensual - Deducción Especial acumulada - Cargas de Familia (Cónyuge + Hijos) - Deducciones informadas en SIRADIG ARCA (40%/100% alquiler con tope, servicio doméstico con tope MNI, medicina prepaga hasta 5% de ganancia neta, intereses hipotecarios). 4. Si la Ganancia Neta Sujeta a Impuesto > 0, se aplica la tabla de alícuotas progresivas del Art. 94 Ley de Ganancias (escalas del 5% al 35% con cuota fija más porcentaje sobre el excedente). 5. Sueldo Neto de Bolsillo = Sueldo Bruto + Aguinaldo (si aplica) - Aportes Ley (17%) - Aporte Sindical - Retención Impuesto a las Ganancias ARCA.",
+      "affiliate_targets": [
+        {
+          "name": "Brubank",
+          "type": "neobank",
+          "description": "Banco digital argentino regulado por el BCRA para la recepción de haberes y sueldo neto con cuenta en pesos y dólares sin costo de mantenimiento."
+        },
+        {
+          "name": "Mercado Pago",
+          "type": "neobank",
+          "description": "Cuenta digital e inversión diaria en fondo de mercado de dinero para generar rendimientos automáticos sobre el saldo del sueldo neto recibido."
+        },
+        {
+          "name": "tributo.simple",
+          "type": "software",
+          "description": "Aplicación de asesoría impositiva digital para trabajadores y profesionales en Argentina para la optimización de deducciones en SIRADIG ARCA."
+        },
+        {
+          "name": "Jobint / Bumeran",
+          "type": "software",
+          "description": "Portal de empleo e inteligencia salarial en Argentina para comparar sueldos de mercado por puesto y seniority."
+        }
+      ]
+    },
+    {
+      "id": "monotributo-afip-cuota",
+      "title_native": "Calculadora de Monotributo ARCA (Categorías, Cuota Mensual y Facturación)",
+      "title_en": "Argentina Self-Employed Monotributo Tax Calculator",
+      "search_terms_native": [
+        "calculadora monotributo arca 2026",
+        "cuanto paga un monotributista por mes",
+        "tabla monotributo categorias e ingresos",
+        "calcular cuota monotributo servicios y bienes",
+        "recategorizacion monotributo arca simulador"
+      ],
+      "description_native": "Calcula tu categoría de Monotributo en ARCA (ex AFIP) y el valor exacto de la cuota fija mensual unificada (Impuesto Integrado, SIPA Jubilación y Obra Social) según tus ingresos brutos, actividad (Servicios vs Bienes Muebles) y exenciones.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_gross_income",
+          "label_native": "Ingresos brutos facturados acumulados últimos 12 meses ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "activity_type",
+          "label_native": "Tipo de actividad desarrollada",
+          "type": "select",
+          "options": [
+            "Prestación de Servicios y Locaciones",
+            "Venta de Cosas Muebles / Comercio"
+          ]
+        },
+        {
+          "name": "surface_area",
+          "label_native": "Superficie afectada a la actividad (m²)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "electricity_consumed",
+          "label_native": "Energía eléctrica consumida anualmente (kW)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_rent_paid",
+          "label_native": "Alquileres devengados anualmente por el local/oficina ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "employee_status",
+          "label_native": "Situación laboral paralela y exenciones de aportes",
+          "type": "select",
+          "options": [
+            "Monotributista Puro / Independiente (Paga Impuesto + Jubilación + Obra Social)",
+            "Trabajador en Relación de Dependencia (Exento de Jubilación y Obra Social)",
+            "Profesional Matriculado con Caja de Previsión Provincial (Exento de Jubilación SIPA)",
+            "Locador de Inmuebles (Hasta 3 unidades, exento de aportes previsionales)"
+          ]
+        },
+        {
+          "name": "province_unificado",
+          "label_native": "Provincia de alta (Monotributo Unificado Ingresos Brutos)",
+          "type": "select",
+          "options": [
+            "CABA (Ciudad Autónoma de Buenos Aires)",
+            "Provincia de Buenos Aires (PBA)",
+            "Córdoba",
+            "Mendoza",
+            "Santa Fe",
+            "Entre Ríos",
+            "Tucumán",
+            "Otras provincias (Régimen general IIBB)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Comparación de los parámetros del contribuyente (Ingresos Brutos en 12 meses, Superficie m², Energía kW, Alquileres devengados) contra la Tabla Oficial de Categorías ARCA (Categorías A a la K). 2. La categoría asignada corresponde al parámetro más alto en el que encuadre el contribuyente. 3. Cálculo de la cuota mensual unificada: Cuota Base = Impuesto Integrado (según categoría A-K y tipo de actividad) + Aporte Jubilatorio SIPA + Aporte a la Obra Social. 4. Aplicación de Exenciones: Si el contribuyente trabaja en relación de dependencia o es locador de hasta 3 inmuebles, SIPA = 0 y Obra Social = 0 (paga únicamente el Impuesto Integrado). Si aporta a Caja Profesional provincial, SIPA = 0. 5. Si aplica Monotributo Unificado provincial, se suma la componente fija de Ingresos Brutos (IIBB) de la provincia correspondiente.",
+      "affiliate_targets": [
+        {
+          "name": "SOS Contador",
+          "type": "software",
+          "description": "Software de contabilidad y facturación electrónica en la nube especializado en la recategorización e impuestos de Monotributistas en Argentina."
+        },
+        {
+          "name": "Contabilium",
+          "type": "software",
+          "description": "Sistema de gestión y facturación AFIP/ARCA para pequeños negocios, emprendedores y monotributistas con integración a Mercado Pago."
+        },
+        {
+          "name": "Ualá",
+          "type": "neobank",
+          "description": "Tarjeta y cuenta fintech argentina para recibir pagos, cobrar QR y abonar la VEP del Monotributo de forma instantánea."
+        },
+        {
+          "name": "Taxhub",
+          "type": "accounting",
+          "description": "Estudio contable digital y app de liquidación de impuestos para trabajadores independientes en Argentina."
+        }
+      ]
+    },
+    {
+      "id": "indemnizacion-despido-lct",
+      "title_native": "Calculadora de Indemnización por Despido sin Causa (Ley de Contrato de Trabajo Art. 245)",
+      "title_en": "Argentina Employment Termination Severance Calculator",
+      "search_terms_native": [
+        "calculadora indemnizacion por despido argentina",
+        "calcular despido art 245 ley de contrato de trabajo",
+        "cuanto me corresponde de indemnizacion por despido sin causa",
+        "calculo finiquito liquidacion final preaviso sac vacaciones argentina",
+        "calculadora despido con causa o sin causa lct"
+      ],
+      "description_native": "Calcula el monto de la indemnización por despido sin causa y la liquidación final completa en Argentina según el Art. 245 de la Ley de Contrato de Trabajo (LCT N° 20.744) y normativas laborales vigentes.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "best_monthly_salary",
+          "label_native": "Mejor Remuneración Mensual Normal y Habitual - MRMNH ($)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "Años completos trabajados en la empresa",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_months_extra",
+          "label_native": "Meses adicionales trabajados en el último año",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dismissal_reason",
+          "label_native": "Causa de finalización de la relación laboral",
+          "type": "select",
+          "options": [
+            "Despido Sin Causa / Injustificado (Art. 245 LCT - 1 mes por año o fracción > 3 meses)",
+            "Despido Con Causa Justificada (Sin indemnización por antigüedad, solo liquidación final)",
+            "Renuncia / Baja Voluntaria (Solo liquidación final de sueldo, SAC y vacaciones)",
+            "Despido por Falta de Trabajo / Fuerza Mayor (Art. 247 LCT - 50% de la indemnización)",
+            "Desvinculación en Período de Prueba (Primeros 6 meses - Sin indemnización ni preaviso)"
+          ]
+        },
+        {
+          "name": "notice_given",
+          "label_native": "¿El empleador otorgó el preaviso legal por escrito?",
+          "type": "select",
+          "options": [
+            "No (Corresponde Indemnización Sustitutiva de Preaviso)",
+            "Sí (Otorgado en tiempo y forma según LCT)"
+          ]
+        },
+        {
+          "name": "dismissal_day_of_month",
+          "label_native": "Día del mes en que se produjo la notificación del despido",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "unused_vacation_days",
+          "label_native": "Días de vacaciones pendientes de gozar del año en curso",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Indemnización por Antigüedad (Art. 245 LCT): Si la antigüedad incluye una fracción mayor a 3 meses, se computa como un año completo. Indemnización Base = MRMNH × Años de antigüedad computados. La ley fija un mínimo equivalente a 1 mes del mejor sueldo mensual. 2. Indemnización Sustitutiva de Preaviso (Art. 231/232 LCT): Si no se otorgó preaviso, se abona 1 mes de sueldo si la antigüedad es < 5 años, o 2 meses de sueldo si la antigüedad es > 5 años. Se adiciona la 12da parte por SAC sobre preaviso. 3. Integración del Mes de Despido (Art. 233 LCT): Si el despido no ocurre el último día hábil del mes, se pagan los días faltantes para completar el mes de salario + SAC sobre integración. 4. Liquidación Final Acumulada: A) Días trabajados del mes del despido. B) SAC Proporcional del semestre en curso (Días del semestre / 180 × 50% del mejor sueldo). C) Vacaciones No Gozadas = (MRMNH / 25) × Días proporcionales de vacaciones + SAC sobre vacaciones (8,33%). 5. Sumatoria Total Liquidación = Indemnización Antigüedad + Sustitutiva Preaviso (+ SAC) + Integración Mes (+ SAC) + Salario Pendiente + SAC Proporcional + Vacaciones Proporcionales (+ SAC).",
+      "affiliate_targets": [
+        {
+          "name": "Deel",
+          "type": "software",
+          "description": "Plataforma global de gestión de contratos de trabajo, nóminas y desvinculaciones laborales en cumplimiento con leyes de Argentina."
+        },
+        {
+          "name": "Legálitas / Abogados Laborales AR",
+          "type": "insurance",
+          "description": "Asesoramiento legal inmediato y patrocinio letrado para revisión de liquidaciones finales y reclamos laborales en SeCLO o Fuero del Trabajo."
+        },
+        {
+          "name": "TaxDown / Contadores",
+          "type": "accounting",
+          "description": "Asesoría fiscal para el tratamiento tributario de indemnizaciones por despido y exenciones en el Impuesto a las Ganancias."
+        },
+        {
+          "name": "Lemon Cash",
+          "type": "neobank",
+          "description": "Billetera virtual argentina para la recepción y custodia de fondos de liquidaciones finales con tarjeta Visa de cashback."
+        }
+      ]
+    },
+    {
+      "id": "gastos-escritura-inmobiliaria-argentina",
+      "title_native": "Calculadora de Gastos de Escrituración, Impuesto de Sellos y Honorarios Inmobiliarios",
+      "title_en": "Argentina Property Purchase Taxes & Closing Fees Calculator",
+      "search_terms_native": [
+        "calculadora gastos de escritura argentina",
+        "cuanto cuesta escriturar una casa en caba y provincia",
+        "calcular impuesto de sellos compraventa inmueble",
+        "honorarios escribano e inmobiliaria comision venta piso",
+        "gastos total comprador y vendedor escritura de propiedad"
+      ],
+      "description_native": "Calcula el desglose total de gastos de escrituración e impuestos al comprar o vender un inmueble en Argentina (CABA y Provincia de Buenos Aires), incluyendo Impuesto de Sellos, honorarios del Escribano, certificados y comisión inmobiliaria.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price_usd",
+          "label_native": "Precio de venta acordado del inmueble (USD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "exchange_rate_mep",
+          "label_native": "Cotización del Dólar MEP / Oficial de referencia ($ ARS / USD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "jurisdiction",
+          "label_native": "Jurisdicción donde está ubicado el inmueble",
+          "type": "select",
+          "options": [
+            "CABA (Ciudad Autónoma de Buenos Aires)",
+            "Provincia de Buenos Aires (PBA)",
+            "Córdoba",
+            "Santa Fe",
+            "Mendoza"
+          ]
+        },
+        {
+          "name": "transaction_role",
+          "label_native": "Rol en la operación",
+          "type": "select",
+          "options": [
+            "Comprador (Asume honorarios escribano elegidos + sellos + comisión)",
+            "Vendedor (Asume sellos + certificados de dominio/inhibición + comisión)",
+            "Ambas partes (Cálculo consolidado total de la operación)"
+          ]
+        },
+        {
+          "name": "is_primary_residence",
+          "label_native": "Destino del inmueble para el comprador",
+          "type": "select",
+          "options": [
+            "Vivienda Única, Familiar y de Ocupación Permanente (Aplica exención de Impuesto de Sellos)",
+            "Segunda residencia / Inversión inmobiliaria / Comercial (Aplica alícuota plena de Sellos)"
+          ]
+        },
+        {
+          "name": "acquisition_year_seller",
+          "label_native": "Año en que el vendedor adquirió originalmente la propiedad",
+          "type": "select",
+          "options": [
+            "Adquirido después del 1 de Enero de 2018 (Sujeto a Impuesto a las Ganancias Cedular 15%)",
+            "Adquirido antes del 1 de Enero de 2018 (ITI Derogado / Exento de Ganancias Cedular)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Conversión de la operación a Pesos Argentinos (ARS) = Precio USD × Tipo de Cambio acordado / oficial de escrituración. 2. Impuesto de Sellos (Comprador 50% / Vendedor 50% salvo pacto en contrario): CABA (Alícuota general 3.5%, exención parcial/total para Vivienda Única según monto MNI), PBA (Alícuota general 2.0%). 3. Honorarios Escribano de Registro (A cargo del Comprador): Arancel sugerido de Colegio de Escribanos (1.5% a 2.0% + IVA sobre precio inmueble) + Gastos de escritura y fojas (aprox 0.5%). 4. Gastos Vendedor: Certificado de Dominio, Inhibición General de Bienes y Formulario COTI (AFIP/ARCA). 5. Comisión Inmobiliaria: Comprador (3% a 4% + IVA) y Vendedor (3% a 4% + IVA). 6. Impuesto a las Ganancias Cedular (Vendedor): 15% sobre la diferencia ajustada si el inmueble fue adquirido después del 01/01/2018.",
+      "affiliate_targets": [
+        {
+          "name": "Zonaprop",
+          "type": "software",
+          "description": "Portal inmobiliario líder en Argentina para buscar propiedades en venta, alquiler y comparar precios por metro cuadrado."
+        },
+        {
+          "name": "RE/MAX Argentina",
+          "type": "insurance",
+          "description": "Red de servicios inmobiliarios para la tasación profesional y corretaje de propiedades en todo el país."
+        },
+        {
+          "name": "Hipotecas Banco Nación / Banco Ciudad",
+          "type": "neobank",
+          "description": "Líneas de créditos hipotecarios UVA y tradicionales para la financiación de la primera vivienda en Argentina."
+        },
+        {
+          "name": "Contabilium / Escribanías",
+          "type": "accounting",
+          "description": "Asesoría impositiva para la tramitación de COTI ARCA y liquidación de tributos en escrituración."
+        }
+      ]
+    },
+    {
+      "id": "factura-e-exportacion-servicios",
+      "title_native": "Calculadora de Exportación de Servicios para Freelancers (Factura E, Dólar MEP y ARCA)",
+      "title_en": "Argentina Freelance Service Export Tax & USD Conversion Calculator",
+      "search_terms_native": [
+        "calculadora exportacion de servicios argentina",
+        "factura e afip arca cobro en dolares freelancers",
+        "calcular comisiones takenos payoneer dolar mep",
+        "cuanto me queda neto cobrando en usd desde argentina",
+        "monotributo tech y limites de facturación exportacion"
+      ],
+      "description_native": "Calcula los ingresos netos reales en Pesos Argentinos (ARS) o Dólares (USD) para freelancers y profesionales que exportan servicios desde Argentina, contemplando emisión de Factura E en ARCA, comisiones bancarias/fintech y conversión a Dólar MEP.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "invoiced_amount_usd",
+          "label_native": "Monto mensual facturado al exterior (USD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "billing_channel",
+          "label_native": "Plataforma de cobro internacional utilizada",
+          "type": "select",
+          "options": [
+            "Transferencia SWIFT Directa a Banco Argentino (Cuentas en USD)",
+            "Takenos (Cuenta internacional en USD/EUR a nombre propio)",
+            "Payoneer (Tarjeta de débito internacional / Transferencia bancaria)",
+            "Wise / Deel / Remote (Retiro a cuenta bancaria local o crypto)"
+          ]
+        },
+        {
+          "name": "conversion_method",
+          "label_native": "Mecanismo de conversión a Pesos Argentinos (ARS)",
+          "type": "select",
+          "options": [
+            "Venta de dólares en Bolsa (Dólar MEP en ALyC / Banco)",
+            "Liquidación al tipo de cambio Banco Nación (BNA Vendedor)",
+            "Mantenimiento en cuenta bancaria en Dólares USD (Sin conversión)"
+          ]
+        },
+        {
+          "name": "tax_regime",
+          "label_native": "Régimen tributario de alta en ARCA",
+          "type": "select",
+          "options": [
+            "Monotributo (Categoría general según escala de ingresos)",
+            "Monotributo Tech / Régimen de fomento exportador",
+            "Responsable Inscripto (Ganancias + Autónomos - Exento de IVA por Exportación)"
+          ]
+        },
+        {
+          "name": "mep_exchange_rate",
+          "label_native": "Cotización del Dólar MEP ($ ARS por USD)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Monto Bruto Exportado (USD) = Factura E emitida en ARCA sin IVA (0%). 2. Deducción de Comisiones de Plataforma y Giros Internacionales: SWIFT bancario ($30-$60 USD) o Takenos / Payoneer / Wise (1% a 3%). 3. Divisas Disponibles en USD Neto = Monto Bruto USD - Comisiones de Cobro. 4. Conversión a ARS según el método seleccionado: Dólar MEP (USD Neto × Cotización Dólar MEP - Comisión ALyC) o Dólar BNA (USD Neto × Tipo de cambio BNA). 5. Descuento de Impuestos Locales: Cuota fija de Monotributo / Monotributo Tech o anticipos de Impuesto a las Ganancias (Responsable Inscripto). Exención del 100% de IVA e Ingresos Brutos en exportación de servicios. 6. Ingreso Neto Real = Total ARS obtenido tras comisiones y cuota impositiva.",
+      "affiliate_targets": [
+        {
+          "name": "Takenos",
+          "type": "neobank",
+          "description": "Plataforma fintech para creadores, freelancers y exportadores de servicios en Argentina para recibir pagos en USD/EUR y transferir a bancos o billeteras locales."
+        },
+        {
+          "name": "Payoneer",
+          "type": "neobank",
+          "description": "Solución financiera global para cobrar a empresas internacionales y usar fondos con tarjeta de débito en dólares."
+        },
+        {
+          "name": "SOS Contador",
+          "type": "accounting",
+          "description": "Estudio contable cloud especializado en la emisión de Facturas E, Monotributo Tech y normativa cambiaria del BCRA para profesionales."
+        },
+        {
+          "name": "Lemon Cash",
+          "type": "neobank",
+          "description": "Billetera cripto y fintech para dolarización e inversión de saldos provenientes del exterior."
+        }
+      ]
+    }
+  ]
+}

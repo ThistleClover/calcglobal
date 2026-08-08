@@ -1,0 +1,58 @@
+{
+  "country": "Lebanon",
+  "country_code": "LB",
+  "languages": [
+    "ar",
+    "fr"
+  ],
+  "currency": "LBP",
+  "calculators": [
+    {
+      "id": "lb-tax-payroll-calculator",
+      "title_native": "Lebanon Calculateur Impôt sur le Revenu Liban",
+      "title_en": "Lebanon Calculateur Impôt sur le Revenu Liban",
+      "search_terms_native": [
+        "lebanon tax calculator",
+        "lebanon salary calculator",
+        "income tax lb"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Lebanon.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (LBP)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Lebanon revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Blom Bank",
+          "type": "software",
+          "description": "Top financial tool in Lebanon"
+        },
+        {
+          "name": "Bank Audi",
+          "type": "software",
+          "description": "Top financial tool in Lebanon"
+        }
+      ]
+    }
+  ]
+}

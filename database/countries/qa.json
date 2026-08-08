@@ -1,0 +1,471 @@
+{
+  "country": "Qatar",
+  "country_code": "QA",
+  "languages": [
+    "ar",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "qa-end-of-service-gratuity",
+      "title_native": "حاسبة مكافأة نهاية الخدمة والتصفية المالية (قانون العمل القطري)",
+      "title_en": "Qatar End of Service Gratuity (EOSB) & Final Settlement Calculator",
+      "search_terms_native": [
+        "حاسبة مكافأة نهاية الخدمة قطر",
+        "طريقة حساب مكافأة نهاية الخدمة في قانون العمل القطري",
+        "حساب مستحقات نهاية الخدمة قطر",
+        "حاسبة تصفية مستحقات الموظف وزارة العمل قطر",
+        "Qatar gratuity calculator",
+        "Qatar EOSB labor law calculation"
+      ],
+      "description_native": "احسب قيمة مكافأة نهاية الخدمة والبدلات والمستحقات المالية الإجمالية عند انتهاء عقد العمل وفق المادة 54 من قانون العمل القطري رقم 14 لسنة 2004.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "basic_salary",
+          "label_native": "الراتب الأساسي الشهري الأخير (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "service_years",
+          "label_native": "عدد سنوات الخدمة",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "service_months",
+          "label_native": "عدد الأشهر الإضافية",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "service_days",
+          "label_native": "عدد الأيام الإضافية",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "termination_reason",
+          "label_native": "سبب انتهاء العلاقة العمالية",
+          "type": "select",
+          "options": [
+            {
+              "value": "contract_expiry_or_resignation",
+              "label_native": "انتهاء مدة العقد / استقالة الموظف / إنهاء الخدمة من الشركة"
+            },
+            {
+              "value": "article_61_termination",
+              "label_native": "فصل الموظف بموجب المادة 61 (سوء سلوك جسيم بدون مكافأة)"
+            }
+          ]
+        },
+        {
+          "name": "unused_leave_days",
+          "label_native": "رصيد الإجازات السنوية المتبقية وغير المستعملة (باليوم)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_monthly_salary",
+          "label_native": "إجمالي الراتب الشهري الشامل للبدلات (بالريال القطري - لحساب بدل الإجازات)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Calculates End of Service Benefits (EOSB) and final settlement under Qatar Labour Law No. 14 of 2004. Total service years = Years + (Months / 12) + (Days / 365). Minimum continuous service required is 1 year (365 days). If service < 1 year or if employment is terminated under Article 61 (gross misconduct), Gratuity = 0 QAR. For eligible employees, minimum legal gratuity = (Last Basic Salary / 30) * 21 * Total Service Years. (Contractual terms may specify higher days, but 21 days is the legal minimum). Unused Leave Pay = (Total Monthly Salary / 30) * Unused Leave Days. Total Final Settlement = Gratuity Amount + Unused Leave Pay.",
+      "affiliate_targets": [
+        {
+          "name": "QNB Business Banking (بنك قطر الوطني للأعمال)",
+          "type": "neobank",
+          "description": "حسابات الرواتب والمعاملات التجارية والخدمات المصرفية للشركات في قطر."
+        },
+        {
+          "name": "Commercial Bank of Qatar (CBQ Corporate)",
+          "type": "neobank",
+          "description": "حلول تحويل الرواتب وحماية الأجور WPS والنظام المصرفي الآلي للمنشآت."
+        },
+        {
+          "name": "ZenHR Qatar",
+          "type": "software",
+          "description": "نظام إدارة الموارد البشرية والرواتب السحابي المتوافق مع قانون العمل القطري."
+        },
+        {
+          "name": "Bayzat Qatar",
+          "type": "insurance",
+          "description": "منصة إدارة كشوف المرتبات والتأمين الصحي للموظفين في دولة قطر."
+        }
+      ]
+    },
+    {
+      "id": "qa-grsia-social-insurance-pension",
+      "title_native": "حاسبة اشتراكات التأمينات الاجتماعية والتقاعد للقطريين (GRSIA)",
+      "title_en": "Qatar GRSIA Social Insurance & Pension Contribution Calculator",
+      "search_terms_native": [
+        "حاسبة استقطاع التقاعد قطر",
+        "نسبة التأمينات الاجتماعية للقطريين",
+        "حساب اشتراك الهيئة العامة للتقاعد والتأمينات الاجتماعية",
+        "استقطاع راتب التقاعد القطري قانون 1 لسنة 2022",
+        "Qatar GRSIA pension calculator",
+        "Qatar social insurance deduction 2025"
+      ],
+      "description_native": "احسب الخصم الشهري لااشتراكات التأمينات الاجتماعية والتقاعد للموظف القطري وحصة صاحب العمل وفق قانون التأمينات الاجتماعية رقم 1 لسنة 2022.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "nationality",
+          "label_native": "جنسية الموظف",
+          "type": "select",
+          "options": [
+            {
+              "value": "qatari",
+              "label_native": "مواطن قطري"
+            },
+            {
+              "value": "expat",
+              "label_native": "مقيم / غير قطري (يخضع لنظام مكافأة نهاية الخدمة)"
+            }
+          ]
+        },
+        {
+          "name": "sector",
+          "label_native": "قطاع العمل",
+          "type": "select",
+          "options": [
+            {
+              "value": "public",
+              "label_native": "قطاع حكومي / شبه حكومي"
+            },
+            {
+              "value": "private",
+              "label_native": "قطاع خاص خاضع لنظام التقاعد"
+            }
+          ]
+        },
+        {
+          "name": "basic_salary",
+          "label_native": "الراتب الأساسي الشهري (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "housing_allowance",
+          "label_native": "بدل السكن الشهري (بالريال القطري - يخضع لحد أقصى 6,000 ريال)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "social_allowance",
+          "label_native": "العلاوة الاجتماعية الشهري (بالريال القطري)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Calculates monthly social security (GRSIA) contributions under Qatar Social Insurance Law No. 1 of 2022 (effective Jan 2023 / Cabinet Decision 2025). For expatriate employees: GRSIA contribution = 0 QAR (covered under EOSB). For Qatari national employees: Contributory Salary = Basic Salary + Social Allowance + Capped Housing Allowance. Housing Allowance is capped at 6,000 QAR/month. Total Contributory Salary is capped at 100,000 QAR/month. Employee Contribution = 7% of Contributory Salary (deducted from employee pay). Employer Contribution = 14% of Contributory Salary. Total GRSIA Contribution = 21% of Contributory Salary. Employee Net Take-Home Pay = (Basic Salary + Housing Allowance + Social Allowance) - Employee Contribution (7%).",
+      "affiliate_targets": [
+        {
+          "name": "Dukhan Bank Corporate (بنك دخان للأعمال)",
+          "type": "neobank",
+          "description": "خدمات تحويل الرواتب والحلول المصرفية المتوافقة مع الشريعة الإسلامية."
+        },
+        {
+          "name": "Masraf Al Rayan Enterprise (مصرف الريان للأعمال)",
+          "type": "neobank",
+          "description": "مصرف الريان لإدارة حسابات الشركات والتحويلات المعتمدة لهيئة التقاعد."
+        },
+        {
+          "name": "Workday Qatar HR",
+          "type": "software",
+          "description": "نظام الموارد البشرية وإدارة كشوف الرواتب للمؤسسات والشركات الكبرى في قطر."
+        },
+        {
+          "name": "Snoonu Corporate Payroll",
+          "type": "software",
+          "description": "حلول إدارة المدفوعات والرواتب المحلية للشركات الناشئة والمشاريع في قطر."
+        }
+      ]
+    },
+    {
+      "id": "qa-dhareeba-corporate-withholding-tax",
+      "title_native": "حاسبة ضريبة الدخل على الشركات والضريبة المستقطعة من المصدر (منصة ضريبة Dhareeba)",
+      "title_en": "Qatar Corporate Tax & Withholding Tax (WHT) Dhareeba Calculator",
+      "search_terms_native": [
+        "حاسبة ضريبة الدخل الشركات قطر",
+        "حساب الضريبة المستقطعة من المصدر 5% قطر",
+        "حاسبة بوابة ضريبة Dhareeba الهيئة العامة للضرائب",
+        "نسبة ضريبة الشركات الأجنبية في قطر",
+        "Qatar Dhareeba corporate tax 10% calculator",
+        "Qatar withholding tax 5% calculator"
+      ],
+      "description_native": "احسب ضريبة الدخل على الشركات بملكية أجنبية (10%) والضريبة المستقطعة من المصدر (WHT 5%) للمدفوعات غير المقيمة وفق أنظمة الهيئة العامة للضرائب وبوابة ضريبة.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "foreign_ownership_pct",
+          "label_native": "نسبة الملكية الأجنبية في الشركة (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "qatari_gcc_ownership_pct",
+          "label_native": "نسبة الملكية القطرية / الخليجية (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_net_taxable_profit",
+          "label_native": "صافي الربح السنوي الخاضع للضريبة (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "non_resident_services_amount",
+          "label_native": "إجمالي المدفوعات للموردين غير المقيمة لقاء خدمات أو إتاوات (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "payment_type_wht",
+          "label_native": "نوع الخدمة غير المقيمة للمقاصة الضريبية",
+          "type": "select",
+          "options": [
+            {
+              "value": "technical_services_royalties",
+              "label_native": "خدمات فنية / إتاوات / عمولات (استقطاع 5%)"
+            },
+            {
+              "value": "interest_or_other",
+              "label_native": "فوائد بانكية أو مدفوعات محددة أخرى (استقطاع 5% إلى 7%)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates Qatari Corporate Income Tax and Withholding Tax (WHT) administered by the General Tax Authority (GTA) via the Dhareeba e-portal under Law No. 24 of 2018. 1. Corporate Income Tax: Flat 10% rate on net taxable profit attributable to foreign partners. Foreign Taxable Profit Share = Net Taxable Profit * (Foreign Ownership % / 100). Corporate Tax Due = Foreign Taxable Profit Share * 10%. (Qatari and GCC partner shares are 0% exempt from corporate income tax). 2. Withholding Tax (WHT): 5% final tax deducted at source on payments made to non-residents for services performed in Qatar, royalties, technical fees, or commissions. WHT Payable = Non-Resident Payments * 5%. Total Tax Obligation to GTA Dhareeba Portal = Corporate Tax Due + WHT Payable.",
+      "affiliate_targets": [
+        {
+          "name": "Wafeq Qatar (برنامج وافق المحاسبي)",
+          "type": "accounting",
+          "description": "برنامج محاسبي سحابي معتمد لإدارة الفواتير والضرائب متوافق مع بوابة ضريبة."
+        },
+        {
+          "name": "Zoho Books Qatar",
+          "type": "accounting",
+          "description": "نظام المحاسبة وإصدار الفواتير الإلكترونية الملتزم بالمعايير الضريبية والهيئة العامة للضرائب."
+        },
+        {
+          "name": "KPMG Qatar Tax Advisory",
+          "type": "accounting",
+          "description": "خدمات استشارية ضريبية وإعداد الفحص وتدقيق الإقرارات عبر بوابة Dhareeba."
+        },
+        {
+          "name": "PwC Qatar Tax Services",
+          "type": "legal",
+          "description": "خدمات الامتثال الضريبي والتدقيق وتخكيم الضرائب للشركات الأجنبية في قطر."
+        }
+      ]
+    },
+    {
+      "id": "qa-real-estate-fee-mortgage-residency",
+      "title_native": "حاسبة رسوم التسجيل العقاري والتمويل واستحقاق الإقامة العقارية في قطر",
+      "title_en": "Qatar Real Estate Registration Fee, Mortgage & Property Residency Calculator",
+      "search_terms_native": [
+        "حاسبة رسوم التسجيل العقاري وزارة العدل قطر",
+        "شروط الإقامة العقارية في قطر 730 الف",
+        "حاسبة التمويل العقاري قطر",
+        "رسوم شراء عقار في اللؤلؤة ولوسيل",
+        "Qatar real estate 0.25% transfer fee calculator",
+        "Qatar property residency minimum threshold"
+      ],
+      "description_native": "احسب رسوم التسجيل العقاري (0.25%) لدى وزارة العدل، وعمولات الوساطة، والدفعة الأولى للتمويل العقاري وفق تعليمات مصرف قطر المركزي، وحدود استحقاق الإقامة العقارية.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "سعر شراء العقار الإجمالي (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "buyer_type",
+          "label_native": "جنسية وفئة المشتري",
+          "type": "select",
+          "options": [
+            {
+              "value": "qatari_national",
+              "label_native": "مواطن قطري"
+            },
+            {
+              "value": "resident_expat",
+              "label_native": "مقيم غير قطري"
+            },
+            {
+              "value": "foreign_investor",
+              "label_native": "مستثمر أجنبي غير مقيم"
+            }
+          ]
+        },
+        {
+          "name": "is_freehold_zone",
+          "label_native": "هل يقع العقار في مناطق التملك الحر للمستثمرين (مثل اللؤلؤة، لوسيل، خليج غرب دبي)؟",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label_native": "نعم (تطبق شروط الإقامة العقارية للمستثمرين)"
+            },
+            {
+              "value": "no",
+              "label_native": "لا (منطقة استئناف أو عقار سكني عادي)"
+            }
+          ]
+        },
+        {
+          "name": "down_payment_pct",
+          "label_native": "نسبة الدفعة الأولى الشخصية (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "mortgage_years",
+          "label_native": "مدة التمويل العقاري (بالسنوات)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_profit_rate",
+          "label_native": "نسبة المرابحة / الربح السنوية البنكية (%)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Calculates total transaction costs, mortgage breakdown, and real estate residency eligibility in Qatar under Ministry of Justice and Qatar Central Bank (QCB) rules. 1. Government & Administrative Fees: Real Estate Registration Fee (Ministry of Justice) = Property Price * 0.25%. Estimated Real Estate Brokerage Fee = Property Price * 2.5%. Title Deed Issuance Fee ~ 300 QAR. 2. Real Estate Residency Eligibility (for non-Qataris in Freehold zones like The Pearl, Lusail, West Bay Lagoon): If Property Price >= 730,000 QAR ($200,000), buyer qualifies for renewable real estate residency. If Property Price >= 3,650,000 QAR ($1,000,000), buyer qualifies for Permanent Residency with healthcare and education benefits. 3. QCB Mortgage Guidelines: Minimum down payment = 20% for Qatari nationals, 30% for expatriates. Loan Amount = Property Price * (1 - Down Payment %). Bank Profit = Loan Amount * (Annual Profit Rate / 100) * Mortgage Years. Monthly Installment = (Loan Amount + Bank Profit) / (Mortgage Years * 12). Total Upfront Cash Required = Down Payment Amount + Registration Fee (0.25%) + Brokerage Fee (2.5%) + Admin Fees.",
+      "affiliate_targets": [
+        {
+          "name": "QNB Mortgage Finance (تمويل العقارات بنك قطر الوطني)",
+          "type": "neobank",
+          "description": "حلول التمويل العقاري والسكني الرائدة من بنك قطر الوطني."
+        },
+        {
+          "name": "Qatar Islamic Bank Mortgages (مصرف قطر الإسلامي)",
+          "type": "neobank",
+          "description": "تمويل العقارات بالمرابحة الإسلامية والأقساط الميسرة للمواطنين والمقيمين."
+        },
+        {
+          "name": "FG Realty Qatar",
+          "type": "business",
+          "description": "وكالة عقارية رائدة لتوفير فرص التملك الحر والإقامة الاستثمارية في قطر."
+        },
+        {
+          "name": "Saakin Qatar",
+          "type": "business",
+          "description": "منصة التسويق واستكشاف العقارات والمشاريع الاستثمارية المعتمدة في قطر."
+        }
+      ]
+    },
+    {
+      "id": "qa-freelance-company-setup-fees",
+      "title_native": "حاسبة تكاليف تأسيس شركة الشخص الواحد والرخصة التجارية في قطر",
+      "title_en": "Qatar Sole Proprietorship & Business Licensing Setup Cost Calculator",
+      "search_terms_native": [
+        "حاسبة تكاليف تأسيس شركة في قطر",
+        "رسوم السجل التجاري وزارة التجارة والصناعة قطر",
+        "تكلفة رخصة بلدية وقيد منشأة قطر",
+        "تأسيس شركة الشخص الواحد 100% ملكية أجنبية قطر",
+        "Qatar company formation cost calculator",
+        "Qatar commercial registration MOCI fees"
+      ],
+      "description_native": "احسب التكاليف والرسوم التقديرية لإصدار السجل التجاري (MOCI)، اشتراك غرفة قطر، الرخصة التجارية البلدية، وقيد المنشأة لتأسيس نشاط تجاري في قطر.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "company_legal_form",
+          "label_native": "الشكل القانوني للمنشأة",
+          "type": "select",
+          "options": [
+            {
+              "value": "spc_single_person",
+              "label_native": "شركة الشخص الواحد (Single Person Company - SPC)"
+            },
+            {
+              "value": "llc_limited_liability",
+              "label_native": "شركة ذات مسؤولية محدودة (LLC)"
+            },
+            {
+              "value": "foreign_branch",
+              "label_native": "فرع شركة أجنبية (Foreign Branch)"
+            }
+          ]
+        },
+        {
+          "name": "foreign_ownership_share",
+          "label_native": "نسبة الملكية الأجنبية",
+          "type": "select",
+          "options": [
+            {
+              "value": "full_100_percent",
+              "label_native": "100% ملكية أجنبية (بموجب قانون استثمار رأس المال الأجنبي)"
+            },
+            {
+              "value": "joint_49_percent",
+              "label_native": "49% شريك أجنبي مع 51% شريك قطري"
+            }
+          ]
+        },
+        {
+          "name": "declared_capital",
+          "label_native": "رأس المال المعلن للمشروع (بالريال القطري)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "number_of_activities",
+          "label_native": "عدد الأنشطة التجارية المقيدة في السجل التجاري",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "has_commercial_office",
+          "label_native": "توفر عقد إيجار مكتب / مقر تجاري مرخص",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes_office",
+              "label_native": "نعم (مقر تجاري جاهز لإصدار الرخصة البلدية)"
+            },
+            {
+              "value": "virtual_office",
+              "label_native": "مكتب افتراضي / حاضنة أعمال"
+            },
+            {
+              "value": "searching",
+              "label_native": "قيد البحث / لا يتوفر حتى الآن"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Estimates setup and licensing costs for business entities in Qatar administered by Ministry of Commerce and Industry (MOCI), Qatar Chamber, and Municipality. 1. MOCI Commercial Registration (CR) Fee: Ranges between 1,500 QAR and 10,000 QAR annually based on activity code and capital tier. 2. Qatar Chamber Membership Fee: 1,000 QAR for capital up to 100,000 QAR, scaling up to 5,000 QAR for large capital/shareholding entities. 3. Municipal Commercial License & Signboard Fee: Estimated 1,020 QAR to 3,000 QAR annually depending on premises area and activity. 4. Establishment Card (Computer Card / Ministry of Interior) Fee: 200 QAR. 5. Total Estimated 1st Year Government Setup Cost = Sum of CR fee + Qatar Chamber fee + Municipal License fee + Computer Card fee. 6. Tax Compliance Requirement: All entities with foreign ownership must complete Dhareeba registration within 60 days of CR issuance.",
+      "affiliate_targets": [
+        {
+          "name": "Ministry of Commerce and Industry (MOCI Single Window)",
+          "type": "software",
+          "description": "البوابة الرسمية النافذة الواحدة لتأسيس الشركات وإصدار السجلات التجارية في قطر."
+        },
+        {
+          "name": "QNB Corporate Startup Banking Account",
+          "type": "neobank",
+          "description": "فتح الحساب المصرفي التجاري المباشر وتسهيلات البداية للشركات الجديدة."
+        },
+        {
+          "name": "Wafeq Qatar E-Invoicing",
+          "type": "accounting",
+          "description": "برنامج الفواتير والمحاسبة المعتمد للشركات الصغيرة والمتوسطة."
+        },
+        {
+          "name": "Daftra Qatar ERP & Accounting",
+          "type": "software",
+          "description": "نظام إدارة المبيعات والحسابات والمخزون الموجه للأنشطة التجارية في قطر."
+        }
+      ]
+    }
+  ]
+}

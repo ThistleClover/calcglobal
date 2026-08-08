@@ -1,0 +1,475 @@
+{
+  "country": "Australia",
+  "country_code": "AU",
+  "languages": ["en"],
+  "currency": "AUD",
+  "calculators": [
+    {
+      "id": "ato-payg-income-tax-calculator",
+      "title_native": "Australia Income Tax Calculator 2026/27 (ATO PAYG, Medicare & HECS)",
+      "title_en": "Australia ATO Income Tax, Medicare Levy & HECS/HELP Repayment Calculator",
+      "search_terms_native": [
+        "australia income tax calculator 2026",
+        "ato payg tax calculator 2026 27",
+        "australia take home pay calculator",
+        "medicare levy surcharge calculator",
+        "hecs help repayment calculator 2026"
+      ],
+      "description_native": "Calculate your exact Australian take-home pay for the 2026/27 tax year including ATO income tax brackets, the Low Income Tax Offset (LITO), Medicare Levy, Medicare Levy Surcharge (if applicable), and compulsory HECS/HELP student debt repayments.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "ato-payg-income-tax-calculator"
+        },
+        {
+          "name": "gross_annual",
+          "label_native": "Annual Gross Income (A$)",
+          "type": "number"
+        },
+        {
+          "name": "residency",
+          "label_native": "Tax Residency Status",
+          "type": "select",
+          "options": [
+            { "value": "resident", "label": "Australian Resident for Tax Purposes" },
+            { "value": "non_resident", "label": "Non-Resident (no tax-free threshold)" },
+            { "value": "working_holiday", "label": "Working Holiday Maker (417/462 visa)" }
+          ]
+        },
+        {
+          "name": "hecs_debt",
+          "label_native": "Do you have a HECS/HELP student debt?",
+          "type": "select",
+          "options": [
+            { "value": "no", "label": "No HECS/HELP debt" },
+            { "value": "yes", "label": "Yes — I have HECS/HELP debt" }
+          ]
+        },
+        {
+          "name": "private_health",
+          "label_native": "Do you have private hospital cover?",
+          "type": "select",
+          "options": [
+            { "value": "no", "label": "No private hospital insurance" },
+            { "value": "yes", "label": "Yes — I have private hospital cover" }
+          ]
+        }
+      ],
+      "formula_explanation": "Australian income tax is calculated using progressive ATO brackets for 2026/27: 0% up to $18,200 (tax-free threshold); 19% from $18,201–$45,000; 32.5% from $45,001–$135,000; 37% from $135,001–$190,000; 45% above $190,000.\n\nThe Low Income Tax Offset (LITO) reduces tax by up to $700 for incomes below $37,500, phasing out above that.\n\nThe Medicare Levy is 2% of taxable income (with a low-income reduction below ~$26,000). The Medicare Levy Surcharge adds 1%–1.5% if you earn above $93,000 and don't hold private hospital cover.\n\nHECS/HELP compulsory repayments start at 1% when income exceeds $54,435, scaling up to 10% above $141,848. This reduces your take-home but also reduces your outstanding debt.",
+      "affiliate_targets": [
+        {
+          "name": "H&R Block Australia",
+          "type": "accounting",
+          "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Australia's largest tax return service — lodge your 2026/27 return online with a registered tax agent."
+        },
+        {
+          "name": "MYOB",
+          "type": "software",
+          "url": "https://www.myob.com/au?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Australia's leading accounting software for sole traders and small businesses. Auto-calculates PAYG withholding."
+        },
+        {
+          "name": "Xero Australia",
+          "type": "software",
+          "url": "https://www.xero.com/au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Cloud-based accounting with ATO direct lodgement, BAS automation, and STP2 payroll compliance."
+        },
+        {
+          "name": "Etax Online",
+          "type": "accounting",
+          "url": "https://www.etax.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Australia's #1 online tax return service — fast, secure, and with maximum deduction checking."
+        }
+      ],
+      "article_faq": [
+        {
+          "question": "What are the Australian income tax rates for 2026/27?",
+          "answer": "For Australian tax residents in 2026/27: 0% on income up to $18,200 (tax-free threshold); 19 cents for each $1 between $18,201 and $45,000; 32.5 cents per $1 between $45,001 and $135,000; 37 cents per $1 between $135,001 and $190,000; and 45 cents per $1 above $190,000. These rates exclude the 2% Medicare Levy."
+        },
+        {
+          "question": "When does the Medicare Levy Surcharge apply?",
+          "answer": "The Medicare Levy Surcharge (MLS) applies if your income exceeds $93,000 (singles) and you don't have an appropriate level of private hospital cover. The surcharge rate is 1% for $93,001–$108,000, 1.25% for $108,001–$144,000, and 1.5% above $144,000. Getting private hospital cover is often cheaper than paying the surcharge."
+        },
+        {
+          "question": "How are HECS/HELP repayments calculated in 2026/27?",
+          "answer": "Compulsory HECS/HELP repayments begin when your repayment income reaches $54,435. The rate starts at 1% and increases with income, reaching 10% above $141,848. Repayments are automatically withheld by your employer if you notify them. They reduce your HELP debt but are not tax deductible."
+        },
+        {
+          "question": "What is the Low Income Tax Offset (LITO)?",
+          "answer": "The LITO reduces the amount of tax you pay if you're an Australian resident earning below $66,667. The maximum offset is $700 for incomes up to $37,500. It reduces by 5 cents for each dollar between $37,500 and $45,000, then by 1.5 cents per dollar from $45,000 to $66,667. Above $66,667, no offset applies."
+        },
+        {
+          "question": "How much superannuation should my employer be paying?",
+          "answer": "From 1 July 2025, the Superannuation Guarantee (SG) rate is 12% of your ordinary time earnings. Your employer must pay this on top of your salary into your nominated super fund. This is in addition to your gross salary shown above and is not included in take-home pay calculations."
+        }
+      ]
+    },
+    {
+      "id": "sole-trader-tax-calculator",
+      "title_native": "Australia Sole Trader Tax Calculator 2026/27 (Net Profit, Deductions & SBITO)",
+      "title_en": "Australia Sole Trader Tax Calculator 2026/27 (Net Profit, Deductions & SBITO)",
+      "search_terms_native": [
+        "sole trader tax calculator australia 2026",
+        "abn tax calculator 2026 27",
+        "small business income tax offset calculator",
+        "sole trader deductions home office vehicle",
+        "australia self employed tax calculator"
+      ],
+      "description_native": "Calculate tax payable for Australian sole traders and ABN holders for the 2026/27 tax year. Includes operating expenses, home office and vehicle deductions, deductible super contributions, ATO resident tax brackets, Medicare Levy, and the Small Business Income Tax Offset (SBITO).",
+      "category": "business",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "sole-trader-tax-calculator"
+        },
+        {
+          "name": "gross_revenue",
+          "label_native": "Gross Business Revenue (A$)",
+          "type": "number"
+        },
+        {
+          "name": "business_expenses",
+          "label_native": "Operating Expenses & Cost of Sales (A$)",
+          "type": "number"
+        },
+        {
+          "name": "home_office_cost",
+          "label_native": "Total Home Running Costs (A$)",
+          "type": "number"
+        },
+        {
+          "name": "home_office_pct",
+          "label_native": "Home Office Business Use (%)",
+          "type": "number"
+        },
+        {
+          "name": "vehicle_cost",
+          "label_native": "Total Vehicle Operating Costs (A$)",
+          "type": "number"
+        },
+        {
+          "name": "vehicle_business_pct",
+          "label_native": "Vehicle Business Use (%)",
+          "type": "number"
+        },
+        {
+          "name": "super_concessional_contribution",
+          "label_native": "Voluntary Super Contribution (Deductible A$)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Gross Revenue minus allowable business expenses gives Gross Operating Profit. Deductions for home office (business % of home costs) and vehicle (business % of vehicle costs) reduce operating profit. Superannuation concessional contributions up to the $30,000 cap are tax-deductible for sole traders. Taxable Income is taxed using progressive ATO resident brackets. The Low Income Tax Offset (LITO) applies up to $66,667. The Small Business Income Tax Offset (SBITO) provides a tax discount of 16% on tax payable on business income, up to a maximum of $1,000 per year. The 2% Medicare Levy is added to determine total tax liability.",
+      "article_faq": [
+        {
+          "question": "What deductions can an Australian sole trader claim in 2026/27?",
+          "answer": "Sole traders can claim operating expenses, home office running costs (or standard hourly rate), vehicle expenses based on logbook percentage or cents-per-km method, professional subscriptions, insurance, and personal superannuation contributions up to the $30,000 concessional cap."
+        },
+        {
+          "question": "How does the Small Business Income Tax Offset (SBITO) work?",
+          "answer": "The SBITO reduces the tax you pay on business income by up to $1,000 per year. The offset rate is 16% of the income tax payable on your net business income. The ATO automatically calculates this when you lodge your tax return."
+        },
+        {
+          "question": "Can sole traders claim super contributions as a tax deduction?",
+          "answer": "Yes. Personal super contributions made by sole traders to an eligible super fund are tax-deductible up to the annual concessional contribution cap of $30,000 for 2026/27. You must submit a 'Notice of Intent to Claim' form to your super fund before lodging your tax return."
+        },
+        {
+          "question": "When do sole traders pay PAYG Installments?",
+          "answer": "Once your tax return shows business and investment income generating tax payable above $4,000, the ATO will enter you into the PAYG Installment system, requiring quarterly payments towards your annual tax bill."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "MYOB",
+          "type": "software",
+          "url": "https://www.myob.com/au?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading accounting software for sole traders with direct ATO BAS filing, invoicing, and deduction tracking."
+        },
+        {
+          "name": "Xero Australia",
+          "type": "software",
+          "url": "https://www.xero.com/au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Automated business accounting software for Australian ABN sole traders and small businesses."
+        },
+        {
+          "name": "H&R Block Australia",
+          "type": "accounting",
+          "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Sole trader tax return experts — ensure maximum business deductions and compliance."
+        },
+        {
+          "name": "Etax Online",
+          "type": "accounting",
+          "url": "https://www.etax.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Fast online tax return for ABN sole traders with live accountant review."
+        }
+      ]
+    },
+    {
+      "id": "superannuation-calculator",
+      "title_native": "Australia Superannuation & Retirement Growth Calculator 2026",
+      "title_en": "Australia Superannuation & Retirement Growth Calculator 2026",
+      "search_terms_native": [
+        "australia superannuation calculator 2026",
+        "super retirement projection calculator",
+        "employer sg rate 12 percent calculator",
+        "concessional super contributions tax 15 percent",
+        "division 293 tax threshold 250k",
+        "superannuation growth 4 percent rule drawdown"
+      ],
+      "description_native": "Project your Australian superannuation balance at retirement for the 12% Super Guarantee (SG) rate (from 1 July 2025). Calculates employer contributions, voluntary contributions, 15% contribution tax (and Division 293 tax for high earners), compound investment returns, and monthly retirement drawdown.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "superannuation-calculator"
+        },
+        {
+          "name": "current_balance",
+          "label_native": "Current Super Balance (A$)",
+          "type": "number"
+        },
+        {
+          "name": "annual_salary",
+          "label_native": "Annual Gross Salary (A$)",
+          "type": "number"
+        },
+        {
+          "name": "years_to_retirement",
+          "label_native": "Years Until Retirement",
+          "type": "number"
+        },
+        {
+          "name": "voluntary_contribution_pct",
+          "label_native": "Voluntary Contribution Rate (% of salary)",
+          "type": "number"
+        },
+        {
+          "name": "expected_return_pct",
+          "label_native": "Expected Annual Return (% net of fees & tax)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Employer Superannuation Guarantee (SG) contribution is set at 12% of salary (effective 1 July 2025). Total gross contributions equal SG (12%) plus voluntary salary sacrifice contributions. Concessional contributions are taxed at 15% upon entry into the fund (or 30% if taxable income plus concessional contributions exceed $250,000 under Division 293). The net annual contribution compounds annually alongside the existing balance at the specified net investment return rate: FV = PV * (1+r)^n + PMT * (((1+r)^n - 1) / r). Retirement drawdown is estimated using the 4% safe withdrawal rate.",
+      "article_faq": [
+        {
+          "question": "What is the Superannuation Guarantee (SG) rate for 2026?",
+          "answer": "The Super Guarantee rate is 12% of ordinary time earnings from 1 July 2025 onwards. Employers must pay this compulsory contribution into your super fund at least quarterly."
+        },
+        {
+          "question": "How are super contributions taxed in Australia?",
+          "answer": "Concessional (pre-tax) contributions, including employer SG and salary sacrifice, are taxed at a concessional rate of 15% inside the super fund up to the annual cap of $30,000. Higher earners with income over $250,000 pay an additional 15% tax under Division 293."
+        },
+        {
+          "question": "What is Division 293 tax?",
+          "answer": "Division 293 tax is an additional 15% tax levied on concessional super contributions for individuals whose income plus concessional contributions exceed $250,000 per year, bringing their total contribution tax rate to 30%."
+        },
+        {
+          "question": "What is the concessional super contribution cap for 2026/27?",
+          "answer": "The concessional contribution cap is $30,000 per financial year. Contributions above this cap are taxed at your marginal income tax rate."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "SuperGuru",
+          "type": "software",
+          "url": "https://www.superguru.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "ASFA SuperGuru tool — compare Australian super funds, fees, and historical performance."
+        },
+        {
+          "name": "H&R Block Australia",
+          "type": "accounting",
+          "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Maximize your superannuation tax deductions and salary sacrifice savings."
+        },
+        {
+          "name": "Etax Online",
+          "type": "accounting",
+          "url": "https://www.etax.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Lodge tax returns with voluntary super contribution deduction processing."
+        }
+      ]
+    },
+    {
+      "id": "stamp-duty-calculator",
+      "title_native": "Australia Property Stamp Duty Calculator 2026 (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)",
+      "title_en": "Australia Property Stamp Duty Calculator 2026 (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)",
+      "search_terms_native": [
+        "stamp duty calculator australia 2026",
+        "nsw transfer duty calculator 2026",
+        "vic stamp duty calculator first home buyer exemption",
+        "qld stamp duty calculator 700k exemption",
+        "foreign buyer stamp duty surcharge australia",
+        "property purchase costs transfer fees"
+      ],
+      "description_native": "Calculate exact state and territory property transfer stamp duty across Australia for 2026. Supports NSW, VIC, QLD, WA, SA, TAS, ACT, and NT, with full calculations for First Home Buyer exemptions, owner-occupiers, investors, and foreign purchaser surcharges.",
+      "category": "real_estate",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "stamp-duty-calculator"
+        },
+        {
+          "name": "property_price",
+          "label_native": "Property Purchase Price (A$)",
+          "type": "number"
+        },
+        {
+          "name": "state",
+          "label_native": "State or Territory",
+          "type": "select",
+          "options": [
+            { "value": "NSW", "label": "New South Wales (NSW)" },
+            { "value": "VIC", "label": "Victoria (VIC)" },
+            { "value": "QLD", "label": "Queensland (QLD)" },
+            { "value": "WA", "label": "Western Australia (WA)" },
+            { "value": "SA", "label": "South Australia (SA)" },
+            { "value": "TAS", "label": "Tasmania (TAS)" },
+            { "value": "ACT", "label": "Australian Capital Territory (ACT)" },
+            { "value": "NT", "label": "Northern Territory (NT)" }
+          ]
+        },
+        {
+          "name": "buyer_type",
+          "label_native": "Buyer Status",
+          "type": "select",
+          "options": [
+            { "value": "first_home", "label": "First Home Buyer" },
+            { "value": "owner_occupier", "label": "Owner Occupier (Primary Residence)" },
+            { "value": "investor", "label": "Investor / Secondary Property" },
+            { "value": "foreign", "label": "Foreign Purchaser (Surcharge Applies)" }
+          ]
+        }
+      ],
+      "formula_explanation": "Stamp duty (land transfer duty) is levied by Australian state and territory governments based on property purchase price. NSW: Standard scaled rates up to $1.168M, 5.5% above $1.168M. FHB: 100% duty exemption up to $800,000, sliding scale concession $800k–$1,000,000. VIC: Scaled rates up to 6.5%. FHB: 100% exemption up to $600,000, sliding scale $600k–$750,000. QLD: Scaled rates up to 5.75%. FHB: 100% exemption up to $700,000. WA: Scaled 1.9% to 5.15%. FHB exemption up to $450,000. SA: Scaled 1% to 5.5%. TAS: Scaled up to 4.5%. ACT: Abolished for eligible FHB under income cap, sliding scale for others. NT: Formula-based. Foreign purchasers pay an additional surcharge of 7%–9% depending on state.",
+      "article_faq": [
+        {
+          "question": "How much stamp duty do First Home Buyers pay in NSW?",
+          "answer": "Under the NSW First Home Buyers Assistance Scheme, first home buyers pay $0 stamp duty on homes valued up to $800,000. For homes between $800,000 and $1,000,000, a concessional sliding stamp duty rate applies."
+        },
+        {
+          "question": "What is the First Home Buyer stamp duty threshold in Victoria?",
+          "answer": "In Victoria, first home buyers pay zero stamp duty on homes priced up to $600,000. A sliding discount applies for homes priced between $600,001 and $750,000."
+        },
+        {
+          "question": "Do foreign buyers pay extra stamp duty in Australia?",
+          "answer": "Yes. Foreign buyers are subject to a foreign purchaser surcharge in addition to standard stamp duty: 8% in NSW, VIC, and TAS; 8% in QLD; 7% in WA and SA."
+        },
+        {
+          "question": "When is property stamp duty payable?",
+          "answer": "Stamp duty is typically due at settlement or within 30 to 90 days of signing the contract, depending on the state or territory."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "H&R Block Australia",
+          "type": "accounting",
+          "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Expert advice on property tax deductions, negative gearing, and CGT."
+        },
+        {
+          "name": "MYOB",
+          "type": "software",
+          "url": "https://www.myob.com/au?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Track rental property income, expenses, and stamp duty cost base adjustments."
+        },
+        {
+          "name": "Etax Online",
+          "type": "accounting",
+          "url": "https://www.etax.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Lodge property investor tax returns and calculate rental asset depreciation."
+        }
+      ]
+    },
+    {
+      "id": "hecs-repayment-calculator",
+      "title_native": "Australia HECS/HELP Loan Repayment & Indexation Calculator 2026/27",
+      "title_en": "Australia HECS/HELP Loan Repayment & Indexation Calculator 2026/27",
+      "search_terms_native": [
+        "hecs repayment calculator 2026",
+        "help debt payoff schedule calculator australia",
+        "hecs threshold brackets 2026 27",
+        "hecs cpi indexation rate 2026",
+        "voluntary hecs repayment benefit",
+        "student debt pay off time australia"
+      ],
+      "description_native": "Calculate compulsory HECS/HELP student loan repayments for the 2026/27 financial year. Features multi-year payoff projections, 2026/27 ATO threshold rates (1% to 10%), annual CPI indexation, and savings from optional voluntary repayments.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "hecs-repayment-calculator"
+        },
+        {
+          "name": "hecs_debt_balance",
+          "label_native": "Current HECS/HELP Debt Balance (A$)",
+          "type": "number"
+        },
+        {
+          "name": "annual_income",
+          "label_native": "Annual Repayment Income (A$)",
+          "type": "number"
+        },
+        {
+          "name": "income_growth_pct",
+          "label_native": "Expected Annual Salary Growth (%)",
+          "type": "number"
+        },
+        {
+          "name": "voluntary_annual_repayment",
+          "label_native": "Optional Voluntary Annual Repayment (A$)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Compulsory HELP repayments are calculated based on your total repayment income using progressive ATO brackets starting at $54,435 (1%) up to $141,848 (10%). Remaining HELP debt is indexed annually on 1 June using the lower of CPI or WPI (estimated ~3.8% for 2026). In each projected year: compulsory and voluntary repayments reduce the balance first, and annual indexation is applied to the remaining balance on 1 June. Repayments continue until the debt balance reaches $0.",
+      "article_faq": [
+        {
+          "question": "What is the minimum income threshold for HECS/HELP repayments in 2026/27?",
+          "answer": "For the 2026/27 tax year, the compulsory HECS/HELP repayment threshold begins at $54,435. Incomes below this amount require $0 compulsory repayment."
+        },
+        {
+          "question": "How are HECS/HELP debts indexed in Australia?",
+          "answer": "HELP debts are indexed annually on 1 June. Under recent legislation, indexation is calculated using the lower of the Consumer Price Index (CPI) or Wage Price Index (WPI) to prevent excessive indexation."
+        },
+        {
+          "question": "Are HECS/HELP repayments tax-deductible?",
+          "answer": "No, compulsory and voluntary HELP debt repayments are made with after-tax dollars and are not tax-deductible."
+        },
+        {
+          "question": "Should I make voluntary repayments on my HECS/HELP debt?",
+          "answer": "Voluntary repayments directly reduce your balance and avoid future indexation. However, because HELP loans carry no interest (only indexation), many financial advisers suggest prioritizing high-interest debts before making voluntary HELP payments."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "H&R Block Australia",
+          "type": "accounting",
+          "url": "https://www.hrblock.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Ensure your employer withholds the correct HELP repayment amount to avoid EOFY tax bills."
+        },
+        {
+          "name": "Etax Online",
+          "type": "accounting",
+          "url": "https://www.etax.com.au/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Fast online lodging with automatic HECS/HELP repayment reconciliation."
+        }
+      ]
+    }
+  ]
+}

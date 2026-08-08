@@ -1,0 +1,58 @@
+{
+  "country": "Oman",
+  "country_code": "OM",
+  "languages": [
+    "ar",
+    "en"
+  ],
+  "currency": "OMR",
+  "calculators": [
+    {
+      "id": "om-tax-payroll-calculator",
+      "title_native": "Oman Oman Labor EOSB & PASI Pension Calculator",
+      "title_en": "Oman Oman Labor EOSB & PASI Pension Calculator",
+      "search_terms_native": [
+        "oman tax calculator",
+        "oman salary calculator",
+        "income tax om"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Oman.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (OMR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Oman revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Bank Muscat",
+          "type": "software",
+          "description": "Top financial tool in Oman"
+        },
+        {
+          "name": "National Bank of Oman",
+          "type": "software",
+          "description": "Top financial tool in Oman"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "country": "United Kingdom",
+  "country_code": "GB",
+  "languages": [
+    "en"
+  ],
+  "currency": "GBP",
+  "calculators": [
+    {
+      "id": "gb-tax-payroll-calculator",
+      "title_native": "United Kingdom IR35 Contractor & SDLT Stamp Duty Calculator",
+      "title_en": "United Kingdom IR35 Contractor & SDLT Stamp Duty Calculator",
+      "search_terms_native": [
+        "united kingdom tax calculator",
+        "united kingdom salary calculator",
+        "income tax gb"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for United Kingdom.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (GBP)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on United Kingdom revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Crunch",
+          "type": "software",
+          "description": "Top financial tool in United Kingdom"
+        },
+        {
+          "name": "PayStream",
+          "type": "software",
+          "description": "Top financial tool in United Kingdom"
+        },
+        {
+          "name": "Xero",
+          "type": "software",
+          "description": "Top financial tool in United Kingdom"
+        }
+      ]
+    }
+  ]
+}

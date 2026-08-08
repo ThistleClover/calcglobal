@@ -1,0 +1,57 @@
+{
+  "country": "Myanmar",
+  "country_code": "MM",
+  "languages": [
+    "my"
+  ],
+  "currency": "MMK",
+  "calculators": [
+    {
+      "id": "mm-tax-payroll-calculator",
+      "title_native": "Myanmar Personal Income Tax & SSB Calculator",
+      "title_en": "Myanmar Personal Income Tax & SSB Calculator",
+      "search_terms_native": [
+        "myanmar tax calculator",
+        "myanmar salary calculator",
+        "income tax mm"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Myanmar.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (MMK)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Myanmar revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "KBZ Pay",
+          "type": "software",
+          "description": "Top financial tool in Myanmar"
+        },
+        {
+          "name": "CB Bank",
+          "type": "software",
+          "description": "Top financial tool in Myanmar"
+        }
+      ]
+    }
+  ]
+}

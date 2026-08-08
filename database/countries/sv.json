@@ -1,0 +1,57 @@
+{
+  "country": "El Salvador",
+  "country_code": "SV",
+  "languages": [
+    "es"
+  ],
+  "currency": "USD",
+  "calculators": [
+    {
+      "id": "sv-tax-payroll-calculator",
+      "title_native": "El Salvador Calculadora Impuesto sobre la Renta y ISSS",
+      "title_en": "El Salvador Calculadora Impuesto sobre la Renta y ISSS",
+      "search_terms_native": [
+        "el salvador tax calculator",
+        "el salvador salary calculator",
+        "income tax sv"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for El Salvador.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (USD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on El Salvador revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Banco Agricola",
+          "type": "software",
+          "description": "Top financial tool in El Salvador"
+        },
+        {
+          "name": "Chivo Wallet",
+          "type": "software",
+          "description": "Top financial tool in El Salvador"
+        }
+      ]
+    }
+  ]
+}

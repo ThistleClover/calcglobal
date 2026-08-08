@@ -1,0 +1,62 @@
+{
+  "country": "Uzbekistan",
+  "country_code": "UZ",
+  "languages": [
+    "uz"
+  ],
+  "currency": "UZS",
+  "calculators": [
+    {
+      "id": "uz-tax-payroll-calculator",
+      "title_native": "Uzbekistan JShODDS Tax & INPS Pension Calculator",
+      "title_en": "Uzbekistan JShODDS Tax & INPS Pension Calculator",
+      "search_terms_native": [
+        "uzbekistan tax calculator",
+        "uzbekistan salary calculator",
+        "income tax uz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Uzbekistan.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (UZS)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Uzbekistan revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Payme",
+          "type": "software",
+          "description": "Top financial tool in Uzbekistan"
+        },
+        {
+          "name": "Click.uz",
+          "type": "software",
+          "description": "Top financial tool in Uzbekistan"
+        },
+        {
+          "name": "Kapitalbank",
+          "type": "software",
+          "description": "Top financial tool in Uzbekistan"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "country": "Serbia",
+  "country_code": "RS",
+  "languages": [
+    "sr"
+  ],
+  "currency": "RSD",
+  "calculators": [
+    {
+      "id": "rs-tax-payroll-calculator",
+      "title_native": "Serbia Kalkulator Plate Neto Bruto & Paušalac",
+      "title_en": "Serbia Kalkulator Plate Neto Bruto & Paušalac",
+      "search_terms_native": [
+        "serbia tax calculator",
+        "serbia salary calculator",
+        "income tax rs"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Serbia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (RSD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Serbia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Paušal.rs",
+          "type": "software",
+          "description": "Top financial tool in Serbia"
+        },
+        {
+          "name": "Raiffeisen RS",
+          "type": "software",
+          "description": "Top financial tool in Serbia"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,504 @@
+{
+  "country": "Spain",
+  "country_code": "ES",
+  "languages": [
+    "es",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "sueldo-neto-espana",
+      "title_native": "Calculadora de Sueldo Bruto a Neto España",
+      "title_en": "Spain Net Salary Calculator",
+      "search_terms_native": [
+        "calculadora sueldo bruto a neto",
+        "calcular salario neto españa",
+        "retencion irpf nomina calculadora",
+        "sueldo neto 14 pagas",
+        "calculadora nomina 2026"
+      ],
+      "description_native": "Calcula el sueldo neto mensual y anual en España especificando retenciones de IRPF, aportaciones a la Seguridad Social (incluyendo el MEI), pagas extra y deducciones personales y familiares según tu Comunidad Autónoma.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary_annual",
+          "label_native": "Salario bruto anual (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_periods",
+          "label_native": "Número de pagas",
+          "type": "select",
+          "options": [
+            "12 pagas (prorrateadas)",
+            "14 pagas"
+          ]
+        },
+        {
+          "name": "contract_type",
+          "label_native": "Tipo de contrato laboral",
+          "type": "select",
+          "options": [
+            "Indefinido / General",
+            "Temporal / Duración determinada"
+          ]
+        },
+        {
+          "name": "marital_status",
+          "label_native": "Estado civil y situación familiar",
+          "type": "select",
+          "options": [
+            "Soltero / Divorciado / Viudo sin hijos",
+            "Casado (cónyuge sin ingresos > 1.500€)",
+            "Monoparental con hijos a cargo",
+            "Casado (declaración individual)"
+          ]
+        },
+        {
+          "name": "children_count",
+          "label_native": "Número de hijos / descendientes a cargo (<25 años)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "disability_grade",
+          "label_native": "Grado de discapacidad del trabajador",
+          "type": "select",
+          "options": [
+            "Sin discapacidad",
+            "Discapacidad entre 33% y 64%",
+            "Discapacidad del 65% o superior"
+          ]
+        },
+        {
+          "name": "autonomous_community",
+          "label_native": "Comunidad Autónoma de residencia fiscal",
+          "type": "select",
+          "options": [
+            "Andalucía",
+            "Aragón",
+            "Asturias",
+            "Baleares",
+            "Canarias",
+            "Cantabria",
+            "Castilla-La Mancha",
+            "Castilla y León",
+            "Cataluña",
+            "Comunidad Valenciana",
+            "Extremadura",
+            "Galicia",
+            "La Rioja",
+            "Madrid",
+            "Murcia",
+            "Navarra",
+            "País Vasco"
+          ]
+        }
+      ],
+      "formula_explanation": "La nómina neta se obtiene restando del salario bruto dos deducciones obligatorias: 1) Cotización a la Seguridad Social a cargo del trabajador: Contingencias Comunes (4,70%), Desempleo (1,55% contrato indefinido / 1,60% temporal), Formación Profesional (0,10%) y MEI (Mecanismo de Equidad Intergeneracional, 0,12% obrero) sobre la Base de Cotización (mínimo 1.323€/mes, máximo 4.720,50€/mes). 2) Retención por IRPF: Se deduce el mínimo personal y familiar (base personal de 5.550€ + 2.400€ por 1º hijo, 2.700€ por 2º, 4.000€ por 3º, 4.500€ por 4º+ y extras por edad < 3 años o minusvalía). Se aplican los tramos progresivos estatal y autonómico (del 19% al 47%+). Sueldo Neto Anual = Sueldo Bruto - Cotizaciones SS - Retención IRPF. Se divide entre 12 o 14 pagas.",
+      "affiliate_targets": [
+        {
+          "name": "TaxDown",
+          "type": "software",
+          "description": "Plataforma fiscal digital para trabajadores en España que buscan optimizar su declaración de IRPF y maximizar devoluciones de hacienda."
+        },
+        {
+          "name": "Factorial HR",
+          "type": "software",
+          "description": "Software integral de gestión de RRHH y nóminas para empresas y PYMEs en España."
+        },
+        {
+          "name": "Payfit",
+          "type": "software",
+          "description": "Plataforma de nóminas automatizada para calcular retenciones de empleados y salarios brutos a netos."
+        },
+        {
+          "name": "Qonto",
+          "type": "neobank",
+          "description": "Cuenta bancaria digital de negocios y nóminas para profesionales e ingresos en euros."
+        }
+      ]
+    },
+    {
+      "id": "cuota-autonomos-ingresos-reales",
+      "title_native": "Calculadora Cuota de Autónomos por Ingresos Reales y Tarifa Plana",
+      "title_en": "Spain Self-Employed Social Security Contribution Calculator",
+      "search_terms_native": [
+        "calculadora cuota autonomos",
+        "calcular cuota autonomos ingresos reales",
+        "tarifa plana autonomos calculadora",
+        "cuanto paga un autonomo en españa",
+        "cuota autonomos 2026"
+      ],
+      "description_native": "Calcula tu cuota mensual a la Seguridad Social (RETA) bajo el sistema de cotización por ingresos reales, ajustado a los 15 tramos de rendimiento neto, la Tarifa Plana estatal (80€/mes) y las bonificaciones de Cuota Cero autonómicas.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "gross_monthly_income",
+          "label_native": "Ingresos brutos mensuales estimados sin IVA (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "monthly_expenses",
+          "label_native": "Gastos deducibles mensuales sin IVA (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "autonomo_status",
+          "label_native": "Estado de alta como Autónomo",
+          "type": "select",
+          "options": [
+            "Autónomo Consolidado (Régimen general por ingresos reales)",
+            "Primer Año de Alta (Tarifa Plana estatal 80€/mes)",
+            "Segundo Año de Alta (Tarifa Plana prorrogada si ingresos < SMI)"
+          ]
+        },
+        {
+          "name": "autonomo_type",
+          "label_native": "Modalidad de Autónomo",
+          "type": "select",
+          "options": [
+            "Autónomo Persona Física (Deducción 7% gastos genéricos)",
+            "Autónomo Societario (Deducción 3% gastos genéricos)"
+          ]
+        },
+        {
+          "name": "autonomous_community",
+          "label_native": "Comunidad Autónoma de alta",
+          "type": "select",
+          "options": [
+            "Andalucía (Con Cuota Cero)",
+            "Aragón",
+            "Asturias",
+            "Baleares (Con Cuota Cero)",
+            "Canarias",
+            "Cantabria (Con Cuota Cero)",
+            "Castilla-La Mancha",
+            "Castilla y León",
+            "Cataluña",
+            "Comunidad Valenciana",
+            "Extremadura",
+            "Galicia (Con Cuota Cero)",
+            "La Rioja (Con Cuota Cero)",
+            "Madrid (Con Cuota Cero)",
+            "Murcia (Con Cuota Cero)",
+            "Navarra",
+            "País Vasco"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Rendimiento Neto Mensual = Ingresos Brutos - Gastos Deducibles - Deducción adicional por Gastos de Difícil Justificación (7% para autónomos individuales, 3% para societarios). 2. Selección del tramo de cotización entre los 15 tramos establecidos por el RDL 13/2022 (desde rendimientos <670€/mes hasta >6.000€/mes). 3. Cálculo de la cuota aplicando el 31,30% sobre la base de cotización elegida dentro del tramo (Contingencias comunes 28,30% + Contingencias profesionales 1,30% + Cese de actividad 0,90% + Formación 0,10% + MEI 0,70%). Cuotas mínimas mensuales varían entre ~225€ y ~530€ según tramo. 4. Si aplica Tarifa Plana: 80€/mes durante los primeros 12 meses. 5. Si reside en Comunidad Autónoma con Cuota Cero (ej. Madrid, Andalucía, Murcia, Baleares), la cuota se bonifica al 100% (coste neto 0€).",
+      "affiliate_targets": [
+        {
+          "name": "Holded",
+          "type": "software",
+          "description": "Software ERP y contabilidad cloud líder para autónomos y PYMEs en España, con facturación electrónica e impuestos."
+        },
+        {
+          "name": "Declarando",
+          "type": "accounting",
+          "description": "Plataforma de gestión fiscal y asesoría contable especializada en maximizar el ahorro de cuota e IRPF de autónomos."
+        },
+        {
+          "name": "TaxScouts",
+          "type": "accounting",
+          "description": "Gestoría online con asesor personal para la presentación de altas y declaraciones de autónomos en España."
+        },
+        {
+          "name": "N26 Business",
+          "type": "neobank",
+          "description": "Cuenta bancaria para trabajadores autónomos con subcuentas para impuestos y cashback automático en compras."
+        }
+      ]
+    },
+    {
+      "id": "gastos-compra-vivienda-itp",
+      "title_native": "Calculadora de Gastos e Impuestos de Compra de Vivienda e Hipoteca",
+      "title_en": "Spain Home Buying Tax & Mortgage Fee Calculator",
+      "search_terms_native": [
+        "calculadora gastos compra vivienda españa",
+        "calcular itp por comunidad autonoma",
+        "gastos hipoteca y compraventa calculadora",
+        "impuesto transmisiones patrimoniales calculadora",
+        "gastos notaria y registro compra piso"
+      ],
+      "description_native": "Calcula el total de impuestos y gastos adicionales al comprar una vivienda en España (segunda mano vs obra nueva), desglosando ITP autonómico, IVA, AJD, honorarios de notaría, registro de la propiedad y tasación.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Precio de compraventa de la vivienda (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_type",
+          "label_native": "Tipo de inmueble",
+          "type": "select",
+          "options": [
+            "Vivienda de Segunda Mano (Impuesto ITP)",
+            "Vivienda de Obra Nueva (Impuesto IVA + AJD)"
+          ]
+        },
+        {
+          "name": "buyer_age",
+          "label_native": "Edad del comprador principal",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "autonomous_community",
+          "label_native": "Comunidad Autónoma donde se ubica el inmueble",
+          "type": "select",
+          "options": [
+            "Andalucía",
+            "Aragón",
+            "Asturias",
+            "Baleares",
+            "Canarias",
+            "Cantabria",
+            "Castilla-La Mancha",
+            "Castilla y León",
+            "Cataluña",
+            "Comunidad Valenciana",
+            "Extremadura",
+            "Galicia",
+            "La Rioja",
+            "Madrid",
+            "Murcia",
+            "Navarra",
+            "País Vasco"
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "Importe del préstamo hipotecario (€, 0 si se compra al contado)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_first_home",
+          "label_native": "Uso de la vivienda",
+          "type": "select",
+          "options": [
+            "Vivienda habitual (Aplica tipos reducidos de ITP si es joven/familia numerosa)",
+            "Segunda residencia / Inversión inmobiliaria"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Impuestos sobre la compraventa: A) Segunda Mano -> ITP según C.A. (Madrid 6%, Navarra/País Vasco 4%, Andalucía 7%, Cataluña 10%, Comunidad Valenciana 10%, Galicia 8%, etc.), con descuentos para jóvenes menores de 32-35 años o minusvalía. B) Obra Nueva -> IVA (10% general / 4% VPO) + AJD (0,5% a 1,5% según C.A.). 2. Notaría de Compraventa: Arancel oficial (RD 1426/1989), aproximadamente entre 600€ y 1.100€. 3. Registro de la Propiedad: Arancel oficial (RD 1427/1989), aprox. 400€ a 700€. 4. Gestoría y Tasación: Gestoría de tramitación (~300€-500€) y Tasación homologada Banco de España (~300€-600€ si requiere hipoteca). 5. Reparto de gastos de hipoteca (Ley 5/2019 de Crédito Inmobiliario): Notaría, Registro, Gestoría y AJD del préstamo corren 100% a cargo de la entidad bancaria; el comprador solo abona la Tasación de la vivienda. Total Desembolso Adicional = Impuestos + Notaría + Registro + Gestoría + Tasación.",
+      "affiliate_targets": [
+        {
+          "name": "Idealista Hipotecas",
+          "type": "insurance",
+          "description": "Intermediario de crédito inmobiliario líder para comparar tipos fijos, mixtos y variables de entidades bancarias."
+        },
+        {
+          "name": "Rastreator Hipotecas",
+          "type": "insurance",
+          "description": "Comparador digital para conseguir ofertas hipotecarias personalizadas y asesoramiento gratuito."
+        },
+        {
+          "name": "Finteca",
+          "type": "software",
+          "description": "Plataforma de gestión de préstamos hipotecarios para tramitar ofertas bancarias 100% online."
+        },
+        {
+          "name": "BBVA / Bankinter",
+          "type": "neobank",
+          "description": "Entidades bancarias con simuladores e hipotecas directas competitivas en el mercado español."
+        }
+      ]
+    },
+    {
+      "id": "finiquito-indemnizacion-despido",
+      "title_native": "Calculadora de Finiquito e Indemnización por Despido laboral",
+      "title_en": "Spain Severance & Settlement Calculator",
+      "search_terms_native": [
+        "calculadora finiquito despido españa",
+        "calcular indemnizacion por despido improcedente",
+        "cuanto me corresponde de finiquito",
+        "calculo finiquito dias vacaciones no disfrutadas",
+        "calculadora indemnizacion despido objetivo"
+      ],
+      "description_native": "Calcula el importe exacto del finiquito (días del mes en curso, vacaciones no disfrutadas y prorrateo de pagas extra) y la indemnización por despido (objetivo o improcedente) según el Estatuto de los Trabajadores en España.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "gross_salary_annual",
+          "label_native": "Salario bruto anual (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_periods",
+          "label_native": "Estructura de pagas extraordinarias",
+          "type": "select",
+          "options": [
+            "12 pagas (pagas prorrateadas mensualmente)",
+            "14 pagas (pagas no prorrateadas, cobradas en verano y Navidad)"
+          ]
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "Antigüedad en la empresa (años trabajados)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_months",
+          "label_native": "Meses adicionales trabajados en el último año",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dismissal_type",
+          "label_native": "Causa del despido o finalización de contrato",
+          "type": "select",
+          "options": [
+            "Despido Improcedente (33 días/año, máximo 24 mensualidades)",
+            "Despido Objetivo / ERE / Causas ETOP (20 días/año, máximo 12 mensualidades)",
+            "Fin de Contrato Temporal / Obra o Servicio (12 días/año)",
+            "Baja Voluntaria / Dimisión (Derecho a finiquito, 0€ de indemnización)"
+          ]
+        },
+        {
+          "name": "unused_vacation_days",
+          "label_native": "Días de vacaciones pendientes de disfrutar en el año",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pending_salary_days",
+          "label_native": "Días trabajados en el mes del despido pendientes de pago",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Salario Diario Base = Salario Bruto Anual / 365 días. 2. Finiquito: A) Salario pendiente = Días trabajados del mes × Salario Diario. B) Vacaciones no disfrutadas = Días pendientes × Salario Diario (sujeto a cotización e IRPF). C) Pagas extras pendientes (si son 14 pagas): Devengo proporcional del período transcurrido (semestral o anual) hasta la fecha de despido. 3. Indemnización por Despido (Arts. 53 y 56 Estatuto de los Trabajadores): A) Despido Objetivo/ETOP: 20 días por año trabajado, prorrateado por meses completos, con tope de 12 mensualidades (365 días de salario). B) Despido Improcedente: 33 días por año trabajado para el periodo posterior al 12/02/2012 (tope 24 mensualidades / 720 días). C) Fin de contrato temporal: 12 días por año trabajado. Exención IRPF: La indemnización legal está exenta de tributar IRPF hasta un máximo de 180.000€.",
+      "affiliate_targets": [
+        {
+          "name": "Legálitas",
+          "type": "insurance",
+          "description": "Asistencia jurídica especializada en derecho laboral para la revisión de finiquitos y papeletas de conciliación."
+        },
+        {
+          "name": "Reclamador.es",
+          "type": "accounting",
+          "description": "Plataforma de reclamaciones online para impugnar despidos improcedentes y reclamar indemnizaciones no pagadas."
+        },
+        {
+          "name": "LexGo App",
+          "type": "software",
+          "description": "Directorio y consulta con abogados laboralistas homologados en todas las provincias de España."
+        },
+        {
+          "name": "TaxDown",
+          "type": "software",
+          "description": "Asesoría fiscal digital para declarar indemnizaciones por despido e ingresos del trabajo correctamente en la Renta."
+        }
+      ]
+    },
+    {
+      "id": "iva-irpf-trimestral-autonomos",
+      "title_native": "Calculadora de Impuestos Trimestrales para Autónomos (Modelo 303 e IRPF Modelo 130)",
+      "title_en": "Spain Quarterly Freelance Tax Calculator (VAT & Income Tax Advance)",
+      "search_terms_native": [
+        "calculadora modelo 303 130 autonomos",
+        "calcular iva e irpf trimestral",
+        "cuanto retener irpf facturas autonomos",
+        "calculadora liquidacion iva trimestral",
+        "modelo 303 iva resultado pagar o devolver"
+      ],
+      "description_native": "Calcula el resultado a pagar o compensar en tus autoliquidaciones trimestrales de IVA (Modelo 303) y los pagos a cuenta del IRPF (Modelo 130) o retenciones soportadas en factura.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "quarter",
+          "label_native": "Trimestre de liquidación fiscal",
+          "type": "select",
+          "options": [
+            "1º Trimestre (Enero - Marzo, presentación en Abril)",
+            "2º Trimestre (Abril - Junio, presentación en Julio)",
+            "3º Trimestre (Julio - Septiembre, presentación en Octubre)",
+            "4º Trimestre (Octubre - Diciembre, presentación en Enero)"
+          ]
+        },
+        {
+          "name": "invoiced_base_total",
+          "label_native": "Base imponible facturada a clientes en el trimestre (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "vat_rate_applied",
+          "label_native": "Tipo de IVA repercutido en facturas",
+          "type": "select",
+          "options": [
+            "21% (Tipo General de IVA)",
+            "10% (Tipo Reducido)",
+            "4% (Tipo Superreducido)",
+            "0% / Exento de IVA (Formación, Sanidad, Clientes intracomunitarios/extracomunitarios)"
+          ]
+        },
+        {
+          "name": "deductible_expenses_base",
+          "label_native": "Base imponible de gastos deducibles con factura (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "deductible_expenses_vat",
+          "label_native": "IVA soportado en compras y gastos deducibles (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "withholding_irpf_rate",
+          "label_native": "Porcentaje de retención IRPF en facturas de venta",
+          "type": "select",
+          "options": [
+            "15% (Tipo General de retención IRPF profesional)",
+            "7% (Tipo Reducido para nuevos autónomos en año de alta y 2 siguientes)",
+            "0% (Venta a particulares o actividad empresarial no sujeta a retención)"
+          ]
+        },
+        {
+          "name": "model_130_obligation",
+          "label_native": "Obligación de presentar Modelo 130",
+          "type": "select",
+          "options": [
+            "No exento (Menos del 70% de las facturas llevan retención de IRPF)",
+            "Exento (Más del 70% de los ingresos han tenido retención de IRPF en origen)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Liquidación Trimestral de IVA (Modelo 303): IVA Devengado (Base Facturada × % IVA) - IVA Soportado Deducible en compras/servicios. Si Resultado > 0, es la cantidad a ingresar a la Agencia Tributaria (AEAT). Si Resultado < 0, se acumula a compensar para trimestres siguientes (o a devolver en el 4T). 2. Retenciones de IRPF en Facturas de Venta: Base Imponible Facturada × % Retención (15% o 7%). El cliente ingresa esa retención a Hacienda en nombre del autónomo mediante el Modelo 111. 3. Pago a Cuenta IRPF (Modelo 130 - Estimación Directa Simplificada): Si se debe presentar Modelo 130, se calcula el 20% del Rendimiento Neto Acumulado del año (Ingresos Acumulados - Gastos Acumulados desde el 1 de enero), restando los pagos a cuenta realizados en trimestres anteriores y el importe acumulado de retenciones soportadas en factura.",
+      "affiliate_targets": [
+        {
+          "name": "Holded",
+          "type": "software",
+          "description": "Software de facturación electronica y contabilidad cloud que autogenera y exporta los Modelos 303, 130, 111 y 390."
+        },
+        {
+          "name": "Declarando",
+          "type": "accounting",
+          "description": "Asesoría fiscal digital con simulador de impuestos trimestrales y presentación directa en la sede de la AEAT."
+        },
+        {
+          "name": "Anfix",
+          "type": "software",
+          "description": "Plataforma de facturación y contabilidad integrada con TicketBAI y sistemas de la Agencia Tributaria."
+        },
+        {
+          "name": "Quaderno",
+          "type": "software",
+          "description": "Automatización del cálculo del IVA e impuestos de ventas para e-commerce, creadores de contenido y negocios SaaS."
+        }
+      ]
+    }
+  ]
+}

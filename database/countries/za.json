@@ -1,0 +1,396 @@
+{
+  "country": "South Africa",
+  "country_code": "ZA",
+  "languages": [
+    "en",
+    "af"
+  ],
+  "calculators": [
+    {
+      "id": "za-paye-take-home-calculator",
+      "title_native": "SARS PAYE Income Tax & Net Take-Home Salary Calculator",
+      "title_en": "SARS PAYE Income Tax & Net Take-Home Salary Calculator",
+      "search_terms_native": [
+        "sars paye tax calculator south africa",
+        "take home salary calculator sa 2026",
+        "after tax salary calculator south africa",
+        "uif deduction calculator sa",
+        "medical aid tax credit calculator sars",
+        "net salary calculator south africa"
+      ],
+      "description_native": "Calculate your net take-home salary after SARS Pay-As-You-Earn (PAYE) income tax, Primary/Secondary tax rebates, Employee UIF (Unemployment Insurance Fund) contributions, Medical Scheme Fees Tax Credits (MTC), and pension/retirement annuity tax deductions under South African tax law.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Gross Salary (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Pay Frequency",
+          "type": "select",
+          "options": [
+            "monthly",
+            "annual"
+          ]
+        },
+        {
+          "name": "age_group",
+          "label_native": "Age Group (For SARS Rebates)",
+          "type": "select",
+          "options": [
+            "under_65",
+            "65_to_74",
+            "75_and_older"
+          ]
+        },
+        {
+          "name": "retirement_contribution",
+          "label_native": "Retirement / Pension Contribution (% of salary or monthly ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "medical_members",
+          "label_native": "Medical Scheme Members (Main Member & Dependents)",
+          "type": "select",
+          "options": [
+            "none",
+            "main_member_only",
+            "main_plus_1_dependent",
+            "main_plus_2_dependents",
+            "main_plus_3_dependents",
+            "main_plus_4_dependents"
+          ]
+        },
+        {
+          "name": "travel_allowance",
+          "label_native": "Monthly Travel Allowance / Fringe Benefits (ZAR)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Annual Gross Calculation: Convert salary to annual value based on frequency (monthly * 12 or annual).\n2. Retirement Annuity / Pension Deduction: Calculated as min(Retirement Contribution, 27.5% of Gross Remuneration, max R350,000 per year). Taxable Income = Gross Salary - Allowable Retirement Deduction.\n3. SARS Income Tax Brackets (2025/2026 Tax Year):\n   - R0 - R237,100: 18% of taxable income\n   - R237,101 - R370,500: R42,678 + 26% of amount above R237,100\n   - R370,501 - R512,800: R77,362 + 31% of amount above R370,500\n   - R512,801 - R673,000: R121,475 + 36% of amount above R512,800\n   - R673,001 - R857,900: R179,147 + 39% of amount above R673,000\n   - R857,901 - R1,817,000: R251,258 + 41% of amount above R857,900\n   - R1,817,001+: R644,489 + 45% of amount above R1,817,000\n4. SARS Tax Rebates Subtracted:\n   - Primary Rebate (All taxpayers under 65): R17,235/year\n   - Secondary Rebate (Age 65-74): Additional R9,444/year (Total R26,679)\n   - Tertiary Rebate (Age 75+): Additional R3,145/year (Total R29,824)\n5. Medical Scheme Fees Tax Credit (MTC):\n   - Main Member: R364/month (R4,368/year)\n   - First Dependent: R364/month (R4,368/year)\n   - Additional Dependents: R246/month each (R2,952/year each)\n   - Annual Net PAYE Tax = Max(0, Gross Tax - Age Rebates - MTC).\n6. Unemployment Insurance Fund (UIF): 1% of gross remuneration capped at max salary threshold of R17,712/month (Max R177.12/month or R2,125.44/year).\n7. Monthly Net Take-Home Salary = (Gross Salary - Annual Net Tax/12 - Employee UIF - Retirement Contribution).",
+      "affiliate_targets": [
+        {
+          "name": "Discovery Health",
+          "type": "insurance",
+          "description": "South Africa's largest private medical scheme, essential for maximizing Medical Scheme Fees Tax Credits."
+        },
+        {
+          "name": "Capitec Bank",
+          "type": "neobank",
+          "description": "SA's leading digital retail bank with low fee structures and high-yield savings accounts."
+        },
+        {
+          "name": "Sygnia Asset Management",
+          "type": "accounting",
+          "description": "Low-cost index-tracking Retirement Annuity (RA) platform for tax-sheltered savings."
+        },
+        {
+          "name": "SimplePay",
+          "type": "software",
+          "description": "Cloud payroll software for South African employers automating SARS PAYE, UIF, and EMP201 submissions."
+        }
+      ]
+    },
+    {
+      "id": "za-property-transfer-duty-calculator",
+      "title_native": "South African Property Transfer Duty & Conveyancing Fee Calculator",
+      "title_en": "South African Property Transfer Duty & Conveyancing Fee Calculator",
+      "search_terms_native": [
+        "transfer duty calculator south africa 2026",
+        "property transfer costs calculator sa",
+        "conveyancing attorney fees calculator south africa",
+        "deeds office fee property south africa",
+        "bond registration fee calculator sa"
+      ],
+      "description_native": "Calculate the exact upfront purchasing costs for South African residential property, including SARS Transfer Duty sliding scale rates, Law Society recommended Conveyancing Attorney fees, Deeds Office registration fees, and Bond Registration attorney costs.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "purchase_price",
+          "label_native": "Property Purchase Price (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "seller_status",
+          "label_native": "Seller Type (VAT vs Transfer Duty)",
+          "type": "select",
+          "options": [
+            "private_seller",
+            "vat_vendor_developer"
+          ]
+        },
+        {
+          "name": "bond_amount",
+          "label_native": "Home Loan / Bond Amount Required (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "first_time_buyer",
+          "label_native": "First-Time Home Buyer",
+          "type": "select",
+          "options": [
+            "no",
+            "yes"
+          ]
+        }
+      ],
+      "formula_explanation": "1. SARS Transfer Duty Calculation (Private Seller):\n   - R0 - R1,100,000: 0% (Tax-Free Threshold)\n   - R1,100,001 - R1,512,500: 3% of value above R1,100,000\n   - R1,512,501 - R2,117,500: R12,375 + 6% of value above R1,512,500\n   - R2,117,501 - R2,717,000: R48,675 + 8% of value above R2,117,501\n   - R2,717,001 - R12,100,000: R96,635 + 11% of value above R2,717,000\n   - R12,100,001+: R1,128,765 + 13% of value above R12,100,000\n   (If Developer/VAT Vendor, Transfer Duty = 0, property price includes or adds 15% VAT).\n2. Conveyancing Attorney Transfer Fee: Based on Legal Practice Council guidelines (~1.2% to 2% of price + 15% VAT).\n3. Bond Registration Attorney Fee: Based on home loan amount bracket guidelines (~1% to 1.8% of bond amount + 15% VAT).\n4. Deeds Office Fees: Fixed statutory tiers based on property purchase price and bond amount (ranging from R100 to R6,000+).\n5. Total Upfront Cash Required = (Purchase Price - Bond Amount) + Transfer Duty + Conveyancing Attorney Fees + Bond Registration Fees + Deeds Office Fees + FICA/Postage/Petties.",
+      "affiliate_targets": [
+        {
+          "name": "BetterBond",
+          "type": "insurance",
+          "description": "South Africa's largest home loan mortgage originator, helping buyers compare pre-approval bank offers."
+        },
+        {
+          "name": "ooba Home Loans",
+          "type": "insurance",
+          "description": "Leading SA bond originator offering free home loan pre-qualification and rate negotiations."
+        },
+        {
+          "name": "Standard Bank Home Loans",
+          "type": "neobank",
+          "description": "Major South African property lender providing competitive bond rates."
+        },
+        {
+          "name": "Absa Home Loans",
+          "type": "neobank",
+          "description": "Top SA banking institution providing home loans and building insurance."
+        }
+      ]
+    },
+    {
+      "id": "za-sole-proprietor-provisional-tax-calculator",
+      "title_native": "SARS Freelance & Sole Proprietor Provisional Tax Calculator (IRP6)",
+      "title_en": "SARS Freelance & Sole Proprietor Provisional Tax Calculator (IRP6)",
+      "search_terms_native": [
+        "provisional tax calculator south africa",
+        "irp6 calculation south africa",
+        "freelance tax calculator south africa",
+        "sole proprietor tax calculator sars",
+        "turnover tax calculator sars micro business",
+        "sbc small business corporation tax calculator sa"
+      ],
+      "description_native": "Estimate your 1st Period (August) and 2nd Period (February) SARS IRP6 Provisional Tax payments for South African freelancers, sole traders, and independent contractors, comparing individual tax rates vs Small Business Corporation (SBC) and Micro Business Turnover Tax rates.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_revenue",
+          "label_native": "Annual Business Revenue / Turnover (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "allowable_expenses",
+          "label_native": "Tax-Deductible Business Expenses (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tax_regime",
+          "label_native": "Tax Regime / Entity Structure",
+          "type": "select",
+          "options": [
+            "individual_sole_proprietor",
+            "sbc_small_business_corporation",
+            "turnover_tax_micro_enterprise"
+          ]
+        },
+        {
+          "name": "paye_already_deducted",
+          "label_native": "PAYE / Tax Already Withheld by Clients (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "provisional_period",
+          "label_native": "Provisional Tax Period",
+          "type": "select",
+          "options": [
+            "first_period_august",
+            "second_period_february"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Net Taxable Business Profit = Gross Revenue - Tax-Deductible Business Expenses.\n2. Standard Individual Sole Proprietor Regime: Net Profit added to personal income and taxed via SARS 2025/2026 progressive individual brackets (18%-45%) minus Primary Rebate (R17,235).\n3. Small Business Corporation (SBC) Regime (Private Company / CC):\n   - R0 - R95,750: 0%\n   - R95,751 - R365,000: 7% of amount above R95,750\n   - R365,001 - R550,000: R18,848 + 21% of amount above R365,000\n   - R550,001+: R57,698 + 27% of amount above R550,000.\n4. Turnover Tax Micro Enterprise Regime (Gross Turnover < R1,000,000):\n   - R0 - R335,000: 0%\n   - R335,001 - R500,000: 1% of amount above R335,000\n   - R500,001 - R750,000: R1,650 + 2% of amount above R500,000\n   - R750,001 - R1,000,000: R6,650 + 3% of amount above R750,000.\n5. Provisional Tax Payment Logic:\n   - 1st Period (August): Payable Amount = (Estimated Annual Tax / 2) - PAYE Withheld.\n   - 2nd Period (February): Payable Amount = Total Annual Tax - 1st Period Provisional Payment - Total PAYE Withheld.",
+      "affiliate_targets": [
+        {
+          "name": "Xero South Africa",
+          "type": "software",
+          "description": "Cloud accounting software tailored for South African freelancers, sole proprietors, and small business owners."
+        },
+        {
+          "name": "TaxTim",
+          "type": "software",
+          "description": "Automated online SARS tax return assistant for calculating and submitting IRP6 provisional tax returns."
+        },
+        {
+          "name": "TymeBank Business",
+          "type": "neobank",
+          "description": "Zero-fee digital business bank account ideal for SA sole proprietors and freelancers."
+        },
+        {
+          "name": "Sage Accounting South Africa",
+          "type": "software",
+          "description": "Popular small business invoicing and tax compliance software in SA."
+        }
+      ]
+    },
+    {
+      "id": "za-cost-to-company-calculator",
+      "title_native": "South African Total Cost to Company (CTC) vs Net Salary Calculator",
+      "title_en": "South African Total Cost to Company (CTC) vs Net Salary Calculator",
+      "search_terms_native": [
+        "cost to company calculator south africa",
+        "ctc to net salary calculator sa",
+        "ctc breakdown calculator south africa",
+        "employer uif sdl coida calculator sa",
+        "basic salary vs ctc south africa"
+      ],
+      "description_native": "Deconstruct a South African Total Cost to Company (CTC) remuneration package into basic cash salary, employer retirement contributions, medical aid benefits, employer statutory levies (UIF, SDL, COIDA), and employee net take-home pay.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "ctc_amount",
+          "label_native": "Total Cost to Company (CTC) Package (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Pay Frequency",
+          "type": "select",
+          "options": [
+            "annual",
+            "monthly"
+          ]
+        },
+        {
+          "name": "employer_pension_rate",
+          "label_native": "Employer Retirement/Pension Contribution (% of CTC)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "employer_medical_subsidy",
+          "label_native": "Monthly Employer Medical Aid Subsidy (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "group_life_insurance",
+          "label_native": "Monthly Employer Group Life / Risk Benefit (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "sdl_applicable",
+          "label_native": "Employer Subject to Skills Development Levy (SDL 1%)?",
+          "type": "select",
+          "options": [
+            "yes",
+            "no"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Annualize CTC: Convert CTC to annual equivalent if monthly input provided.\n2. Deduct Employer Mandatory Fringe Benefits & Contributions from CTC:\n   - Employer Pension Contribution = CTC * Employer Pension Rate (%)\n   - Employer Medical Aid Subsidy = Monthly Subsidy * 12\n   - Employer Group Risk Insurance = Monthly Group Life * 12\n   - Employer UIF Statutory Contribution = Min(Basic Remuneration * 1%, R177.12/month * 12)\n   - Employer SDL (Skills Development Levy) = Basic Remuneration * 1% (if annual payroll > R500,000)\n3. Cash Basic Salary = CTC - Employer Pension - Employer Medical Subsidy - Employer Risk Insurance - Employer Statutory Levies.\n4. Employee Tax & Statutory Deductions:\n   - Apply SARS PAYE progressive income tax brackets (18%-45%) to Cash Basic Salary plus Taxable Fringe Benefits.\n   - Deduct Primary Rebate (R17,235) and Medical Tax Credit (MTC).\n   - Deduct Employee UIF (1% capped at R177.12/month).\n5. Employee Take-Home Pay = Cash Basic Salary - Employee PAYE - Employee UIF.",
+      "affiliate_targets": [
+        {
+          "name": "SimplePay",
+          "type": "software",
+          "description": "Cloud-based payroll software built specifically for South African CTC salary structures and EMP201 reporting."
+        },
+        {
+          "name": "PaySpace",
+          "type": "software",
+          "description": "Cloud HR & payroll solution for medium to large enterprises managing complex SA CTC packages."
+        },
+        {
+          "name": "Discovery WorkLife",
+          "type": "insurance",
+          "description": "Employee benefits provider offering group risk, life insurance, and corporate wellness programs."
+        },
+        {
+          "name": "FNB Business Banking",
+          "type": "neobank",
+          "description": "Comprehensive commercial banking and payroll service account for SA businesses."
+        }
+      ]
+    },
+    {
+      "id": "za-two-pot-retirement-calculator",
+      "title_native": "South African Two-Pot Retirement System Withdrawal & Tax Calculator",
+      "title_en": "South African Two-Pot Retirement System Withdrawal & Tax Calculator",
+      "search_terms_native": [
+        "two pot retirement calculator south africa 2026",
+        "savings pot withdrawal tax calculator sars",
+        "how much tax on two pot withdrawal sa",
+        "pension savings pot payout calculator",
+        "sars tax directive two pot retirement"
+      ],
+      "description_native": "Calculate the net payout from a Savings Component withdrawal under the South African Two-Pot Retirement System (effective 1 September 2024), including SARS marginal income tax rates, SARS administrative directive fees, and long-term retirement compound interest loss.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "total_retirement_fund",
+          "label_native": "Total Accumulated Retirement Fund Balance (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_taxable_income",
+          "label_native": "Current Annual Taxable Income (Excluding Withdrawal) (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "requested_withdrawal",
+          "label_native": "Requested Savings Component Withdrawal Amount (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "sars_tax_debt",
+          "label_native": "Outstanding Tax Debt / IT88 Deductions (ZAR)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_to_retirement",
+          "label_native": "Years Remaining Until Retirement",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Two-Pot Component Allocation:\n   - Seed Capital (At Implementation 1 Sept 2024): 10% of fund balance, capped at max R30,000 allocated to Savings Component.\n   - Minimum withdrawal amount allowed per tax year: R2,000.\n2. SARS Savings Pot Withdrawal Tax Calculation:\n   - Withdrawals from the Savings Component prior to retirement are added to the member's annual taxable income.\n   - SARS taxes the withdrawal at the member's marginal income tax rate (ranging from 18% to 45% based on total income + withdrawal).\n   - Gross Tax on Withdrawal = Tax(Annual Income + Withdrawal) - Tax(Annual Income).\n3. Administrative & Third-Party Deductions:\n   - SARS Tax Directive Fee: Estimated R150 - R300.\n   - Outstanding SARS IT88 Tax Debt: Deducted directly by SARS before payout.\n4. Net Cash Payout = Requested Withdrawal Amount - Marginal Income Tax - SARS Directive Fee - Outstanding SARS Tax Debt.\n5. Compound Growth Loss at Retirement: Lost Future Value = Withdrawal Amount * (1 + Annual Real Return Rate)^Years, where return rate is assumed at 8% p.a.",
+      "affiliate_targets": [
+        {
+          "name": "Sygnia Asset Management",
+          "type": "accounting",
+          "description": "Leading low-cost Retirement Annuity (RA) and index investment platform in South Africa."
+        },
+        {
+          "name": "10X Investments",
+          "type": "accounting",
+          "description": "Direct-to-consumer retirement fund manager offering low-fee preservation and RA products."
+        },
+        {
+          "name": "Allan Gray",
+          "type": "accounting",
+          "description": "Premier South African investment manager providing independent financial advisory and RA solutions."
+        },
+        {
+          "name": "TaxTim",
+          "type": "software",
+          "description": "Helps taxpayers understand SARS tax directive deductions and file their annual tax returns correctly."
+        }
+      ]
+    }
+  ]
+}

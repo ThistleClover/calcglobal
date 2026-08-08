@@ -1,0 +1,435 @@
+{
+  "country": "Mexico",
+  "country_code": "MX",
+  "languages": [
+    "es"
+  ],
+  "calculators": [
+    {
+      "id": "sueldo-neto-mexico",
+      "title_native": "Calculadora de Sueldo Bruto a Neto México 2026 (ISR e IMSS)",
+      "title_en": "Mexico Net Salary Calculator (ISR & IMSS Social Security)",
+      "search_terms_native": [
+        "calculadora sueldo bruto a neto mexico",
+        "calcular salario neto isr imss",
+        "calculadora de nomina 2026 sat",
+        "cuanto me queda de sueldo libre mexico",
+        "retencion isr e imss sobre sueldo"
+      ],
+      "description_native": "Calcula el sueldo neto libre de retenciones en México a partir del salario bruto mensual o quincenal, considerando la tabla de ISR 2026 para salarios, la cuota obrera del IMSS (Enfermedad, Invalidez, Vejez y CEAV), el Subsidio para el Empleo ajustado por UMA y prestaciones de ley.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Salario bruto mensual (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Frecuencia de pago de la nómina",
+          "type": "select",
+          "options": [
+            "Mensual",
+            "Quincenal",
+            "Semanal"
+          ]
+        },
+        {
+          "name": "uma_value_daily",
+          "label_native": "Valor de la UMA diaria de referencia (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "benefits_type",
+          "label_native": "Esquema de prestaciones laborales",
+          "type": "select",
+          "options": [
+            "Prestaciones mínimas de Ley (15 días aguinaldo, 25% prima vacacional)",
+            "Prestaciones superiores a la Ley (30 días aguinaldo, 50% prima vacacional)"
+          ]
+        },
+        {
+          "name": "savings_fund_monthly",
+          "label_native": "Aportación mensual a Fondo de Ahorro del empleado (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "grocery_vouchers_monthly",
+          "label_native": "Vales de despensa mensuales recibidos (MXN $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Base Gravable ISR = Salario Bruto Mensual + Percepciones Gravables - Exenciones de Ley (Aguinaldo exento hasta 30 UMAs, Prima Vacacional exenta hasta 15 UMAs, Vales de despensa exentos según Art. 27 LSS hasta el 40% de la UMA mensual). 2. Retención de ISR: Se aplica la Tabla Tarifaria progresiva de ISR para salarios (tramos del 1.92% al 35.00%). Fórmula: ISR = ((Base Gravable - Límite Inferior) × Porcentaje sobre Excedente) + Cuota Fija. 3. Subsidio para el Empleo (SPE): Para sueldos bajos (hasta el límite mensual determinado por el decreto oficial vigente, aprox. 11.82% UMA mensual), se acredita el subsidio a favor del trabajador para reducir la carga fiscal. 4. Cuotas Obreras IMSS: Calculadas sobre el Salario Base de Cotización (SBC = Salario Diario + Factor de Integración por Aguinaldo y Prima Vacacional). Deducciones del trabajador: Enfermedad y Maternidad (0.25% en dinero + 0.40% sobre excedente de 3 UMA), Invalidez y Vida (0.625%), Cesantía en Edad Avanzada y Vejez (CEAV: 1.125%). SBC topado a 25 UMA diarias. 5. Salario Neto Final = Salario Bruto - ISR Retenido + Subsidio al Empleo - Cuota Obrera IMSS - Descuento Fondo de Ahorro + Vales de Despensa.",
+      "affiliate_targets": [
+        {
+          "name": "Konfío",
+          "type": "neobank",
+          "description": "Tarjeta de crédito empresarial y soluciones de capital de trabajo para PYMEs en México."
+        },
+        {
+          "name": "Clara México",
+          "type": "neobank",
+          "description": "Plataforma de gestión de gasto corporativo y tarjetas de crédito empresariales para empresas mexicanas."
+        },
+        {
+          "name": "Runa HR",
+          "type": "software",
+          "description": "Software automatizado de cálculo de nómina y gestión de RRHH adecuado a las leyes fiscales de México (SAT/IMSS)."
+        },
+        {
+          "name": "Buk México",
+          "type": "software",
+          "description": "Plataforma integral de nómina, gestión de talento y recursos humanos para medianas y grandes empresas en México."
+        },
+        {
+          "name": "Facturama",
+          "type": "software",
+          "description": "Sistema de facturación electrónica CFDI y emisión de Recibos de Nómina 4.0 timbrados por el SAT."
+        }
+      ]
+    },
+    {
+      "id": "resico-isr-iva-calculator",
+      "title_native": "Calculadora RESICO Personas Físicas 2026 (ISR, IVA y Retenciones PM)",
+      "title_en": "Mexico RESICO Simplified Tax & VAT Calculator",
+      "search_terms_native": [
+        "calculadora resico 2026 sat",
+        "tabla isr resico personas fisicas",
+        "calculo iva e isr resico persona moral",
+        "resico vs actividad empresarial calculadora",
+        "cuanto paga de impuestos un resico"
+      ],
+      "description_native": "Calcula los impuestos mensuales para Personas Físicas bajo el Régimen Simplificado de Confianza (RESICO) en México, desglosando la tasa preferencial de ISR (1.0% al 2.5%), IVA trasladado (16% u 8%), la retención del 1.25% de ISR por facturar a Personas Morales y la comparación vs Régimen General de Actividad Empresarial.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "monthly_income_invoiced",
+          "label_native": "Ingresos cobrados en el mes sin IVA (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "client_type",
+          "label_native": "Tipo de cliente a quien emite facturas",
+          "type": "select",
+          "options": [
+            "Persona Física / Público en General",
+            "Persona Moral (Empresa - Aplica Retención 1.25% ISR)",
+            "Mezcla (Facturación tanto a Personas Físicas como Morales)"
+          ]
+        },
+        {
+          "name": "percentage_persona_moral",
+          "label_native": "Porcentaje de ingresos facturados a Personas Morales (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "monthly_deductible_expenses",
+          "label_native": "Gastos e inversiones mensuales deducibles con CFDI sin IVA (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "iva_zone",
+          "label_native": "Tasa de IVA aplicable a la actividad",
+          "type": "select",
+          "options": [
+            "Tasa General 16%",
+            "Zona Fronteriza Norte / Sur 8%",
+            "Exento de IVA / Tasa 0% (Exportación de servicios/alimentos)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Determinar Base de ISR RESICO: Suma de ingresos efectivamente cobrados en el mes sin IVA (límite máximo anual $3.5M MXN). En RESICO NO se restan deducciones autorizadas para calcular la base del ISR. 2. Tarifa ISR RESICO Mensual: De $0 a $25,000 MXN (1.00%), De $25,000.01 a $50,000 MXN (1.10%), De $50,000.01 a $83,333.33 MXN (1.50%), De $83,333.34 a $208,333.33 MXN (2.00%), De $208,333.34 a $3,500,000 MXN (2.50%). ISR Causado = Ingresos Cobrados × Tasa Preferencial. 3. Retención de ISR por Persona Moral (Art. 113-J LISR): Si facturas a empresas (PM), la PM retiene el 1.25% sobre el subtotal sin IVA. Este monto retenido se descuenta directamente del ISR Causado. Si la retención supera el ISR Causado, el remanente se acredita en meses posteriores. 4. IVA a Pagar: IVA Cobrado a Clientes - IVA Pagado en Gastos con CFDI - Retención de IVA por PM (10.6667% en servicios profesionales si aplica). 5. Comparativa vs Actividad Empresarial (PF): Se calcula la Utilidad Fiscal (Ingresos - Gastos Deducibles) aplicando la tarifa general progresiva de ISR (hasta 35%) para visibilizar el ahorro fiscal de tributar en RESICO.",
+      "affiliate_targets": [
+        {
+          "name": "Alegra México",
+          "type": "software",
+          "description": "Software de facturación electrónica CFDI 4.0 y contabilidad inteligente adaptado a RESICO."
+        },
+        {
+          "name": "Konfío",
+          "type": "neobank",
+          "description": "Servicios bancarios y préstamos de negocio con integración de facturación del SAT."
+        },
+        {
+          "name": "TaxDown México",
+          "type": "accounting",
+          "description": "Plataforma de declaración anual y optimización fiscal automatizada para personas físicas en México."
+        },
+        {
+          "name": "Fondeadora",
+          "type": "neobank",
+          "description": "Cuenta de débito empresarial y personal sin comisiones para la recepción de ingresos y gestión fiscal."
+        },
+        {
+          "name": "Facturama",
+          "type": "software",
+          "description": "Emisión de facturas electrónicas masivas, complementos de pago y descargas de XML del SAT."
+        }
+      ]
+    },
+    {
+      "id": "finiquito-liquidacion-despido-lft",
+      "title_native": "Calculadora de Finiquito y Liquidación por Despido LFT México",
+      "title_en": "Mexico Severance & Settlement Calculator (LFT)",
+      "search_terms_native": [
+        "calculadora finiquito liquidacion mexico",
+        "cuanto me corresponde por despido injustificado lft",
+        "calculo indemnizaciones constitucionales 3 meses 20 dias",
+        "calculadora de vacaciones y aguinaldo proporcional",
+        "cuanto me dan si renuncio mexico lft"
+      ],
+      "description_native": "Calcula el monto exacto del Finiquito (aguinaldo, vacaciones y prima vacacional proporcionales) y de la Liquidación Constitucional (3 meses de sueldo, 20 días por año y prima de antigüedad) por despido injustificado o renuncia voluntaria según la Ley Federal del Trabajo.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "Salario bruto mensual ordinario (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "Antigüedad acumulada (años trabajados)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_extra_days",
+          "label_native": "Días adicionales trabajados en el último año de servicio",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "separation_reason",
+          "label_native": "Motivo de la terminación laboral",
+          "type": "select",
+          "options": [
+            "Despido Injustificado / Recorte de Personal (Liquidación Constitucional Completa)",
+            "Renuncia Voluntaria (Únicamente Finiquito de Ley)",
+            "Despido Justificado por el Patrón (Finiquito + Prima Antigüedad si >15 años)",
+            "Rescisión de Contrato Imputable al Patrón (Liquidación Constitucional Completa)"
+          ]
+        },
+        {
+          "name": "pending_vacation_days",
+          "label_native": "Días de vacaciones acumulados no disfrutados de años anteriores",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "worked_days_current_month",
+          "label_native": "Días laborados pendientes de pago en el mes de la baja",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Salario Diario (SD) = Salario Mensual / 30. Salario Diario Integrado (SDI) = SD × Factor de Integración (incluye alícuota diaria de 15 días aguinaldo y prima vacacional de 25% sobre días por antigüedad LFT). 2. FINIQUITO (Derecho irrenunciable): A) Días trabajados no pagados = Días en el mes × SD. B) Aguinaldo proporcional = (Días trabajados en el año / 365) × 15 × SD. C) Vacaciones proporcionales = (Días trabajados en el año / 365) × (Días correspondientes por esquema de vacaciones dignas LFT) × SD + Vacaciones pendientes pasadas. D) Prima Vacacional = Vacaciones proporcionales × 25%. 3. LIQUIDACIÓN (Por despido injustificado): A) Indemnización Constitucional = 90 días × SDI. B) 20 días de salario por cada año de servicios prestados = 20 × SDI × Años de antigüedad. C) Prima de Antigüedad (Art. 162 LFT) = 12 días por cada año trabajado. El salario diario para prima de antigüedad está topado al doble del Salario Mínimo General / UMA. En renuncia voluntaria procede si antigüedad >= 15 años; en despido procede siempre. 4. Retención de ISR por Liquidación: Exención de 90 UMAs por cada año de antigüedad prestado (Art. 93 Fracc. XIII LISR); el excedente tributa con retención de ISR conforme a la tasa media del Art. 96 y 95 LISR.",
+      "affiliate_targets": [
+        {
+          "name": "Legalario",
+          "type": "software",
+          "description": "Plataforma de servicios jurídicos digitales, asesoría legal laboral y revisión de convenios de finiquito."
+        },
+        {
+          "name": "Runa HR",
+          "type": "software",
+          "description": "Cálculo automatizado de finiquitos y liquidaciones laborales conforme a la LFT en México."
+        },
+        {
+          "name": "Buk México",
+          "type": "software",
+          "description": "Software de recursos humanos para cálculo de indemnizaciones y finiquitos de empleados."
+        },
+        {
+          "name": "Konfío",
+          "type": "neobank",
+          "description": "Financiamiento empresarial para cubrir compromisos laborales y liquidación de personal."
+        },
+        {
+          "name": "Justia México",
+          "type": "accounting",
+          "description": "Directorio y consultoría legal especializada en disputas y conciliación laboral en México."
+        }
+      ]
+    },
+    {
+      "id": "gastos-escrituracion-isai-hipoteca",
+      "title_native": "Calculadora de Gastos de Escrituración e Impuesto ISAI por Estado México",
+      "title_en": "Mexico Property Closing Costs & ISAI Transfer Tax Calculator",
+      "search_terms_native": [
+        "calculadora gastos de escrituracion mexico",
+        "cuanto cuesta escriturar una casa en cdmx",
+        "impuesto isai traslado de dominio calculadora",
+        "gastos notaria e hipoteca comprar casa mexico",
+        "simulador gastos escrituracion e isai por estado"
+      ],
+      "description_native": "Calcula los costos de escrituración, el Impuesto Sobre Adquisición de Inmuebles (ISAI / Traslado de Dominio por estado), honorarios notariales, derechos del Registro Público y comisiones por crédito hipotecario al comprar una casa en México.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Precio de compraventa de la propiedad (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "state_location",
+          "label_native": "Estado o Entidad Federativa del inmueble",
+          "type": "select",
+          "options": [
+            "Ciudad de México (CDMX)",
+            "Estado de México (EDOMEX)",
+            "Jalisco",
+            "Nuevo León",
+            "Querétaro",
+            "Quintana Roo",
+            "Yucatán",
+            "Puebla",
+            "Guanajuato",
+            "Baja California",
+            "Otra Entidad Federativa"
+          ]
+        },
+        {
+          "name": "purchase_type",
+          "label_native": "Modalidad de compra",
+          "type": "select",
+          "options": [
+            "Compra de Contado (Recursos Propios)",
+            "Con Crédito Hipotecario (Bancario / Infonavit / Fovissste)"
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "Monto del crédito hipotecario a solicitar (MXN $, 0 si es de contado)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_jornada_notarial",
+          "label_native": "Aplica Programa de Jornada Notarial (exclusivo CDMX)",
+          "type": "select",
+          "options": [
+            "No / Valor comercial sin programa de descuento",
+            "Sí (Descuentos progresivos del 10% al 60% en ISAI y Derechos notariales según valor catastral)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Impuesto Sobre Adquisición de Inmuebles (ISAI / Traslado de Dominio): Impuesto local sobre el valor mayor entre compraventa, avalúo y valor catastral. Tasa variable por estado: CDMX (tabla progresiva 1.04% a 5.48%, con reducciones por Jornada Notarial del 10% al 60% en inmuebles habitacionales hasta cierto valor), EDOMEX (tarifas del 1.2% al 4.8%), Jalisco (aprox. 2.0% a 3.0%), Nuevo León (3.0%), Querétaro (2.5% a 4.0%). 2. Honorarios del Notario Público: Arancel notarial oficial según la legislación local de la Entidad Federativa (promedio del 1.0% al 2.0% del valor del inmueble). 3. Derechos de Registro Público de la Propiedad (RPPV): Cuotas fijas o progresivas dictadas por la Ley de Ingresos del estado para la inscripción de la propiedad (~$3,000 a $20,000 MXN). 4. Gestoría, Certificados (Libertad de Gravamen, No Adeudo de Predial/Agua) y Avalúo Comercial/Fiscal: ~$5,000 a $12,000 MXN. 5. Gastos por Crédito Hipotecario: Comisión de apertura (0% a 1.5% del crédito) + Derechos de inscripción de hipoteca en RPPV (~0.5% al 1.0% del crédito). Total de Gastos de Escrituración = ISAI + Honorarios Notario + Derechos RPPV + Avalúo/Certificados + Gastos de Hipoteca. Representa habitualmente del 4.5% al 9.0% del precio total del inmueble.",
+      "affiliate_targets": [
+        {
+          "name": "Yave Hipotecas",
+          "type": "neobank",
+          "description": "Plataforma de créditos hipotecarios digitales rápidos para la compra de vivienda en México."
+        },
+        {
+          "name": "Credaria México",
+          "type": "insurance",
+          "description": "Broker hipotecario especialista en asesoría y comparación de tasas de interés bancarias sin costo."
+        },
+        {
+          "name": "SOC Asesores",
+          "type": "insurance",
+          "description": "Red de consultoría financiera e hipotecaria para tramitar créditos con los principales bancos del país."
+        },
+        {
+          "name": "Inmuebles24 / Loft",
+          "type": "software",
+          "description": "Portales inmobiliarios líderes para búsqueda de vivienda y simulación de costos de adquisición."
+        },
+        {
+          "name": "Banregio / HSBC México",
+          "type": "neobank",
+          "description": "Instituciones bancarias con oferta competitiva de hipotecas y créditos para adquisición de inmuebles."
+        }
+      ]
+    },
+    {
+      "id": "ptu-participacion-utilidades-lft",
+      "title_native": "Calculadora de PTU (Reparto de Utilidades LFT México)",
+      "title_en": "Mexico PTU Employee Profit Sharing Calculator (LFT)",
+      "search_terms_native": [
+        "calculadora ptu utilidades mexico",
+        "cuanto me toca de utilidades 2026",
+        "limite 3 meses sueldo ptu lft",
+        "como se calcula la ptu paso a paso",
+        "calculo participacion trabajadores utilidades"
+      ],
+      "description_native": "Calcula el monto individual de PTU (Reparto de Utilidades) que le corresponde a un trabajador según el Art. 123 Constitucional y el límite máximo del Art. 127 de la LFT (3 meses de salario o promedio de últimos 3 años), con desglose del ISR exento y gravado.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "worker_monthly_gross_salary",
+          "label_native": "Salario bruto mensual ordinario del trabajador (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "worked_days_in_year",
+          "label_native": "Días laborados por el trabajador en el año fiscal (mínimo 60 días)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_company_ptu_pool",
+          "label_native": "Bolsa total de PTU asignada por la empresa (10% de utilidad fiscal) (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_company_worked_days",
+          "label_native": "Suma total de días trabajados por todos los empleados con derecho",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_company_salaries_sum",
+          "label_native": "Suma total de salarios devengados en el año por todos los empleados (MXN $)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ptu_avg_last_3_years",
+          "label_native": "Promedio de PTU cobrado por el trabajador en los últimos 3 años (MXN $)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Reparto en dos partes iguales (Art. 125 LFT): A) 50% de la Bolsa Total de PTU se distribuye proporcionalmente según los días trabajados por cada empleado: Parte 1 = (Bolsa PTU × 0.50 / Total Días Empresa) × Días del Empleado. B) 50% de la Bolsa Total de PTU se distribuye en proporción al salario anual devengado por cada empleado: Parte 2 = (Bolsa PTU × 0.50 / Total Salarios Empresa) × Salario Anual del Empleado. PTU Teórico = Parte 1 + Parte 2. 2. Tope Legal Reformado (Art. 127 Fracción VIII LFT): El monto asignado no podrá exceder el límite que resulte MÁS FAVORABLE entre: Límite A (3 meses del salario ordinario actual del trabajador) o Límite B (el promedio de la PTU recibida por el trabajador en los últimos 3 años). PTU Definitivo a Pagar = Mínimo entre PTU Teórico y el Límite Máximo Permitido. 3. Impuesto Sobre la Renta (ISR) sobre PTU (Art. 93 Fracc. XIV LISR): Exención fiscal de 15 UMA diarias. PTU Gravada = PTU Paga - (15 × UMA Diaria). Sobre la PTU gravada se efectúa la retención de ISR conforme al procedimiento del Art. 96 LISR o la opción del Art. 174 del RLISR.",
+      "affiliate_targets": [
+        {
+          "name": "Runa HR",
+          "type": "software",
+          "description": "Automatización del cálculo de PTU de acuerdo a topes legales del Art. 127 de la LFT."
+        },
+        {
+          "name": "Buk México",
+          "type": "software",
+          "description": "Módulo de liquidación y reparto de utilidades empresarial para empresas en México."
+        },
+        {
+          "name": "Facturama",
+          "type": "software",
+          "description": "Timbrado fiscal de comprobantes CFDI extraordinarios por pago de utilidades PTU."
+        },
+        {
+          "name": "Clara México",
+          "type": "neobank",
+          "description": "Gestión financiera empresarial para dispersión de pagos extraordinarios y nómina."
+        },
+        {
+          "name": "Alegra México",
+          "type": "software",
+          "description": "Contabilidad PME e integración de impuestos corporativos sobre utilidades fiscales."
+        }
+      ]
+    }
+  ]
+}

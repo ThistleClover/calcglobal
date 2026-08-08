@@ -1,0 +1,57 @@
+{
+  "country": "Barbados",
+  "country_code": "BB",
+  "languages": [
+    "en"
+  ],
+  "currency": "BBD",
+  "calculators": [
+    {
+      "id": "bb-tax-payroll-calculator",
+      "title_native": "Barbados PAYE Tax & NIS Contribution Calculator",
+      "title_en": "Barbados PAYE Tax & NIS Contribution Calculator",
+      "search_terms_native": [
+        "barbados tax calculator",
+        "barbados salary calculator",
+        "income tax bb"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Barbados.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BBD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Barbados revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "FirstBank Barbados",
+          "type": "software",
+          "description": "Top financial tool in Barbados"
+        },
+        {
+          "name": "CIBC FirstCarib",
+          "type": "software",
+          "description": "Top financial tool in Barbados"
+        }
+      ]
+    }
+  ]
+}

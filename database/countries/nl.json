@@ -1,0 +1,433 @@
+{
+  "country": "Netherlands",
+  "country_code": "NL",
+  "languages": [
+    "nl",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "zzp-netto-inkomen-calculator",
+      "title_native": "ZZP Netto Inkomen & Inkomstenbelasting Calculator",
+      "title_en": "Netherlands Freelancer (ZZP) Net Income & Income Tax Calculator",
+      "search_terms_native": [
+        "zzp netto inkomen berekenen",
+        "inkomstenbelasting zzp berekenen",
+        "zelfstandogenaaftrek mkb winstvrijstelling",
+        "zzp belasting berekenen 2026",
+        "nettowinst zzp berekenen",
+        "zvw bijdrage zzp"
+      ],
+      "description_native": "Bereken je netto-inkomen als ZZP'er in Nederland inclusief ondernemersaftrek (zelfstandogenaaftrek & startersaftrek), MKB-winstvrijstelling, heffingskortingen en Zvw-premie.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Jaarlijkse omzet (€ excl. BTW)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_expenses",
+          "label_native": "Zakelijke kosten (€ excl. BTW)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "hours_criterion",
+          "label_native": "Voldoet aan urencriterium (minimaal 1.225 uur/jaar)?",
+          "type": "select",
+          "options": [
+            "Ja",
+            "Nee"
+          ]
+        },
+        {
+          "name": "startersaftrek",
+          "label_native": "Recht op startersaftrek (max. 3 keer in eerste 5 jaar)?",
+          "type": "select",
+          "options": [
+            "Ja",
+            "Nee"
+          ]
+        },
+        {
+          "name": "pension_deduction",
+          "label_native": "Pensioeninleg / Jaarruimte aftrek (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "has_fiscal_partner",
+          "label_native": "Fiscaal partner aanwezig?",
+          "type": "select",
+          "options": [
+            "Ja",
+            "Nee"
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Business Profit = Annual Revenue - Business Expenses. Entrepreneur Deductions (Ondernemersaftrek): If Hours Criterion (1,225 hours/year) is met, deduct Zelfstandogenaaftrek (€2,470 in recent reform trajectory) and Startersaftrek (€2,123 extra for eligible starters). Taxable Profit after Deductions = Gross Profit - Entrepreneur Deductions. MKB-winstvrijstelling (12.7% reduction) is subtracted from Taxable Profit. Personal Taxable Base = Profit after MKB exemption - Pension annuity deduction. Box 1 Income Tax applies progressive tax rates: Bracket 1 (~36.97% up to ~€75,518) and Bracket 2 (~49.50% on excess). Tax credits applied: Algemene Heffingskorting (max ~€3,362, phased out with higher income) and Arbeidskorting (max ~€5,532, phased out with higher profit). Health Insurance Act Contribution (Zvw - Zorgverzekeringswet) for self-employed is calculated at ~5.32% up to max annual income cap (~€71,628). Net Annual Income = Profit - Box 1 Income Tax - Zvw Contribution + Tax Credits.",
+      "affiliate_targets": [
+        {
+          "name": "Moneybird",
+          "type": "accounting",
+          "description": "Top cloud accounting software in NL for freelancers with automated BTW filing and bank syncing."
+        },
+        {
+          "name": "e-Boekhouden.nl",
+          "type": "accounting",
+          "description": "Popular Dutch bookkeeping tool offering free accounting for starting ZZP'ers during first 15 months."
+        },
+        {
+          "name": "Knab",
+          "type": "neobank",
+          "description": "Leading Dutch digital bank for sole proprietors offering low-cost business accounts and integrated tax savings."
+        },
+        {
+          "name": "Brand New Day",
+          "type": "software",
+          "description": "Leading Dutch pension investment bank for freelancers utilizing tax-deductible Jaarruimte annuity accounts."
+        }
+      ]
+    },
+    {
+      "id": "bruto-netto-salaris-calculator",
+      "title_native": "Bruto Netto Salaris & 30% Regeling Calculator",
+      "title_en": "Netherlands Gross to Net Salary & 30% Expat Ruling Calculator",
+      "search_terms_native": [
+        "bruto netto berekenen 2026",
+        "nettoloon berekenen nederland",
+        "30 procent regeling berekenen",
+        "vakantiegeld netto berekenen",
+        "arbeidskorting heffingskorting berekenen",
+        "salaris berekening bruto naar netto"
+      ],
+      "description_native": "Bereken je netto maandsalaris in Nederland op basis van je brutoloon, vakantiegeld (8%), 30%-regeling voor expats, pensioenpremie en heffingskortingen.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_monthly_salary",
+          "label_native": "Bruto maandsalaris (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "holiday_allowance",
+          "label_native": "Vakantietoeslag (8% vakantiegeld)",
+          "type": "select",
+          "options": [
+            "Uitkeren in mei (Standaard)",
+            "Maandelijks inbegrepen bij bruto loon",
+            "Geen vakantiegeld"
+          ]
+        },
+        {
+          "name": "thirty_percent_ruling",
+          "label_native": "30%-regeling voor expats van toepassing?",
+          "type": "select",
+          "options": [
+            "Nee",
+            "Ja - 30% onbelast",
+            "Ja - 20% onbelast (afbouw)",
+            "Ja - 10% onbelast (afbouw)"
+          ]
+        },
+        {
+          "name": "pension_contribution_pct",
+          "label_native": "Werknemersbijdrage pensioen (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "lease_car_bijtelling",
+          "label_native": "Bruto bijtelling auto van de zaak per maand (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "aow_age_reached",
+          "label_native": "AOW-gerechtigde leeftijd bereikt?",
+          "type": "select",
+          "options": [
+            "Nee (Jonger dan AOW-leeftijd)",
+            "Ja (AOW-gerechtigd)"
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Annual Base Salary = Monthly Gross * 12 (plus 8% holiday allowance if applicable). 30% Expat Ruling: If active, 30% (or stepped-down 20%/10%) of eligible gross income is paid as tax-free reimbursement (capped at Balkenende norm ~€233,000 max), leaving 70% taxable. Taxable Base = Taxable Gross - Employee Pension Contribution + Company Car Bijtelling. Payroll Tax (Loonheffing) is computed using Box 1 progressive brackets (~36.97% up to ~€75,518; 49.50% on excess). Tax credits applied: Algemene Heffingskorting and Arbeidskorting based on government payroll tables. Net Monthly Salary = Gross Base - Employee Pension - Net Loonheffing (after tax credits) - Car Bijtelling Net Deduction.",
+      "affiliate_targets": [
+        {
+          "name": "Wise",
+          "type": "neobank",
+          "description": "Essential multi-currency borderless banking for international expats moving to the Netherlands."
+        },
+        {
+          "name": "ABN AMRO International Clients",
+          "type": "neobank",
+          "description": "Major Dutch bank tailored for expat salary deposits and English-language banking services."
+        },
+        {
+          "name": "Employment Hero",
+          "type": "software",
+          "description": "Global HR & Dutch automated payroll platform for companies employing staff in NL."
+        },
+        {
+          "name": "Blue Umbrella",
+          "type": "accounting",
+          "description": "Specialized Dutch tax filing and 30%-regeling application services for international workers."
+        }
+      ]
+    },
+    {
+      "id": "overdrachtsbelasting-hypotheek-calculator",
+      "title_native": "Overdrachtsbelasting & Kosten Koper Calculator",
+      "title_en": "Netherlands Property Transfer Tax & Buyer Costs Calculator",
+      "search_terms_native": [
+        "overdrachtsbelasting berekenen 2026",
+        "startersvrijstelling overdrachtsbelasting grens",
+        "kosten koper berekenen huis kopen",
+        "notariskosten berekenen hypotheek",
+        "nhg grens berekenen",
+        "overdrachtsbelasting belegging 10.4"
+      ],
+      "description_native": "Bereken de overdrachtsbelasting, notariskosten, taxatie- en hypotheekadvieskosten (kosten koper) bij het kopen van een woning in Nederland.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Aankoopprijs woning (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "buyer_age",
+          "label_native": "Leeftijd koper bij overdracht (jaar)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "occupancy_type",
+          "label_native": "Bestemming van de woning",
+          "type": "select",
+          "options": [
+            "Eigen hoofdverblijf (Zelf bewonen)",
+            "Belegging / Tweede woning / Verhuren"
+          ]
+        },
+        {
+          "name": "used_starter_exemption",
+          "label_native": "Eerder gebruik gemaakt van startersvrijstelling?",
+          "type": "select",
+          "options": [
+            "Nee",
+            "Ja"
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "Hypotheekbedrag (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "nhg_guarantee",
+          "label_native": "Nationale Hypotheek Garantie (NHG) aanvragen?",
+          "type": "select",
+          "options": [
+            "Ja",
+            "Nee"
+          ]
+        }
+      ],
+      "formula_explanation": "Property Transfer Tax (Overdrachtsbelasting): 0% Startersvrijstelling applies if buyer is aged 18-34, purchasing primary home, property price is <= Startersvrijstelling limit (~€510,000 - €525,000 threshold), and hasn't used exemption before. Standard owner-occupier rate (age 35+ or price above limit) is 2%. Investment property / second home / buy-to-let rate is 10.4%. Notary fees (leveringsakte & hypotheekakte) average ~€1,200 - €2,000. Certified valuation report (Taxatierapport) ~€650 - €850. Mortgage advice & mediation fees ~€1,500 - €3,000. Cadastral registry fees (Kadaster) ~€100 - €200. NHG Fee (Borgprovisie): 0.6% of total mortgage amount if mortgage <= NHG cap (~€435,000 limit). Total Buyer Costs (Kosten Koper / k.k.) = Transfer Tax + Notary + Valuation + Mortgage Fee + Cadastral + NHG Fee.",
+      "affiliate_targets": [
+        {
+          "name": "De Hypotheker",
+          "type": "accounting",
+          "description": "Largest independent mortgage advisory chain in NL matching 40+ Dutch mortgage lenders."
+        },
+        {
+          "name": "Hypotheek24.nl",
+          "type": "software",
+          "description": "Leading execution-only and online mortgage comparison platform with discounted broker fees."
+        },
+        {
+          "name": "Nationale-Nederlanden",
+          "type": "insurance",
+          "description": "Major Dutch financial institution providing competitive mortgage products and mandatory building insurance."
+        },
+        {
+          "name": "Interpolis / Centraal Beheer",
+          "type": "insurance",
+          "description": "Top-rated home owner-occupier building and contents insurance (opstal- en inboedelverzekering)."
+        }
+      ]
+    },
+    {
+      "id": "transitievergoeding-berekenen",
+      "title_native": "Transitievergoeding & Ontslagvergoeding Calculator",
+      "title_en": "Netherlands Severance Pay (Transitievergoeding) Calculator",
+      "search_terms_native": [
+        "transitievergoeding berekenen 2026",
+        "ontslagvergoeding berekenen wet werk en zekerheid",
+        "hoeveel transitievergoeding krijg ik",
+        "berekening transitievergoeding bruto netto",
+        "transitievergoeding bij vast contract",
+        "maximale transitievergoeding"
+      ],
+      "description_native": "Bereken je wettelijke transitievergoeding bij ontslag in Nederland op basis van je dienstjaren, bruto maandsalaris, vakantiegeld en vaste toeslagen.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_monthly_salary",
+          "label_native": "Bruto maandsalaris (€ excl. toeslagen)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "Aantal volledige dienstjaren",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "remaining_months",
+          "label_native": "Resterende maanden in gewerkt jaar",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "remaining_days",
+          "label_native": "Resterende dagen in gewerkte maand",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "holiday_allowance_pct",
+          "label_native": "Vakantietoeslag percentage",
+          "type": "select",
+          "options": [
+            "8% (Standaard)",
+            "Geen vakantiegeld",
+            "Overig percentage"
+          ]
+        },
+        {
+          "name": "annual_bonuses",
+          "label_native": "Gemiddelde vaste jaarlijkse bonus / toeslagen (€)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Gross Monthly Base for Compensation = Gross Monthly Salary + (Gross Monthly Salary * Holiday Allowance %) + (Annual Fixed Bonuses / 12). Statutory Formula: 1/3 of Gross Monthly Base per full year of employment. Fractional years calculated pro-rata: (Gross Monthly Base / 3) * (Remaining Months / 12) + (Gross Monthly Base / 3) * (Remaining Days / 365). Statutory Maximum Cap: Maximum payout is capped at ~€94,000 - €99,000 (indexed annually) or 1 year's gross salary if annual salary exceeds the cap threshold. Net Severance: Severance is taxed in Box 1 under the green tax table rate (groene tabel) without labour tax credits.",
+      "affiliate_targets": [
+        {
+          "name": "DAS Rechtsbijstand",
+          "type": "insurance",
+          "description": "Leading Dutch legal expenses insurer and legal assistance service for employment dispute negotiations."
+        },
+        {
+          "name": "Brand MR",
+          "type": "software",
+          "description": "Accessible Dutch employment law firm specializing in settlement agreements (VSO - Vaststellingsovereenkomst)."
+        },
+        {
+          "name": "Brand New Day",
+          "type": "software",
+          "description": "Capital preservation and annuity rollover options for managing large lump-sum severance payouts."
+        },
+        {
+          "name": "Ontslag-Direct",
+          "type": "software",
+          "description": "Specialized legal consultation platform matching employees with Dutch dismissal law attorneys."
+        }
+      ]
+    },
+    {
+      "id": "bijtelling-auto-van-de-zaak-calculator",
+      "title_native": "Bijtelling Auto van de Zaak Calculator",
+      "title_en": "Netherlands Company Car Tax Addition (Bijtelling) Calculator",
+      "search_terms_native": [
+        "bijtelling auto berekenen 2026",
+        "elektrische auto bijtelling 2026",
+        "netto bijtelling berekenen per maand",
+        "bijtelling 22 procent berekenen",
+        "cataloguswaarde auto bijtelling",
+        "youngtimer regeling bijtelling"
+      ],
+      "description_native": "Bereken de bruto en netto fiscale bijtelling per maand voor je auto van de zaak (elektrisch, hybride, benzine, diesel of youngtimer) in Nederland.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "catalog_price",
+          "label_native": "Fiscale cataloguswaarde incl. opties en BTW (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "vehicle_type",
+          "label_native": "Type voertuig & aandrijving",
+          "type": "select",
+          "options": [
+            "Volledig Elektrisch (EV)",
+            "Benzine / Diesel / Hybride (ICE)",
+            "Youngtimer (15 jaar of ouder)"
+          ]
+        },
+        {
+          "name": "registration_year",
+          "label_native": "Jaar van eerste toelating op kenteken",
+          "type": "select",
+          "options": [
+            "2026",
+            "2025",
+            "2024",
+            "2023 of eerder"
+          ]
+        },
+        {
+          "name": "private_km_exemption",
+          "label_native": "Rijd je meer dan 500 km privé per jaar?",
+          "type": "select",
+          "options": [
+            "Ja (Meer dan 500 km - Bijtelling van toepassing)",
+            "Nee (Maximaal 500 km met rittenregistratie - Geen bijtelling)"
+          ]
+        },
+        {
+          "name": "top_tax_bracket",
+          "label_native": "Hoogste inkomensbelastingschijf",
+          "type": "select",
+          "options": [
+            "Schijf 1 (~36,97%)",
+            "Schijf 2 (~49,50%)"
+          ]
+        }
+      ],
+      "formula_explanation": "500 km Exemption: If private usage is <= 500 km per calendar year with a valid trip log (rittenregistratie), Bijtelling rate is 0%. Standard ICE (Petrol/Diesel/Hybrid): 22% of official catalog price per year. Electric Vehicles (EV): Reduced rate applies up to cap (e.g. 16%/17% up to €30,000 cap; 22% on excess above cap; phasing towards standard 22%). Youngtimers (vehicles 15+ years old): 35% bijtelling applied to current fair market value (dagwaarde) instead of original catalog price. Gross Annual Bijtelling = Taxable Value Base * Applicable Bijtelling Rate. Net Monthly Cost = (Gross Annual Bijtelling * Top Income Tax Bracket Rate) / 12.",
+      "affiliate_targets": [
+        {
+          "name": "LeasePlan Netherlands",
+          "type": "software",
+          "description": "Leading corporate vehicle operational leasing and EV fleet management provider in NL."
+        },
+        {
+          "name": "MisterGreen Electric Lease",
+          "type": "software",
+          "description": "Specialized Dutch Tesla and full-electric business vehicle leasing company."
+        },
+        {
+          "name": "Flitsmeister Track / Cartracker",
+          "type": "software",
+          "description": "Keurmerk-certified automated GPS trip registration system for proving <=500km private usage."
+        },
+        {
+          "name": "Univé Zakelijk",
+          "type": "insurance",
+          "description": "Major Dutch cooperative insurer offering business fleet and commercial vehicle coverage."
+        }
+      ]
+    }
+  ]
+}

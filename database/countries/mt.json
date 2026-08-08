@@ -1,0 +1,58 @@
+{
+  "country": "Malta",
+  "country_code": "MT",
+  "languages": [
+    "mt",
+    "en"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "mt-tax-payroll-calculator",
+      "title_native": "Malta PAYE Tax & Non-Domicile Dividend Calculator",
+      "title_en": "Malta PAYE Tax & Non-Domicile Dividend Calculator",
+      "search_terms_native": [
+        "malta tax calculator",
+        "malta salary calculator",
+        "income tax mt"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Malta.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Malta revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "BOV Malta",
+          "type": "software",
+          "description": "Top financial tool in Malta"
+        },
+        {
+          "name": "HSBC Malta",
+          "type": "software",
+          "description": "Top financial tool in Malta"
+        }
+      ]
+    }
+  ]
+}

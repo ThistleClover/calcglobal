@@ -1,0 +1,377 @@
+{
+  "country": "Taiwan",
+  "country_code": "TW",
+  "languages": [
+    "zh-TW",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "comprehensive-income-tax-salary-calculator",
+      "title_native": "綜合所得稅與薪資淨額試算器 (2026最新版)",
+      "title_en": "Taiwan Comprehensive Income Tax & Net Salary Calculator",
+      "search_terms_native": [
+        "綜合所得稅 試算 2026",
+        "所得稅試算公式",
+        "薪資扣繳 健保 勞保 試算",
+        "所得稅免稅額 扣除額"
+      ],
+      "description_native": "精確計算台灣個人綜合所得稅、勞保費、健保費與勞退自提後之實際稅後淨薪資與應納稅額。",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "全年薪資總額 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "marital_status",
+          "label_native": "婚姻狀況",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "單身"
+            },
+            {
+              "value": "married",
+              "label": "已婚 (合併申報)"
+            }
+          ]
+        },
+        {
+          "name": "dependents",
+          "label_native": "扶養親屬人數 (未滿70歲)",
+          "type": "number"
+        },
+        {
+          "name": "dependents_over_70",
+          "label_native": "扶養直系尊親屬人數 (年滿70歲)",
+          "type": "number"
+        },
+        {
+          "name": "labor_pension_self_rate",
+          "label_native": "勞退個人自提比例 (%)",
+          "type": "select",
+          "options": [
+            {
+              "value": "0",
+              "label": "0% (不自提)"
+            },
+            {
+              "value": "1",
+              "label": "1%"
+            },
+            {
+              "value": "2",
+              "label": "2%"
+            },
+            {
+              "value": "3",
+              "label": "3%"
+            },
+            {
+              "value": "4",
+              "label": "4%"
+            },
+            {
+              "value": "5",
+              "label": "5%"
+            },
+            {
+              "value": "6",
+              "label": "6% (最高自提免稅額度)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Net Taxable Income = Gross Annual Salary - Personal Exemptions (NT$97,000 per person, NT$145,500 for age 70+) - Standard Deduction (Single NT$131,000 / Married NT$262,000) - Special Deduction for Salary Income (capped at NT$218,000 or actual salary) - Tax-exempt Voluntary Pension (up to 6% of insured monthly salary limit * 12). Progressive Tax Brackets: 0–590,000: 5%; 590,001–1,330,000: 12% (progressive diff 41,300); 1,330,001–2,660,000: 20% (progressive diff 147,700); 2,660,001–4,980,000: 30% (progressive diff 413,700); >4,980,000: 40% (progressive diff 911,700). Monthly insurance: Labor Insurance = Insured wage * 11.5% * 20% (employee); NHI = Insured wage * 5.17% * 30% * (1 + qualifying dependents count, max 3).",
+      "affiliate_targets": [
+        {
+          "name": "玉山銀行 / 玉山數位帳戶",
+          "type": "neobank",
+          "description": "提供繳稅優惠、高利活存與自動扣繳整合服務"
+        },
+        {
+          "name": "台新 Richart 數位銀行",
+          "type": "neobank",
+          "description": "青年與上班族首選高利活存與信用卡繳稅刷卡分期優惠"
+        },
+        {
+          "name": "中國信託繳稅刷卡回饋 / 分期專案",
+          "type": "software",
+          "description": "台灣信用卡繳綜合所得稅市佔率最高之銀行優惠專案"
+        }
+      ]
+    },
+    {
+      "id": "real-estate-house-land-tax-calculator",
+      "title_native": "房地合一稅2.0與房屋過戶交易稅費試算器",
+      "title_en": "Taiwan Real Estate Tax & House-Land Tax 2.0 Calculator",
+      "search_terms_native": [
+        "房地合一稅 試算 2026",
+        "房屋買賣過戶費用 試算",
+        "房地合一稅2.0 稅率 扣除額",
+        "重置購屋退稅 試算"
+      ],
+      "description_native": "試算台灣房屋與土地買賣之房地合一稅2.0應繳稅額、持有年限稅率級距、自住400萬免稅額及契稅與仲介費等過戶交易成本。",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "purchase_price",
+          "label_native": "取得成本 / 原購入價格 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "sale_price",
+          "label_native": "出售價格 / 成交價 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "holding_years",
+          "label_native": "持有年限 (年)",
+          "type": "number"
+        },
+        {
+          "name": "improvement_expenses",
+          "label_native": "必要費用與修繕裝潢費 (NTD，未填則預設成交價3%最高30萬)",
+          "type": "number"
+        },
+        {
+          "name": "is_self_occupied_6yrs",
+          "label_native": "是否符合自住房地滿6年條件 (個人/配偶/未成年子女辦竣工戶籍且無出租營業)",
+          "type": "select",
+          "options": [
+            {
+              "value": "false",
+              "label": "否 (按一般持有年限稅率計算)"
+            },
+            {
+              "value": "true",
+              "label": "是 (享有400萬元免稅額及10%優惠稅率)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Net Gain = Sale Price - Purchase Price - Necessary Expenses (actual receipts or default 3% of sale price capped at NT$300,000) - Land Value Incremental Difference. If Self-Occupied 6+ Years: Taxable Gain = Max(0, Net Gain - 4,000,000 NTD); Tax Rate = 10%. Otherwise, Tax Rate based on Holding Period: <= 2 Years: 45%; > 2 to 5 Years: 35%; > 5 to 10 Years: 20%; > 10 Years: 15%. Tax Payable = Taxable Gain * Tax Rate. Additional closing fees: Deed Tax (契稅 = Evaluated House Value * 6%), Broker Commission (buyers up to 2%, sellers up to 4%).",
+      "affiliate_targets": [
+        {
+          "name": "台灣土地銀行 / 合作金庫 房屋貸款",
+          "type": "neobank",
+          "description": "公股銀行低利首購與房貸轉貸利率優惠比較"
+        },
+        {
+          "name": "信義房屋 / 永慶房屋 買屋賣屋履約保證",
+          "type": "software",
+          "description": "全台最大房屋仲介與雙方履約保證安全專戶服務"
+        },
+        {
+          "name": "國泰產險 / 富邦產險 住宅火險與地震基本險",
+          "type": "insurance",
+          "description": "房貸核貸必備住宅火災及地震保險在線投保優惠"
+        }
+      ]
+    },
+    {
+      "id": "freelancer-withholding-tax-nhi-calculator",
+      "title_native": "自由職業者兼職執行業務扣繳與二代健保補充保費試算器",
+      "title_en": "Taiwan Freelancer Tax Withholding & 2nd Gen NHI Calculator",
+      "search_terms_native": [
+        "二代健保補充保費 試算",
+        "執行業務所得 扣繳 試算",
+        "兼職扣繳起扣點 2026",
+        "自由工作者 所得稅 扣繳"
+      ],
+      "description_native": "試算斜槓族、自由工作者與兼職人員之單筆給付款項扣繳所得稅 (50薪資/9A執行業務/9B稿費) 及二代健保補充保費 (2.11%) 與實領淨額。",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "payout_amount",
+          "label_native": "單筆應給付總額 / 稅前報酬 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "income_code",
+          "label_native": "所得類別代號",
+          "type": "select",
+          "options": [
+            {
+              "value": "50",
+              "label": "50 兼職薪資所得 (非每月固定給付)"
+            },
+            {
+              "value": "9A",
+              "label": "9A 執行業務所得 (律師/會計師/設計師/接案顧問)"
+            },
+            {
+              "value": "9B",
+              "label": "9B 稿費、版稅、演講鐘點費 (享有18萬免稅額)"
+            },
+            {
+              "value": "54",
+              "label": "54 股利與盈餘所得"
+            }
+          ]
+        },
+        {
+          "name": "guild_nhi_member",
+          "label_native": "是否已投保於職業工會 (健保開戶於工會)",
+          "type": "select",
+          "options": [
+            {
+              "value": "false",
+              "label": "否 (無職業工會身分)"
+            },
+            {
+              "value": "true",
+              "label": "是 (職業工會會員免扣二代健保)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "For Code 50 (Part-time Salary): Withholding Tax = 5% if single payment >= NT$88,501; 2nd Gen NHI Supplementary Premium = 2.11% if single payment >= NT$27,470 (minimum monthly wage limit). For Code 9A/9B (Professional Services / Royalties): Withholding Tax = 10% if single payment > NT$20,000; 2nd Gen NHI = 2.11% if single payment >= NT$20,000 (exempt if insured via professional guild). Code 9B enjoys an annual tax-free quota of NT$180,000 when filing May annual return. Net Amount Paid = Gross Amount - Withholding Tax Amount - 2nd Gen NHI Premium Amount.",
+      "affiliate_targets": [
+        {
+          "name": "NexTrek 雲端記帳",
+          "type": "software",
+          "description": "專為微型企業與自由工作者設計的台幣現金流記帳工具"
+        },
+        {
+          "name": "王道銀行 O-Bank 自由職業者數位帳戶",
+          "type": "neobank",
+          "description": "高趴數台幣活存與適合接案族無薪資證明開戶專案"
+        },
+        {
+          "name": "富邦人壽 / 國泰人壽 自由職業傷病保險與年金規劃",
+          "type": "insurance",
+          "description": "補充工會保險不足之個人保障與商業年金險"
+        }
+      ]
+    },
+    {
+      "id": "corporate-income-tax-labor-cost-calculator",
+      "title_native": "中小企業營利事業所得稅與雇主勞健保負擔試算器",
+      "title_en": "Taiwan Corporate Income Tax & Employer Labor Costs Calculator",
+      "search_terms_native": [
+        "營利事業所得稅 試算 2026",
+        "營所稅 稅率 級距",
+        "雇主 勞保 健保 勞退 負擔比例",
+        "公司成立 記帳費用 試算"
+      ],
+      "description_native": "試算台灣獨資、合夥與有限公司之年度營利事業所得稅 (營所稅 20%) 以及雇主負擔之勞保、健保與勞退6%法定雇主人事成本。",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "全年營業收入淨額 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "operating_expenses",
+          "label_native": "全年營業成本與各項費用 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "employee_count",
+          "label_native": "全職僱用員工人數",
+          "type": "number"
+        },
+        {
+          "name": "avg_insured_salary",
+          "label_native": "員工平均投保薪資級距 (NTD)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Taxable Corporate Profit = Annual Revenue - Operating Expenses/Costs. Corporate Income Tax (營所稅): Profit <= NT$120,000: Tax Rate = 0%; Profit between NT$120,001 and NT$200,000: Tax = (Profit - 120,000) * 50%; Profit > NT$200,000: Tax = Profit * 20%. Employer Monthly Statutory Labor Costs per employee: Employer Labor Insurance = Insured Wage * 11.5% * 70%; Employer Employment Insurance = Insured Wage * 1.0% * 70%; Employer Health Insurance = Insured Wage * 5.17% * 60% * 1.57 (average dependents factor); Mandatory Labor Pension = Insured Wage * 6%. Total Annual Employer Overhead = Monthly Cost * Employee Count * 12.",
+      "affiliate_targets": [
+        {
+          "name": "Swingvy 雲端人資與薪資系統",
+          "type": "software",
+          "description": "符合台灣勞基法與勞健保自動計算之HR薪資管理軟體"
+        },
+        {
+          "name": "玉山銀行企業網路銀行 (Global MyB2B)",
+          "type": "neobank",
+          "description": "中小企業線上開戶、薪轉發放與台外匯整合服務"
+        },
+        {
+          "name": "財報雲 / 點點簽 Kdan Mobile B2B 數位簽署",
+          "type": "software",
+          "description": "企業數位化憑證與記帳士接軌工具"
+        }
+      ]
+    },
+    {
+      "id": "labor-standards-overtime-severance-calculator",
+      "title_native": "勞基法加班費與新制資遣費精確試算器",
+      "title_en": "Taiwan Labor Standards Act Overtime & Severance Pay Calculator",
+      "search_terms_native": [
+        "加班費計算公式 勞基法",
+        "資遣費計算 勞退新制 2026",
+        "休息日加班費 計算",
+        "勞基法 離職預告期"
+      ],
+      "description_native": "依據台灣《勞動基準法》精確計算平日/休息日/國定假日加班費乘數 (1.34/1.67/2.67) 及勞退新制資遣費 (每滿一年給予0.5個月平均工資)。",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_salary",
+          "label_native": "月薪 / 約定月基本工資 (新台幣 NTD)",
+          "type": "number"
+        },
+        {
+          "name": "overtime_type",
+          "label_native": "加班性質",
+          "type": "select",
+          "options": [
+            {
+              "value": "weekday",
+              "label": "工作日平日加班"
+            },
+            {
+              "value": "rest_day",
+              "label": "休息日加班"
+            },
+            {
+              "value": "national_holiday",
+              "label": "國定假日 / 特休假加班"
+            }
+          ]
+        },
+        {
+          "name": "overtime_hours",
+          "label_native": "加班時數 (小時)",
+          "type": "number"
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "服務年資-年",
+          "type": "number"
+        },
+        {
+          "name": "tenure_months",
+          "label_native": "服務年資-月 (未滿一個月以一個月計)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Hourly Wage Rate = Monthly Regular Salary / 240 hours. Overtime Pay: Weekdays: First 2 hours = Hours * Hourly Wage * 1.34 (4/3); 3rd-4th hours = Hours * Hourly Wage * 1.67 (5/3). Rest Days: First 2 hours = 1.34; 3rd-8th hours = 1.67; 9th-12th hours = 2.67. National Holidays: First 8 hours = Hourly Wage * 8 (double pay). Severance Pay (Labor Pension New System): Total Seniority Years = tenure_years + (tenure_months / 12). Severance Amount = Min(6.0 months, 0.5 * Seniority Years) * Average Monthly Salary.",
+      "affiliate_targets": [
+        {
+          "name": "104 人力銀行 / 轉職薪水行情比較",
+          "type": "software",
+          "description": "全台最大求職平台與薪資調查工具"
+        },
+        {
+          "name": "法律人 Legalperson / 線上法律諮詢平台",
+          "type": "legal",
+          "description": "勞資爭議、資遣費調解與勞動法規專業律師諮詢"
+        },
+        {
+          "name": "富邦產險 / 雇主責任險與團體團險方案",
+          "type": "insurance",
+          "description": "轉嫁雇主職災賠償風險之團體保險服務"
+        }
+      ]
+    }
+  ]
+}

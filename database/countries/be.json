@@ -1,0 +1,392 @@
+{
+  "country": "Belgium",
+  "country_code": "BE",
+  "languages": [
+    "nl",
+    "fr"
+  ],
+  "calculators": [
+    {
+      "id": "gross-to-net-salary-belgium",
+      "title_native": "Bruto naar Netto Salaris Calculator (België / Belgique)",
+      "title_en": "Belgium Gross to Net Salary Calculator",
+      "search_terms_native": [
+        "brut netto berekenen belgie",
+        "calcul brut net belgique",
+        "brutoloon naar nettoloon berekenen",
+        "salaire brut en net belgique simulateur",
+        "bedrijfsvoorheffing berekenen",
+        "eindejaarspremie netto berekenen"
+      ],
+      "description_native": "Bereken je netto maandsalaris in België op basis van je bruto salaris, gezinstoestand, kinderen ten laste en voordelen alle aard (VAA). / Calculez votre salaire net mensuel en Belgique.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Bruto maandsalaris (€) / Salaire brut mensuel (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "marital_status",
+          "label_native": "Gezinssituatie / Situation familiale",
+          "type": "select",
+          "options": [
+            "Alleenstaande / Célibataire",
+            "Gehuwd/Samenwonend (2 inkomens) / Marié(e) (2 revenus)",
+            "Gehuwd/Samenwonend (1 inkomen) / Marié(e) (1 revenu)"
+          ]
+        },
+        {
+          "name": "dependent_children",
+          "label_native": "Aantal kinderen ten laste / Enfants à charge",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_dependents",
+          "label_native": "Andere personen ten laste / Autres personnes à charge",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_car_vaa",
+          "label_native": "VAA Bedrijfswagen (€/maand) / ATN Voiture de société (€/mois)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "thirteenth_month",
+          "label_native": "13e maand / Eindejaarspremie (13e mois)",
+          "type": "select",
+          "options": [
+            "Ja / Oui",
+            "Nee / Non"
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Salary - Employee RSZ/ONSS (13.07%) = Taxable Gross Base. Fringe benefits (VAA company car) are added to Taxable Base. Professional Withholding Tax (Bedrijfsvoorheffing / Précompte professionnel) is calculated using progressive tax scales (25%, 40%, 45%, 50%), reduced by tax-free allowance (€10,570 base) and per-child dependent tax credits (e.g. €42/mo for 1 child, €118/mo for 2 children). Special Social Security Contribution (BBSZ / CSSS) is applied on a sliding scale up to €60.94/mo. Low earners get a Work Bonus (Werkbonus) reducing employee RSZ. Net Salary = Gross - RSZ - Withholding Tax - BBSZ.",
+      "affiliate_targets": [
+        {
+          "name": "Accountable",
+          "type": "accounting",
+          "description": "All-in-one tax and income tracking for Belgian employees converting to self-employed or freelancing."
+        },
+        {
+          "name": "Qonto Belgium",
+          "type": "neobank",
+          "description": "Leading business banking account in Belgium for freelancers with automated tax retention."
+        },
+        {
+          "name": "SD Worx / Partena Professional",
+          "type": "software",
+          "description": "Payroll software integration and HR management solutions for Belgian employers."
+        },
+        {
+          "name": "Hello bank! Belgium",
+          "type": "neobank",
+          "description": "Popular Belgian digital bank offering free salary accounts and mobile cashback."
+        }
+      ]
+    },
+    {
+      "id": "property-registration-notary-fees-belgium",
+      "title_native": "Registratierechten & Notariskosten Calculator (Vlaanderen, Brussel, Wallonië)",
+      "title_en": "Belgium Real Estate Registration Fees & Notary Costs Calculator",
+      "search_terms_native": [
+        "registratierechten berekenen vlaanderen",
+        "calcul frais de notaire belgique",
+        "notariskosten berekenen huis kopen",
+        "droits d'enregistrement bruxelles wallonie",
+        "abattement brussel berekenen",
+        "frais d'acte d'achat belgique"
+      ],
+      "description_native": "Bereken de exacte aankoopkosten, registratierechten (verkooprecht) en notaristarieven voor de aankoop van een woning in Vlaanderen, Brussel of Wallonië.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Aankoopprijs woning (€) / Prix d'achat du bien (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "region",
+          "label_native": "Regio / Région",
+          "type": "select",
+          "options": [
+            "Vlaanderen (Flanders)",
+            "Brussel (Brussels-Capital)",
+            "Wallonië (Wallonia)"
+          ]
+        },
+        {
+          "name": "is_sole_primary_residence",
+          "label_native": "Enige eigen woning (Hoofdverblijfplaats) / Habitation propre et unique",
+          "type": "select",
+          "options": [
+            "Ja / Oui",
+            "Nee / Non (Tweede verblijf of belegging)"
+          ]
+        },
+        {
+          "name": "energy_renovation",
+          "label_native": "Ingrijpende Energetische Renovatie (IER - enkel Vlaanderen)",
+          "type": "select",
+          "options": [
+            "Nee / Non",
+            "Ja / Oui"
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "Hypothecair kredietbedrag (€) / Montant du crédit hypothécaire (€)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Registration Tax (Verkooprecht / Droits d'enregistrement): Flanders reduced rate for sole primary home is 3% (1% for major energy renovation - IER), standard rate 12%. Brussels rate 12.5% with €200,000 tax-free Abattement allowance on properties ≤ €600,000. Wallonia rate 12.5% with €40,000 Abattement exemption for primary residence. Statutory Notary Fees (Honoraria) follow royal decree sliding bracket scale: 4.56% (<€7.5k) down to 0.057% (>€250k). Fixed administrative fees (~€800-€1,100) + 21% VAT on notary service. Mortgage Deed Costs include 1% mortgage registration duty, conservator fee, notary scale, and admin fees.",
+      "affiliate_targets": [
+        {
+          "name": "Hypotheek.be / Immotheker Finattect",
+          "type": "accounting",
+          "description": "Leading Belgian mortgage broker comparing 25+ mortgage lenders for optimal rates."
+        },
+        {
+          "name": "Keytrade Bank",
+          "type": "neobank",
+          "description": "Direct online mortgage provider in Belgium with competitive fixed rates and zero dossier fees."
+        },
+        {
+          "name": "KBC Woonkrediet",
+          "type": "insurance",
+          "description": "Top Belgian bank & home insurer offering integrated mortgage and property coverage."
+        },
+        {
+          "name": "AXA Belgium / Allianz",
+          "type": "insurance",
+          "description": "Comprehensive property insurance and compulsory outstanding balance insurance (schuldsaldoverzekering)."
+        }
+      ]
+    },
+    {
+      "id": "sole-proprietorship-vs-bv-belgium",
+      "title_native": "Eenmanszaak vs BV Tax Optimizer (België / Belgique)",
+      "title_en": "Belgium Sole Proprietorship vs BV Company Simulator",
+      "search_terms_native": [
+        "eenmanszaak of bv berekenen",
+        "indépendant en nom propre vs srl belgique",
+        "sociale bijdragen zelfstandige berekenen",
+        "vennootschapsbelasting kmo berekenen",
+        "optimalisatie bezoldiging bestuurder",
+        "vvprbis dividenden berekenen"
+      ],
+      "description_native": "Simuleer het netto-inkomen als eenmanszaak t.o.v. besloten vennootschap (BV / SRL) in België inclusief sociale bijdragen, vennootschapsbelasting en VVPRbis dividenden.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_gross_revenue",
+          "label_native": "Jaarlijkse bruto omzet (€ excl. BTW) / Chiffre d'affaires annuel (€ HTVA)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_expenses",
+          "label_native": "Beroepskosten (€ excl. BTW) / Frais professionnels (€ HTVA)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "director_salary",
+          "label_native": "Voorgestelde bruto bestuurdersbezoldiging BV (€/jaar) / Rémunération de dirigeant SRL (€/an)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "vvprbis_eligible",
+          "label_native": "Recht op VVPRbis verlaagde roerende voorheffing (15%)?",
+          "type": "select",
+          "options": [
+            "Ja / Oui (15% na 3 jaar)",
+            "Nee / Non (30% standaard)"
+          ]
+        }
+      ],
+      "formula_explanation": "Sole Proprietorship: Net Profit = Revenue - Expenses. Social Security = 20.5% on net profit up to €70,857, 14.16% up to €104,422. Taxable net income after social security is taxed under personal income tax (25%-50% + municipal surcharge ~7%). Company (BV/SRL): Corporate Taxable Profit = Revenue - Expenses - Director Salary. SME Corporate Tax = 20% on first €100,000 (if min director salary of €45,000 is met), 25% on remaining. Post-tax company profits paid as dividends taxed at 15% (VVPRbis) or 30%. Director salary is taxed as personal income + social contributions. Crossover point for BV advantage is typically ~€45,000-€55,000 net profit.",
+      "affiliate_targets": [
+        {
+          "name": "Accountable",
+          "type": "accounting",
+          "description": "Top tax & accounting automation platform built specifically for Belgian freelancers and BV/SRL companies."
+        },
+        {
+          "name": "Dexxter",
+          "type": "software",
+          "description": "Dedicated accounting software engineered for Belgian sole proprietors (eenmanszaken)."
+        },
+        {
+          "name": "Qonto",
+          "type": "neobank",
+          "description": "B2B financial institution with Belgian IBAN, seamless corporate capital deposit certificates, and expense management."
+        },
+        {
+          "name": "Xerius / Acerta / Liantis",
+          "type": "accounting",
+          "description": "Official Belgian social insurance funds for self-employed status registration and compliance."
+        }
+      ]
+    },
+    {
+      "id": "student-worker-tax-calculator-belgium",
+      "title_native": "Studentenwerk 600 Uur & Netto Loon Calculator (België)",
+      "title_en": "Belgium Student Job 600-Hour Quota & Tax Calculator",
+      "search_terms_native": [
+        "studentenwerk 600 uur berekenen",
+        "studentenjob netto loon berekenen",
+        "job etudiant 600 heures belgique",
+        "maximaal verdienen studentenjob belastingvrij",
+        "kind ten laste studentenwerk grens",
+        "rsz studentenjob solidariteitsbijdrage"
+      ],
+      "description_native": "Bereken je netto loon als student, controleer je resterende quota van 600 uur en voorkom dat je de grens voor kind ten laste of belastingvrije som overschrijdt.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "hourly_wage",
+          "label_native": "Bruto uurloon (€) / Salaire brut horaire (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "hours_worked_this_year",
+          "label_native": "Reeds gewerkte uren dit kalenderjaar / Heures déjà effectuées cette année",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "planned_hours",
+          "label_native": "Nieuw aantal geplande uren / Nouvelles heures prévues",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_gross_income",
+          "label_native": "Andere bruto inkomsten dit jaar (€) / Autres revenus bruts (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "parent_marital_status",
+          "label_native": "Gezinssituatie ouders / Situation des parents",
+          "type": "select",
+          "options": [
+            "Samenwonend/Gehuwd (2 inkomens)",
+            "Alleenstaande ouder / Parent isolé"
+          ]
+        }
+      ],
+      "formula_explanation": "Students can work up to 600 hours per calendar year under solidarity rate (Solidariteitsbijdrage). Within 600 hours, employee RSZ is reduced to 2.71% (vs 13.07% standard) and no withholding tax is deducted. Above 600 hours, standard RSZ (13.07%) and tax withholding apply. Annual earnings up to €10,570 are exempt from personal tax (belastingvrije som). To remain dependent child for parents' tax deduction (kind ten laste), student net income cannot exceed €3,984 (married parents) or €5,750 (single parent), with the first tranche of student job earnings (~€3,190) legally excluded from the dependent calculation.",
+      "affiliate_targets": [
+        {
+          "name": "Hello bank! Belgium",
+          "type": "neobank",
+          "description": "Free digital bank account for youth and students in Belgium with mobile budgeting tools."
+        },
+        {
+          "name": "ING Student Account",
+          "type": "neobank",
+          "description": "Dedicated Belgian student bank account with payment card and student cashback."
+        },
+        {
+          "name": "Wise",
+          "type": "neobank",
+          "description": "Multi-currency international banking account for Belgian Erasmus and international students."
+        },
+        {
+          "name": "Finom",
+          "type": "neobank",
+          "description": "Fintech solution for student entrepreneurs (student-zelfstandige) managing invoice revenue."
+        }
+      ]
+    },
+    {
+      "id": "company-car-vaa-atn-calculator-belgium",
+      "title_native": "VAA Bedrijfswagen / ATN Voiture de Société Calculator (België)",
+      "title_en": "Belgium Company Car Benefit-in-Kind (VAA/ATN) & Tax Deductibility Calculator",
+      "search_terms_native": [
+        "vaa bedrijfswagen berekenen 2024 2025",
+        "atn voiture de fonction belgique simulateur",
+        "voordeel alle aard wagen berekening",
+        "fiscale aftrekbaarheid bedrijfswagen",
+        "co2 uitstoot vaa berekenen",
+        "elektrische wagen vaa belgie"
+      ],
+      "description_native": "Bereken het bruto en netto Voordeel Alle Aard (VAA / ATN) voor je bedrijfswagen in België, evenals de fiscale aftrekbaarheid en CO2-solidariteitsbijdrage voor werkgevers.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "catalog_value",
+          "label_native": "Cataloguswaarde wagen incl. opties en BTW (€) / Valeur catalogue (€ TTC)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "fuel_type",
+          "label_native": "Brandstoftype / Type de carburant",
+          "type": "select",
+          "options": [
+            "Elektrisch / Hydrogeen (EV)",
+            "Benzine / Hybride Benzine",
+            "Diesel / Hybride Diesel",
+            "LPG / CNG"
+          ]
+        },
+        {
+          "name": "co2_emissions",
+          "label_native": "CO2-uitstoot (g/km) / Émissions CO2 (g/km)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "age_of_car_months",
+          "label_native": "Leeftijd wagen (maanden sinds 1e inschrijving) / Âge (mois)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "marginal_tax_rate",
+          "label_native": "Marginaal belastingtarief / Taux marginal d'imposition",
+          "type": "select",
+          "options": [
+            "50% (Standaard hoogste schijf)",
+            "45%",
+            "40%"
+          ]
+        }
+      ],
+      "formula_explanation": "Annual VAA/ATN = Catalog Value * Age Coefficient * CO2 Percentage * (6/7). Age coefficient reduces by 6%/year down to min 70% after 6 years. CO2 Percentage: Electric vehicles use min reference 4.0%. Petrol/Hybrid: 5.5% + (CO2 - Petrol_Reference) * 0.1%. Diesel: 5.5% + (CO2 - Diesel_Reference) * 0.1%. CO2 percentage capped between 4% and 18%. Legal minimum annual VAA applies (~€1,600). Net monthly tax cost to employee = (Annual VAA * Marginal Tax Rate) / 12. Corporate tax deductibility formula = 120% - (0.5% * fuel_coeff * CO2_g_km), with zero-emission EV cars 100% deductible.",
+      "affiliate_targets": [
+        {
+          "name": "LeasePlan Belgium / Arval",
+          "type": "software",
+          "description": "Leading corporate EV leasing and fleet management providers in Belgium."
+        },
+        {
+          "name": "EDI / MobilityPlus",
+          "type": "software",
+          "description": "Home and workplace EV charging infrastructure solutions with automatic split-billing."
+        },
+        {
+          "name": "Qover",
+          "type": "insurance",
+          "description": "Belgian digital insurance provider for fleet cars and Mobility Budget (Mobiliteitsbudget) alternatives."
+        },
+        {
+          "name": "Accountable",
+          "type": "accounting",
+          "description": "Belgian accounting app for optimizing car expense deductibility vs Mobility Budget for business owners."
+        }
+      ]
+    }
+  ]
+}

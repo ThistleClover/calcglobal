@@ -1,0 +1,544 @@
+{
+  "country": "Turkey",
+  "country_code": "TR",
+  "languages": [
+    "tr",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "net-brut-maas-hesaplama",
+      "title_native": "Netten Brüt Maaş, Kıdem ve İhbar Tazminatı Hesaplama",
+      "title_en": "Net to Gross Salary, Severance & Notice Pay Calculator",
+      "search_terms_native": [
+        "netten brüte maaş hesaplama",
+        "brütten nete maaş hesaplama",
+        "kıdem tazminatı hesaplama",
+        "ihbar tazminatı hesaplama",
+        "maaş hesaplama türkiye",
+        "asgari ücret vergi istisnası hesaplama"
+      ],
+      "description_native": "Türkiye İş Kanunu ve SGK mevzuatına uygun olarak brüt/net maaş dönüşümü, SGK işçi ve işveren payları, gelir vergisi dilimleri, asgari ücret vergi istisnası ile kıdem ve ihbar tazminatını hesaplayan detaylı araç.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "calc_mode",
+          "label_native": "Hesaplama Yönü",
+          "type": "select",
+          "options": [
+            {
+              "value": "gross_to_net",
+              "label_native": "Brütten Nete Maaş"
+            },
+            {
+              "value": "net_to_gross",
+              "label_native": "Netten Brüte Maaş"
+            }
+          ]
+        },
+        {
+          "name": "salary_amount",
+          "label_native": "Maaş Tutarı (TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "disability_degree",
+          "label_native": "Engellilik Derecesi",
+          "type": "select",
+          "options": [
+            {
+              "value": "none",
+              "label_native": "Engellilik Yok"
+            },
+            {
+              "value": "degree_1",
+              "label_native": "1. Derece Engelli (%80+)"
+            },
+            {
+              "value": "degree_2",
+              "label_native": "2. Derece Engelli (%60-%79)"
+            },
+            {
+              "value": "degree_3",
+              "label_native": "3. Derece Engelli (%40-%59)"
+            }
+          ]
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "Çalışma Süresi (Yıl)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_months",
+          "label_native": "Çalışma Süresi (Kalan Ay)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "cum_tax_base",
+          "label_native": "Kümülatif Gelir Vergisi Matrahı (TL)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. SGK Worker Share = Gross Salary * 14% (capped at statutory SGK Ceiling = 7.5 * Minimum Wage). 2. Unemployment Worker Share = Gross Salary * 1%. 3. Taxable Base = Gross Salary - SGK Worker Share - Unemployment Worker Share. 4. Cumulative Tax Base = Previous Base + Taxable Base. Progressive Income Tax Brackets apply (15%, 20%, 27%, 35%, 40%). 5. Asgari Ücret Vergi İstisnası (Minimum Wage Exemption): Calculated Gross Income Tax and Stamp Tax are reduced by the income tax and stamp tax corresponding to the monthly Minimum Wage. 6. Stamp Tax (Damga Vergisi) = Gross Salary * 0.00759 (0.759%), minus Minimum Wage Stamp Tax exemption. 7. Net Salary = Gross Salary - SGK Worker (14%) - Unemployment Worker (1%) - Income Tax (after exemption) - Stamp Tax (after exemption) + Disability Benefit deduction. 8. Severance Pay (Kıdem Tazminatı) = Min(Gross Salary + regular side benefits, Kıdem Tazminatı Tavanı) * (Tenure Years + Tenure Months / 12). Exempt from Income Tax; subject only to 0.759% Stamp Tax. 9. Notice Pay (İhbar Tazminatı) = (Gross Salary / 30) * Statutory Notice Days (28 days for 0.5-1.5 yrs, 42 days for 1.5-3 yrs, 56 days for 3+ yrs). Subject to Income Tax (15%-40%) and Stamp Tax (0.759%).",
+      "affiliate_targets": [
+        {
+          "name": "Kolay İK",
+          "type": "software",
+          "description": "Leading HR & payroll automation SaaS in Turkey for employee management, leave tracking, and payroll processing."
+        },
+        {
+          "name": "Enpara.com / QNB",
+          "type": "neobank",
+          "description": "Popular commission-free banking service widely used by employees and businesses for payroll deposits and fee-free transfers."
+        },
+        {
+          "name": "Paraşüt (Mikro Group)",
+          "type": "accounting",
+          "description": "Top SME accounting software in Turkey for managing employee tax records, SGK payroll files, and e-invoicing."
+        },
+        {
+          "name": "Allianz Türkiye / Anadolu Sigorta",
+          "type": "insurance",
+          "description": "Major providers of Private Health Insurance (ÖSS) which yields tax base deduction advantages on monthly salary calculations."
+        }
+      ]
+    },
+    {
+      "id": "tapu-harci-deger-artis-kazanci-hesaplama",
+      "title_native": "Tapu Harcı ve Gayrimenkul Değer Artış Kazancı Vergisi Hesaplama",
+      "title_en": "Real Estate Title Deed Fee & Capital Gains Tax Calculator",
+      "search_terms_native": [
+        "tapu harcı hesaplama",
+        "gayrimenkul değer artış kazancı hesaplama",
+        "ev satış vergi hesaplama 5 yıl",
+        "tapu masrafı ve döner sermaye hesaplama",
+        "konut satış gelir vergisi hesaplama"
+      ],
+      "description_native": "Türkiye'de konut/arsa alım-satımında ödenen tapu harcı, döner sermaye bedeli ile 5 yıl içinde satılan gayrimenkullerin Yİ-ÜFE endeksli Değer Artış Kazancı Vergisini hesaplayan uzman araç.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "declaration_value",
+          "label_native": "Tapu Beyan / Satış Bedeli (TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "acquisition_price",
+          "label_native": "Gayrimenkul Alış Bedeli (TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "acquisition_year",
+          "label_native": "Alış Yılı",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "sale_year",
+          "label_native": "Satış Yılı",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "holding_months",
+          "label_native": "Elde Tutma Süresi (Ay)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "buyer_seller_split",
+          "label_native": "Tapu Harcı Paylaşımı",
+          "type": "select",
+          "options": [
+            {
+              "value": "split_50_50",
+              "label_native": "%2 Alıcı - %2 Satıcı (Yasal Standart)"
+            },
+            {
+              "value": "buyer_pays_all",
+              "label_native": "%4 Tamamı Alıcı Tarafından"
+            },
+            {
+              "value": "seller_pays_all",
+              "label_native": "%4 Tamamı Satıcı Tarafından"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Title Deed Fee (Tapu Harcı): Standard statutory rate is 4% of the declared property value (must be >= municipal benchmark value / rayiç bedel). By default split as 2% Buyer + 2% Seller. Total Tapu Harcı = Declared Value * 4%. Plus fixed Revolving Fund Fee (Döner Sermaye Hizmet Bedeli + local coefficient). 2. Exemption Rule: If property is held for more than 5 full years (60 months), Capital Gains Tax (Değer Artış Kazancı Vergisi) is 0 TL. 3. If held <= 5 years: Adjusted Acquisition Price = Acquisition Price * (PPI index month before sale / PPI index month before purchase). Adjustment applies if inflation change is >= 10%. 4. Taxable Capital Gain = Sale Price - Adjusted Acquisition Price - Acquisition Title Deed Fees - Annual Exemption Allowance (statutory annual limit, e.g. TRY 87,000 in 2024 / updated annually). 5. If Taxable Capital Gain > 0, Income Tax is calculated progressively using standard Turkish Income Tax brackets (15% to 40%).",
+      "affiliate_targets": [
+        {
+          "name": "Garanti BBVA Konut Kredisi",
+          "type": "neobank",
+          "description": "Leading Turkish mortgage provider for homebuyers seeking real estate financing during title deed transfer."
+        },
+        {
+          "name": "Hepsiemlak / Sahibinden",
+          "type": "software",
+          "description": "Dominant real estate listing platforms in Turkey used for property valuation, buying, and selling."
+        },
+        {
+          "name": "DASK / AXA Sigorta",
+          "type": "insurance",
+          "description": "Mandatory Earthquake Insurance (DASK) required legally prior to executing property title transfers."
+        },
+        {
+          "name": "Ziraat Gayrimenkul Ekspertiz",
+          "type": "accounting",
+          "description": "Official real estate appraisal service provider for accurate property valuation declarations."
+        }
+      ]
+    },
+    {
+      "id": "sahis-sirketi-vergi-bagkur-hesaplama",
+      "title_native": "Şahıs Şirketi Vergi, Bağ-Kur ve Genç Girişimci Desteği Hesaplama",
+      "title_en": "Sole Proprietorship Tax, Bağ-Kur & Young Entrepreneur Benefit Calculator",
+      "search_terms_native": [
+        "şahıs şirketi vergi hesaplama",
+        "genç girişimci desteği hesaplama",
+        "bağkur primi hesaplama",
+        "freelancer vergi hesaplama türkiye",
+        "şahıs şirketi gider net kar hesaplama"
+      ],
+      "description_native": "Türkiye'de şahıs şirketi kuran girişimciler ve freelancer'lar için aylık/yıllık gelir, gider, KDV netleştirmesi, Bağ-Kur primi, Genç Girişimci istisnası ve Gelir Vergisi dilimlerini hesaplayan finansal araç.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "monthly_revenue",
+          "label_native": "Aylık Ortalama Brüt Gelir (KDV Hariç TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "monthly_expenses",
+          "label_native": "Aylık Ortalama Gider (KDV Hariç TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "kdv_rate",
+          "label_native": "KDV Oranı",
+          "type": "select",
+          "options": [
+            {
+              "value": "20",
+              "label_native": "%20 (Genel Hizmet/Ürün)"
+            },
+            {
+              "value": "10",
+              "label_native": "%10 (İndirimli Oran)"
+            },
+            {
+              "value": "1",
+              "label_native": "%1 (Temel Gıda/Özel)"
+            },
+            {
+              "value": "0",
+              "label_native": "%0 (İhracat/İstisna)"
+            }
+          ]
+        },
+        {
+          "name": "is_young_entrepreneur",
+          "label_native": "Genç Girişimci Desteği (29 Yaş Altı)",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label_native": "Evet (3 Yıl Vergi İstisnası + 1 Yıl Bağ-Kur Primi)"
+            },
+            {
+              "value": "no",
+              "label_native": "Hayır (Standart Mükellef)"
+            }
+          ]
+        },
+        {
+          "name": "bagkur_discount",
+          "label_native": "Bağ-Kur Düzenli Ödeme İndirimi",
+          "type": "select",
+          "options": [
+            {
+              "value": "regular",
+              "label_native": "%5 Düzenli Ödeme İndirimli Rate"
+            },
+            {
+              "value": "standard",
+              "label_native": "Standart Bağ-Kur Tarifesi"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Gross Annual Income = Monthly Revenue * 12. 2. Gross Annual Expenses = Monthly Expenses * 12. 3. Net Pre-Tax Income = Gross Annual Income - Gross Annual Expenses. 4. Young Entrepreneur Incentive (Genç Girişimci Desteği): First-time sole proprietors under age 29 receive 3 years of income tax exemption up to the statutory 75,000+ TL threshold (indexed to tax tariff tier 3) AND 1 year of state-paid Bağ-Kur social security premiums. 5. Taxable Base = Max(0, Net Pre-Tax Income - Young Entrepreneur Tax Exemption if applicable). 6. Income Tax (Gelir Vergisi) calculated on Taxable Base using Turkish progressive income tax brackets (15%, 20%, 27%, 35%, 40%). 7. Monthly Bağ-Kur Premium = Gross Minimum Wage * 34.5% (or 29.5% with 5% prompt payment incentive). 8. Fixed Monthly/Quarterly Stamp Duty (Damga Vergisi) for KDV, Muhtasar, and Geçici Vergi declarations (~statutory statutory fixed fees). 9. Net Annual Take-Home Profit = Net Pre-Tax Income - Income Tax - Annual Bağ-Kur Premiums - Annual Fixed Stamp Duties.",
+      "affiliate_targets": [
+        {
+          "name": "Paraşüt (Mikro Group)",
+          "type": "accounting",
+          "description": "Leading cloud accounting SaaS in Turkey tailored for sole proprietors and freelancers to manage e-Invoices and expense tracking."
+        },
+        {
+          "name": "Mükellef.co",
+          "type": "software",
+          "description": "All-in-one digital company formation and tax administration platform for Turkish solo founders and remote workers."
+        },
+        {
+          "name": "Enpara.com Şirket (QNB)",
+          "type": "neobank",
+          "description": "Zero-fee corporate digital banking service ideal for Turkish small business owners and freelancers."
+        },
+        {
+          "name": "Bizim Hesap",
+          "type": "software",
+          "description": "Affordable cloud ERP & e-Archive invoicing tool built for micro-businesses in Turkey."
+        }
+      ]
+    },
+    {
+      "id": "kira-stopaji-kdv-hesaplama",
+      "title_native": "İşyeri Kira Stopajı ve KDV Hesaplama",
+      "title_en": "Commercial Rent Withholding Tax & KDV Calculator",
+      "search_terms_native": [
+        "netten brüt kira stopajı hesaplama",
+        "işyeri kira stopaj hesaplama",
+        "kira stopajı kdv hesaplama türkiye",
+        "brüt kira hesaplama formülü",
+        "şirket işyeri kirası vergi hesaplama"
+      ],
+      "description_native": "İşyeri kiralayan şirketler ve şahıs işletmeleri için net kiradan brüt kira, %20 stopaj kesintisi veya KDV dahil toplam nakit çıkışını ve muhtasar beyanname yükümlülüğünü hesaplayan pratik araç.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "calc_direction",
+          "label_native": "Hesaplama Yönü",
+          "type": "select",
+          "options": [
+            {
+              "value": "net_to_gross",
+              "label_native": "Net Kiradan Brüt ve Stopaj Hesaplama"
+            },
+            {
+              "value": "gross_to_net",
+              "label_native": "Brüt Kiradan Net ve Stopaj Hesaplama"
+            }
+          ]
+        },
+        {
+          "name": "rent_amount",
+          "label_native": "Kira Tutarı (TL)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "landlord_type",
+          "label_native": "Mülk Sahibi Statüsü",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label_native": "Şahıs (Stopaj Tabi - %20 Kesinti)"
+            },
+            {
+              "value": "company",
+              "label_native": "Şirket/Tüzel Kişi (KDV Tabi - Fatura Kesilir)"
+            }
+          ]
+        },
+        {
+          "name": "kdv_rate",
+          "label_native": "KDV Oranı (Mülk Sahibi Şirket ise)",
+          "type": "select",
+          "options": [
+            {
+              "value": "20",
+              "label_native": "%20 KDV"
+            },
+            {
+              "value": "10",
+              "label_native": "%10 İndirimli KDV"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. If Landlord is Individual (Şahıs): Subject to Rent Withholding Tax (Kira Stopajı) at statutory rate of 20%. Net Rent = Gross Rent * (1 - 0.20) = Gross Rent * 0.80. Gross Rent (Brüt Kira) = Net Rent / 0.80 = Net Rent * 1.25. Rent Withholding Tax (Kira Stopajı) = Gross Rent * 0.20 = Net Rent * 0.25. Payment to Landlord = Net Rent. Payment to Tax Office (Muhtasar Beyanname) = Rent Withholding Tax. Total Business Expense = Gross Rent. 2. If Landlord is Company/Corporation (Tüzel Kişi): No withholding tax; commercial rent invoice is issued with KDV. Gross Rent = Specified Amount. KDV Amount = Rent Amount * KDV Rate (20%). Total Cash Paid to Landlord = Rent Amount * (1 + KDV Rate). Input KDV (İndirilecek KDV) can be offset against business monthly sales KDV.",
+      "affiliate_targets": [
+        {
+          "name": "Mükellef.co",
+          "type": "software",
+          "description": "Automates commercial rent withholding calculations, quarterly Muhtasar tax declaration filings, and accounting records."
+        },
+        {
+          "name": "Paraşüt (Mikro Group)",
+          "type": "accounting",
+          "description": "Cloud accounting system for tracking office rent withholding expenses, landlord receipts, and deductible KDV."
+        },
+        {
+          "name": "Kolektif House / Workinton",
+          "type": "software",
+          "description": "Turkish coworking & virtual office providers offering tax address solutions with all-inclusive pricing (zero separate landlord stopaj hassle)."
+        },
+        {
+          "name": "Garanti BBVA Ticari",
+          "type": "neobank",
+          "description": "Commercial banking accounts with recurring automatic payment transfers for rent and withholding tax payments."
+        }
+      ]
+    },
+    {
+      "id": "mtv-noter-devir-masrafi-hesaplama",
+      "title_native": "Motorlu Taşıtlar Vergisi (MTV) ve Araç Noter Devir Masrafı Hesaplama",
+      "title_en": "Motor Vehicle Tax (MTV) & Notary Transfer Fee Calculator",
+      "search_terms_native": [
+        "mtv hesaplama",
+        "motorlu taşıtlar vergisi hesaplama",
+        "araç satış noter ücreti hesaplama",
+        "2. el araç devir masrafı hesaplama",
+        "ruhsat plaka masrafı hesaplama"
+      ],
+      "description_native": "Türkiye'de sıfır veya 2. el otomobil alım-satımında güncel noter devir ücreti, plaka değişim masrafı ve motor hacmi/model yılına göre yıllık Motorlu Taşıtlar Vergisini (MTV) hesaplayan kılavuz.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "vehicle_category",
+          "label_native": "Araç Türü",
+          "type": "select",
+          "options": [
+            {
+              "value": "car",
+              "label_native": "Otomobil / Arazi Taşıtı"
+            },
+            {
+              "value": "motorcycle",
+              "label_native": "Motosiklet"
+            },
+            {
+              "value": "minibus",
+              "label_native": "Minibüs / Panelvan"
+            }
+          ]
+        },
+        {
+          "name": "engine_capacity",
+          "label_native": "Motor Silindir Hacmi",
+          "type": "select",
+          "options": [
+            {
+              "value": "0_1300",
+              "label_native": "1300 cm³ ve altı"
+            },
+            {
+              "value": "1301_1600",
+              "label_native": "1301 - 1600 cm³"
+            },
+            {
+              "value": "1601_1800",
+              "label_native": "1601 - 1800 cm³"
+            },
+            {
+              "value": "1801_2000",
+              "label_native": "1801 - 2000 cm³"
+            },
+            {
+              "value": "2001_2500",
+              "label_native": "2001 - 2500 cm³"
+            },
+            {
+              "value": "2501_plus",
+              "label_native": "2501 cm³ ve üzeri"
+            },
+            {
+              "value": "electric",
+              "label_native": "Elektrikli Motor (EV)"
+            }
+          ]
+        },
+        {
+          "name": "vehicle_age",
+          "label_native": "Araç Yaşı",
+          "type": "select",
+          "options": [
+            {
+              "value": "age_1_3",
+              "label_native": "1 - 3 Yaş"
+            },
+            {
+              "value": "age_4_6",
+              "label_native": "4 - 6 Yaş"
+            },
+            {
+              "value": "age_7_11",
+              "label_native": "7 - 11 Yaş"
+            },
+            {
+              "value": "age_12_15",
+              "label_native": "12 - 15 Yaş"
+            },
+            {
+              "value": "age_16_plus",
+              "label_native": "16 Yaş ve üzeri"
+            }
+          ]
+        },
+        {
+          "name": "reg_period",
+          "label_native": "İlk Tescil Tarihi Rejimi",
+          "type": "select",
+          "options": [
+            {
+              "value": "post_2018",
+              "label_native": "01.01.2018 Sonrası Tescil (Taşıt Değerli Tarifeli)"
+            },
+            {
+              "value": "pre_2018",
+              "label_native": "31.12.2017 ve Öncesi Tescil (Klasik Tarifeli)"
+            }
+          ]
+        },
+        {
+          "name": "plate_change",
+          "label_native": "Plaka Değişikliği Yapılacak mı?",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label_native": "Hayır (Mevcut Plaka Korunacak)"
+            },
+            {
+              "value": "yes",
+              "label_native": "Evet (Plaka Değiştirilecek - Harç Eklenecek)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Notary Vehicle Transfer Fee (Noter Araç Devir Masrafı): Fixed statutory notary transaction fee (~TRY 1,489+ updated annually) + registration document fee (Ruhsat basım ücreti). If plate change is selected (Plaka değişimi), additional plate printing and stamp fee is added. 2. Motor Vehicle Tax (MTV): Computed semi-annually (paid in 2 equal installments in January and July). Annual total = 2 * semi-annual installment. Formula matches Engine Capacity Bracket, Age Tier, and Registration Period. For post-2018 registrations, MTV also factors in the vehicle benchmark value (Taşıt Değeri). Electric vehicles (EVs) pay 25% of the MTV charged for an equivalent internal combustion engine capacity kW bracket.",
+      "affiliate_targets": [
+        {
+          "name": "Sigortam.net",
+          "type": "insurance",
+          "description": "Leading Turkish insurance aggregator for comparing mandatory Traffic Insurance (Zorunlu Trafik Sigortası) and Kasko auto insurance."
+        },
+        {
+          "name": "Arabam.com / VavaCars",
+          "type": "software",
+          "description": "Popular Turkish car valuation platforms for buying, selling, and appraising pre-owned vehicles."
+        },
+        {
+          "name": "Garanti BBVA Taşıt Kredisi",
+          "type": "neobank",
+          "description": "Auto loan provider offering rapid approval for vehicle transfers and purchases."
+        },
+        {
+          "name": "Anadolu Sigorta / AXA",
+          "type": "insurance",
+          "description": "Top-tier insurance company providing comprehensive Kasko auto insurance coverage."
+        }
+      ]
+    }
+  ]
+}

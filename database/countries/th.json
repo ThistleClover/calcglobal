@@ -1,0 +1,480 @@
+{
+  "country": "Thailand",
+  "country_code": "TH",
+  "languages": [
+    "th",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "thailand-personal-income-tax-calculator",
+      "title_native": "เครื่องคำนวณภาษีเงินได้บุคคลธรรมดา ภ.ง.ด. 90 / 91",
+      "title_en": "Thailand Personal Income Tax Calculator (P.N.D. 90/91)",
+      "search_terms_native": [
+        "คำนวณภาษีเงินได้บุคคลธรรมดา",
+        "โปรแกรมคำนวณภาษี 2026",
+        "รายการหักลดหย่อนภาษี 2569",
+        "คำนวณภาษี ภ.ง.ด. 91",
+        "คำนวณภาษี ภ.ง.ด. 90",
+        "คำนวณประกันสังคมและกองทุนสำรองเลี้ยงชีพ"
+      ],
+      "description_native": "คำนวณภาษีเงินได้บุคคลธรรมดาประจำปี พร้อมหักค่าใช้จ่ายตามประเภทเงินได้ และคำนวณรายการลดหย่อนภาษี เช่น ประกันสังคม กองทุน PVD/RMF/SSF/Thai ESG ประกันชีวิต และดอกเบี้ยบ้าน ตามเกณฑ์กรมสรรพากร",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_income",
+          "label_native": "รายได้รวมทั้งปี (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "income_type",
+          "label_native": "ประเภทเงินได้ (Income Type)",
+          "type": "select",
+          "options": [
+            {
+              "value": "40_1",
+              "label_native": "เงินเดือน/โบนัส (มาตรา 40(1)) - หักค่าใช้จ่าย 50% สูงสุด 100,000 บาท"
+            },
+            {
+              "value": "40_2",
+              "label_native": "ค่าจ้างฟรีแลนซ์/คอมมิชชั่น (มาตรา 40(2)) - หักค่าใช้จ่าย 50% รวมกับ 40(1) ไม่เกิน 100,000 บาท"
+            },
+            {
+              "value": "40_6",
+              "label_native": "ค่าวิชาชีพอิสระ (มาตรา 40(6)) - หักค่าใช้จ่าย 30%-60%"
+            },
+            {
+              "value": "40_8",
+              "label_native": "รายได้จากการค้าขาย/ธุรกิจ (มาตรา 40(8)) - หักค่าใช้จ่ายเหมา 60%"
+            }
+          ]
+        },
+        {
+          "name": "social_security_paid",
+          "label_native": "เงินสมทบประกันสังคมทั้งปี (สูงสุด 9,000 บาท)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "provident_fund",
+          "label_native": "กองทุนสำรองเลี้ยงชีพ PVD / กบข. (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "life_health_insurance",
+          "label_native": "เบี้ยประกันชีวิตและสุขภาพ (สูงสุด 100,000 บาท)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "rmf_ssf_thaiesg",
+          "label_native": "กองทุนรวมเพื่อการเลี้ยงชีพ RMF / SSF / Thai ESG (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "home_loan_interest",
+          "label_native": "ดอกเบี้ยเงินกู้ยืมเพื่อซื้อที่อยู่อาศัย (สูงสุด 100,000 บาท)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_deductions",
+          "label_native": "รายการลดหย่อนอื่น ๆ (เช่น บุตร, บิดามารดา, บริจาค THB)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Assessable Income = Gross Annual Income.\n2. Expense Deduction: For Section 40(1) & 40(2) salary and freelance income, 50% standard deduction capped at 100,000 THB combined. For Section 40(8) business income, flat 60% standard deduction applies.\n3. Personal Exemption: Fixed 60,000 THB for taxpayer.\n4. Deductions: Social Security Fund (5% capped at 750 THB/month = max 9,000 THB/year), Life Insurance (up to 100,000 THB), Health Insurance (up to 25,000 THB, combined life + health capped at 100,000 THB), Home Loan Interest (up to 100,000 THB), PVD/RMF/SSF/Thai ESG (subject to individual limits and combined retirement allowance pool cap of 500,000 THB), Parent Allowance (30,000 THB per parent aged >= 60 with income < 30,000 THB), Child Allowance (30,000 THB per child).\n5. Net Taxable Income = Gross Income - Expenses - Personal Allowance - Deductions.\n6. Progressive Personal Income Tax Brackets (Section 48 of the Thai Revenue Code):\n   - 0 - 150,000 THB: Exempt (0%)\n   - 150,001 - 300,000 THB: 5%\n   - 300,001 - 500,000 THB: 10%\n   - 500,001 - 750,000 THB: 15%\n   - 750,001 - 1,000,000 THB: 20%\n   - 1,000,001 - 2,000,000 THB: 25%\n   - 2,000,001 - 5,000,000 THB: 30%\n   - Above 5,000,000 THB: 35%\n7. Edge Cases: Salaried employees with single employment income file form P.N.D. 91. Taxpayers with other income sources (Section 40(2)-(8)) file form P.N.D. 90. Half-year tax return (P.N.D. 94) is mandatory for taxpayers earning Section 40(5)-(8) income during January-June.",
+      "affiliate_targets": [
+        {
+          "name": "iTAX Thailand",
+          "type": "software",
+          "description": "Leading Thai automated tax optimization and e-filing mobile application."
+        },
+        {
+          "name": "Finnomena",
+          "type": "accounting",
+          "description": "Top Thai digital wealth management platform for tax-deductible RMF, SSF, and Thai ESG mutual fund investments."
+        },
+        {
+          "name": "FWD Life Insurance Thailand",
+          "type": "insurance",
+          "description": "High-converting tax-saving life and health insurance policies tailored for Thai taxpayers."
+        },
+        {
+          "name": "KBank / SCB Tax-Saving Funds",
+          "type": "neobank",
+          "description": "Major Thai commercial banks offering tax deduction investment accounts and home loan refinancing."
+        }
+      ]
+    },
+    {
+      "id": "thailand-severance-pay-calculator",
+      "title_native": "เครื่องคำนวณเงินชดเชยการเลิกจ้างและค่าตกใจ (ตาม พ.ร.บ. คุ้มครองแรงงาน)",
+      "title_en": "Thailand Statutory Severance & Termination Compensation Calculator",
+      "search_terms_native": [
+        "คำนวณเงินชดเชยออกจากงาน",
+        "เงินชดเชยเลิกจ้าง 2569",
+        "เลิกจ้าง ได้เงินกี่เดือน",
+        "คำนวณค่าตกใจ ไม่บอกกล่าวล่วงหน้า",
+        "พ.ร.บ. คุ้มครองแรงงาน เงินชดเชย",
+        "ภาษีเงินชดเชยออกจากงาน"
+      ],
+      "description_native": "คำนวณเงินชดเชยการเลิกจ้างตามอายุงาน (120 วัน ถึง 20 ปีขึ้นไป) ค่าแทนการบอกกล่าวล่วงหน้า (ค่าตกใจ) วันหยุดพักผ่อนคงเหลือ และสิทธิยกเว้นภาษีเงินชดเชย ตาม พ.ร.บ. คุ้มครองแรงงาน",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_salary",
+          "label_native": "เงินเดือนสุดท้าย (THB/เดือน)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_years",
+          "label_native": "ระยะเวลาทำงาน (จำนวนปีเต็ม)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tenure_days",
+          "label_native": "ระยะเวลาทำงานเพิ่มเติม (จำนวนวัน)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "advance_notice_given",
+          "label_native": "มีการบอกกล่าวล่วงหน้าตามกฎหมายหรือไม่",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label_native": "บอกกล่าวล่วงหน้าถูกต้อง (No Payment in Lieu Required)"
+            },
+            {
+              "value": "no",
+              "label_native": "ไม่ได้บอกกล่าวล่วงหน้า / เลิกจ้างทันที (Claim 30-60 Days Wage in Lieu of Notice)"
+            }
+          ]
+        },
+        {
+          "name": "unused_leave_days",
+          "label_native": "วันหยุดพักผ่อนประจำปีที่ไม่ได้ใช้ (จำนวนวัน)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Statutory Severance Pay Tiers under Section 118 of the Thai Labor Protection Act (พ.ร.บ. คุ้มครองแรงงาน B.E. 2541 and amendments):\n   - Tenure 120 days to < 1 year: 30 days of last wage (1 month)\n   - Tenure 1 year to < 3 years: 90 days of last wage (3 months)\n   - Tenure 3 years to < 6 years: 180 days of last wage (6 months)\n   - Tenure 6 years to < 10 years: 240 days of last wage (8 months)\n   - Tenure 10 years to < 20 years: 300 days of last wage (10 months)\n   - Tenure 20 years or more: 400 days of last wage (13.33 months / 400 days)\n2. Payment in Lieu of Advance Notice (ค่าแทนการบอกกล่าวล่วงหน้า / ค่าตกใจ): Daily Rate (Monthly Salary / 30) x 30 to 60 days if employer terminates without giving advance notice before the next salary payment cycle.\n3. Unused Annual Leave Payout: Daily Rate x Unused Leave Days.\n4. Tax Treatment on Severance Payout:\n   - For employees with service tenure >= 5 years: First 300,000 THB of statutory severance pay is completely exempt from personal income tax under Revenue Department rules. The remaining amount qualifies for special separate tax calculation (ภาษีเงินได้แยกคำนวณสำหรับเงินที่จ่ายครั้งเดียวเพราะเหตุออกจากงาน) with dedicated expense deduction allowance of 7,000 THB per year of service + 50% deduction of remaining balance before applying personal tax brackets.\n   - For employees with service tenure < 5 years: Full severance amount is added to regular taxable annual income without the 300,000 THB tax exemption.\n5. Edge Cases: Severance pay is legally forfeited if employee is terminated for serious misconduct under Section 119 (e.g., intentional criminal act against employer, gross negligence causing severe financial damage, unapproved absence for 3 consecutive working days).",
+      "affiliate_targets": [
+        {
+          "name": "Humanica (Humantrix)",
+          "type": "software",
+          "description": "Leading Thai HR payroll and labor protection compliance enterprise software."
+        },
+        {
+          "name": "JobsDB Thailand (SEEK)",
+          "type": "software",
+          "description": "Top recruitment and career platform for Thai professionals seeking fast re-employment."
+        },
+        {
+          "name": "Make by KBank",
+          "type": "neobank",
+          "description": "Popular Thai digital banking app with high-interest Cloud Pockets for managing emergency severance funds."
+        },
+        {
+          "name": "LegalBase Thailand",
+          "type": "legal",
+          "description": "Thai labor dispute legal consultation services for severance claims and wrongful termination."
+        }
+      ]
+    },
+    {
+      "id": "thailand-property-transfer-tax-calculator",
+      "title_native": "เครื่องคำนวณค่าธรรมเนียมโอนที่ดิน ภาษีหัก ณ ที่จ่าย และอากรแสตมป์ (ซื้อขายบ้านและคอนโด)",
+      "title_en": "Thailand Property Transfer Fee & Selling Tax Calculator",
+      "search_terms_native": [
+        "คำนวณค่าธรรมเนียมโอนที่ดิน",
+        "ค่าโอนบ้าน 2569",
+        "ภาษีธุรกิจเฉพาะ ค่าโอนคอนโด",
+        "คำนวณค่าโอนที่ดิน กรมที่ดิน",
+        "อากรแสตมป์ โอนที่ดิน",
+        "ภาษีหัก ณ ที่จ่าย โอนที่ดิน"
+      ],
+      "description_native": "คำนวณค่าธรรมเนียมการโอน ภาษีหัก ณ ที่จ่าย ภาษีธุรกิจเฉพาะ ค่าอากรแสตมป์ และค่าจดจำนอง สำหรับการซื้อขายบ้าน ที่ดิน และคอนโดตามราคาประเมินกรมที่ดิน",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "appraisal_value",
+          "label_native": "ราคาประเมินกรมที่ดิน (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "selling_price",
+          "label_native": "ราคาซื้อขายจริง (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "seller_type",
+          "label_native": "ประเภทผู้ขาย (Seller Type)",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label_native": "บุคคลธรรมดา (Individual Seller)"
+            },
+            {
+              "value": "juristic",
+              "label_native": "นิติบุคคล/บริษัท (Corporate Seller)"
+            }
+          ]
+        },
+        {
+          "name": "ownership_years",
+          "label_native": "ระยะเวลาที่ถือครอง (จำนวนปี - สำหรับบุคคลธรรมดา)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "in_house_registration",
+          "label_native": "มีชื่อในทะเบียนบ้านเกิน 1 ปีหรือไม่",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label_native": "มีชื่อในทะเบียนบ้านเกิน 1 ปี (Exempt from Specific Business Tax)"
+            },
+            {
+              "value": "no",
+              "label_native": "ไม่มีชื่อในทะเบียนบ้าน หรือมีไม่ถึง 1 ปี"
+            }
+          ]
+        },
+        {
+          "name": "mortgage_amount",
+          "label_native": "วงเงินกู้ยืม/จำนอง (THB - ถ้ามี)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Assessment Base Amount: Department of Lands official appraisal value is used for Transfer Fee calculation; maximum of Appraisal Value or Actual Selling Price is used for Withholding Tax, Specific Business Tax, and Stamp Duty.\n2. Transfer Fee (ค่าธรรมเนียมการโอน): 2% of Appraisal Value (ราคาประเมินกรมที่ดิน).\n3. Mortgage Registration Fee (ค่าจดจำนอง): 1% of total mortgage loan amount registered with bank.\n4. Withholding Tax (ภาษีเงินได้หัก ณ ที่จ่าย):\n   - Juristic/Corporate Seller: Flat 1% of Appraisal Value or Selling Price (whichever is higher).\n   - Individual Seller: Appraisal Value minus standard expense deduction based on ownership years (1 yr: 92%, 2 yrs: 84%, 3 yrs: 77%, 4 yrs: 71%, 5 yrs: 65%, 6 yrs: 60%, 7 yrs: 55%, 8+ yrs: 50%). Result divided by ownership years, calculated against progressive personal income tax table (without 150,000 THB exemption), then multiplied back by ownership years.\n5. Specific Business Tax vs Stamp Duty (ภาษีธุรกิจเฉพาะ vs อากรแสตมป์):\n   - Specific Business Tax (SBT / ภาษีธุรกิจเฉพาะ): 3.3% (3% tax + 0.3% local municipal tax) of Appraisal Value or Selling Price (whichever higher). Triggered if seller held property for less than 5 years AND seller's name was not on the House Registration (ทะเบียนบ้าน) for at least 1 year.\n   - Stamp Duty (อากรแสตมป์): 0.5% of Appraisal Value or Selling Price (whichever higher). Applicable ONLY if property transfer is exempt from Specific Business Tax.",
+      "affiliate_targets": [
+        {
+          "name": "DDproperty Thailand",
+          "type": "software",
+          "description": "Leading Thai real estate portal for property listings, valuation checks, and agent services."
+        },
+        {
+          "name": "SCB Home Loan",
+          "type": "neobank",
+          "description": "Top commercial bank in Thailand providing home purchase mortgages and refinancing."
+        },
+        {
+          "name": "ธอส. (GH Bank Thailand)",
+          "type": "neobank",
+          "description": "Government Housing Bank offering specialized low-interest mortgage programs."
+        },
+        {
+          "name": "DotProperty Thailand",
+          "type": "software",
+          "description": "High-traffic Thai property marketplace for buyers, sellers, and legal conveyancing services."
+        }
+      ]
+    },
+    {
+      "id": "thailand-withholding-tax-calculator",
+      "title_native": "เครื่องคำนวณภาษีหัก ณ ที่จ่าย และคำนวณยอดจ่ายสุทธิ (ภ.ง.ด. 3 / ภ.ง.ด. 53)",
+      "title_en": "Thailand Withholding Tax (WHT) & Gross-Up Calculator",
+      "search_terms_native": [
+        "คำนวณภาษีหัก ณ ที่จ่าย",
+        "หัก ณ ที่จ่าย 3% 5%",
+        "สูตรคำนวณหัก ณ ที่จ่าย ออกให้",
+        "คำนวณออกภาษีแทน (Gross-up WHT)",
+        "ภ.ง.ด. 3 ภ.ง.ด. 53",
+        "ภาษีหัก ณ ที่จ่าย ค่าบริการ"
+      ],
+      "description_native": "คำนวณภาษีหัก ณ ที่จ่าย ตามประเภทบริการ (1%, 2%, 3%, 5%) คำนวณยอดจ่ายสุทธิหลังหักภาษี และคำนวณฐานภาษีแบบออกภาษีแทน (Gross-Up) สำหรับแบบ ภ.ง.ด. 3 และ ภ.ง.ด. 53",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "amount",
+          "label_native": "จำนวนเงินก่อนภาษี (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "wht_rate",
+          "label_native": "อัตราภาษีหัก ณ ที่จ่าย (WHT Rate %)",
+          "type": "select",
+          "options": [
+            {
+              "value": "1",
+              "label_native": "1% - ค่าขนส่ง (Transport / Freight)"
+            },
+            {
+              "value": "2",
+              "label_native": "2% - ค่าโฆษณา (Advertising)"
+            },
+            {
+              "value": "3",
+              "label_native": "3% - ค่าบริการ / ค่าจ้างทำของ / วิชาชีพอิสระ (Services / Freelance)"
+            },
+            {
+              "value": "5",
+              "label_native": "5% - ค่าเช่าอสังหาริมทรัพย์ / รางวัล (Property Rent / Prizes)"
+            },
+            {
+              "value": "10",
+              "label_native": "10% - เงินปันผล (Dividends)"
+            }
+          ]
+        },
+        {
+          "name": "gross_up_option",
+          "label_native": "รูปแบบการชำระภาษี (Tax Payment Arrangement)",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard",
+              "label_native": "หัก ณ ที่จ่ายปกติ (Payee Bears WHT - Deducted from Payment)"
+            },
+            {
+              "value": "gross_up_once",
+              "label_native": "ผู้จ่ายออกภาษีให้ครั้งเดียว (Payer Pays Single-Tier Gross-Up)"
+            },
+            {
+              "value": "gross_up_perpetual",
+              "label_native": "ผู้จ่ายออกภาษีให้ตลอดไป (Payer Pays Perpetual Gross-Up)"
+            }
+          ]
+        },
+        {
+          "name": "vat_included",
+          "label_native": "มีภาษีมูลค่าเพิ่ม (VAT 7%) หรือไม่",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label_native": "ไม่มี VAT (Non-VAT Vendor)"
+            },
+            {
+              "value": "yes",
+              "label_native": "มี VAT 7% (VAT Included)"
+            }
+          ]
+        },
+        {
+          "name": "payee_type",
+          "label_native": "ประเภทผู้รับเงิน (Payee Type)",
+          "type": "select",
+          "options": [
+            {
+              "value": "pnd3",
+              "label_native": "บุคคลธรรมดา - ยื่นแบบ ภ.ง.ด. 3"
+            },
+            {
+              "value": "pnd53",
+              "label_native": "นิติบุคคล/บริษัท - ยื่นแบบ ภ.ง.ด. 53"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Standard WHT Formula (Revenue Code Section 3 Trez):\n   - Base Amount = Amount before VAT (WHT is ALWAYS calculated on pre-VAT amount).\n   - WHT Amount = Base Amount x (WHT Rate / 100).\n   - VAT Amount (if applicable) = Base Amount x 0.07.\n   - Net Payment to Payee = Base Amount + VAT Amount - WHT Amount.\n2. Single-Tier Gross-Up Formula (ผู้จ่ายออกภาษีให้ครั้งเดียว):\n   - Grossed-Up Tax Base = Base Amount / (1 - (WHT Rate / 100)).\n   - WHT Amount = Grossed-Up Tax Base x (WHT Rate / 100).\n   - Net Payout to Payee = Base Amount + VAT Amount (Payee receives full agreed fee without deduction).\n3. Perpetual Gross-Up Formula (ผู้จ่ายออกภาษีให้ตลอดไป):\n   - Tax Base = Base Amount / (1 - (WHT Rate / 100)).\n4. Threshold Rule: WHT deduction is required for payments of assessable income >= 1,000 THB per invoice (or under a long-term continuous contract totaling >= 1,000 THB). Forms: P.N.D. 3 for individual payees, P.N.D. 53 for juristic payees.",
+      "affiliate_targets": [
+        {
+          "name": "FlowAccount",
+          "type": "software",
+          "description": "Popular Thai cloud accounting software featuring instant 50 Tawi Withholding Tax certificate generation."
+        },
+        {
+          "name": "Peak Account (PeakEngine)",
+          "type": "accounting",
+          "description": "Leading Thai automated SME accounting platform with built-in WHT e-filing for P.N.D. 3 and P.N.D. 53."
+        },
+        {
+          "name": "AccRevo",
+          "type": "accounting",
+          "description": "Digital bookkeeping and tax compliance outsourcing platform for Thai businesses."
+        },
+        {
+          "name": "Krungthai Business / KBank Corporate",
+          "type": "neobank",
+          "description": "Thai corporate banking portals integrated with direct Revenue Department e-Withholding Tax services."
+        }
+      ]
+    },
+    {
+      "id": "thailand-sole-prop-vs-company-tax-calculator",
+      "title_native": "เครื่องคำนวณเปรียบเทียบภาษี บุคคลธรรมดา vs บริษัทจำกัด (สำหรับเจ้าของธุรกิจ SME)",
+      "title_en": "Thailand Sole Proprietorship vs Company Limited Tax Comparison",
+      "search_terms_native": [
+        "เปรียบเทียบภาษีบุคคลธรรมดากับบริษัท",
+        "จดบริษัทดีไหม 2569",
+        "คำนวณภาษี SME นิติบุคคล",
+        "เกณฑ์รายได้ที่ต้องจดบริษัท",
+        "ภาษีบริษัทจำกัด อัตรา SME",
+        "ภาษีบุคคลธรรมดา ร้านค้า"
+      ],
+      "description_native": "เปรียบเทียบภาระภาษีระหว่างการดำเนินธุรกิจในนามบุคคลธรรมดา (หักค่าใช้จ่ายเหมา 60%) กับการจดทะเบียนบริษัทจำกัด (อัตราภาษี SME 0%-20%) เพื่อวางแผนประหยัดภาษีอย่างถูกกฎหมาย",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "รายได้รวมทั้งปี (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "actual_expenses",
+          "label_native": "ค่าใช้จ่ายจริงของธุรกิจ (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "paid_up_capital",
+          "label_native": "ทุนชำระแล้วของบริษัท (THB - สำหรับคำนวณเกณฑ์ SME)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "planned_dividend",
+          "label_native": "เงินปันผลที่ต้องการจ่ายให้ผู้ถือหุ้น (THB)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "accounting_audit_fee",
+          "label_native": "ค่าทำบัญชีและผู้สอบบัญชีประจำปี (THB - ประมาณ 20,000 - 40,000 บาท)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Sole Proprietorship Tax (บุคคลธรรมดา - ภ.ง.ด. 90 Section 40(8)):\n   - Expense Deduction: Higher of Standard Flat Deduction (60% of Gross Revenue) OR Proven Actual Expenses.\n   - Taxable Net Profit = Revenue - Expenses - Personal Exemption (60,000 THB).\n   - Tax Rate: Progressive Personal Income Tax brackets (0% up to 150k, 5% up to 300k, 10% up to 500k, 15% up to 750k, 20% up to 1M, 25% up to 2M, 30% up to 5M, 35% above 5M THB).\n   - VAT Rule: Revenue > 1,800,000 THB requires mandatory VAT registration.\n2. Company Limited Tax (นิติบุคคล SME / บริษัทจำกัด):\n   - Eligible SME Definition: Paid-up Capital <= 5,000,000 THB AND Annual Revenue <= 30,000,000 THB.\n   - Taxable Profit = Revenue - Verified Expenses - Annual Accounting/Audit Fees.\n   - SME Corporate Income Tax (CIT) Progressive Rates:\n     * Profit 0 - 300,000 THB: 0% (Exempt)\n     * Profit 300,001 - 3,000,000 THB: 15%\n     * Profit > 3,000,000 THB: 20%\n   - Standard Corporate CIT Rate (Non-SME): 20% flat rate on all profit.\n   - Dividend Withholding Tax: 10% WHT when net profit is distributed as dividend to individual shareholders.\n   - Total Tax Burden = CIT + Dividend WHT + Annual Accounting/Audit Fees.\n3. Break-even Insight: When annual business profit exceeds ~750,000 - 1,000,000 THB, incorporating a Company Limited generally yields lower overall tax liabilities compared to personal income tax.",
+      "affiliate_targets": [
+        {
+          "name": "FlowAccount",
+          "type": "software",
+          "description": "Comprehensive Thai SME cloud accounting system for managing registered companies and sole traders."
+        },
+        {
+          "name": "Peak Account",
+          "type": "software",
+          "description": "Cloud accounting platform designed for Thai corporate entities, tracking P&L and SME tax brackets."
+        },
+        {
+          "name": "KBank SME / SCB SME Business Account",
+          "type": "neobank",
+          "description": "Leading Thai business banking accounts offering SME credit lines, payment gateways, and payroll."
+        },
+        {
+          "name": "LegalBros / BizLaw Thailand",
+          "type": "legal",
+          "description": "Turnkey company registration, legal compliance, and corporate secretary services in Thailand."
+        }
+      ]
+    }
+  ]
+}

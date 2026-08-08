@@ -1,0 +1,588 @@
+{
+  "country": "United States",
+  "country_code": "US",
+  "languages": [
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "us-1099-self-employment-tax-calculator",
+      "title_native": "1099 Self-Employment & Quarterly Estimated Tax Calculator",
+      "title_en": "1099 Self-Employment & Quarterly Estimated Tax Calculator",
+      "search_terms_native": [
+        "1099 tax calculator 2026",
+        "freelance estimated quarterly tax calculator",
+        "self employment tax calculator social security medicare cap",
+        "schedule c tax calculator"
+      ],
+      "description_native": "Calculate your federal 15.3% Self-Employment Tax (Social Security & Medicare, including Additional Medicare tax and income threshold caps), half-SE tax deduction, progressive federal income tax, and quarterly estimated payment amounts for freelancers, gig workers, and 1099 contractors.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "us-1099-self-employment-tax-calculator"
+        },
+        {
+          "name": "net_1099_profit",
+          "label_native": "Net 1099 Profit / Schedule C Income ($)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "Single"
+            },
+            {
+              "value": "married_joint",
+              "label": "Married Filing Jointly"
+            },
+            {
+              "value": "head_of_household",
+              "label": "Head of Household"
+            },
+            {
+              "value": "married_separate",
+              "label": "Married Filing Separately"
+            }
+          ]
+        },
+        {
+          "name": "other_w2_income",
+          "label_native": "W-2 Wages (for Social Security Cap Calculation) ($)",
+          "type": "number"
+        },
+        {
+          "name": "state",
+          "label_native": "State of Residence",
+          "type": "select",
+          "options": [
+            {
+              "value": "CA",
+              "label": "California"
+            },
+            {
+              "value": "NY",
+              "label": "New York"
+            },
+            {
+              "value": "TX",
+              "label": "Texas (0% State Income Tax)"
+            },
+            {
+              "value": "FL",
+              "label": "Florida (0% State Income Tax)"
+            },
+            {
+              "value": "IL",
+              "label": "Illinois"
+            },
+            {
+              "value": "WA",
+              "label": "Washington (0% State Income Tax)"
+            },
+            {
+              "value": "OTHER",
+              "label": "Other State"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "92.35% of net self-employment income is taxable for SE tax. Social Security tax is 12.4% on SE income up to the annual Social Security wage base cap ($176,100), reduced dollar-for-dollar by any W-2 earnings. Medicare tax is 2.9% on all taxable SE earnings, plus an Additional Medicare Tax of 0.9% on net earnings above threshold amounts ($200,000 for Single, $250,000 for Married Filing Jointly). 50% of the total SE tax is deducted from Gross Income to determine Adjusted Gross Income (AGI). Federal Income Tax is applied to AGI minus the Standard Deduction ($15,000 Single / $30,000 Joint for 2026) and Section 199A Qualified Business Income (QBI) deduction (up to 20% of net profit for qualified trades). Total tax liability is divided into 4 equal quarterly estimated tax vouchers (1040-ES).",
+      "article_faq": [
+        {
+          "question": "What is the self-employment tax rate for 2026?",
+          "answer": "The self-employment (SE) tax rate for 2026 is 15.3%, consisting of 12.4% for Social Security and 2.9% for Medicare. However, only 92.35% of your net self-employment income is subject to SE tax. Additionally, an extra 0.9% Additional Medicare Tax applies to net earnings above $200,000 (Single) or $250,000 (Married Filing Jointly)."
+        },
+        {
+          "question": "What is the Social Security wage base cap for 2026?",
+          "answer": "The Social Security wage base for 2026 is $176,100. This means you only pay the 12.4% Social Security portion of SE tax on net self-employment earnings up to this amount. Earnings above the cap are still subject to the 2.9% Medicare tax (and the 0.9% Additional Medicare Tax if applicable)."
+        },
+        {
+          "question": "What is the QBI deduction and do I qualify?",
+          "answer": "The Qualified Business Income (QBI) deduction under IRC Section 199A allows most self-employed individuals and pass-through business owners to deduct up to 20% of their qualified business income from taxable income. For 2026, the deduction begins to phase out above $197,300 (Single) or $394,600 (Joint). Most 1099 freelancers qualify for the full 20% deduction."
+        },
+        {
+          "question": "When are quarterly estimated tax payments due in 2026?",
+          "answer": "Quarterly estimated tax payments for 2026 are due on: April 15 (Q1), June 16 (Q2), September 15 (Q3), and January 15, 2027 (Q4). Self-employed individuals who expect to owe $1,000 or more in taxes must make these payments to avoid underpayment penalties from the IRS."
+        },
+        {
+          "question": "Should I form an S-Corp to reduce my self-employment taxes?",
+          "answer": "An S-Corp election can significantly reduce your SE tax burden if your net profit exceeds approximately $80,000. With an S-Corp, you pay yourself a 'reasonable salary' subject to FICA payroll taxes, but the remaining profit is distributed as a K-1 dividend — exempt from the 15.3% SE tax. The savings must outweigh the additional payroll and accounting costs ($2,000–$5,000/year)."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "TurboTax Self-Employed",
+          "type": "software",
+          "url": "https://turbotax.intuit.com/personal-taxes/self-employed/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Leading US tax filing platform with automatic Schedule C expense matching and quarterly 1040-ES voucher generation."
+        },
+        {
+          "name": "QuickBooks Self-Employed",
+          "type": "software",
+          "url": "https://quickbooks.intuit.com/self-employed/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Real-time mileage tracking, expense categorization, and automatic quarterly tax estimates for 1099 contractors."
+        },
+        {
+          "name": "Novo Business Banking",
+          "type": "neobank",
+          "url": "https://www.novo.co/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Fee-free digital business account for US freelancers featuring automated Tax Reserves — automatically sets aside estimated taxes."
+        },
+        {
+          "name": "Catch.co",
+          "type": "insurance",
+          "url": "https://www.catch.co/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Automated tax withholdings, ACA health insurance, and retirement savings built for 1099 workers and gig economy professionals."
+        }
+      ]
+    },
+    {
+      "id": "s-corp-vs-llc-tax-savings-calculator",
+      "title_native": "S-Corp Election vs LLC Tax Savings Calculator",
+      "title_en": "S-Corp Election vs LLC Tax Savings Calculator",
+      "search_terms_native": [
+        "s corp vs llc tax calculator 2026",
+        "s election reasonable salary calculator",
+        "how much do i save with s corp",
+        "form 2553 tax savings calculator"
+      ],
+      "description_native": "Calculate potential self-employment tax savings from electing S-Corporation tax status over a Single-Member LLC, factoring in IRS reasonable officer compensation, payroll FICA taxes, state corporate franchise taxes, and compliance administration costs.",
+      "category": "business",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "s-corp-vs-llc-tax-savings-calculator"
+        },
+        {
+          "name": "net_profit",
+          "label_native": "Annual Net Business Profit ($)",
+          "type": "number"
+        },
+        {
+          "name": "reasonable_salary",
+          "label_native": "Proposed W-2 Officer Reasonable Salary ($)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Tax Filing Status",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "Single"
+            },
+            {
+              "value": "married_joint",
+              "label": "Married Filing Jointly"
+            },
+            {
+              "value": "head_of_household",
+              "label": "Head of Household"
+            },
+            {
+              "value": "married_separate",
+              "label": "Married Filing Separately"
+            }
+          ]
+        },
+        {
+          "name": "annual_compliance_cost",
+          "label_native": "Estimated Annual Payroll & CPA Costs ($)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "In a standard LLC, 100% of net business profit is subject to 15.3% Self-Employment Tax (up to Social Security wage cap of $176,100, then 2.9% Medicare). Under an S-Corp election, the business pays the owner a W-2 reasonable salary subject to 15.3% FICA payroll taxes. The remaining profit is distributed as K-1 dividends, which are exempt from 15.3% SE tax. Gross SE Tax Savings = 15.3% * (Net Profit - Reasonable Salary) up to the Social Security wage cap ($176,100), and 2.9% on any remaining difference above the cap. Net Annual Savings = Gross SE Tax Savings minus Additional Annual Payroll and Tax Preparation Expenses (approx. $3,000/year).",
+      "article_faq": [
+        {
+          "question": "How much can I save on taxes by forming an S-Corp?",
+          "answer": "You save 15.3% in Self-Employment tax on every dollar of profit distributed as K-1 dividends rather than W-2 salary. For example, if your business makes $120,000 net profit and you pay yourself a $60,000 salary, you save 15.3% on the $60,000 distribution—approx $9,180 per year before accounting fees."
+        },
+        {
+          "question": "What is an IRS reasonable officer salary for an S-Corp?",
+          "answer": "The IRS requires S-Corporation owner-employees to pay themselves a reasonable salary comparable to what an independent worker would earn for similar services in their industry. Salary cannot be arbitrarily low just to avoid payroll taxes."
+        },
+        {
+          "question": "At what income level does an S-Corp election make financial sense?",
+          "answer": "An S-Corp election generally becomes cost-effective when your net business profit consistently exceeds $80,000 per year. Below this threshold, annual payroll processing, Form 1120-S tax filings, and accounting costs (typically $2,000–$4,000) eat into potential tax savings."
+        },
+        {
+          "question": "How do I elect S-Corp tax status for my LLC?",
+          "answer": "To elect S-Corp status, file IRS Form 2553 (Election by a Small Business Corporation) within 2 months and 15 days of the start of the tax year or at any time during the preceding tax year."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Gusto Payroll",
+          "type": "software",
+          "url": "https://gusto.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Automated payroll processing, W-2 generation, and tax filing tailored for S-Corp owner-employees."
+        },
+        {
+          "name": "Collective.com",
+          "type": "accounting",
+          "url": "https://www.collective.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Full-service S-Corp tax, accounting, payroll, and Form 2553 election platform for solo founders."
+        },
+        {
+          "name": "LegalZoom",
+          "type": "legal",
+          "url": "https://www.legalzoom.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "LLC formation, state corporate registration, and IRS S-Corp tax election filing service."
+        },
+        {
+          "name": "Mercury Bank",
+          "type": "neobank",
+          "url": "https://mercury.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "FDIC-insured business banking designed for S-Corps with free wire transfers and corporate cards."
+        }
+      ]
+    },
+    {
+      "id": "w2-salary-paycheck-take-home-calculator",
+      "title_native": "W-2 Gross-to-Net Paycheck Tax & Take-Home Calculator",
+      "title_en": "W-2 Gross-to-Net Paycheck Tax & Take-Home Calculator",
+      "search_terms_native": [
+        "paycheck calculator net pay 2026",
+        "w2 salary take home pay after tax",
+        "federal state local payroll tax calculator",
+        "401k hsa paycheck impact calculator"
+      ],
+      "description_native": "Calculate exact net take-home pay per pay period by accounting for Federal W-4 withholdings, Social Security (6.2%), Medicare (1.45%), state and local taxes, and pre-tax payroll deductions (401k, HSA, FSA, health premiums).",
+      "category": "employment",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "w2-salary-paycheck-take-home-calculator"
+        },
+        {
+          "name": "gross_annual",
+          "label_native": "Annual Gross Salary ($)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "W-4 Filing Status",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "Single / Married Filing Separately"
+            },
+            {
+              "value": "married_joint",
+              "label": "Married Filing Jointly"
+            },
+            {
+              "value": "head_of_household",
+              "label": "Head of Household"
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "label_native": "State of Employment",
+          "type": "select",
+          "options": [
+            {
+              "value": "CA",
+              "label": "California"
+            },
+            {
+              "value": "NY",
+              "label": "New York"
+            },
+            {
+              "value": "TX",
+              "label": "Texas (0% State Tax)"
+            },
+            {
+              "value": "FL",
+              "label": "Florida (0% State Tax)"
+            },
+            {
+              "value": "IL",
+              "label": "Illinois (4.95% Flat Tax)"
+            },
+            {
+              "value": "WA",
+              "label": "Washington (0% State Tax)"
+            },
+            {
+              "value": "OTHER",
+              "label": "Other State"
+            }
+          ]
+        },
+        {
+          "name": "401k_contribution_pct",
+          "label_native": "Pre-Tax 401(k) Contribution (%)",
+          "type": "number"
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Pay Frequency",
+          "type": "select",
+          "options": [
+            {
+              "value": "weekly",
+              "label": "Weekly (52 paychecks/yr)"
+            },
+            {
+              "value": "biweekly",
+              "label": "Bi-weekly (26 paychecks/yr)"
+            },
+            {
+              "value": "semimonthly",
+              "label": "Semi-monthly (24 paychecks/yr)"
+            },
+            {
+              "value": "monthly",
+              "label": "Monthly (12 paychecks/yr)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Pay per Paycheck = Gross Annual Salary divided by pay periods (e.g. 26 bi-weekly). Pre-tax deductions like traditional 401(k) lower federal and state taxable income. Employee FICA tax (6.2% Social Security up to $176,100 cap plus 1.45% Medicare) is deducted from gross pay. Federal income tax is withheld using 2026 progressive tax brackets after subtracting standard deductions ($15,000 Single / $30,000 Joint). State income tax is applied based on state residency. Net Paycheck = Gross Pay - Pre-Tax Deductions - FICA - Federal Tax - State Tax.",
+      "article_faq": [
+        {
+          "question": "How does 401(k) contribution lower my taxes?",
+          "answer": "Pre-tax 401(k) contributions are subtracted from your gross annual income before federal and state income taxes are calculated. Every dollar contributed reduces your taxable income, lowering your top-marginal tax bill."
+        },
+        {
+          "question": "What is FICA tax and how is it calculated in 2026?",
+          "answer": "FICA consists of 6.2% Social Security tax (capped at $176,100 in wages for 2026) and 1.45% Medicare tax (uncapped). An additional 0.9% Medicare Tax applies to wages over $200,000 for single filers ($250,000 for joint filers)."
+        },
+        {
+          "question": "What is the difference between bi-weekly and semi-monthly pay?",
+          "answer": "Bi-weekly pay means receiving 26 paychecks per year (every two weeks, usually on Fridays). Semi-monthly pay means receiving 24 paychecks per year (twice a month, such as on the 1st and 15th)."
+        },
+        {
+          "question": "Which states have no state income tax in 2026?",
+          "answer": "States with 0% state income tax on W-2 wages include Texas, Florida, Washington, Nevada, Alaska, South Dakota, Tennessee, and Wyoming."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "SoFi Checking & Savings",
+          "type": "neobank",
+          "url": "https://www.sofi.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "High-yield savings account with early direct deposit and automated paycheck splitting."
+        },
+        {
+          "name": "Empower Wealth Management",
+          "type": "software",
+          "url": "https://www.empower.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Free paycheck, net worth, and 401(k) fee analyzer for US wage earners."
+        },
+        {
+          "name": "Betterment",
+          "type": "software",
+          "url": "https://www.betterment.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Automated investment and IRA platform with tax-smart automated paycheck recurring investments."
+        }
+      ]
+    },
+    {
+      "id": "us-home-sale-net-proceeds-capital-gains-calculator",
+      "title_native": "Home Sale Net Proceeds & Section 121 Capital Gains Tax Calculator",
+      "title_en": "Home Sale Net Proceeds & Section 121 Capital Gains Tax Calculator",
+      "search_terms_native": [
+        "home sale tax calculator section 121 exclusion",
+        "how much tax do i pay selling home",
+        "seller net proceeds calculator real estate commission fees",
+        "capital gains tax primary residence vs investment property"
+      ],
+      "description_native": "Calculate net cash proceeds at closing and potential IRS capital gains tax when selling a residential property, incorporating IRS Section 121 primary residence tax exclusions ($250k single / $500k married), adjusted cost basis, agent commissions, and state capital gains taxes.",
+      "category": "real_estate",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "us-home-sale-net-proceeds-capital-gains-calculator"
+        },
+        {
+          "name": "sale_price",
+          "label_native": "Home Sale Price ($)",
+          "type": "number"
+        },
+        {
+          "name": "original_purchase_price",
+          "label_native": "Original Purchase Price ($)",
+          "type": "number"
+        },
+        {
+          "name": "years_owned",
+          "label_native": "Years Owned & Occupied",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Tax Filing Status",
+          "type": "select",
+          "options": [
+            {
+              "value": "single",
+              "label": "Single ($250k exclusion max)"
+            },
+            {
+              "value": "married_joint",
+              "label": "Married Filing Jointly ($500k exclusion max)"
+            }
+          ]
+        },
+        {
+          "name": "closing_costs_pct",
+          "label_native": "Closing Costs & Agent Commission (%)",
+          "type": "number"
+        },
+        {
+          "name": "improvements_cost",
+          "label_native": "Capital Improvements Cost ($)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Net Selling Proceeds = Sale Price minus closing costs and agent commissions (default ~8%). Cost Basis = Original Purchase Price plus qualified capital improvements. Realized Capital Gain = Net Selling Proceeds minus Cost Basis. Under IRS Section 121, if you owned and lived in the home as a primary residence for at least 2 of the 5 years before sale, up to $250,000 (Single) or $500,000 (Married Joint) of capital gain is completely tax-free. Taxable Gain above the exclusion is taxed at long-term capital gains rates (0%, 15%, or 20%) plus Net Investment Income Tax (3.8%) if income thresholds are met.",
+      "article_faq": [
+        {
+          "question": "What is the Section 121 primary residence exclusion?",
+          "answer": "IRC Section 121 allows single homeowners to exclude up to $250,000 and married couples filing jointly up to $500,000 of capital gains from federal income tax when selling a primary residence."
+        },
+        {
+          "question": "What qualifies as capital improvements to increase cost basis?",
+          "answer": "Capital improvements are permanent structural additions or major upgrades that add value or prolong the home's useful life (e.g. adding a room, new roof, HVAC system, kitchen remodel). General maintenance and repairs do not qualify."
+        },
+        {
+          "question": "What are the requirements for the 2-in-5-year rule?",
+          "answer": "You must have owned the property and lived in it as your primary main home for at least 24 months (730 days) during the 5-year period ending on the date of the sale."
+        },
+        {
+          "question": "What long-term capital gains tax rates apply in 2026?",
+          "answer": "Long-term capital gains on home sales above the Section 121 exclusion are taxed at 0%, 15%, or 20% depending on overall taxable income, plus an optional 3.8% Net Investment Income Tax (NIIT) for high earners."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Clever Real Estate",
+          "type": "software",
+          "url": "https://listwithclever.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Discount listing agent service allowing home sellers to save up to 1.5% in real estate commissions."
+        },
+        {
+          "name": "Rocket Mortgage",
+          "type": "software",
+          "url": "https://www.rocketmortgage.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Mortgage payoff, bridge loans, and pre-approval for replacement primary residence purchase."
+        },
+        {
+          "name": "First American Title Insurance",
+          "type": "insurance",
+          "url": "https://www.firstam.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Closing escrow services and seller title transfer insurance."
+        }
+      ]
+    },
+    {
+      "id": "us-small-business-lease-break-even-calculator",
+      "title_native": "Small Business Commercial Lease & Break-Even Revenue Calculator",
+      "title_en": "Small Business Commercial Lease & Break-Even Revenue Calculator",
+      "search_terms_native": [
+        "commercial lease calculator NNN vs gross lease",
+        "small business break even sales volume calculator",
+        "occupancy cost ratio calculator retail restaurant",
+        "triple net expense estimator"
+      ],
+      "description_native": "Determine total monthly commercial real estate lease costs (Base Rent + NNN Common Area Maintenance, Property Taxes, and Insurance) and calculate the required monthly revenue to achieve operational break-even.",
+      "category": "business",
+      "last_updated": "August 2026",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "us-small-business-lease-break-even-calculator"
+        },
+        {
+          "name": "monthly_rent",
+          "label_native": "Monthly Base Rent & Lease Cost ($)",
+          "type": "number"
+        },
+        {
+          "name": "monthly_revenue",
+          "label_native": "Estimated Monthly Gross Revenue ($)",
+          "type": "number"
+        },
+        {
+          "name": "cogs_pct",
+          "label_native": "Cost of Goods Sold (COGS) (%)",
+          "type": "number"
+        },
+        {
+          "name": "other_monthly_expenses",
+          "label_native": "Other Monthly Fixed Overhead ($)",
+          "type": "number"
+        },
+        {
+          "name": "state_tax_rate",
+          "label_native": "State Corporate/Business Tax Rate (%)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Monthly Gross Profit = Monthly Revenue * (1 - COGS%). Monthly Fixed Costs = Monthly Rent + Other Monthly Operating Expenses. Monthly Net Operating Profit = Monthly Gross Profit - Monthly Fixed Costs. Break-Even Monthly Revenue = Monthly Fixed Costs / Gross Margin %. Annual Pre-Tax Profit = Monthly Net Operating Profit * 12. Corporate Income Tax = Annual Pre-Tax Profit * (21% Federal Corporate Rate + State Business Tax Rate). Annual Net Profit = Annual Pre-Tax Profit - Corporate Income Tax.",
+      "article_faq": [
+        {
+          "question": "How is commercial lease break-even revenue calculated?",
+          "answer": "Break-even revenue is calculated as Total Monthly Fixed Overhead (Rent + Payroll + Utilities) divided by your Gross Profit Margin percentage (100% minus COGS%)."
+        },
+        {
+          "question": "What is a healthy rent-to-revenue ratio for a small business?",
+          "answer": "Generally, occupancy costs (rent + CAM/NNN) should be between 6% and 10% of gross revenue for retail businesses, and 8% to 12% for restaurants."
+        },
+        {
+          "question": "What is the difference between Gross Rent and NNN (Triple Net) Lease?",
+          "answer": "With Gross Rent, you pay a single flat monthly fee including taxes and maintenance. With NNN (Triple Net), you pay base rent plus your proportionate share of property taxes, building insurance, and common area maintenance (CAM)."
+        },
+        {
+          "question": "How does corporate tax impact small business net profits in 2026?",
+          "answer": "The US federal C-Corporation tax rate is a flat 21%. State corporate tax rates range from 0% (TX, FL, WA) to over 9% (CA, NJ). Pass-through entities (LLCs/S-Corps) pass pre-tax profit to individual tax returns instead."
+        }
+      ],
+      "affiliate_targets": [
+        {
+          "name": "Toast POS",
+          "type": "software",
+          "url": "https://pos.toasttab.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "All-in-one restaurant POS, sales reporting, and inventory management hardware platform."
+        },
+        {
+          "name": "Next Insurance",
+          "type": "insurance",
+          "url": "https://www.nextinsurance.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Tailored commercial liability, property, and business interruption insurance for physical commercial spaces."
+        },
+        {
+          "name": "Ramp Corporate Cards",
+          "type": "neobank",
+          "url": "https://ramp.com/?utm_source=calcglobal&utm_medium=affiliate",
+          "description": "Corporate card and spend management software with automated vendor price intelligence and rent tracking."
+        }
+      ]
+    }
+  ]
+}

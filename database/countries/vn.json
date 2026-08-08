@@ -1,0 +1,455 @@
+{
+  "country": "Vietnam",
+  "country_code": "VN",
+  "languages": [
+    "vi",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "gross-to-net-salary-vietnam",
+      "title_native": "Tính Lương Gross Sang Net & Thuế TNCN (BHXH, BHYT, BHTN)",
+      "title_en": "Vietnam Gross to Net Salary & Personal Income Tax (PIT) Calculator",
+      "search_terms_native": [
+        "tính lương gross sang net",
+        "cách tính thuế tncn 2026",
+        "bảng tính lương net sang gross",
+        "bảo hiểm xã hội bắt buộc 2026",
+        "giảm trừ gia cảnh"
+      ],
+      "description_native": "Công cụ quy đổi lương Gross sang Net và ngược lại, tính chính xác các khoản đóng Bảo hiểm xã hội (8%), BHYT (1.5%), BHTN (1%), và Thuế TNCN theo mức giảm trừ gia cảnh mới nhất.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Lương Gross hàng tháng (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dependents",
+          "label_native": "Số người phụ thuộc",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "region",
+          "label_native": "Vùng lương tối thiểu",
+          "type": "select",
+          "options": [
+            {
+              "value": "region_1",
+              "label_native": "Vùng I (Hà Nội, TP.HCM, Bình Dương, Đồng Nai... - 4.960.000đ)"
+            },
+            {
+              "value": "region_2",
+              "label_native": "Vùng II (Hải Phòng, Đà Nẵng, Cần Thơ, Nha Trang... - 4.410.000đ)"
+            },
+            {
+              "value": "region_3",
+              "label_native": "Vùng III (Các thành phố/thị xã thuộc tỉnh còn lại - 3.860.000đ)"
+            },
+            {
+              "value": "region_4",
+              "label_native": "Vùng IV (Các địa bàn còn lại - 3.450.000đ)"
+            }
+          ]
+        },
+        {
+          "name": "custom_insurance_salary",
+          "label_native": "Mức lương đóng bảo hiểm (Nhập 0 nếu đóng trên lương thực tế)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. INSURANCE CAP & CONTRIBUTION RATES:\n   - Statutory Base Salary (Lương cơ sở) = 2,340,000 VND/month.\n   - Max Salary Base for BHXH (Social Insurance) & BHYT (Health Insurance) = 20 x Base Salary = 46,800,000 VND.\n   - Max Salary Base for BHTN (Unemployment Insurance) = 20 x Regional Minimum Wage (e.g., Region 1 max = 20 x 4,960,000 = 99,200,000 VND).\n   - Employee Social Insurance (BHXH): 8% of Insurance Base Salary.\n   - Employee Health Insurance (BHYT): 1.5% of Insurance Base Salary.\n   - Employee Unemployment Insurance (BHTN): 1% of Insurance Base Salary.\n   - Employer Insurance Contributions: BHXH 17.5% (or 17% + 0.5% OSH), BHYT 3%, BHTN 1%, Trade Union Fee 2% = Total 23.5%.\n\n2. PERSONAL DEDUCTIONS (Giảm trừ gia cảnh):\n   - Personal exemption for taxpayer (Bản thân): 11,000,000 VND/month.\n   - Dependent exemption (Người phụ thuộc): 4,400,000 VND/month per dependent.\n\n3. TAXABLE INCOME & PROGRESSIVE PIT BRACKETS (Thuế TNCN lũy tiến):\n   - Net Income before Tax = Gross Salary - (BHXH + BHYT + BHTN).\n   - Taxable Income (Thu nhập tính thuế) = Net Income before Tax - Personal Exemption - (Dependents x 4,400,000).\n   - If Taxable Income <= 0, PIT = 0.\n   - Progressive Tax Brackets:\n     * Bracket 1: Up to 5,000,000 VND: 5%\n     * Bracket 2: Over 5,000,000 to 10,000,000 VND: 10% (formula: Taxable Income x 10% - 250,000 VND)\n     * Bracket 3: Over 10,000,000 to 18,000,000 VND: 15% (formula: Taxable Income x 15% - 750,000 VND)\n     * Bracket 4: Over 18,000,000 to 32,000,000 VND: 20% (formula: Taxable Income x 20% - 1,650,000 VND)\n     * Bracket 5: Over 32,000,000 to 52,000,000 VND: 25% (formula: Taxable Income x 25% - 3,250,000 VND)\n     * Bracket 6: Over 52,000,000 to 80,000,000 VND: 30% (formula: Taxable Income x 30% - 5,850,000 VND)\n     * Bracket 7: Over 80,000,000 VND: 35% (formula: Taxable Income x 35% - 9,850,000 VND).\n   - Net Take-Home Pay (Lương Net) = Gross Salary - Employee Insurance - PIT.",
+      "affiliate_targets": [
+        {
+          "name": "VPBank",
+          "type": "neobank",
+          "description": "High-intent personal salary account opening, credit cards, and instant payroll loans."
+        },
+        {
+          "name": "MISA AMIS HR",
+          "type": "software",
+          "description": "Top HR & payroll management software for Vietnamese enterprises and SMEs."
+        },
+        {
+          "name": "Techcombank",
+          "type": "neobank",
+          "description": "Leading digital salary banking account and zero-fee investment platforms."
+        },
+        {
+          "name": "FWD Vietnam / Manulife",
+          "type": "insurance",
+          "description": "Voluntary health and term life insurance options for high-earning corporate employees."
+        }
+      ]
+    },
+    {
+      "id": "ho-kinh-doanh-tax-calculator",
+      "title_native": "Tính Thuế Hộ Kinh Doanh Cá Thể (VAT & Thuế TNCN)",
+      "title_en": "Vietnam Household Business & Freelance Sole Trader Tax Calculator",
+      "search_terms_native": [
+        "tính thuế hộ kinh doanh cá thể",
+        "thuế khoán hộ kinh doanh",
+        "cách tính thuế vat và tncn hộ kinh doanh",
+        "doanh thu chịu thuế hộ kinh doanh 2026",
+        "thuế hộ kinh doanh bán hàng online"
+      ],
+      "description_native": "Tính thuế Giá trị gia tăng (VAT) và Thuế Thu nhập cá nhân (TNCN) cho hộ kinh doanh cá thể, cá nhân kinh doanh online (Shopee, TikTok Shop), nhà hàng, dịch vụ theo Thông tư 40/2021/TT-BTC.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Tổng doanh thu dự kiến trong năm (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_sector",
+          "label_native": "Ngành nghề hoạt động kinh doanh",
+          "type": "select",
+          "options": [
+            {
+              "value": "trading_ecommerce",
+              "label_native": "Bán buôn, bán lẻ hàng hóa, Thương mại điện tử, Online (VAT 1% + TNCN 0.5%)"
+            },
+            {
+              "value": "services_construction_no_materials",
+              "label_native": "Dịch vụ, xây dựng không bao thầu nguyên vật liệu (VAT 5% + TNCN 2%)"
+            },
+            {
+              "value": "production_transport_services_with_goods",
+              "label_native": "Sản xuất, vận tải, dịch vụ có gắn với hàng hóa, ăn uống (VAT 3% + TNCN 1.5%)"
+            },
+            {
+              "value": "other_business",
+              "label_native": "Hoạt động kinh doanh khác (VAT 2% + TNCN 1%)"
+            }
+          ]
+        },
+        {
+          "name": "declaration_method",
+          "label_native": "Phương pháp kê khai nộp thuế",
+          "type": "select",
+          "options": [
+            {
+              "value": "khoan",
+              "label_native": "Phương pháp khoán (Lump-sum Tax)"
+            },
+            {
+              "value": "ke_khai",
+              "label_native": "Phương pháp kê khai theo tháng/quý (Periodic Declaration)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. TAX THRESHOLD & EXEMPTION:\n   - Household businesses and individual traders with annual revenue of 100,000,000 VND or less are EXEMPT from both Value Added Tax (VAT) and Personal Income Tax (PIT) under Circular 40/2021/TT-BTC.\n\n2. TAX RATES BY BUSINESS SECTOR:\n   - Distribution / Trading of Goods & E-commerce (Shopee, Lazada, TikTok Shop): VAT = 1%, PIT = 0.5% (Total Tax Rate = 1.5%).\n   - Services & Construction without raw materials (IT consulting, design, advisory, rental): VAT = 5%, PIT = 2% (Total Tax Rate = 7.0%).\n   - Production, Transportation, Services attached to Goods (Restaurants, catering, manufacturing, repair): VAT = 3%, PIT = 1.5% (Total Tax Rate = 4.5%).\n   - Other activities: VAT = 2%, PIT = 1% (Total Tax Rate = 3.0%).\n\n3. FORMULA:\n   - Payable VAT = Annual Revenue x VAT Rate.\n   - Payable PIT = Annual Revenue x PIT Rate.\n   - Total Tax Payable = Payable VAT + Payable PIT.\n   - Expenses (rent, inventory costs, employee salaries) are NOT deductible for presumptive/household tax calculation in Vietnam.",
+      "affiliate_targets": [
+        {
+          "name": "KiotViet",
+          "type": "software",
+          "description": "Dominant retail POS and inventory management software for Vietnamese household businesses."
+        },
+        {
+          "name": "Sapo",
+          "type": "software",
+          "description": "Multi-channel e-commerce management and POS solution for Shopee and TikTok Shop sellers."
+        },
+        {
+          "name": "MISA meInvoice / MISA eShop",
+          "type": "software",
+          "description": "e-Invoicing and accounting software compliant with Circular 40 tax declaration rules."
+        },
+        {
+          "name": "VPBank NEO Business",
+          "type": "neobank",
+          "description": "Digital business bank account tailored for sole proprietors and online merchants."
+        }
+      ]
+    },
+    {
+      "id": "bds-tax-registration-calculator",
+      "title_native": "Tính Thuế Mua Bán Nhà Đất & Lệ Phí Trước Bạ Bất Động Sản",
+      "title_en": "Vietnam Property Transfer Tax & Stamp Duty Registration Fee Calculator",
+      "search_terms_native": [
+        "tính thuế chuyển nhượng bất động sản",
+        "lệ phí trước bạ nhà đất 2026",
+        "phí sang tên sổ đỏ hết bao nhiêu",
+        "thuế thu nhập cá nhân bán nhà đất",
+        "phí thẩm định hồ sơ sang tên nhà đất"
+      ],
+      "description_native": "Công cụ tính trọn gói chi phí sang tên Sổ đỏ/Sổ hồng: Thuế TNCN chuyển nhượng (2%), Lệ phí trước bạ (0.5%), Phí thẩm định hồ sơ và Phí công chứng mua bán nhà đất.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "contract_value",
+          "label_native": "Giá trị mua bán ghi trên Hợp đồng (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "state_land_valuation",
+          "label_native": "Giá trị nhà đất theo Bảng giá đất Nhà nước (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "transfer_type",
+          "label_native": "Hình thức chuyển nhượng / Tặng cho",
+          "type": "select",
+          "options": [
+            {
+              "value": "commercial_sale",
+              "label_native": "Mua bán/Chuyển nhượng thông thường"
+            },
+            {
+              "value": "family_gift_inheritance",
+              "label_native": "Tặng cho / Thừa kế giữa vợ chồng, cha mẹ, con cái (Miễn Thuế & Lệ phí)"
+            },
+            {
+              "value": "sole_residence_sale",
+              "label_native": "Bán nhà ở/đất ở duy nhất (Miễn Thuế TNCN)"
+            }
+          ]
+        },
+        {
+          "name": "property_type",
+          "label_native": "Loại bất động sản",
+          "type": "select",
+          "options": [
+            {
+              "value": "residential_land",
+              "label_native": "Đất thổ cư / Nhà đất gắn liền với đất"
+            },
+            {
+              "value": "apartment",
+              "label_native": "Căn hộ chung cư"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. TAXABLE BASE VALUATION:\n   - Taxable Valuation = Maximum of Contract Sale Value and State Land Price Table Valuation (Bảng giá đất quy định bởi UBND cấp tỉnh).\n\n2. TAX & FEE CALCULATIONS:\n   - Personal Income Tax (Thuế TNCN chuyển nhượng BĐS): 2% of Taxable Valuation.\n   - Registration Fee (Lệ phí trước bạ nhà đất): 0.5% of Taxable Valuation (capped at 500,000,000 VND per property).\n   - Notary Fee (Phí công chứng hợp đồng mua bán): Circular 257/2016/TT-BTC scale:\n     * Up to 50M VND: 50,000 VND\n     * Over 50M to 100M VND: 100,000 VND\n     * Over 100M to 1B VND: 0.1% of value\n     * Over 1B to 3B VND: 1M + 0.06% of value over 1B\n     * Over 3B to 5B VND: 2.2M + 0.05% of value over 3B\n     * Over 5B to 10B VND: 3.2M + 0.04% of value over 5B\n     * Over 10B to 100B VND: 5.2M + 0.03% of value over 10B (capped at 70M VND).\n   - Document Assessment & Title Deed Issuance Fee (Phí thẩm định hồ sơ & cấp Sổ đỏ): 0.15% of land value or flat fee (~500,000 - 5,000,000 VND depending on province).\n\n3. STATUTORY EXEMPTIONS:\n   - Transfers between immediate family members (spouse, parents, children, grandparents, grandchildren, siblings) are 100% EXEMPT from PIT (Art 4 Law on PIT) and Registration Fee (Art 10 Decree 140/2016/NĐ-CP).\n   - Individuals selling their sole real estate property in Vietnam are EXEMPT from 2% PIT.",
+      "affiliate_targets": [
+        {
+          "name": "Batdongsan.com.vn",
+          "type": "software",
+          "description": "Leading real estate marketplace portal in Vietnam for property buyers and sellers."
+        },
+        {
+          "name": "Techcombank Home Loans",
+          "type": "neobank",
+          "description": "High payout home mortgage loans with flexible repayment and digital pre-approval."
+        },
+        {
+          "name": "VPBank Mortgage",
+          "type": "neobank",
+          "description": "Top property acquisition financing bank with rapid appraisal services."
+        },
+        {
+          "name": "LuatVietnam",
+          "type": "legal",
+          "description": "Legal advisory service portal and document templates for real estate transfers."
+        }
+      ]
+    },
+    {
+      "id": "tro-cap-thoi-viec-that-nghiep-calculator",
+      "title_native": "Tính Trợ Cấp Thôi Việc, Mất Việc Làm & Trợ Cấp Thất Nghiệp (BHXH)",
+      "title_en": "Vietnam Severance Pay, Redundancy & Unemployment Allowance Calculator",
+      "search_terms_native": [
+        "tính trợ cấp thất nghiệp 2026",
+        "cách tính trợ cấp thôi việc",
+        "trợ cấp mất việc làm điều 47 luật lao động",
+        "điều kiện hưởng bảo hiểm thất nghiệp",
+        "mức hưởng trợ cấp thất nghiệp tối đa"
+      ],
+      "description_native": "Tính toán chính xác số tiền trợ cấp thôi việc (Bộ luật Lao động 2019) do doanh nghiệp trả và tiền trợ cấp thất nghiệp (Luật Việc làm) do Quỹ Bảo hiểm thất nghiệp chi trả khi chấm dứt hợp đồng lao động.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "avg_salary_6m",
+          "label_native": "Lương bình quân đóng bảo hiểm 6 tháng liền kề trước khi nghỉ việc (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "total_years_worked",
+          "label_native": "Tổng thời gian làm việc thực tế tại doanh nghiệp (Số năm)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "bhtn_paid_years",
+          "label_native": "Số năm đã tham gia đóng Bảo hiểm thất nghiệp (BHTN)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "termination_type",
+          "label_native": "Lý do chấm dứt hợp đồng lao động",
+          "type": "select",
+          "options": [
+            {
+              "value": "severance",
+              "label_native": "Thỏa thuận / Hết hạn hợp đồng / Đơn phương hợp pháp (Trợ cấp thôi việc)"
+            },
+            {
+              "value": "redundancy",
+              "label_native": "Thay đổi cơ cấu, công nghệ, tách nhập doanh nghiệp (Trợ cấp mất việc làm)"
+            },
+            {
+              "value": "illegal_resignation",
+              "label_native": "Đơn phương chấm dứt trái pháp luật / Sa thải kỷ luật (Không có trợ cấp)"
+            }
+          ]
+        },
+        {
+          "name": "region",
+          "label_native": "Vùng lương tối thiểu nơi làm việc",
+          "type": "select",
+          "options": [
+            {
+              "value": "region_1",
+              "label_native": "Vùng I (Mức trần thất nghiệp: 24.800.000đ/tháng)"
+            },
+            {
+              "value": "region_2",
+              "label_native": "Vùng II (Mức trần thất nghiệp: 22.050.000đ/tháng)"
+            },
+            {
+              "value": "region_3",
+              "label_native": "Vùng III (Mức trần thất nghiệp: 19.300.000đ/tháng)"
+            },
+            {
+              "value": "region_4",
+              "label_native": "Vùng IV (Mức trần thất nghiệp: 17.250.000đ/tháng)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. SEVERANCE PAY (Trợ cấp thôi việc - Art 46 Labor Code 2019):\n   - Employer pays employees who worked 12+ months.\n   - Qualifying working time = Total working years - BHTN paid years - Years employer paid severance previously.\n   - Fractional year rounding: <= 6 months = 0.5 year; > 6 months = 1.0 year.\n   - Allowance = Qualifying working years x 0.5 x Average 6-month Salary.\n\n2. REDUNDANCY PAY (Trợ cấp mất việc làm - Art 47 Labor Code 2019):\n   - Employer pays employees laid off due to organizational restructuring or economic reasons.\n   - Allowance = Qualifying working years x 1.0 x Average 6-month Salary (Minimum total redundancy allowance = 2 months' salary).\n\n3. UNEMPLOYMENT ALLOWANCE (Trợ cấp thất nghiệp - Employment Law 2013):\n   - Social Insurance Fund (BHXH) pays employees who contributed to BHTN for 12+ months in the 24 months before termination.\n   - Monthly Allowance Rate = 60% x Average 6-month BHTN salary.\n   - Maximum Allowance Cap: Cannot exceed 5 times Regional Minimum Wage (e.g., Region 1 max = 5 x 4,960,000 = 24,800,000 VND/month).\n   - Benefit Duration:\n     * Paid BHTN 12 to 36 months = 3 months of allowance.\n     * For each additional 12 full months of BHTN contribution, employee gets 1 additional month of allowance (maximum 12 months allowance total).",
+      "affiliate_targets": [
+        {
+          "name": "TopCV",
+          "type": "software",
+          "description": "Leading recruitment portal and CV builder for Vietnamese professionals seeking new career opportunities."
+        },
+        {
+          "name": "Cake by VPBank",
+          "type": "neobank",
+          "description": "High-interest digital savings account for managing severance payouts and emergency funds."
+        },
+        {
+          "name": "VietnamWorks",
+          "type": "software",
+          "description": "Premier job search and executive placement platform in Vietnam."
+        },
+        {
+          "name": "Manulife Vietnam",
+          "type": "insurance",
+          "description": "Income protection and health insurance plans for career transition periods."
+        }
+      ]
+    },
+    {
+      "id": "thanh-lap-doanh-nghiep-thue-mon-bai-calculator",
+      "title_native": "Tính Chi Phí Thành Lập Doanh Nghiệp & Thuế Môn Bài (Lệ Phí Môn Bài)",
+      "title_en": "Vietnam Company Incorporation Cost & Annual Business License Tax Calculator",
+      "search_terms_native": [
+        "chi phí thành lập công ty tnhh",
+        "tính thuế môn bài 2026",
+        "lệ phí môn bài theo vốn điều lệ",
+        "thành lập doanh nghiệp mới hết bao nhiêu tiền",
+        "chi phí duy trì công ty hàng năm"
+      ],
+      "description_native": "Ước tính toàn bộ chi phí khởi chạy doanh nghiệp (TNHH, Cổ phần): Lệ phí ĐKKD, Thuế môn bài theo Vốn điều lệ, Chữ ký số (Token CA), Hóa đơn điện tử, Khắc dấu và mở Tài khoản ngân hàng doanh nghiệp.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "charter_capital",
+          "label_native": "Vốn điều lệ đăng ký (VND)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_first_year",
+          "label_native": "Doanh nghiệp mới thành lập năm đầu tiên?",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label_native": "Có (Được MIỄN Lệ phí môn bài năm đầu theo Nghị định 22/2020/NĐ-CP)"
+            },
+            {
+              "value": "no",
+              "label_native": "Không (Nộp lệ phí môn bài bình thường)"
+            }
+          ]
+        },
+        {
+          "name": "digital_certificate_years",
+          "label_native": "Thời hạn chữ ký số (Token CA)",
+          "type": "select",
+          "options": [
+            {
+              "value": "1_year",
+              "label_native": "Gói 1 năm (~1.200.000 VND)"
+            },
+            {
+              "value": "2_years",
+              "label_native": "Gói 2 năm (~1.800.000 VND)"
+            },
+            {
+              "value": "3_years",
+              "label_native": "Gói 3 năm (~2.400.000 VND)"
+            }
+          ]
+        },
+        {
+          "name": "e_invoice_volume",
+          "label_native": "Gói hóa đơn điện tử ban đầu",
+          "type": "select",
+          "options": [
+            {
+              "value": "500_invoices",
+              "label_native": "Gói 500 hóa đơn (~800.000 VND)"
+            },
+            {
+              "value": "1000_invoices",
+              "label_native": "Gói 1.000 hóa đơn (~1.200.000 VND)"
+            },
+            {
+              "value": "2000_invoices",
+              "label_native": "Gói 2.000 hóa đơn (~1.800.000 VND)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. BUSINESS LICENSE TAX RATES (Lệ phí môn bài - Decree 139/2016/NĐ-CP & Decree 22/2020/NĐ-CP):\n   - Newly established enterprises are 100% EXEMPT from Business License Tax for their first calendar year of establishment.\n   - For subsequent years:\n     * Charter Capital > 10,000,000,000 VND (10 billion VND): 3,000,000 VND/year.\n     * Charter Capital <= 10,000,000,000 VND (10 billion VND): 2,000,000 VND/year.\n     * Dependent branches, representative offices, business locations: 1,000,000 VND/year.\n   - If established after July 1st in non-exempt years, 50% annual tax rate applies.\n\n2. INITIAL MANDATORY INCORPORATION & ADMINISTRATIVE FEES:\n   - Business Registration Fee (Lệ phí đăng ký doanh nghiệp): 50,000 VND (0 VND if filed online via National Business Registration Portal dangkykinhdoanh.gov.vn).\n   - National Gazette Announcement Fee (Phí công bố nội dung đăng ký doanh nghiệp): 100,000 VND.\n   - Corporate Seal Engraving (Khắc dấu pháp nhân): ~300,000 VND.\n   - Company Signboard & Tax Signage: ~300,000 VND.\n\n3. DIGITAL & OPERATIONAL COMPLIANCE SETUP:\n   - Digital Signature Token CA (Chữ ký số nộp thuế/kê khai): ~1,200,000 to 2,400,000 VND.\n   - e-Invoice Software & Invoice Volume Package: ~800,000 to 1,800,000 VND.\n   - Business Bank Account Setup & Initial Token Deposit: ~500,000 VND.",
+      "affiliate_targets": [
+        {
+          "name": "MISA AMIS Accounting",
+          "type": "software",
+          "description": "Leading cloud accounting software for newly established Vietnamese companies."
+        },
+        {
+          "name": "Viettel-CA / VNPT-CA",
+          "type": "software",
+          "description": "Dominant digital signature (Token CA) and e-invoice providers for corporate tax compliance."
+        },
+        {
+          "name": "MBBank Biz",
+          "type": "neobank",
+          "description": "Zero-fee digital business account opening for new enterprise incorporations."
+        },
+        {
+          "name": "LuatVietnam",
+          "type": "legal",
+          "description": "Corporate law firm directory and business registration service packages."
+        }
+      ]
+    }
+  ]
+}

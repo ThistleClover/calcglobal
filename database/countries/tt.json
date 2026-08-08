@@ -1,0 +1,57 @@
+{
+  "country": "Trinidad and Tobago",
+  "country_code": "TT",
+  "languages": [
+    "en"
+  ],
+  "currency": "TTD",
+  "calculators": [
+    {
+      "id": "tt-tax-payroll-calculator",
+      "title_native": "Trinidad and Tobago PAYE Income Tax & NIS Calculator",
+      "title_en": "Trinidad and Tobago PAYE Income Tax & NIS Calculator",
+      "search_terms_native": [
+        "trinidad and tobago tax calculator",
+        "trinidad and tobago salary calculator",
+        "income tax tt"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Trinidad and Tobago.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (TTD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Trinidad and Tobago revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Republic Bank",
+          "type": "software",
+          "description": "Top financial tool in Trinidad and Tobago"
+        },
+        {
+          "name": "First Citizens",
+          "type": "software",
+          "description": "Top financial tool in Trinidad and Tobago"
+        }
+      ]
+    }
+  ]
+}

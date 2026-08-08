@@ -1,0 +1,62 @@
+{
+  "country": "South Korea",
+  "country_code": "KR",
+  "languages": [
+    "ko"
+  ],
+  "currency": "KRW",
+  "calculators": [
+    {
+      "id": "kr-tax-payroll-calculator",
+      "title_native": "South Korea 근로소득세 및 4대보험 계산기 (Four Major Insurances)",
+      "title_en": "South Korea 근로소득세 및 4대보험 계산기 (Four Major Insurances)",
+      "search_terms_native": [
+        "south korea tax calculator",
+        "south korea salary calculator",
+        "income tax kr"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for South Korea.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (KRW)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on South Korea revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Douzone",
+          "type": "software",
+          "description": "Top financial tool in South Korea"
+        },
+        {
+          "name": "Toss Bank",
+          "type": "software",
+          "description": "Top financial tool in South Korea"
+        },
+        {
+          "name": "KakaoBank",
+          "type": "software",
+          "description": "Top financial tool in South Korea"
+        }
+      ]
+    }
+  ]
+}

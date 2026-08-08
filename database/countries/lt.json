@@ -1,0 +1,62 @@
+{
+  "country": "Lithuania",
+  "country_code": "LT",
+  "languages": [
+    "lt"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "lt-tax-payroll-calculator",
+      "title_native": "Lithuania Atlyginimo Kalkuliatorius & MB vs Individuali",
+      "title_en": "Lithuania Atlyginimo Kalkuliatorius & MB vs Individuali",
+      "search_terms_native": [
+        "lithuania tax calculator",
+        "lithuania salary calculator",
+        "income tax lt"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Lithuania.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Lithuania revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Swedbank LT",
+          "type": "software",
+          "description": "Top financial tool in Lithuania"
+        },
+        {
+          "name": "SEB",
+          "type": "software",
+          "description": "Top financial tool in Lithuania"
+        },
+        {
+          "name": "Merkurita",
+          "type": "software",
+          "description": "Top financial tool in Lithuania"
+        }
+      ]
+    }
+  ]
+}

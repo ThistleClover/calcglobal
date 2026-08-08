@@ -1,0 +1,505 @@
+// src/lib/engine/countries/au.ts
+// Australia ATO PAYG Income Tax Engine — 2026/27 Tax Year
+// Sources: ATO.gov.au, Tax Rates 2026-27, Medicare Levy Act, HELP Act
+
+import type { TaxInput, TaxResult } from '../types';
+
+function applyResidentTax(taxable: number): number {
+  if (taxable <= 18200) return 0;
+  if (taxable <= 45000) return (taxable - 18200) * 0.19;
+  if (taxable <= 135000) return 5092 + (taxable - 45000) * 0.325;
+  if (taxable <= 190000) return 34192 + (taxable - 135000) * 0.37;
+  return 54592 + (taxable - 190000) * 0.45;
+}
+
+function applyNonResidentTax(taxable: number): number {
+  if (taxable <= 135000) return taxable * 0.325;
+  if (taxable <= 190000) return 43875 + (taxable - 135000) * 0.37;
+  return 64225 + (taxable - 190000) * 0.45;
+}
+
+function applyLITO(incomeTax: number, taxable: number): number {
+  // Low Income Tax Offset: max $700, phases out
+  if (taxable <= 37500) return Math.min(incomeTax, 700);
+  if (taxable <= 45000) return Math.min(incomeTax, Math.max(0, 700 - (taxable - 37500) * 0.05));
+  if (taxable <= 66667) return Math.min(incomeTax, Math.max(0, 325 - (taxable - 45000) * 0.015));
+  return 0;
+}
+
+function calcMedicare(taxable: number, privateHealth: boolean, residency: string): number {
+  if (residency !== 'resident') return 0;
+  // Medicare Levy: 2%, reduced for low income
+  let levy = 0;
+  if (taxable > 26000) {
+    levy = taxable * 0.02;
+  } else if (taxable > 22801) {
+    levy = (taxable - 22801) * 0.10; // Phase-in
+  }
+  // Medicare Levy Surcharge (if no private health and income > $93,000)
+  let surcharge = 0;
+  if (!privateHealth && taxable > 93000) {
+    if (taxable <= 108000) surcharge = taxable * 0.01;
+    else if (taxable <= 144000) surcharge = taxable * 0.0125;
+    else surcharge = taxable * 0.015;
+  }
+  return levy + surcharge;
+}
+
+function calcHECS(income: number): { amount: number; rate: number } {
+  // 2026/27 HECS/HELP repayment thresholds
+  const tiers = [
+    [54435, 0.010], [62739, 0.020], [70000, 0.025], [75001, 0.030],
+    [80001, 0.040], [85001, 0.045], [90001, 0.050], [95001, 0.055],
+    [105001, 0.060], [115001, 0.065], [125001, 0.075], [141848, 0.100],
+  ] as [number, number][];
+
+  let rate = 0;
+  for (const [threshold, r] of tiers) {
+    if (income >= threshold) rate = r;
+  }
+  return { amount: income * rate, rate };
+}
+
+export function calculate(inputs: TaxInput): TaxResult {
+  const calcId = String(inputs.calculator_id || 'ato-payg-income-tax-calculator');
+
+  switch (calcId) {
+    case 'sole-trader-tax-calculator':
+      return calculateSoleTrader(inputs);
+    case 'superannuation-calculator':
+      return calculateSuperannuation(inputs);
+    case 'stamp-duty-calculator':
+      return calculateStampDuty(inputs);
+    case 'hecs-repayment-calculator':
+      return calculateHecsRepayment(inputs);
+    case 'ato-payg-income-tax-calculator':
+    default:
+      return calculatePrimary(inputs);
+  }
+}
+
+function calculatePrimary(inputs: TaxInput): TaxResult {
+  const grossAnnual = Math.max(0, parseFloat(String(inputs.gross_annual)) || 0);
+  const residency = String(inputs.residency || 'resident');
+  const hecsDebt = String(inputs.hecs_debt || 'no') === 'yes';
+  const privateHealth = String(inputs.private_health || 'no') === 'yes';
+
+  // Tax on taxable income
+  const incomeTax = residency === 'resident'
+    ? applyResidentTax(grossAnnual)
+    : applyNonResidentTax(grossAnnual);
+
+  // LITO (residents only)
+  const litoOffset = residency === 'resident' ? applyLITO(incomeTax, grossAnnual) : 0;
+  const taxAfterLITO = Math.max(0, incomeTax - litoOffset);
+
+  // Medicare
+  const medicareTotal = calcMedicare(grossAnnual, privateHealth, residency);
+  const medicareLevy = residency === 'resident' ? Math.min(medicareTotal, grossAnnual * 0.02) : 0;
+  const medicareSurcharge = Math.max(0, medicareTotal - medicareLevy);
+
+  // HECS/HELP
+  const hecs = hecsDebt ? calcHECS(grossAnnual) : { amount: 0, rate: 0 };
+
+  const totalTax = taxAfterLITO + medicareTotal + hecs.amount;
+  const netIncome = Math.max(0, grossAnnual - totalTax);
+  const effectiveRate = grossAnnual > 0 ? totalTax / grossAnnual : 0;
+
+  const breakdown = [
+    { label: 'Gross Annual Income', value: grossAnnual },
+    { label: 'Income Tax (ATO Rates)', value: incomeTax, isDeduction: true },
+    ...(litoOffset > 0 ? [{ label: 'Low Income Tax Offset (LITO)', value: litoOffset, isDeduction: false }] : []),
+    { label: 'Tax After LITO', value: taxAfterLITO, isTotal: true },
+    { label: 'Medicare Levy (2%)', value: medicareLevy, isDeduction: true },
+    ...(medicareSurcharge > 0 ? [{ label: 'Medicare Levy Surcharge (no private health)', value: medicareSurcharge, isDeduction: true }] : []),
+    ...(hecs.amount > 0 ? [{ label: `HECS/HELP Repayment (${(hecs.rate * 100).toFixed(1)}%)`, value: hecs.amount, isDeduction: true }] : []),
+    { label: 'Annual Net Take-Home', value: netIncome, isFinal: true },
+    { label: 'Monthly Take-Home', value: netIncome / 12, isTotal: true },
+  ];
+
+  const insights: string[] = [];
+  if (!privateHealth && grossAnnual > 93000) {
+    insights.push(`You are paying the Medicare Levy Surcharge (~A$${Math.round(medicareSurcharge).toLocaleString()}/yr). Private hospital cover could save you money.`);
+  }
+  if (hecsDebt && hecs.amount > 0) {
+    insights.push(`Your compulsory HECS/HELP repayment is ${(hecs.rate * 100).toFixed(1)}% of income — A$${Math.round(hecs.amount).toLocaleString()} this year.`);
+  }
+  if (grossAnnual > 45000 && grossAnnual < 135000) {
+    insights.push('You are in the 32.5% marginal tax bracket. Super salary sacrifice and deductible contributions can reduce your taxable income.');
+  }
+
+  return {
+    grossIncome: grossAnnual,
+    netIncome,
+    totalTax,
+    effectiveRate,
+    breakdown,
+    currency: 'AUD',
+    currencySymbol: 'A$',
+    additionalInsights: insights,
+  };
+}
+
+function calculateSoleTrader(inputs: TaxInput): TaxResult {
+  const grossRevenue = Math.max(0, parseFloat(String(inputs.gross_revenue)) || 0);
+  const businessExpenses = Math.max(0, parseFloat(String(inputs.business_expenses)) || 0);
+  const homeOfficeCost = Math.max(0, parseFloat(String(inputs.home_office_cost)) || 0);
+  const homeOfficePct = Math.min(100, Math.max(0, parseFloat(String(inputs.home_office_pct)) || 0)) / 100;
+  const vehicleCost = Math.max(0, parseFloat(String(inputs.vehicle_cost)) || 0);
+  const vehicleBusinessPct = Math.min(100, Math.max(0, parseFloat(String(inputs.vehicle_business_pct)) || 0)) / 100;
+  const voluntarySuper = Math.max(0, parseFloat(String(inputs.super_concessional_contribution)) || 0);
+
+  const homeOfficeDeduction = homeOfficeCost * homeOfficePct;
+  const vehicleDeduction = vehicleCost * vehicleBusinessPct;
+  const totalOperatingDeductions = businessExpenses + homeOfficeDeduction + vehicleDeduction;
+
+  const grossBusinessProfit = Math.max(0, grossRevenue - totalOperatingDeductions);
+  const deductibleSuper = Math.min(30000, voluntarySuper);
+  const taxableIncome = Math.max(0, grossBusinessProfit - deductibleSuper);
+
+  const incomeTax = applyResidentTax(taxableIncome);
+  const lito = applyLITO(incomeTax, taxableIncome);
+  const taxAfterLITO = Math.max(0, incomeTax - lito);
+
+  // Small Business Income Tax Offset (SBITO): 16% of tax on business income, max $1,000
+  const sbito = Math.min(1000, taxAfterLITO * 0.16);
+  const taxAfterSBITO = Math.max(0, taxAfterLITO - sbito);
+
+  const medicare = calcMedicare(taxableIncome, false, 'resident');
+  const totalTax = taxAfterSBITO + medicare;
+
+  const netIncome = Math.max(0, taxableIncome - totalTax);
+  const effectiveRate = grossRevenue > 0 ? totalTax / grossRevenue : 0;
+
+  const breakdown = [
+    { label: 'Gross Business Revenue', value: grossRevenue },
+    { label: 'General Operating Expenses', value: businessExpenses, isDeduction: true },
+    { label: `Home Office Deduction (${(homeOfficePct * 100).toFixed(0)}% of costs)`, value: homeOfficeDeduction, isDeduction: true },
+    { label: `Vehicle Expense Deduction (${(vehicleBusinessPct * 100).toFixed(0)}% of costs)`, value: vehicleDeduction, isDeduction: true },
+    { label: 'Gross Business Profit', value: grossBusinessProfit, isTotal: true },
+    { label: 'Tax-Deductible Super Contribution (capped $30k)', value: deductibleSuper, isDeduction: true },
+    { label: 'Net Taxable Income', value: taxableIncome, isTotal: true },
+    { label: 'Income Tax (ATO Rates)', value: incomeTax, isDeduction: true },
+    ...(lito > 0 ? [{ label: 'Low Income Tax Offset (LITO)', value: lito, isDeduction: false }] : []),
+    ...(sbito > 0 ? [{ label: 'Small Business Income Tax Offset (SBITO — 16%, max $1,000)', value: sbito, isDeduction: false }] : []),
+    { label: 'Medicare Levy (2%)', value: medicare, isDeduction: true },
+    { label: 'Total ATO Tax Payable', value: totalTax, isDeduction: true, percentage: grossRevenue > 0 ? (totalTax / grossRevenue) * 100 : 0 },
+    { label: 'Net Take-Home Sole Trader Income', value: netIncome, isFinal: true },
+  ];
+
+  const insights: string[] = [];
+  if (sbito > 0) {
+    insights.push(`Small Business Income Tax Offset (SBITO) saved you A$${Math.round(sbito).toLocaleString()} in tax.`);
+  }
+  if (voluntarySuper > 30000) {
+    insights.push(`Your voluntary super contribution of A$${voluntarySuper.toLocaleString()} exceeds the annual A$30,000 concessional cap. Excess amounts are taxed at marginal rates.`);
+  }
+  if (taxableIncome > 45000) {
+    insights.push('As a sole trader earning over A$45,000, consider keeping track of logbooks and home office hours to maximize legitimate deductions.');
+  }
+
+  return {
+    grossIncome: grossRevenue,
+    netIncome,
+    totalTax,
+    effectiveRate,
+    breakdown,
+    currency: 'AUD',
+    currencySymbol: 'A$',
+    additionalInsights: insights,
+  };
+}
+
+function calculateSuperannuation(inputs: TaxInput): TaxResult {
+  const currentBalance = Math.max(0, parseFloat(String(inputs.current_balance)) || 0);
+  const salary = Math.max(0, parseFloat(String(inputs.annual_salary)) || 0);
+  const years = Math.max(1, Math.min(50, parseFloat(String(inputs.years_to_retirement)) || 25));
+  const voluntaryPct = Math.max(0, parseFloat(String(inputs.voluntary_contribution_pct)) || 0) / 100;
+  const returnRate = Math.max(0, parseFloat(String(inputs.expected_return_pct)) || 7) / 100;
+
+  const sgRate = 0.12; // 12% Super Guarantee from 1 July 2025
+  const totalContribRate = sgRate + voluntaryPct;
+  const grossAnnualContribution = salary * totalContribRate;
+
+  // Division 293 check (> $250k total income)
+  const isDiv293 = (salary + grossAnnualContribution) > 250000;
+  const contribTaxRate = isDiv293 ? 0.30 : 0.15;
+  const netAnnualContribution = grossAnnualContribution * (1 - contribTaxRate);
+
+  // Future Value calculation
+  const r = returnRate;
+  const n = years;
+  const fvPV = currentBalance * Math.pow(1 + r, n);
+  const fvPMT = r > 0 ? netAnnualContribution * ((Math.pow(1 + r, n) - 1) / r) : netAnnualContribution * n;
+  const projectedBalance = fvPV + fvPMT;
+
+  const totalNetContributions = currentBalance + netAnnualContribution * n;
+  const totalGrossContributions = currentBalance + grossAnnualContribution * n;
+  const investmentGrowth = Math.max(0, projectedBalance - totalNetContributions);
+
+  // 4% Safe Withdrawal Rule monthly drawdown
+  const annualDrawdown = projectedBalance * 0.04;
+  const monthlyDrawdown = annualDrawdown / 12;
+
+  const breakdown = [
+    { label: 'Current Super Balance', value: currentBalance },
+    { label: `Annual Salary`, value: salary },
+    { label: `Employer SG Contribution (12%)`, value: salary * sgRate },
+    { label: `Voluntary Contribution (${(voluntaryPct * 100).toFixed(1)}%)`, value: salary * voluntaryPct },
+    { label: `Gross Annual Contribution`, value: grossAnnualContribution, isTotal: true },
+    { label: `Contribution Tax Rate (${(contribTaxRate * 100).toFixed(0)}%${isDiv293 ? ' Div 293' : ''})`, value: grossAnnualContribution * contribTaxRate, isDeduction: true },
+    { label: `Net Annual Contribution to Fund`, value: netAnnualContribution, isTotal: true },
+    { label: `Total Gross Contributions Over ${years} Years`, value: totalGrossContributions },
+    { label: `Total Investment Return Growth`, value: investmentGrowth },
+    { label: `Projected Balance at Retirement`, value: projectedBalance, isFinal: true },
+    { label: `Estimated Monthly Drawdown (4% Rule)`, value: monthlyDrawdown, isTotal: true },
+  ];
+
+  const insights: string[] = [];
+  if (isDiv293) {
+    insights.push(`Your income exceeds A$250,000. Division 293 applies an extra 15% tax on concessional super contributions (30% total).`);
+  }
+  if (grossAnnualContribution > 30000) {
+    insights.push(`Your total annual super contributions (A$${Math.round(grossAnnualContribution).toLocaleString()}) exceed the A$30,000 concessional cap.`);
+  }
+  insights.push(`Compound interest is projected to add A$${Math.round(investmentGrowth).toLocaleString()} to your retirement nest egg over ${years} years.`);
+
+  return {
+    grossIncome: projectedBalance,
+    netIncome: projectedBalance,
+    totalTax: grossAnnualContribution * contribTaxRate * years,
+    effectiveRate: grossAnnualContribution > 0 ? (grossAnnualContribution * contribTaxRate) / grossAnnualContribution : 0,
+    breakdown,
+    currency: 'AUD',
+    currencySymbol: 'A$',
+    additionalInsights: insights,
+  };
+}
+
+function calculateStampDuty(inputs: TaxInput): TaxResult {
+  const price = Math.max(0, parseFloat(String(inputs.property_price)) || 0);
+  const state = String(inputs.state || 'NSW').toUpperCase();
+  const buyerType = String(inputs.buyer_type || 'owner_occupier');
+
+  let baseDuty = 0;
+  let fhbExemption = 0;
+  let foreignSurchargeRate = 0;
+
+  if (buyerType === 'foreign') {
+    if (['NSW', 'VIC', 'QLD', 'TAS'].includes(state)) foreignSurchargeRate = 0.08;
+    else if (['WA', 'SA'].includes(state)) foreignSurchargeRate = 0.07;
+    else foreignSurchargeRate = 0;
+  }
+
+  switch (state) {
+    case 'NSW': {
+      if (price <= 17000) baseDuty = price * 0.0125;
+      else if (price <= 36000) baseDuty = 212 + (price - 17000) * 0.015;
+      else if (price <= 93000) baseDuty = 497 + (price - 36000) * 0.0175;
+      else if (price <= 351000) baseDuty = 1495 + (price - 93000) * 0.035;
+      else if (price <= 1168000) baseDuty = 10525 + (price - 351000) * 0.045;
+      else baseDuty = 47290 + (price - 1168000) * 0.055;
+
+      if (buyerType === 'first_home') {
+        if (price <= 800000) fhbExemption = baseDuty;
+        else if (price <= 1000000) fhbExemption = baseDuty * ((1000000 - price) / 200000);
+      }
+      break;
+    }
+    case 'VIC': {
+      if (price <= 25000) baseDuty = price * 0.014;
+      else if (price <= 130000) baseDuty = 350 + (price - 25000) * 0.024;
+      else if (price <= 960000) baseDuty = 2870 + (price - 130000) * 0.06;
+      else if (price <= 2000000) baseDuty = price * 0.055;
+      else baseDuty = 110000 + (price - 2000000) * 0.065;
+
+      if (buyerType === 'first_home') {
+        if (price <= 600000) fhbExemption = baseDuty;
+        else if (price <= 750000) fhbExemption = baseDuty * ((750000 - price) / 150000);
+      }
+      break;
+    }
+    case 'QLD': {
+      if (price <= 5000) baseDuty = 0;
+      else if (price <= 75000) baseDuty = (price - 5000) * 0.015;
+      else if (price <= 540000) baseDuty = 1050 + (price - 75000) * 0.035;
+      else if (price <= 1000000) baseDuty = 17325 + (price - 540000) * 0.045;
+      else baseDuty = 38025 + (price - 1000000) * 0.0575;
+
+      if (buyerType === 'first_home') {
+        if (price <= 700000) fhbExemption = baseDuty;
+        else if (price <= 800000) fhbExemption = baseDuty * ((800000 - price) / 100000);
+      }
+      break;
+    }
+    case 'WA': {
+      if (price <= 120000) baseDuty = price * 0.019;
+      else if (price <= 150000) baseDuty = 2280 + (price - 120000) * 0.0285;
+      else if (price <= 360000) baseDuty = 3135 + (price - 150000) * 0.038;
+      else if (price <= 725000) baseDuty = 11115 + (price - 360000) * 0.0475;
+      else baseDuty = 28452.5 + (price - 725000) * 0.0515;
+
+      if (buyerType === 'first_home') {
+        if (price <= 450000) fhbExemption = baseDuty;
+        else if (price <= 600000) fhbExemption = baseDuty * ((600000 - price) / 150000);
+      }
+      break;
+    }
+    case 'SA': {
+      if (price <= 12000) baseDuty = price * 0.01;
+      else if (price <= 30000) baseDuty = 120 + (price - 12000) * 0.02;
+      else if (price <= 50000) baseDuty = 480 + (price - 30000) * 0.03;
+      else if (price <= 100000) baseDuty = 1080 + (price - 50000) * 0.035;
+      else if (price <= 200000) baseDuty = 2830 + (price - 100000) * 0.04;
+      else if (price <= 250000) baseDuty = 6830 + (price - 200000) * 0.0425;
+      else if (price <= 300000) baseDuty = 8955 + (price - 250000) * 0.0475;
+      else if (price <= 500000) baseDuty = 11330 + (price - 300000) * 0.05;
+      else baseDuty = 21330 + (price - 500000) * 0.055;
+
+      if (buyerType === 'first_home') fhbExemption = baseDuty;
+      break;
+    }
+    case 'TAS': {
+      if (price <= 3000) baseDuty = 50;
+      else if (price <= 25000) baseDuty = 50 + (price - 3000) * 0.0175;
+      else if (price <= 75000) baseDuty = 435 + (price - 25000) * 0.0225;
+      else if (price <= 200000) baseDuty = 1560 + (price - 75000) * 0.035;
+      else if (price <= 375000) baseDuty = 5935 + (price - 200000) * 0.04;
+      else baseDuty = 12935 + (price - 375000) * 0.045;
+
+      if (buyerType === 'first_home' && price <= 600000) fhbExemption = baseDuty * 0.5;
+      break;
+    }
+    case 'ACT': {
+      if (price <= 260000) baseDuty = price * 0.012;
+      else if (price <= 300000) baseDuty = 3120 + (price - 260000) * 0.022;
+      else if (price <= 500000) baseDuty = 4000 + (price - 300000) * 0.034;
+      else if (price <= 750000) baseDuty = 10800 + (price - 500000) * 0.043;
+      else if (price <= 1000000) baseDuty = 21550 + (price - 750000) * 0.055;
+      else baseDuty = 35300 + (price - 1000000) * 0.045;
+
+      if (buyerType === 'first_home') fhbExemption = baseDuty;
+      break;
+    }
+    case 'NT': default: {
+      if (price <= 525000) baseDuty = (0.06571441 * Math.pow(price / 1000, 2) + 15 * (price / 1000));
+      else if (price <= 3000000) baseDuty = price * 0.0495;
+      else baseDuty = price * 0.0575;
+      break;
+    }
+  }
+
+  const netStampDuty = Math.max(0, baseDuty - fhbExemption);
+  const foreignSurcharge = price * foreignSurchargeRate;
+  const transferFees = 1500;
+  const totalTaxAndFees = netStampDuty + foreignSurcharge + transferFees;
+  const totalPurchaseCost = price + totalTaxAndFees;
+  const effectiveRate = price > 0 ? netStampDuty / price : 0;
+
+  const breakdown = [
+    { label: 'Property Purchase Price', value: price },
+    { label: `Base Stamp Duty (${state})`, value: baseDuty, isDeduction: true },
+    ...(fhbExemption > 0 ? [{ label: 'First Home Buyer Concession / Exemption', value: fhbExemption, isDeduction: false }] : []),
+    { label: 'Net Stamp Duty Payable', value: netStampDuty, isTotal: true },
+    ...(foreignSurcharge > 0 ? [{ label: `Foreign Purchaser Surcharge (${(foreignSurchargeRate * 100).toFixed(0)}%)`, value: foreignSurcharge, isDeduction: true }] : []),
+    { label: 'Estimated Transfer & Registration Fees', value: transferFees, isDeduction: true },
+    { label: 'Total Stamp Duty & Fees', value: totalTaxAndFees, isDeduction: true, percentage: price > 0 ? (totalTaxAndFees / price) * 100 : 0 },
+    { label: 'Total Capital Required for Purchase', value: totalPurchaseCost, isFinal: true },
+  ];
+
+  const insights: string[] = [];
+  if (fhbExemption > 0) {
+    insights.push(`First Home Buyer concession saved you A$${Math.round(fhbExemption).toLocaleString()} in transfer duty.`);
+  }
+  if (foreignSurcharge > 0) {
+    insights.push(`Foreign purchaser surcharge adds A$${Math.round(foreignSurcharge).toLocaleString()} (${(foreignSurchargeRate * 100).toFixed(0)}%) to your purchase costs.`);
+  }
+
+  return {
+    grossIncome: price,
+    netIncome: totalPurchaseCost,
+    totalTax: totalTaxAndFees,
+    effectiveRate,
+    breakdown,
+    currency: 'AUD',
+    currencySymbol: 'A$',
+    additionalInsights: insights,
+  };
+}
+
+function calculateHecsRepayment(inputs: TaxInput): TaxResult {
+  const initialDebt = Math.max(0, parseFloat(String(inputs.hecs_debt_balance)) || 0);
+  let income = Math.max(0, parseFloat(String(inputs.annual_income)) || 0);
+  const growthRate = Math.max(0, parseFloat(String(inputs.income_growth_pct)) || 3) / 100;
+  const voluntaryPayment = Math.max(0, parseFloat(String(inputs.voluntary_annual_repayment)) || 0);
+
+  const indexationRate = 0.038;
+
+  const firstYearHecs = calcHECS(income);
+  const firstYearCompulsory = Math.min(initialDebt, firstYearHecs.amount);
+
+  let balance = initialDebt;
+  let currIncome = income;
+  let years = 0;
+  let totalCompulsory = 0;
+  let totalVoluntary = 0;
+  let totalIndexation = 0;
+
+  while (balance > 0 && years < 30) {
+    years++;
+    const compulsoryRate = calcHECS(currIncome).rate;
+    const compulsoryAmt = Math.min(balance, currIncome * compulsoryRate);
+    const voluntaryAmt = Math.min(balance - compulsoryAmt, voluntaryPayment);
+    const totalRepaidThisYear = compulsoryAmt + voluntaryAmt;
+
+    totalCompulsory += compulsoryAmt;
+    totalVoluntary += voluntaryAmt;
+    balance -= totalRepaidThisYear;
+
+    if (balance > 0) {
+      const indexationThisYear = balance * indexationRate;
+      totalIndexation += indexationThisYear;
+      balance += indexationThisYear;
+    }
+
+    currIncome *= (1 + growthRate);
+  }
+
+  const totalRepaid = totalCompulsory + totalVoluntary;
+  const effectiveRate = income > 0 ? firstYearHecs.amount / income : 0;
+
+  const breakdown = [
+    { label: 'Initial HECS/HELP Debt Balance', value: initialDebt },
+    { label: 'Current Annual Repayment Income', value: income },
+    { label: `Year 1 Compulsory Repayment Rate (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearHecs.amount, isDeduction: true },
+    ...(voluntaryPayment > 0 ? [{ label: 'Year 1 Voluntary Repayment', value: voluntaryPayment, isDeduction: true }] : []),
+    { label: 'Projected Years to Debt-Free', value: years, isTotal: true },
+    { label: 'Total Compulsory Repayments Paid', value: totalCompulsory, isDeduction: true },
+    ...(totalVoluntary > 0 ? [{ label: 'Total Voluntary Repayments Paid', value: totalVoluntary, isDeduction: true }] : []),
+    { label: 'Total Indexation Added (CPI ~3.8%/yr)', value: totalIndexation, isDeduction: true },
+    { label: 'Total Out-of-Pocket Cost to Pay Off HELP Debt', value: totalRepaid, isFinal: true },
+  ];
+
+  const insights: string[] = [];
+  if (initialDebt === 0) {
+    insights.push('You have no outstanding HECS/HELP debt.');
+  } else if (income < 54435) {
+    insights.push(`Your annual income (A$${income.toLocaleString()}) is below the minimum A$54,435 threshold. No compulsory repayments are required this year, but indexation will still apply on 1 June.`);
+  } else {
+    insights.push(`At your current income level and projected salary growth, your HECS/HELP debt will be completely paid off in ${years} year${years > 1 ? 's' : ''}.`);
+  }
+  if (voluntaryPayment > 0) {
+    insights.push(`Making voluntary payments of A$${voluntaryPayment.toLocaleString()}/yr will reduce your overall payoff time and indexation costs.`);
+  }
+
+  return {
+    grossIncome: income,
+    netIncome: Math.max(0, income - firstYearCompulsory),
+    totalTax: firstYearCompulsory,
+    effectiveRate,
+    breakdown,
+    currency: 'AUD',
+    currencySymbol: 'A$',
+    additionalInsights: insights,
+  };
+}

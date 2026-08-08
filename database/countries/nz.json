@@ -1,0 +1,62 @@
+{
+  "country": "New Zealand",
+  "country_code": "NZ",
+  "languages": [
+    "en"
+  ],
+  "currency": "NZD",
+  "calculators": [
+    {
+      "id": "nz-tax-payroll-calculator",
+      "title_native": "New Zealand PAYE Income Tax & KiwiSaver Contribution",
+      "title_en": "New Zealand PAYE Income Tax & KiwiSaver Contribution",
+      "search_terms_native": [
+        "new zealand tax calculator",
+        "new zealand salary calculator",
+        "income tax nz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for New Zealand.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (NZD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on New Zealand revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Xero NZ",
+          "type": "software",
+          "description": "Top financial tool in New Zealand"
+        },
+        {
+          "name": "ANZ NZ",
+          "type": "software",
+          "description": "Top financial tool in New Zealand"
+        },
+        {
+          "name": "TaxPay",
+          "type": "software",
+          "description": "Top financial tool in New Zealand"
+        }
+      ]
+    }
+  ]
+}

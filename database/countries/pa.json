@@ -1,0 +1,57 @@
+{
+  "country": "Panama",
+  "country_code": "PA",
+  "languages": [
+    "es"
+  ],
+  "currency": "PAB",
+  "calculators": [
+    {
+      "id": "pa-tax-payroll-calculator",
+      "title_native": "Panama Calculadora ISR y Seguro Social Panamá",
+      "title_en": "Panama Calculadora ISR y Seguro Social Panamá",
+      "search_terms_native": [
+        "panama tax calculator",
+        "panama salary calculator",
+        "income tax pa"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Panama.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (PAB)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Panama revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Banco General",
+          "type": "software",
+          "description": "Top financial tool in Panama"
+        },
+        {
+          "name": "Alegra Panamá",
+          "type": "software",
+          "description": "Top financial tool in Panama"
+        }
+      ]
+    }
+  ]
+}

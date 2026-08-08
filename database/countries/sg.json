@@ -1,0 +1,407 @@
+{
+  "country": "Singapore",
+  "country_code": "SG",
+  "languages": [
+    "en-SG",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "sg-take-home-pay-cpf-calculator",
+      "title_native": "Singapore Take-Home Pay & CPF Contribution Calculator (IRAS Income Tax & CPF OW/AW Ceiling 2025/2026)",
+      "title_en": "Singapore Take-Home Pay & CPF Contribution Calculator (IRAS Income Tax & CPF OW/AW Ceiling 2025/2026)",
+      "search_terms_native": [
+        "singapore take home pay calculator",
+        "cpf contribution calculator 2025",
+        "iras salary tax calculator",
+        "net salary calculator singapore",
+        "employer employee cpf calculator sg"
+      ],
+      "description_native": "Calculate your net monthly take-home pay, IRAS personal income tax, and mandatory employee & employer CPF contributions under the updated 2024-2026 OW salary ceiling ($6,800 to $8,000) and age-tiered contribution rates for Singapore Citizens and Permanent Residents (PR Year 1, 2, and 3+).",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_monthly_salary",
+          "label_native": "Gross Monthly Salary (Ordinary Wages - OW) (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_bonus",
+          "label_native": "Annual Bonus / Additional Wages (AW) (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "residency_status",
+          "label_native": "Residency & PR Status",
+          "type": "select",
+          "options": [
+            "Singapore Citizen",
+            "Permanent Resident Year 3+ (Full Rates)",
+            "Permanent Resident Year 2 (G2 Graduated)",
+            "Permanent Resident Year 1 (G1 Graduated)",
+            "Foreigner / Employment Pass (No CPF)"
+          ]
+        },
+        {
+          "name": "age_group",
+          "label_native": "Employee Age Group",
+          "type": "select",
+          "options": [
+            "55 and below",
+            "Above 55 to 60",
+            "Above 60 to 65",
+            "Above 65 to 70",
+            "Above 70"
+          ]
+        },
+        {
+          "name": "srs_contribution",
+          "label_native": "Annual Supplementary Retirement Scheme (SRS) Voluntary Contribution (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_tax_reliefs",
+          "label_native": "Other Personal Tax Reliefs (CPF Top-Up, NSman, Child Relief) (S$)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Ordinary Wages (OW) Monthly CPF Ceiling: $6,800/mo (2024), $7,400/mo (2025), $8,000/mo (2026). OW Subject to CPF = Min(Gross Monthly Salary, OW Ceiling).\n2. Additional Wages (AW) Annual CPF Ceiling: $102,000 - Total Annual OW subject to CPF. AW Subject to CPF = Min(Annual Bonus, AW Ceiling).\n3. Full CPF Rates (Citizens & PR 3rd Year+):\n   - Age <= 55: Employee 20%, Employer 17% (Total 37%). Max Employee CPF OW cap = $1,480/mo (2025).\n   - Age > 55 to 60: Employee 17%, Employer 15.5% (Total 32.5%).\n   - Age > 60 to 65: Employee 12.5%, Employer 12% (Total 24.5%).\n   - Age > 65 to 70: Employee 7.5%, Employer 9% (Total 16.5%).\n   - Age > 70: Employee 5%, Employer 7.5% (Total 12.5%).\n4. Graduated PR Rates (Yr 1 Standard: Employee 5% / Employer 4%; Yr 2 Standard: Employee 15% / Employer 9%).\n5. Net Monthly Take-Home Pay = Gross Monthly Salary - Monthly Employee CPF.\n6. Annual Chargeable Income = Gross Annual Income (OW * 12 + AW) - Employee CPF Deductions - SRS Relief (Max $15,300 SC/PR, $35,700 Foreigner) - Earned Income Relief ($1,000-$8,000) - Other Reliefs (Subject to $80,000 total relief cap).\n7. IRAS Personal Income Tax (YA 2024/2025): First $20k (0%), next $10k (2%), next $10k (3.5%), next $40k (7%), next $40k (11.5%), next $40k (15%), next $40k (18%), next $40k (19%), next $40k (20%), next $40k (21%), next $180k (22%), next $500k (23%), >$1M (24%). Subtract 50% Personal Income Tax Rebate (capped at $200).",
+      "affiliate_targets": [
+        {
+          "name": "Endowus",
+          "type": "software",
+          "description": "Leading digital wealth platform in Singapore enabling users to invest CPF Ordinary Account (OA), Special Account (SA), and SRS savings."
+        },
+        {
+          "name": "Syfe",
+          "type": "software",
+          "description": "Popular robo-advisor and wealth manager offering SRS investment portfolios and high-yield cash management accounts."
+        },
+        {
+          "name": "DBS Bank",
+          "type": "neobank",
+          "description": "Singapore's flagship retail bank targeting salary crediting via DBS Multiplier to unlock high savings deposit rates."
+        },
+        {
+          "name": "MoneySmart Singapore",
+          "type": "software",
+          "description": "Dominant financial comparison platform for credit cards, personal loans, and wealth products in Singapore."
+        }
+      ]
+    },
+    {
+      "id": "sg-stamp-duty-absd-calculator",
+      "title_native": "Singapore Property Buyer's Stamp Duty (BSD) & ABSD Tax Calculator",
+      "title_en": "Singapore Property Buyer's Stamp Duty (BSD) & ABSD Tax Calculator",
+      "search_terms_native": [
+        "absd calculator singapore",
+        "buyer stamp duty calculator sg",
+        "hdb stamp duty calculator 2025",
+        "singapore property tax absd rates",
+        "foreigner property stamp duty sg"
+      ],
+      "description_native": "Calculate progressive Buyer's Stamp Duty (BSD) and Additional Buyer's Stamp Duty (ABSD) for residential and non-residential property purchases in Singapore across Singapore Citizens, PRs, Foreigners, Entities, and joint buyers.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Property Purchase Price or Valuation (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_type",
+          "label_native": "Property Classification",
+          "type": "select",
+          "options": [
+            "Residential Property (HDB / Executive Condo / Private Condo / Landed)",
+            "Non-Residential Property (Commercial / Industrial / Shophouse)"
+          ]
+        },
+        {
+          "name": "buyer_profile",
+          "label_native": "Buyer Residency Status & Owned Property Count",
+          "type": "select",
+          "options": [
+            "Singapore Citizen - 1st Residential Property",
+            "Singapore Citizen - 2nd Residential Property",
+            "Singapore Citizen - 3rd & Subsequent Residential Property",
+            "Singapore PR - 1st Residential Property",
+            "Singapore PR - 2nd Residential Property",
+            "Singapore PR - 3rd & Subsequent Residential Property",
+            "Foreigner (Any Residential Property)",
+            "Entities / Corporations",
+            "Housing Developers"
+          ]
+        },
+        {
+          "name": "is_joint_purchase_sc_spr",
+          "label_native": "Joint Matrimonial Purchase (SC + SPR Spouse 1st Property)",
+          "type": "select",
+          "options": [
+            "No",
+            "Yes (Eligible for ABSD Remission - 0% ABSD)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Residential Buyer's Stamp Duty (BSD) Tiers:\n   - First S$180,000: 1%\n   - Next S$180,000 (S$180k - S$360k): 2%\n   - Next S$640,000 (S$360k - S$1.0M): 3%\n   - Next S$500,000 (S$1.0M - S$1.5M): 4%\n   - Next S$1,500,000 (S$1.5M - S$3.0M): 5%\n   - Portion exceeding S$3,000,000: 6%\n2. Non-Residential BSD Tiers:\n   - First S$180k (1%), Next S$180k (2%), Next S$640k (3%), Next S$500k (4%), Portion > S$1.5M (5%).\n3. Additional Buyer's Stamp Duty (ABSD) Rates (Residential):\n   - Singapore Citizen (SC): 1st property (0%), 2nd property (20%), 3rd+ (30%).\n   - Singapore PR (SPR): 1st property (5%), 2nd property (30%), 3rd+ (35%).\n   - Foreigner: 60% flat across all residential purchases.\n   - Entities / Corporate: 65% flat.\n   - Housing Developers: 35% + 5% non-remittable.\n4. Joint SC + SPR married couples purchasing their 1st residential property qualify for ABSD remission (0%).\n5. Total Property Stamp Duty = BSD + ABSD.",
+      "affiliate_targets": [
+        {
+          "name": "PropertyGuru Singapore",
+          "type": "software",
+          "description": "Singapore's leading property portal connecting property buyers with home listings and mortgage comparison services."
+        },
+        {
+          "name": "MortgageWise",
+          "type": "software",
+          "description": "Premier independent mortgage advisory firm in Singapore providing home loan rate comparison and refinancing services."
+        },
+        {
+          "name": "HSBC Singapore Home Loans",
+          "type": "neobank",
+          "description": "Major international bank offering high-value mortgage packages for Singapore residential and private property purchases."
+        },
+        {
+          "name": "SmartWealth SG",
+          "type": "software",
+          "description": "Financial planning network specializing in high-net-worth real estate structuring and property tax optimization."
+        }
+      ]
+    },
+    {
+      "id": "sg-corporate-tax-sute-calculator",
+      "title_native": "Singapore Company Corporate Income Tax & Startup Tax Exemption (SUTE) Calculator",
+      "title_en": "Singapore Company Corporate Income Tax & Startup Tax Exemption (SUTE) Calculator",
+      "search_terms_native": [
+        "singapore corporate tax calculator",
+        "startup tax exemption calculator sg",
+        "sute vs pte exemption calculator iras",
+        "singapore company corporate income tax 2025",
+        "iras corporate tax rebate ya 2024 2025"
+      ],
+      "description_native": "Calculate your Singapore Private Limited (Pte Ltd) company tax liability, comparing Startup Tax Exemption (SUTE) for the first 3 YAs against Partial Tax Exemption (PTE), plus Corporate Income Tax (CIT) rebates.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "chargeable_income",
+          "label_native": "Net Taxable Profit / Chargeable Income (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_eligibility",
+          "label_native": "Tax Exemption Scheme Category",
+          "type": "select",
+          "options": [
+            "SUTE - Qualifying New Startup Company (First 3 Consecutive YAs)",
+            "PTE - Partial Tax Exemption (Normal / Established Company)"
+          ]
+        },
+        {
+          "name": "ya_year",
+          "label_native": "Year of Assessment (YA)",
+          "type": "select",
+          "options": [
+            "YA 2025 (50% CIT Rebate capped at $40,000 + Cash Payout)",
+            "YA 2024 (50% CIT Rebate capped at $40,000)",
+            "Standard Tax Year (17% Flat Rate)"
+          ]
+        },
+        {
+          "name": "local_employees_count",
+          "label_native": "Local Employees Hired (Singaporeans/PRs receiving CPF in previous year)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Singapore Flat Corporate Tax Rate: 17% on Net Chargeable Income.\n2. Startup Tax Exemption (SUTE) Scheme (First 3 YAs for eligible new startups):\n   - 75% exemption on first S$100,000 chargeable income (effective tax rate 4.25%). Max exempt = S$75,000.\n   - 50% exemption on next S$100,000 chargeable income (effective tax rate 8.5%). Max exempt = S$50,000.\n   - Maximum total SUTE exemption = S$125,000 per year.\n3. Partial Tax Exemption (PTE) Scheme (All other companies & post-3rd YA startups):\n   - 75% exemption on first S$10,000 chargeable income (effective tax rate 4.25%). Max exempt = S$7,500.\n   - 50% exemption on next S$190,000 chargeable income (effective tax rate 8.5%). Max exempt = S$95,000.\n   - Maximum total PTE exemption = S$102,500 per year.\n4. Gross Corporate Tax = (Chargeable Income - Exempt Income) * 17%.\n5. Corporate Income Tax (CIT) Rebate: 50% of Gross Corporate Tax, capped at S$40,000. Companies employing at least 1 local employee receive a minimum S$2,000 CIT Rebate Cash Payout.\n6. Net Corporate Tax Payable = Max(0, Gross Corporate Tax - CIT Rebate).\n7. Single-Tier Dividend System: Dividends distributed to shareholders out of after-tax corporate profits are 100% tax-free.",
+      "affiliate_targets": [
+        {
+          "name": "Sleek Singapore",
+          "type": "accounting",
+          "description": "Leading digital corporate secretarial, accounting, and tax filing service for Singapore startups and SMEs."
+        },
+        {
+          "name": "Osome Singapore",
+          "type": "software",
+          "description": "AI-driven corporate secretarial, bookkeeping, and incorporation platform tailored for Singapore entrepreneurs."
+        },
+        {
+          "name": "Aspire Financial",
+          "type": "neobank",
+          "description": "Top B2B business account and corporate card platform in Singapore offering multi-currency accounts and expense management."
+        },
+        {
+          "name": "Airwallex SG",
+          "type": "neobank",
+          "description": "Global multi-currency business account provider for Singapore companies executing cross-border payments."
+        }
+      ]
+    },
+    {
+      "id": "sg-self-employed-medisave-tax-calculator",
+      "title_native": "Singapore Freelancer & Self-Employed Medisave & Income Tax Calculator",
+      "title_en": "Singapore Freelancer & Self-Employed Medisave & Income Tax Calculator",
+      "search_terms_native": [
+        "self employed medisave calculator sg",
+        "freelance tax calculator singapore",
+        "sole proprietor income tax iras",
+        "cpf medisave contribution self employed 2025",
+        "commission agent fixed expense ratio tax sg"
+      ],
+      "description_native": "Calculate compulsory CPF Medisave contributions and IRAS personal income tax for Singapore self-employed persons, sole proprietors, and freelancers, including the 15% fixed expense ratio option.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_trade_income",
+          "label_native": "Gross Trade Revenue / Total Client Invoices (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "deduction_method",
+          "label_native": "Expense Deduction Method",
+          "type": "select",
+          "options": [
+            "15% Prescribed Fixed Expense Ratio (Commission agents / Drivers)",
+            "Actual Allowable Business Expenses"
+          ]
+        },
+        {
+          "name": "actual_expenses",
+          "label_native": "Actual Allowable Business Expenses (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "age_group",
+          "label_native": "Self-Employed Age Group",
+          "type": "select",
+          "options": [
+            "Below 35",
+            "35 to 44",
+            "45 to 49",
+            "50 and above"
+          ]
+        },
+        {
+          "name": "other_employment_income",
+          "label_native": "Other Employment / W2 Income (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "voluntary_srs",
+          "label_native": "Voluntary SRS Tax Relief Contribution (S$)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Net Trade Income (NTI) = Gross Trade Revenue - Max(Actual Allowable Expenses, Gross Revenue * 15% if using prescribed ratio).\n2. Compulsory Medisave Requirement: Self-Employed Persons (SEPs) earning NTI > S$6,000/year must contribute to CPF Medisave.\n3. Medisave Contribution Rates (Tiered by NTI level, capped at Medisave ceiling NTI S$72,000):\n   - Age <35: 4% to 8% of NTI (Max S$5,760/yr).\n   - Age 35-44: 4.5% to 9.5% of NTI (Max S$6,840/yr).\n   - Age 45-49: 5% to 10% of NTI (Max S$7,200/yr).\n   - Age 50+: 5.5% to 10.5% of NTI (Max S$7,560/yr).\n4. Medisave Tax Relief: Mandatory Medisave contributions made by self-employed individuals are 100% tax-deductible against Personal Income Tax.\n5. Total Taxable Income = NTI + Other Employment Income - Medisave Contribution - Voluntary SRS (max $15,300 SC/PR) - Earned Income Relief ($1,000-$8,000).\n6. IRAS Personal Income Tax is computed via progressive tax bands (0% to 24%) minus 50% Personal Income Tax Rebate (capped at $200).",
+      "affiliate_targets": [
+        {
+          "name": "Sleek SG",
+          "type": "accounting",
+          "description": "Digital bookkeeping, sole proprietor accounting, and IRAS tax filing platform in Singapore."
+        },
+        {
+          "name": "Wise Business",
+          "type": "neobank",
+          "description": "Low-cost multi-currency account for Singapore freelancers and independent contractors receiving international payments."
+        },
+        {
+          "name": "Income Insurance",
+          "type": "insurance",
+          "description": "Leading Singapore insurance provider offering Gigcover disability income protection for self-employed individuals."
+        },
+        {
+          "name": "Aspire",
+          "type": "neobank",
+          "description": "Free Singapore SME and freelancer business account with automated expense categorisation and cashback rewards."
+        }
+      ]
+    },
+    {
+      "id": "sg-tenancy-stamp-duty-rental-tax-calculator",
+      "title_native": "Singapore Tenancy Agreement Stamp Duty & Landlord Rental Income Tax Calculator",
+      "title_en": "Singapore Tenancy Agreement Stamp Duty & Landlord Rental Income Tax Calculator",
+      "search_terms_native": [
+        "rental stamp duty calculator sg",
+        "tenancy agreement stamp duty iras",
+        "landlord property tax calculator singapore",
+        "net rental income tax calculator sg",
+        "iras lease stamp duty rate 2025"
+      ],
+      "description_native": "Calculate IRAS tenancy agreement stamp duty for tenants/landlords and net taxable rental income for property owners using actual expenses vs the 15% simplified expense ratio.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "monthly_rent",
+          "label_native": "Gross Monthly Rent (including furniture & maintenance fees) (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "lease_duration_months",
+          "label_native": "Lease Duration (Months)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "advance_lump_sum",
+          "label_native": "Advance Premium / Key Money (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "landlord_expense_option",
+          "label_native": "Landlord Expense Deduction Method",
+          "type": "select",
+          "options": [
+            "15% Deemed Rental Expense Ratio + Mortgage Loan Interest",
+            "Actual Allowable Rental Expenses (Repairs, Agent Fees, Property Tax, Mortgage Interest)"
+          ]
+        },
+        {
+          "name": "actual_rental_expenses",
+          "label_native": "Actual Annual Operating Expenses (excl. Mortgage Interest) (S$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_mortgage_interest",
+          "label_native": "Annual Mortgage Loan Interest Paid (S$)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Average Annual Rent (AAV) = (Gross Monthly Rent * Lease Duration Months + Advance Premium) / (Lease Duration Months / 12).\n2. IRAS Tenancy Stamp Duty:\n   - For lease duration <= 4 years (<= 48 months): 0.4% of total rent payable across the full lease period.\n   - For lease duration > 4 years (> 48 months): 0.4% of 4 x AAV (equivalent to 1.6% of AAV).\n   - If advance premium paid: Additional 0.4% tax on the premium amount.\n3. Landlord Gross Annual Rental Income = Monthly Rent * 12.\n4. Landlord Taxable Net Rental Income:\n   - Deemed Expense Option: Net Rent = Gross Annual Rent - (Gross Annual Rent * 15%) - Annual Mortgage Interest.\n   - Actual Expense Option: Net Rent = Gross Annual Rent - Actual Allowable Expenses - Annual Mortgage Interest.\n5. Net Rental Income is added to personal income tax computation (taxed at progressive rates 0% to 24%) or corporate tax computation (taxed at 17%).",
+      "affiliate_targets": [
+        {
+          "name": "PropertyGuru Singapore",
+          "type": "software",
+          "description": "Singapore's primary property listing portal for landlords advertising residential and commercial rental units."
+        },
+        {
+          "name": "Singlife",
+          "type": "insurance",
+          "description": "Comprehensive landlord insurance coverage protecting against property damage, tenant default, and legal liability."
+        },
+        {
+          "name": "MoneySmart SG",
+          "type": "software",
+          "description": "Leading mortgage comparison site for property investors refinancing home loans to minimize rental interest expenses."
+        },
+        {
+          "name": "Sleek SG",
+          "type": "accounting",
+          "description": "Tax preparation and rental income bookkeeping service for individual landlords and investment companies."
+        }
+      ]
+    }
+  ]
+}

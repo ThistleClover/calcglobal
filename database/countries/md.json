@@ -1,0 +1,57 @@
+{
+  "country": "Moldova",
+  "country_code": "MD",
+  "languages": [
+    "ro"
+  ],
+  "currency": "MDL",
+  "calculators": [
+    {
+      "id": "md-tax-payroll-calculator",
+      "title_native": "Moldova Calculator Salariu Net/Brut & IT Park 7%",
+      "title_en": "Moldova Calculator Salariu Net/Brut & IT Park 7%",
+      "search_terms_native": [
+        "moldova tax calculator",
+        "moldova salary calculator",
+        "income tax md"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Moldova.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (MDL)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Moldova revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "MAIB",
+          "type": "software",
+          "description": "Top financial tool in Moldova"
+        },
+        {
+          "name": "Victoriabank",
+          "type": "software",
+          "description": "Top financial tool in Moldova"
+        }
+      ]
+    }
+  ]
+}

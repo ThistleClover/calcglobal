@@ -1,0 +1,363 @@
+{
+  "country": "Hong Kong",
+  "country_code": "HK",
+  "languages": [
+    "zh-HK",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "hk-salaries-tax-calculator",
+      "title_native": "香港薪俸稅及個人入息課稅計算機",
+      "title_en": "Hong Kong Salaries Tax & Personal Assessment Calculator",
+      "search_terms_native": [
+        "香港薪俸稅計算機",
+        "薪俸稅計算器 2025",
+        "個人入息課稅計算",
+        "扣稅項目強積金扣除",
+        "免稅額計算"
+      ],
+      "description_native": "計算香港薪俸稅與個人入息課稅，涵蓋漸進稅率（2%-17%）與兩級標準稅率（15%/16%）比較、單身/已婚免稅額、子女及供養父母免稅額、強積金（MPF）、自願醫保（VHIS）及年金扣稅項目。",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_income",
+          "label_native": "每年總薪金及津貼收入 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "marital_status",
+          "label_native": "婚姻狀況與計稅方式",
+          "type": "select",
+          "options": [
+            "single (單身 / 未婚 / 離異)",
+            "married_separate (已婚 - 分開評稅)",
+            "married_joint (已婚 - 合併評稅)"
+          ]
+        },
+        {
+          "name": "num_children",
+          "label_native": "供養未成年或全日制就讀子女數目",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "num_dependent_parents_55_59",
+          "label_native": "供養 55 至 59 歲父母/祖父母人數",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "num_dependent_parents_60_plus",
+          "label_native": "供養 60 歲或以上父母/祖父母人數",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "co_residence_parents",
+          "label_native": "是否與供養父母/祖父母全年同住",
+          "type": "select",
+          "options": [
+            "no (不同住，但每年提供不少於 HK$12,000 生活費)",
+            "yes (全年同住)"
+          ]
+        },
+        {
+          "name": "mpf_mandatory",
+          "label_native": "每年強積金強制性供款扣除額 (最高 HK$18,000)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "vhis_premiums",
+          "label_native": "自願醫保 (VHIS) 每年已繳保費 (每名受保人最高 HK$8,000)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "qdta_tvc",
+          "label_native": "合資格延期年金 (QDTA) 及強積金自願性供款 (TVC) (最高 HK$60,000)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "home_loan_interest",
+          "label_native": "居所貸款利息扣除額 (每年最高 HK$100,000)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Net Chargeable Income (應課稅入息實額) = Total Income - Allowances - Deductions.\n2. Deductions include Mandatory MPF (capped at HK$18,000/year), VHIS Premiums (capped at HK$8,000 per insured person), QDTA/TVC combined (capped at HK$60,000), Self-Education (capped at HK$100,000), and Home Loan Interest (capped at HK$100,000).\n3. Progressive Rates: First HK$50k @ 2%, Next HK$50k @ 6%, Next HK$50k @ 10%, Next HK$50k @ 14%, Remainder @ 17%.\n4. Standard Tax Rates (Two-tiered): 15% on net income up to HK$5,000,000; 16% on income exceeding HK$5,000,000.\n5. Tax Payable is the lower of Progressive Tax calculation and Standard Rate Tax calculation, less any annual government statutory tax reduction (e.g. 100% capped at HK$3,000).",
+      "affiliate_targets": [
+        {
+          "name": "Bowtie Insurance (保泰人壽)",
+          "type": "insurance",
+          "description": "Hong Kong's leading virtual insurer for VHIS (自願醫保) tax deduction schemes with high user conversion."
+        },
+        {
+          "name": "TaxScouts / Sleek HK",
+          "type": "accounting",
+          "description": "High intent for high earners needing tax computation and personal tax filing assistance."
+        },
+        {
+          "name": "HSBC One / Standard Chartered Tax Loans",
+          "type": "neobank",
+          "description": "High conversion for low-interest annual tax loan applicants."
+        }
+      ]
+    },
+    {
+      "id": "hk-property-stamp-duty-mortgage-calculator",
+      "title_native": "香港物業印花稅及按揭首期計算機",
+      "title_en": "Hong Kong Property Stamp Duty & Mortgage Calculator",
+      "search_terms_native": [
+        "香港印花稅計算機",
+        "物業按揭首期計算",
+        "從價印花稅 AVD 稅額",
+        "首次置業印花稅",
+        "壓力測試按揭供款"
+      ],
+      "description_native": "計算香港住宅物業從價印花稅 (AVD Scale 2 稅率)、按揭貸款成數 (LTV 上限 70%)、首期及按揭每月供款金額。",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_value",
+          "label_native": "物業買賣成交價 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "buyer_status",
+          "label_native": "買家身分與物業類別",
+          "type": "select",
+          "options": [
+            "hkpr_first_time (香港永久居民 - 首次置業或換樓)",
+            "non_hkpr_or_company (非香港永久居民或公司名義購買)"
+          ]
+        },
+        {
+          "name": "mortgage_tenure_years",
+          "label_native": "按揭貸款年期 (年，最多 30 年)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "interest_rate",
+          "label_native": "按揭實際年利率 (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ltv_percentage",
+          "label_native": "按揭貸款成數 LTV (%)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Ad Valorem Stamp Duty (AVD Scale 2 Rates): \n   - Up to HK$3,000,000: HK$100\n   - HK$3,000,001 to HK$3,528,240: HK$100 + 10% of excess over HK$3M\n   - HK$3,528,241 to HK$4,500,000: 1.50%\n   - HK$4,500,001 to HK$5,315,630: HK$67,500 + 10% of excess over HK$4.5M\n   - HK$5,315,631 to HK$7,200,000: 2.25%\n   - HK$7,200,001 to HK$9,607,060: HK$162,000 + 10% of excess over HK$7.2M\n   - HK$9,607,061 to HK$20,000,000: 3.75%\n   - Over HK$20,000,000: 4.25% (with smooth transition bracket up to HK$21,739,130).\n2. Mortgage Amount = Property Value × LTV%.\n3. Down Payment (首期) = Property Value - Mortgage Amount.\n4. Total Cash Required = Down Payment + Stamp Duty + Legal Fees (~0.5%) + Agency Commission (1%).\n5. Monthly Payment = P × [ r(1+r)^n ] / [ (1+r)^n - 1 ], where P = Mortgage Amount, r = monthly interest rate, n = tenure in months.",
+      "affiliate_targets": [
+        {
+          "name": "MoneyHero Mortgage",
+          "type": "accounting",
+          "description": "Leading HK Financial comparison portal offering bank mortgage referral cash rebates."
+        },
+        {
+          "name": "mReferral Mortgage Brokerage (中原按揭 / 美聯按揭)",
+          "type": "accounting",
+          "description": "Top HK mortgage referral brokers with substantial commission payouts per home buyer conversion."
+        },
+        {
+          "name": "HSBC / Bank of China Mortgage Services",
+          "type": "neobank",
+          "description": "Direct home loan application referral programs."
+        }
+      ]
+    },
+    {
+      "id": "hk-mpf-contribution-calculator",
+      "title_native": "香港強積金 MPF 供款及僱主僱員扣減計算機",
+      "title_en": "Hong Kong MPF Mandatory Provident Fund Contribution Calculator",
+      "search_terms_native": [
+        "強積金計算機",
+        "MPF 供款計算",
+        "僱主 MPF 5% 計算",
+        "自僱人士強積金供款",
+        "最高有關入息上限 MPF"
+      ],
+      "description_native": "根據香港《強制性公積金計劃條例》，計算僱員、自僱人士 (SEP) 與僱主之 5% 強制性供款金額（最低入息 HK$7,100 及最高入息上限 HK$30,000）。",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "employment_type",
+          "label_native": "身份類別",
+          "type": "select",
+          "options": [
+            "regular_employee (一般全職 / 兼職僱員)",
+            "self_employed (自僱人士 SEP)"
+          ]
+        },
+        {
+          "name": "monthly_income",
+          "label_native": "每月有關入息 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tvc_contribution",
+          "label_native": "每月自願性強積金供款 (TVC / 額外供款) (HKD)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Mandatory Provident Fund Thresholds: Minimum Relevant Income = HK$7,100/month; Maximum Relevant Income = HK$30,000/month.\n2. Employee Contribution Rate = 5% of monthly relevant income (0% if monthly income < HK$7,100; capped at HK$1,500/month if income > HK$30,000).\n3. Employer Contribution Rate = 5% of monthly relevant income (5% regardless of min income limit; capped at HK$1,500/month if income > HK$30,000).\n4. Self-Employed Persons (SEP): Mandatory 5% of income, HK$0 if income < HK$7,100, capped at HK$1,500/month if income > HK$30,000.\n5. Net Monthly Salary = Monthly Income - Employee Mandatory MPF Contribution.",
+      "affiliate_targets": [
+        {
+          "name": "Manulife MPF (宏利強積金)",
+          "type": "insurance",
+          "description": "Market leader in Hong Kong MPF schemes offering high incentives for MPF account consolidation and TVC tax-deductible voluntary contributions."
+        },
+        {
+          "name": "HSBC MPF Direct",
+          "type": "neobank",
+          "description": "Major HK MPF scheme provider targeting corporate payroll setup and personal employee transfers."
+        },
+        {
+          "name": "Sun Life Hong Kong MPF",
+          "type": "insurance",
+          "description": "Popular MPF scheme manager with attractive customer onboarding rewards."
+        }
+      ]
+    },
+    {
+      "id": "hk-profits-tax-calculator",
+      "title_native": "香港公司及獨資業務利得稅計算機 (兩級制稅率)",
+      "title_en": "Hong Kong Profits Tax Calculator (Two-Tiered Rates)",
+      "search_terms_native": [
+        "香港利得稅計算機",
+        "兩級制利得稅",
+        "公司利得稅 8.25%",
+        "無限公司獨資利得稅",
+        "香港中小企報稅計算"
+      ],
+      "description_native": "計算香港法團 (Corporation) 與非法團業務 (Sole Proprietorship) 於兩級制利得稅率 (8.25%/16.5% 或 7.5%/15%) 下的應繳稅額及扣稅優惠。",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "entity_type",
+          "label_native": "業務實體種類",
+          "type": "select",
+          "options": [
+            "corporation (有限公司 / 法團 - Corporations)",
+            "unincorporated (獨資 / 合夥 / 非法團 - Unincorporated Businesses)"
+          ]
+        },
+        {
+          "name": "gross_revenue",
+          "label_native": "每年營業收入總額 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "allowable_expenses",
+          "label_native": "合資格業務開支及資本折舊免稅額 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "two_tier_eligible",
+          "label_native": "是否符合兩級制利得稅資格 (關連企業中僅限一家申報)",
+          "type": "select",
+          "options": [
+            "yes (符合兩級制優惠稅率資格)",
+            "no (不符合，按標準單一稅率計算)"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Assessable Profits (應評稅利潤) = Gross Revenue - Allowable Expenses.\n2. Two-Tiered Tax Rates for Corporations:\n   - Profits up to HK$2,000,000 @ 8.25%\n   - Profits exceeding HK$2,000,000 @ 16.5%\n3. Two-Tiered Tax Rates for Unincorporated Businesses:\n   - Profits up to HK$2,000,000 @ 7.5%\n   - Profits exceeding HK$2,000,000 @ 15.0%\n4. Standard Single Rate (if not eligible for two-tiered): 16.5% for Corporations; 15.0% for Unincorporated Businesses.\n5. Statutory Concession Deduction: Subtract government annual tax reduction (e.g. 100% capped at HK$3,000).\n6. Final Profits Tax Payable = Max(0, Calculated Tax - Tax Reduction).",
+      "affiliate_targets": [
+        {
+          "name": "Sleek Hong Kong",
+          "type": "software",
+          "description": "All-in-one corporate secretarial, company formation, and tax filing platform for HK SMEs with recurring high affiliate commissions."
+        },
+        {
+          "name": "Airwallex Hong Kong",
+          "type": "neobank",
+          "description": "Leading global cross-border payments and business account provider for HK businesses."
+        },
+        {
+          "name": "Xero HK",
+          "type": "software",
+          "description": "Dominant cloud accounting platform for HK small businesses and startups."
+        },
+        {
+          "name": "Neat Business Account",
+          "type": "neobank",
+          "description": "HK business neobank for fast digital account opening."
+        }
+      ]
+    },
+    {
+      "id": "hk-severance-long-service-payment-calculator",
+      "title_native": "香港遣散費及長期服務金計算機 (強積金對沖)",
+      "title_en": "Hong Kong Severance Payment & Long Service Payment Calculator",
+      "search_terms_native": [
+        "遣散費計算機 香港",
+        "長期服務金計算",
+        "僱傭條例遣散費上限 390000",
+        "強積金對沖計算",
+        "離職補償計算機"
+      ],
+      "description_native": "根據香港《僱傭條例》（第57章），計算解僱遣散費 (SP) 或長期服務金 (LSP)，採納最新工資上限 HK$22,500 與總額上限 HK$390,000，並試算強積金對沖金額。",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "payment_type",
+          "label_native": "補償金類別",
+          "type": "select",
+          "options": [
+            "severance_payment (遣散費 - 因裁員/停工解僱)",
+            "long_service_payment (長期服務金 - 服務滿5年解僱/退休/健康原因離職)"
+          ]
+        },
+        {
+          "name": "last_month_wage",
+          "label_native": "離職前最後一個月完整工資 (HKD)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "服務年資 (年，可包含小數代表不完整月份)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "employer_mpf_accrued",
+          "label_native": "僱主供款所累積的強積金權益金額 (HKD)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Capped Monthly Wage = Min(Last Month Wage, HK$22,500).\n2. Gross Statutory Payment (法定應得款額) = Capped Monthly Wage × (2 / 3) × Years of Service.\n3. Maximum Statutory Cap: Total payment is capped at HK$390,000.\n4. MPF Offsetting (強積金對沖金額): Employer can offset the statutory payment using the accrued benefits derived from employer's mandatory/voluntary MPF contributions.\n5. Net Payable by Employer = Max(0, Statutory Payment - Employer MPF Accrued Benefits).\n6. Un-offset Remainder paid to employee from MPF accrued benefits.",
+      "affiliate_targets": [
+        {
+          "name": "Sleek HK HR & Payroll",
+          "type": "software",
+          "description": "High intent for employers and HR managers managing employee offboarding and compliant statutory calculations."
+        },
+        {
+          "name": "Deel Hong Kong",
+          "type": "software",
+          "description": "Global HR and compliance platform for managing Hong Kong contracts, severance, and legal employment obligations."
+        },
+        {
+          "name": "Bowtie Group Health Insurance",
+          "type": "insurance",
+          "description": "Employee benefits platform targeted at corporate employers reviewing employee termination and healthcare packages."
+        }
+      ]
+    }
+  ]
+}

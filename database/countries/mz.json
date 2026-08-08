@@ -1,0 +1,57 @@
+{
+  "country": "Mozambique",
+  "country_code": "MZ",
+  "languages": [
+    "pt"
+  ],
+  "currency": "MZN",
+  "calculators": [
+    {
+      "id": "mz-tax-payroll-calculator",
+      "title_native": "Mozambique Calculadora IRPS & INSS Moçambique",
+      "title_en": "Mozambique Calculadora IRPS & INSS Moçambique",
+      "search_terms_native": [
+        "mozambique tax calculator",
+        "mozambique salary calculator",
+        "income tax mz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Mozambique.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (MZN)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Mozambique revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Millennium BIM",
+          "type": "software",
+          "description": "Top financial tool in Mozambique"
+        },
+        {
+          "name": "M-Pesa MZ",
+          "type": "software",
+          "description": "Top financial tool in Mozambique"
+        }
+      ]
+    }
+  ]
+}

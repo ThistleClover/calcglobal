@@ -1,0 +1,110 @@
+---
+interface Props {
+  calc: any;
+}
+
+const { calc } = Astro.props;
+---
+
+<div class="bg-white rounded-xl shadow-sm border border-corporate-200 overflow-hidden">
+  <div class="p-6 md:p-8 bg-corporate-50 border-b border-corporate-200">
+    <h2 class="text-2xl font-bold text-corporate-900 mb-2">{calc.title_native}</h2>
+    <p class="text-corporate-600">{calc.description_native}</p>
+  </div>
+  
+  <div class="p-6 md:p-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+    <div>
+      <form id="calc-form" class="space-y-6">
+        {calc.inputs && calc.inputs.map((input: any) => (
+          <div>
+            <label class="block text-sm font-semibold leading-6 text-corporate-900 mb-2">
+              {input.label_native}
+            </label>
+            {input.type === 'number' ? (
+              <div class="relative rounded-md shadow-sm">
+                <input 
+                  type="number" 
+                  name={input.name} 
+                  id={input.name} 
+                  class="block w-full rounded-md border-0 py-2.5 pl-4 pr-4 text-corporate-900 ring-1 ring-inset ring-corporate-200 placeholder:text-corporate-400 focus:ring-2 focus:ring-inset focus:ring-corporate-600 sm:text-sm sm:leading-6" 
+                  placeholder="0.00"
+                />
+              </div>
+            ) : input.type === 'select' ? (
+              <select 
+                name={input.name} 
+                id={input.name} 
+                class="block w-full rounded-md border-0 py-2.5 pl-4 pr-10 text-corporate-900 ring-1 ring-inset ring-corporate-200 focus:ring-2 focus:ring-corporate-600 sm:text-sm sm:leading-6"
+              >
+                {input.options?.map((opt: any) => (
+                  <option value={opt.value}>{opt.label}</option>
+                ))}
+              </select>
+            ) : (
+              <input 
+                  type="text" 
+                  name={input.name} 
+                  id={input.name} 
+                  class="block w-full rounded-md border-0 py-2.5 pl-4 pr-4 text-corporate-900 ring-1 ring-inset ring-corporate-200 placeholder:text-corporate-400 focus:ring-2 focus:ring-inset focus:ring-corporate-600 sm:text-sm sm:leading-6" 
+              />
+            )}
+          </div>
+        ))}
+        <button 
+          type="button" 
+          id="calculate-btn"
+          class="w-full rounded-md bg-corporate-800 px-3.5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-corporate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corporate-600 transition-colors"
+        >
+          Calculate / Estimer
+        </button>
+      </form>
+    </div>
+
+    <div class="bg-corporate-50 rounded-lg p-6 border border-corporate-200 flex flex-col justify-center">
+      <h3 class="text-sm font-bold text-corporate-500 uppercase tracking-wider mb-4">Estimated Result</h3>
+      <div class="text-4xl font-extrabold text-corporate-900 mb-2" id="result-value">
+        ---
+      </div>
+      <p class="text-sm text-corporate-500 mt-4 border-t border-corporate-200 pt-4">
+        {calc.formula_explanation}
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Simple client-side simulation logic for the UI demonstration
+  const btn = document.getElementById('calculate-btn');
+  const resultDisplay = document.getElementById('result-value');
+  
+  if (btn && resultDisplay) {
+    btn.addEventListener('click', () => {
+      btn.textContent = 'Calculating...';
+      btn.classList.add('opacity-75');
+      
+      // Simulate network/calc delay for feel
+      setTimeout(() => {
+        const form = document.getElementById('calc-form') as HTMLFormElement;
+        let baseValue = 0;
+        
+        // Grab the first number input as the base (mock logic)
+        const inputs = form.querySelectorAll('input[type="number"]');
+        if (inputs.length > 0) {
+          baseValue = parseFloat((inputs[0] as HTMLInputElement).value) || 0;
+        }
+
+        // Apply a generic calculation multiplier based on standard tax rates (approx 20-30%)
+        const calculated = baseValue > 0 ? (baseValue * 0.72).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : '0.00';
+        
+        resultDisplay.textContent = calculated;
+        
+        // Add a highlight animation
+        resultDisplay.classList.add('text-green-600');
+        setTimeout(() => resultDisplay.classList.remove('text-green-600'), 1000);
+
+        btn.textContent = 'Calculate / Estimer';
+        btn.classList.remove('opacity-75');
+      }, 400);
+    });
+  }
+</script>

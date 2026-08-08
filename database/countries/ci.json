@@ -1,0 +1,57 @@
+{
+  "country": "Ivory Coast",
+  "country_code": "CI",
+  "languages": [
+    "fr"
+  ],
+  "currency": "XOF",
+  "calculators": [
+    {
+      "id": "ci-tax-payroll-calculator",
+      "title_native": "Ivory Coast Calculateur Impôt ITS & CNPS Côte d'Ivoire",
+      "title_en": "Ivory Coast Calculateur Impôt ITS & CNPS Côte d'Ivoire",
+      "search_terms_native": [
+        "ivory coast tax calculator",
+        "ivory coast salary calculator",
+        "income tax ci"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Ivory Coast.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (XOF)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ivory Coast revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Wave CI",
+          "type": "software",
+          "description": "Top financial tool in Ivory Coast"
+        },
+        {
+          "name": "NSIA Banque",
+          "type": "software",
+          "description": "Top financial tool in Ivory Coast"
+        }
+      ]
+    }
+  ]
+}

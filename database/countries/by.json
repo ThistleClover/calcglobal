@@ -1,0 +1,58 @@
+{
+  "country": "Belarus",
+  "country_code": "BY",
+  "languages": [
+    "be",
+    "ru"
+  ],
+  "currency": "BYN",
+  "calculators": [
+    {
+      "id": "by-tax-payroll-calculator",
+      "title_native": "Belarus Калькулятор НПД и Зарплаты Беларусь",
+      "title_en": "Belarus Калькулятор НПД и Зарплаты Беларусь",
+      "search_terms_native": [
+        "belarus tax calculator",
+        "belarus salary calculator",
+        "income tax by"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Belarus.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BYN)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Belarus revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Alfa-Bank BY",
+          "type": "software",
+          "description": "Top financial tool in Belarus"
+        },
+        {
+          "name": "Priorbank",
+          "type": "software",
+          "description": "Top financial tool in Belarus"
+        }
+      ]
+    }
+  ]
+}

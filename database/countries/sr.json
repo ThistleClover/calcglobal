@@ -1,0 +1,57 @@
+{
+  "country": "Suriname",
+  "country_code": "SR",
+  "languages": [
+    "nl"
+  ],
+  "currency": "SRD",
+  "calculators": [
+    {
+      "id": "sr-tax-payroll-calculator",
+      "title_native": "Suriname Inkomstenbelasting & AOV Suriname Calculator",
+      "title_en": "Suriname Inkomstenbelasting & AOV Suriname Calculator",
+      "search_terms_native": [
+        "suriname tax calculator",
+        "suriname salary calculator",
+        "income tax sr"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Suriname.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (SRD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Suriname revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "DSB Suriname",
+          "type": "software",
+          "description": "Top financial tool in Suriname"
+        },
+        {
+          "name": "Hakrinbank",
+          "type": "software",
+          "description": "Top financial tool in Suriname"
+        }
+      ]
+    }
+  ]
+}

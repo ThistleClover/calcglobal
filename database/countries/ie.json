@@ -1,0 +1,438 @@
+{
+  "country": "Ireland",
+  "country_code": "IE",
+  "languages": [
+    "en-IE",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "ie-paye-income-tax-take-home-calculator",
+      "title_native": "Irish PAYE Income Tax, USC & PRSI Take-Home Pay Calculator",
+      "title_en": "Irish PAYE Income Tax, USC & PRSI Take-Home Pay Calculator",
+      "search_terms_native": [
+        "take home pay calculator ireland",
+        "paye tax calculator ireland",
+        "income tax calculator standard rate cut off",
+        "usc calculator ireland",
+        "net salary calculator ireland 2025",
+        "prsi tax calculator ireland"
+      ],
+      "description_native": "Calculate net monthly and annual take-home pay under Irish Revenue Commissioners rules, accounting for PAYE Income Tax bands (20%/40%), Universal Social Charge (USC), Class A PRSI, Personal & PAYE Tax Credits, Rent Tax Credit, and tax-relieved pension contributions.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Gross Annual Salary (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_frequency",
+          "label_native": "Pay Frequency",
+          "type": "select",
+          "options": [
+            "annual",
+            "monthly",
+            "fortnightly",
+            "weekly"
+          ]
+        },
+        {
+          "name": "tax_status",
+          "label_native": "Civil Status & Tax Assessment Type",
+          "type": "select",
+          "options": [
+            "single_no_dependents",
+            "single_parent_child_carer",
+            "married_one_earner",
+            "married_two_earners"
+          ]
+        },
+        {
+          "name": "age_group",
+          "label_native": "Age Group (For Pension Relief Cap & USC Concessions)",
+          "type": "select",
+          "options": [
+            "under_30 (15% pension limit)",
+            "30_39 (20% pension limit)",
+            "40_49 (25% pension limit)",
+            "50_54 (30% pension limit)",
+            "55_59 (35% pension limit)",
+            "60_69 (40% pension limit)",
+            "70_plus_or_medical_card (2% max USC cap)"
+          ]
+        },
+        {
+          "name": "pension_contribution_rate",
+          "label_native": "Pension Contribution (% of salary)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "rent_tax_credit",
+          "label_native": "Rent Tax Credit Claim",
+          "type": "select",
+          "options": [
+            "none",
+            "single_tenant (max €750)",
+            "joint_married_tenant (max €1,500)"
+          ]
+        },
+        {
+          "name": "bik_annual_value",
+          "label_native": "Annual Benefit-in-Kind / Company Car (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_tax_credits",
+          "label_native": "Additional Annual Tax Credits (€)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Gross Taxable Pay: Sum of Gross Salary + Annual Benefit-in-Kind (BIK).\n2. Pension Tax Relief: Age-based percentage cap applied to gross salary (up to an annual salary cap of €115,000): Under 30 (15%), 30-39 (20%), 40-49 (25%), 50-54 (30%), 55-59 (35%), 60+ (40%). Allowable pension deduction reduces income taxable for PAYE Income Tax at marginal rate.\n3. Standard Rate Cut-Off Point (SRCOP): Single/Single Parent: €42,000; Married One Earner: €51,000; Married Two Earners: €84,000 combined (max €51,000 per spouse).\n4. Gross PAYE Income Tax: 20% on taxable income up to SRCOP; 40% on portion exceeding SRCOP.\n5. Tax Credits Deducted: Personal Tax Credit (€1,875/€2,000) + Employee PAYE Tax Credit (€1,875/€2,000) + Single Person Child Carer Credit (€1,750 if applicable) + Rent Tax Credit (€750 single / €1,500 married) + Other Credits. Net Income Tax = Max(0, Gross Income Tax - Total Tax Credits).\n6. Universal Social Charge (USC): Calculated on Gross Salary + BIK (before pension deduction). Exempt if total gross earnings ≤ €13,000. Standard rates: 0.5% up to €12,012; 2% on €12,012.01 to €25,760; 4% on €25,760.01 to €70,044; 8% on excess above €70,044. (Concession rate of 2% max applies for Full Medical Card holders / Age 70+ earning ≤ €60,000).\n7. Employee PRSI (Class A1): 4.1% on total gross income. Exemption if weekly gross earnings ≤ €352. Weekly earnings between €352.01 and €424 receive a tapered PRSI Credit (Maximum €12 per week reduced by 1/6th of earnings above €352).\n8. Net Take-Home Pay = Gross Salary - Net Income Tax - USC - Employee PRSI - Employee Pension Contribution.",
+      "affiliate_targets": [
+        {
+          "name": "Revolut Bank Ireland",
+          "type": "neobank",
+          "description": "High intent for employees switching main salary accounts to access instant savings vault rates and automated budget analytics."
+        },
+        {
+          "name": "Irish Life Financial Services",
+          "type": "insurance",
+          "description": "Leading Irish pension provider targeting employees maximizing age-based PRSA pension tax relief before annual revenue deadlines."
+        },
+        {
+          "name": "Taxback.com Ireland",
+          "type": "accounting",
+          "description": "High conversion for PAYE taxpayers claiming overpaid taxes, Rent Tax Credit, medical expenses, and flat-rate expense refunds."
+        }
+      ]
+    },
+    {
+      "id": "ie-self-employed-contractor-tax-calculator",
+      "title_native": "Irish Sole Trader & Self-Employed Tax Calculator (Class S PRSI, USC & Earned Income Credit)",
+      "title_en": "Irish Sole Trader & Self-Employed Tax Calculator (Class S PRSI, USC & Earned Income Credit)",
+      "search_terms_native": [
+        "sole trader tax calculator ireland",
+        "self employed tax calculator ireland",
+        "class s prsi calculator",
+        "earned income tax credit calculator",
+        "preliminary tax calculator ireland",
+        "contractor net pay calculator ireland"
+      ],
+      "description_native": "Calculate income tax, Class S PRSI, USC, and net earnings for self-employed individuals, sole traders, and umbrella company contractors in Ireland, including Preliminary Tax payment requirements and Earned Income Tax Credit.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_revenue",
+          "label_native": "Gross Business Revenue / Turnover (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "business_expenses",
+          "label_native": "Allowable Tax-Deductible Business Expenses (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "civil_status",
+          "label_native": "Civil Status",
+          "type": "select",
+          "options": [
+            "single",
+            "married_one_earner",
+            "married_two_earners"
+          ]
+        },
+        {
+          "name": "age_group",
+          "label_native": "Age Group",
+          "type": "select",
+          "options": [
+            "under_30",
+            "30_39",
+            "40_49",
+            "50_54",
+            "55_59",
+            "60_69",
+            "70_plus"
+          ]
+        },
+        {
+          "name": "prsa_pension_contribution",
+          "label_native": "Personal PRSA Pension Contribution (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "preliminary_tax_basis",
+          "label_native": "Preliminary Tax Calculation Basis",
+          "type": "select",
+          "options": [
+            "100_percent_prior_year_liability",
+            "90_percent_current_year_liability"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Net Business Profit: Gross Revenue minus Allowable Operating Expenses.\n2. Taxable Income for Income Tax: Net Business Profit minus Personal PRSA Pension Contribution (capped by age percentage up to €115,000 earnings limit).\n3. Income Tax: 20% on taxable income up to Standard Rate Cut-Off Point (€42,000 single / €51,000 married single earner); 40% on balance above SRCOP.\n4. Tax Credits: Personal Tax Credit (€1,875/€2,000) + Earned Income Tax Credit (€1,875/€2,000, which replaces PAYE Credit for self-employed individuals). Net Income Tax = Max(0, Gross Income Tax - Tax Credits).\n5. Universal Social Charge (USC): Calculated on Net Business Profit. Standard bands (0.5%, 2%, 4%, 8%). Crucial Edge Case: Self-employed non-PAYE income exceeding €100,000 is subject to a 3% USC surcharge (yielding an 11% marginal USC rate on portion over €100,000).\n6. Class S PRSI: 4.1% of total Net Business Profit, subject to a statutory minimum payment of €500 per year. (No weekly earnings exemption or PRSI credit for Class S).\n7. Total Tax Liability = Net Income Tax + USC + Class S PRSI.\n8. Preliminary Tax Requirement: Payable by October 31 annually, calculated as 100% of previous year's tax liability or 90% of current year's estimated liability.\n9. Net Retained Earnings = Net Business Profit - Total Tax Liability - Pension Contribution.",
+      "affiliate_targets": [
+        {
+          "name": "Surf Accounts / BrightPay Ireland",
+          "type": "software",
+          "description": "Leading Irish cloud accounting software customized for Revenue Form 11 self-assessment returns and ROS XML filings."
+        },
+        {
+          "name": "Icon Accounting",
+          "type": "accounting",
+          "description": "Top-tier Irish contractor umbrella company providing PAYE umbrella and limited company setup for IT & engineering freelancers."
+        },
+        {
+          "name": "Fire.com",
+          "type": "neobank",
+          "description": "Irish Central Bank-regulated business payment account offering EUR and GBP dual accounts for Irish sole traders and contractors."
+        }
+      ]
+    },
+    {
+      "id": "ie-stamp-duty-mortgage-property-calculator",
+      "title_native": "Irish Property Stamp Duty, Mortgage Borrowing & First-Time Buyer Scheme Calculator",
+      "title_en": "Irish Property Stamp Duty, Mortgage Borrowing & First-Time Buyer Scheme Calculator",
+      "search_terms_native": [
+        "stamp duty calculator ireland",
+        "property tax calculator ireland",
+        "help to buy scheme calculator ireland",
+        "first home scheme calculator ireland",
+        "mortgage lti calculator central bank ireland",
+        "house buyer tax calculator ireland"
+      ],
+      "description_native": "Calculate residential Stamp Duty, Central Bank Loan-to-Income (LTI) borrowing limits, Help to Buy (HTB) tax refunds, First Home Scheme (FHS) equity support, and total upfront cash required for buying property in Ireland.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Property Purchase Price (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "buyer_category",
+          "label_native": "Buyer Category",
+          "type": "select",
+          "options": [
+            "first_time_buyer",
+            "second_subsequent_buyer",
+            "investor_buy_to_let"
+          ]
+        },
+        {
+          "name": "property_type",
+          "label_native": "Property Type",
+          "type": "select",
+          "options": [
+            "new_build",
+            "second_hand_resale"
+          ]
+        },
+        {
+          "name": "gross_household_income",
+          "label_native": "Gross Annual Household Income (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "available_savings",
+          "label_native": "Available Savings / Cash Deposit (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "income_tax_paid_4yrs",
+          "label_native": "Total Income Tax & USC Paid over Last 4 Years (€)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Residential Stamp Duty: 1% on the first €1,000,000 of purchase price; 2% on the portion exceeding €1,000,000. (Note: Non-residential rate is 7.5%; bulk purchases of 10+ residential units incur 15%).\n2. Central Bank Loan-to-Income (LTI) Limits: First Time Buyers (FTB) maximum mortgage = 4.0 × Gross Household Income. Second/Subsequent Buyers (SSB) maximum mortgage = 3.5 × Gross Household Income.\n3. Minimum Deposit Requirement: FTB minimum deposit = 10% of purchase price. SSB minimum deposit = 10% of purchase price.\n4. Help to Buy (HTB) Scheme (FTBs buying new builds ≤ €500,000): Refund of Income Tax and USC paid over prior 4 calendar years. Entitlement = Min(10% of property purchase price, €30,000, Total Income Tax/USC paid in 4 years).\n5. First Home Scheme (FHS) Equity Support (New builds for FTBs): Provides equity contribution up to 30% of property purchase price (capped at 20% if HTB is also utilized).\n6. Estimated Transaction Fees: Legal Conveyancing Fees (~€2,500-€3,500 + VAT) + Mortgage Valuation Fee (~€250) + Local Property Tax (LPT annual band estimate).\n7. Net Out-of-Pocket Cash Required at Closing: Deposit Required (Purchase Price - Max Mortgage Loan - HTB Refund - FHS Equity) + Stamp Duty + Legal & Valuation Fees.",
+      "affiliate_targets": [
+        {
+          "name": "Bonkers.ie",
+          "type": "software",
+          "description": "Ireland's leading financial comparison platform connecting home buyers with mortgage brokers and competitive interest rates."
+        },
+        {
+          "name": "Chill Insurance",
+          "type": "insurance",
+          "description": "Major Irish insurance broker providing mandatory mortgage protection life insurance and home buildings coverage."
+        },
+        {
+          "name": "LawOnline.ie",
+          "type": "legal",
+          "description": "Digital conveyancing services platform streamlining Irish property title transfers and solicitor fee quotes."
+        }
+      ]
+    },
+    {
+      "id": "ie-capital-acquisitions-tax-cat-calculator",
+      "title_native": "Irish Capital Acquisitions Tax (CAT) Gift & Inheritance Tax Calculator",
+      "title_en": "Irish Capital Acquisitions Tax (CAT) Gift & Inheritance Tax Calculator",
+      "search_terms_native": [
+        "cat tax calculator ireland",
+        "gift tax calculator ireland",
+        "inheritance tax calculator ireland",
+        "group a threshold cat ireland",
+        "small gift exemption calculator ireland",
+        "section 72 policy cat tax ireland"
+      ],
+      "description_native": "Calculate Capital Acquisitions Tax (CAT) on gifts and inheritances in Ireland, evaluating Group A/B/C lifetime tax-free thresholds, the €3,000 Annual Small Gift Exemption, Business/Agricultural Property Relief, and net CAT tax payable.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "benefit_type",
+          "label_native": "Type of Benefit",
+          "type": "select",
+          "options": [
+            "inheritance",
+            "gift"
+          ]
+        },
+        {
+          "name": "gross_benefit_value",
+          "label_native": "Gross Value of Gift / Inheritance (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "relationship_group",
+          "label_native": "Relationship to Disposer / Deceased",
+          "type": "select",
+          "options": [
+            "group_a_child_or_parent",
+            "group_b_sibling_niece_nephew_grandchild",
+            "group_c_unrelated_stranger_cohabitant"
+          ]
+        },
+        {
+          "name": "prior_taxable_benefits",
+          "label_native": "Prior Taxable Benefits received in same Group since 5 Dec 1991 (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "apply_small_gift_exemption",
+          "label_native": "Apply Annual Small Gift Exemption (€3,000 per donor)",
+          "type": "select",
+          "options": [
+            "yes",
+            "no"
+          ]
+        },
+        {
+          "name": "qualifying_reliefs",
+          "label_native": "Qualifying Property Reliefs (90% Reduction)",
+          "type": "select",
+          "options": [
+            "none",
+            "business_property_relief_90_percent",
+            "agricultural_relief_90_percent"
+          ]
+        }
+      ],
+      "formula_explanation": "1. Valuation & Reliefs: If qualifying for Business Property Relief or Agricultural Relief, taxable market value is reduced by 90% (Taxable Benefit = Gross Value × 0.10).\n2. Annual Small Gift Exemption: For lifetime gifts, €3,000 per donor per calendar year is deducted tax-free from taxable benefit value without reducing lifetime group thresholds.\n3. Lifetime Tax-Free Group Thresholds: Group A (Child, or Parent taking absolute interest): €400,000; Group B (Sibling, Niece, Nephew, Grandchild, Lineal Ancestor/Descendant): €40,000; Group C (Stranger, Unrelated person, Non-married Cohabitant): €20,000.\n4. Available Lifetime Group Threshold = Max(0, Statutory Group Threshold - Cumulative Prior Benefits received in same Group since 5 December 1991).\n5. Taxable Excess = Max(0, Taxable Benefit - Available Lifetime Threshold).\n6. Capital Acquisitions Tax (CAT) Payable = Taxable Excess × 33% (flat statutory CAT rate).\n7. Statutory Filing Obligation: Revenue Form IT38 return must be filed online via ROS/MyAccount if total taxable benefit value reaches 80% or more of the applicable Group threshold.",
+      "affiliate_targets": [
+        {
+          "name": "Royal London Ireland",
+          "type": "insurance",
+          "description": "Leading provider of Section 72 and Section 73 Revenue-approved life insurance policies specifically designed to pay CAT liabilities tax-free."
+        },
+        {
+          "name": "Davy Private Clients",
+          "type": "accounting",
+          "description": "Premier Irish wealth management firm advising high-net-worth families on estate planning, family business relief, and trust structures."
+        },
+        {
+          "name": "LawOnline.ie",
+          "type": "legal",
+          "description": "Irish legal technology platform providing online estate planning, probate documents, and deed of gift drafting."
+        }
+      ]
+    },
+    {
+      "id": "ie-director-salary-dividend-corporation-tax-calculator",
+      "title_native": "Irish Proprietary Director Salary vs Dividend & Corporation Tax Calculator",
+      "title_en": "Irish Proprietary Director Salary vs Dividend & Corporation Tax Calculator",
+      "search_terms_native": [
+        "corporation tax calculator ireland",
+        "director salary vs dividend ireland",
+        "dividend withholding tax dwt ireland",
+        "small benefit exemption calculator",
+        "close company surcharge calculator ireland",
+        "irish company profit extraction calculator"
+      ],
+      "description_native": "Optimise profit extraction for proprietary directors of Irish Private Limited Companies (LTD), comparing salary, Executive PRSA pension contributions, dividends (subject to 25% DWT and marginal tax), 12.5% Corporation Tax, and Close Company Surcharges.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "company_trading_profit",
+          "label_native": "Company Annual Net Trading Profit before Remuneration (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "company_investment_income",
+          "label_native": "Company Passive / Investment Income (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "proposed_director_salary",
+          "label_native": "Proposed Director Annual Gross Salary (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "executive_pension_contribution",
+          "label_native": "Company Executive PRSA Pension Contribution (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "small_benefit_voucher",
+          "label_native": "Utilise Small Benefit Exemption (€1,000 voucher cap)",
+          "type": "select",
+          "options": [
+            "yes",
+            "no"
+          ]
+        },
+        {
+          "name": "proposed_dividend_payout",
+          "label_native": "Proposed Gross Dividend Distribution (€)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Corporate Tax Deductions: Director Salary, Company Pension Contributions (Executive PRSA), and Small Benefit Vouchers (up to €1,000 tax-free per year) are allowable business expenses reducing corporate taxable trading profit.\n2. Corporation Tax (CT): 12.5% on Taxable Trading Profit. 25% CT on Non-Trading / Passive Investment Income.\n3. Professional Services / Close Company Surcharge: Undistributed investment income or professional service income retained in company beyond 18 months incurs a 20% Close Company Surcharge.\n4. Dividend Withholding Tax (DWT): 25% tax deducted at source by company upon dividend payout. Gross dividend is taxed in director's personal Form 11 return at marginal Income Tax (20%/40%) + USC (up to 11%) + Class S PRSI (4.1%), with credit given for 25% DWT prepaid.\n5. Executive PRSA Pension Tax Advantage: Company contributions are 100% Corporation Tax deductible with no employer pension contribution limit under Irish Finance Act rules, creating 0% BIK for director.\n6. Net Personal Value Comparison: Total Retained Wealth = (Director Net Take-Home Salary) + (Director Net Dividend) + (Executive Pension Wealth Accumulated) vs Total Corporate Tax & Personal Taxes Paid.",
+      "affiliate_targets": [
+        {
+          "name": "Xero Ireland",
+          "type": "software",
+          "description": "Leading SME cloud accounting platform in Ireland supporting payroll, dividend management, and automated Revenue CT1 prep."
+        },
+        {
+          "name": "Wealth Options Ireland",
+          "type": "accounting",
+          "description": "Specialist Irish pension trustee and advisor guiding proprietary directors on corporate PRSA wealth extraction."
+        },
+        {
+          "name": "Revolut Business Ireland",
+          "type": "neobank",
+          "description": "Corporate neobanking service featuring automated VAT/tax sub-accounts, corporate debit cards, and multi-currency expense management."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "country": "Egypt",
+  "country_code": "EG",
+  "languages": [
+    "ar"
+  ],
+  "currency": "EGP",
+  "calculators": [
+    {
+      "id": "eg-tax-payroll-calculator",
+      "title_native": "Egypt حاسبة ضريبة كسب العمل والـ Payroll المصرية",
+      "title_en": "Egypt حاسبة ضريبة كسب العمل والـ Payroll المصرية",
+      "search_terms_native": [
+        "egypt tax calculator",
+        "egypt salary calculator",
+        "income tax eg"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Egypt.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EGP)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Egypt revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Fawry",
+          "type": "software",
+          "description": "Top financial tool in Egypt"
+        },
+        {
+          "name": "CIB Egypt",
+          "type": "software",
+          "description": "Top financial tool in Egypt"
+        },
+        {
+          "name": "QNB Alahli",
+          "type": "software",
+          "description": "Top financial tool in Egypt"
+        }
+      ]
+    }
+  ]
+}

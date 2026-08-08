@@ -1,0 +1,57 @@
+{
+  "country": "Bolivia",
+  "country_code": "BO",
+  "languages": [
+    "es"
+  ],
+  "currency": "BOB",
+  "calculators": [
+    {
+      "id": "bo-tax-payroll-calculator",
+      "title_native": "Bolivia Calculadora RC-IVA y Afp Futuro Bolivia",
+      "title_en": "Bolivia Calculadora RC-IVA y Afp Futuro Bolivia",
+      "search_terms_native": [
+        "bolivia tax calculator",
+        "bolivia salary calculator",
+        "income tax bo"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Bolivia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BOB)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bolivia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "SIN Bolivia",
+          "type": "software",
+          "description": "Top financial tool in Bolivia"
+        },
+        {
+          "name": "Banco Bisa",
+          "type": "software",
+          "description": "Top financial tool in Bolivia"
+        }
+      ]
+    }
+  ]
+}

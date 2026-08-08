@@ -1,0 +1,590 @@
+{
+  "country": "Brazil",
+  "country_code": "BR",
+  "languages": [
+    "pt",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "calculadora-rescisao-clt-br",
+      "title_native": "Calculadora de Rescisão de Contrato CLT (Demissão, FGTS e 13º)",
+      "title_en": "Brazil CLT Employment Termination & Severance Calculator",
+      "search_terms_native": [
+        "calculadora rescisao clt",
+        "calculo rescisao de contrato de trabalho",
+        "simulador rescisao trabalhista",
+        "multa 40 fgts calculo",
+        "aviso previo indenizado calculo"
+      ],
+      "description_native": "Calcule os direitos trabalhistas no término ou rescisão do contrato de trabalho no Brasil sob as regras da CLT, incluindo saldo de salário, aviso prévio indenizado, férias proporcionais com 1/3, décimo terceiro e a multa rescisória de 40% sobre o FGTS.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "salario_bruto",
+          "label_native": "Salário Mensal Bruto (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tipo_desligamento",
+          "label_native": "Motivo da Rescisão / Desligamento",
+          "type": "select",
+          "options": [
+            {
+              "value": "demissao_sem_justa_causa",
+              "label_native": "Demissão sem Justa Causa pelo Empregador"
+            },
+            {
+              "value": "pedido_demissao",
+              "label_native": "Pedido de Demissão pelo Empregado"
+            },
+            {
+              "value": "demissao_com_justa_causa",
+              "label_native": "Demissão com Justa Causa"
+            },
+            {
+              "value": "acordo_mutuo",
+              "label_native": "Acordo Mútuo entre as Partes (Art. 484-A CLT)"
+            },
+            {
+              "value": "termino_experiencia",
+              "label_native": "Término de Contrato de Experiência no Prazo"
+            }
+          ]
+        },
+        {
+          "name": "meses_trabalhados_ano",
+          "label_native": "Meses Trabalhados no Ano Corrente",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dias_trabalhados_mes",
+          "label_native": "Dias Trabalhados no Último Mês (Saldo de Salário)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "anos_servico_empresa",
+          "label_native": "Anos Completos de Serviço na Empresa",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "aviso_previo_tipo",
+          "label_native": "Modalidade do Aviso Prévio",
+          "type": "select",
+          "options": [
+            {
+              "value": "indenizado_empresa",
+              "label_native": "Indenizado pela Empresa"
+            },
+            {
+              "value": "trabalhado",
+              "label_native": "Trabalhado pelo Empregado"
+            },
+            {
+              "value": "nao_cumprido_descontado",
+              "label_native": "Não Cumprido pelo Empregado (Descontado)"
+            },
+            {
+              "value": "dispensado",
+              "label_native": "Dispensado do Cumprimento"
+            }
+          ]
+        },
+        {
+          "name": "possui_ferias_vencidas",
+          "label_native": "Possui Período de Férias Vencidas Não Gozadas?",
+          "type": "select",
+          "options": [
+            {
+              "value": "nao",
+              "label_native": "Não (Sem férias vencidas)"
+            },
+            {
+              "value": "sim_1_periodo",
+              "label_native": "Sim (1 Período Vencido)"
+            },
+            {
+              "value": "sim_2_periodos",
+              "label_native": "Sim (2 Períodos Vencidos / Férias em Dobro)"
+            }
+          ]
+        },
+        {
+          "name": "saldo_fgts_fins_rescisorios",
+          "label_native": "Saldo Atual da Conta Vinculada do FGTS (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "num_dependentes_irrf",
+          "label_native": "Número de Dependentes para IRRF",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Saldo de Salário: (Salário Bruto / 30) * Dias Trabalhados no Mês de Desligamento. \n2. Aviso Prévio Proporcional (Lei 12.506/2011): 30 dias de aviso prévio para até 1 ano de serviço + 3 dias por ano completo trabalhado, limitado ao teto máximo de 90 dias (para mais de 20 anos de serviço). Se indenizado pelo empregador na demissão sem justa causa, o valor é Salário Mensal * (Dias de Aviso / 30). No acordo mútuo (Art. 484-A), indeniza-se 50% do aviso prévio. \n3. Décimo Terceiro Salário Proporcional: (Salário Bruto / 12) * Meses Trabalhados no Ano (considerando fração igual ou superior a 15 dias como 1 mês completo). Inclui a projeção do aviso prévio indenizado. \n4. Férias Proporcionais + 1/3 Constitucional: ((Salário Bruto / 12) * Meses do Período Aquisitivo) * 1.3333. Férias vencidas são pagas integralmente (Salário * 1.3333), e se dobradas (Art. 137 CLT), multiplicadas por 2. \n5. Multa Rescisória do FGTS: 40% sobre o saldo total dos depósitos do FGTS em caso de demissão sem justa causa (ou 20% no acordo mútuo Art. 484-A). No pedido de demissão ou demissão com justa causa, não há pagamento da multa nem saque do saldo FGTS. \n6. Descontos Fiscais e Previdenciários: INSS e IRRF incidem sobre o Saldo de Salário e sobre o 13º Salário (em bases separadas). Férias indenizadas, aviso prévio indenizado e multa do FGTS são isentos de INSS e IRRF. \n7. Valor Total Líquido da Rescisão = Saldo de Salário + Aviso Prévio Indenizado + 13º Proporcional + Férias Totais com 1/3 + Multa FGTS (se aplicável) - Descontos de INSS/IRRF.",
+      "affiliate_targets": [
+        {
+          "name": "Contabilizei",
+          "type": "accounting",
+          "description": "Soluções de folha de pagamento e gestão contábil para empresas que realizam rescisões contratuais."
+        },
+        {
+          "name": "Creditas",
+          "type": "software",
+          "description": "Plataforma de empréstimo consignado privado e antecipação de saque-aniversário do FGTS com juros reduzidos."
+        },
+        {
+          "name": "Convenia",
+          "type": "software",
+          "description": "Software de gestão de RH e departamento pessoal para automação de admissões e desligamentos CLT."
+        },
+        {
+          "name": "Caju Benefícios",
+          "type": "software",
+          "description": "Cartão multibenefícios flexível para empresas CLT com gestão centralizada de VR, VA e mobilidade."
+        },
+        {
+          "name": "Banco Inter",
+          "type": "neobank",
+          "description": "Conta digital PJ e PF gratuita com funcionalidades integradas de folha de pagamento e investimentos."
+        }
+      ]
+    },
+    {
+      "id": "calculadora-fator-r-simples-nacional",
+      "title_native": "Calculadora Fator R do Simples Nacional (Anexo III ou Anexo V)",
+      "title_en": "Brazil Simples Nacional Fator R Calculator (Annex III vs V)",
+      "search_terms_native": [
+        "calculadora fator r simples nacional",
+        "anexo iii ou anexo v simulador",
+        "como calcular fator r pj",
+        "redução impostos simples nacional",
+        "fator r contabilidade online"
+      ],
+      "description_native": "Descubra se a sua empresa prestadora de serviços (TI, engenharia, consultoria, saúde) se enquadra no Anexo III (alíquota a partir de 6%) ou no Anexo V (alíquota a partir de 15,5%) no Simples Nacional calculando o Fator R.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "folha_pagamento_12m",
+          "label_native": "Massa Salarial e Pró-Labore dos últimos 12 meses (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "receita_bruta_12m",
+          "label_native": "Receita Bruta Acumulada nos últimos 12 meses - RBT12 (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "faturamento_mensal",
+          "label_native": "Faturamento do Mês Atual (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tipo_atividade",
+          "label_native": "Atividade da Empresa Sujeita ao Fator R",
+          "type": "select",
+          "options": [
+            {
+              "value": "ti_desenvolvimento",
+              "label_native": "Desenvolvimento de Software / TI / Licenciamento"
+            },
+            {
+              "value": "arquitetura_engenharia",
+              "label_native": "Serviços de Arquitetura e Engenharia"
+            },
+            {
+              "value": "consultoria_gestao",
+              "label_native": "Consultoria Empresarial / Gestão / Marketing"
+            },
+            {
+              "value": "saude_medicina",
+              "label_native": "Medicina, Odontologia e Psicologia"
+            },
+            {
+              "value": "outros_servicos_intelectuais",
+              "label_native": "Outras Atividades Intelectuais e Acadêmicas"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Definição do Fator R: Conforme a Lei Complementar 123/2006 (Art. 18, § 5º-J e § 5º-M), o Fator R é a razão entre os gastos com folha de pagamento dos últimos 12 meses (incluindo salários, pro-labore e encargos de INSS/FGTS) e a receita bruta dos últimos 12 meses (RBT12). Formula: Fator R (%) = (Folha de Pagamento 12 Meses / Receita Bruta 12 Meses) * 100. \n2. Enquadramento no Anexo: \n - Se Fator R >= 28%: A tributação ocorre pelo Anexo III, com alíquota nominal inicial de 6,0% (Alíquota efetiva calculada conforme a faixa da RBT12). \n - Se Fator R < 28%: A tributação ocorre pelo Anexo V, com alíquota nominal inicial de 15,5% (Alíquota efetiva significativamente superior). \n3. Cálculo do DAS (Documento de Arrecadação do Simples Nacional): Alíquota Efetiva = ((RBT12 * Alíquota Nominal do Anexo) - Parcela a Abater) / RBT12. O DAS do mês = Faturamento Mensal * Alíquota Efetiva. \n4. Otimização de Pró-labore Ideal: Para empresas sem empregados com Fator R abaixo de 28%, o pró-labore mensal recomendado para atingir os 28% e migrar para o Anexo III é: Pró-Labore Mensal Ideal = (Receita Bruta 12M * 0.28) / 12.",
+      "affiliate_targets": [
+        {
+          "name": "Contabilizei",
+          "type": "accounting",
+          "description": "Maior empresa de contabilidade online do Brasil para PJs e Simples Nacional com otimização do Fator R."
+        },
+        {
+          "name": "Agilize Contabilidade",
+          "type": "accounting",
+          "description": "Plataforma de contabilidade digital especializada em prestadores de serviços de tecnologia e consultoria."
+        },
+        {
+          "name": "Cora Banco PJ",
+          "type": "neobank",
+          "description": "Conta PJ 100% gratuita com emissão ilimitada de boletos e integração direta com contabilidades no Simples."
+        },
+        {
+          "name": "Conta Azul",
+          "type": "software",
+          "description": "Sistema de gestão financeira ERP para micro e pequenas empresas no Simples Nacional com emissão de NF-e."
+        },
+        {
+          "name": "Agibank",
+          "type": "neobank",
+          "description": "Soluções de crédito PJ e antecipação de recebíveis para pequenas empresas brasileiras."
+        }
+      ]
+    },
+    {
+      "id": "calculadora-clt-vs-pj-br",
+      "title_native": "Calculadora CLT vs PJ (Comparador de Salário Líquido e Benefícios)",
+      "title_en": "Brazil CLT vs PJ Net Income & Benefit Comparison Calculator",
+      "search_terms_native": [
+        "calculadora clt vs pj",
+        "comparador clt x pj",
+        "quanto cobrar como pj",
+        "salario clt para pj equivalente",
+        "simulador salario liquido clt e pj"
+      ],
+      "description_native": "Compare objetivamente o valor líquido mensal recebido como funcionário CLT (com 13º, férias + 1/3, FGTS e benefícios) versus prestador de serviço PJ (Simples Nacional ou Lucro Presumido), encontrando a proposta financeira equivalente.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "salario_clt_bruto",
+          "label_native": "Salário Mensal Bruto Proposto em CLT (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "beneficios_clt_mensal",
+          "label_native": "Valor Mensal dos Benefícios CLT: VR, VA, VT, Plano de Saúde (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "faturamento_pj_bruto",
+          "label_native": "Faturamento Mensal Bruto Proposto em PJ (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "regime_pj",
+          "label_native": "Regime Tributário Previsto para a Empresa PJ",
+          "type": "select",
+          "options": [
+            {
+              "value": "simples_anexo_iii",
+              "label_native": "Simples Nacional - Anexo III com Fator R >= 28%"
+            },
+            {
+              "value": "simples_anexo_v",
+              "label_native": "Simples Nacional - Anexo V com Fator R < 28%"
+            },
+            {
+              "value": "lucro_presumido",
+              "label_native": "Lucro Presumido - Impostos Federais de ~13,33% a 16,33%"
+            },
+            {
+              "value": "mei",
+              "label_native": "MEI - Microempreendedor Individual (Até R$ 81.000/ano)"
+            }
+          ]
+        },
+        {
+          "name": "custos_mensais_pj",
+          "label_native": "Custos Fixos Mensais PJ: Contabilidade, Tarifas, Certificado Digital (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "num_dependentes",
+          "label_native": "Número de Dependentes para IRRF na CLT",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Rendimento Líquido CLT Anualizado e Mensalizado: \n - Salário Líquido Base Mensal = Salário Bruto - INSS (tabela progressiva 2026) - IRRF (tabela progressiva 2026). \n - Adicionais Anuais CLT: 13º Salário Líquido + (Férias + 1/3 Líquido) + FGTS Anual (8% do Salário Bruto * 12) + Benefícios Mensais * 12. \n - Salário Mensal Equivalente CLT = (Total Líquido Anual CLT + Benefícios) / 12. \n2. Rendimento Líquido PJ Mensal: \n - Imposto DAS/PJ = Faturamento Bruto * Alíquota Efetiva do Regime (Simples Anexo III ~6%, Anexo V ~15.5%, Lucro Presumido ~14.5%, MEI R$ fixo ~R$ 75). \n - INSS do Pró-labore = 11% sobre o valor do pró-labore fixado (no mínimo 1 salário mínimo ou 28% do faturamento para Fator R). \n - Despesas Operacionais = Custos de Contabilidade e Certificado Digital. \n - Lucro Líquido Distribuído (Isento de IRRF) = Faturamento Bruto - DAS - Pró-Labore - Despesas. \n - Renda Líquida Mensal PJ = (Pró-labore - INSS Pró-labore - IRRF Pró-labore) + Lucro Isento Distribuído. \n3. Proposta PJ Mínima Equivalente: Para cobrir a perda de estabilidade, FGTS (8% + 40% rescisão), 13º, férias remuneradas e plano de saúde, a remuneração PJ recomendada é de 1,3x a 1,6x o salário bruto CLT de referência.",
+      "affiliate_targets": [
+        {
+          "name": "Contabilizei",
+          "type": "accounting",
+          "description": "Abertura gratuita de empresa CNPJ para novos PJs e plano contábil completo."
+        },
+        {
+          "name": "Cora Banco PJ",
+          "type": "neobank",
+          "description": "Conta digital empresarial para PJs sem taxa mensal de manutenção."
+        },
+        {
+          "name": "Caju Benefícios",
+          "type": "software",
+          "description": "Gestão flexível de benefícios para empresas CLT e consultoria de benefícios corporativos."
+        },
+        {
+          "name": "Flash Benefícios",
+          "type": "software",
+          "description": "Plataforma de benefícios flexíveis para colaboradores CLT no Brasil."
+        },
+        {
+          "name": "Nomad Global",
+          "type": "neobank",
+          "description": "Conta em dólar para PJs e freelancers que prestam serviços para empresas internacionais."
+        }
+      ]
+    },
+    {
+      "id": "calculadora-irrf-carne-leao-br",
+      "title_native": "Calculadora de IRRF Mensal e Carnê-Leão (Tabela Progressiva 2026)",
+      "title_en": "Brazil IRRF Tax & Self-Employed Carnê-Leão Calculator",
+      "search_terms_native": [
+        "calculadora irrf 2026",
+        "tabela imposto de renda retido na fonte",
+        "calculo carne leao autonomo",
+        "desconto inss e irrf salario",
+        "calculadora imposto de renda mensal"
+      ],
+      "description_native": "Simule a retenção na fonte do Imposto de Renda (IRRF) sobre salários ou calcule o imposto mensal a recolher via Carnê-Leão para profissionais autônomos e proprietários de imóveis alugados.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "rendimento_bruto_mensal",
+          "label_native": "Rendimento Bruto Mensal (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "categoria_rendimento",
+          "label_native": "Origem do Rendimento Recebido",
+          "type": "select",
+          "options": [
+            {
+              "value": "clt_assalariado",
+              "label_native": "Trabalho Assalariado CLT"
+            },
+            {
+              "value": "autonomo_pf",
+              "label_native": "Trabalho Autônomo sem Vínculo / Prestação de Serviço a PF"
+            },
+            {
+              "value": "aluguel_pf",
+              "label_native": "Recebimento de Aluguéis de Pessoa Física"
+            },
+            {
+              "value": "pro_labore",
+              "label_native": "Pró-Labore de Sócio de Empresa"
+            }
+          ]
+        },
+        {
+          "name": "num_dependentes",
+          "label_native": "Número de Dependentes Legais",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pensao_alimenticia",
+          "label_native": "Pensão Alimentícia Oficial Paga no Mês (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "despesas_livro_caixa",
+          "label_native": "Despesas Operacionais Dedutíveis / Livro Caixa (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "usar_desconto_simplificado",
+          "label_native": "Modalidade de Dedução do IRRF Mensal",
+          "type": "select",
+          "options": [
+            {
+              "value": "auto",
+              "label_native": "Comparar e Selecionar Automaticamente a Opção Mais Vantajosa"
+            },
+            {
+              "value": "deducoes_legais",
+              "label_native": "Utilizar Deduções Legais Tradicionais: INSS, Dependentes, Pensão"
+            },
+            {
+              "value": "desconto_simplificado",
+              "label_native": "Utilizar Desconto Mensal Simplificado Fixo (R$ 564,80)"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "1. Contribuição Previdenciária (INSS Mensal): Aplicada sobre o rendimento bruto tributável. Para empregados CLT e pró-labore, utiliza-se a tabela progressiva do INSS até o teto estipulado de R$ 7.786,02. Autônomos aplicam 20% (ou 11% no regime simplificado) sobre a base até o teto. \n2. Apuração da Base de Cálculo do IRRF: \n - Opção Deduções Legais: Base = Rendimento Bruto - Contribuição ao INSS - (R$ 189,59 * Número de Dependentes) - Pensão Alimentícia Oficial - Despesas de Livro Caixa comprovadas (para autônomos). \n - Opção Desconto Simplificado Mensal: Base = Rendimento Bruto - Desconto Simplificado Fixo (R$ 564,80). \n - O sistema de cálculo seleciona automaticamente a maior dedução entre as duas modalidades para diminuir o imposto a pagar. \n3. Aplicação da Tabela Progressiva do IRRF (Vigente em 2026): \n - Até R$ 2.259,20: Isento (Alíquota 0%, Dedução R$ 0,00) \n - R$ 2.259,21 até R$ 2.826,65: Alíquota 7,5% (Parcela a Abater R$ 169,44) \n - R$ 2.826,66 até R$ 3.751,05: Alíquota 15,0% (Parcela a Abater R$ 381,44) \n - R$ 3.751,06 até R$ 4.664,68: Alíquota 22,5% (Parcela a Abater R$ 662,77) \n - Acima de R$ 4.664,68: Alíquota 27,5% (Parcela a Abater R$ 896,00) \n4. Cálculo do Imposto Final = (Base de Cálculo * Alíquota da Faixa) - Parcela a Abater da Faixa. \n5. Alíquota Efetiva Real = (Imposto Apurado / Rendimento Bruto) * 100.",
+      "affiliate_targets": [
+        {
+          "name": "Velotax",
+          "type": "software",
+          "description": "Plataforma automatizada para cálculo e pagamento mensal do Carnê-Leão e declaração anual de Imposto de Renda."
+        },
+        {
+          "name": "TaxDown Brasil",
+          "type": "software",
+          "description": "Aplicativo de otimização fiscal e entrega simplificada do IRPF no Brasil."
+        },
+        {
+          "name": "Contabilizei",
+          "type": "accounting",
+          "description": "Contabilidade online com emissão do DARF do Carnê-Leão e pró-labore automatizado."
+        },
+        {
+          "name": "Banco Inter",
+          "type": "neobank",
+          "description": "Conta digital com investimentos em Renda Fixa isentos de Imposto de Renda (LCI/LCA)."
+        },
+        {
+          "name": "XP Investimentos",
+          "type": "neobank",
+          "description": "Plataforma de investimentos com assessoria tributária para diversificação de patrimônio."
+        }
+      ]
+    },
+    {
+      "id": "calculadora-itbi-escritura-cartorio-br",
+      "title_native": "Calculadora de ITBI, Escritura e Registro de Imóveis (Custos de Compra)",
+      "title_en": "Brazil Property Purchase Tax & Registry Fees Calculator (ITBI & Cartório)",
+      "search_terms_native": [
+        "calculadora itbi",
+        "como calcular itbi e escritura cartorio",
+        "custos para passar escritura de imovel",
+        "imposto transmissao bens imoveis",
+        "desconto primeiro imovel registro cartorio"
+      ],
+      "description_native": "Calcule com precisão todos os custos tributários e cartorários na aquisição de um imóvel no Brasil: imposto ITBI municipal, custas de escritura pública e registro de imóveis, incluindo a aplicação do desconto de 50% para primeiro imóvel (Art. 290 da LRP).",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "valor_compra_venda",
+          "label_native": "Valor de Compra e Venda / Negociação (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "valor_venal_iptu",
+          "label_native": "Valor Venal de Referência / IPTU do Imóvel (R$)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "municipio_estado",
+          "label_native": "Localização do Imóvel / Estado",
+          "type": "select",
+          "options": [
+            {
+              "value": "sp_sao_paulo",
+              "label_native": "São Paulo - SP (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "rj_rio_de_janeiro",
+              "label_native": "Rio de Janeiro - RJ (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "mg_belo_horizonte",
+              "label_native": "Belo Horizonte - MG (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "df_brasilia",
+              "label_native": "Brasília - DF (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "rs_porto_alegre",
+              "label_native": "Porto Alegre - RS (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "pr_curitiba",
+              "label_native": "Curitiba - PR (Alíquota ITBI 2.7%)"
+            },
+            {
+              "value": "ba_salvador",
+              "label_native": "Salvador - BA (Alíquota ITBI 3.0%)"
+            },
+            {
+              "value": "outros_municipios",
+              "label_native": "Outros Municípios (Alíquota Média 2.0% a 3.0%)"
+            }
+          ]
+        },
+        {
+          "name": "primeiro_imovel_sfh",
+          "label_native": "É a Aquisição do Primeiro Imóvel Residencial Financiado pelo SFH?",
+          "type": "select",
+          "options": [
+            {
+              "value": "nao",
+              "label_native": "Não (Sem Benefício de Desconto)"
+            },
+            {
+              "value": "sim",
+              "label_native": "Sim (Elegível ao Desconto de 50% nas Custas de Registro - Art. 290 Lei 6.015/73)"
+            }
+          ]
+        },
+        {
+          "name": "forma_pagamento",
+          "label_native": "Modalidade de Pagamento",
+          "type": "select",
+          "options": [
+            {
+              "value": "a_vista_consorcio",
+              "label_native": "À Vista / Consórcio Contemplado (Exige Escritura Pública)"
+            },
+            {
+              "value": "financiamento_sfh",
+              "label_native": "Financiamento Imobiliário SFH / Minha Casa Minha Vida (Contrato Bancário Substitui Escritura)"
+            },
+            {
+              "value": "financiamento_sfi",
+              "label_native": "Financiamento Imobiliário SFI / Carteira Livre"
+            }
+          ]
+        },
+        {
+          "name": "valor_financiado",
+          "label_native": "Valor do Crédito Financiado (R$)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "1. Imposto sobre Transmissão de Bens Imóveis (ITBI): \n - Conforme a jurisprudência fixada pelo STJ (Tema 1113), a base de cálculo do ITBI é o valor da transação declarado no negócio de compra e venda, prevalecendo sobre o valor venal fixado pela Prefeitura municipal (salvo em caso de processo administrativo de avaliação por parte do Fisco). \n - Valor da Base de Cálculo = Max(Valor de Compra e Venda, Valor Venal IPTU). \n - ITBI Devido = Base de Cálculo * Alíquota Municipal (Geralmente entre 2.0% e 3.0%). \n2. Custas de Escritura Pública (Tabelionato de Notas): \n - Aplicáveis quando o imóvel é adquirido à vista ou via consórcio. O valor é tabelado por faixa de valor do imóvel segundo a tabela de emolumentos do Tribunal de Justiça do estado correspondente. Em financiamentos bancários (SFH/SFI), o contrato do banco possui força de escritura pública (Lei 4.380/64), dispensando as custas de escritura em cartório de notas. \n3. Custas de Registro de Imóveis (Cartório de Registro de Imóveis - RI): \n - Tabeladas progressivamente pelo TJ estadual sobre o valor do imóvel/negócio. \n - Desconto de 50% no Registro do Primeiro Imóvel (Art. 290 da Lei de Registros Públicos nº 6.015/73): Na primeira aquisição imobiliária para fins residenciais financiada pelo Sistema Financeiro da Habitação (SFH), o comprador tem direito por lei a 50% de desconto sobre os emolumentos cartorários de registro e averbação. \n4. Imposto de Selo / Emolumentos Complementares: Inclui taxas estaduais adicionais como Fundo de Assistência Judiciária (FAJ), ISS sobre emolumentos e taxas de fiscalização. \n5. Custo Total de Transmissão = ITBI + Custas de Escritura (se aplicável) + Custas de Registro de Imóveis (com desconto de 50% se elegível pelo SFH).",
+      "affiliate_targets": [
+        {
+          "name": "Creditas Imobiliária",
+          "type": "software",
+          "description": "Simulação de financiamento imobiliário e empréstimo com garantia de imóvel (Home Equity)."
+        },
+        {
+          "name": "Loft Crédito",
+          "type": "software",
+          "description": "Assessoria gratuita de financiamento imobiliário e comparação de taxas entre grandes bancos brasileiros."
+        },
+        {
+          "name": "Itaú Crédito Imobiliário",
+          "type": "neobank",
+          "description": "Líder em crédito imobiliário privado no Brasil com taxas competitivas e processo digital de contratação."
+        },
+        {
+          "name": "Santander Financiamento Imobiliário",
+          "type": "neobank",
+          "description": "Financiamento de imóveis com compagamento de despesas de ITBI e cartório no saldo financiado."
+        },
+        {
+          "name": "CrediHome",
+          "type": "software",
+          "description": "Plataforma multi-bancos para comparar propostas de financiamento imobiliário e ITBI."
+        }
+      ]
+    }
+  ]
+}

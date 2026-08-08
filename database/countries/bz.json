@@ -1,0 +1,57 @@
+{
+  "country": "Belize",
+  "country_code": "BZ",
+  "languages": [
+    "en"
+  ],
+  "currency": "BZD",
+  "calculators": [
+    {
+      "id": "bz-tax-payroll-calculator",
+      "title_native": "Belize Income Tax & Social Security SSB Calculator",
+      "title_en": "Belize Income Tax & Social Security SSB Calculator",
+      "search_terms_native": [
+        "belize tax calculator",
+        "belize salary calculator",
+        "income tax bz"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Belize.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (BZD)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Belize revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Belize Bank",
+          "type": "software",
+          "description": "Top financial tool in Belize"
+        },
+        {
+          "name": "Heritage Bank",
+          "type": "software",
+          "description": "Top financial tool in Belize"
+        }
+      ]
+    }
+  ]
+}

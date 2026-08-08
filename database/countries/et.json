@@ -1,0 +1,57 @@
+{
+  "country": "Ethiopia",
+  "country_code": "ET",
+  "languages": [
+    "am"
+  ],
+  "currency": "ETB",
+  "calculators": [
+    {
+      "id": "et-tax-payroll-calculator",
+      "title_native": "Ethiopia Income Tax & Pension Calculator Ethiopia",
+      "title_en": "Ethiopia Income Tax & Pension Calculator Ethiopia",
+      "search_terms_native": [
+        "ethiopia tax calculator",
+        "ethiopia salary calculator",
+        "income tax et"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Ethiopia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (ETB)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ethiopia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Telebirr",
+          "type": "software",
+          "description": "Top financial tool in Ethiopia"
+        },
+        {
+          "name": "Commercial Bank of Ethiopia",
+          "type": "software",
+          "description": "Top financial tool in Ethiopia"
+        }
+      ]
+    }
+  ]
+}

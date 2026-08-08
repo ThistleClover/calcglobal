@@ -1,0 +1,58 @@
+{
+  "country": "Haiti",
+  "country_code": "HT",
+  "languages": [
+    "fr",
+    "ht"
+  ],
+  "currency": "HTG",
+  "calculators": [
+    {
+      "id": "ht-tax-payroll-calculator",
+      "title_native": "Haiti Calculateur Impôt sur le Revenu IRI Haïti",
+      "title_en": "Haiti Calculateur Impôt sur le Revenu IRI Haïti",
+      "search_terms_native": [
+        "haiti tax calculator",
+        "haiti salary calculator",
+        "income tax ht"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Haiti.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (HTG)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Haiti revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Unibank",
+          "type": "software",
+          "description": "Top financial tool in Haiti"
+        },
+        {
+          "name": "Sogebank",
+          "type": "software",
+          "description": "Top financial tool in Haiti"
+        }
+      ]
+    }
+  ]
+}

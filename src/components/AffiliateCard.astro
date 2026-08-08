@@ -1,0 +1,29 @@
+---
+interface Props {
+  partner: {
+    name: string;
+    type: string;
+    description: string;
+  };
+}
+
+const { partner } = Astro.props;
+---
+
+<div class="bg-corporate-50 rounded-xl p-6 border border-corporate-200 mt-8 relative overflow-hidden">
+  <div class="absolute top-0 right-0 p-4">
+    <span class="inline-flex items-center rounded-md bg-green-50 px-2 py-1 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-600/20">
+      Recommended Partner
+    </span>
+  </div>
+  <h3 class="text-lg font-semibold text-corporate-900 mb-2">Take Action with {partner.name}</h3>
+  <p class="text-sm text-corporate-600 mb-4 pr-32">
+    {partner.description} Start saving time and ensuring 100% compliance with local regulations today.
+  </p>
+  <a 
+    href="#" 
+    class="inline-flex justify-center items-center rounded-md bg-corporate-900 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-corporate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-corporate-900 transition-colors"
+  >
+    Get Started with {partner.name} <span class="ml-2">→</span>
+  </a>
+</div>

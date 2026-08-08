@@ -1,0 +1,453 @@
+{
+  "country": "Hungary",
+  "country_code": "HU",
+  "languages": [
+    "hu"
+  ],
+  "calculators": [
+    {
+      "id": "brutto-netto-berkalkulator-hungary",
+      "title_native": "Bruttó-Nettó Bérkalkulátor 2026 (SZJA & Járulék Számítás)",
+      "title_en": "Hungary Gross to Net Salary & Payroll Tax Calculator",
+      "search_terms_native": [
+        "bruttó nettó kalkulátor 2026",
+        "bérkalkulátor 2026",
+        "fizetés kalkulátor hungary",
+        "családi adókedvezmény kalkulátor",
+        "25 év alattiak szja mentessége",
+        "személyi kedvezmény kiszámítása",
+        "munkáltatói összköltség bérkalkulátor"
+      ],
+      "description_native": "Számítsa ki a nettó munkabért, az SZJA-t (15%), a társadalombiztosítási járulékot (18,5%) és a munkáltatói szociális hozzájárulási adót (SZOCHO 13%) a 25 év alattiak kedvezményével, a 30 év alatti anyák kedvezményével és a családi adókedvezménnyel.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary",
+          "label_native": "Havi bruttó munkabér (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "under_25_exemption",
+          "label_native": "25 év alatti fiatalok SZJA-mentessége",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen (25 év alatti)"
+          ]
+        },
+        {
+          "name": "under_30_mother",
+          "label_native": "30 év alatti anyák kedvezménye",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen"
+          ]
+        },
+        {
+          "name": "mother_4_or_more",
+          "label_native": "Négynél több gyermeket nevelő anya (NÉTAK)",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen"
+          ]
+        },
+        {
+          "name": "first_marriage_discount",
+          "label_native": "Első házasok kedvezménye",
+          "type": "select",
+          "options": [
+            "Nem veszem igénybe",
+            "Igénybe veszem (havi 5.000 Ft adókedvezmény)"
+          ]
+        },
+        {
+          "name": "personal_disability_relief",
+          "label_native": "Személyi kedvezmény (súlyos fogyatékosság / betegség)",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen (minimálbér 33%-ának megfelelő adóalap-csökkentés)"
+          ]
+        },
+        {
+          "name": "dependent_children",
+          "label_native": "Eltartott gyermekek száma",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "beneficiary_children",
+          "label_native": "Kedvezményezett eltartottak (kedvezményre jogosult gyermekek) száma",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Gross Salary (Bruttó bér). Employee deductions: Personal Income Tax (SZJA) standard 15%, Social Security Contribution (TB járulék) standard 18.5% (Pension 10%, Health 7%, Labor market 1.5%). Under 25 exemption: Tax base up to average wage cap (~576,601 HUF/month) is 0% SZJA. Mothers under 30 & Mothers with 4+ children (NÉTAK): 0% SZJA on full or capped wage. Personal disability relief: Tax base reduction equal to 33.33% of minimum wage (net HUF 11,550/month benefit). First marriage relief: Net tax benefit HUF 5,000/month for 24 months. Family tax base reduction (Családi adókedvezmény): 1 beneficiary child = HUF 66,670 base reduction (net HUF 10,000/mo benefit); 2 children = HUF 133,330/child base reduction (net HUF 20,000/child/mo, scaling up to HUF 40,000/child under 2025-2026 phased updates); 3+ children = HUF 220,000/child base reduction (net HUF 33,000/child/mo, scaling up to HUF 66,000/child). If tax relief exceeds 15% SZJA liability, remaining allowance reduces 18.5% TB contribution (Családi járulékkedvezmény). Employer Total Cost (Teljes munkáltatói teher) = Gross Salary + 13% SZOCHO (Szociális hozzájárulási adó).",
+      "affiliate_targets": [
+        {
+          "name": "Bankmonitor.hu",
+          "type": "accounting",
+          "description": "Hungary's leading financial comparison engine for personal loans, mortgages, and salary accounts."
+        },
+        {
+          "name": "OTP Bank",
+          "type": "neobank",
+          "description": "Hungary's largest retail bank offering digital salary accounts, mobile banking, and credit lines."
+        },
+        {
+          "name": "Wise Hungary",
+          "type": "neobank",
+          "description": "Popular multi-currency account with Hungarian HUF IBAN and instant transfers for workers and freelancers."
+        },
+        {
+          "name": "Revolut Magyarország",
+          "type": "neobank",
+          "description": "Widely used digital banking app in Hungary for everyday spending, forex exchange, and budgeting."
+        }
+      ]
+    },
+    {
+      "id": "atalanyado-kata-egyeni-vallalkozo-kalkulator",
+      "title_native": "Átalányadózó Egyéni Vállalkozó & KATA Adókalkulátor 2026",
+      "title_en": "Hungary Freelancer Átalányadó Flat-Rate & KATA Tax Calculator",
+      "search_terms_native": [
+        "átalányadó kalkulátor 2026",
+        "egyéni vállalkozó adózás kalkulátor",
+        "kata adó kalkulátor",
+        "átalányadózó szocho és tb járulék",
+        "sávos iparűzési adó kalkulátor",
+        "kamarai hozzájárulás vállalkozó",
+        "főállású mellékállású egyéni vállalkozó járulék"
+      ],
+      "description_native": "Számítsa ki az átalányadózó egyéni vállalkozók fizetendő SZJA-ját, TB járulékát, SZOCHO-ját és sávos iparűzési adóját (HIPA) a 40%, 80% vagy 90%-os költséghányad, az adómentes keret, valamint a főállású vs. mellékállású jogállás figyelembevételével.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Várható éves bruttó árbevétel (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "cost_deduction_rate",
+          "label_native": "Alkalmazott költséghányad",
+          "type": "select",
+          "options": [
+            "40% (Általános tevékenység / szolgáltatás)",
+            "80% (Meghatározott kézműves / kisipari / mezőgazdasági)",
+            "90% (Kizárólag kiskereskedelmi tevékenység)"
+          ]
+        },
+        {
+          "name": "employment_status",
+          "label_native": "Vállalkozói jogállás",
+          "type": "select",
+          "options": [
+            "Főállású egyéni vállalkozó",
+            "Mellékállású (heti 36 órát elérő munkaviszony mellett)",
+            "Nappali tagozatos hallgató / Nyugdíjas"
+          ]
+        },
+        {
+          "name": "qualification_level",
+          "label_native": "Tevékenység szakképesítés-igénye (Főállás esetén)",
+          "type": "select",
+          "options": [
+            "Nem szakképzettséghez kötött (Minimálbér alap)",
+            "Szakképzettséghez kötött (Garantált bérminimum alap)"
+          ]
+        },
+        {
+          "name": "hipa_tax_mode",
+          "label_native": "Helyi Iparűzési Adó (HIPA) választott módja",
+          "type": "select",
+          "options": [
+            "Egyszerűsített sávos HIPA",
+            "Tételes alapon (max 2%)"
+          ]
+        }
+      ],
+      "formula_explanation": "Gross Revenue (Árbevétel). Cost Rate (Költséghányad: 40%, 80%, or 90%). Calculated Expense = Revenue * Cost Rate. Income/Profit Base (Jövedelem) = Revenue - Expense. Tax-Free Income Exemption (Adómentes keret) = 10x annual minimum wage (~HUF 1.6-1.7M profit is 0% SZJA). Taxable SZJA Base = Profit exceeding Tax-Free Exemption. SZJA = 15% of Taxable Base. Social Security (TB 18.5%) and Social Contribution (SZOCHO 13%): For part-time (mellékállású) or student/retiree EV, TB and SZOCHO are calculated strictly on actual income exceeding the exemption threshold. For full-time (főállású) EV, statutory monthly minimum contribution bases apply even if profit is zero: TB minimum base = Minimum Wage (or Guaranteed Minimum Wage); SZOCHO minimum base = 112.5% of Minimum Wage (or Guaranteed Min Wage). Simplified HIPA (Sávos HIPA): Revenue 0-12M Ft = HUF 50,000 tax/year; 12M-18M Ft = HUF 120,000 tax/year; 18M-25M Ft = HUF 170,000 tax/year. Chamber of Commerce Fee (Kamarai hozzájárulás) = HUF 5,000/year. Net Entrepreneur Income = Revenue - SZJA - TB - SZOCHO - HIPA - Chamber Fee.",
+      "affiliate_targets": [
+        {
+          "name": "Billingo",
+          "type": "software",
+          "description": "Market-leading Hungarian cloud invoicing, tax automation, and accountant data exchange platform for sole proprietors."
+        },
+        {
+          "name": "Számlázz.hu",
+          "type": "software",
+          "description": "Top Hungarian online invoicing solution integrated with NAV auto-reporting and bank synchronization."
+        },
+        {
+          "name": "Wise Business",
+          "type": "neobank",
+          "description": "Multi-currency business account with low-cost HUF, EUR, and USD accounts for Hungarian freelancers."
+        },
+        {
+          "name": "Revolut Business Hungary",
+          "type": "neobank",
+          "description": "Digital business banking with corporate debit cards, FX management, and open API invoicing integration."
+        }
+      ]
+    },
+    {
+      "id": "ingatlan-illetek-es-szja-kalkulator",
+      "title_native": "Ingatlan Vagyonszerzési Illeték és SZJA Kalkulátor 2026",
+      "title_en": "Hungary Property Acquisition Duty & Real Estate SZJA Capital Gains Tax Calculator",
+      "search_terms_native": [
+        "vagyonszerzési illeték kalkulátor",
+        "ingatlan eladás szja kalkulátor",
+        "ingatlan vásárlás illeték 2026",
+        "csok plusz illetékmentesség",
+        "ingatlan adózás 5 év után",
+        "cserepótló illeték kiszámítása",
+        "első lakás illetékkedvezmény"
+      ],
+      "description_native": "Számítsa ki a lakásvásárlási visszterhes vagyonszerzési illetéket (4%), az első lakás- és CSOK Plusz illetékmentességet, a cserepótló kedvezményt, valamint az ingatlaneladásból származó SZJA-t a birtoklási évek (0-5 év) alapján.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "transaction_type",
+          "label_native": "Tranzakció típusa",
+          "type": "select",
+          "options": [
+            "Ingatlan vásárlása (Illetékszámítás)",
+            "Ingatlan eladása (SZJA-számítás)",
+            "Vásárlás és Eladás egyidejűleg"
+          ]
+        },
+        {
+          "name": "property_purchase_price",
+          "label_native": "Vásárolt ingatlan vételára (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "previous_property_sold_price",
+          "label_native": "Eladott korábbi ingatlan eladási ára (Cserepótló illeték esetén) (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "csok_plus_buyer",
+          "label_native": "CSOK Plusz / Falusi CSOK igénybevétele",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen (Teljes illetékmentesség)"
+          ]
+        },
+        {
+          "name": "first_home_under_35",
+          "label_native": "35 év alatti első lakásszerző",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen (50%-os illetékkedvezmény vételárkorlátig)"
+          ]
+        },
+        {
+          "name": "sale_price",
+          "label_native": "Eladott ingatlan eladási ára (SZJA számításhoz) (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "original_purchase_price",
+          "label_native": "Ingatlan eredeti vételi ára és igazolt költségei (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "ownership_years",
+          "label_native": "Birtoklási időtartam (Eladás éve - Vétel éve)",
+          "type": "select",
+          "options": [
+            "0 év (vásárlás évében eladva)",
+            "1 év",
+            "2 év",
+            "3 év",
+            "4 év",
+            "5 év vagy több"
+          ]
+        }
+      ],
+      "formula_explanation": "Property Transfer Duty (Visszterhes vagyonszerzési illeték): Standard rate 4% of market value up to 1 billion HUF (2% above). CSOK Plus / Falusi CSOK Buyers: 100% exempt (0% duty). Sale-Replacement Duty (Cserepótló illeték): If previous home was sold within 3 years prior or 1 year after purchase, duty base = Purchased Price - Sold Price. If sold price >= purchase price, duty = 0. First Home under 35 years: 50% duty reduction if purchase price is within statutory cap (up to HUF 15M / 40M). Attorney fee (Ügyvédi munkadíj): ~0.5% - 1.5% + VAT. Land Register Fee (Földhivatali díj): HUF 10,600/property. Real Estate SZJA (Ingatlaneladás adója): Taxable Gain = Sale Price - Original Cost - Documented Costs (renovations, attorney, realtor). Tapering factor based on years owned: 0-1 years = 100% of gain taxable; 2 years = 90%; 3 years = 60%; 4 years = 30%; 5+ years = 0% taxable (completely tax-free!). SZJA = 15% * Taxable Gain * Tapering Factor.",
+      "affiliate_targets": [
+        {
+          "name": "Bankmonitor.hu Lakáshitel",
+          "type": "accounting",
+          "description": "Premier Hungarian housing loan comparison engine matching homebuyers with top bank rates."
+        },
+        {
+          "name": "Money.hu",
+          "type": "accounting",
+          "description": "Leading Hungarian mortgage broker portal comparing OTP, K&H, Erste, CIB, and MBH housing loans."
+        },
+        {
+          "name": "OTP Bank Ingatlanhitel",
+          "type": "neobank",
+          "description": "Hungary's largest mortgage lender offering market loans and subsidized CSOK Plus financing."
+        },
+        {
+          "name": "K&H Bank Lakásbiztosítás",
+          "type": "insurance",
+          "description": "Major insurance provider in Hungary offering home and structural property coverage."
+        }
+      ]
+    },
+    {
+      "id": "kiva-vs-tao-osztalekado-kalkulator",
+      "title_native": "KIVA vs TAO Társasági Adó & Osztalékadó Kalkulátor 2026",
+      "title_en": "Hungary Corporate Tax (TAO vs KIVA) & Dividend Tax Comparison Calculator",
+      "search_terms_native": [
+        "kiva kalkulátor 2026",
+        "tao vs kiva összehasonlítás",
+        "osztalékadó szocho plafon 2026",
+        "társasági adó 9 százalék",
+        "kft osztalék adózása kalkulátor",
+        "kiva adómérték 10 százalék",
+        "nyereségadó és osztalék kifizetés"
+      ],
+      "description_native": "Hasonlítsa össze a normál Társasági Adó (TAO 9%) és a Kisvállalati Adó (KIVA 10%) teljes adóterhét: a bérköltségekre rakódó adókat, a társasági nyereségadót és a tulajdonosi osztalék kivételi SZJA-t (15%) és SZOCHO-t (13%).",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "annual_ebitda",
+          "label_native": "Társaság éves adózás előtti eredménye (EBITDA / Nyereség bérköltség előtt) (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_payroll_gross",
+          "label_native": "Éves összesített bruttó bérköltség (alkalmazottak + ügyvezető) (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "dividend_payout_amount",
+          "label_native": "Kifizetni kívánt adózott nyereség / Osztalék (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "owner_other_szocho_income",
+          "label_native": "Tulajdonos egyéb szocho-köteles jövedelme a plafon beszámításhoz (Ft)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "TAO Regime: Corporate Income Tax (TAO) = 9% of taxable profit (Revenue - Expenses - Payroll). Employer SZOCHO on payroll = 13% of gross wages. Profit after TAO can be distributed as Dividends. Dividend Taxation: SZJA = 15% flat; SZOCHO = 13%, but SZOCHO is capped at an annual maximum (24x minimum wage - existing szocho base paid during the year). Maximum dividend SZOCHO cap ~HUF 700k-800k. KIVA Regime: Replaces 9% TAO AND 13% Employer SZOCHO! KIVA Tax Rate = 10%. KIVA Tax Base = Total Gross Payroll + Net Dividend Payouts (minus capital additions). If company pays out dividends, KIVA is charged at 10% on payroll + dividends. Owners receiving KIVA dividend still pay individual 15% SZJA and 13% SZOCHO (up to annual cap). Comparison shows net profit after taxes and effective total tax burden percentage under both regimes.",
+      "affiliate_targets": [
+        {
+          "name": "Billingo Corporate",
+          "type": "software",
+          "description": "Comprehensive financial and invoicing suite for Hungarian Kft., Bt., and corporate entities."
+        },
+        {
+          "name": "Számlázz.hu Enterprise",
+          "type": "software",
+          "description": "Automated enterprise invoicing and NAV compliance platform for Hungarian businesses."
+        },
+        {
+          "name": "Wise Business",
+          "type": "neobank",
+          "description": "Corporate account for HUF/EUR corporate cash management, batch payroll, and international payouts."
+        },
+        {
+          "name": "Erste Bank Corporate",
+          "type": "neobank",
+          "description": "Business credit lines, merchant services, and commercial banking for SMEs in Hungary."
+        }
+      ]
+    },
+    {
+      "id": "tappenz-csed-gyed-gyes-kalkulator",
+      "title_native": "Táppénz, CSED, GYED és GYES Bér- és Támogatáskalkulátor",
+      "title_en": "Hungary Sick Pay, Maternity (CSED) & Childcare Allowance (GYED/GYES) Calculator",
+      "search_terms_native": [
+        "csed kalkulátor 2026",
+        "gyed kalkulátor 2026",
+        "táppénz kalkulátor",
+        "betegszabadság 70 százalék",
+        "csed nettó összege bruttó bérből",
+        "gyed plafon kiszámítása",
+        "gyes összege 2026"
+      ],
+      "description_native": "Számítsa ki a betegszabadság (70%), a táppénz (50-60%), a Csecsemőgondozási díj (CSED 100%), a Gyermekgondozási díj (GYED 70% plafonig) és a GYES nettó összegét a havi bruttó munkabér alapján.",
+      "category": "legal",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "Havi bruttó munkabér (Ft)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "benefit_type",
+          "label_native": "Ellátás típusa",
+          "type": "select",
+          "options": [
+            "Betegszabadság (1-15. munkanap)",
+            "Táppénz (16. napjától)",
+            "CSED (Csecsemőgondozási díj - 168 nap)",
+            "GYED (Gyermekgondozási díj - gyermek 2 éves koráig)",
+            "GYES (Gyermekgondozási segély)"
+          ]
+        },
+        {
+          "name": "sick_leave_days",
+          "label_native": "Betegség időtartama (munkanapok / naptári napok száma)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "insurance_history_years",
+          "label_native": "Társadalombiztosítási jogviszony hossza",
+          "type": "select",
+          "options": [
+            "Legalább 2 év folyamatos biztosítás",
+            "2 évnél kevesebb biztosítási idő",
+            "Fekvőbeteg-gyógyintézeti ápolás (Kórház)"
+          ]
+        },
+        {
+          "name": "mother_under_30_eligible",
+          "label_native": "30 év alatti anyák kedvezményére való jogosultság",
+          "type": "select",
+          "options": [
+            "Nem",
+            "Igen (0% SZJA a CSED/GYED összegére)"
+          ]
+        }
+      ],
+      "formula_explanation": "Sick Leave (Betegszabadság): First 15 working days per year paid by employer at 70% of average gross wage. Subject to 15% SZJA, exempt from 18.5% TB. Sick Pay (Táppénz): From 16th calendar day, paid by state. Rate: 60% of daily gross earnings (50% if continuous insurance < 2 years or hospitalized). Daily max cap: 2x minimum wage / 30 days. CSED (Csecsemőgondozási díj): 100% of daily gross income base for 168 days (24 weeks). Exempt from 18.5% TB and SZOCHO! Only 15% SZJA applies (or 0% SZJA if Mother under 30 exemption applies). Net CSED often exceeds regular net salary! GYED (Gyermekgondozási díj): Paid until child reaches 2 years. Rate: 70% of daily gross income base, capped at 70% of 2x minimum wage (GYED plafon). Deductions: 15% SZJA + 10% nyugdíjjárulék (Pension contribution). GYES (Gyermekgondozási segély): Fixed monthly state support HUF 28,500 gross (-10% pension = HUF 25,650 net).",
+      "affiliate_targets": [
+        {
+          "name": "Generali Biztosító",
+          "type": "insurance",
+          "description": "Leading Hungarian insurer for private health, accident, and family protection plans."
+        },
+        {
+          "name": "NN Biztosító",
+          "type": "insurance",
+          "description": "Premier life, health, and family financial security insurer in Hungary."
+        },
+        {
+          "name": "Gránit Bank",
+          "type": "neobank",
+          "description": "Innovative Hungarian digital bank offering high-yield baby accounts - Babakötvény - and family banking."
+        },
+        {
+          "name": "CIB Bank",
+          "type": "neobank",
+          "description": "Full-service retail bank in Hungary with specialized family savings and personal loans."
+        }
+      ]
+    }
+  ]
+}

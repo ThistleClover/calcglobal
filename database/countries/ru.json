@@ -1,0 +1,62 @@
+{
+  "country": "Russia",
+  "country_code": "RU",
+  "languages": [
+    "ru"
+  ],
+  "currency": "RUB",
+  "calculators": [
+    {
+      "id": "ru-tax-payroll-calculator",
+      "title_native": "Russia Калькулятор НДФЛ, Самозанятый НПД и УСН",
+      "title_en": "Russia Калькулятор НДФЛ, Самозанятый НПД и УСН",
+      "search_terms_native": [
+        "russia tax calculator",
+        "russia salary calculator",
+        "income tax ru"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Russia.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (RUB)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Russia revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Tinkoff Business",
+          "type": "software",
+          "description": "Top financial tool in Russia"
+        },
+        {
+          "name": "Elba",
+          "type": "software",
+          "description": "Top financial tool in Russia"
+        },
+        {
+          "name": "Tochka",
+          "type": "software",
+          "description": "Top financial tool in Russia"
+        }
+      ]
+    }
+  ]
+}

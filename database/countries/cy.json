@@ -1,0 +1,58 @@
+{
+  "country": "Cyprus",
+  "country_code": "CY",
+  "languages": [
+    "el",
+    "en"
+  ],
+  "currency": "EUR",
+  "calculators": [
+    {
+      "id": "cy-tax-payroll-calculator",
+      "title_native": "Cyprus Non-Dom Corporate Tax 12.5% Calculator",
+      "title_en": "Cyprus Non-Dom Corporate Tax 12.5% Calculator",
+      "search_terms_native": [
+        "cyprus tax calculator",
+        "cyprus salary calculator",
+        "income tax cy"
+      ],
+      "description_native": "Calculate net income, tax withholdings, and mandatory contributions for Cyprus.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_income",
+          "label_native": "Gross Income (EUR)",
+          "type": "number"
+        },
+        {
+          "name": "filing_status",
+          "label_native": "Filing Status / Category",
+          "type": "select",
+          "options": [
+            {
+              "value": "individual",
+              "label": "Individual / Employee"
+            },
+            {
+              "value": "self_employed",
+              "label": "Self-Employed / Freelancer"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Cyprus revenue regulations.",
+      "affiliate_targets": [
+        {
+          "name": "Bank of Cyprus",
+          "type": "software",
+          "description": "Top financial tool in Cyprus"
+        },
+        {
+          "name": "Hellenic Bank",
+          "type": "software",
+          "description": "Top financial tool in Cyprus"
+        }
+      ]
+    }
+  ]
+}

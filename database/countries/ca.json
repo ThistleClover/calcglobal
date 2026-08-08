@@ -1,0 +1,483 @@
+{
+  "country": "Canada",
+  "country_code": "CA",
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "calculators": [
+    {
+      "id": "sole-proprietor-tax-cpp-qpp-calculator",
+      "title_native": "Calculateur d'Impôt et Cotisations RPC/RRQ pour Travailleur Autonome | Canadian Sole Proprietor Tax & CPP/QPP Calculator",
+      "title_en": "Canadian Sole Proprietor Income Tax & CPP/QPP Calculator",
+      "search_terms_native": [
+        "canada self employed tax calculator 2026",
+        "calculateur impot travailleur autonome quebec",
+        "cpp qpp self employed calculation 2026",
+        "calcul cotisations rrq travailleur autonome",
+        "sole proprietorship net income calculator ontario bc alberta"
+      ],
+      "description_native": "Calculez l'impôt fédéral et provincial sur le revenu, les cotisations doubles au RPC/RRQ (de base et bonifiées) ainsi que le revenu net après impôt pour travailleurs autonomes au Canada.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "gross_business_income",
+          "label_native": "Revenu brut de l'entreprise / Gross Business Income (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "eligible_expenses",
+          "label_native": "Dépenses d'entreprise déductibles / Eligible Business Expenses (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "province",
+          "label_native": "Province / Territoire de résidence",
+          "type": "select",
+          "options": [
+            {
+              "value": "on",
+              "label": "Ontario"
+            },
+            {
+              "value": "qc",
+              "label": "Québec (avec RRQ & Abattement Fédéral de 16,5%)"
+            },
+            {
+              "value": "bc",
+              "label": "Colombie-Britannique / British Columbia"
+            },
+            {
+              "value": "ab",
+              "label": "Alberta"
+            },
+            {
+              "value": "mb",
+              "label": "Manitoba"
+            },
+            {
+              "value": "sk",
+              "label": "Saskatchewan"
+            },
+            {
+              "value": "ns",
+              "label": "Nouvelle-Écosse / Nova Scotia"
+            },
+            {
+              "value": "nb",
+              "label": "Nouveau-Brunswick / New Brunswick"
+            }
+          ]
+        },
+        {
+          "name": "other_t4_income",
+          "label_native": "Autres revenus d'emploi T4 / Other T4 Employment Income (CAD $)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Net Business Income = Gross Income - Eligible Expenses. Self-Employed CPP/QPP contributions combine employee + employer portions: Base CPP (9.9% up to YMPE cap $68,500 minus $3,500 exemption) or QPP (12.8% in QC) + Enhanced CPP Tier 1 (2% up to YMPE) + Tier 2 (8% between YMPE and YAMPE $73,200). 50% of CPP/QPP is deductible from taxable income. Progressive Federal brackets (15% to 33%) minus Federal BPA ($15,705) are combined with Provincial marginal tax brackets (with Quebec 16.5% federal abatement applied to QC residents).",
+      "affiliate_targets": [
+        {
+          "name": "Wealthsimple Tax",
+          "type": "software",
+          "description": "Top-rated free tax filing platform optimized for Canadian sole proprietors and freelancers."
+        },
+        {
+          "name": "TurboTax Canada Self-Employed",
+          "type": "software",
+          "description": "Industry standard Canadian tax preparation software with Schedule 2125 auto-fill."
+        },
+        {
+          "name": "FreshBooks Canada",
+          "type": "accounting",
+          "description": "Toronto-based invoicing and expense tracking built specifically for Canadian sole proprietors."
+        },
+        {
+          "name": "RBC Business / Ownr",
+          "type": "software",
+          "description": "Platform to manage sole proprietor registration and seamless transition to incorporation."
+        }
+      ]
+    },
+    {
+      "id": "land-transfer-tax-first-time-buyer-calculator",
+      "title_native": "Calculateur de Droits de Mutation Immobilière et Taxe de Bienvenue | Canadian Land Transfer Tax Calculator",
+      "title_en": "Canadian Land Transfer Tax & First-Time Home Buyer Rebate Calculator",
+      "search_terms_native": [
+        "land transfer tax calculator ontario toronto",
+        "taxe de bienvenue calculatrice quebec montreal",
+        "first time home buyer rebate ltt calculator canada",
+        "bc property transfer tax calculator 2026",
+        "droits de mutation immobiliere calcul"
+      ],
+      "description_native": "Calculez les droits de mutation immobilière (taxe de bienvenue au Québec) aux niveaux provincial et municipal, ainsi que les rabais pour premiers acheteurs d'une propriété au Canada.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "property_price",
+          "label_native": "Prix d'achat de la propriété / Purchase Price (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "location",
+          "label_native": "Province & Municipalité / Location",
+          "type": "select",
+          "options": [
+            {
+              "value": "on_toronto",
+              "label": "Ontario - Toronto (Provincial + Municipal LTT)"
+            },
+            {
+              "value": "on_other",
+              "label": "Ontario - Hors Toronto / Outside Toronto"
+            },
+            {
+              "value": "qc_montreal",
+              "label": "Québec - Ville de Montréal (Droits de mutation progressifs)"
+            },
+            {
+              "value": "qc_other",
+              "label": "Québec - Autre municipalité / Other QC Municipality"
+            },
+            {
+              "value": "bc",
+              "label": "Colombie-Britannique / British Columbia (PTT)"
+            },
+            {
+              "value": "ab",
+              "label": "Alberta (Frais d'enregistrement des titres fonciers / Land Titles Fee)"
+            },
+            {
+              "value": "mb",
+              "label": "Manitoba (Land Transfer Tax)"
+            }
+          ]
+        },
+        {
+          "name": "is_first_time_buyer",
+          "label_native": "Premier acheteur d'une maison? / First-Time Home Buyer?",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Oui / Yes"
+            },
+            {
+              "value": "no",
+              "label": "Non / No"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Calculates tiered Land Transfer Tax (LTT) rates based on municipal and provincial tax tables. Ontario Provincial LTT applies marginal rates: 0.5% (0-$55k), 1.0% ($55k-$250k), 1.5% ($250k-$400k), 2.0% ($400k-$2M), 2.5% (> $2M), with up to $4,000 provincial rebate for first-time buyers. Toronto Municipal LTT duplicates these tiers up to 2.5%+ with a max $4,475 municipal rebate. Quebec Taxe de bienvenue uses municipal brackets: 0.5% (0-$58.9k), 1.0% ($58.9k-$294.6k), 1.5% ($294.6k-$500k), 2.0% to 3.0%+ in Montreal. BC PTT calculates 1% on first $200k, 2% up to $2M, and 3% on portion over $2M, applying complete or partial first-time buyer exemptions under threshold caps.",
+      "affiliate_targets": [
+        {
+          "name": "Nesto Mortgage",
+          "type": "neobank",
+          "description": "Leading Canadian digital mortgage broker offering low guaranteed fixed/variable rates."
+        },
+        {
+          "name": "Questrade Mortgage",
+          "type": "neobank",
+          "description": "Low-rate Canadian digital home financing with zero broker markup fees."
+        },
+        {
+          "name": "Pine Mortgage",
+          "type": "neobank",
+          "description": "Direct online mortgage lender integrated into Wealthsimple ecosystem."
+        },
+        {
+          "name": "Ratehub.ca",
+          "type": "software",
+          "description": "Canada's top mortgage rate comparison platform connecting buyers with local brokers."
+        }
+      ]
+    },
+    {
+      "id": "severance-pay-statutory-notice-calculator",
+      "title_native": "Calculateur d'Indemnité de Départ et Préavis de Licenciement | Canadian Severance & Statutory Notice Calculator",
+      "title_en": "Canadian Severance Pay & Statutory Termination Notice Calculator",
+      "search_terms_native": [
+        "severance pay calculator ontario employment standards act",
+        "indemnite de depart calculatrice quebec loi normes du travail",
+        "common law severance calculator canada bardal",
+        "how much severance am i owed canada ontario bc",
+        "calcul indemnite de licenciement et preavis canada"
+      ],
+      "description_native": "Estimez vos indemnités légales de licenciement selon les normes du travail (ESA/LNT), les indemnités de droit commun (jurisprudence Bardal) et les retenues d'impôt sur l'allocation de retraite.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "province",
+          "label_native": "Province d'emploi / Province of Employment",
+          "type": "select",
+          "options": [
+            {
+              "value": "on",
+              "label": "Ontario (ESA Statutory + Common Law)"
+            },
+            {
+              "value": "qc",
+              "label": "Québec (Loi sur les normes du travail + Code civil)"
+            },
+            {
+              "value": "bc",
+              "label": "Colombie-Britannique / British Columbia (Employment Standards Act)"
+            },
+            {
+              "value": "ab",
+              "label": "Alberta (Employment Standards Code)"
+            }
+          ]
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "Années d'ancienneté / Years of Continuous Service",
+          "type": "number"
+        },
+        {
+          "name": "annual_salary",
+          "label_native": "Salaire annuel brut / Gross Annual Salary (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "employee_age",
+          "label_native": "Âge de l'employé / Employee Age",
+          "type": "number"
+        },
+        {
+          "name": "job_role_level",
+          "label_native": "Niveau du poste / Job Level",
+          "type": "select",
+          "options": [
+            {
+              "value": "entry",
+              "label": "Poste de base / Operational / Entry Level"
+            },
+            {
+              "value": "specialist",
+              "label": "Spécialiste / Professional / Technical Specialist"
+            },
+            {
+              "value": "manager",
+              "label": "Gestionnaire / Middle Management"
+            },
+            {
+              "value": "executive",
+              "label": "Cadre supérieur / Executive / Senior Management"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Evaluates two severance components: 1) Statutory Minimums under provincial law (e.g., Ontario ESA: 1 week notice per year up to 8 weeks + 1 week severance per year up to 26 weeks if employer payroll >= $2.5M and 5+ yrs service; Quebec LNT: notice up to 8 weeks for 10+ yrs service). 2) Common Law / Reasonable Notice (Bardal Factors): factors in age, position seniority, length of service, and job market availability, yielding roughly 3-4 weeks pay per year of service up to 24 months maximum cap. Also calculates single-lump Retiring Allowance tax withholding (10% on <=$5k, 20% on $5k-$15k, 30% on >$15k; or 15% fed + 15% QC in Quebec).",
+      "affiliate_targets": [
+        {
+          "name": "Samfiru Tumarkin LLP / Severance Pay Calculator",
+          "type": "software",
+          "description": "Leading Canadian employment law practice providing free severance claim evaluations."
+        },
+        {
+          "name": "Wealthsimple Invest RRSP",
+          "type": "neobank",
+          "description": "Direct RRSP transfer destination to shelter eligible retiring allowance from immediate withholding tax."
+        },
+        {
+          "name": "Sun Life Individual Health",
+          "type": "insurance",
+          "description": "Personal health and dental coverage plans for workers transitioning out of employer group benefit plans."
+        }
+      ]
+    },
+    {
+      "id": "ccpc-corporate-tax-dividend-vs-salary-calculator",
+      "title_native": "Calculateur d'Impôt des Sociétés et Dividende vs Salaire (SPCC) | CCPC Tax & Salary vs Dividend Calculator",
+      "title_en": "Canadian CCPC Corporate Tax & Dividend vs. Salary Optimizer",
+      "search_terms_native": [
+        "ccpc dividend vs salary calculator 2026",
+        "small business tax rate ontario corporate calculator",
+        "calculateur salaire vs dividende societe par actions quebec",
+        "canadian corporate tax calculator small business deduction",
+        "sbd passive income clawback calculator canada"
+      ],
+      "description_native": "Comparez la rémunération nette après impôts (intégration fiscale) pour propriétaire d'une société privée sous contrôle canadien (SPCC/CCPC) selon l'option Salaire (T4) ou Dividendes non admissibles (T5).",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "net_active_income",
+          "label_native": "Bénéfice d'exploitation actif / Net Active Business Income (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "province",
+          "label_native": "Province d'incorporation / Province of Incorporation",
+          "type": "select",
+          "options": [
+            {
+              "value": "on",
+              "label": "Ontario (Small Business Rate: 12.2% combined)"
+            },
+            {
+              "value": "qc",
+              "label": "Québec (Taux petite entreprise: 12.2% avec 5,500+ heures payées)"
+            },
+            {
+              "value": "bc",
+              "label": "Colombie-Britannique / British Columbia (11.0% combined)"
+            },
+            {
+              "value": "ab",
+              "label": "Alberta (11.0% combined)"
+            },
+            {
+              "value": "mb",
+              "label": "Manitoba (9.0% combined up to $500k)"
+            },
+            {
+              "value": "sk",
+              "label": "Saskatchewan (9.5% combined)"
+            }
+          ]
+        },
+        {
+          "name": "passive_investment_income",
+          "label_native": "Revenu de placement passif (AAII) / Passive Investment Income (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "desired_owner_payout",
+          "label_native": "Montant total de rémunération souhaité / Desired Total Payout (CAD $)",
+          "type": "number"
+        }
+      ],
+      "formula_explanation": "Computes corporate tax using Small Business Deduction (SBD) federal (9%) + provincial rate (~3.2% ON/QC, 2% BC/AB). Incorporates SBD clawback rules where aggregate investment income (AAII) over $50,000 reduces the $500,000 SBD limit at $5 per $1 ratio down to $0 at $150,000 AAII (pushing excess into General Corporate Rate ~26.5%-31%). Compares Salary vs Dividend: Salary reduces corporate net taxable income to zero, requires employer+employee CPP contributions ($12,800 max), creates 18% RRSP room; Dividend pays corporate tax first at ~12.2%, distributes net profit as non-eligible dividend subject to personal tax with 15% dividend gross-up and provincial/federal Dividend Tax Credit (DTC), requiring no CPP.",
+      "affiliate_targets": [
+        {
+          "name": "Ownr (by RBC)",
+          "type": "software",
+          "description": "Premier Canadian online incorporation service for small business owners and freelancers."
+        },
+        {
+          "name": "Relay Financial",
+          "type": "neobank",
+          "description": "Canadian-founded online business banking platform tailored for corporate entity management."
+        },
+        {
+          "name": "QuickBooks Online Canada",
+          "type": "accounting",
+          "description": "Leading Canadian corporate accounting software with integrated T4 salary payroll & T5 dividend tracking."
+        },
+        {
+          "name": "Bench Accounting",
+          "type": "accounting",
+          "description": "Virtual bookkeeping and corporate tax preparation service for Canadian corporations."
+        }
+      ]
+    },
+    {
+      "id": "gst-hst-qst-remittance-quick-method-calculator",
+      "title_native": "Calculateur de TPS/TVH & TVQ et Méthode Rapide de Comptabilité | GST/HST & QST Remittance Calculator",
+      "title_en": "Canadian GST/HST/QST Remittance & Quick Method Savings Calculator",
+      "search_terms_native": [
+        "gst hst quick method calculator canada",
+        "calculateur tps tvh tvq methode rapide arc revenuk quebec",
+        "how to calculate gst hst remittance small business",
+        "input tax credit vs quick method calculator ontario quebec",
+        "tps tvq a payer entreprise calcul"
+      ],
+      "description_native": "Calculez la TPS/TVH et TVQ collectées et comparez la méthode régulière des crédits d'impôt sur les intrants (CII/RTI) avec les gains nets de la méthode rapide de comptabilité de l'ARC et Revenu Québec.",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "total_sales_inc_tax",
+          "label_native": "Chiffre d'affaires total TTC / Total Taxable Revenue Including Tax (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "province",
+          "label_native": "Province d'exploitation / Operating Province",
+          "type": "select",
+          "options": [
+            {
+              "value": "on",
+              "label": "Ontario (TVH / HST 13%)"
+            },
+            {
+              "value": "qc",
+              "label": "Québec (TPS 5% + TVQ 9.975%)"
+            },
+            {
+              "value": "bc",
+              "label": "Colombie-Britannique / BC (TPS / GST 5%)"
+            },
+            {
+              "value": "ab",
+              "label": "Alberta (TPS / GST 5%)"
+            },
+            {
+              "value": "ns_nb_nl_pe",
+              "label": "Provinces de l'Atlantique / Atlantic (TVH / HST 15%)"
+            }
+          ]
+        },
+        {
+          "name": "industry_type",
+          "label_native": "Secteur d'activité / Business Type",
+          "type": "select",
+          "options": [
+            {
+              "value": "service",
+              "label": "Services / Entreprise de services / Service Business"
+            },
+            {
+              "value": "retail_wholesaler",
+              "label": "Vente au détail ou en gros / Retailer or Wholesaler"
+            }
+          ]
+        },
+        {
+          "name": "taxable_expenses_exc_tax",
+          "label_native": "Dépenses d'exploitation admissibles HT / Eligible Taxable Expenses Excl. Tax (CAD $)",
+          "type": "number"
+        },
+        {
+          "name": "is_first_year_registered",
+          "label_native": "Première année d'inscription TPS/TVH? / First Fiscal Year Registered?",
+          "type": "select",
+          "options": [
+            {
+              "value": "yes",
+              "label": "Oui / Yes (+1% de crédit supplémentaire / +1% bonus credit)"
+            },
+            {
+              "value": "no",
+              "label": "Non / No"
+            }
+          ]
+        }
+      ],
+      "formula_explanation": "Under Regular Method: GST/HST Remittance = Tax Collected on Revenue - ITCs (Input Tax Credits) paid on expenses. Under CRA Quick Method of Accounting (eligible for annual taxable sales under $400,000): Business collects full GST/HST/QST from clients but remits a reduced flat rate on gross tax-inclusive revenue (e.g. ON service rate 8.8% vs 13% collected; QC rate 3.6% GST + 6.6% QST). Keeps the remaining difference as additional net business profit! Includes 1% credit on first $30,000 of taxable sales ($300 value) plus additional 1% bonus credit during first fiscal year of registration.",
+      "affiliate_targets": [
+        {
+          "name": "QuickBooks Online Canada",
+          "type": "accounting",
+          "description": "Automated GST/HST and QST tracking with CRA direct online filing integration."
+        },
+        {
+          "name": "Wave Accounting",
+          "type": "software",
+          "description": "Free invoicing and sales tax calculation software popular among Canadian freelancers."
+        },
+        {
+          "name": "Wise Business Canada",
+          "type": "neobank",
+          "description": "Multi-currency business account with sub-accounts for setting aside quarterly GST/HST tax holdbacks."
+        },
+        {
+          "name": "FreshBooks Canada",
+          "type": "accounting",
+          "description": "Canadian invoicing platform with automated provincial sales tax (GST/HST/PST/QST) reports."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "country": "Greece",
+  "country_code": "GR",
+  "languages": [
+    "el",
+    "en"
+  ],
+  "calculators": [
+    {
+      "id": "ypologisimos-katharou-misthou-ellada",
+      "title_native": "Υπολογισμός Καθαρού Μισθού & Μισθοδοσίας (Μικτά σε Καθαρά)",
+      "title_en": "Greece Net Salary & Payroll Calculator (Gross to Net)",
+      "search_terms_native": [
+        "υπολογισμος καθαρου μισθου",
+        "μικτα σε καθαρα",
+        "υπολογισμος μισθοδοσιας",
+        "υπολογιστης μισθου ελλαδα",
+        "αφορολογητο μισθωτων 2026",
+        "κρατησεις εφκα μισθωτου"
+      ],
+      "description_native": "Υπολογίστε τον καθαρό μηνιαίο και ετήσιο μισθό σας στην Ελλάδα, τις κρατήσεις ΕΦΚΑ (13,87%), τον Φόρο Εισοδήματος με βάση την κλίμακα, την έκπτωση φόρου (αφορολόγητο) ανάλογα με τα τέκνα και τα δώρα (14 μισθοί).",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "gross_salary_monthly",
+          "label_native": "Μικτός Μηνιαίος Μισθός (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "pay_periods",
+          "label_native": "Αριθμός Μισθών ανά Έτος",
+          "type": "select",
+          "options": [
+            "14 μισθοί (12 μήνες + Δώρα Χριστουγέννων/Πάσχα/Αδείας)",
+            "12 ισόποσοι μισθοί (με προσαρμοσμένα δώρα)"
+          ]
+        },
+        {
+          "name": "dependent_children",
+          "label_native": "Αριθμός Εξαρτώμενων Τέκνων",
+          "type": "select",
+          "options": [
+            "Χωρίς τέκνα",
+            "1 τέκνο",
+            "2 τέκνα",
+            "3 τέκνα",
+            "4 τέκνα",
+            "5+ τέκνα"
+          ]
+        },
+        {
+          "name": "employment_type",
+          "label_native": "Τύπος Απασχόλησης",
+          "type": "select",
+          "options": [
+            "Πλήρης Απασχόληση",
+            "Μερική Απασχόληση"
+          ]
+        },
+        {
+          "name": "sector",
+          "label_native": "Τομέας Απασχόλησης",
+          "type": "select",
+          "options": [
+            "Ιδιωτικός Τομέας",
+            "Δημόσιος Τομέας / ΝΠΔΔ"
+          ]
+        }
+      ],
+      "formula_explanation": "Ο καθαρός μισθός υπολογίζεται αφαιρώντας από τον μικτό μισθό τις ασφαλιστικές κρατήσεις ΕΦΚΑ εργαζομένου (13,87% έως το ανώτατο όριο ασφαλιστέων αποδοχών €7.467,51/μήνα) και τον Φόρο Εισοδήματος. Ο ετήσιος φορολογητέος μισθός υπολογίζεται σε 14μισθη βάση (12 μήνες + 1 μισθός Δώρο Χριστουγέννων + 1/2 Δώρο Πάσχα + 1/2 Επίδομα Αδείας). Στον υπολογισθέντα φόρο κλίμακας (9% έως €10k, 22% €10k-€20k, 28% €20k-€30k, 36% €30k-€40k, 44% άνω των €40k) εφαρμόζεται η έκπτωση φόρου (αφορολόγητο) ανάλογα με τα τέκνα (€777 χωρίς τέκνα, €900 με 1 τέκνο, €1.120 με 2 τέκνα, €1.340 με 3 τέκνα, €1.580 με 4 τέκνα + €220 για κάθε επιπλέον τέκνο), η οποία μειώνεται κατά €20 ανά €1.000 εισοδήματος πάνω από τις €12.000. Οι εργοδοτικές εισφορές ΕΦΚΑ είναι 22,29%.",
+      "affiliate_targets": [
+        {
+          "name": "Epsilon Net / SoftOne",
+          "type": "software",
+          "description": "Leading Greek HR and payroll software providers integrated with ERGANI II system"
+        },
+        {
+          "name": "Revolut / Viva.com",
+          "type": "neobank",
+          "description": "Popular digital accounts for direct salary deposits and expense management in Greece"
+        },
+        {
+          "name": "Interamerican / Generali Hellas",
+          "type": "insurance",
+          "description": "Top private health and group employee insurance packages in Greece"
+        }
+      ]
+    },
+    {
+      "id": "ypologisimos-forou-efka-atomiki-epixeirisi",
+      "title_native": "Υπολογισμός Φόρου & ΕΦΚΑ Ατομικής Επιχείρησης / Ελεύθερου Επαγγελματία",
+      "title_en": "Greece Sole Proprietor Tax & EFKA Social Security Calculator",
+      "search_terms_native": [
+        "υπολογισμος φορου ατομικης επιχειρησης",
+        "φορολογια ελευθερου επαγγελματια",
+        "ασφαλιστικες κατηγοριες εφκα 2026",
+        "τεκμαρτο εισοδημα ελευθερων επαγγελματιων",
+        "προκαταβολη φορου ατομικη",
+        "υπολογιστης μπλοκακι εφκα"
+      ],
+      "description_native": "Υπολογίστε τον φόρο εισοδήματος, τις ασφαλιστικές εισφορές ΕΦΚΑ, το τέλος επιτηδεύματος, την προκαταβολή φόρου και το καθαρό διαθέσιμο εισόδημα για ατομικές επιχειρήσεις και ελεύθερους επαγγελματίες με βάση το ελάχιστο τεκμαρτό εισόδημα (Ν. 5073/2023).",
+      "category": "tax",
+      "inputs": [
+        {
+          "name": "annual_revenue",
+          "label_native": "Ετήσια Ακαθάριστα Έσοδα (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "annual_expenses",
+          "label_native": "Ετήσια Εκπιπτόμενα Έξοδα (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_in_business",
+          "label_native": "Έτη Λειτουργίας Επιχείρησης",
+          "type": "select",
+          "options": [
+            "0-3 έτη (Νεοσύστατη)",
+            "4-5 έτη",
+            "6-9 έτη",
+            "10+ έτη"
+          ]
+        },
+        {
+          "name": "efka_category",
+          "label_native": "Ασφαλιστική Κατηγορία ΕΦΚΑ (Κύρια Σύνταξη & Υγεία)",
+          "type": "select",
+          "options": [
+            "1η Κατηγορία (€248,22/μήνα)",
+            "2η Κατηγορία (€297,86/μήνα)",
+            "3η Κατηγορία (€356,84/μήνα)",
+            "4η Κατηγορία (€428,21/μήνα)",
+            "5η Κατηγορία (€514,61/μήνα)",
+            "6η Κατηγορία (€642,09/μήνα)",
+            "Ειδική Κατηγορία Νέων Επαγγελματιών (πρώτα 5 έτη - €148,15/μήνα)"
+          ]
+        },
+        {
+          "name": "is_blokaki",
+          "label_native": "Καθεστώς Άρθρου 39 παρ. 9 (Μπλοκάκι με έως 2 εργοδότες)",
+          "type": "select",
+          "options": [
+            "Όχι (Κανονικός Ελεύθερος Επαγγελματίας)",
+            "Ναι (Μπλοκάκι με μπλοκ παροχής υπηρεσιών)"
+          ]
+        },
+        {
+          "name": "employees_count",
+          "label_native": "Αριθμός Απασχολούμενων Υπαλλήλων",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "formula_explanation": "Το καθαρό λογιστικό κέρδος προκύπτει αφαιρώντας τα έξοδα και τις ετήσιες εισφορές ΕΦΚΑ από τα έσοδα. Βάσει του Ν. 5073/2023, υπολογίζεται το ελάχιστο τεκμαρτό καθαρό εισόδημα με βάση τον κατώτατο μισθό, τα έτη λειτουργίας (0% προσαύξηση στα 0-3 έτη, 10% στα 4-5, 20% στα 6-9, 30% στα 10+), το μισθολογικό κόστος και τον τζίρο. Η φορολογητέα βάση είναι το μεγαλύτερο ποσό μεταξύ λογιστικού κέρδους και τεκμαρτού. Ο φόρος υπολογίζεται με την κλίμακα ατομικών επιχειρήσεων (9% για τα πρώτα €10.000, 22% για €10k-€20k, 28% για €20k-€30k, 36% για €30k-€40k, 44% άνω των €40.000). Για τα πρώτα 3 έτη νέας δραστηριότητας ισχύει συντελεστής 4,5% για εισόδημα έως €10.000 (εφόσον τα τζίρος < €10k). Προστίθεται προκαταβολή φόρου 55% (27,5% για τα πρώτα 3 έτη) και τέλος επιτηδεύματος. Για όσους υπάγονται στο άρθρο 39 παρ. 9 (μπλοκάκι), οι εισφορές ΕΦΚΑ επιμερίζονται με τον εργοδότη (6,67% εργαζόμενος / 13,33% εργοδότης).",
+      "affiliate_targets": [
+        {
+          "name": "Elorus / Epsilon Smart",
+          "type": "software",
+          "description": "Certified Greek cloud invoicing & e-books software with automatic AADE myDATA synchronization"
+        },
+        {
+          "name": "Viva.com / Revolut Business",
+          "type": "neobank",
+          "description": "Greek and EU business bank accounts with quick POS terminal setup and tax office compliance"
+        },
+        {
+          "name": "Taxhub / Local Greek Accounting Firms",
+          "type": "accounting",
+          "description": "Online accounting services and tax declaration filing for Greek sole traders and freelancers"
+        }
+      ]
+    },
+    {
+      "id": "ypologisimos-forou-metavivasis-akinitou-ellada",
+      "title_native": "Υπολογισμός Φόρου Μεταβίβασης & Εξόδων Αγοράς Ακινήτου",
+      "title_en": "Greece Real Estate Property Transfer Tax & Purchase Fees Calculator",
+      "search_terms_native": [
+        "υπολογισμος φορου μεταβιβασης ακινητου",
+        "εξοδα αγορας ακινητου συμβολαιογραφος",
+        "απαλλαγη πρωτης κατοικιας αφορολογητο",
+        "φμα υπολογιστης",
+        "αμοιβη δικηγορου αγορα ακινητου",
+        "κτηματολογιο εξοδα μεταγραφης"
+      ],
+      "description_native": "Υπολογίστε τον Φόρο Μεταβίβασης Ακινήτου (ΦΜΑ 3%), τα συμβολαιογραφικά έξοδα, τα τέλη Υποθηκοφυλακείου/Κτηματολογίου, τις αμοιβές δικηγόρου και μεσίτη, καθώς και τις απαλλαγές Πρώτης Κατοικίας.",
+      "category": "real_estate",
+      "inputs": [
+        {
+          "name": "purchase_price",
+          "label_native": "Τίμημα Αγοράς (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "objective_value",
+          "label_native": "Αντικειμενική Αξία Ακινήτου (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "property_purpose",
+          "label_native": "Σκοπός Αγοράς",
+          "type": "select",
+          "options": [
+            "Πρώτη Κατοικία (Κύρια)",
+            "Δευτερεύουσα / Επενδυτικό Ακίνητο"
+          ]
+        },
+        {
+          "name": "marital_status",
+          "label_native": "Οικογενειακή Κατάσταση (για Απαλλαγή Πρώτης Κατοικίας)",
+          "type": "select",
+          "options": [
+            "Άγαμος / Διαζευγμένος",
+            "Έγγαμος / Σύμφωνο Συμβίωσης"
+          ]
+        },
+        {
+          "name": "children_count",
+          "label_native": "Αριθμός Εξαρτώμενων Τέκνων",
+          "type": "select",
+          "options": [
+            "Χωρίς τέκνα",
+            "1 τέκνο",
+            "2 τέκνα",
+            "3 τέκνα",
+            "4+ τέκνα"
+          ]
+        },
+        {
+          "name": "agent_fee_percentage",
+          "label_native": "Αμοιβή Μεσίτη (% + ΦΠΑ 24%)",
+          "type": "select",
+          "options": [
+            "2% (Standard)",
+            "1.5%",
+            "1%",
+            "Χωρίς Μεσίτη (0%)"
+          ]
+        }
+      ],
+      "formula_explanation": "Η φορολογητέα αξία είναι το μεγαλύτερο ποσό μεταξύ Συμφωνηθέντος Τιμήματος και Αντικειμενικής Αξίας. Ο Φόρος Μεταβίβασης Ακινήτου (ΦΜΑ) είναι 3% επί της φορολογητέας αξίας συν 3% δημοτικός φόρος επί του ΦΜΑ (συνολικά 3,09%). Για αγορά Πρώτης Κατοικίας παρέχεται αφορολόγητο όριο: €200.000 για άγαμο, €250.000 για έγγαμο, προσαυξημένο κατά €25.000 για καθένα από τα 2 πρώτα τέκνα και €30.000 για το 3ο και κάθε επιπλέον τέκνο. Ο ΦΜΑ 3,09% επιβάλλεται μόνο στο ποσό που υπερβαίνει το αφορολόγητο όριο. Τα συμβολαιογραφικά έξοδα υπολογίζονται κλιμακωτά (0,80% έως €120k, 0,70% €120k-€380k, 0,65% άνω των €380k + πάγια δικαιώματα + ΦΠΑ 24%). Τα έξοδα Υποθηκοφυλακείου/Κτηματολογίου είναι 0,5%-0,75% + ΦΠΑ. Η αμοιβή δικηγόρου είναι συνήθως 1% + ΦΠΑ και η αμοιβή μεσίτη 2% + ΦΠΑ. Τα συνολικά έξοδα αγοράς κυμαίνονται συνήθως στο 6%-9% της αξίας του ακινήτου.",
+      "affiliate_targets": [
+        {
+          "name": "Eurobank / Alpha Bank / NBG / Piraeus",
+          "type": "neobank",
+          "description": "Major Greek mortgage providers offering home loan pre-approvals and digital applications"
+        },
+        {
+          "name": "Anytime by Interamerican",
+          "type": "insurance",
+          "description": "Leading Greek online home insurance required by banks for mortgage approval"
+        },
+        {
+          "name": "Spitogatos / Xe.gr",
+          "type": "software",
+          "description": "Dominant Greek property marketplace platforms for real estate valuation and leads"
+        }
+      ]
+    },
+    {
+      "id": "ypologisimos-apozimiosis-apolysis-ellada",
+      "title_native": "Υπολογισμός Αποζημίωσης Απόλυσης & Προειδοποίησης",
+      "title_en": "Greece Employment Termination Severance Pay & Notice Calculator",
+      "search_terms_native": [
+        "υπολογισμος αποζημιωσης απολυσης",
+        "ποση αποζημιωση δικαιουμαι",
+        "αποζημιωση απολυσης με προειδοποιηση",
+        "υπολογιστης απολυσης εργαζομενου",
+        "αποζημιωση προϋπηρεσια εργαζομενου"
+      ],
+      "description_native": "Υπολογίστε τη νόμιμη αποζημίωση απόλυσης ιδιωτικού υπαλλήλου στην Ελλάδα με βάση τα έτη προϋπηρεσίας, τον μικτό μισθό, την προσαύξηση δώρων (1/6) και το αν υπήρξε έγγραφη προειδοποίηση.",
+      "category": "employment",
+      "inputs": [
+        {
+          "name": "monthly_gross_salary",
+          "label_native": "Μικτός Μηνιαίος Μισθός (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "years_of_service",
+          "label_native": "Έτη Συνεχούς Προϋπηρεσίας στον ίδιο Εργοδότη",
+          "type": "select",
+          "options": [
+            "1 έως 2 έτη",
+            "2 έως 4 έτη",
+            "4 έως 6 έτη",
+            "6 έως 8 έτη",
+            "8 έως 10 έτη",
+            "10 έτη",
+            "11 έτη",
+            "12 έτη",
+            "13 έτη",
+            "14 έτη",
+            "15 έτη",
+            "16+ έτη"
+          ]
+        },
+        {
+          "name": "notice_given",
+          "label_native": "Έγινε Έγγραφη Προειδοποίηση Απόλυσης;",
+          "type": "select",
+          "options": [
+            "Όχι (Άμεση Απόλυση - Τακτική)",
+            "Ναι (Απόλυση με Προειδοποίηση)"
+          ]
+        }
+      ],
+      "formula_explanation": "Η βάση υπολογισμού της αποζημίωσης είναι ο τακτικός μηνιαίος μικτός μισθός προσαυξημένος κατά 1/6 (factor 1,1667) λόγω της αναλογίας των δώρων Εορτών και επιδόματος Αδείας. Η κλίμακα μηνών αποζημίωσης βάσει Ν. 4093/2012 είναι: 1-2 έτη = 1 μισθός, 2-4 έτη = 2 μισθοί, 4-6 έτη = 3 μισθοί, 6-8 έτη = 4 μισθοί, 8-10 έτη = 5 μισθοί, 10 έτη = 6 μισθοί, 11 έτη = 7 μισθοί, 12 έτη = 8 μισθοί, 13 έτη = 9 μισθοί, 14 έτη = 10 μισθοί, 15 έτη = 11 μισθοί, 16+ έτη = 12 μισθοί (για προϋπηρεσία στον ίδιο εργοδότη έως 16 έτη). Σε περίπτωση έγγραφης προειδοποίησης εντός των νόμιμων προθεσμιών (1 έως 4 μήνες ανάλογα με τα έτη), η αποζημίωση μειώνεται κατά 50%. Φορολόγηση αποζημίωσης: έως €60.000 αφορολόγητο (0%), €60k-€100k με 10%, €100k-€150k με 20%, άνω των €150.000 με 30%.",
+      "affiliate_targets": [
+        {
+          "name": "Lawspot.gr / Greek Employment Lawyers",
+          "type": "insurance",
+          "description": "Legal advisory platforms for employment dispute resolution and severance claims in Greece"
+        },
+        {
+          "name": "Workable",
+          "type": "software",
+          "description": "Recruitment & hiring platform headquartered in Greece for job seekers and hiring managers"
+        },
+        {
+          "name": "Eurobank / NBG Wealth Management",
+          "type": "neobank",
+          "description": "Financial management and investment services for lump-sum severance pay payouts"
+        }
+      ]
+    },
+    {
+      "id": "ypologisimos-forou-etairion-ik-epe-ae-merismata",
+      "title_native": "Υπολογισμός Φόρου Εταιρειών (Ι.Κ.Ε., Ε.Π.Ε., Α.Ε.) & Διανομής Μερισμάτων",
+      "title_en": "Greece Corporate Income Tax & Dividend Distribution Calculator (IKE/EPE/AE)",
+      "search_terms_native": [
+        "υπολογισμος φορου ικε",
+        "φορολογια μερισματων ελλαδα",
+        "προκαταβολη φορου νομικων προσωπων",
+        "υπολογιστης διανομης κερδων ικε",
+        "φορος εισοδηματος νομικων προσωπων 22%"
+      ],
+      "description_native": "Υπολογίστε τον Φόρο Εισοδήματος Νομικών Προσώπων (22%), την προκαταβολή φόρου (80%), τον φόρο μερισμάτων (5%) και το καθαρό ποσό διανομής στους εταίρους/μετόχους για ΙΚΕ, ΕΠΕ και ΑΕ.",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "gross_corporate_profit",
+          "label_native": "Φορολογητέα Κέρδη Προ Φόρων (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "entity_type",
+          "label_native": "Νομική Μορφή Εταιρείας",
+          "type": "select",
+          "options": [
+            "Ι.Κ.Ε. (Ιδιωτική Κεφαλαιουχική Εταιρεία)",
+            "Ε.Π.Ε. (Εταιρεία Περιορισμένης Ευθύνης)",
+            "Α.Ε. (Ανώνυμη Εταιρεία)"
+          ]
+        },
+        {
+          "name": "dividend_distribution_percent",
+          "label_native": "Ποσοστό Κερδών προς Διανομή Μερίσματος (%)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "is_new_company",
+          "label_native": "Νεοσύστατη Εταιρεία (Πρώτα 3 έτη λειτουργίας)",
+          "type": "select",
+          "options": [
+            "Όχι (Κανονική Προκαταβολή Φόρου 80%)",
+            "Ναι (Μειωμένη Προκαταβολή Φόρου 40%)"
+          ]
+        },
+        {
+          "name": "retained_earnings_reserve_percent",
+          "label_native": "Ποσοστό Τακτικού Αποθεματικού (%)",
+          "type": "select",
+          "options": [
+            "5% (Υποχρεωτικό Τακτικό Αποθεματικό έως 1/3 κεφαλαίου)",
+            "0% (Έχει συμπληρωθεί το όριο τακτικού αποθεματικού)"
+          ]
+        }
+      ],
+      "formula_explanation": "Ο Φόρος Εισοδήματος Νομικών Προσώπων υπολογίζεται με σταθερό συντελεστή 22% επί των καθαρών φορολογητέων κερδών. Από τα καθαρά κέρδη μετά φόρων παρακρατείται υποχρεωτικά 5% για σχηματισμό Τακτικού Αποθεματικού (έως ότου φτάσει το 1/3 του εταιρικού κεφαλαίου). Το εναπομείναν διαθέσιμο ποσό πολλαπλασιάζεται με το ποσοστό διανομής μερίσματος. Επί του διανεμόμενου μερίσματος επιβάλλεται παρακράτηση Φόρου Μερισμάτων 5%. Η προκαταβολή φόρου νομικών προσώπων είναι 80% επί του κύριου φόρου (μειώνεται κατά 50% στο 40% για τα 3 πρώτα διαχειριστικά έτη από την ίδρυση της εταιρείας). Ο εταίρος/μέτοχος λαμβάνει καθαρό μέρισμα 95% του διανεμηθέντος ποσού.",
+      "affiliate_targets": [
+        {
+          "name": "Epsilon Net / SoftOne",
+          "type": "software",
+          "description": "Comprehensive corporate ERP & financial accounting software suite for Greek enterprises"
+        },
+        {
+          "name": "Viva.com / Revolut Business",
+          "type": "neobank",
+          "description": "Corporate banking, commercial multi-currency cards and automated expense tracking"
+        },
+        {
+          "name": "Deloitte / EY / Local Tax Firms",
+          "type": "accounting",
+          "description": "Corporate tax compliance, audit and transfer pricing advisory for IKE/AE entities in Greece"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+---
+// src/layouts/Layout.astro - Updated with proper SEO infrastructure
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: string;
+  canonical?: string;
+  ogImage?: string;
+  structuredData?: object;
+}
+
+const { 
+  title, 
+  description, 
+  lang = 'en',
+  canonical = Astro.url.href,
+  structuredData
+} = Astro.props;
+
+const siteName = 'CalcGlobal';
+const siteUrl = 'https://calcglobal.com';
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Primary SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    
+    <!-- Technical -->
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Structured Data -->
+    {structuredData && (
+      <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    )}
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": siteName,
+      "url": siteUrl,
+      "description": "Hyper-localized tax, payroll, and financial calculators for global professionals",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": `${siteUrl}/search?q={search_term_string}`,
+        "query-input": "required name=search_term_string"
+      }
+    })} />
+  </head>
+  
+  <body class="bg-stone-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col">
+    
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-2.5 group">
+          <div class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-base tracking-tight group-hover:bg-slate-700 transition-colors">
+            CG
+          </div>
+          <span class="font-bold text-lg tracking-tight text-slate-900">CalcGlobal</span>
+        </a>
+        <nav class="hidden sm:flex items-center gap-1">
+          <a href="/" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">All Countries</a>
+          <a href="/us" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
+          <a href="/uk" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
+          <a href="/fr" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
+          <a href="/de" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
+          <a href="/au" class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 pt-14 pb-10 mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-slate-800">
+          <div class="col-span-1 md:col-span-2">
+            <span class="font-bold text-lg text-white block mb-3">CalcGlobal</span>
+            <p class="text-sm leading-relaxed max-w-sm">
+              Accurate, localized financial calculators for tax, payroll, and legal compliance. 
+              Built by professionals, verified for each country's 2026 tax year.
+            </p>
+            <p class="text-xs text-slate-500 mt-4">
+              ⚠️ Estimates only. Always consult a qualified tax professional.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Calculators</h3>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/us" class="hover:text-white transition-colors">🇺🇸 United States</a></li>
+              <li><a href="/uk" class="hover:text-white transition-colors">🇬🇧 United Kingdom</a></li>
+              <li><a href="/fr" class="hover:text-white transition-colors">🇫🇷 France</a></li>
+              <li><a href="/de" class="hover:text-white transition-colors">🇩🇪 Germany</a></li>
+              <li><a href="/au" class="hover:text-white transition-colors">🇦🇺 Australia</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal</h3>
+            <ul class="space-y-2.5 text-sm">
+              <li><a href="/privacy" class="hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms" class="hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="/disclaimer" class="hover:text-white transition-colors">Tax Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-slate-500">© 2026 CalcGlobal. All rights reserved.</p>
+          <p class="text-xs text-slate-500">Tax rates updated for the 2026/2027 fiscal year.</p>
+        </div>
+      </div>
+    </footer>
+    
+  </body>
+</html>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  * { box-sizing: border-box; }
+  
+  /* Smooth number input appearance */
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button { opacity: 1; }
+</style>
