@@ -110,50 +110,60 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
   lang={meta.lang}
   structuredData={[breadcrumbSchema, calcSchema, faqSchema].filter(Boolean)}
 >
-  <!-- Page Header -->
-  <div class="bg-slate-800 text-white pt-12 pb-20 px-4">
-    <div class="max-w-4xl mx-auto">
-      <!-- Breadcrumb -->
-      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2 flex-wrap">
-        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
-        <span>/</span>
-        <a href={`${base}/${slug}`} class="hover:text-white transition-colors flex items-center gap-1.5">
+  <!-- Premium Page Header -->
+  <div class="relative bg-slate-900 pt-10 pb-24 px-4 overflow-hidden border-b border-slate-800">
+    <!-- Gradient glow -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-900 to-slate-900"></div>
+    
+    <div class="max-w-4xl mx-auto relative z-10">
+      <!-- Premium Breadcrumb -->
+      <nav class="flex items-center gap-2 flex-wrap mb-8 bg-slate-800/60 w-fit px-4 py-2 rounded-lg border border-slate-700/60 shadow-sm backdrop-blur-sm">
+        <a href={`${base}/`} class="text-xs font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+          Home
+        </a>
+        <span class="text-slate-600 text-xs">/</span>
+        <a href={`${base}/${slug}`} class="text-xs font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
           <img src={`https://flagcdn.com/w20/${flagCode}.png`} alt="" class="w-4 h-3 object-cover rounded-sm" />
           {countryData.country}
         </a>
-        <span>/</span>
-        <span class="text-slate-300 truncate">{calcData.title_native}</span>
+        <span class="text-slate-600 text-xs">/</span>
+        <span class="text-white text-xs font-semibold truncate max-w-[200px] sm:max-w-none">{calcData.title_native}</span>
       </nav>
 
       <!-- Title & Authority Metadata Row -->
-      <div class="flex items-center gap-2.5 flex-wrap mb-3">
-        <span class="inline-block px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md tracking-wide border border-slate-600">
+      <div class="flex items-center gap-3 flex-wrap mb-5">
+        <span class="inline-flex items-center px-3 py-1 bg-white text-slate-900 text-xs font-bold rounded-lg tracking-wide shadow-sm border border-slate-200">
           {getTranslatedCategory(calcData.category, meta.lang)}
         </span>
         {meta.authorityAbbr && (
-          <span class="inline-block px-2.5 py-1 bg-blue-950/80 text-blue-300 text-xs font-semibold rounded-md border border-blue-800/80">
-            🏛️ {meta.authorityAbbr} Compliance
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-900/40 text-blue-300 text-xs font-semibold rounded-lg border border-blue-700/50 backdrop-blur-sm">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" /></svg>
+            {meta.authorityAbbr} Compliant
           </span>
         )}
         {calcData.last_updated && (
-          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-950/80 text-emerald-300 text-xs font-semibold rounded-md border border-emerald-800/80">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-900/40 text-green-400 text-xs font-semibold rounded-lg border border-green-700/50 backdrop-blur-sm">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
             Updated {calcData.last_updated}
           </span>
         )}
       </div>
 
-      <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
         {calcData.title_en || calcData.title_native}
       </h1>
-      <p class="text-slate-400 mt-3 max-w-3xl text-sm md:text-base leading-relaxed">
+      <p class="text-slate-400 mt-4 max-w-2xl text-base md:text-lg leading-relaxed font-medium">
         {calcData.description_native}
       </p>
     </div>
   </div>
 
   <!-- Calculator & Content Area -->
-  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-14 relative z-20">
 
     <!-- The Interactive Calculator (React Island) -->
     <InteractiveCalculator
@@ -169,66 +179,50 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
     <!-- About & Calculation Methodology (Task 3 & E-E-A-T) -->
     {calcData.formula_explanation && (
-      <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
-        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6 flex-wrap gap-3">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg">
-              🧮
+      <section class="mt-12 bg-white rounded-3xl border border-slate-200 p-8 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-5 mb-6 gap-4">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-xl bg-slate-50 text-slate-700 flex items-center justify-center border border-slate-200 shadow-sm shrink-0">
+              <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
             </div>
             <div>
               <h2 class="text-xl font-bold text-slate-900">
-                {meta.lang === 'fr' ? 'À propos de ce calculateur & Méthodologie' : meta.lang === 'de' ? 'Über diesen Rechner & Berechnungsmethodik' : 'About this Calculator & Calculation Methodology'}
+                {meta.lang === 'fr' ? 'Méthodologie de calcul' : meta.lang === 'de' ? 'Berechnungsmethodik' : 'Calculation Methodology'}
               </h2>
-              <p class="text-xs text-slate-500">
+              <p class="text-sm text-slate-500 font-medium">
                 Sourced from official {meta.taxAuthority || 'statutory'} regulations
               </p>
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs font-semibold px-3 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-200">
+            <span class="text-xs font-bold px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-100">
               2026/27 Tax Year
             </span>
-            {calcData.last_updated && (
-              <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                Updated {calcData.last_updated}
-              </span>
-            )}
           </div>
         </div>
 
-        <div class="space-y-3.5">
+        <div class="space-y-4">
           {explanationSentences.map((sentence: string) => (
-            <div class="flex items-start gap-3 bg-slate-50/80 p-3.5 rounded-xl border border-slate-100">
-              <span class="text-emerald-600 font-bold text-sm mt-0.5 select-none">✓</span>
-              <p class="text-slate-700 text-sm leading-relaxed font-normal">{sentence}</p>
+            <div class="flex items-start gap-4 p-4 rounded-xl border border-slate-100 bg-slate-50/50 hover:bg-slate-50 transition-colors">
+              <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <p class="text-slate-700 text-sm leading-relaxed">{sentence}</p>
             </div>
           ))}
-        </div>
-
-        <div class="mt-6 pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-500">
-          <div class="flex items-center gap-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>Official Authority: <strong class="text-slate-700">{meta.authorityAbbr || countryData.country}</strong></span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>Reviewed by Financial Analysts</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="text-emerald-600 font-bold">✓</span>
-            <span>2026 Statutory Rates</span>
-          </div>
         </div>
       </section>
     )}
 
     <!-- Affiliate Partners (Prominent Recommended Tools Section) -->
     {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
-      <section class="mt-12">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-xl font-bold text-slate-900">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
-          <span class="text-xs text-slate-400 font-medium">Verified Partners</span>
+      <section class="mt-12 bg-gradient-to-b from-slate-50 to-white rounded-3xl p-8 border border-slate-200 shadow-sm">
+        <div class="flex items-center justify-between mb-8">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900 mb-1">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
+            <p class="text-sm text-slate-500">Trusted solutions for {countryData.country} professionals</p>
+          </div>
+          <span class="hidden sm:inline-flex px-3 py-1 bg-white border border-slate-200 shadow-sm text-xs font-bold text-slate-600 rounded-full uppercase tracking-wide">Verified Partners</span>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {calcData.affiliate_targets.slice(0, 3).map((partner: any) => (
@@ -241,15 +235,24 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <!-- Strategic AdSlot 2 -->
     <AdSlot variant="in-article" className="my-12" />
 
-    <!-- FAQ / Article Content (Task 1 FAQ Schema matching) -->
+    <!-- Premium FAQ Section -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (
       <section class="mt-12">
-        <h2 class="text-xl font-bold text-slate-900 mb-6">{getUITranslation('FAQ_TITLE', meta.lang)}</h2>
-        <div class="space-y-6">
+        <div class="text-center mb-8">
+          <h2 class="text-2xl font-bold text-slate-900 mb-2">{getUITranslation('FAQ_TITLE', meta.lang)}</h2>
+          <p class="text-slate-500">Common questions about this calculation</p>
+        </div>
+        <div class="space-y-4">
           {calcData.article_faq.map((faq: any) => (
-            <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-              <h3 class="font-bold text-slate-900 text-base mb-3">{faq.question}</h3>
-              <p class="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
+            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+              <h3 class="font-bold text-slate-900 text-lg mb-3 flex items-start gap-3">
+                <span class="text-blue-500 font-black">Q.</span>
+                {faq.question}
+              </h3>
+              <div class="flex items-start gap-3">
+                <span class="text-emerald-500 font-black opacity-0">A.</span>
+                <p class="text-slate-600 leading-relaxed -ml-6 border-l-2 border-slate-100 pl-6">{faq.answer}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -257,8 +260,11 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     )}
 
     <!-- Legal Disclaimer -->
-    <div class="mt-12 bg-amber-50 border border-amber-200 rounded-xl px-6 py-5">
-      <p class="text-xs text-amber-800 leading-relaxed" set:html={getUITranslation('DISCLAIMER_TEXT', meta.lang).replace('Disclaimer:', '<strong>Disclaimer:</strong>').replace('Avertissement :', '<strong>Avertissement :</strong>').replace('Haftungsausschluss:', '<strong>Haftungsausschluss:</strong>')} />
+    <div class="mt-14 bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4">
+      <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+      </div>
+      <p class="text-sm text-amber-800 leading-relaxed" set:html={getUITranslation('DISCLAIMER_TEXT', meta.lang).replace('Disclaimer:', '<strong>Disclaimer:</strong>').replace('Avertissement :', '<strong>Avertissement :</strong>').replace('Haftungsausschluss:', '<strong>Haftungsausschluss:</strong>')} />
     </div>
   </div>
 </Layout>

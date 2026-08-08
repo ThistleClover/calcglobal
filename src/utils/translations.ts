@@ -59,7 +59,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'TAX_BREAKDOWN': 'Détail des Taxes',
     'QUARTERLY_PAYMENT': 'Paiement Trimestriel Estimé',
     'METHODOLOGY': 'Méthodologie de calcul',
-    'QUARTERLY_DUE': 'Échéances: 15 Avr · 16 Juin · 15 Sep · 15 Jan'
+    'QUARTERLY_DUE': 'Échéances: 15 Avr · 16 Juin · 15 Sep · 15 Jan',
+    'TAKE_HOME': 'Net à Payer',
+    'NET_INCOME': 'Revenu Net',
+    'TOTAL_TAX': 'Total Taxes'
   },
   'de': {
     'RECOMMENDED_TOOLS': 'Empfohlene Tools',
@@ -76,7 +79,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'TAX_BREAKDOWN': 'Steueraufschlüsselung',
     'QUARTERLY_PAYMENT': 'Geschätzte vierteljährliche Zahlung',
     'METHODOLOGY': 'Berechnungsmethode',
-    'QUARTERLY_DUE': 'Fällig: 15. Apr · 16. Jun · 15. Sep · 15. Jan'
+    'QUARTERLY_DUE': 'Fällig: 15. Apr · 16. Jun · 15. Sep · 15. Jan',
+    'TAKE_HOME': 'Netto',
+    'NET_INCOME': 'Nettoeinkommen',
+    'TOTAL_TAX': 'Gesamtsteuer'
   },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools',
@@ -93,7 +99,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'TAX_BREAKDOWN': 'Tax Breakdown',
     'QUARTERLY_PAYMENT': 'Quarterly Estimated Payment',
     'METHODOLOGY': 'How this was calculated (Methodology)',
-    'QUARTERLY_DUE': 'Due: Apr 15 · Jun 16 · Sep 15 · Jan 15'
+    'QUARTERLY_DUE': 'Due: Apr 15 · Jun 16 · Sep 15 · Jan 15',
+    'TAKE_HOME': 'Take-Home',
+    'NET_INCOME': 'Net Income',
+    'TOTAL_TAX': 'Total Tax'
   }
 };
 

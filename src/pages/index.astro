@@ -7,25 +7,32 @@ import { ACTIVE_COUNTRIES } from '../config';
 const dbDir = path.join(process.cwd(), 'database', 'countries');
 const files = fs.readdirSync(dbDir).filter(f => f.endsWith('.json'));
 
+let totalCalculators = 0;
+
 const allCountries = files.map(file => {
   const raw = fs.readFileSync(path.join(dbDir, file), 'utf-8');
   const data = JSON.parse(raw);
+  
+  const calcCount = data.calculators?.length || 0;
+  if (ACTIVE_COUNTRIES.includes(data.country_code.toLowerCase() as any)) {
+    totalCalculators += calcCount;
+  }
+  
   return {
     name: data.country,
     code: data.country_code,
     slug: data.country_code.toLowerCase(),
-    calculatorCount: data.calculators?.length || 0,
+    calculatorCount: calcCount,
+    topCalculators: data.calculators?.slice(0, 3).map((c: any) => c.title_en) || [],
     active: ACTIVE_COUNTRIES.includes(data.country_code.toLowerCase() as any),
   };
 }).sort((a, b) => {
-  // Active countries first, then alphabetical
   if (a.active && !b.active) return -1;
   if (!a.active && b.active) return 1;
   return a.name.localeCompare(b.name);
 });
 
 const activeCountries = allCountries.filter(c => c.active);
-const comingSoonCountries = allCountries.filter(c => !c.active);
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -44,80 +51,139 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
   description="Access hyper-accurate, localized tax, payroll, and financial calculators for the US, UK, France, Germany, Australia, and more. Updated for the 2026 tax year."
   structuredData={orgSchema}
 >
-  <!-- Hero -->
-  <div class="bg-slate-900 pt-20 pb-28 px-4 text-center relative overflow-hidden">
-    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    <div class="relative max-w-3xl mx-auto">
-      <div class="inline-flex items-center gap-2 bg-slate-800 text-slate-300 text-xs font-medium px-3 py-1.5 rounded-full mb-6 border border-slate-700">
-        <span class="w-1.5 h-1.5 rounded-full bg-green-400"></span>
-        Updated for 2026/27 Tax Year
+  <!-- Premium Hero Section -->
+  <div class="relative bg-slate-900 pt-24 pb-32 px-4 overflow-hidden border-b border-slate-800">
+    <!-- Abstract gradient background -->
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/40 via-slate-900 to-slate-900"></div>
+    
+    <!-- Subtle grid pattern -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+
+    <div class="relative max-w-4xl mx-auto text-center z-10">
+      <div class="inline-flex items-center gap-2 bg-slate-800/80 backdrop-blur-sm text-slate-300 text-xs font-semibold px-4 py-2 rounded-full mb-8 border border-slate-700/50 shadow-sm">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+        </span>
+        Live for 2026/27 Tax Year
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-5 leading-tight">
-        Financial Calculators Built for<br class="hidden md:block" /> 
-        <span class="text-slate-300">Your Country's Rules</span>
+      
+      <h1 class="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400 tracking-tight mb-6 leading-tight">
+        Global Tax Calculators.<br class="hidden md:block" /> 
+        <span class="text-blue-400">Precision by Country.</span>
       </h1>
-      <p class="text-lg text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed">
-        Tax, payroll, and compliance calculators using the exact rates and brackets from local authorities. No guesswork — just precise numbers.
+      
+      <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed font-medium">
+        Enterprise-grade tax, payroll, and compliance calculators. Programmed with the exact rates, brackets, and rules from local authorities.
       </p>
-      <div class="flex flex-wrap justify-center gap-3">
-        {activeCountries.map(c => (
-          <a href={`${base}/${c.slug}`} class="inline-flex items-center gap-2 bg-white text-slate-900 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-slate-100 transition-colors shadow-sm">
-            <img src={`https://flagcdn.com/w20/${c.slug === 'uk' ? 'gb' : c.slug}.png`} alt="" class="w-5 h-3.5 object-cover rounded-sm" />
-            {c.name}
-          </a>
-        ))}
+      
+      <!-- Trust Signals Summary -->
+      <div class="flex flex-wrap justify-center gap-6 sm:gap-10 text-slate-300 mb-8 border-y border-slate-800/60 py-6 max-w-3xl mx-auto backdrop-blur-sm bg-slate-900/30">
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold text-white mb-1">{activeCountries.length}</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Countries</span>
+        </div>
+        <div class="hidden sm:block w-px bg-slate-800"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold text-white mb-1">{totalCalculators}</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Calculators</span>
+        </div>
+        <div class="hidden sm:block w-px bg-slate-800"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold text-white mb-1">100%</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Free to Use</span>
+        </div>
+        <div class="hidden sm:block w-px bg-slate-800"></div>
+        <div class="flex flex-col items-center">
+          <span class="text-3xl font-bold text-white mb-1">2026</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Tax Year</span>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10 pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20 pb-24">
     
-    <!-- Active Countries (Full Coverage) -->
-    <section class="mb-16">
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="px-8 pt-8 pb-6 border-b border-slate-100">
-          <h2 class="text-xl font-bold text-slate-900">Full Coverage — 5 Countries</h2>
-          <p class="text-sm text-slate-500 mt-1">Complete, professionally verified calculators with accurate 2026 tax law.</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-px bg-slate-100">
-          {activeCountries.map((country) => (
-            <a 
-              href={`${base}/${country.slug}`} 
-              class="flex flex-col p-6 bg-white hover:bg-slate-50 transition-colors group"
-            >
-              <div class="flex items-center gap-3 mb-4">
-                <img 
-                  src={`https://flagcdn.com/w40/${country.slug === 'uk' ? 'gb' : country.slug}.png`}
-                  alt={`${country.name} flag`}
-                  class="w-10 h-7 object-cover rounded shadow-sm border border-slate-100"
-                  loading="lazy"
-                />
-                <span class="w-2 h-2 rounded-full bg-green-400 ml-auto"></span>
+    <!-- Premium Country Cards -->
+    <section class="mb-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {activeCountries.map((country) => (
+          <a 
+            href={`${base}/${country.slug}`} 
+            class="group bg-white rounded-2xl p-1 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200/60 hover:border-blue-500/30 overflow-hidden flex flex-col"
+          >
+            <div class="bg-slate-50 rounded-xl p-6 h-full flex flex-col border border-transparent group-hover:bg-blue-50/50 transition-colors">
+              <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center gap-4">
+                  <div class="w-14 h-10 rounded shadow-sm overflow-hidden border border-slate-200">
+                    <img 
+                      src={`https://flagcdn.com/w80/${country.slug === 'uk' ? 'gb' : country.slug}.png`}
+                      alt={`${country.name} flag`}
+                      class="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="font-bold text-slate-900 text-xl group-hover:text-blue-700 transition-colors">{country.name}</h3>
+                    <span class="text-sm font-medium text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200 shadow-sm">{country.calculatorCount} Tools</span>
+                  </div>
+                </div>
+                <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm border border-slate-200 group-hover:bg-blue-600 group-hover:border-blue-600 group-hover:text-white text-slate-400 transition-all">
+                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                </div>
               </div>
-              <span class="font-bold text-slate-900 text-base group-hover:text-slate-700 mb-1">{country.name}</span>
-              <span class="text-sm text-slate-500">{country.calculatorCount} calculators</span>
-            </a>
-          ))}
-        </div>
+              
+              <div class="mt-auto">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Popular Calculators</p>
+                <ul class="space-y-2">
+                  {country.topCalculators.map((calcName: string) => (
+                    <li class="flex items-start gap-2 text-sm text-slate-600">
+                      <svg class="w-4 h-4 text-blue-500 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                      <span class="line-clamp-1 group-hover:text-slate-900 transition-colors">{calcName}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </a>
+        ))}
       </div>
     </section>
 
-    <!-- Trust Signals -->
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-      <div class="bg-white rounded-xl border border-slate-200 p-6">
-        <div class="text-2xl mb-3">⚖️</div>
-        <h3 class="font-bold text-slate-900 mb-2">Official Tax Rules</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Every formula is sourced from official government authorities — IRS, HMRC, URSSAF, Bundesfinanzministerium, and ATO.</p>
+    <!-- Stat-Driven Trust Signals Section -->
+    <section class="bg-white rounded-3xl p-10 border border-slate-200 shadow-sm relative overflow-hidden">
+      <!-- Decorative background -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3 opacity-60"></div>
+      
+      <div class="relative z-10 text-center mb-12 max-w-2xl mx-auto">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Why Professionals Choose CalcGlobal</h2>
+        <p class="text-slate-500">We don't do estimates. We code the exact logic from official tax authority documents into every calculator.</p>
       </div>
-      <div class="bg-white rounded-xl border border-slate-200 p-6">
-        <div class="text-2xl mb-3">🔄</div>
-        <h3 class="font-bold text-slate-900 mb-2">Updated for 2026/27</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Tax thresholds, NIC rates, personal allowances, and contribution ceilings are updated each fiscal year.</p>
-      </div>
-      <div class="bg-white rounded-xl border border-slate-200 p-6">
-        <div class="text-2xl mb-3">🌍</div>
-        <h3 class="font-bold text-slate-900 mb-2">Localized Results</h3>
-        <p class="text-sm text-slate-500 leading-relaxed">Calculators display results in local currency and terminology — not a one-size-fits-all approximation.</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-lg mb-3">Authority Sourced</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Every formula is meticulously mapped to official rules from the IRS, HMRC, URSSAF, Bundesfinanzministerium, and ATO.</p>
+        </div>
+        
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-lg mb-3">Always Current</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Tax thresholds, NIC rates, personal allowances, and contribution ceilings are continuously updated for the 2026/2027 fiscal year.</p>
+        </div>
+        
+        <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
+          <div class="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-200 flex items-center justify-center mb-6">
+            <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+          </div>
+          <h3 class="font-bold text-slate-900 text-lg mb-3">Hyper-Localized</h3>
+          <p class="text-sm text-slate-600 leading-relaxed">Calculators intelligently adapt to local currency, tax terminology, and regional specific legal exemptions.</p>
+        </div>
       </div>
     </section>
 
