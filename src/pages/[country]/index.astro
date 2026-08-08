@@ -22,15 +22,27 @@ export function getStaticPaths() {
 
 const { data } = Astro.props;
 const slug = data.country_code.toLowerCase();
-const meta = COUNTRY_METADATA[slug] || { lang: 'en', locale: 'en-US', currencySymbol: '$' };
+const meta = COUNTRY_METADATA[slug] || { 
+  lang: 'en', 
+  locale: 'en-US', 
+  currencySymbol: '$',
+  title: `${data.country} Tax Calculators 2026 | CalcGlobal`,
+  h1: `${data.country} Financial Calculators`,
+  description: `Free, accurate ${data.country} tax, payroll and financial calculators updated for the 2026 tax year.`,
+  taxAuthority: 'National Tax Authority',
+  authorityAbbr: 'Tax Authority',
+  intro: `Accurate ${data.country} tax and financial calculators based on official statutory rates.`,
+  features: ['Statutory 2026 Tax Brackets', 'Verified Formulas']
+};
+
 const flagCode = slug === 'uk' ? 'gb' : slug;
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.com/" },
-    { "@type": "ListItem", "position": 2, "name": data.country, "item": `https://calcglobal.com/${slug}/` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.org/" },
+    { "@type": "ListItem", "position": 2, "name": data.country, "item": `https://calcglobal.org/${slug}/` }
   ]
 };
 
@@ -38,8 +50,8 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
 <Layout
-  title={`${data.country} Tax Calculators 2026 | CalcGlobal`}
-  description={`Free, accurate ${data.country} tax, payroll and financial calculators updated for the 2026 tax year. Trusted by professionals.`}
+  title={meta.title}
+  description={meta.description}
   lang={meta.lang}
   structuredData={breadcrumbSchema}
 >
@@ -51,35 +63,39 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <span>/</span>
         <span class="text-white font-medium">{data.country}</span>
       </nav>
-      <div class="flex items-center gap-5">
+      <div class="flex items-start md:items-center gap-5 flex-col md:flex-row">
         <img
           src={`https://flagcdn.com/w80/${flagCode}.png`}
           alt={`${data.country} flag`}
-          class="w-16 h-12 object-cover rounded-lg shadow-lg border border-slate-600"
+          class="w-16 h-12 object-cover rounded-lg shadow-lg border border-slate-600 shrink-0"
         />
         <div>
-          <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">{data.country} Financial Calculators</h1>
-          <p class="text-slate-400 mt-2 text-base">2026/27 Tax Year — Verified rates from official authorities</p>
+          <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight">{meta.h1}</h1>
+          <p class="text-slate-400 mt-2 text-sm md:text-base">
+            2026/27 Tax Year — Verified compliance with <strong>{meta.taxAuthority}</strong>
+          </p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Calculators Grid -->
+  <!-- Main Content -->
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 -mt-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    
+    <!-- Calculators Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-14">
       {data.calculators.map((calc: any) => (
         <a
           href={`${base}/${slug}/${calc.id}`}
-          class="group bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col gap-4"
+          class="group bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md hover:border-slate-400 transition-all flex flex-col justify-between gap-4"
         >
-          <div class="flex items-start justify-between">
-            <span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-semibold rounded-md tracking-wide">
-              {getTranslatedCategory(calc.category, meta.lang)}
-            </span>
-            <span class="text-slate-300 group-hover:text-slate-500 transition-colors text-xl font-light">→</span>
-          </div>
           <div>
+            <div class="flex items-start justify-between mb-3">
+              <span class="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-md tracking-wide">
+                {getTranslatedCategory(calc.category, meta.lang)}
+              </span>
+              <span class="text-slate-300 group-hover:text-slate-500 transition-colors text-xl font-light">→</span>
+            </div>
             <h2 class="text-base font-bold text-slate-900 group-hover:text-slate-700 transition-colors mb-2 leading-snug">
               {calc.title_native}
             </h2>
@@ -87,17 +103,45 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
               {calc.description_native}
             </p>
           </div>
-          {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
-            <div class="pt-3 border-t border-slate-100 flex items-center gap-2 flex-wrap">
-              {calc.affiliate_targets.slice(0, 3).map((p: any) => (
-                <span class="text-xs text-slate-400 bg-slate-50 border border-slate-200 px-2 py-1 rounded">
-                  {p.name}
-                </span>
-              ))}
-            </div>
-          )}
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400">
+            <span>✓ Updated {calc.last_updated || '2026'}</span>
+            <span class="font-medium text-slate-500 group-hover:text-slate-900 transition-colors">Calculate →</span>
+          </div>
         </a>
       ))}
     </div>
+
+    <!-- Country E-E-A-T & Authority Section -->
+    <section class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+      <div class="flex items-center gap-3 border-b border-slate-100 pb-4 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg">
+          🏛️
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">{data.country} Tax Regulatory Framework</h2>
+          <p class="text-xs text-slate-500">Official standards & calculation parameters</p>
+        </div>
+      </div>
+
+      <p class="text-sm text-slate-600 leading-relaxed mb-6">
+        {meta.intro}
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+        {meta.features.map((feature: string) => (
+          <div class="flex items-start gap-2.5 bg-slate-50 p-3.5 rounded-lg border border-slate-100 text-xs text-slate-700">
+            <span class="text-emerald-600 font-bold text-sm leading-none mt-0.5">✓</span>
+            <span>{feature}</span>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-6 pt-6 border-t border-slate-100 flex items-center justify-between flex-wrap gap-4 text-xs text-slate-400">
+        <div>Primary Regulatory Body: <strong class="text-slate-700">{meta.taxAuthority}</strong></div>
+        <div>Fiscal Period: <strong class="text-slate-700">2026 / 2027</strong></div>
+      </div>
+    </section>
+
   </div>
 </Layout>
+

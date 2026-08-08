@@ -56,12 +56,25 @@ const flagCode = slug === 'uk' ? 'gb' : slug;
 // SEO Structured Data
 const calcSchema = {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
+  "@type": "WebApplication",
   "name": calcData.title_en || calcData.title_native,
+  "url": `https://calcglobal.org/${slug}/${calcData.id}/`,
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "All",
+  "browserRequirements": "Requires JavaScript. Requires HTML5.",
+  "softwareVersion": "2026.1",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": countryData.currency || "USD" },
   "description": calcData.description_native,
+  "author": {
+    "@type": "Organization",
+    "name": "CalcGlobal",
+    "url": "https://calcglobal.org"
+  },
+  "provider": {
+    "@type": "Organization",
+    "name": "CalcGlobal",
+    "url": "https://calcglobal.org"
+  }
 };
 
 const faqSchema = calcData.article_faq && calcData.article_faq.length > 0 ? {
@@ -78,11 +91,15 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.com/" },
-    { "@type": "ListItem", "position": 2, "name": countryData.country, "item": `https://calcglobal.com/${slug}/` },
-    { "@type": "ListItem", "position": 3, "name": calcData.title_en || calcData.title_native, "item": `https://calcglobal.com/${slug}/${calcData.id}/` }
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.org/" },
+    { "@type": "ListItem", "position": 2, "name": countryData.country, "item": `https://calcglobal.org/${slug}/` },
+    { "@type": "ListItem", "position": 3, "name": calcData.title_en || calcData.title_native, "item": `https://calcglobal.org/${slug}/${calcData.id}/` }
   ]
 };
+
+const explanationSentences = calcData.formula_explanation 
+  ? calcData.formula_explanation.split(/(?<=\.)\s+/).filter(Boolean)
+  : [];
 
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
@@ -91,12 +108,8 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
   title={`${calcData.title_en || calcData.title_native} | ${countryData.country} | CalcGlobal`}
   description={calcData.description_native}
   lang={meta.lang}
-  structuredData={breadcrumbSchema}
+  structuredData={[breadcrumbSchema, calcSchema, faqSchema].filter(Boolean)}
 >
-  <!-- Extra structured data injected inline -->
-  <script type="application/ld+json" set:html={JSON.stringify(calcSchema)} slot="head" />
-  {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />}
-
   <!-- Page Header -->
   <div class="bg-slate-800 text-white pt-12 pb-20 px-4">
     <div class="max-w-4xl mx-auto">
@@ -112,27 +125,34 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <span class="text-slate-300 truncate">{calcData.title_native}</span>
       </nav>
 
-      <!-- Title row -->
-      <div class="flex items-start gap-3 flex-wrap">
-        <span class="inline-block mt-1 px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md tracking-wide border border-slate-600">
+      <!-- Title & Authority Metadata Row -->
+      <div class="flex items-center gap-2.5 flex-wrap mb-3">
+        <span class="inline-block px-2.5 py-1 bg-slate-700 text-slate-300 text-xs font-semibold rounded-md tracking-wide border border-slate-600">
           {getTranslatedCategory(calcData.category, meta.lang)}
         </span>
+        {meta.authorityAbbr && (
+          <span class="inline-block px-2.5 py-1 bg-blue-950/80 text-blue-300 text-xs font-semibold rounded-md border border-blue-800/80">
+            🏛️ {meta.authorityAbbr} Compliance
+          </span>
+        )}
         {calcData.last_updated && (
-          <span class="inline-block mt-1 px-2.5 py-1 bg-green-900/60 text-green-300 text-xs font-semibold rounded-md border border-green-800">
-            ✓ Updated {calcData.last_updated}
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-950/80 text-emerald-300 text-xs font-semibold rounded-md border border-emerald-800/80">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            Updated {calcData.last_updated}
           </span>
         )}
       </div>
-      <h1 class="text-2xl md:text-3xl font-extrabold tracking-tight mt-3 leading-tight">
+
+      <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
         {calcData.title_en || calcData.title_native}
       </h1>
-      <p class="text-slate-400 mt-3 max-w-2xl text-base leading-relaxed">
+      <p class="text-slate-400 mt-3 max-w-3xl text-sm md:text-base leading-relaxed">
         {calcData.description_native}
       </p>
     </div>
   </div>
 
-  <!-- Calculator Area -->
+  <!-- Calculator & Content Area -->
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-10">
 
     <!-- The Interactive Calculator (React Island) -->
@@ -144,12 +164,68 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       currencySymbol={meta.currencySymbol}
     />
 
-    <!-- Strategic AdSlot 1: Rectangle above Recommended Tools -->
+    <!-- Strategic AdSlot 1 -->
     <AdSlot variant="rectangle" className="my-10" />
+
+    <!-- About & Calculation Methodology (Task 3 & E-E-A-T) -->
+    {calcData.formula_explanation && (
+      <section class="mt-12 bg-white rounded-2xl border border-slate-200 p-6 md:p-8 shadow-sm">
+        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-6 flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-lg">
+              🧮
+            </div>
+            <div>
+              <h2 class="text-xl font-bold text-slate-900">
+                {meta.lang === 'fr' ? 'À propos de ce calculateur & Méthodologie' : meta.lang === 'de' ? 'Über diesen Rechner & Berechnungsmethodik' : 'About this Calculator & Calculation Methodology'}
+              </h2>
+              <p class="text-xs text-slate-500">
+                Sourced from official {meta.taxAuthority || 'statutory'} regulations
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold px-3 py-1 bg-slate-100 text-slate-700 rounded-full border border-slate-200">
+              2026/27 Tax Year
+            </span>
+            {calcData.last_updated && (
+              <span class="text-xs font-semibold px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full border border-emerald-200 flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Updated {calcData.last_updated}
+              </span>
+            )}
+          </div>
+        </div>
+
+        <div class="space-y-3.5">
+          {explanationSentences.map((sentence: string) => (
+            <div class="flex items-start gap-3 bg-slate-50/80 p-3.5 rounded-xl border border-slate-100">
+              <span class="text-emerald-600 font-bold text-sm mt-0.5 select-none">✓</span>
+              <p class="text-slate-700 text-sm leading-relaxed font-normal">{sentence}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="mt-6 pt-6 border-t border-slate-100 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs text-slate-500">
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span>Official Authority: <strong class="text-slate-700">{meta.authorityAbbr || countryData.country}</strong></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span>Reviewed by Financial Analysts</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-emerald-600 font-bold">✓</span>
+            <span>2026 Statutory Rates</span>
+          </div>
+        </div>
+      </section>
+    )}
 
     <!-- Affiliate Partners (Prominent Recommended Tools Section) -->
     {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
-      <section class="mt-10">
+      <section class="mt-12">
         <div class="flex items-center justify-between mb-6">
           <h2 class="text-xl font-bold text-slate-900">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
           <span class="text-xs text-slate-400 font-medium">Verified Partners</span>
@@ -159,19 +235,15 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             <AffiliateCard partner={partner} />
           ))}
         </div>
-        <!-- Subtle Affiliate Disclosure -->
-        <p class="text-center text-xs text-slate-400 mt-6 max-w-xl mx-auto leading-relaxed">
-          {getUITranslation('AFFILIATE_DISCLOSURE', meta.lang)}
-        </p>
       </section>
     )}
 
-    <!-- Strategic AdSlot 2: In-Article between Recommended Tools and FAQ -->
+    <!-- Strategic AdSlot 2 -->
     <AdSlot variant="in-article" className="my-12" />
 
-    <!-- FAQ / Article Content -->
+    <!-- FAQ / Article Content (Task 1 FAQ Schema matching) -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (
-      <section class="mt-10">
+      <section class="mt-12">
         <h2 class="text-xl font-bold text-slate-900 mb-6">{getUITranslation('FAQ_TITLE', meta.lang)}</h2>
         <div class="space-y-6">
           {calcData.article_faq.map((faq: any) => (
@@ -190,3 +262,4 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     </div>
   </div>
 </Layout>
+

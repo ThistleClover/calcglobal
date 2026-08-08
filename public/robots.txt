@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://calcglobal.com/sitemap-index.xml
+Sitemap: https://calcglobal.org/sitemap-index.xml
