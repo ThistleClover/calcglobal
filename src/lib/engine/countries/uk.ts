@@ -596,10 +596,18 @@ function calculateDirectorOptimiser(inputs: TaxInput): TaxResult {
   const dividendAllowance = 500;
   const dividendAboveAllowance = Math.max(0, retainedProfit - dividendAllowance);
 
-  // Band calculations for dividends sitting on top of £12,570 salary + otherIncome
+  // Band calculations for dividends sitting on top of salary + otherIncome
+  const personalTotal = directorSalary + otherIncome + dividendAboveAllowance;
+  const taperedPA = personalTotal > 100000 
+    ? Math.max(0, 12570 - Math.floor((personalTotal - 100000) / 2))
+    : 12570;
+  
   const personalIncomeBeforeDiv = directorSalary + otherIncome;
-  const basicRemaining = Math.max(0, 50270 - Math.max(12570, personalIncomeBeforeDiv));
-  const higherRemaining = Math.max(0, 125140 - Math.max(50270, personalIncomeBeforeDiv));
+  const basicThreshold = taperedPA + 37700;
+  const higherThreshold = 125140;
+
+  const basicRemaining = Math.max(0, basicThreshold - Math.max(taperedPA, personalIncomeBeforeDiv));
+  const higherRemaining = Math.max(0, higherThreshold - Math.max(basicThreshold, personalIncomeBeforeDiv));
 
   const divInBasic = Math.min(dividendAboveAllowance, basicRemaining);
   const divInHigher = Math.min(Math.max(0, dividendAboveAllowance - divInBasic), higherRemaining);

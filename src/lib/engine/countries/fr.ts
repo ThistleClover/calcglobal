@@ -233,10 +233,7 @@ export function calculate(inputs: TaxInput): TaxResult {
 
     // Contribution patronale spécifique rupture
     let contributionPatronale = 0;
-    if (typeRupture === 'syntec') {
-      const supraLegale = Math.max(0, indemniteBrute - indemniteLegale);
-      contributionPatronale = supraLegale * 0.30;
-    } else if (typeRupture === 'rupture_conventionnelle' || typeRupture === 'legal') {
+    if (typeRupture === 'syntec' || typeRupture === 'rupture_conventionnelle' || typeRupture === 'legal' || typeRupture === 'metallurgie' || typeRupture === 'custom_multiplier') {
       contributionPatronale = partExonereeSociale * 0.30;
     } else {
       const supraLegale = Math.max(0, indemniteBrute - indemniteLegale);
