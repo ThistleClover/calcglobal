@@ -1,13 +1,15 @@
 {
   "country": "Australia",
   "country_code": "AU",
-  "languages": ["en"],
+  "languages": [
+    "en"
+  ],
   "currency": "AUD",
   "calculators": [
     {
       "id": "ato-payg-income-tax-calculator",
-      "title_native": "Australia Income Tax Calculator 2026/27 (ATO PAYG, Medicare & HECS)",
-      "title_en": "Australia ATO Income Tax, Medicare Levy & HECS/HELP Repayment Calculator",
+      "title_native": "Australia Income Tax & PAYG Calculator",
+      "title_en": "Australia ATO Income Tax & PAYG Calculator",
       "search_terms_native": [
         "australia income tax calculator 2026",
         "ato payg tax calculator 2026 27",
@@ -15,7 +17,7 @@
         "medicare levy surcharge calculator",
         "hecs help repayment calculator 2026"
       ],
-      "description_native": "Calculate your exact Australian take-home pay for the 2026/27 tax year including ATO income tax brackets, the Low Income Tax Offset (LITO), Medicare Levy, Medicare Levy Surcharge (if applicable), and compulsory HECS/HELP student debt repayments.",
+      "description_native": "Calculate your exact net take-home pay for 2026/27 under ATO brackets. Includes Medicare Levy, LITO offsets, and HECS/HELP student loan repayments.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [
@@ -35,9 +37,18 @@
           "label_native": "Tax Residency Status",
           "type": "select",
           "options": [
-            { "value": "resident", "label": "Australian Resident for Tax Purposes" },
-            { "value": "non_resident", "label": "Non-Resident (no tax-free threshold)" },
-            { "value": "working_holiday", "label": "Working Holiday Maker (417/462 visa)" }
+            {
+              "value": "resident",
+              "label": "Australian Resident for Tax Purposes"
+            },
+            {
+              "value": "non_resident",
+              "label": "Non-Resident (no tax-free threshold)"
+            },
+            {
+              "value": "working_holiday",
+              "label": "Working Holiday Maker (417/462 visa)"
+            }
           ]
         },
         {
@@ -45,8 +56,14 @@
           "label_native": "Do you have a HECS/HELP student debt?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "No HECS/HELP debt" },
-            { "value": "yes", "label": "Yes — I have HECS/HELP debt" }
+            {
+              "value": "no",
+              "label": "No HECS/HELP debt"
+            },
+            {
+              "value": "yes",
+              "label": "Yes — I have HECS/HELP debt"
+            }
           ]
         },
         {
@@ -54,8 +71,14 @@
           "label_native": "Do you have private hospital cover?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "No private hospital insurance" },
-            { "value": "yes", "label": "Yes — I have private hospital cover" }
+            {
+              "value": "no",
+              "label": "No private hospital insurance"
+            },
+            {
+              "value": "yes",
+              "label": "Yes — I have private hospital cover"
+            }
           ]
         }
       ],
@@ -111,8 +134,8 @@
     },
     {
       "id": "sole-trader-tax-calculator",
-      "title_native": "Australia Sole Trader Tax Calculator 2026/27 (Net Profit, Deductions & SBITO)",
-      "title_en": "Australia Sole Trader Tax Calculator 2026/27 (Net Profit, Deductions & SBITO)",
+      "title_native": "Australia Sole Trader Tax Calculator",
+      "title_en": "Australia Sole Trader Tax Calculator",
       "search_terms_native": [
         "sole trader tax calculator australia 2026",
         "abn tax calculator 2026 27",
@@ -120,7 +143,7 @@
         "sole trader deductions home office vehicle",
         "australia self employed tax calculator"
       ],
-      "description_native": "Calculate tax payable for Australian sole traders and ABN holders for the 2026/27 tax year. Includes operating expenses, home office and vehicle deductions, deductible super contributions, ATO resident tax brackets, Medicare Levy, and the Small Business Income Tax Offset (SBITO).",
+      "description_native": "Calculate tax payable for ABN sole traders in 2026/27 after business deductions. Includes home office, vehicle costs, super contributions, and SBITO offset.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [
@@ -165,9 +188,18 @@
           "label_native": "Tax Residency Status",
           "type": "select",
           "options": [
-            { "value": "resident", "label": "Australian Resident for Tax Purposes" },
-            { "value": "non_resident", "label": "Foreign Resident" },
-            { "value": "working_holiday", "label": "Working Holiday Maker (417/462)" }
+            {
+              "value": "resident",
+              "label": "Australian Resident for Tax Purposes"
+            },
+            {
+              "value": "non_resident",
+              "label": "Foreign Resident"
+            },
+            {
+              "value": "working_holiday",
+              "label": "Working Holiday Maker (417/462)"
+            }
           ]
         },
         {
@@ -175,8 +207,14 @@
           "label_native": "Do you have Private Patient Hospital Cover?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "No (May pay Medicare Levy Surcharge)" },
-            { "value": "yes", "label": "Yes" }
+            {
+              "value": "no",
+              "label": "No (May pay Medicare Levy Surcharge)"
+            },
+            {
+              "value": "yes",
+              "label": "Yes"
+            }
           ]
         },
         {
@@ -239,8 +277,8 @@
     },
     {
       "id": "superannuation-calculator",
-      "title_native": "Australia Superannuation & Retirement Growth Calculator 2026",
-      "title_en": "Australia Superannuation & Retirement Growth Calculator 2026",
+      "title_native": "Australia Superannuation Growth Calculator",
+      "title_en": "Australia Superannuation Growth Calculator",
       "search_terms_native": [
         "australia superannuation calculator 2026",
         "super retirement projection calculator",
@@ -249,7 +287,7 @@
         "division 293 tax threshold 250k",
         "superannuation growth 4 percent rule drawdown"
       ],
-      "description_native": "Project your Australian superannuation balance at retirement for the 12% Super Guarantee (SG) rate (from 1 July 2025). Calculates employer contributions, voluntary contributions, 15% contribution tax (and Division 293 tax for high earners), compound investment returns, and monthly retirement drawdown.",
+      "description_native": "Project your super balance at retirement with the 12% Super Guarantee rate. Calculates contribution taxes, compound investment growth, and monthly drawdown.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [
@@ -327,8 +365,8 @@
     },
     {
       "id": "stamp-duty-calculator",
-      "title_native": "Australia Property Stamp Duty Calculator 2026 (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)",
-      "title_en": "Australia Property Stamp Duty Calculator 2026 (NSW, VIC, QLD, WA, SA, TAS, ACT, NT)",
+      "title_native": "Australia Property Stamp Duty Calculator",
+      "title_en": "Australia Property Stamp Duty Calculator",
       "search_terms_native": [
         "stamp duty calculator australia 2026",
         "nsw transfer duty calculator 2026",
@@ -337,7 +375,7 @@
         "foreign buyer stamp duty surcharge australia",
         "property purchase costs transfer fees"
       ],
-      "description_native": "Calculate exact state and territory property transfer stamp duty across Australia for 2026. Supports NSW, VIC, QLD, WA, SA, TAS, ACT, and NT, with full calculations for First Home Buyer exemptions, owner-occupiers, investors, and foreign purchaser surcharges.",
+      "description_native": "Calculate property transfer stamp duty across all Australian states and territories. Factors in first home buyer exemptions and foreign buyer surcharges.",
       "category": "real_estate",
       "last_updated": "August 2026",
       "inputs": [
@@ -357,14 +395,38 @@
           "label_native": "State or Territory",
           "type": "select",
           "options": [
-            { "value": "NSW", "label": "New South Wales (NSW)" },
-            { "value": "VIC", "label": "Victoria (VIC)" },
-            { "value": "QLD", "label": "Queensland (QLD)" },
-            { "value": "WA", "label": "Western Australia (WA)" },
-            { "value": "SA", "label": "South Australia (SA)" },
-            { "value": "TAS", "label": "Tasmania (TAS)" },
-            { "value": "ACT", "label": "Australian Capital Territory (ACT)" },
-            { "value": "NT", "label": "Northern Territory (NT)" }
+            {
+              "value": "NSW",
+              "label": "New South Wales (NSW)"
+            },
+            {
+              "value": "VIC",
+              "label": "Victoria (VIC)"
+            },
+            {
+              "value": "QLD",
+              "label": "Queensland (QLD)"
+            },
+            {
+              "value": "WA",
+              "label": "Western Australia (WA)"
+            },
+            {
+              "value": "SA",
+              "label": "South Australia (SA)"
+            },
+            {
+              "value": "TAS",
+              "label": "Tasmania (TAS)"
+            },
+            {
+              "value": "ACT",
+              "label": "Australian Capital Territory (ACT)"
+            },
+            {
+              "value": "NT",
+              "label": "Northern Territory (NT)"
+            }
           ]
         },
         {
@@ -372,10 +434,22 @@
           "label_native": "Buyer Status",
           "type": "select",
           "options": [
-            { "value": "first_home", "label": "First Home Buyer" },
-            { "value": "owner_occupier", "label": "Owner Occupier (Primary Residence)" },
-            { "value": "investor", "label": "Investor / Secondary Property" },
-            { "value": "foreign", "label": "Foreign Purchaser (Surcharge Applies)" }
+            {
+              "value": "first_home",
+              "label": "First Home Buyer"
+            },
+            {
+              "value": "owner_occupier",
+              "label": "Owner Occupier (Primary Residence)"
+            },
+            {
+              "value": "investor",
+              "label": "Investor / Secondary Property"
+            },
+            {
+              "value": "foreign",
+              "label": "Foreign Purchaser (Surcharge Applies)"
+            }
           ]
         }
       ],
@@ -421,8 +495,8 @@
     },
     {
       "id": "hecs-repayment-calculator",
-      "title_native": "Australia HECS/HELP Loan Repayment & Indexation Calculator 2026/27",
-      "title_en": "Australia HECS/HELP Loan Repayment & Indexation Calculator 2026/27",
+      "title_native": "Australia HECS/HELP Loan Repayment Calculator",
+      "title_en": "Australia HECS/HELP Loan Repayment Calculator",
       "search_terms_native": [
         "hecs repayment calculator 2026",
         "help debt payoff schedule calculator australia",
@@ -431,7 +505,7 @@
         "voluntary hecs repayment benefit",
         "student debt pay off time australia"
       ],
-      "description_native": "Calculate compulsory HECS/HELP student loan repayments for the 2026/27 financial year. Features multi-year payoff projections, 2026/27 ATO threshold rates (1% to 10%), annual CPI indexation, and savings from optional voluntary repayments.",
+      "description_native": "Calculate compulsory HECS/HELP repayments and payoff timelines for 2026/27. Factors in ATO repayment income thresholds and annual CPI indexation.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [

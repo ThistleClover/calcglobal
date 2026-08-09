@@ -7,15 +7,15 @@
   "calculators": [
     {
       "id": "us-1099-self-employment-tax-calculator",
-      "title_native": "1099 Self-Employment & Quarterly Estimated Tax Calculator",
-      "title_en": "1099 Self-Employment & Quarterly Estimated Tax Calculator",
+      "title_native": "1099 Self-Employment & Quarterly Tax Calculator",
+      "title_en": "1099 Self-Employment & Quarterly Tax Calculator",
       "search_terms_native": [
         "1099 tax calculator 2026",
         "freelance estimated quarterly tax calculator",
         "self employment tax calculator social security medicare cap",
         "schedule c tax calculator"
       ],
-      "description_native": "Calculate your federal 15.3% Self-Employment Tax (Social Security & Medicare, including Additional Medicare tax and income threshold caps), half-SE tax deduction, progressive federal income tax, and quarterly estimated payment amounts for freelancers, gig workers, and 1099 contractors.",
+      "description_native": "Calculate your 15.3% self-employment tax, federal income tax, and 1040-ES quarterly estimated payments. See your exact net income after SE tax deductions.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [
@@ -146,15 +146,15 @@
     },
     {
       "id": "s-corp-vs-llc-tax-savings-calculator",
-      "title_native": "S-Corp Election vs LLC Tax Savings Calculator",
-      "title_en": "S-Corp Election vs LLC Tax Savings Calculator",
+      "title_native": "S-Corp vs LLC Tax Savings Calculator",
+      "title_en": "S-Corp vs LLC Tax Savings Calculator",
       "search_terms_native": [
         "s corp vs llc tax calculator 2026",
         "s election reasonable salary calculator",
         "how much do i save with s corp",
         "form 2553 tax savings calculator"
       ],
-      "description_native": "Calculate potential self-employment tax savings from electing S-Corporation tax status over a Single-Member LLC, factoring in IRS reasonable officer compensation, payroll FICA taxes, state corporate franchise taxes, and compliance administration costs.",
+      "description_native": "Compare S-Corp election against Single-Member LLC taxation to see your exact FICA tax savings. Factoring officer salary, payroll taxes, and annual compliance fees.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [
@@ -251,15 +251,15 @@
     },
     {
       "id": "w2-salary-paycheck-take-home-calculator",
-      "title_native": "W-2 Gross-to-Net Paycheck Tax & Take-Home Calculator",
-      "title_en": "W-2 Gross-to-Net Paycheck Tax & Take-Home Calculator",
+      "title_native": "W-2 Paycheck & Take-Home Tax Calculator",
+      "title_en": "W-2 Paycheck & Take-Home Tax Calculator",
       "search_terms_native": [
         "paycheck calculator net pay 2026",
         "w2 salary take home pay after tax",
         "federal state local payroll tax calculator",
         "401k hsa paycheck impact calculator"
       ],
-      "description_native": "Calculate exact net take-home pay per pay period by accounting for Federal W-4 withholdings, Social Security (6.2%), Medicare (1.45%), state and local taxes, and pre-tax payroll deductions (401k, HSA, FSA, health premiums).",
+      "description_native": "Determine your net take-home pay per paycheck after federal withholding, FICA taxes, state taxes, and 401(k) deductions. See your complete net earnings breakdown.",
       "category": "employment",
       "last_updated": "August 2026",
       "inputs": [
@@ -399,15 +399,15 @@
     },
     {
       "id": "us-home-sale-net-proceeds-capital-gains-calculator",
-      "title_native": "Home Sale Net Proceeds & Section 121 Capital Gains Tax Calculator",
-      "title_en": "Home Sale Net Proceeds & Section 121 Capital Gains Tax Calculator",
+      "title_native": "Home Sale Net Proceeds & Capital Gains Calculator",
+      "title_en": "Home Sale Net Proceeds & Capital Gains Calculator",
       "search_terms_native": [
         "home sale tax calculator section 121 exclusion",
         "how much tax do i pay selling home",
         "seller net proceeds calculator real estate commission fees",
         "capital gains tax primary residence vs investment property"
       ],
-      "description_native": "Calculate net cash proceeds at closing and potential IRS capital gains tax when selling a residential property, incorporating IRS Section 121 primary residence tax exclusions ($250k single / $500k married), adjusted cost basis, agent commissions, and state capital gains taxes.",
+      "description_native": "Estimate your net cash proceeds at closing and federal capital gains tax when selling your home. Includes IRS Section 121 exclusions, agent fees, and cost basis adjustments.",
       "category": "real_estate",
       "last_updated": "August 2026",
       "inputs": [
@@ -500,15 +500,15 @@
     },
     {
       "id": "us-small-business-lease-break-even-calculator",
-      "title_native": "Small Business Commercial Lease & Break-Even Revenue Calculator",
-      "title_en": "Small Business Commercial Lease & Break-Even Revenue Calculator",
+      "title_native": "Commercial Lease & Break-Even Sales Calculator",
+      "title_en": "Commercial Lease & Break-Even Sales Calculator",
       "search_terms_native": [
         "commercial lease calculator NNN vs gross lease",
         "small business break even sales volume calculator",
         "occupancy cost ratio calculator retail restaurant",
         "triple net expense estimator"
       ],
-      "description_native": "Determine total monthly commercial real estate lease costs (Base Rent + NNN Common Area Maintenance, Property Taxes, and Insurance) and calculate the required monthly revenue to achieve operational break-even.",
+      "description_native": "Calculate total monthly commercial lease costs including NNN expenses and determine your break-even sales volume. Find out the revenue needed to run a profitable space.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [

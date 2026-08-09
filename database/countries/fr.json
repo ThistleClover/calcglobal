@@ -7,8 +7,8 @@
   "calculators": [
     {
       "id": "urssaf-cotisations-micro-entreprise",
-      "title_native": "Simulateur de Cotisations Auto-Entrepreneur (URSSAF & Net)",
-      "title_en": "URSSAF Micro-Entreprise Net Revenue & Social Tax Simulator",
+      "title_native": "Simulateur Cotisations Auto-Entrepreneur & Net",
+      "title_en": "URSSAF Auto-Entrepreneur Net Income Simulator",
       "search_terms_native": [
         "calcul cotisations urssaf auto entrepreneur",
         "simulateur charges micro entreprise 2026",
@@ -16,7 +16,7 @@
         "calcul versement liberatoire urssaf",
         "taux cotisations sociales auto entrepreneur"
       ],
-      "description_native": "Calculez le montant exact de vos cotisations sociales URSSAF, la Contribution à la Formation Professionnelle (CFP), le versement libératoire de l'impôt et votre revenu net disponible selon votre domaine d'activité (BNC, BIC, Achat/Vente) et le bénéfice de l'ACRE.",
+      "description_native": "Calculez le montant exact de vos charges URSSAF et votre revenu net en auto-entreprise. Prend en compte l'ACRE, le versement libératoire et votre activité (BNC/BIC).",
       "category": "business",
       "inputs": [
         {
@@ -146,11 +146,10 @@
         }
       ]
     },
-
     {
       "id": "frais-de-notaire-immobilier",
-      "title_native": "Simulateur de Frais de Notaire & Droits de Mutation Immobilier",
-      "title_en": "French Real Estate Notary Fees & Stamp Duty Calculator",
+      "title_native": "Simulateur de Frais de Notaire Immobilier",
+      "title_en": "French Real Estate Notary Fees Calculator",
       "search_terms_native": [
         "calcul frais de notaire 2026",
         "simulateur frais d acquisition immobilier",
@@ -158,7 +157,7 @@
         "emoluments notaire bareme reglemente",
         "calcul frais de notaire par departement"
       ],
-      "description_native": "Estimez les frais d'acquisition immobilière (communément appelés 'frais de notaire') lors de l'achat d'un bien immobilier en France. Comparez l'immobilier ancien et neuf, visualisez le détail des droits d'enregistrement départementaux, émoluments du notaire et débours.",
+      "description_native": "Estimez vos frais d'acquisition immobilière pour un achat dans l'ancien ou le neuf. Obtenez le détail des droits de mutation, émoluments et débours.",
       "category": "real_estate",
       "inputs": [
         {
@@ -280,8 +279,8 @@
     },
     {
       "id": "calculateur-salaire-brut-net-cout-employeur",
-      "title_native": "Calculateur Salaire Brut en Net & Coût Employeur (Cadre / Non-Cadre)",
-      "title_en": "France Gross-to-Net Salary & Employer Total Cost Calculator",
+      "title_native": "Calculateur Salaire Brut en Net & Coût Employeur",
+      "title_en": "France Gross to Net Salary & Total Employer Cost",
       "search_terms_native": [
         "calcul salaire brut en net 2026",
         "simulateur salaire cadre non cadre net apres impot",
@@ -289,7 +288,7 @@
         "calcul prelevement a la source salaire fr",
         "convertisseur brut net mensuel annuel"
       ],
-      "description_native": "Convertissez votre salaire brut en net et net après impôt à la source pour salariés cadres et non-cadres en France. Évaluez également le coût total employeur incluant la réduction générale de cotisations patronales (ex-Fillon).",
+      "description_native": "Convertissez votre salaire brut en net après prélèvement à la source pour statut cadre ou non-cadre. Obtenez le coût total employeur détaillé.",
       "category": "employment",
       "inputs": [
         {
@@ -413,8 +412,8 @@
     },
     {
       "id": "indemnite-rupture-conventionnelle-licenciement",
-      "title_native": "Simulateur d'Indemnité de Rupture Conventionnelle & Licenciement",
-      "title_en": "French Severance & Mutual Agreement Compensation Calculator",
+      "title_native": "Calculateur Indemnité Rupture Conventionnelle",
+      "title_en": "French Severance & Mutual Agreement Calculator",
       "search_terms_native": [
         "calcul indemnite rupture conventionnelle 2026",
         "simulateur indemnite legale licenciement",
@@ -422,7 +421,7 @@
         "cout rupture conventionnelle employeur forfait social",
         "bareme indemnite licenciement code du travail"
       ],
-      "description_native": "Calculez le montant exact de l'indemnité légale ou conventionnelle due en cas de rupture conventionnelle homologuée ou de licenciement (hors faute grave). Obtenez le coût brut salarié et le coût total pour l'employeur incluant la contribution spécifique.",
+      "description_native": "Calculez l'indemnité légale ou conventionnelle de rupture conventionnelle et de licenciement. Obtenez le montant net perçu et le coût employeur.",
       "category": "legal",
       "inputs": [
         {
@@ -522,8 +521,8 @@
     },
     {
       "id": "calculateur-plus-value-immobiliere",
-      "title_native": "Simulateur de Plus-Value Immobilière & Abattements de Détention",
-      "title_en": "French Real Estate Capital Gains Tax & Exemption Calculator",
+      "title_native": "Simulateur de Plus-Value Immobilière",
+      "title_en": "French Real Estate Capital Gains Tax Calculator",
       "search_terms_native": [
         "calcul plus value immobiliere 2026",
         "abattement duree detention plus value immobiliere",
@@ -531,7 +530,7 @@
         "calcul exoneration plus value residence principale",
         "taxe sur les hautes plus-values immobilieres"
       ],
-      "description_native": "Calculez l'impôt sur la plus-value immobilière lors de la vente d'une résidence secondaire ou d'un bien locatif en France. Prenez en compte les abattements par année de détention (impôt sur le revenu et prélèvements sociaux) et les surtaxes.",
+      "description_native": "Calculez l'impôt sur la plus-value immobilière pour une résidence secondaire ou locative. Intègre les abattements par année de détention et les surtaxes.",
       "category": "real_estate",
       "inputs": [
         {
@@ -607,9 +606,18 @@
           "label_native": "Prise en compte des travaux de rénovation/agrandissement",
           "type": "select",
           "options": [
-            { "value": "none", "label": "Aucun ou détention < 5 ans (0 €)" },
-            { "value": "standard_15", "label": "Forfait (15% du prix d'achat, si détenu > 5 ans)" },
-            { "value": "real_works", "label": "Frais réels justifiés par factures d'entreprises" }
+            {
+              "value": "none",
+              "label": "Aucun ou détention < 5 ans (0 €)"
+            },
+            {
+              "value": "standard_15",
+              "label": "Forfait (15% du prix d'achat, si détenu > 5 ans)"
+            },
+            {
+              "value": "real_works",
+              "label": "Frais réels justifiés par factures d'entreprises"
+            }
           ]
         },
         {

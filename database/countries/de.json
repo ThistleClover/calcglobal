@@ -7,8 +7,8 @@
   "calculators": [
     {
       "id": "brutto-netto-rechner-deutschland",
-      "title_native": "Brutto-Netto-Rechner 2026 (Lohn- & Gehaltsrechner Deutschland)",
-      "title_en": "Germany Gross to Net Salary & Wage Calculator",
+      "title_native": "Brutto-Netto-Rechner 2026 Deutschland",
+      "title_en": "Germany Gross to Net Salary Calculator",
       "search_terms_native": [
         "brutto netto rechner 2026",
         "gehaltsrechner deutschland",
@@ -17,7 +17,7 @@
         "krankenversicherungs zusatzbeitrag berechnen",
         "pflegeversicherung beitragsabschlag kinder"
       ],
-      "description_native": "Berechnen Sie Ihr exaktes monatliches und jährliches Nettogehalt in Deutschland unter Berücksichtigung aller Steuerklassen (1 bis 6), Zusatzbeitrag Krankenkasse, Pflegeversicherung mit Kinder-Staffelung, Renten- und Arbeitslosenversicherung sowie Solidaritätszuschlag und Kirchensteuer.",
+      "description_native": "Berechnen Sie Ihr monatliches Nettogehalt nach Steuerklasse, Krankenversicherung und Pflegeabgaben. Erhalten Sie eine exakte Gehaltsabrechnung.",
       "category": "employment",
       "last_updated": "August 2026",
       "inputs": [
@@ -37,12 +37,30 @@
           "label_native": "Steuerklasse",
           "type": "select",
           "options": [
-            { "value": "1", "label": "Klasse 1 — Ledig / Getrennt lebend" },
-            { "value": "2", "label": "Klasse 2 — Alleinerziehend (Entlastungsbetrag +4.260 €)" },
-            { "value": "3", "label": "Klasse 3 — Verheiratet / Alleinverdiener (Splittingvorteil)" },
-            { "value": "4", "label": "Klasse 4 — Verheiratet / Beide Verdiener (Standard)" },
-            { "value": "5", "label": "Klasse 5 — Verheiratet / Zweitverdiener (kein Freibetrag)" },
-            { "value": "6", "label": "Klasse 6 — Zweitjob / Nebenbeschäftigung" }
+            {
+              "value": "1",
+              "label": "Klasse 1 — Ledig / Getrennt lebend"
+            },
+            {
+              "value": "2",
+              "label": "Klasse 2 — Alleinerziehend (Entlastungsbetrag +4.260 €)"
+            },
+            {
+              "value": "3",
+              "label": "Klasse 3 — Verheiratet / Alleinverdiener (Splittingvorteil)"
+            },
+            {
+              "value": "4",
+              "label": "Klasse 4 — Verheiratet / Beide Verdiener (Standard)"
+            },
+            {
+              "value": "5",
+              "label": "Klasse 5 — Verheiratet / Zweitverdiener (kein Freibetrag)"
+            },
+            {
+              "value": "6",
+              "label": "Klasse 6 — Zweitjob / Nebenbeschäftigung"
+            }
           ]
         },
         {
@@ -50,8 +68,14 @@
           "label_native": "Kirchensteuerpflichtig?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "Nein (Keine Kirchensteuer)" },
-            { "value": "yes", "label": "Ja (Evangelisch / Katholisch)" }
+            {
+              "value": "no",
+              "label": "Nein (Keine Kirchensteuer)"
+            },
+            {
+              "value": "yes",
+              "label": "Ja (Evangelisch / Katholisch)"
+            }
           ]
         },
         {
@@ -59,8 +83,14 @@
           "label_native": "Krankenversicherungstyp",
           "type": "select",
           "options": [
-            { "value": "gkv", "label": "Gesetzlich (GKV)" },
-            { "value": "pkv", "label": "Privat krankenversichert (PKV — Schätzung ~300 €/Monat)" }
+            {
+              "value": "gkv",
+              "label": "Gesetzlich (GKV)"
+            },
+            {
+              "value": "pkv",
+              "label": "Privat krankenversichert (PKV — Schätzung ~300 €/Monat)"
+            }
           ]
         },
         {
@@ -73,12 +103,30 @@
           "label_native": "Bundesland (für Kirchensteuer)",
           "type": "select",
           "options": [
-            { "value": "BY", "label": "Bayern (Kirchensteuer 8%)" },
-            { "value": "BW", "label": "Baden-Württemberg (Kirchensteuer 8%)" },
-            { "value": "NW", "label": "Nordrhein-Westfalen" },
-            { "value": "HE", "label": "Hessen" },
-            { "value": "BE", "label": "Berlin" },
-            { "value": "OTHER", "label": "Anderes Bundesland (Kirchensteuer 9%)" }
+            {
+              "value": "BY",
+              "label": "Bayern (Kirchensteuer 8%)"
+            },
+            {
+              "value": "BW",
+              "label": "Baden-Württemberg (Kirchensteuer 8%)"
+            },
+            {
+              "value": "NW",
+              "label": "Nordrhein-Westfalen"
+            },
+            {
+              "value": "HE",
+              "label": "Hessen"
+            },
+            {
+              "value": "BE",
+              "label": "Berlin"
+            },
+            {
+              "value": "OTHER",
+              "label": "Anderes Bundesland (Kirchensteuer 9%)"
+            }
           ]
         }
       ],
@@ -130,8 +178,8 @@
     },
     {
       "id": "gewerbesteuer-rechner",
-      "title_native": "Gewerbesteuer-Rechner 2026 (Hebesatz & ESt-Anrechnung § 35 EStG)",
-      "title_en": "Germany Trade Tax (Gewerbesteuer) Calculator",
+      "title_native": "Gewerbesteuer-Rechner 2026 mit Hebesatz",
+      "title_en": "Germany Trade Tax Calculator 2026",
       "search_terms_native": [
         "gewerbesteuer rechner 2026",
         "hebesatz gewerbesteuer berechnen",
@@ -140,7 +188,7 @@
         "gewerbesteuer freibetrag 24500",
         "gewerbesteuer gmbh hebesatz"
       ],
-      "description_native": "Berechnen Sie die Gewerbesteuer in Deutschland für Einzelunternehmen, Personengesellschaften und GmbHs inklusive Freibetrag (24.500 €), Steuermessbetrag (3,5%) und Anrechnung auf die Einkommensteuer nach § 35 EStG.",
+      "description_native": "Berechnen Sie die Gewerbesteuer für Einzelunternehmen, Personengesellschaften und GmbHs. Berücksichtigt Gemeindehebesatz, Freibeträge und § 35 EStG Anrechnung.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [
@@ -165,9 +213,18 @@
           "label_native": "Rechtsform / Unternehmensart",
           "type": "select",
           "options": [
-            { "value": "einzelunternehmen", "label": "Einzelunternehmen (Freibetrag 24.500 € + § 35 EStG Anrechnung)" },
-            { "value": "personengesellschaft", "label": "Personengesellschaft (GbR/OHG/KG) (Freibetrag 24.500 € + § 35 EStG Anrechnung)" },
-            { "value": "gmbh", "label": "Kapitalgesellschaft (GmbH / UG) (Kein Freibetrag, keine ESt-Anrechnung)" }
+            {
+              "value": "einzelunternehmen",
+              "label": "Einzelunternehmen (Freibetrag 24.500 € + § 35 EStG Anrechnung)"
+            },
+            {
+              "value": "personengesellschaft",
+              "label": "Personengesellschaft (GbR/OHG/KG) (Freibetrag 24.500 € + § 35 EStG Anrechnung)"
+            },
+            {
+              "value": "gmbh",
+              "label": "Kapitalgesellschaft (GmbH / UG) (Kein Freibetrag, keine ESt-Anrechnung)"
+            }
           ]
         }
       ],
@@ -219,8 +276,8 @@
     },
     {
       "id": "umsatzsteuer-rechner",
-      "title_native": "Umsatzsteuer-Rechner & Kleinunternehmerregelung 2026 (§ 19 UStG)",
-      "title_en": "Germany VAT & Small Business Surcharge Exempt Calculator",
+      "title_native": "Umsatzsteuer & Kleinunternehmer Rechner",
+      "title_en": "Germany VAT & Small Business Calculator",
       "search_terms_native": [
         "umsatzsteuer rechner 2026",
         "mehrwertsteuer berechnen netto brutto",
@@ -229,7 +286,7 @@
         "7 prozent ermäßigter steuersatz",
         "paragraf 19 ustg befreiung"
       ],
-      "description_native": "Berechnen Sie die Mehrwertsteuer (Umsatzsteuer) aus Netto- oder Bruttobeträgen für 19%, 7% oder 0% und prüfen Sie die Berechtigung und Ersparnis nach der Kleinunternehmerregelung (§ 19 UStG).",
+      "description_native": "Berechnen Sie die Mehrwertsteuer aus Netto- oder Bruttobeträgen mit 19% und 7%. Prüfen Sie Ihre Steuerbefreiung nach § 19 UStG Kleinunternehmerregelung.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [
@@ -249,8 +306,14 @@
           "label_native": "Eingabetyp",
           "type": "select",
           "options": [
-            { "value": "netto", "label": "Nettobetrag (MwSt hinzurechnen)" },
-            { "value": "brutto", "label": "Bruttobetrag (MwSt herausrechnen)" }
+            {
+              "value": "netto",
+              "label": "Nettobetrag (MwSt hinzurechnen)"
+            },
+            {
+              "value": "brutto",
+              "label": "Bruttobetrag (MwSt herausrechnen)"
+            }
           ]
         },
         {
@@ -258,9 +321,18 @@
           "label_native": "Mehrwertsteuersatz (%)",
           "type": "select",
           "options": [
-            { "value": "19", "label": "19% (Regelsteuersatz)" },
-            { "value": "7", "label": "7% (Ermäßigter Steuersatz - z.B. Lebensmittel, Bücher)" },
-            { "value": "0", "label": "0% (Steuerfreie Umsätze)" }
+            {
+              "value": "19",
+              "label": "19% (Regelsteuersatz)"
+            },
+            {
+              "value": "7",
+              "label": "7% (Ermäßigter Steuersatz - z.B. Lebensmittel, Bücher)"
+            },
+            {
+              "value": "0",
+              "label": "0% (Steuerfreie Umsätze)"
+            }
           ]
         },
         {
@@ -268,8 +340,14 @@
           "label_native": "Kleinunternehmerregelung (§ 19 UStG)?",
           "type": "select",
           "options": [
-            { "value": "nein", "label": "Nein (Regelbesteuerung — USt-Pflicht)" },
-            { "value": "ja", "label": "Ja (Kleinunternehmer — 0% USt)" }
+            {
+              "value": "nein",
+              "label": "Nein (Regelbesteuerung — USt-Pflicht)"
+            },
+            {
+              "value": "ja",
+              "label": "Ja (Kleinunternehmer — 0% USt)"
+            }
           ]
         },
         {
@@ -326,8 +404,8 @@
     },
     {
       "id": "freiberufler-einkommensteuer",
-      "title_native": "Freiberufler Einkommensteuer-Rechner 2026 (EÜR & Abgaben)",
-      "title_en": "Germany Freelancer Income Tax & Net Income Calculator",
+      "title_native": "Freiberufler Einkommensteuer-Rechner",
+      "title_en": "Germany Freelancer Income Tax Calculator",
       "search_terms_native": [
         "einkommensteuer rechner freiberufler 2026",
         "eür rechner freiberufler",
@@ -336,7 +414,7 @@
         "netto einkommen freiberufler berechnen",
         "katalogberufe freiberufler steuer"
       ],
-      "description_native": "Berechnen Sie das Nettoeinkommen für Freiberufler nach Einnahmen-Überschuss-Rechnung (EÜR), Einkommensteuer nach § 32a EStG, Solidaritätszuschlag, Kirchensteuer und freiwillige Krankenversicherungsbeiträge.",
+      "description_native": "Berechnen Sie Ihr Nettoeinkommen als Freiberufler nach der Einnahmen-Überschuss-Rechnung (EÜR). Ermitteln Sie Ihre Einkommensteuer und Krankenversicherungsabgaben.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [
@@ -361,8 +439,14 @@
           "label_native": "Familienstand",
           "type": "select",
           "options": [
-            { "value": "ledig", "label": "Ledig / Alleinstehend (Grundtarif)" },
-            { "value": "verheiratet", "label": "Verheiratet (Splittingtarif)" }
+            {
+              "value": "ledig",
+              "label": "Ledig / Alleinstehend (Grundtarif)"
+            },
+            {
+              "value": "verheiratet",
+              "label": "Verheiratet (Splittingtarif)"
+            }
           ]
         },
         {
@@ -370,8 +454,14 @@
           "label_native": "Kirchensteuerpflichtig?",
           "type": "select",
           "options": [
-            { "value": "nein", "label": "Nein" },
-            { "value": "ja", "label": "Ja" }
+            {
+              "value": "nein",
+              "label": "Nein"
+            },
+            {
+              "value": "ja",
+              "label": "Ja"
+            }
           ]
         },
         {
@@ -379,9 +469,18 @@
           "label_native": "Bundesland",
           "type": "select",
           "options": [
-            { "value": "BY", "label": "Bayern (Kirchensteuer 8%)" },
-            { "value": "BW", "label": "Baden-Württemberg (Kirchensteuer 8%)" },
-            { "value": "OTHER", "label": "Übrige Bundesländer (Kirchensteuer 9%)" }
+            {
+              "value": "BY",
+              "label": "Bayern (Kirchensteuer 8%)"
+            },
+            {
+              "value": "BW",
+              "label": "Baden-Württemberg (Kirchensteuer 8%)"
+            },
+            {
+              "value": "OTHER",
+              "label": "Übrige Bundesländer (Kirchensteuer 9%)"
+            }
           ]
         }
       ],
@@ -433,8 +532,8 @@
     },
     {
       "id": "kurzarbeitergeld-rechner",
-      "title_native": "Kurzarbeitergeld-Rechner 2026 (KuG & Nettoentgeltausfall)",
-      "title_en": "Germany Short-Time Work Allowance (Kurzarbeitergeld) Calculator",
+      "title_native": "Kurzarbeitergeld-Rechner 2026 (KuG)",
+      "title_en": "Germany Short-Time Work Pay Calculator",
       "search_terms_native": [
         "kurzarbeitergeld rechner 2026",
         "kug rechner nettoentgeltausfall",
@@ -443,7 +542,7 @@
         "progressionsvorbehalt kurzarbeit",
         "bundesagentur fuer arbeit kug rechner"
       ],
-      "description_native": "Berechnen Sie den Anspruch auf Kurzarbeitergeld (KuG) der Bundesagentur für Arbeit bei Arbeitsausfall (60% oder 67% Leistungssatz) sowie Ihr verbleibendes Gesamteinkommen.",
+      "description_native": "Berechnen Sie Ihren Anspruch auf Kurzarbeitergeld bei Arbeitsausfall mit 60% oder 67% Leistungssatz. Ermitteln Sie Ihr monatliches Gesamteinkommen.",
       "category": "employment",
       "last_updated": "August 2026",
       "inputs": [
@@ -463,12 +562,30 @@
           "label_native": "Steuerklasse",
           "type": "select",
           "options": [
-            { "value": "1", "label": "Steuerklasse 1" },
-            { "value": "2", "label": "Steuerklasse 2" },
-            { "value": "3", "label": "Steuerklasse 3" },
-            { "value": "4", "label": "Steuerklasse 4" },
-            { "value": "5", "label": "Steuerklasse 5" },
-            { "value": "6", "label": "Steuerklasse 6" }
+            {
+              "value": "1",
+              "label": "Steuerklasse 1"
+            },
+            {
+              "value": "2",
+              "label": "Steuerklasse 2"
+            },
+            {
+              "value": "3",
+              "label": "Steuerklasse 3"
+            },
+            {
+              "value": "4",
+              "label": "Steuerklasse 4"
+            },
+            {
+              "value": "5",
+              "label": "Steuerklasse 5"
+            },
+            {
+              "value": "6",
+              "label": "Steuerklasse 6"
+            }
           ]
         },
         {
@@ -476,8 +593,14 @@
           "label_native": "Mindestens 1 Kind auf der Lohnsteuerkarte?",
           "type": "select",
           "options": [
-            { "value": "nein", "label": "Nein (KuG-Leistungssatz 60%)" },
-            { "value": "ja", "label": "Ja (KuG-Leistungssatz 67%)" }
+            {
+              "value": "nein",
+              "label": "Nein (KuG-Leistungssatz 60%)"
+            },
+            {
+              "value": "ja",
+              "label": "Ja (KuG-Leistungssatz 67%)"
+            }
           ]
         },
         {

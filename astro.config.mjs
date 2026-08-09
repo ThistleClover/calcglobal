@@ -10,6 +10,7 @@ const site = process.env.SITE || 'https://calcglobal.org';
 export default defineConfig({
   site,
   base: '/',
+  trailingSlash: 'always',
   integrations: [
     tailwind(),
     react(),

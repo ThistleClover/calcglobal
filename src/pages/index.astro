@@ -40,7 +40,15 @@ const orgSchema = {
   "name": "CalcGlobal",
   "url": "https://calcglobal.org",
   "logo": "https://calcglobal.org/favicon.svg",
-  "description": "Free, accurate tax and financial calculators for professionals worldwide."
+  "sameAs": [],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://calcglobal.org/contact",
+    "availableLanguage": ["English", "French", "German"]
+  },
+  "description": "Professional tax and financial calculators for the US, UK, France, Germany, and Australia. Verified against 2026 official authority rates.",
+  "areaServed": ["US", "GB", "FR", "DE", "AU"]
 };
 
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
@@ -49,6 +57,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 <Layout 
   title="CalcGlobal | Free Localized Tax & Financial Calculators" 
   description="Access hyper-accurate, localized tax, payroll, and financial calculators for the US, UK, France, Germany, Australia, and more. Updated for the 2026 tax year."
+  keywords="tax calculator, payroll calculator, income tax, IRS, HMRC, URSSAF, ATO, Finanzamt, 2026"
   structuredData={orgSchema}
 >
   <!-- Premium Hero Section -->
@@ -74,7 +83,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       </h1>
       
       <p class="text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-7 leading-relaxed font-medium">
-        Enterprise-grade tax, payroll, and compliance calculators. Programmed with the exact rates, brackets, and rules from local authorities.
+        Built by tax professionals. Verified against 2026 official authority rates for the US, UK, France, Germany, and Australia.
       </p>
       
       <!-- Trust Signals Summary -->
@@ -166,7 +175,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
           </div>
           <h3 class="font-bold text-slate-900 text-lg mb-3">Authority Sourced</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">Every formula is meticulously mapped to official rules from the IRS, HMRC, URSSAF, Bundesfinanzministerium, and ATO.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Formulas cross-referenced directly against primary documentation from IRS, HMRC, URSSAF, Finanzamt, and ATO.</p>
         </div>
         
         <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
@@ -174,7 +183,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
           </div>
           <h3 class="font-bold text-slate-900 text-lg mb-3">Always Current</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">Tax thresholds, NIC rates, personal allowances, and contribution ceilings are continuously updated for the 2026/2027 fiscal year.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Tax brackets, thresholds, allowances, and contribution caps verified for the 2026/2027 fiscal year.</p>
         </div>
         
         <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:shadow-md transition-shadow">
@@ -182,7 +191,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             <svg class="w-6 h-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
           </div>
           <h3 class="font-bold text-slate-900 text-lg mb-3">Hyper-Localized</h3>
-          <p class="text-sm text-slate-600 leading-relaxed">Calculators intelligently adapt to local currency, tax terminology, and regional specific legal exemptions.</p>
+          <p class="text-sm text-slate-600 leading-relaxed">Engineered specifically for each country's tax codes, statutory surcharges, and native currency rules.</p>
         </div>
       </div>
     </section>

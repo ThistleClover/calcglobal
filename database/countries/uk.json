@@ -7,8 +7,8 @@
   "calculators": [
     {
       "id": "ir35-inside-outside-calculator",
-      "title_native": "UK IR35 Status & Take-Home Pay Calculator (Inside vs Outside IR35)",
-      "title_en": "UK IR35 Status & Take-Home Pay Calculator (Inside vs Outside IR35)",
+      "title_native": "UK IR35 Inside vs Outside Pay Calculator",
+      "title_en": "UK IR35 Inside vs Outside Pay Calculator",
       "search_terms_native": [
         "ir35 calculator 2026",
         "inside vs outside ir35 take home pay calculator",
@@ -17,7 +17,7 @@
         "off payroll working tax calculation",
         "ir35 net pay comparison calculator"
       ],
-      "description_native": "Calculate and compare your net take-home pay as a UK IT/engineering contractor working Inside IR35 (via PAYE or Umbrella Company with Employer's NI, Apprenticeship Levy, and fee margins) versus Outside IR35 (via Personal Service Company / Ltd Company with optimal salary £12,570, Corporation Tax, and Dividend Tax).",
+      "description_native": "Compare net take-home pay between Inside IR35 umbrella contracts and Outside IR35 Ltd companies. Get a clear breakdown of tax, NI, and umbrella fees.",
       "category": "employment",
       "last_updated": "August 2026",
       "inputs": [
@@ -118,8 +118,8 @@
     },
     {
       "id": "sdlt-lbtt-ltt-stamp-duty-calculator",
-      "title_native": "UK Stamp Duty Land Tax (SDLT / LBTT / LTT) Property Calculator",
-      "title_en": "UK Stamp Duty Land Tax (SDLT / LBTT / LTT) Property Calculator",
+      "title_native": "UK Stamp Duty Tax Calculator (SDLT, LBTT, LTT)",
+      "title_en": "UK Stamp Duty Tax Calculator (SDLT, LBTT, LTT)",
       "search_terms_native": [
         "stamp duty calculator uk 2026",
         "sdlt calculator england",
@@ -128,7 +128,7 @@
         "first time buyer stamp duty relief",
         "buy to let additional property stamp duty surcharge"
       ],
-      "description_native": "Calculate property transaction taxes across all UK nations: Stamp Duty Land Tax (SDLT in England & NI), Land and Buildings Transaction Tax (LBTT in Scotland), and Land Transaction Tax (LTT in Wales), accounting for First-Time Buyer relief, additional residential property surcharges (3% / 6%), and non-UK resident surcharges.",
+      "description_native": "Calculate exact property transfer taxes for England, Scotland, and Wales. Factor in first-time buyer relief, second home surcharges, and non-resident tax rates.",
       "category": "real_estate",
       "last_updated": "August 2026",
       "inputs": [
@@ -149,9 +149,18 @@
           "label_native": "UK Jurisdiction",
           "type": "select",
           "options": [
-            { "value": "england_ni", "label": "England & Northern Ireland (SDLT)" },
-            { "value": "scotland", "label": "Scotland (LBTT)" },
-            { "value": "wales", "label": "Wales (LTT)" }
+            {
+              "value": "england_ni",
+              "label": "England & Northern Ireland (SDLT)"
+            },
+            {
+              "value": "scotland",
+              "label": "Scotland (LBTT)"
+            },
+            {
+              "value": "wales",
+              "label": "Wales (LTT)"
+            }
           ]
         },
         {
@@ -159,10 +168,22 @@
           "label_native": "Buyer Status",
           "type": "select",
           "options": [
-            { "value": "first_time", "label": "First-Time Buyer (Main Residence)" },
-            { "value": "next_home", "label": "Moving Home / Standard Residential Purchaser" },
-            { "value": "additional_property", "label": "Additional Property (Buy-to-Let / Second Home)" },
-            { "value": "company", "label": "Company / Corporate Purchaser" }
+            {
+              "value": "first_time",
+              "label": "First-Time Buyer (Main Residence)"
+            },
+            {
+              "value": "next_home",
+              "label": "Moving Home / Standard Residential Purchaser"
+            },
+            {
+              "value": "additional_property",
+              "label": "Additional Property (Buy-to-Let / Second Home)"
+            },
+            {
+              "value": "company",
+              "label": "Company / Corporate Purchaser"
+            }
           ]
         },
         {
@@ -170,8 +191,14 @@
           "label_native": "Is the buyer a Non-UK Resident?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "No (UK Resident)" },
-            { "value": "yes", "label": "Yes (+2% SDLT Surcharge in England/NI)" }
+            {
+              "value": "no",
+              "label": "No (UK Resident)"
+            },
+            {
+              "value": "yes",
+              "label": "Yes (+2% SDLT Surcharge in England/NI)"
+            }
           ]
         }
       ],
@@ -229,8 +256,8 @@
     },
     {
       "id": "uk-gross-net-salary-pension-calculator",
-      "title_native": "UK Take-Home Salary & Tax Calculator (Income Tax, NI & Pension)",
-      "title_en": "UK Take-Home Salary & Tax Calculator (Income Tax, NI & Pension)",
+      "title_native": "UK Take-Home Salary & Tax Calculator",
+      "title_en": "UK Take-Home Salary & Tax Calculator",
       "search_terms_native": [
         "salary calculator uk 2026",
         "take home pay calculator uk",
@@ -239,7 +266,7 @@
         "salary sacrifice pension tax savings calculator",
         "tax code 1257l calculator monthly net"
       ],
-      "description_native": "Calculate your exact monthly and annual net salary in the UK across England, Wales, Northern Ireland, and Scotland. Features full support for Tax Code adjustments, Salary Sacrifice pensions, Student Loan Plans 1/2/4/5 & PG, and the £100k Personal Allowance taper trap.",
+      "description_native": "Calculate your exact monthly take-home pay after Income Tax, National Insurance, pension salary sacrifice, and student loans. Includes Scottish tax bands and £100k taper rules.",
       "category": "tax",
       "last_updated": "August 2026",
       "inputs": [
@@ -266,8 +293,14 @@
           "label_native": "Tax Region / Location",
           "type": "select",
           "options": [
-            { "value": "rUK", "label": "England / Wales / Northern Ireland" },
-            { "value": "scotland", "label": "Scotland (Scottish Income Tax)" }
+            {
+              "value": "rUK",
+              "label": "England / Wales / Northern Ireland"
+            },
+            {
+              "value": "scotland",
+              "label": "Scotland (Scottish Income Tax)"
+            }
           ]
         },
         {
@@ -275,12 +308,30 @@
           "label_native": "Student Loan Repayment Plan",
           "type": "select",
           "options": [
-            { "value": "none", "label": "No Student Loan" },
-            { "value": "plan1", "label": "Plan 1 (Threshold £24,990 - 9%)" },
-            { "value": "plan2", "label": "Plan 2 (Threshold £27,295 - 9%)" },
-            { "value": "plan4", "label": "Plan 4 - Scotland (Threshold £31,395 - 9%)" },
-            { "value": "plan5", "label": "Plan 5 - Post-2023 (Threshold £25,000 - 9%)" },
-            { "value": "postgrad", "label": "Postgraduate Loan (Threshold £21,000 - 6%)" }
+            {
+              "value": "none",
+              "label": "No Student Loan"
+            },
+            {
+              "value": "plan1",
+              "label": "Plan 1 (Threshold £24,990 - 9%)"
+            },
+            {
+              "value": "plan2",
+              "label": "Plan 2 (Threshold £27,295 - 9%)"
+            },
+            {
+              "value": "plan4",
+              "label": "Plan 4 - Scotland (Threshold £31,395 - 9%)"
+            },
+            {
+              "value": "plan5",
+              "label": "Plan 5 - Post-2023 (Threshold £25,000 - 9%)"
+            },
+            {
+              "value": "postgrad",
+              "label": "Postgraduate Loan (Threshold £21,000 - 6%)"
+            }
           ]
         },
         {
@@ -288,8 +339,14 @@
           "label_native": "Claim Blind Person's Allowance?",
           "type": "select",
           "options": [
-            { "value": "no", "label": "No" },
-            { "value": "yes", "label": "Yes (+£3,130 Allowance)" }
+            {
+              "value": "no",
+              "label": "No"
+            },
+            {
+              "value": "yes",
+              "label": "Yes (+£3,130 Allowance)"
+            }
           ]
         }
       ],
@@ -347,8 +404,8 @@
     },
     {
       "id": "uk-limited-company-director-salary-dividend-calculator",
-      "title_native": "UK Limited Company Director Salary vs Dividend Tax Optimizer",
-      "title_en": "UK Limited Company Director Salary vs Dividend Tax Optimizer",
+      "title_native": "UK Director Salary & Dividend Optimizer",
+      "title_en": "UK Director Salary & Dividend Optimizer",
       "search_terms_native": [
         "optimum salary and dividend calculator 2026 uk",
         "limited company tax calculator director pay",
@@ -357,7 +414,7 @@
         "director salary secondary threshold 9100 vs 12570",
         "how much tax do i pay on dividends limited company"
       ],
-      "description_native": "Optimize director remuneration for UK limited companies. Calculate the optimal split between Director's Salary (£9,100 vs £12,570) and Dividends, taking into account Corporation Tax main rate (25%), small profits rate (19%), marginal relief, Employer/Employee NI, Personal Allowance, and Dividend Tax bands.",
+      "description_native": "Find the optimal salary and dividend split to minimize Corporation Tax and Dividend Tax. See your maximum net take-home cash as a UK company director.",
       "category": "business",
       "last_updated": "August 2026",
       "inputs": [
@@ -440,8 +497,8 @@
     },
     {
       "id": "uk-statutory-redundancy-settlement-calculator",
-      "title_native": "UK Statutory Redundancy Pay & Settlement Agreement Tax Calculator",
-      "title_en": "UK Statutory Redundancy Pay & Settlement Agreement Tax Calculator",
+      "title_native": "UK Redundancy & Settlement Tax Calculator",
+      "title_en": "UK Redundancy & Settlement Tax Calculator",
       "search_terms_native": [
         "redundancy pay calculator uk 2026",
         "statutory redundancy pay formula capped weekly rate",
@@ -450,7 +507,7 @@
         "compromise agreement tax calculator employment law",
         "how much statutory redundancy do i get"
       ],
-      "description_native": "Calculate your statutory redundancy pay entitlement under UK employment law, assess ex-gratia payments, and calculate tax/NI obligations for settlement agreements including the £30,000 tax-free exemption under Section 401 ITEPA 2003 and PILON rules.",
+      "description_native": "Calculate your statutory redundancy entitlement and settlement pay tax. Applies the £30,000 tax-free exemption, PILON rules, and age-based multipliers.",
       "category": "legal",
       "last_updated": "August 2026",
       "inputs": [
