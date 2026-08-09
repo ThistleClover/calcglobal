@@ -167,7 +167,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
       <div className="grid grid-cols-1 lg:grid-cols-12 relative z-10">
         
         {/* LEFT: Inputs */}
-        <div className="p-8 lg:p-10 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 bg-white/50 backdrop-blur-sm">
+        <div className="p-4 sm:p-8 lg:p-10 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 bg-white/50 backdrop-blur-sm">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-600/20">
               1
@@ -248,7 +248,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
         </div>
 
         {/* RIGHT: Results */}
-        <div className="p-8 lg:p-10 lg:col-span-7 bg-slate-50/50 relative">
+        <div className="p-4 sm:p-8 lg:p-10 lg:col-span-7 bg-slate-50/50 relative">
           {!result ? (
             <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-slate-400">
               <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-6 text-4xl transform -rotate-6">
@@ -266,13 +266,13 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                 <h2 className="text-xl font-bold text-slate-900">Your Results</h2>
               </div>
 
-              <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10 bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+              <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
                 <div className="text-center md:text-left flex-1">
                   <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center justify-center md:justify-start gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                     {getUITranslation('ESTIMATED_NET', locale)}
                   </p>
-                  <p className="text-5xl md:text-6xl font-black text-slate-900 tabular-nums tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-700">
+                  <p className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tabular-nums tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-700 break-words">
                     {sym}{formatNum(result.netIncome, locale)}
                   </p>
                   <div className="inline-flex items-center gap-2 mt-4 px-3 py-1.5 bg-slate-100 rounded-lg border border-slate-200">
