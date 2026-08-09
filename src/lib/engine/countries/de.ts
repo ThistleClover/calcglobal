@@ -4,10 +4,11 @@
 // Secondary: Gewerbesteuer, Umsatzsteuer, Freiberufler ESt, Kurzarbeitergeld
 // Sources: Bundesfinanzministerium, §32a EStG, §19 UStG, §11/§35 GewStG, SGB IV, BA-Tabelle
 
-import type { TaxInput, TaxResult } from '../types';
+import { safeVal, type TaxInput, type TaxResult } from '../types';
 
 /** German progressive income tax using §32a EStG 2026 zones */
 function einkommensteuer(zvE: number, doubled: boolean = false, noPA: boolean = false): number {
+  if (isNaN(zvE) || !isFinite(zvE) || zvE <= 0) return 0;
   if (doubled) {
     // Splittingverfahren: halve, compute, double
     return einkommensteuer(zvE / 2, false, noPA) * 2;
@@ -49,11 +50,11 @@ export function calculate(inputs: TaxInput): TaxResult {
 
 /** 0. Primärer Brutto-Netto-Rechner Deutschland (Arbeitnehmer) */
 function calculateBruttoNetto(inputs: TaxInput): TaxResult {
-  const grossAnnual = Math.max(0, parseFloat(String(inputs.gross_annual)) || 0);
+  const grossAnnual = safeVal(inputs.gross_annual);
   const taxClass = String(inputs.tax_class || '1');
   const kirchensteuer = String(inputs.church_tax || 'no') === 'yes';
   const healthType = String(inputs.health_insurance || 'gkv');
-  const zusatzbeitrag = Math.max(0, parseFloat(String(inputs.additional_health_contribution)) || 1.6) / 100;
+  const zusatzbeitrag = safeVal(inputs.additional_health_contribution ?? 1.6, 0, 100) / 100;
   const state = String(inputs.state || 'OTHER');
   const kirchenRate = ['BY', 'BW'].includes(state) ? 0.08 : 0.09;
 
@@ -142,8 +143,8 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
 
 /** 1. Gewerbesteuer-Rechner (Steuermessbetrag, Gewerbesteuer, §35 EStG Anrechnung) */
 function calculateGewerbesteuer(inputs: TaxInput): TaxResult {
-  const gewerbeertrag = Math.max(0, parseFloat(String(inputs.gewerbeertrag || inputs.annual_profit || 0)) || 0);
-  const hebesatz = Math.max(200, parseFloat(String(inputs.hebesatz)) || 400);
+  const gewerbeertrag = safeVal(inputs.gewerbeertrag ?? inputs.annual_profit);
+  const hebesatz = safeVal(inputs.hebesatz ?? 400, 200, 1000);
   const rechtsform = String(inputs.rechtsform || inputs.legal_status || 'einzelunternehmen').toLowerCase();
 
   const isGmbH = rechtsform.includes('gmbh');
@@ -196,13 +197,13 @@ function calculateGewerbesteuer(inputs: TaxInput): TaxResult {
 
 /** 2. Umsatzsteuer-Rechner / Kleinunternehmerregelung (§ 19 UStG) */
 function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
-  const rawAmount = Math.max(0, parseFloat(String(inputs.nettobetrag_oder_brutto || inputs.amount || 0)) || 0);
+  const rawAmount = safeVal(inputs.nettobetrag_oder_brutto ?? inputs.amount);
   const eingabeTyp = String(inputs.eingabe_typ || 'netto').toLowerCase();
-  const mwstSatzVal = parseFloat(String(inputs.mwst_satz)) || 19;
+  const mwstSatzVal = safeVal(inputs.mwst_satz ?? 19, 0, 100);
   const mwstRate = mwstSatzVal / 100;
   const kleinunternehmerInput = String(inputs.kleinunternehmer || 'nein').toLowerCase();
   const isKleinunternehmer = kleinunternehmerInput === 'ja' || kleinunternehmerInput === 'yes';
-  const umsatzVorjahr = Math.max(0, parseFloat(String(inputs.umsatz_vorjahr || 0)) || 0);
+  const umsatzVorjahr = safeVal(inputs.umsatz_vorjahr);
 
   let netto = 0;
   let mwst = 0;
@@ -221,7 +222,8 @@ function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
       brutto = netto + mwst;
     } else {
       brutto = rawAmount;
-      netto = brutto / (1 + mwstRate);
+      const denom = 1 + mwstRate;
+      netto = denom === 0 ? 0 : brutto / denom;
       mwst = brutto - netto;
     }
   }
@@ -260,8 +262,8 @@ function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
 
 /** 3. Freiberufler Einkommensteuer-Rechner (Katalogberufe § 18 EStG) */
 function calculateFreiberufler(inputs: TaxInput): TaxResult {
-  const umsatz = Math.max(0, parseFloat(String(inputs.jahresumsatz || 0)) || 0);
-  const ausgaben = Math.max(0, parseFloat(String(inputs.betriebsausgaben || 0)) || 0);
+  const umsatz = safeVal(inputs.jahresumsatz);
+  const ausgaben = safeVal(inputs.betriebsausgaben);
   const gewinn = Math.max(0, umsatz - ausgaben);
   const familienstand = String(inputs.familienstand || 'ledig').toLowerCase();
   const doubled = familienstand.includes('verheiratet');
@@ -317,9 +319,9 @@ function calculateFreiberufler(inputs: TaxInput): TaxResult {
 
 /** 4. Kurzarbeitergeld-Rechner (KuG & Nettoentgeltausfall) */
 function calculateKurzarbeitergeld(inputs: TaxInput): TaxResult {
-  const bruttoVollzeit = Math.max(0, parseFloat(String(inputs.bruttolohn_vollzeit || 0)) || 0);
+  const bruttoVollzeit = safeVal(inputs.bruttolohn_vollzeit);
   const hatKinder = String(inputs.kinder || 'nein').toLowerCase() === 'ja' || String(inputs.kinder) === 'yes';
-  const ausfallProzent = Math.min(100, Math.max(0, parseFloat(String(inputs.ausfall_prozent || 100)) || 100));
+  const ausfallProzent = safeVal(inputs.ausfall_prozent ?? 100, 0, 100);
   const ausfallRatio = ausfallProzent / 100;
 
   // Pauschaliertes Netto (Vollzeit) nach BA-Tabelle (vereinfacht 80% des Brutto)

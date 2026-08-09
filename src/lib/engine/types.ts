@@ -29,3 +29,13 @@ export interface TaxResult {
 export interface ITaxEngine {
   calculate(inputs: TaxInput): TaxResult;
 }
+
+/**
+ * Safely parse numerical inputs with min/max clamping and NaN/Infinity protection.
+ */
+export const safeVal = (v: any, min = 0, max = Infinity): number => {
+  const parsed = parseFloat(String(v));
+  const val = isNaN(parsed) || !isFinite(parsed) ? 0 : parsed;
+  return Math.max(min, Math.min(max, val));
+};
+
