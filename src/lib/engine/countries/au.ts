@@ -2,7 +2,7 @@
 // Australia ATO PAYG Income Tax Engine — 2026/27 Tax Year
 // Sources: ATO.gov.au, Tax Rates 2026-27, Medicare Levy Act, HELP Act
 
-import type { TaxInput, TaxResult } from '../types';
+import { safeVal, type TaxInput, type TaxResult } from '../types';
 
 function applyResidentTax(taxable: number): number {
   if (taxable <= 18200) return 0;
@@ -84,7 +84,7 @@ export function calculate(inputs: TaxInput): TaxResult {
 }
 
 function calculatePrimary(inputs: TaxInput): TaxResult {
-  const grossAnnual = Math.max(0, parseFloat(String(inputs.gross_annual)) || 0);
+  const grossAnnual = safeVal(inputs.gross_annual);
   const residency = String(inputs.residency || 'resident');
   const hecsDebt = String(inputs.hecs_debt || 'no') === 'yes';
   const privateHealth = String(inputs.private_health || 'no') === 'yes';
@@ -148,13 +148,13 @@ function calculatePrimary(inputs: TaxInput): TaxResult {
 }
 
 function calculateSoleTrader(inputs: TaxInput): TaxResult {
-  const grossRevenue = Math.max(0, parseFloat(String(inputs.gross_revenue)) || 0);
-  const businessExpenses = Math.max(0, parseFloat(String(inputs.business_expenses)) || 0);
-  const homeOfficeCost = Math.max(0, parseFloat(String(inputs.home_office_cost)) || 0);
-  const homeOfficePct = Math.min(100, Math.max(0, parseFloat(String(inputs.home_office_pct)) || 0)) / 100;
-  const vehicleCost = Math.max(0, parseFloat(String(inputs.vehicle_cost)) || 0);
-  const vehicleBusinessPct = Math.min(100, Math.max(0, parseFloat(String(inputs.vehicle_business_pct)) || 0)) / 100;
-  const voluntarySuper = Math.max(0, parseFloat(String(inputs.super_concessional_contribution)) || 0);
+  const grossRevenue = safeVal(inputs.gross_revenue);
+  const businessExpenses = safeVal(inputs.business_expenses);
+  const homeOfficeCost = safeVal(inputs.home_office_cost);
+  const homeOfficePct = safeVal(inputs.home_office_pct, 0, 100) / 100;
+  const vehicleCost = safeVal(inputs.vehicle_cost);
+  const vehicleBusinessPct = safeVal(inputs.vehicle_business_pct, 0, 100) / 100;
+  const voluntarySuper = safeVal(inputs.super_concessional_contribution);
   const residency = String(inputs.residency || 'resident');
   const privateHealth = String(inputs.private_health || 'no') === 'yes';
 
@@ -225,11 +225,11 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
 }
 
 function calculateSuperannuation(inputs: TaxInput): TaxResult {
-  const currentBalance = Math.max(0, parseFloat(String(inputs.current_balance)) || 0);
-  const salary = Math.max(0, parseFloat(String(inputs.annual_salary)) || 0);
-  const years = Math.max(1, Math.min(50, parseFloat(String(inputs.years_to_retirement)) || 25));
-  const voluntaryPct = Math.max(0, parseFloat(String(inputs.voluntary_contribution_pct)) || 0) / 100;
-  const returnRate = Math.max(0, parseFloat(String(inputs.expected_return_pct)) || 7) / 100;
+  const currentBalance = safeVal(inputs.current_balance);
+  const salary = safeVal(inputs.annual_salary);
+  const years = safeVal(inputs.years_to_retirement ?? 25, 1, 50);
+  const voluntaryPct = safeVal(inputs.voluntary_contribution_pct, 0, 100) / 100;
+  const returnRate = safeVal(inputs.expected_return_pct ?? 7, 0, 100) / 100;
 
   const sgRate = 0.12; // 12% Super Guarantee from 1 July 2025
   const totalContribRate = sgRate + voluntaryPct;
@@ -244,7 +244,7 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
   const r = returnRate;
   const n = years;
   const fvPV = currentBalance * Math.pow(1 + r, n);
-  const fvPMT = r > 0 ? netAnnualContribution * ((Math.pow(1 + r, n) - 1) / r) : netAnnualContribution * n;
+  const fvPMT = r <= 0 ? netAnnualContribution * n : netAnnualContribution * ((Math.pow(1 + r, n) - 1) / r);
   const projectedBalance = fvPV + fvPMT;
 
   const totalNetContributions = currentBalance + netAnnualContribution * n;
@@ -291,7 +291,7 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
 }
 
 function calculateStampDuty(inputs: TaxInput): TaxResult {
-  const price = Math.max(0, parseFloat(String(inputs.property_price)) || 0);
+  const price = safeVal(inputs.property_price);
   const state = String(inputs.state || 'NSW').toUpperCase();
   const buyerType = String(inputs.buyer_type || 'owner_occupier');
 
@@ -442,10 +442,10 @@ function calculateStampDuty(inputs: TaxInput): TaxResult {
 }
 
 function calculateHecsRepayment(inputs: TaxInput): TaxResult {
-  const initialDebt = Math.max(0, parseFloat(String(inputs.hecs_debt_balance)) || 0);
-  let income = Math.max(0, parseFloat(String(inputs.annual_income)) || 0);
-  const growthRate = Math.max(0, parseFloat(String(inputs.income_growth_pct)) || 3) / 100;
-  const voluntaryPayment = Math.max(0, parseFloat(String(inputs.voluntary_annual_repayment)) || 0);
+  const initialDebt = safeVal(inputs.hecs_debt_balance);
+  let income = safeVal(inputs.annual_income);
+  const growthRate = safeVal(inputs.income_growth_pct ?? 3, 0, 100) / 100;
+  const voluntaryPayment = safeVal(inputs.voluntary_annual_repayment);
 
   const indexationRate = 0.038;
 

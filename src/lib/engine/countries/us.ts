@@ -2,7 +2,7 @@
 // United States Federal Tax Engine — 2026 Tax Year
 // Sources: IRS Rev. Proc. 2025-xx, IRC §1401, §1402, §62, §199A, §63, §121
 
-import type { TaxInput, TaxResult } from '../types';
+import { safeVal, type TaxInput, type TaxResult } from '../types';
 
 /** Apply progressive brackets to a taxable amount. Brackets = [[limit, rate], ...] */
 function applyBrackets(income: number, brackets: [number, number][]): number {
@@ -63,9 +63,9 @@ export function calculate(inputs: TaxInput): TaxResult {
 }
 
 function calculatePrimary1099(inputs: TaxInput): TaxResult {
-  const profit = Math.max(0, parseFloat(String(inputs.net_1099_profit)) || 0);
+  const profit = safeVal(inputs.net_1099_profit);
   const filingStatus = String(inputs.filing_status || 'single');
-  const w2Income = Math.max(0, parseFloat(String(inputs.other_w2_income)) || 0);
+  const w2Income = safeVal(inputs.other_w2_income);
   const state = String(inputs.state || 'OTHER');
 
   // --- Self-Employment Tax ---
@@ -154,11 +154,11 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
 }
 
 function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
-  const profit = Math.max(0, parseFloat(String(inputs.net_profit ?? inputs.net_business_profit ?? 0)) || 0);
-  const salaryInput = Math.max(0, parseFloat(String(inputs.reasonable_salary ?? 0)) || 0);
+  const profit = safeVal(inputs.net_profit ?? inputs.net_business_profit);
+  const salaryInput = safeVal(inputs.reasonable_salary);
   const w2Salary = Math.min(profit, salaryInput);
   const filingStatus = String(inputs.filing_status || 'single');
-  const accountingCost = Math.max(0, parseFloat(String(inputs.annual_compliance_cost ?? 3000)) || 3000);
+  const accountingCost = safeVal(inputs.annual_compliance_cost ?? 3000);
 
   const distributions = profit - w2Salary;
 
@@ -213,10 +213,10 @@ function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
 }
 
 function calculateW2Salary(inputs: TaxInput): TaxResult {
-  const grossAnnual = Math.max(0, parseFloat(String(inputs.gross_annual ?? inputs.gross_salary ?? 0)) || 0);
+  const grossAnnual = safeVal(inputs.gross_annual ?? inputs.gross_salary);
   const filingStatus = String(inputs.filing_status || 'single');
   const state = String(inputs.state || 'OTHER');
-  const pct401k = Math.min(100, Math.max(0, parseFloat(String(inputs['401k_contribution_pct'] ?? inputs.pretax_401k_pct ?? 0)) || 0));
+  const pct401k = safeVal(inputs['401k_contribution_pct'] ?? inputs.pretax_401k_pct, 0, 100);
   const payFrequency = String(inputs.pay_frequency || 'biweekly');
 
   const payPeriodMap: Record<string, { count: number; name: string }> = {
@@ -256,7 +256,7 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
 
   const totalTax = fedIncomeTax + totalFica + stateTax;
   const annualNet = Math.max(0, grossAnnual - totalTax - annual401k);
-  const paycheckNet = annualNet / periods;
+  const paycheckNet = periods <= 0 ? 0 : annualNet / periods;
   const effectiveRate = grossAnnual > 0 ? totalTax / grossAnnual : 0;
 
   const breakdown = [
@@ -294,12 +294,12 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
 }
 
 function calculateHomeSale(inputs: TaxInput): TaxResult {
-  const salePrice = Math.max(0, parseFloat(String(inputs.sale_price ?? inputs.selling_price ?? 0)) || 0);
-  const purchasePrice = Math.max(0, parseFloat(String(inputs.original_purchase_price ?? 0)) || 0);
-  const yearsOwned = Math.max(0, parseFloat(String(inputs.years_owned ?? 2)) || 0);
+  const salePrice = safeVal(inputs.sale_price ?? inputs.selling_price);
+  const purchasePrice = safeVal(inputs.original_purchase_price);
+  const yearsOwned = safeVal(inputs.years_owned ?? 2);
   const filingStatus = String(inputs.filing_status || 'single');
-  const closingCostsPct = Math.max(0, parseFloat(String(inputs.closing_costs_pct ?? inputs.realtor_commission_pct ?? 8)) || 8) / 100;
-  const improvementsCost = Math.max(0, parseFloat(String(inputs.improvements_cost ?? inputs.capital_improvements ?? 0)) || 0);
+  const closingCostsPct = safeVal(inputs.closing_costs_pct ?? inputs.realtor_commission_pct ?? 8, 0, 100) / 100;
+  const improvementsCost = safeVal(inputs.improvements_cost ?? inputs.capital_improvements);
 
   const closingCosts = salePrice * closingCostsPct;
   const netSellingProceeds = salePrice - closingCosts;
@@ -370,11 +370,13 @@ function calculateHomeSale(inputs: TaxInput): TaxResult {
 }
 
 function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
-  const monthlyRent = Math.max(0, parseFloat(String(inputs.monthly_rent ?? 0)) || 0);
-  const monthlyRevenue = Math.max(0, parseFloat(String(inputs.monthly_revenue ?? 0)) || 0);
-  const cogsPct = Math.min(99.9, Math.max(0, parseFloat(String(inputs.cogs_pct ?? (inputs.gross_margin_pct ? 100 - parseFloat(String(inputs.gross_margin_pct)) : 30))) || 0));
-  const otherExpenses = Math.max(0, parseFloat(String(inputs.other_monthly_expenses ?? inputs.other_fixed_monthly_costs ?? 0)) || 0);
-  const stateTaxRate = Math.max(0, parseFloat(String(inputs.state_tax_rate ?? 5)) || 5) / 100;
+  const monthlyRent = safeVal(inputs.monthly_rent);
+  const monthlyRevenue = safeVal(inputs.monthly_revenue);
+  const rawMargin = inputs.gross_margin_pct !== undefined ? safeVal(inputs.gross_margin_pct, 0, 100) : undefined;
+  const defaultCogs = rawMargin !== undefined ? 100 - rawMargin : 30;
+  const cogsPct = safeVal(inputs.cogs_pct ?? defaultCogs, 0, 99.9);
+  const otherExpenses = safeVal(inputs.other_monthly_expenses ?? inputs.other_fixed_monthly_costs);
+  const stateTaxRate = safeVal(inputs.state_tax_rate ?? 5, 0, 100) / 100;
 
   const cogsRate = cogsPct / 100;
   const marginRate = 1 - cogsRate;
@@ -383,7 +385,7 @@ function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
   const monthlyFixedOverhead = monthlyRent + otherExpenses;
   const monthlyOperatingIncome = monthlyGrossProfit - monthlyFixedOverhead;
 
-  const breakEvenMonthlyRevenue = marginRate > 0 ? monthlyFixedOverhead / marginRate : 0;
+  const breakEvenMonthlyRevenue = marginRate <= 0 ? 0 : monthlyFixedOverhead / marginRate;
   const annualRevenue = monthlyRevenue * 12;
   const annualPreTaxProfit = monthlyOperatingIncome * 12;
 
