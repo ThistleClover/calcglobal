@@ -6,6 +6,7 @@ import { safeVal, type TaxInput, type TaxResult } from '../types';
 
 /** Apply progressive brackets to a taxable amount. Brackets = [[limit, rate], ...] */
 function applyBrackets(income: number, brackets: [number, number][]): number {
+  if (income <= 0 || !isFinite(income) || isNaN(income)) return 0;
   let tax = 0;
   let prev = 0;
   for (const [limit, rate] of brackets) {
@@ -69,7 +70,7 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
   const state = String(inputs.state || 'OTHER');
 
   // --- Self-Employment Tax ---
-  const seTaxableIncome = profit * 0.9235;
+  const seTaxableIncome = Math.max(0, profit * 0.9235);
   // Social Security: 12.4% up to wage base, reduced by W-2
   const ssBase = Math.max(0, SS_WAGE_BASE_2026 - w2Income);
   const ssIncome = Math.min(seTaxableIncome, ssBase);
@@ -78,9 +79,9 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
   const medicareTax = seTaxableIncome * 0.029;
   // Additional Medicare: 0.9% above threshold
   const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
-  const totalEarnings = profit + w2Income;
-  const amtBase = Math.max(0, totalEarnings - amtThreshold);
-  const additionalMedicare = amtBase > 0 ? Math.min(seTaxableIncome, amtBase) * 0.009 : 0;
+  const totalMedicareEarnings = seTaxableIncome + w2Income;
+  const amtExcess = Math.max(0, totalMedicareEarnings - amtThreshold);
+  const additionalMedicare = Math.min(seTaxableIncome, amtExcess) * 0.009;
 
   const totalSETax = ssTax + medicareTax + additionalMedicare;
   const seTaxDeduction = totalSETax * 0.5; // §164(f)
@@ -90,7 +91,7 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
 
   // --- QBI Deduction (§199A) — 20% of qualified business income ---
   const qbiThreshold = filingStatus === 'married_joint' ? 394600 : 197300;
-  const qbiDeduction = agi <= qbiThreshold ? Math.min(profit, agi) * 0.20 : 0;
+  const qbiDeduction = agi <= qbiThreshold ? Math.max(0, Math.min(profit, agi)) * 0.20 : 0;
 
   // --- Federal Income Tax ---
   const stdDeduction = STANDARD_DEDUCTION[filingStatus] || 15000;
@@ -124,7 +125,7 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
     { label: 'Federal Income Tax', value: federalIncomeTax, isDeduction: true, percentage: profit > 0 ? (federalIncomeTax / profit) * 100 : 0 },
     { label: `Self-Employment Tax (SS + Medicare)`, value: totalSETax, isDeduction: true, percentage: profit > 0 ? (totalSETax / profit) * 100 : 0 },
     ...(stateTax > 0 ? [{ label: `${state} State Income Tax (~${(stateRate * 100).toFixed(1)}%)`, value: stateTax, isDeduction: true }] : []),
-    { label: 'Net Take-Home Income', value: netIncome, isFinal: true },
+    { label: 'Net Take-Home Income', value: Math.max(0, netIncome), isFinal: true },
   ];
 
   // --- Insights ---
@@ -154,20 +155,20 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
 }
 
 function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
-  const profit = safeVal(inputs.net_profit || inputs.net_business_profit);
+  const profit = safeVal(inputs.net_profit ?? inputs.net_business_profit);
   const salaryInput = safeVal(inputs.reasonable_salary);
   const w2Salary = Math.min(profit, salaryInput);
   const filingStatus = String(inputs.filing_status || 'single');
-  const accountingCost = safeVal(inputs.annual_compliance_cost || 3000);
+  const accountingCost = inputs.annual_compliance_cost !== undefined && inputs.annual_compliance_cost !== null && inputs.annual_compliance_cost !== '' ? safeVal(inputs.annual_compliance_cost) : 3000;
 
-  const distributions = profit - w2Salary;
+  const distributions = Math.max(0, profit - w2Salary);
 
   // LLC Self-Employment Tax
-  const llcTaxable = profit * 0.9235;
+  const llcTaxable = Math.max(0, profit * 0.9235);
   const llcSS = Math.min(llcTaxable, SS_WAGE_BASE_2026) * 0.124;
   const llcMedicare = llcTaxable * 0.029;
   const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
-  const llcAddlMedicare = profit > amtThreshold ? Math.min(llcTaxable, profit - amtThreshold) * 0.009 : 0;
+  const llcAddlMedicare = llcTaxable > amtThreshold ? Math.max(0, llcTaxable - amtThreshold) * 0.009 : 0;
   const llcTotalSETax = llcSS + llcMedicare + llcAddlMedicare;
 
   // S-Corp Payroll FICA Tax (on salary only)
@@ -213,10 +214,11 @@ function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
 }
 
 function calculateW2Salary(inputs: TaxInput): TaxResult {
-  const grossAnnual = safeVal(inputs.gross_annual || inputs.gross_salary);
+  const grossAnnual = safeVal(inputs.gross_annual ?? inputs.gross_salary);
   const filingStatus = String(inputs.filing_status || 'single');
   const state = String(inputs.state || 'OTHER');
-  const pct401k = safeVal(inputs['401k_contribution_pct'] || inputs.pretax_401k_pct, 0, 100);
+  const pct401kRaw = inputs['401k_contribution_pct'] ?? inputs.pretax_401k_pct;
+  const pct401k = safeVal(pct401kRaw, 0, 100);
   const payFrequency = String(inputs.pay_frequency || 'biweekly');
 
   const payPeriodMap: Record<string, { count: number; name: string }> = {
@@ -226,8 +228,10 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
     monthly: { count: 12, name: 'monthly' },
   };
 
-  const periods = payPeriodMap[payFrequency]?.count ?? 26;
-  const payFreqName = payPeriodMap[payFrequency]?.name ?? 'bi-weekly';
+  const freqKey = payFrequency.toLowerCase();
+  const periodInfo = payPeriodMap[freqKey] || { count: 26, name: 'bi-weekly' };
+  const periods = periodInfo.count;
+  const payFreqName = periodInfo.name;
 
   const annual401k = Math.min(23500, grossAnnual * (pct401k / 100));
 
@@ -294,12 +298,13 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
 }
 
 function calculateHomeSale(inputs: TaxInput): TaxResult {
-  const salePrice = safeVal(inputs.sale_price || inputs.selling_price);
+  const salePrice = safeVal(inputs.sale_price ?? inputs.selling_price);
   const purchasePrice = safeVal(inputs.original_purchase_price);
-  const yearsOwned = safeVal(inputs.years_owned || 2);
+  const yearsOwned = inputs.years_owned !== undefined && inputs.years_owned !== null && inputs.years_owned !== '' ? safeVal(inputs.years_owned) : 2;
   const filingStatus = String(inputs.filing_status || 'single');
-  const closingCostsPct = safeVal(inputs.closing_costs_pct || inputs.realtor_commission_pct || 8, 0, 100) / 100;
-  const improvementsCost = safeVal(inputs.improvements_cost || inputs.capital_improvements);
+  const rawClosingPct = inputs.closing_costs_pct ?? inputs.realtor_commission_pct;
+  const closingCostsPct = (rawClosingPct !== undefined && rawClosingPct !== null && rawClosingPct !== '' ? safeVal(rawClosingPct, 0, 100) : 8) / 100;
+  const improvementsCost = safeVal(inputs.improvements_cost ?? inputs.capital_improvements);
 
   const closingCosts = salePrice * closingCostsPct;
   const netSellingProceeds = salePrice - closingCosts;
@@ -325,7 +330,7 @@ function calculateHomeSale(inputs: TaxInput): TaxResult {
       const chunk15 = Math.max(0, Math.min(taxableGain, limit15) - limit0);
       const chunk20 = Math.max(0, taxableGain - limit15);
       const niitThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
-  const niit = taxableGain > niitThreshold ? (taxableGain - niitThreshold) * 0.038 : 0;
+      const niit = taxableGain > niitThreshold ? (taxableGain - niitThreshold) * 0.038 : 0;
 
       capGainsTax = chunk15 * 0.15 + chunk20 * 0.20 + niit;
     }
@@ -374,9 +379,11 @@ function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
   const monthlyRevenue = safeVal(inputs.monthly_revenue);
   const rawMargin = inputs.gross_margin_pct !== undefined && inputs.gross_margin_pct !== null && inputs.gross_margin_pct !== '' ? safeVal(inputs.gross_margin_pct, 0, 100) : undefined;
   const defaultCogs = rawMargin !== undefined ? 100 - rawMargin : 30;
-  const cogsPct = safeVal(inputs.cogs_pct || defaultCogs, 0, 99.9);
-  const otherExpenses = safeVal(inputs.other_monthly_expenses || inputs.other_fixed_monthly_costs);
-  const stateTaxRate = safeVal(inputs.state_tax_rate || 5, 0, 100) / 100;
+  const rawCogs = inputs.cogs_pct !== undefined && inputs.cogs_pct !== null && inputs.cogs_pct !== '' ? safeVal(inputs.cogs_pct, 0, 99.9) : defaultCogs;
+  const cogsPct = safeVal(rawCogs, 0, 99.9);
+  const otherExpenses = safeVal(inputs.other_monthly_expenses ?? inputs.other_fixed_monthly_costs);
+  const rawStateTax = inputs.state_tax_rate !== undefined && inputs.state_tax_rate !== null && inputs.state_tax_rate !== '' ? safeVal(inputs.state_tax_rate, 0, 100) : 5;
+  const stateTaxRate = rawStateTax / 100;
 
   const cogsRate = cogsPct / 100;
   const marginRate = 1 - cogsRate;
@@ -420,7 +427,7 @@ function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
 
   return {
     grossIncome: annualRevenue,
-    netIncome: Math.max(0, annualNetProfit),
+    netIncome: isNaN(annualNetProfit) || !isFinite(annualNetProfit) ? 0 : annualNetProfit,
     totalTax: annualTax,
     effectiveRate,
     breakdown,
