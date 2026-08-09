@@ -91,6 +91,24 @@ function calculatePrimary(inputs: TaxInput): TaxResult {
   const grossAnnual = safeVal(
     inputs.gross_annual ?? inputs.gross_income ?? inputs.annual_income ?? inputs.income
   );
+
+  if (grossAnnual <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Gross Annual Income', value: 0 },
+        { label: 'Annual Net Take-Home', value: 0, isFinal: true },
+        { label: 'Monthly Take-Home', value: 0, isTotal: true },
+      ],
+      currency: 'AUD',
+      currencySymbol: 'A$',
+      additionalInsights: ['Gross income is 0. No tax payable.'],
+    };
+  }
+
   const residency = String(inputs.residency || 'resident');
   const hecsDebt =
     String(inputs.hecs_debt || 'no') === 'yes' ||
@@ -162,6 +180,23 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
   const grossRevenue = safeVal(
     inputs.gross_revenue ?? inputs.gross_income ?? inputs.revenue
   );
+
+  if (grossRevenue <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Gross Business Revenue', value: 0 },
+        { label: 'Net Take-Home Sole Trader Income', value: 0, isFinal: true },
+      ],
+      currency: 'AUD',
+      currencySymbol: 'A$',
+      additionalInsights: ['Gross revenue is 0. No tax payable.'],
+    };
+  }
+
   const businessExpenses = safeVal(inputs.business_expenses ?? inputs.expenses);
   const homeOfficeCost = safeVal(inputs.home_office_cost);
   const homeOfficePct = safeVal(inputs.home_office_pct, 0, 100) / 100;
@@ -249,8 +284,8 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
   const voluntaryPct = safeVal(inputs.voluntary_contribution_pct, 0, 100) / 100;
 
   // Growth rate fallback logic (handles both e.g. 7 for 7% or 0.07 for 7%)
-  const rawReturn = inputs.growth_rate ?? inputs.expected_return_pct ?? inputs.expected_return ?? inputs.return_rate ?? 7;
-  const returnVal = safeVal(rawReturn, 0, 100);
+  const rawReturn = inputs.growth_rate ?? inputs.expected_return_pct ?? inputs.expected_return ?? inputs.return_rate;
+  const returnVal = rawReturn === undefined || rawReturn === null || String(rawReturn).trim() === '' ? 7 : safeVal(rawReturn, 0, 100);
   const returnRate = returnVal > 1 ? returnVal / 100 : returnVal;
 
   const sgRate = 0.12; // 12% Super Guarantee from 1 July 2025
@@ -318,6 +353,23 @@ function calculateStampDuty(inputs: TaxInput): TaxResult {
   const price = safeVal(
     inputs.property_price ?? inputs.property_value ?? inputs.price ?? inputs.value
   );
+
+  if (price <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Property Purchase Price', value: 0 },
+        { label: 'Total Capital Required for Purchase', value: 0, isFinal: true },
+      ],
+      currency: 'AUD',
+      currencySymbol: 'A$',
+      additionalInsights: ['Property price is 0. No stamp duty payable.'],
+    };
+  }
+
   const rawState = String(inputs.state || 'NSW').toUpperCase();
   const validStates = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'];
   const isInvalidState = !validStates.includes(rawState);
@@ -484,6 +536,25 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
   let income = safeVal(
     inputs.annual_income ?? inputs.gross_annual ?? inputs.gross_income ?? inputs.income
   );
+
+  if (initialDebt <= 0) {
+    return {
+      grossIncome: income,
+      netIncome: income,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Initial HECS/HELP Debt Balance', value: 0 },
+        { label: 'Current Annual Repayment Income', value: income },
+        { label: 'No Debt Outstanding', value: 0, isTotal: true },
+        { label: 'Total Out-of-Pocket Cost to Pay Off HELP Debt', value: 0, isFinal: true },
+      ],
+      currency: 'AUD',
+      currencySymbol: 'A$',
+      additionalInsights: ['You have no outstanding HECS/HELP debt.'],
+    };
+  }
+
   const rawGrowth = inputs.income_growth_pct ?? inputs.growth_rate ?? 3;
   const growthVal = safeVal(rawGrowth, 0, 100);
   const growthRate = growthVal > 1 ? growthVal / 100 : growthVal;
