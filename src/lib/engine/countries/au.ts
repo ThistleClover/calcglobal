@@ -13,12 +13,14 @@ function applyResidentTax(taxable: number): number {
 }
 
 function applyNonResidentTax(taxable: number): number {
+  if (taxable <= 0) return 0;
   if (taxable <= 135000) return taxable * 0.325;
   if (taxable <= 190000) return 43875 + (taxable - 135000) * 0.37;
   return 64225 + (taxable - 190000) * 0.45;
 }
 
 function applyLITO(incomeTax: number, taxable: number): number {
+  if (taxable <= 0) return 0;
   // Low Income Tax Offset: max $700, phases out
   if (taxable <= 37500) return Math.min(incomeTax, 700);
   if (taxable <= 45000) return Math.min(incomeTax, Math.max(0, 700 - (taxable - 37500) * 0.05));
@@ -27,7 +29,7 @@ function applyLITO(incomeTax: number, taxable: number): number {
 }
 
 function calcMedicare(taxable: number, privateHealth: boolean, residency: string): number {
-  if (residency !== 'resident') return 0;
+  if (residency !== 'resident' || taxable <= 0) return 0;
   // Medicare Levy: 2%, smoothly phased in over $22,801 at 10% of excess
   let levy = 0;
   if (taxable > 22801) {
@@ -44,6 +46,7 @@ function calcMedicare(taxable: number, privateHealth: boolean, residency: string
 }
 
 function applyWorkingHolidayTax(taxable: number): number {
+  if (taxable <= 0) return 0;
   if (taxable <= 45000) return taxable * 0.15;
   if (taxable <= 135000) return 6750 + (taxable - 45000) * 0.325;
   if (taxable <= 190000) return 36000 + (taxable - 135000) * 0.37;
@@ -51,6 +54,7 @@ function applyWorkingHolidayTax(taxable: number): number {
 }
 
 function calcHECS(income: number): { amount: number; rate: number } {
+  if (income < 54435) return { amount: 0, rate: 0 };
   // 2026/27 HECS/HELP repayment thresholds
   const tiers = [
     [54435, 0.010], [62739, 0.020], [70000, 0.025], [75001, 0.030],
@@ -84,17 +88,24 @@ export function calculate(inputs: TaxInput): TaxResult {
 }
 
 function calculatePrimary(inputs: TaxInput): TaxResult {
-  const grossAnnual = safeVal(inputs.gross_annual);
+  const grossAnnual = safeVal(
+    inputs.gross_annual ?? inputs.gross_income ?? inputs.annual_income ?? inputs.income
+  );
   const residency = String(inputs.residency || 'resident');
-  const hecsDebt = String(inputs.hecs_debt || 'no') === 'yes';
-  const privateHealth = String(inputs.private_health || 'no') === 'yes';
+  const hecsDebt =
+    String(inputs.hecs_debt || 'no') === 'yes' ||
+    inputs.hecs_debt === true ||
+    safeVal(inputs.hecs_debt_balance) > 0;
+  const privateHealth =
+    String(inputs.private_health || 'no') === 'yes' || inputs.private_health === true;
 
   // Tax on taxable income
-  const incomeTax = residency === 'working_holiday'
-    ? applyWorkingHolidayTax(grossAnnual)
-    : residency === 'resident'
-    ? applyResidentTax(grossAnnual)
-    : applyNonResidentTax(grossAnnual);
+  const incomeTax =
+    residency === 'working_holiday'
+      ? applyWorkingHolidayTax(grossAnnual)
+      : residency === 'resident'
+      ? applyResidentTax(grossAnnual)
+      : applyNonResidentTax(grossAnnual);
 
   // LITO (residents only)
   const litoOffset = residency === 'resident' ? applyLITO(incomeTax, grossAnnual) : 0;
@@ -148,15 +159,18 @@ function calculatePrimary(inputs: TaxInput): TaxResult {
 }
 
 function calculateSoleTrader(inputs: TaxInput): TaxResult {
-  const grossRevenue = safeVal(inputs.gross_revenue);
-  const businessExpenses = safeVal(inputs.business_expenses);
+  const grossRevenue = safeVal(
+    inputs.gross_revenue ?? inputs.gross_income ?? inputs.revenue
+  );
+  const businessExpenses = safeVal(inputs.business_expenses ?? inputs.expenses);
   const homeOfficeCost = safeVal(inputs.home_office_cost);
   const homeOfficePct = safeVal(inputs.home_office_pct, 0, 100) / 100;
   const vehicleCost = safeVal(inputs.vehicle_cost);
   const vehicleBusinessPct = safeVal(inputs.vehicle_business_pct, 0, 100) / 100;
   const voluntarySuper = safeVal(inputs.super_concessional_contribution);
   const residency = String(inputs.residency || 'resident');
-  const privateHealth = String(inputs.private_health || 'no') === 'yes';
+  const privateHealth =
+    String(inputs.private_health || 'no') === 'yes' || inputs.private_health === true;
 
   const homeOfficeDeduction = homeOfficeCost * homeOfficePct;
   const vehicleDeduction = vehicleCost * vehicleBusinessPct;
@@ -166,23 +180,24 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
   const deductibleSuper = Math.min(30000, voluntarySuper);
   const taxableIncome = Math.max(0, grossBusinessProfit - deductibleSuper);
 
-  const incomeTax = residency === 'working_holiday'
-    ? applyWorkingHolidayTax(taxableIncome)
-    : residency === 'resident'
-    ? applyResidentTax(taxableIncome)
-    : applyNonResidentTax(taxableIncome);
+  const incomeTax =
+    residency === 'working_holiday'
+      ? applyWorkingHolidayTax(taxableIncome)
+      : residency === 'resident'
+      ? applyResidentTax(taxableIncome)
+      : applyNonResidentTax(taxableIncome);
 
-  const lito = applyLITO(incomeTax, taxableIncome);
+  const lito = residency === 'resident' ? applyLITO(incomeTax, taxableIncome) : 0;
   const taxAfterLITO = Math.max(0, incomeTax - lito);
 
-  // Small Business Income Tax Offset (SBITO): 16% of tax on business income, max $1,000
-  const sbito = Math.min(1000, taxAfterLITO * 0.16);
+  // Small Business Income Tax Offset (SBITO): 16% of tax on business income, max $1,000 (applies only if taxable income > 0)
+  const sbito = taxableIncome > 0 ? Math.min(1000, taxAfterLITO * 0.16) : 0;
   const taxAfterSBITO = Math.max(0, taxAfterLITO - sbito);
 
   const medicare = calcMedicare(taxableIncome, privateHealth, residency);
   const totalTax = taxAfterSBITO + medicare;
 
-  const netIncome = Math.max(0, taxableIncome - totalTax);
+  const netIncome = grossRevenue > 0 ? Math.max(0, grossRevenue - totalOperatingDeductions - totalTax) : 0;
   const effectiveRate = grossRevenue > 0 ? totalTax / grossRevenue : 0;
 
   const breakdown = [
@@ -226,17 +241,24 @@ function calculateSoleTrader(inputs: TaxInput): TaxResult {
 
 function calculateSuperannuation(inputs: TaxInput): TaxResult {
   const currentBalance = safeVal(inputs.current_balance);
-  const salary = safeVal(inputs.annual_salary);
-  const years = safeVal(inputs.years_to_retirement ?? 25, 1, 50);
+  const salary = safeVal(
+    inputs.annual_salary ?? inputs.gross_annual ?? inputs.gross_income ?? inputs.salary
+  );
+  const years = safeVal(inputs.years_to_retirement ?? inputs.years ?? 25, 0, 100);
+
   const voluntaryPct = safeVal(inputs.voluntary_contribution_pct, 0, 100) / 100;
-  const returnRate = safeVal(inputs.expected_return_pct ?? 7, 0, 100) / 100;
+
+  // Growth rate fallback logic (handles both e.g. 7 for 7% or 0.07 for 7%)
+  const rawReturn = inputs.growth_rate ?? inputs.expected_return_pct ?? inputs.expected_return ?? inputs.return_rate ?? 7;
+  const returnVal = safeVal(rawReturn, 0, 100);
+  const returnRate = returnVal > 1 ? returnVal / 100 : returnVal;
 
   const sgRate = 0.12; // 12% Super Guarantee from 1 July 2025
   const totalContribRate = sgRate + voluntaryPct;
   const grossAnnualContribution = salary * totalContribRate;
 
   // Division 293 check (> $250k total income)
-  const isDiv293 = (salary + grossAnnualContribution) > 250000;
+  const isDiv293 = salary + grossAnnualContribution > 250000;
   const contribTaxRate = isDiv293 ? 0.30 : 0.15;
   const netAnnualContribution = grossAnnualContribution * (1 - contribTaxRate);
 
@@ -244,7 +266,7 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
   const r = returnRate;
   const n = years;
   const fvPV = currentBalance * Math.pow(1 + r, n);
-  const fvPMT = r <= 0 ? netAnnualContribution * n : netAnnualContribution * ((Math.pow(1 + r, n) - 1) / r);
+  const fvPMT = n === 0 ? 0 : r <= 0 ? netAnnualContribution * n : netAnnualContribution * ((Math.pow(1 + r, n) - 1) / r);
   const projectedBalance = fvPV + fvPMT;
 
   const totalNetContributions = currentBalance + netAnnualContribution * n;
@@ -254,6 +276,8 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
   // 4% Safe Withdrawal Rule monthly drawdown
   const annualDrawdown = projectedBalance * 0.04;
   const monthlyDrawdown = annualDrawdown / 12;
+
+  const totalContribTax = grossAnnualContribution * contribTaxRate * years;
 
   const breakdown = [
     { label: 'Current Super Balance', value: currentBalance },
@@ -281,7 +305,7 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
   return {
     grossIncome: projectedBalance,
     netIncome: projectedBalance,
-    totalTax: grossAnnualContribution * contribTaxRate * years,
+    totalTax: totalContribTax,
     effectiveRate: grossAnnualContribution > 0 ? (grossAnnualContribution * contribTaxRate) / grossAnnualContribution : 0,
     breakdown,
     currency: 'AUD',
@@ -291,8 +315,14 @@ function calculateSuperannuation(inputs: TaxInput): TaxResult {
 }
 
 function calculateStampDuty(inputs: TaxInput): TaxResult {
-  const price = safeVal(inputs.property_price);
-  const state = String(inputs.state || 'NSW').toUpperCase();
+  const price = safeVal(
+    inputs.property_price ?? inputs.property_value ?? inputs.price ?? inputs.value
+  );
+  const rawState = String(inputs.state || 'NSW').toUpperCase();
+  const validStates = ['NSW', 'VIC', 'QLD', 'WA', 'SA', 'TAS', 'ACT', 'NT'];
+  const isInvalidState = !validStates.includes(rawState);
+  const state = isInvalidState ? 'NSW' : rawState;
+
   const buyerType = String(inputs.buyer_type || 'owner_occupier');
 
   let baseDuty = 0;
@@ -305,107 +335,110 @@ function calculateStampDuty(inputs: TaxInput): TaxResult {
     else foreignSurchargeRate = 0;
   }
 
-  switch (state) {
-    case 'NSW': {
-      if (price <= 17000) baseDuty = price * 0.0125;
-      else if (price <= 36000) baseDuty = 212 + (price - 17000) * 0.015;
-      else if (price <= 93000) baseDuty = 497 + (price - 36000) * 0.0175;
-      else if (price <= 351000) baseDuty = 1495 + (price - 93000) * 0.035;
-      else if (price <= 1168000) baseDuty = 10525 + (price - 351000) * 0.045;
-      else baseDuty = 47290 + (price - 1168000) * 0.055;
+  if (price > 0) {
+    switch (state) {
+      case 'NSW': {
+        if (price <= 17000) baseDuty = price * 0.0125;
+        else if (price <= 36000) baseDuty = 212 + (price - 17000) * 0.015;
+        else if (price <= 93000) baseDuty = 497 + (price - 36000) * 0.0175;
+        else if (price <= 351000) baseDuty = 1495 + (price - 93000) * 0.035;
+        else if (price <= 1168000) baseDuty = 10525 + (price - 351000) * 0.045;
+        else baseDuty = 47290 + (price - 1168000) * 0.055;
 
-      if (buyerType === 'first_home') {
-        if (price <= 800000) fhbExemption = baseDuty;
-        else if (price <= 1000000) fhbExemption = baseDuty * ((1000000 - price) / 200000);
+        if (buyerType === 'first_home') {
+          if (price <= 800000) fhbExemption = baseDuty;
+          else if (price <= 1000000) fhbExemption = baseDuty * ((1000000 - price) / 200000);
+        }
+        break;
       }
-      break;
-    }
-    case 'VIC': {
-      if (price <= 25000) baseDuty = price * 0.014;
-      else if (price <= 130000) baseDuty = 350 + (price - 25000) * 0.024;
-      else if (price <= 960000) baseDuty = 2870 + (price - 130000) * 0.06;
-      else if (price <= 2000000) baseDuty = price * 0.055;
-      else baseDuty = 110000 + (price - 2000000) * 0.065;
+      case 'VIC': {
+        if (price <= 25000) baseDuty = price * 0.014;
+        else if (price <= 130000) baseDuty = 350 + (price - 25000) * 0.024;
+        else if (price <= 960000) baseDuty = 2870 + (price - 130000) * 0.06;
+        else if (price <= 2000000) baseDuty = price * 0.055;
+        else baseDuty = 110000 + (price - 2000000) * 0.065;
 
-      if (buyerType === 'first_home') {
-        if (price <= 600000) fhbExemption = baseDuty;
-        else if (price <= 750000) fhbExemption = baseDuty * ((750000 - price) / 150000);
+        if (buyerType === 'first_home') {
+          if (price <= 600000) fhbExemption = baseDuty;
+          else if (price <= 750000) fhbExemption = baseDuty * ((750000 - price) / 150000);
+        }
+        break;
       }
-      break;
-    }
-    case 'QLD': {
-      if (price <= 5000) baseDuty = 0;
-      else if (price <= 75000) baseDuty = (price - 5000) * 0.015;
-      else if (price <= 540000) baseDuty = 1050 + (price - 75000) * 0.035;
-      else if (price <= 1000000) baseDuty = 17325 + (price - 540000) * 0.045;
-      else baseDuty = 38025 + (price - 1000000) * 0.0575;
+      case 'QLD': {
+        if (price <= 5000) baseDuty = 0;
+        else if (price <= 75000) baseDuty = (price - 5000) * 0.015;
+        else if (price <= 540000) baseDuty = 1050 + (price - 75000) * 0.035;
+        else if (price <= 1000000) baseDuty = 17325 + (price - 540000) * 0.045;
+        else baseDuty = 38025 + (price - 1000000) * 0.0575;
 
-      if (buyerType === 'first_home') {
-        if (price <= 700000) fhbExemption = baseDuty;
-        else if (price <= 800000) fhbExemption = baseDuty * ((800000 - price) / 100000);
+        if (buyerType === 'first_home') {
+          if (price <= 700000) fhbExemption = baseDuty;
+          else if (price <= 800000) fhbExemption = baseDuty * ((800000 - price) / 100000);
+        }
+        break;
       }
-      break;
-    }
-    case 'WA': {
-      if (price <= 120000) baseDuty = price * 0.019;
-      else if (price <= 150000) baseDuty = 2280 + (price - 120000) * 0.0285;
-      else if (price <= 360000) baseDuty = 3135 + (price - 150000) * 0.038;
-      else if (price <= 725000) baseDuty = 11115 + (price - 360000) * 0.0475;
-      else baseDuty = 28452.5 + (price - 725000) * 0.0515;
+      case 'WA': {
+        if (price <= 120000) baseDuty = price * 0.019;
+        else if (price <= 150000) baseDuty = 2280 + (price - 120000) * 0.0285;
+        else if (price <= 360000) baseDuty = 3135 + (price - 150000) * 0.038;
+        else if (price <= 725000) baseDuty = 11115 + (price - 360000) * 0.0475;
+        else baseDuty = 28452.5 + (price - 725000) * 0.0515;
 
-      if (buyerType === 'first_home') {
-        if (price <= 450000) fhbExemption = baseDuty;
-        else if (price <= 600000) fhbExemption = baseDuty * ((600000 - price) / 150000);
+        if (buyerType === 'first_home') {
+          if (price <= 450000) fhbExemption = baseDuty;
+          else if (price <= 600000) fhbExemption = baseDuty * ((600000 - price) / 150000);
+        }
+        break;
       }
-      break;
-    }
-    case 'SA': {
-      if (price <= 12000) baseDuty = price * 0.01;
-      else if (price <= 30000) baseDuty = 120 + (price - 12000) * 0.02;
-      else if (price <= 50000) baseDuty = 480 + (price - 30000) * 0.03;
-      else if (price <= 100000) baseDuty = 1080 + (price - 50000) * 0.035;
-      else if (price <= 200000) baseDuty = 2830 + (price - 100000) * 0.04;
-      else if (price <= 250000) baseDuty = 6830 + (price - 200000) * 0.0425;
-      else if (price <= 300000) baseDuty = 8955 + (price - 250000) * 0.0475;
-      else if (price <= 500000) baseDuty = 11330 + (price - 300000) * 0.05;
-      else baseDuty = 21330 + (price - 500000) * 0.055;
+      case 'SA': {
+        if (price <= 12000) baseDuty = price * 0.01;
+        else if (price <= 30000) baseDuty = 120 + (price - 12000) * 0.02;
+        else if (price <= 50000) baseDuty = 480 + (price - 30000) * 0.03;
+        else if (price <= 100000) baseDuty = 1080 + (price - 50000) * 0.035;
+        else if (price <= 200000) baseDuty = 2830 + (price - 100000) * 0.04;
+        else if (price <= 250000) baseDuty = 6830 + (price - 200000) * 0.0425;
+        else if (price <= 300000) baseDuty = 8955 + (price - 250000) * 0.0475;
+        else if (price <= 500000) baseDuty = 11330 + (price - 300000) * 0.05;
+        else baseDuty = 21330 + (price - 500000) * 0.055;
 
-      if (buyerType === 'first_home') fhbExemption = baseDuty;
-      break;
-    }
-    case 'TAS': {
-      if (price <= 3000) baseDuty = 50;
-      else if (price <= 25000) baseDuty = 50 + (price - 3000) * 0.0175;
-      else if (price <= 75000) baseDuty = 435 + (price - 25000) * 0.0225;
-      else if (price <= 200000) baseDuty = 1560 + (price - 75000) * 0.035;
-      else if (price <= 375000) baseDuty = 5935 + (price - 200000) * 0.04;
-      else baseDuty = 12935 + (price - 375000) * 0.045;
+        if (buyerType === 'first_home') fhbExemption = baseDuty;
+        break;
+      }
+      case 'TAS': {
+        if (price <= 3000) baseDuty = 50;
+        else if (price <= 25000) baseDuty = 50 + (price - 3000) * 0.0175;
+        else if (price <= 75000) baseDuty = 435 + (price - 25000) * 0.0225;
+        else if (price <= 200000) baseDuty = 1560 + (price - 75000) * 0.035;
+        else if (price <= 375000) baseDuty = 5935 + (price - 200000) * 0.04;
+        else baseDuty = 12935 + (price - 375000) * 0.045;
 
-      if (buyerType === 'first_home' && price <= 600000) fhbExemption = baseDuty * 0.5;
-      break;
-    }
-    case 'ACT': {
-      if (price <= 260000) baseDuty = price * 0.012;
-      else if (price <= 300000) baseDuty = 3120 + (price - 260000) * 0.022;
-      else if (price <= 500000) baseDuty = 4000 + (price - 300000) * 0.034;
-      else if (price <= 750000) baseDuty = 10800 + (price - 500000) * 0.043;
-      else if (price <= 1000000) baseDuty = 21550 + (price - 750000) * 0.055;
-      else baseDuty = 35300 + (price - 1000000) * 0.045;
+        if (buyerType === 'first_home' && price <= 600000) fhbExemption = baseDuty * 0.5;
+        break;
+      }
+      case 'ACT': {
+        if (price <= 260000) baseDuty = price * 0.012;
+        else if (price <= 300000) baseDuty = 3120 + (price - 260000) * 0.022;
+        else if (price <= 500000) baseDuty = 4000 + (price - 300000) * 0.034;
+        else if (price <= 750000) baseDuty = 10800 + (price - 500000) * 0.043;
+        else if (price <= 1000000) baseDuty = 21550 + (price - 750000) * 0.055;
+        else baseDuty = 35300 + (price - 1000000) * 0.045;
 
-      if (buyerType === 'first_home') fhbExemption = baseDuty;
-      break;
-    }
-    case 'NT': default: {
-      if (price <= 525000) baseDuty = (0.06571441 * Math.pow(price / 1000, 2) + 15 * (price / 1000));
-      else if (price <= 3000000) baseDuty = price * 0.0495;
-      else baseDuty = price * 0.0575;
-      break;
+        if (buyerType === 'first_home') fhbExemption = baseDuty;
+        break;
+      }
+      case 'NT':
+      default: {
+        if (price <= 525000) baseDuty = 0.06571441 * Math.pow(price / 1000, 2) + 15 * (price / 1000);
+        else if (price <= 3000000) baseDuty = price * 0.0495;
+        else baseDuty = price * 0.0575;
+        break;
+      }
     }
   }
 
   const netStampDuty = Math.max(0, baseDuty - fhbExemption);
   const foreignSurcharge = price * foreignSurchargeRate;
-  const transferFees = 1500;
+  const transferFees = price > 0 ? 1500 : 0;
   const totalTaxAndFees = netStampDuty + foreignSurcharge + transferFees;
   const totalPurchaseCost = price + totalTaxAndFees;
   const effectiveRate = price > 0 ? netStampDuty / price : 0;
@@ -422,6 +455,9 @@ function calculateStampDuty(inputs: TaxInput): TaxResult {
   ];
 
   const insights: string[] = [];
+  if (isInvalidState) {
+    insights.push(`State "${inputs.state}" is invalid or missing. Defaulted calculation to NSW rates.`);
+  }
   if (fhbExemption > 0) {
     insights.push(`First Home Buyer concession saved you A$${Math.round(fhbExemption).toLocaleString()} in transfer duty.`);
   }
@@ -442,14 +478,23 @@ function calculateStampDuty(inputs: TaxInput): TaxResult {
 }
 
 function calculateHecsRepayment(inputs: TaxInput): TaxResult {
-  const initialDebt = safeVal(inputs.hecs_debt_balance);
-  let income = safeVal(inputs.annual_income);
-  const growthRate = safeVal(inputs.income_growth_pct ?? 3, 0, 100) / 100;
-  const voluntaryPayment = safeVal(inputs.voluntary_annual_repayment);
+  const initialDebt = safeVal(
+    inputs.hecs_debt_balance ?? inputs.hecs_debt ?? inputs.initial_debt
+  );
+  let income = safeVal(
+    inputs.annual_income ?? inputs.gross_annual ?? inputs.gross_income ?? inputs.income
+  );
+  const rawGrowth = inputs.income_growth_pct ?? inputs.growth_rate ?? 3;
+  const growthVal = safeVal(rawGrowth, 0, 100);
+  const growthRate = growthVal > 1 ? growthVal / 100 : growthVal;
+
+  const voluntaryPayment = safeVal(
+    inputs.voluntary_annual_repayment ?? inputs.voluntary_repayment
+  );
 
   const indexationRate = 0.038;
 
-  const firstYearHecs = calcHECS(income);
+  const firstYearHecs = initialDebt > 0 ? calcHECS(income) : { amount: 0, rate: 0 };
   const firstYearCompulsory = Math.min(initialDebt, firstYearHecs.amount);
 
   let balance = initialDebt;
@@ -476,19 +521,19 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
       balance += indexationThisYear;
     }
 
-    currIncome *= (1 + growthRate);
+    currIncome *= 1 + growthRate;
   }
 
-  const isPaidOff = balance <= 0;
+  const isPaidOff = initialDebt === 0 || balance <= 0;
   const totalRepaid = totalCompulsory + totalVoluntary;
-  const effectiveRate = income > 0 ? firstYearHecs.amount / income : 0;
+  const effectiveRate = income > 0 ? firstYearCompulsory / income : 0;
 
   const breakdown = [
     { label: 'Initial HECS/HELP Debt Balance', value: initialDebt },
     { label: 'Current Annual Repayment Income', value: income },
-    { label: `Year 1 Compulsory Repayment (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearHecs.amount, isDeduction: true },
+    { label: `Year 1 Compulsory Repayment (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearCompulsory, isDeduction: true },
     ...(voluntaryPayment > 0 ? [{ label: 'Year 1 Voluntary Repayment', value: voluntaryPayment, isDeduction: true }] : []),
-    { label: isPaidOff ? 'Projected Years to Debt-Free' : 'Will never pay off (30+ years)', value: isPaidOff ? years : null, isTotal: true },
+    { label: initialDebt === 0 ? 'No Debt Outstanding' : (isPaidOff ? 'Projected Years to Debt-Free' : 'Will never pay off (30+ years)'), value: initialDebt === 0 ? 0 : (isPaidOff ? years : null), isTotal: true },
     { label: 'Total Compulsory Repayments Paid', value: totalCompulsory, isDeduction: true },
     ...(totalVoluntary > 0 ? [{ label: 'Total Voluntary Repayments Paid', value: totalVoluntary, isDeduction: true }] : []),
     { label: 'Total Indexation Added (CPI ~3.8%/yr)', value: totalIndexation, isDeduction: true },
@@ -505,7 +550,7 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
   } else {
     insights.push(`At your current income level and projected salary growth, your HECS/HELP debt will be completely paid off in ${years} year${years > 1 ? 's' : ''}.`);
   }
-  if (voluntaryPayment > 0) {
+  if (voluntaryPayment > 0 && initialDebt > 0) {
     insights.push(`Making voluntary payments of A$${voluntaryPayment.toLocaleString()}/yr will reduce your overall payoff time and indexation costs.`);
   }
 
