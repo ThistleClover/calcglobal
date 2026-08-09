@@ -50,13 +50,38 @@ export function calculate(inputs: TaxInput): TaxResult {
 
 /** 0. Primärer Brutto-Netto-Rechner Deutschland (Arbeitnehmer) */
 function calculateBruttoNetto(inputs: TaxInput): TaxResult {
-  const grossAnnual = safeVal(inputs.gross_annual);
-  const taxClass = String(inputs.tax_class || '1');
-  const kirchensteuer = String(inputs.church_tax || 'no') === 'yes';
-  const healthType = String(inputs.health_insurance || 'gkv');
-  const zusatzbeitrag = safeVal(inputs.additional_health_contribution ?? 1.6, 0, 100) / 100;
-  const state = String(inputs.state || 'OTHER');
-  const kirchenRate = ['BY', 'BW'].includes(state) ? 0.08 : 0.09;
+  const grossAnnual = safeVal(inputs.brutto_gehalt ?? inputs.gross_annual ?? inputs.gross_income ?? inputs.salary ?? inputs.bruttogehalt);
+  
+  if (grossAnnual <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Jahresbrutto', value: 0 },
+        { label: 'Gesamte Sozialversicherung', value: 0, isTotal: true },
+        { label: 'Einkommensteuer', value: 0, isDeduction: true },
+        { label: 'Jahresnettogehalt', value: 0, isFinal: true },
+        { label: 'Monatliches Nettogehalt', value: 0, isTotal: true },
+      ],
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: [],
+    };
+  }
+
+  const rawTaxClass = String(inputs.tax_class ?? inputs.steuerklasse ?? inputs.taxClass ?? '1');
+  const taxClass = ['1', '2', '3', '4', '5', '6'].includes(rawTaxClass) ? rawTaxClass : '1';
+
+  const churchTaxInput = inputs.church_tax ?? inputs.kirchensteuer ?? inputs.kirchensteuer_pflichtig;
+  const kirchensteuer = churchTaxInput === true || ['yes', 'ja', 'true', '1'].includes(String(churchTaxInput || '').toLowerCase());
+
+  const healthType = String(inputs.health_insurance ?? inputs.krankenversicherung ?? 'gkv').toLowerCase();
+  const zusatzbeitrag = safeVal(inputs.additional_health_contribution ?? inputs.zusatzbeitrag ?? 1.6, 0, 100) / 100;
+  
+  const state = String(inputs.state ?? inputs.bundesland ?? inputs.land ?? 'OTHER').toUpperCase();
+  const kirchenRate = ['BY', 'BW', 'BAYERN', 'BADEN-WÜRTTEMBERG', 'BADEN-WUERTTEMBERG'].includes(state) ? 0.08 : 0.09;
 
   // ─── Sozialversicherung (Arbeitnehmer-Anteil) ───
   const rvBase = Math.min(grossAnnual, BBG_RV_WEST_2026);
@@ -71,10 +96,10 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
     const kvBase = Math.min(grossAnnual, BBG_KV_WEST_2026);
     kv = kvBase * (0.073 + zusatzbeitrag / 2);   // Arbeitnehmeranteil
   } else {
-    kv = 300 * 12; // PKV flat estimate
+    kv = Math.min(grossAnnual, 300 * 12); // PKV flat estimate capped at gross
   }
 
-  const totalSV = rv + av + pv + kv;
+  const totalSV = Math.min(grossAnnual, rv + av + pv + kv);
 
   // ─── Zu versteuerndes Einkommen (zvE) ───
   const pauschbetrag = 1230;
@@ -90,13 +115,23 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
     case '6': noPA = true; break;
   }
 
-  const est = einkommensteuer(Math.round(zvE), splitting, noPA);
+  const estRaw = einkommensteuer(Math.round(zvE), splitting, noPA);
+
+  // Tax cannot exceed remaining income after SV (guard for low income tax class 5/6)
+  const maxTaxAllowed = Math.max(0, grossAnnual - totalSV);
+  const est = Math.min(maxTaxAllowed, estRaw);
 
   // ─── Solidaritätszuschlag ───
-  const soli = est > 17543 ? est * 0.055 : est > 16956 ? (est - 16956) * 0.199 : 0;
+  // Freigrenze 2026: 18,130 € for single, 36,260 € for married/splitting
+  const soliFreigrenze = splitting ? 36260 : 18130;
+  const soliRaw = est > soliFreigrenze ? Math.min(est * 0.055, (est - soliFreigrenze) * 0.119) : 0;
 
   // ─── Kirchensteuer ───
-  const kirche = kirchensteuer ? est * kirchenRate : 0;
+  const kircheRaw = kirchensteuer ? est * kirchenRate : 0;
+
+  // Ensure total tax doesn't push total deductions above grossAnnual
+  const kirche = Math.min(Math.max(0, maxTaxAllowed - est), kircheRaw);
+  const soli = Math.min(Math.max(0, maxTaxAllowed - est - kirche), soliRaw);
 
   const totalTax = est + soli + kirche;
   const totalDeductions = totalSV + totalTax;
@@ -143,18 +178,39 @@ function calculateBruttoNetto(inputs: TaxInput): TaxResult {
 
 /** 1. Gewerbesteuer-Rechner (Steuermessbetrag, Gewerbesteuer, §35 EStG Anrechnung) */
 function calculateGewerbesteuer(inputs: TaxInput): TaxResult {
-  const gewerbeertrag = safeVal(inputs.gewerbeertrag ?? inputs.annual_profit);
-  const hebesatz = safeVal(inputs.hebesatz ?? 400, 200, 1000);
-  const rechtsform = String(inputs.rechtsform || inputs.legal_status || 'einzelunternehmen').toLowerCase();
+  const gewerbeertrag = safeVal(inputs.gewerbeertrag ?? inputs.annual_profit ?? inputs.profit ?? inputs.ertrag);
+  
+  const rawHebesatz = inputs.hebesatz ?? inputs.tax_rate;
+  const hebesatz = rawHebesatz === undefined || rawHebesatz === null || String(rawHebesatz).trim() === ''
+    ? 400
+    : safeVal(rawHebesatz, 0, 1000);
 
-  const isGmbH = rechtsform.includes('gmbh');
+  if (gewerbeertrag <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Gewerbeertrag vor Steuern', value: 0 },
+        { label: 'Gewerbesteuer', value: 0, isDeduction: true },
+        { label: 'Effektive Gewerbesteuerbelastung nach ESt-Anrechnung', value: 0, isFinal: true },
+      ],
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: ['Gewerbeertrag ist 0 € — es fällt keine Gewerbesteuer an.'],
+    };
+  }
+
+  const rechtsform = String(inputs.rechtsform || inputs.legal_status || inputs.legal_form || 'einzelunternehmen').toLowerCase();
+  const isGmbH = rechtsform.includes('gmbh') || rechtsform.includes('ug') || rechtsform.includes('ag') || rechtsform.includes('kapitalgesellschaft');
   const freibetrag = isGmbH ? 0 : 24500;
 
   // Gewerbeertrag wird auf volle 100 € abgerundet (§ 11 Abs. 1 GewStG)
   const zuVersteuernderErtrag = Math.floor(Math.max(0, gewerbeertrag - freibetrag) / 100) * 100;
   const steuermesszahl = 0.035; // 3,5% Steuermesszahl
   const steuermessbetrag = zuVersteuernderErtrag * steuermesszahl;
-  const gewerbesteuer = steuermessbetrag * (hebesatz / 100);
+  const gewerbesteuer = hebesatz > 0 ? steuermessbetrag * (hebesatz / 100) : 0;
 
   // ESt-Anrechnung nach § 35 EStG (max. 4,0x Steuermessbetrag für Einzelunternehmer/Personengesellschaften)
   const maxEstAnrechnung = steuermessbetrag * 4.0;
@@ -197,13 +253,39 @@ function calculateGewerbesteuer(inputs: TaxInput): TaxResult {
 
 /** 2. Umsatzsteuer-Rechner / Kleinunternehmerregelung (§ 19 UStG) */
 function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
-  const rawAmount = safeVal(inputs.nettobetrag_oder_brutto ?? inputs.amount);
-  const eingabeTyp = String(inputs.eingabe_typ || 'netto').toLowerCase();
-  const mwstSatzVal = safeVal(inputs.mwst_satz ?? 19, 0, 100);
+  const rawAmount = safeVal(inputs.net_amount ?? inputs.nettobetrag_oder_brutto ?? inputs.amount ?? inputs.bruttobetrag);
+  const eingabeTyp = String(inputs.eingabe_typ || inputs.input_type || 'netto').toLowerCase();
+  
+  const rawVatRate = inputs.vat_rate ?? inputs.mwst_satz ?? inputs.tax_rate;
+  const mwstSatzVal = rawVatRate === undefined || rawVatRate === null || String(rawVatRate).trim() === ''
+    ? 19
+    : safeVal(rawVatRate, 0, 100);
   const mwstRate = mwstSatzVal / 100;
-  const kleinunternehmerInput = String(inputs.kleinunternehmer || 'nein').toLowerCase();
-  const isKleinunternehmer = kleinunternehmerInput === 'ja' || kleinunternehmerInput === 'yes';
-  const umsatzVorjahr = safeVal(inputs.umsatz_vorjahr);
+
+  const kleinunternehmerInput = String(inputs.kleinunternehmer ?? inputs.is_kleinunternehmer ?? 'nein').toLowerCase();
+  const umsatzVorjahr = safeVal(inputs.umsatz_vorjahr ?? inputs.prior_year_revenue);
+  
+  // Kleinunternehmer (§19 UStG): if opted OR if prior year revenue / revenue < 22,000 € (and not explicitly set to false/nein/no)
+  const explicitNo = ['nein', 'no', 'false', '0'].includes(kleinunternehmerInput);
+  const explicitYes = ['ja', 'yes', 'true', '1'].includes(kleinunternehmerInput);
+  const isKleinunternehmer = explicitYes || (!explicitNo && (umsatzVorjahr > 0 && umsatzVorjahr <= 22000));
+
+  if (rawAmount <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Nettobetrag', value: 0 },
+        { label: 'Umsatzsteuer / Mehrwertsteuer (0%)', value: 0, isDeduction: true },
+        { label: 'Bruttobetrag (Rechnungsbetrag)', value: 0, isFinal: true },
+      ],
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: [],
+    };
+  }
 
   let netto = 0;
   let mwst = 0;
@@ -231,16 +313,16 @@ function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
   const effectiveRate = brutto > 0 ? mwst / brutto : 0;
 
   const breakdown = [
-    { label: `Nettobetrag`, value: netto },
+    { label: 'Nettobetrag', value: netto },
     { label: `Umsatzsteuer / Mehrwertsteuer (${isKleinunternehmer ? '0% — § 19 UStG' : mwstSatzVal + '%'})`, value: mwst, isDeduction: true },
-    { label: `Bruttobetrag (Rechnungsbetrag)`, value: brutto, isFinal: true },
+    { label: 'Bruttobetrag (Rechnungsbetrag)', value: brutto, isFinal: true },
   ];
 
   const insights: string[] = [];
   if (isKleinunternehmer) {
     insights.push('Gemäß Kleinunternehmerregelung (§ 19 UStG) weisen Sie keine Umsatzsteuer auf Ihren Rechnungen aus und sind von Umsatzsteuer-Voranmeldungen befreit.');
-    if (umsatzVorjahr > 25000) {
-      insights.push('⚠️ Hinweis: Ihr Vorjahresumsatz übersteigt 25.000 €. Sie sind 2026 voraussichtlich nicht mehr berechtigt, die Kleinunternehmerregelung zu nutzen.');
+    if (umsatzVorjahr > 22000) {
+      insights.push('⚠️ Hinweis: Ihr Vorjahresumsatz übersteigt 22.000 €. Sie sind voraussichtlich nicht mehr berechtigt, die Kleinunternehmerregelung zu nutzen.');
     } else {
       insights.push(`Ersparnis/Vermeidungsbetrag USt auf diesen Betrag: ${mwstErsparnis.toFixed(2)} €.`);
     }
@@ -262,14 +344,42 @@ function calculateUmsatzsteuer(inputs: TaxInput): TaxResult {
 
 /** 3. Freiberufler Einkommensteuer-Rechner (Katalogberufe § 18 EStG) */
 function calculateFreiberufler(inputs: TaxInput): TaxResult {
-  const umsatz = safeVal(inputs.jahresumsatz);
-  const ausgaben = safeVal(inputs.betriebsausgaben);
+  const umsatz = safeVal(inputs.jahresumsatz ?? inputs.revenue ?? inputs.umsatz ?? inputs.gross_income);
+  const ausgaben = safeVal(inputs.betriebsausgaben ?? inputs.expenses ?? inputs.ausgaben ?? inputs.betriebskosten);
+  
+  if (umsatz <= 0 || ausgaben >= umsatz) {
+    const gewinn = Math.max(0, umsatz - ausgaben);
+    return {
+      grossIncome: umsatz,
+      netIncome: gewinn,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Jahresumsatz (Einnahmen)', value: umsatz },
+        { label: 'Betriebsausgaben', value: ausgaben, isDeduction: true },
+        { label: 'Reingewinn (EÜR)', value: gewinn, isTotal: true },
+        { label: 'Einkommensteuer', value: 0, isDeduction: true },
+        { label: 'Netto-Reingewinn nach Abgaben', value: gewinn, isFinal: true },
+      ],
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: [
+        umsatz <= 0
+          ? 'Jahresumsatz ist 0 € — es fällt keine Einkommensteuer an.'
+          : 'Betriebsausgaben übersteigen oder entsprechen dem Jahresumsatz (negativer/null Gewinn) — es fällt keine Einkommensteuer an.',
+      ],
+    };
+  }
+
   const gewinn = Math.max(0, umsatz - ausgaben);
-  const familienstand = String(inputs.familienstand || 'ledig').toLowerCase();
-  const doubled = familienstand.includes('verheiratet');
-  const kirchensteuer = String(inputs.kirchensteuer_pflichtig || 'nein').toLowerCase() === 'ja';
-  const state = String(inputs.bundesland || 'OTHER');
-  const kirchenRate = ['BY', 'BW'].includes(state) ? 0.08 : 0.09;
+  const familienstand = String(inputs.familienstand || inputs.marital_status || 'ledig').toLowerCase();
+  const doubled = familienstand.includes('verheiratet') || familienstand.includes('married');
+  
+  const kirchensteuerInput = inputs.kirchensteuer_pflichtig ?? inputs.kirchensteuer ?? inputs.church_tax;
+  const kirchensteuer = kirchensteuerInput === true || ['ja', 'yes', 'true', '1'].includes(String(kirchensteuerInput || '').toLowerCase());
+  
+  const state = String(inputs.bundesland || inputs.state || inputs.land || 'OTHER').toUpperCase();
+  const kirchenRate = ['BY', 'BW', 'BAYERN', 'BADEN-WÜRTTEMBERG', 'BADEN-WUERTTEMBERG'].includes(state) ? 0.08 : 0.09;
 
   // Freiwillige GKV/PV Schätzung für Selbstständige (~18,3% auf Gewinn bis BBG KV)
   const kvBase = Math.min(gewinn, BBG_KV_WEST_2026);
@@ -279,14 +389,14 @@ function calculateFreiberufler(inputs: TaxInput): TaxResult {
   const zvE = Math.max(0, gewinn - (kvBeitrag * 0.85) - 1230);
   const est = einkommensteuer(Math.round(zvE), doubled);
 
-  const soliThreshold = doubled ? 35086 : 17543;
-  const soli = est > soliThreshold ? est * 0.055 : 0;
+  const soliThreshold = doubled ? 36260 : 18130;
+  const soli = est > soliThreshold ? Math.min(est * 0.055, (est - soliThreshold) * 0.119) : 0;
   const kirche = kirchensteuer ? est * kirchenRate : 0;
 
   const totalSteuern = est + soli + kirche;
   const totalAbgaben = totalSteuern + kvBeitrag;
   const netIncome = Math.max(0, gewinn - totalAbgaben);
-  const effectiveRate = gewinn > 0 ? totalAbgaben / gewinn : 0;
+  const effectiveRate = umsatz > 0 ? totalAbgaben / umsatz : 0;
 
   const breakdown = [
     { label: 'Jahresumsatz (Einnahmen)', value: umsatz },
@@ -306,7 +416,7 @@ function calculateFreiberufler(inputs: TaxInput): TaxResult {
   ];
 
   return {
-    grossIncome: gewinn,
+    grossIncome: umsatz,
     netIncome,
     totalTax: totalAbgaben,
     effectiveRate,
@@ -319,28 +429,100 @@ function calculateFreiberufler(inputs: TaxInput): TaxResult {
 
 /** 4. Kurzarbeitergeld-Rechner (KuG & Nettoentgeltausfall) */
 function calculateKurzarbeitergeld(inputs: TaxInput): TaxResult {
-  const bruttoVollzeit = safeVal(inputs.bruttolohn_vollzeit);
-  const hatKinder = String(inputs.kinder || 'nein').toLowerCase() === 'ja' || String(inputs.kinder) === 'yes';
-  const ausfallProzent = safeVal(inputs.ausfall_prozent ?? 100, 0, 100);
-  const ausfallRatio = ausfallProzent / 100;
+  const hoursContractedRaw = inputs.hours_contracted ?? inputs.soll_stunden;
+  const hoursWorkedRaw = inputs.hours_worked ?? inputs.ist_stunden;
+  const hourlyRateRaw = inputs.hourly_rate ?? inputs.stundenlohn;
+
+  if (hoursContractedRaw !== undefined && hoursWorkedRaw !== undefined) {
+    const hoursContracted = safeVal(hoursContractedRaw);
+    const hoursWorked = safeVal(hoursWorkedRaw);
+    
+    if (hoursWorked > hoursContracted) {
+      return {
+        grossIncome: 0,
+        netIncome: 0,
+        totalTax: 0,
+        effectiveRate: 0,
+        breakdown: [],
+        currency: 'EUR',
+        currencySymbol: '€',
+        additionalInsights: ['⚠️ Hours worked cannot exceed contracted hours. Please check your inputs.'],
+      };
+    }
+  }
+
+  let bruttoVollzeit = 0;
+  let ausfallRatio = 0;
+  let ausfallProzent = 0;
+
+  if (hourlyRateRaw !== undefined && hoursContractedRaw !== undefined) {
+    const hourlyRate = safeVal(hourlyRateRaw);
+    const hoursContracted = safeVal(hoursContractedRaw);
+    const hoursWorked = safeVal(hoursWorkedRaw ?? hoursContracted);
+
+    if (hourlyRate === 0 || hoursContracted === 0) {
+      return {
+        grossIncome: 0,
+        netIncome: 0,
+        totalTax: 0,
+        effectiveRate: 0,
+        breakdown: [
+          { label: 'Soll-Bruttogehalt (Vollzeit)', value: 0 },
+          { label: 'Gesamtes Nettoeinkommen während Kurzarbeit', value: 0, isFinal: true },
+        ],
+        currency: 'EUR',
+        currencySymbol: '€',
+        additionalInsights: ['Stundenlohn oder Soll-Stunden ist 0 € — es entsteht kein Anspruch auf Kurzarbeitergeld.'],
+      };
+    }
+
+    bruttoVollzeit = hoursContracted * hourlyRate * 4.33; // Monthly gross estimate
+    if (hoursContracted > 0) {
+      ausfallRatio = Math.max(0, (hoursContracted - hoursWorked) / hoursContracted);
+      ausfallProzent = ausfallRatio * 100;
+    }
+  } else {
+    bruttoVollzeit = safeVal(inputs.bruttolohn_vollzeit ?? inputs.gross_salary);
+    ausfallProzent = safeVal(inputs.ausfall_prozent ?? 100, 0, 100);
+    ausfallRatio = ausfallProzent / 100;
+  }
+
+  if (bruttoVollzeit <= 0) {
+    return {
+      grossIncome: 0,
+      netIncome: 0,
+      totalTax: 0,
+      effectiveRate: 0,
+      breakdown: [
+        { label: 'Soll-Bruttogehalt (Vollzeit)', value: 0 },
+        { label: 'Gesamtes Nettoeinkommen während Kurzarbeit', value: 0, isFinal: true },
+      ],
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: ['Bruttogehalt ist 0 € — es entsteht kein Anspruch auf Kurzarbeitergeld.'],
+    };
+  }
+
+  const kinderInput = inputs.kinder ?? inputs.children ?? inputs.has_children;
+  const hatKinder = kinderInput === true || ['ja', 'yes', 'true', '1'].includes(String(kinderInput || '').toLowerCase()) || safeVal(kinderInput) > 0;
 
   // Pauschaliertes Netto (Vollzeit) nach BA-Tabelle (vereinfacht 80% des Brutto)
   const pauschalNettoVollzeit = bruttoVollzeit * 0.8;
   const nettoAusfall = pauschalNettoVollzeit * ausfallRatio;
   const kugRate = hatKinder ? 0.67 : 0.60;
-  const kugBetrag = nettoAusfall * kugRate;
+  const kugBetrag = ausfallRatio === 0 ? 0 : nettoAusfall * kugRate;
 
   const istBrutto = bruttoVollzeit * (1 - ausfallRatio);
   const istNetto = istBrutto * 0.8;
 
   const gesamtEinkommen = istNetto + kugBetrag;
-  const nettoDifferenz = pauschalNettoVollzeit - gesamtEinkommen;
+  const nettoDifferenz = Math.max(0, pauschalNettoVollzeit - gesamtEinkommen);
   const effectiveRate = bruttoVollzeit > 0 ? (bruttoVollzeit - gesamtEinkommen) / bruttoVollzeit : 0;
 
   const breakdown = [
     { label: 'Soll-Bruttogehalt (Vollzeit)', value: bruttoVollzeit },
     { label: 'Pauschaliertes Vollzeit-Netto (100%)', value: pauschalNettoVollzeit, isTotal: true },
-    { label: `Arbeitsausfall (${ausfallProzent}%)`, value: ausfallProzent },
+    { label: `Arbeitsausfall (${ausfallProzent.toFixed(1)}%)`, value: ausfallProzent },
     { label: 'Verbleibendes Netto aus Arbeit (Ist-Netto)', value: istNetto },
     { label: `Kurzarbeitergeld (KuG ${hatKinder ? '67% mit Kind' : '60% ohne Kind'})`, value: kugBetrag, isDeduction: false },
     { label: 'Gesamtes Nettoeinkommen während Kurzarbeit', value: gesamtEinkommen, isFinal: true },
@@ -351,7 +533,9 @@ function calculateKurzarbeitergeld(inputs: TaxInput): TaxResult {
     hatKinder
       ? 'Erhöhter Leistungssatz 67%: Es ist mindestens ein Kind auf der Lohnsteuerkarte eingetragen.'
       : 'Standard-Leistungssatz 60%: Kein Kind auf der Lohnsteuerkarte eingetragen.',
-    'Kurzarbeitergeld ist steuerfrei, unterliegt jedoch dem Progressionsvorbehalt (§ 32b EStG). Im Folgejahr besteht daher die Pflicht zur Abgabe einer Einkommensteuererklärung.',
+    ausfallRatio === 0
+      ? 'Kein Arbeitsausfall (hours_worked = hours_contracted) — Kurzarbeitergeld beträgt 0 €.'
+      : 'Kurzarbeitergeld ist steuerfrei, unterliegt jedoch dem Progressionsvorbehalt (§ 32b EStG). Im Folgejahr besteht daher die Pflicht zur Abgabe einer Einkommensteuererklärung.',
   ];
 
   return {
