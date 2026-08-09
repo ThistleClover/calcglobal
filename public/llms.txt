@@ -1,0 +1,53 @@
+# CalcGlobal
+
+> Free, accurate tax and financial calculators for US, UK, France, Germany, and Australia. Verified against 2026 official authority rates (IRS, HMRC, URSSAF, Finanzamt, ATO).
+
+## About
+CalcGlobal provides professional-grade tax calculators for 5 countries. Every formula is sourced directly from official government tax authority documents and updated annually.
+
+## Available Calculators
+
+### United States (/us)
+- 1099 Self-Employment & Quarterly Estimated Tax Calculator (/us/us-1099-self-employment-tax-calculator)
+- S-Corp Election vs LLC Tax Savings Calculator (/us/s-corp-vs-llc-tax-savings-calculator)
+- W-2 Gross-to-Net Paycheck Tax & Take-Home Calculator (/us/w2-salary-paycheck-take-home-calculator)
+- Home Sale Net Proceeds & Section 121 Capital Gains Tax Calculator (/us/us-home-sale-net-proceeds-capital-gains-calculator)
+- Small Business Commercial Lease & Break-Even Revenue Calculator (/us/us-small-business-lease-break-even-calculator)
+
+### United Kingdom (/uk)
+- UK IR35 Status & Take-Home Pay Calculator (Inside vs Outside IR35) (/uk/ir35-inside-outside-calculator)
+- UK Stamp Duty Land Tax (SDLT / LBTT / LTT) Property Calculator (/uk/sdlt-lbtt-ltt-stamp-duty-calculator)
+- UK Take-Home Salary & Tax Calculator (Income Tax, NI & Pension) (/uk/uk-gross-net-salary-pension-calculator)
+- UK Limited Company Director Salary vs Dividend Tax Optimizer (/uk/uk-limited-company-director-salary-dividend-calculator)
+- UK Statutory Redundancy Pay & Settlement Agreement Tax Calculator (/uk/uk-statutory-redundancy-settlement-calculator)
+
+### France (/fr)
+- Simulateur de Cotisations Auto-Entrepreneur (URSSAF & Net) (/fr/urssaf-cotisations-micro-entreprise)
+- Simulateur de Frais de Notaire & Droits de Mutation Immobilier (/fr/frais-de-notaire-immobilier)
+- Calculateur Salaire Brut en Net & Coût Employeur (Cadre / Non-Cadre) (/fr/calculateur-salaire-brut-net-cout-employeur)
+- Simulateur d'Indemnité de Rupture Conventionnelle & Licenciement (/fr/indemnite-rupture-conventionnelle-licenciement)
+- Simulateur de Plus-Value Immobilière & Abattements de Détention (/fr/calculateur-plus-value-immobiliere)
+
+### Germany (/de)
+- Brutto-Netto-Rechner 2026 (Lohn- & Gehaltsrechner Deutschland) (/de/brutto-netto-rechner-deutschland)
+- Gewerbesteuer-Rechner 2026 (Hebesatz & ESt-Anrechnung § 35 EStG) (/de/gewerbesteuer-rechner)
+- Umsatzsteuer-Rechner & Kleinunternehmerregelung 2026 (§ 19 UStG) (/de/umsatzsteuer-rechner)
+- Freiberufler Einkommensteuer-Rechner 2026 (EÜR & Abgaben) (/de/freiberufler-einkommensteuer)
+- Kurzarbeitergeld-Rechner 2026 (KuG & Nettoentgeltausfall) (/de/kurzarbeitergeld-rechner)
+
+### Australia (/au)
+- Australia Income Tax Calculator 2026/27 (ATO PAYG, Medicare & HECS) (/au/ato-payg-income-tax-calculator)
+- Australia Sole Trader Tax Calculator 2026/27 (Net Profit, Deductions & SBITO) (/au/sole-trader-tax-calculator)
+- Australia Superannuation & Retirement Growth Calculator 2026 (/au/superannuation-calculator)
+- Australia Property Stamp Duty Calculator 2026 (NSW, VIC, QLD, WA, SA, TAS, ACT, NT) (/au/stamp-duty-calculator)
+- Australia HECS/HELP Loan Repayment & Indexation Calculator 2026/27 (/au/hecs-repayment-calculator)
+
+## Data Sources
+- IRS (Internal Revenue Service) — irs.gov
+- HMRC (His Majesty's Revenue and Customs) — gov.uk/hmrc
+- URSSAF / DGFiP — urssaf.fr, impots.gouv.fr
+- Bundesfinanzministerium (BMF) — bundesfinanzministerium.de  
+- Australian Taxation Office (ATO) — ato.gov.au
+
+## Contact
+https://calcglobal.org/contact
