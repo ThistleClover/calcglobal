@@ -154,11 +154,11 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
 }
 
 function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
-  const profit = safeVal(inputs.net_profit ?? inputs.net_business_profit);
+  const profit = safeVal(inputs.net_profit || inputs.net_business_profit);
   const salaryInput = safeVal(inputs.reasonable_salary);
   const w2Salary = Math.min(profit, salaryInput);
   const filingStatus = String(inputs.filing_status || 'single');
-  const accountingCost = safeVal(inputs.annual_compliance_cost ?? 3000);
+  const accountingCost = safeVal(inputs.annual_compliance_cost || 3000);
 
   const distributions = profit - w2Salary;
 
@@ -213,10 +213,10 @@ function calculateSCorpVsLLC(inputs: TaxInput): TaxResult {
 }
 
 function calculateW2Salary(inputs: TaxInput): TaxResult {
-  const grossAnnual = safeVal(inputs.gross_annual ?? inputs.gross_salary);
+  const grossAnnual = safeVal(inputs.gross_annual || inputs.gross_salary);
   const filingStatus = String(inputs.filing_status || 'single');
   const state = String(inputs.state || 'OTHER');
-  const pct401k = safeVal(inputs['401k_contribution_pct'] ?? inputs.pretax_401k_pct, 0, 100);
+  const pct401k = safeVal(inputs['401k_contribution_pct'] || inputs.pretax_401k_pct, 0, 100);
   const payFrequency = String(inputs.pay_frequency || 'biweekly');
 
   const payPeriodMap: Record<string, { count: number; name: string }> = {
@@ -294,12 +294,12 @@ function calculateW2Salary(inputs: TaxInput): TaxResult {
 }
 
 function calculateHomeSale(inputs: TaxInput): TaxResult {
-  const salePrice = safeVal(inputs.sale_price ?? inputs.selling_price);
+  const salePrice = safeVal(inputs.sale_price || inputs.selling_price);
   const purchasePrice = safeVal(inputs.original_purchase_price);
-  const yearsOwned = safeVal(inputs.years_owned ?? 2);
+  const yearsOwned = safeVal(inputs.years_owned || 2);
   const filingStatus = String(inputs.filing_status || 'single');
-  const closingCostsPct = safeVal(inputs.closing_costs_pct ?? inputs.realtor_commission_pct ?? 8, 0, 100) / 100;
-  const improvementsCost = safeVal(inputs.improvements_cost ?? inputs.capital_improvements);
+  const closingCostsPct = safeVal(inputs.closing_costs_pct || inputs.realtor_commission_pct || 8, 0, 100) / 100;
+  const improvementsCost = safeVal(inputs.improvements_cost || inputs.capital_improvements);
 
   const closingCosts = salePrice * closingCostsPct;
   const netSellingProceeds = salePrice - closingCosts;
@@ -372,11 +372,11 @@ function calculateHomeSale(inputs: TaxInput): TaxResult {
 function calculateLeaseBreakEven(inputs: TaxInput): TaxResult {
   const monthlyRent = safeVal(inputs.monthly_rent);
   const monthlyRevenue = safeVal(inputs.monthly_revenue);
-  const rawMargin = inputs.gross_margin_pct !== undefined ? safeVal(inputs.gross_margin_pct, 0, 100) : undefined;
+  const rawMargin = inputs.gross_margin_pct !== undefined && inputs.gross_margin_pct !== null && inputs.gross_margin_pct !== '' ? safeVal(inputs.gross_margin_pct, 0, 100) : undefined;
   const defaultCogs = rawMargin !== undefined ? 100 - rawMargin : 30;
-  const cogsPct = safeVal(inputs.cogs_pct ?? defaultCogs, 0, 99.9);
-  const otherExpenses = safeVal(inputs.other_monthly_expenses ?? inputs.other_fixed_monthly_costs);
-  const stateTaxRate = safeVal(inputs.state_tax_rate ?? 5, 0, 100) / 100;
+  const cogsPct = safeVal(inputs.cogs_pct || defaultCogs, 0, 99.9);
+  const otherExpenses = safeVal(inputs.other_monthly_expenses || inputs.other_fixed_monthly_costs);
+  const stateTaxRate = safeVal(inputs.state_tax_rate || 5, 0, 100) / 100;
 
   const cogsRate = cogsPct / 100;
   const marginRate = 1 - cogsRate;
