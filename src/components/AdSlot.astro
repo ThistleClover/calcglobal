@@ -1,4 +1,6 @@
 ---
+import AdFallback from './AdFallback.astro';
+
 interface Props {
   variant?: 'leaderboard' | 'rectangle' | 'in-article';
   slotId?: string;
@@ -30,40 +32,44 @@ if (variant === 'leaderboard') {
   adLayout = 'in-article';
   minHeightClass = 'min-h-[120px]';
 }
+
+const uniqueId = Math.random().toString(36).substring(7);
 ---
 
 {pageIntent !== 'high' && (
-  <div class={`adsense-wrapper flex justify-center w-full ${minHeightClass} ${className}`}>
-    <ins class="adsbygoogle w-full"
-         style="display:block; text-align:center;"
-         data-ad-client={PUBLISHER_ID}
-         data-ad-slot={slotId}
-         data-ad-format={adFormat}
-         {...(adLayout ? { 'data-ad-layout': adLayout } : {})}
-         data-full-width-responsive="true"></ins>
-    <script is:inline>
-      // Initialize the ad slot safely
-      (function() {
-        try {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-          console.warn('AdSense blocked or failed to load');
-        }
-      })();
-    </script>
+  <div id={`ad-container-${uniqueId}`} class={`ad-container w-full ${className}`}>
+    <div id={`fallback-${uniqueId}`} class="hidden w-full">
+      <AdFallback />
+    </div>
+    <div id={`adsense-${uniqueId}`} class={`adsense-wrapper flex justify-center w-full ${minHeightClass}`}>
+      <ins class="adsbygoogle w-full"
+           style="display:block; text-align:center;"
+           data-ad-client={PUBLISHER_ID}
+           data-ad-slot={slotId}
+           data-ad-format={adFormat}
+           {...(adLayout ? { 'data-ad-layout': adLayout } : {})}
+           data-full-width-responsive="true"></ins>
+      <script is:inline define:vars={{ uid: uniqueId }}>
+        (function() {
+          try {
+            (window.adsbygoogle = window.adsbygoogle || []).push({});
+          } catch (e) {}
+          
+          // Anti-Adblock / Fallback trigger
+          setTimeout(() => {
+            const ins = document.querySelector(`#adsense-${uid} ins`);
+            // If the ad slot has 0 height or is hidden, AdBlock is likely active
+            if (!ins || ins.clientHeight === 0 || window.getComputedStyle(ins).display === 'none') {
+              const adsenseWrapper = document.getElementById(`adsense-${uid}`);
+              const fallbackWrapper = document.getElementById(`fallback-${uid}`);
+              if (adsenseWrapper && fallbackWrapper) {
+                adsenseWrapper.style.display = 'none';
+                fallbackWrapper.classList.remove('hidden');
+              }
+            }
+          }, 1500); // 1.5s delay to let Google render the iframe
+        })();
+      </script>
+    </div>
   </div>
 )}
-
-<style>
-  /* Fallback styling if ads are blocked so we don't leave an ugly blank space */
-  .adsense-wrapper {
-    overflow: hidden;
-  }
-  .adsense-wrapper:empty,
-  .adsense-wrapper ins:empty {
-    display: none !important;
-    min-height: 0 !important;
-    height: 0 !important;
-    margin: 0 !important;
-  }
-</style>

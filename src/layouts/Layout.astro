@@ -39,13 +39,24 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
     <!-- Skimlinks / Sovrn Commerce Global Monetization Tag -->
     <script type="text/javascript" src={`https://s.skimresources.com/js/${skimlinksId}.skimlinks.js`} async is:inline></script>
 
-    <!-- Google Analytics 4 (GA4 Dual Tracking) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TW23Q86KZ" is:inline></script>
+    <!-- Google Consent Mode v2 Default Settings -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      
+      // Default to denied for EEA compliance. Google CMP updates this automatically on consent.
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
+    </script>
 
+    <!-- Google Analytics 4 (GA4 Dual Tracking) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TW23Q86KZ" is:inline></script>
+    <script is:inline>
+      gtag('js', new Date());
       gtag('config', 'G-5TW23Q86KZ');
       gtag('config', 'G-RQCKV4XLF1');
     </script>
