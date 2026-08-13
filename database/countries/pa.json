@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Panama revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Banco General",
-          "type": "software",
-          "description": "Top financial tool in Panama"
-        },
-        {
-          "name": "Alegra Panamá",
-          "type": "software",
-          "description": "Top financial tool in Panama"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

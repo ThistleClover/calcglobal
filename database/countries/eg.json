@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Egypt revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Fawry",
-          "type": "software",
-          "description": "Top financial tool in Egypt"
-        },
-        {
-          "name": "CIB Egypt",
-          "type": "software",
-          "description": "Top financial tool in Egypt"
-        },
-        {
-          "name": "QNB Alahli",
-          "type": "software",
-          "description": "Top financial tool in Egypt"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

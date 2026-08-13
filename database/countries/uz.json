@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Uzbekistan revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Payme",
-          "type": "software",
-          "description": "Top financial tool in Uzbekistan"
-        },
-        {
-          "name": "Click.uz",
-          "type": "software",
-          "description": "Top financial tool in Uzbekistan"
-        },
-        {
-          "name": "Kapitalbank",
-          "type": "software",
-          "description": "Top financial tool in Uzbekistan"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

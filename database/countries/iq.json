@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Iraq revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Trade Bank of Iraq",
-          "type": "software",
-          "description": "Top financial tool in Iraq"
-        },
-        {
-          "name": "ZainCash",
-          "type": "software",
-          "description": "Top financial tool in Iraq"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

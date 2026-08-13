@@ -50,23 +50,7 @@
         }
       ],
       "formula_explanation": "Calcul de la paie en Algérie selon le Code des Impôts Directs (CIDTA) et la réglementation CNAS : 1) Cotisation salariale Sécurité Sociale (CNAS) = 9% du Salaire Brut de Poste. Cotisation patronale CNAS = 26% du Salaire Brut. 2) Base Imposable IRG = Salaire Brut - Cotisation CNAS (9%) - Indemnités exonérées (ex: frais de transport et panier dans les limites légales). 3) Calcul de l'IRG Brut selon le barème progressif mensuel (LF 2022/2026) : 0% jusqu'à 20 000 DA ; 23% de 20 001 à 40 000 DA ; 27% de 40 001 à 80 000 DA ; 30% de 80 001 à 160 000 DA ; 33% de 160 001 à 320 000 DA ; 35% au-delà de 320 000 DA. 4) Premier Abattement IRG = 40% de l'IRG brut calculé (avec un plancher de 1 000 DA et un plafond de 1 500 DA par mois). 5) Règle d'exonération et formule de lissage : Si la base imposable est <= 30 000 DA, l'IRG est égal à 0 DA. Si la base imposable se situe entre 30 001 DA et 35 000 DA, l'IRG final = [IRG après 1er abattement] * (137/51) - (27 925/8). 6) Salaire Net à payer = Salaire Brut - Cotisation CNAS (9%) - IRG final.",
-      "affiliate_targets": [
-        {
-          "name": "Almawarid / FlexiPaie / PC Paie",
-          "type": "software",
-          "description": "Logiciels de gestion de la paie et ressources humaines conformes au droit du travail algérien (Loi 90-11) et aux barèmes DGI."
-        },
-        {
-          "name": "Société Générale Algérie / BNP Paribas El Djazaïr / BNA",
-          "type": "neobank",
-          "description": "Services bancaires d'entreprise, ouverture de comptes professionnels et télé-virement de salaires."
-        },
-        {
-          "name": "CAAT Assurances / CASH Assurances / Alliance Assurances",
-          "type": "insurance",
-          "description": "Contrats d'assurance complémentaire santé, prévoyance groupe et assurance accidents du travail pour les salariés."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dz-auto-entrepreneur-tax",
@@ -125,23 +109,7 @@
         }
       ],
       "formula_explanation": "Calcul fiscal et social sous le statut d'Auto-Entrepreneur en Algérie (Loi 22-23 et Décrets d'application) : 1) Seuil légal du Chiffre d'Affaires (CA) : Le statut est réservé aux activités individuelles dont le CA annuel ne dépasse pas 5 000 000 DA (500 millions de centimes). Au-delà, passage obligatoire au régime réel ou IFU classique. 2) Impôt Forfaitaire Unique (IFU) : Application du taux très réduit de 0,5% sur le CA annuel global, sous réserve du paiement du minimum fiscal légal de 10 000 DA par an. Impôt IFU = Max(10 000 DA, CA * 0,5%). 3) Cotisation Sociale CASNOS (Caisse Nationale de Sécurité Sociale des Travailleurs Non-Salariés) : Cotisation au taux de 15% calculée sur une assiette spécifique avec un forfait minimal incitatif fixé à environ 24 000 DA par an pour la première tranche des auto-entrepreneurs. 4) Revenu Net Disponible = Chiffre d'Affaires Annuel - Impôt IFU - Cotisation CASNOS.",
-      "affiliate_targets": [
-        {
-          "name": "Payoneer / Paysera / RedotPay",
-          "type": "neobank",
-          "description": "Solutions de comptes internationaux et cartes bancaires Mastercard/Visa pour le rapatriement des devises des freelances algériens."
-        },
-        {
-          "name": "PC Compta / Odoo Algérie / QuickBooks",
-          "type": "software",
-          "description": "Logiciels de facturation électronique, devis et gestion de trésorerie simplifiée pour auto-entrepreneurs."
-        },
-        {
-          "name": "GAM Takaful / Salama Assurances Algérie",
-          "type": "insurance",
-          "description": "Assurance Responsabilité Civile Professionnelle (RC Pro) et couverture complémentaire santé Takaful pour indépendants."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dz-real-estate-notary-fees",
@@ -206,23 +174,7 @@
         }
       ],
       "formula_explanation": "Calcul détaillé des frais de mutation immobilière en Algérie : 1) Droits d'Enregistrement (Code de l'Enregistrement) : 5% du prix de vente stipulé dans l'acte notarié (ou de la valeur vénale retenue par le service du Domaine). 2) Taxe de Publicité Foncière (TPF / Conservation Foncière) : 1% du prix du bien (minimum de 500 DA). 3) Honoraires du Notaire (Barème légal dégressif - Décret exécutif n° 08-243) : - Tranche <= 500 000 DA : 3% (avec un minimum de 3 000 DA) ; - Tranche de 500 001 à 1 000 000 DA : 2% ; - Tranche de 1 000 001 à 5 000 000 DA : 1% ; - Tranche au-delà de 5 000 000 DA : 0,5%. 4) TVA sur honoraires de notaire : 19% appliqués sur le montant des honoraires HT. 5) Droits de timbre, droits d'actes et extraits cadastraux : forfait d'environ 3 000 DA à 5 000 DA. 6) Frais de Garantie Hypothécaire (en cas de crédit bancaire) : Taxe de publicité foncière sur l'inscription d'hypothèque (0,5% du montant du prêt) + honoraires notariés d'acte d'hypothèque.",
-      "affiliate_targets": [
-        {
-          "name": "CNEP-Banque / BNA / CPA / BDL",
-          "type": "neobank",
-          "description": "Crédits immobiliers, prêts à l'accession à la propriété et comptes d'épargne logement en Algérie."
-        },
-        {
-          "name": "Ouedkniss Immobilier / Lkeria.com",
-          "type": "software",
-          "description": "Plateformes d'annonces immobilières et d'estimations foncières sur le marché algérien."
-        },
-        {
-          "name": "SAA / CAAT / Alliance Assurances",
-          "type": "insurance",
-          "description": "Contrats d'assurance Multirisque Habitation (MRH) et assurance incendie/catastrophes naturelles (CAT-NAT obligatoire)."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dz-corporate-tax-ibs",
@@ -271,23 +223,7 @@
         }
       ],
       "formula_explanation": "Calcul de l'impôt sur les sociétés (IBS) et retenues à la source selon le Code des Impôts Directs (CIDTA) et les Lois de Finances 2024/2026 : 1) Taux d'imposition IBS selon le secteur : - 19% pour les activités de production de biens. - 23% pour les activités de bâtiment, travaux publics et hydraulique (BTPH), ainsi que les activités touristiques et hôtelières. - 26% pour les activités d'achat-revente et les prestations de services. 2) Impôt IBS Brut = Bénéfice Net Fiscal Imposable * Taux du secteur. 3) Régime des Acomptes Provisionnels : L'IBS est payé en 3 acomptes provisionnels (exigibles le 20 mars, 20 juin et 20 novembre), chacun égal à 30% de l'impôt de l'année précédente. 4) Taxe sur l'Activité Professionnelle (TAP) : Supprimée/Abolie pour l'ensemble des activités de production, BTPH et commerce (LF 2024). 5) Retenue à la Source sur Dividendes (IRG/VM - CIDTA art. 147) : Prélèvement libératoire de 15% sur les bénéfices distribués aux personnes physiques. Dividende Net perçu = Dividende Brut * (1 - 0,15).",
-      "affiliate_targets": [
-        {
-          "name": "PC Compta / DLG / Odoo Algérie",
-          "type": "software",
-          "description": "Logiciels de comptabilité d'entreprise et d'élaboration de la liasse fiscale conformes au Système Comptable Financier (SCF) algérien."
-        },
-        {
-          "name": "CPA / Banque de Développement Local (BDL) / BNA",
-          "type": "neobank",
-          "description": "Solutions bancaires d'entreprise, crédits d'investissement et financement des besoins de trésorerie."
-        },
-        {
-          "name": "KPMG Algérie / EY Algérie / Deloitte Algérie",
-          "type": "accounting",
-          "description": "Services d'expertise comptable, d'audit légal et d'assistance lors de contrôles fiscaux."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dz-islamic-mortgage-mourabaha",
@@ -336,23 +272,7 @@
         }
       ],
       "formula_explanation": "Calcul de mensualité et capacité d'emprunt pour financement immobilier (Mourabaha / Crédit classique) en Algérie : 1) Plafond du Taux d'Endettement (Réglementation Banque d'Algérie) : Mensualité maximale autorisée = 30% à 50% du Revenu Net Mensuel du ménage selon la tranche de revenu (ex: 30% pour revenus moyens, jusqu'à 50% pour revenus élevés). 2) Capital à Financer = Prix du Bien - Apport Personnel (Minimum 10% à 20% requis par la banque). 3) Calcul de la Mensualité (Mourabaha / Formule d'amortissement) : Mensualité = [Capital * i] / [1 - (1 + i)^(-n)] avec i = Taux de marge annuel / 12 / 100 et n = Nombre de mois (Durée * 12). 4) Coût total de la Marge Bénéficiaire = (Mensualité * n) - Capital financé. 5) Assurance Takaful / ADI Emprunteur : Environ 0,3% à 0,5% par an sur le capital financé (inclus dans la mensualité globale ou payable séparément).",
-      "affiliate_targets": [
-        {
-          "name": "Banque Al Baraka D'Algérie / CPA Guichet Islamique / BNA Finance Islamique",
-          "type": "neobank",
-          "description": "Établissements bancaires leaders de la finance islamique et des financements immobiliers conformes à la Sharia."
-        },
-        {
-          "name": "Lkeria.com / Ouedkniss Immobilier",
-          "type": "software",
-          "description": "Portails d'information immobilière, simulateurs de projets et petites annonces de biens immobiliers."
-        },
-        {
-          "name": "GAM Takaful / Salama Assurances Algérie",
-          "type": "insurance",
-          "description": "Compagnies d'assurance Takaful couvrant les contrats emprunteurs et la protection multirisque habitation."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

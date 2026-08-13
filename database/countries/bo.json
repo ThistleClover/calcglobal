@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bolivia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "SIN Bolivia",
-          "type": "software",
-          "description": "Top financial tool in Bolivia"
-        },
-        {
-          "name": "Banco Bisa",
-          "type": "software",
-          "description": "Top financial tool in Bolivia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

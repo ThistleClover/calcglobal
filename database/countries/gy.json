@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Guyana revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "GBTI",
-          "type": "software",
-          "description": "Top financial tool in Guyana"
-        },
-        {
-          "name": "Demerara Bank",
-          "type": "software",
-          "description": "Top financial tool in Guyana"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

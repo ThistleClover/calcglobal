@@ -64,28 +64,7 @@
         }
       ],
       "formula_explanation": "Employee Social Insurance (Sociální pojištění zaměstnance) = 7.1% of Gross Salary (6.5% pension + 0.6% sickness insurance introduced under Konsolidační balíček). Employee Health Insurance (Zdravotní pojištění zaměstnance) = 4.5% of Gross Salary. Tax Base (Základ daně) = Gross Salary rounded up to hundreds. Progressive Personal Income Tax (Daň z příjmů Fyzických Osob - DPFO): 15% rate on monthly tax base up to 36x monthly average wage threshold (~131,901 CZK/month), 23% rate on portion above threshold. Tax Credits (Slevy na dani): Basic taxpayer discount = 2,570 CZK/mo (30,840 CZK/yr); Disability 1st/2nd degree = 210 CZK/mo; 3rd degree = 420 CZK/mo; ZTP/P card = 1,345 CZK/mo; Spouse with annual income under 68,000 CZK caring for child under 3 years = 2,070 CZK/mo (4,140 CZK/mo if ZTP/P). Child Tax Relief (Daňové zvýhodnění na děti): 1st child = 1,267 CZK/mo, 2nd child = 1,860 CZK/mo, 3rd+ child = 2,320 CZK/mo. If tax liability after non-refundable discounts is lower than child credit, the excess becomes a tax bonus (daňový bonus) paid to the employee. Net Salary (Čistá mzda) = Gross Salary - Employee Social - Employee Health - Tax (or + Tax Bonus). Employer Costs (Náklady zaměstnavatele): Employer Social = 24.8% of Gross, Employer Health = 9.0% of Gross. Total Employer Cost = Gross Salary * 1.338.",
-      "affiliate_targets": [
-        {
-          "name": "Fakturoid",
-          "type": "software",
-          "description": "Popular Czech invoicing & accounting automation software for small businesses hiring staff."
-        },
-        {
-          "name": "Air Bank",
-          "type": "neobank",
-          "description": "Leading Czech modern retail bank offering zero-fee accounts with fast payroll deposits."
-        },
-        {
-          "name": "mBank Česká republika",
-          "type": "neobank",
-          "description": "Digital bank offering free current accounts and overdraft lines for salaried employees."
-        },
-        {
-          "name": "Generali Česká pojišťovna",
-          "type": "insurance",
-          "description": "Major Czech provider of supplementary commercial health and life insurance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kalkulacka-osvc-pausalni-dan-vs-skutecne-vydaje",
@@ -157,28 +136,7 @@
         }
       ],
       "formula_explanation": "Standard OSVČ Calculation: Tax Base (Základ daně) = Revenues - Expenses (capped by law: 80% capped at 1.6M expense, 60% capped at 1.2M expense, 50% capped at 1M expense, 40% capped at 800k expense). Income Tax = 15% on Tax Base up to 36x average monthly wage, 23% on excess, minus basic taxpayer discount (30,840 CZK/year). Social Insurance (Sociální pojištění OSVČ) = 29.2% of Social Assessment Base (Vyměřovací základ = 55% of Tax Base for main activity). Must respect annual minimum assessment base (~30% of average wage). Health Insurance (Zdravotní pojištění OSVČ) = 13.5% of Health Assessment Base (Vyměřovací základ = 50% of Tax Base). Must respect annual minimum assessment base (~50% of average wage). Flat Tax Regime (Paušální daň): Single monthly payment covering health insurance, minimum social insurance (+15%), and 100 CZK income tax. Band 1 (~7,498 CZK/month), Band 2 (~16,745 CZK/month), Band 3 (~27,139 CZK/month). No annual tax return or social/health overview required. Net Annual Income = Revenues - Taxes - Social Insurance - Health Insurance (or Revenues - 12 * Monthly Flat Tax).",
-      "affiliate_targets": [
-        {
-          "name": "iDoklad",
-          "type": "software",
-          "description": "Leading Czech invoicing and financial management application designed specifically for OSVČ."
-        },
-        {
-          "name": "Fakturoid",
-          "type": "software",
-          "description": "Automated invoicing, expense tracking, and tax overview generator for Czech freelancers."
-        },
-        {
-          "name": "Fio banka",
-          "type": "neobank",
-          "description": "Popular Czech bank offering completely free business accounts with transparent API access for OSVČ."
-        },
-        {
-          "name": "MONETA Money Bank",
-          "type": "neobank",
-          "description": "Top Czech business neobank offering instant digital business account creation for sole proprietors."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kalkulacka-dpp-dpc-zdaneni-odvody",
@@ -230,23 +188,7 @@
         }
       ],
       "formula_explanation": "DPP (Dohoda o provedení práce): Monthly threshold = 10,500 CZK per employer (or regulatory aggregate limit). Under threshold: No social insurance (0%) and no health insurance (0%) are deducted from employee or employer. If Tax Declaration signed, 15% advance tax minus 2,570 CZK taxpayer credit (often resulting in 0 CZK tax). If Tax Declaration NOT signed, 15% withholding tax (srážková daň) is deducted at source. Over threshold (>= 10,501 CZK): Subject to standard social (7.1% employee, 24.8% employer) and health insurance (4.5% employee, 9.0% employer) + 15% income tax with/without taxpayer discount. DPČ (Dohoda o pracovní činnosti): Monthly threshold = 4,000 CZK (rozhodný příjem). Under 4,000 CZK: No social/health insurance; 15% withholding tax (if declaration not signed) or advance tax with credit. From 4,000 CZK onwards: Standard social insurance (7.1% emp / 24.8% empor) and health insurance (4.5% emp / 9.0% empor) apply. Net Payout = Gross Remuneration - Employee Social - Employee Health - Income Tax.",
-      "affiliate_targets": [
-        {
-          "name": "Useme",
-          "type": "software",
-          "description": "Service allowing Czech freelancers and agreement workers to invoice clients legally without complex bureaucracy."
-        },
-        {
-          "name": "mBank Česká republika",
-          "type": "neobank",
-          "description": "Zero-maintenance account for part-time workers, students, and DPP/DPČ contractors."
-        },
-        {
-          "name": "Dostupný Advokát",
-          "type": "legal",
-          "description": "Czech online legal service providing compliant employment and DPP/DPČ contract templates."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kalkulacka-hypoteky-a-dane-z-pronajmu",
@@ -310,28 +252,7 @@
         }
       ],
       "formula_explanation": "Mortgage Annuity Calculation: Loan Principal P = Property Price - Down Payment. Monthly interest rate r = Annual Rate / 12 / 100. Total payment periods n = Loan Duration Years * 12. Monthly Repayment A = P * [r(1+r)^n] / [(1+r)^n - 1]. Total Paid = A * n. Mortgage Interest Deductibility: Interest paid on mortgage for primary residence is tax-deductible up to 150,000 CZK/year tax base reduction. Rental Income Tax (§ 9 ZDP): Annual Gross Rental Income = Monthly Rent * 12. Deductible Expenses = 30% of Gross Rental (capped at 300,000 CZK) OR Actual Expenses (mortgage interest, property depreciation/odpisy, insurance, maintenance). Tax Base = Gross Rental Income - Expenses. Income Tax = 15% on Tax Base (or 23% if total income exceeds 36x average wage threshold). Real Estate Property Tax (Daň z nemovitých věcí): Annual local land/building tax based on floor area and municipal coefficient. Net Rental Yield (%) = [(Annual Gross Rent - Annual Expenses - Rental Tax - Property Tax) / Property Price] * 100.",
-      "affiliate_targets": [
-        {
-          "name": "Partners Banka",
-          "type": "neobank",
-          "description": "Czech advice-led neobank offering competitive mortgage rates and property financing solutions."
-        },
-        {
-          "name": "ePojisteni.cz",
-          "type": "software",
-          "description": "Leading Czech comparison platform for property insurance, home loans, and household coverage."
-        },
-        {
-          "name": "Raiffeisenbank ČR",
-          "type": "neobank",
-          "description": "Major Czech bank offering mortgage refinancing, property evaluation, and tailored real estate loans."
-        },
-        {
-          "name": "Dostupný Advokát",
-          "type": "legal",
-          "description": "Specialized Czech online legal firm providing real estate purchase contract review and escrow (úschova) services."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kalkulacka-sro-zdaneni-zisku-a-dividend",
@@ -374,28 +295,7 @@
         }
       ],
       "formula_explanation": "Corporate Tax Base (Základ daně s.r.o.) = Revenues - Operating Costs - Director Remuneration & Employer Contributions. Corporate Income Tax (Daň z příjmů právnických osob - DPPO) = 21% of Corporate Tax Base (rate updated under Konsolidační balíček). Net Corporate Profit after DPPO = Tax Base * (1 - 0.21). Dividend Distribution (Podíl na zisku): Distributed Amount = Net Profit * (Distribution Percentage / 100). Dividend Withholding Tax (Srážková daň z dividend) = 15% of Distributed Amount (for Czech tax resident individuals). Net Received Dividend = Distributed Amount * 0.85. Combined Effective Tax Rate on Distributed Profit = 21% DPPO + 15% withholding on remaining 79% = 32.85%. Alternative Director Remuneration (Odměna jednatele): Subject to social insurance (7.1% emp / 24.8% empor), health insurance (4.5% emp / 9.0% empor), and personal income tax (15%/23%), but fully deductible from s.r.o. corporate tax base. Calculator compares total net funds in owner's personal pocket from Dividend path vs Director Fee path vs OSVČ flat tax/rate equivalent.",
-      "affiliate_targets": [
-        {
-          "name": "ZaložSiSRO.cz",
-          "type": "legal",
-          "description": "Leading Czech online portal for fast, hassle-free s.r.o. company formation and notary coordination."
-        },
-        {
-          "name": "Fakturoid",
-          "type": "software",
-          "description": "Automated Czech accounting & invoicing tool with s.r.o. tax support and VAT (DPH) reports."
-        },
-        {
-          "name": "Raiffeisenbank ČR Business",
-          "type": "neobank",
-          "description": "Business account tailored for Czech s.r.o. companies with accounting software integrations."
-        },
-        {
-          "name": "ucto.cz",
-          "type": "accounting",
-          "description": "Professional Czech online accounting and tax advisory service for small s.r.o. businesses."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

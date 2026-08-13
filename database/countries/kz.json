@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Kazakhstan revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Kaspi.kz",
-          "type": "software",
-          "description": "Top financial tool in Kazakhstan"
-        },
-        {
-          "name": "Halyk Bank",
-          "type": "software",
-          "description": "Top financial tool in Kazakhstan"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

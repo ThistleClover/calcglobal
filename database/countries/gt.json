@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Guatemala revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "SAT Guatemala",
-          "type": "software",
-          "description": "Top financial tool in Guatemala"
-        },
-        {
-          "name": "Bi en Línea",
-          "type": "software",
-          "description": "Top financial tool in Guatemala"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

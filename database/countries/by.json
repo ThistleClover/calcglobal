@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Belarus revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Alfa-Bank BY",
-          "type": "software",
-          "description": "Top financial tool in Belarus"
-        },
-        {
-          "name": "Priorbank",
-          "type": "software",
-          "description": "Top financial tool in Belarus"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

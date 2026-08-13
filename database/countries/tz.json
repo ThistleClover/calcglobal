@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Tanzania revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "CRDB Bank",
-          "type": "software",
-          "description": "Top financial tool in Tanzania"
-        },
-        {
-          "name": "Vodacom M-Pesa",
-          "type": "software",
-          "description": "Top financial tool in Tanzania"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

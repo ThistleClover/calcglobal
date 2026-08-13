@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Suriname revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "DSB Suriname",
-          "type": "software",
-          "description": "Top financial tool in Suriname"
-        },
-        {
-          "name": "Hakrinbank",
-          "type": "software",
-          "description": "Top financial tool in Suriname"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on New Zealand revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Xero NZ",
-          "type": "software",
-          "description": "Top financial tool in New Zealand"
-        },
-        {
-          "name": "ANZ NZ",
-          "type": "software",
-          "description": "Top financial tool in New Zealand"
-        },
-        {
-          "name": "TaxPay",
-          "type": "software",
-          "description": "Top financial tool in New Zealand"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

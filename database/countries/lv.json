@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Latvia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Swedbank LV",
-          "type": "software",
-          "description": "Top financial tool in Latvia"
-        },
-        {
-          "name": "Citadele",
-          "type": "software",
-          "description": "Top financial tool in Latvia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Honduras revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Ficohsa",
-          "type": "software",
-          "description": "Top financial tool in Honduras"
-        },
-        {
-          "name": "Bac Honduras",
-          "type": "software",
-          "description": "Top financial tool in Honduras"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

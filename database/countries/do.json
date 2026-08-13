@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Dominican Republic revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "DGII",
-          "type": "software",
-          "description": "Top financial tool in Dominican Republic"
-        },
-        {
-          "name": "Banreservas",
-          "type": "software",
-          "description": "Top financial tool in Dominican Republic"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

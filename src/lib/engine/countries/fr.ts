@@ -463,7 +463,182 @@ export function calculate(inputs: TaxInput): TaxResult {
     };
   }
 
+  // --- 6. CALCULATEUR SASU (IMPÔTS, COTISATIONS ASSIMILÉ SALARIÉ & DIVIDENDES) ---
+  function calculateSASU(inps: TaxInput): TaxResult {
+    const caOrProfit = Math.max(0, parseFloat(String(inps.gross_revenue_or_profit || inps.chiffre_affaires || 0)) || 0);
+    const expenses = Math.max(0, parseFloat(String(inps.other_expenses || inps.charges_exploitation || 0)) || 0);
+    const remBrute = Math.max(0, parseFloat(String(inps.director_remuneration || inps.remuneration_brute || 0)) || 0);
+    const taxRegime = String(inps.tax_regime || 'is').toLowerCase();
+    const distPct = Math.min(100, Math.max(0, parseFloat(String(inps.distribution_share || 100)) || 0)) / 100;
+
+    // Statut Président SASU: Assimilé Salarié URSSAF (~65% de cotisations sur le brut)
+    const cotisSociales = remBrute * 0.65;
+    const remNetteAvantImpot = Math.max(0, remBrute - (remBrute * 0.22));
+    const totalSalaryCompanyCost = remBrute + (remBrute * 0.43);
+
+    const profitBeforeTax = Math.max(0, caOrProfit - expenses - totalSalaryCompanyCost);
+
+    let isTotal = 0;
+    let netDividends = 0;
+    let pfuDividends = 0;
+    let totalDividendsGross = 0;
+    let irSurBenefice = 0;
+
+    if (taxRegime === 'is') {
+      const isTranche15 = Math.min(profitBeforeTax, 42500) * 0.15;
+      const isTranche25 = Math.max(0, profitBeforeTax - 42500) * 0.25;
+      isTotal = isTranche15 + isTranche25;
+
+      const retainedProfit = Math.max(0, profitBeforeTax - isTotal);
+      totalDividendsGross = retainedProfit * distPct;
+      pfuDividends = totalDividendsGross * 0.30;
+      netDividends = Math.max(0, totalDividendsGross - pfuDividends);
+    } else {
+      irSurBenefice = applyFrenchIR(profitBeforeTax);
+      totalDividendsGross = Math.max(0, profitBeforeTax - irSurBenefice) * distPct;
+      netDividends = totalDividendsGross;
+    }
+
+    const netTotalPerceived = remNetteAvantImpot + netDividends;
+    const totalTaxAndCharges = cotisSociales + isTotal + pfuDividends + irSurBenefice;
+    const effectiveRate = caOrProfit > 0 ? totalTaxAndCharges / caOrProfit : 0;
+
+    const breakdown = [
+      { label: `Chiffre d'affaires HT / Bénéfice brut`, value: caOrProfit },
+      ...(expenses > 0 ? [{ label: `Frais et charges d'exploitation`, value: expenses, isDeduction: true }] : []),
+      { label: `Rémunération brute du Président SASU`, value: remBrute },
+      { label: `Cotisations sociales URSSAF assimilé salarié (~65% du brut)`, value: cotisSociales, isDeduction: true },
+      { label: `Rémunération nette perçue par le Président`, value: remNetteAvantImpot, isTotal: true },
+      { label: `Bénéfice imposable de la SASU`, value: profitBeforeTax, isTotal: true },
+      ...(taxRegime === 'is' ? [
+        { label: `Impôt sur les Sociétés (IS 15% / 25%)`, value: isTotal, isDeduction: true },
+        { label: `Dividendes bruts distribués (${(distPct * 100).toFixed(0)}%)`, value: totalDividendsGross },
+        { label: `Prélèvement Forfaitaire Unique (Flat Tax PFU 30%)`, value: pfuDividends, isDeduction: true },
+        { label: `Dividendes nets perçus`, value: netDividends, isTotal: true },
+      ] : [
+        { label: `Impôt sur le Revenu (IR) sur le bénéfice`, value: irSurBenefice, isDeduction: true },
+        { label: `Bénéfice net perçu après IR`, value: netDividends, isTotal: true },
+      ]),
+      { label: `Revenu net global perçu (Salaire Net + Dividendes Nets)`, value: netTotalPerceived, isFinal: true },
+    ];
+
+    const insights = [
+      `En SASU, le président assimilé salarié bénéficie de la même protection sociale qu'un salarié (hors Pôle Emploi).`,
+      taxRegime === 'is'
+        ? `Les dividendes en SASU à l'IS ne supportent AUCUNE cotisation URSSAF, uniquement la Flat Tax de 30% (PFU).`
+        : `En option IR, le bénéfice de la SASU est imposé au barème progressif sans passer par l'IS ni le PFU.`
+    ];
+
+    return {
+      grossIncome: caOrProfit,
+      netIncome: netTotalPerceived,
+      totalTax: totalTaxAndCharges,
+      effectiveRate,
+      breakdown,
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: insights,
+    };
+  }
+
+  // --- 7. CALCULATEUR EURL (IMPÔTS, COTISATIONS TNS & DIVIDENDES) ---
+  function calculateEURL(inps: TaxInput): TaxResult {
+    const caOrProfit = Math.max(0, parseFloat(String(inps.gross_revenue_or_profit || inps.chiffre_affaires || 0)) || 0);
+    const expenses = Math.max(0, parseFloat(String(inps.other_expenses || inps.charges_exploitation || 0)) || 0);
+    const remNette = Math.max(0, parseFloat(String(inps.director_remuneration || inps.remuneration_nette || 0)) || 0);
+    const capital = Math.max(0, parseFloat(String(inps.capital_social || 1000)) || 1000);
+    const taxRegime = String(inps.tax_regime || 'is').toLowerCase();
+    const distPct = Math.min(100, Math.max(0, parseFloat(String(inps.distribution_share || 100)) || 0)) / 100;
+
+    // Statut Gérant EURL: Travailleur Non Salarié (TNS - SSI/URSSAF ~45% de la rémunération nette)
+    const cotisTNS = remNette * 0.45;
+    const companyCostSalary = remNette + cotisTNS;
+
+    const profitBeforeTax = Math.max(0, caOrProfit - expenses - companyCostSalary);
+
+    let isTotal = 0;
+    let netDividends = 0;
+    let pfuDividends = 0;
+    let divTnsCharges = 0;
+    let totalDividendsGross = 0;
+    let irSurBenefice = 0;
+    let capitalThreshold = capital * 0.10;
+
+    if (taxRegime === 'is') {
+      const is15 = Math.min(profitBeforeTax, 42500) * 0.15;
+      const is25 = Math.max(0, profitBeforeTax - 42500) * 0.25;
+      isTotal = is15 + is25;
+
+      const retainedProfit = Math.max(0, profitBeforeTax - isTotal);
+      totalDividendsGross = retainedProfit * distPct;
+
+      const divPfuPart = Math.min(totalDividendsGross, capitalThreshold);
+      const divExcessPart = Math.max(0, totalDividendsGross - capitalThreshold);
+
+      pfuDividends = divPfuPart * 0.30;
+      divTnsCharges = divExcessPart * 0.45;
+      const excessAfterTns = Math.max(0, divExcessPart - divTnsCharges);
+      const pfuExcess = excessAfterTns * 0.30;
+
+      const totalDivTaxes = pfuDividends + divTnsCharges + pfuExcess;
+      netDividends = Math.max(0, totalDividendsGross - totalDivTaxes);
+      pfuDividends += pfuExcess;
+    } else {
+      irSurBenefice = applyFrenchIR(profitBeforeTax);
+      totalDividendsGross = Math.max(0, profitBeforeTax - irSurBenefice) * distPct;
+      netDividends = totalDividendsGross;
+    }
+
+    const netTotalPerceived = remNette + netDividends;
+    const totalTaxAndCharges = cotisTNS + isTotal + pfuDividends + divTnsCharges + irSurBenefice;
+    const effectiveRate = caOrProfit > 0 ? totalTaxAndCharges / caOrProfit : 0;
+
+    const breakdown = [
+      { label: `Chiffre d'affaires HT / Bénéfice brut`, value: caOrProfit },
+      ...(expenses > 0 ? [{ label: `Frais d'exploitation`, value: expenses, isDeduction: true }] : []),
+      { label: `Rémunération nette du Gérant EURL`, value: remNette },
+      { label: `Cotisations sociales TNS (URSSAF / SSI ~45% de la rémunération nette)`, value: cotisTNS, isDeduction: true },
+      { label: `Bénéfice imposable de l'EURL`, value: profitBeforeTax, isTotal: true },
+      ...(taxRegime === 'is' ? [
+        { label: `Impôt sur les Sociétés (IS 15% / 25%)`, value: isTotal, isDeduction: true },
+        { label: `Dividendes bruts distribués (${(distPct * 100).toFixed(0)}%)`, value: totalDividendsGross },
+        { label: `Seuil de 10% du capital social (${capitalThreshold.toLocaleString('fr-FR')} €)`, value: capitalThreshold },
+        ...(divTnsCharges > 0 ? [{ label: `Cotisations TNS 45% sur fraction de dividendes > 10% du capital`, value: divTnsCharges, isDeduction: true }] : []),
+        { label: `Prélèvement Forfaitaire Unique (PFU 30%)`, value: pfuDividends, isDeduction: true },
+        { label: `Dividendes nets perçus`, value: netDividends, isTotal: true },
+      ] : [
+        { label: `Impôt sur le Revenu (IR) sur le bénéfice`, value: irSurBenefice, isDeduction: true },
+        { label: `Bénéfice net perçu après IR`, value: netDividends, isTotal: true },
+      ]),
+      { label: `Revenu net global perçu (Rémunération Nette + Dividendes Nets)`, value: netTotalPerceived, isFinal: true },
+    ];
+
+    const insights = [
+      `En EURL, le gérant a le statut TNS avec des charges sociales (~45%) plus légères qu'en SASU (~65%-80%).`,
+      taxRegime === 'is' && divTnsCharges > 0
+        ? `Attention : la fraction de dividendes au-delà de 10% du capital (${capitalThreshold.toLocaleString('fr-FR')} €) est soumise aux cotisations TNS 45%.`
+        : `Les dividendes jusqu'à 10% du capital sont taxés uniquement à la Flat Tax 30% (PFU).`
+    ];
+
+    return {
+      grossIncome: caOrProfit,
+      netIncome: netTotalPerceived,
+      totalTax: totalTaxAndCharges,
+      effectiveRate,
+      breakdown,
+      currency: 'EUR',
+      currencySymbol: '€',
+      additionalInsights: insights,
+    };
+  }
+
   switch (calcId) {
+    case 'sasu-impots-cotisations-dividendes':
+    case 'sasu-tax-calculator':
+      return calculateSASU(inputs);
+    case 'eurl-impots-cotisations-dividendes':
+    case 'eurl-tax-calculator':
+      return calculateEURL(inputs);
     case 'frais-de-notaire-immobilier':
       return calculateNotaryFees(inputs);
     case 'calculateur-salaire-brut-net-cout-employeur':

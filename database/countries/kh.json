@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Cambodia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "ABA Bank",
-          "type": "software",
-          "description": "Top financial tool in Cambodia"
-        },
-        {
-          "name": "Wing Bank",
-          "type": "software",
-          "description": "Top financial tool in Cambodia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

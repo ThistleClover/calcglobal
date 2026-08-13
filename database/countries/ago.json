@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Angola revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Banco BAI",
-          "type": "software",
-          "description": "Top financial tool in Angola"
-        },
-        {
-          "name": "BFA Angola",
-          "type": "software",
-          "description": "Top financial tool in Angola"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

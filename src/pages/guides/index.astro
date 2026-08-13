@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const allGuides = await getCollection('guides');
+
+// Sort by pubDate descending
+const sortedGuides = allGuides.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+
+const countryNames: Record<string, { name: string; flag: string }> = {
+  fr: { name: 'France', flag: 'fr' },
+  us: { name: 'United States', flag: 'us' },
+  uk: { name: 'United Kingdom', flag: 'gb' },
+  de: { name: 'Germany', flag: 'de' },
+  au: { name: 'Australia', flag: 'au' },
+  global: { name: 'Global', flag: 'un' },
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides & Tax Tips", "item": "https://calcglobal.org/guides/" }
+  ]
+};
+
+const collectionPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Tax, Business & Legal Guides 2026 | CalcGlobal",
+  "description": "Expert financial, payroll, and tax compliance guides for freelancers, business owners, and employees worldwide.",
+  "url": "https://calcglobal.org/guides/"
+};
+---
+
+<Layout
+  title="Tax, Business & Payroll Guides 2026 | CalcGlobal"
+  description="Comprehensive editorial guides on tax compliance, business bank accounts, ACRE exonerations, IR35 rules, and self-employment taxes. Written by financial specialists."
+  structuredData={[breadcrumbSchema, collectionPageSchema]}
+>
+  <!-- Hero Section -->
+  <div class="relative bg-slate-900 pt-16 pb-24 px-4 overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900"></div>
+    <div class="max-w-6xl mx-auto relative z-10">
+      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2 font-medium">
+        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
+        <span class="text-slate-600">/</span>
+        <span class="text-white bg-slate-800 px-2.5 py-1 rounded-md border border-slate-700 shadow-sm">Guides</span>
+      </nav>
+      
+      <div class="max-w-3xl">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-blue-500/10 text-blue-400 border border-blue-500/20 mb-4">
+          <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+          2026 Fiscal & Regulatory Insights
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white mb-4 leading-tight">
+          Financial & Tax Compliance Guides
+        </h1>
+        <p class="text-slate-300 text-base md:text-lg leading-relaxed">
+          In-depth analysis, step-by-step regulatory tutorials, and strategic advice for freelancers, business founders, and finance professionals across France, the United States, the United Kingdom, and globally.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Country Filter Bar -->
+    <div class="flex flex-wrap items-center gap-2 mb-10 pb-4 border-b border-slate-200" id="filter-bar">
+      <button
+        type="button"
+        class="filter-btn active px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-slate-900 text-white shadow-sm"
+        data-country="all"
+      >
+        🌐 All Guides ({sortedGuides.length})
+      </button>
+      <button
+        type="button"
+        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+        data-country="fr"
+      >
+        🇫🇷 France ({sortedGuides.filter(g => g.data.country === 'fr').length})
+      </button>
+      <button
+        type="button"
+        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+        data-country="us"
+      >
+        🇺🇸 USA ({sortedGuides.filter(g => g.data.country === 'us').length})
+      </button>
+      <button
+        type="button"
+        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
+        data-country="uk"
+      >
+        🇬🇧 UK ({sortedGuides.filter(g => g.data.country === 'uk').length})
+      </button>
+    </div>
+
+    <!-- Guides Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="guides-grid">
+      {sortedGuides.map((guide) => {
+        const countryInfo = countryNames[guide.data.country] || { name: guide.data.country.toUpperCase(), flag: 'un' };
+        const guideSlug = (guide as any).slug || guide.id.replace(/\.md$/, '');
+        
+        return (
+          <article
+            class="guide-card bg-white rounded-2xl border border-slate-200/80 p-7 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:border-blue-500/40 group"
+            data-country={guide.data.country}
+          >
+            <div>
+              <div class="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg border border-slate-200">
+                  <img
+                    src={`https://flagcdn.com/w20/${countryInfo.flag}.png`}
+                    alt={`${countryInfo.name} flag`}
+                    class="w-4 h-3 object-cover rounded-xs"
+                  />
+                  {countryInfo.name}
+                </span>
+                
+                <span class="inline-block px-3 py-1 bg-blue-50 text-blue-700 border border-blue-100 text-xs font-bold rounded-lg">
+                  {guide.data.category}
+                </span>
+              </div>
+
+              <h2 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-3 leading-snug">
+                <a href={`${base}/guides/${guideSlug}/`}>
+                  {guide.data.title}
+                </a>
+              </h2>
+
+              <p class="text-slate-600 text-sm leading-relaxed line-clamp-3 mb-6">
+                {guide.data.description}
+              </p>
+            </div>
+
+            <div class="pt-5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+              <div class="flex items-center gap-2 font-medium">
+                <span class="text-slate-700">{guide.data.author}</span>
+                <span>•</span>
+                <span>{guide.data.readTime || '5 min'} read</span>
+              </div>
+              
+              <a
+                href={`${base}/guides/${guideSlug}/`}
+                class="inline-flex items-center gap-1 font-bold text-blue-600 group-hover:text-blue-700 group-hover:translate-x-1 transition-all"
+              >
+                Read Guide
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-guides" class="hidden text-center py-16 bg-white rounded-2xl border border-slate-200 mt-6">
+      <p class="text-slate-500 font-medium text-base">No guides found for this country category.</p>
+    </div>
+
+  </div>
+
+  <!-- Interactive Client-side Filter Logic -->
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('.guide-card');
+      const noGuides = document.getElementById('no-guides');
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const country = btn.getAttribute('data-country');
+          
+          buttons.forEach((b) => {
+            b.classList.remove('active', 'bg-slate-900', 'text-white');
+            b.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+          });
+          btn.classList.add('active', 'bg-slate-900', 'text-white');
+          btn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+
+          let visibleCount = 0;
+          cards.forEach((card) => {
+            const cardCountry = card.getAttribute('data-country');
+            if (country === 'all' || cardCountry === country) {
+              card.classList.remove('hidden');
+              visibleCount++;
+            } else {
+              card.classList.add('hidden');
+            }
+          });
+
+          if (noGuides) {
+            if (visibleCount === 0) {
+              noGuides.classList.remove('hidden');
+            } else {
+              noGuides.classList.add('hidden');
+            }
+          }
+        });
+      });
+    });
+  </script>
+</Layout>

@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ecuador revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Banco Pichincha",
-          "type": "software",
-          "description": "Top financial tool in Ecuador"
-        },
-        {
-          "name": "SRI",
-          "type": "software",
-          "description": "Top financial tool in Ecuador"
-        },
-        {
-          "name": "Facturero",
-          "type": "software",
-          "description": "Top financial tool in Ecuador"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Uganda revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "MTN MoMo Uganda",
-          "type": "software",
-          "description": "Top financial tool in Uganda"
-        },
-        {
-          "name": "Stanbic UG",
-          "type": "software",
-          "description": "Top financial tool in Uganda"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

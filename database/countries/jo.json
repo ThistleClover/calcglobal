@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Jordan revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Arab Bank",
-          "type": "software",
-          "description": "Top financial tool in Jordan"
-        },
-        {
-          "name": "Bank al Etihad",
-          "type": "software",
-          "description": "Top financial tool in Jordan"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

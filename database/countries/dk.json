@@ -69,28 +69,7 @@
         }
       ],
       "formula_explanation": "Gross Salary (Bruttoløn) - Employee Pension - ATP (standard 99 DKK/month) = Pre-AM Base. Labor Market Contribution (AM-bidrag) = 8% * Pre-AM Base. Taxable Salary Base (Skattepligtig indkomst) = Pre-AM Base - AM-bidrag. Tax Deductions (Skattefradrag) = Personfradrag (DKK 49,700/year = DKK 4,141.67/month) + Beskæftigelsesfradrag (10.65% up to DKK 45,100/year) + Befordringsfradrag (commuter deduction for km > 24) + Union/A-kasse deduction (up to DKK 7,000/year). Net Taxable Amount = Taxable Base - Deductions. Progressive Tax Rates applied: Municipal tax (Kommuneskat ~24.5%) + Church Tax (~0.7% if member) + State Bottom Tax (Bundskat 12.01%) + State Top Tax (Topskat 15% on income above DKK 588,900/year after AM-bidrag) + Top-Topskat (5% on income above DKK 2,588,900/year). Total A-skat = Net Taxable Amount * Effective Tax Rate (Trækprocent). Net Salary (Udbetalt løn) = Gross Salary - Employee Pension - ATP - AM-bidrag - A-skat.",
-      "affiliate_targets": [
-        {
-          "name": "Lunar Bank",
-          "type": "neobank",
-          "description": "Danish digital neobank offering fee-free salary accounts and automated budgeting."
-        },
-        {
-          "name": "Det Faglige Hus",
-          "type": "insurance",
-          "description": "Top Danish A-kasse and union combination with low monthly membership fees."
-        },
-        {
-          "name": "Grandhood / Danica Pension",
-          "type": "accounting",
-          "description": "Digital occupational pension provider for employees and small companies."
-        },
-        {
-          "name": "Dinero",
-          "type": "software",
-          "description": "Leading Danish invoicing and personal income tracking software."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dk-enkeltmandsvirksomhed-vs-aps-calculator",
@@ -142,28 +121,7 @@
         }
       ],
       "formula_explanation": "Business Profit = Annual Revenue - Operating Expenses. Option A: Enkeltmandsvirksomhed (Standard): 100% of profit taxed as personal income (AM-bidrag 8% + A-skat personal rates up to ~52%). Option B: Enkeltmandsvirksomhed with VSO (Virksomhedsskatteordningen): Profit withdrawn for personal use taxed as personal income; retained profit taxed provisionally at 22% corporate tax rate (Virksomhedsskat). Option C: ApS (Anpartsselskab): Director Salary is deducted as business expense. Remaining Corporate Profit taxed at 22% Selskabsskat. Retained profit stays in ApS equity. Profit paid out as Dividend (Udbytte) taxed at Udbytteskat rates: 27% on dividends up to DKK 61,000 (DKK 122,000 for married couples), and 42% on dividend amounts exceeding threshold. Director Salary taxed with 8% AM-bidrag + personal A-skat. Optimizer computes total net payout to owner across all three options.",
-      "affiliate_targets": [
-        {
-          "name": "Legal Desk",
-          "type": "software",
-          "description": "Danish online legal platform for fast ApS formation and CVR registration."
-        },
-        {
-          "name": "Dinero (Visma)",
-          "type": "software",
-          "description": "Denmark's most popular accounting software tailored for Enkeltmandsvirksomheder and ApS."
-        },
-        {
-          "name": "Billy Accounting",
-          "type": "software",
-          "description": "Easy invoicing and VAT filing tool for small businesses in Denmark."
-        },
-        {
-          "name": "Pleo",
-          "type": "neobank",
-          "description": "Smart company card and expense management solution for Danish businesses."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dk-property-purchase-registration-calculator",
@@ -224,28 +182,7 @@
         }
       ],
       "formula_explanation": "1. Deed Registration Fee (Tinglysningsafgift for skøde): DKK 1,850 fixed fee + 0.6% of the highest of Purchase Price or Public Valuation. 2. Mortgage Deed Registration Fee (Tinglysning af realkreditpantebrev): DKK 1,825 fixed fee + 1.45% of total mortgage loan principal. 3. Bank Loan Deed Registration (if separate pantebrev): DKK 1,825 + 1.45% of bank loan. 4. Annual Property Value Tax (Ejendomsværdiskat): 0.51% on valuation up to DKK 9.2 million + 1.4% on portion exceeding DKK 9.2 million (with modern tax rabat rule applied). 5. Annual Land Tax (Grundskyld): Land Value * (Grundskyldspromille / 1000). Total One-Off Closing Costs = Deed Tax + Loan Registration Tax + Lawyer Fee + Bank Setup Fees. Total Monthly Housing Cost = Realkredit Payment + Bank Loan Payment + (Ejendomsværdiskat + Grundskyld)/12 + Monthly Common Expenses (Ejerudgift).",
-      "affiliate_targets": [
-        {
-          "name": "Mybanker",
-          "type": "neobank",
-          "description": "Danish mortgage comparison platform connecting home buyers with top competitive loan offers."
-        },
-        {
-          "name": "Boligadvokat24 / Legal Desk",
-          "type": "software",
-          "description": "Specialized Danish real estate lawyers for property contract review and deed registration."
-        },
-        {
-          "name": "Topdanmark / Tryg",
-          "type": "insurance",
-          "description": "Leading Danish insurers for compulsory property insurance (husforsikring) and change of ownership insurance (ejerskifteforsikring)."
-        },
-        {
-          "name": "Totalkredit / Nykredit",
-          "type": "accounting",
-          "description": "Major Danish realkreditinstitutter for flexible mortgage loan structures."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dk-befordringsfradrag-koerselsgodtgoerelse-calculator",
@@ -300,28 +237,7 @@
         }
       ],
       "formula_explanation": "Mode 1: Befordringsfradrag (Commuter Tax Deduction): First 24 km/day = 0 DKK deduction. Distance between 25 km and 120 km = Daily km * DKK 2.23 (2025/2026 statutory rate). Distance above 120 km = Daily km * DKK 1.12 (Standard rate) OR DKK 2.23 if residing in designated yderkommune/ø-kommune. Total Annual Deduction = (Daily Deduction Rate * Working Days) + Bridge Toll Allowance (Storebælt: DKK 110/trip by train/car, Øresund DKK 50/trip). Net Tax Value (Skatteværdi af fradrag) = Total Annual Deduction * ~26% (Municipal tax value). Mode 2: Skattefri Kørselsgodtgørelse (Statens Takster paid by employer): Up to 20,000 km/year = km * DKK 3.79/km. Above 20,000 km/year = km * DKK 2.23/km. Total payout is 100% tax-free income directly from employer.",
-      "affiliate_targets": [
-        {
-          "name": "Mileage Book",
-          "type": "software",
-          "description": "Automated Danish GPS driving log app integrated directly with SKAT and payroll software."
-        },
-        {
-          "name": "AutoLog",
-          "type": "software",
-          "description": "Leading electronic mileage log system for Danish business drivers and commuters."
-        },
-        {
-          "name": "OK Benzin / Circle K",
-          "type": "insurance",
-          "description": "Danish fuel cards offering cashback, automatic mileage tracking, and discounts."
-        },
-        {
-          "name": "Lunar",
-          "type": "neobank",
-          "description": "Danish mobile bank for managing commuter expense reimbursements and tax savings."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dk-freelance-b-indkomst-moms-calculator",
@@ -373,28 +289,7 @@
         }
       ],
       "formula_explanation": "1. Sales VAT (Salgsmoms) = Gross B-Income * 25% (if VAT registered). 2. Purchase VAT (Købsmoms) = Expenses * 25%. Net VAT Payable to SKAT = Salgsmoms - Købsmoms. 3. Net Taxable B-Income (Netto B-indkomst) = Gross B-Income - Deductible Business Expenses. 4. AM-bidrag (Labor Market Contribution) = 8% of Net Taxable B-Income. 5. Tax Base for B-skat = Net Taxable B-Income - AM-bidrag - Unused Personfradrag. 6. B-skat = Tax Base * (Municipal Tax % + State Tax Rates). Total Annual Tax Liability = AM-bidrag + B-skat. 7. B-Skat Installments: Divide total B-skat into 10 annual installments (B-skatterater payable in Jan, Feb, Mar, Apr, May, Jul, Aug, Sep, Oct, Nov). Net Take-Home Income = Gross B-Income - Expenses - AM-bidrag - B-skat.",
-      "affiliate_targets": [
-        {
-          "name": "Factofly",
-          "type": "accounting",
-          "description": "Danish freelance payroll service allowing you to invoice without a CVR number while handling A-skat and AM-bidrag automatically."
-        },
-        {
-          "name": "Dinero (Visma)",
-          "type": "software",
-          "description": "Automated Danish accounting software with instant VAT (moms) filing and B-indkomst logs."
-        },
-        {
-          "name": "Billy Accounting",
-          "type": "software",
-          "description": "Simple accounting app built for Danish freelancers, sole proprietors, and honorarium earners."
-        },
-        {
-          "name": "Lunar Business",
-          "type": "neobank",
-          "description": "Danish neobank account specifically created for freelancers and sole traders with built-in VAT storage."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

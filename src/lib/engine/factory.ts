@@ -30,12 +30,15 @@ const calcToEngine: Record<string, string> = {
   'uk-gross-net-salary-pension-calculator': 'uk',
   'uk-limited-company-director-salary-dividend-calculator': 'uk',
   'uk-statutory-redundancy-settlement-calculator': 'uk',
+  'uk-vat-calculator': 'uk',
   // France
   'urssaf-cotisations-micro-entreprise': 'fr',
   'frais-de-notaire-immobilier': 'fr',
   'calculateur-salaire-brut-net-cout-employeur': 'fr',
   'indemnite-rupture-conventionnelle-licenciement': 'fr',
   'calculateur-plus-value-immobiliere': 'fr',
+  'sasu-impots-cotisations-dividendes': 'fr',
+  'eurl-impots-cotisations-dividendes': 'fr',
   // Germany
   'brutto-netto-rechner-deutschland': 'de',
   'gewerbesteuer-rechner': 'de',

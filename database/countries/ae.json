@@ -62,23 +62,7 @@
         }
       ],
       "formula_explanation": "Calculates End of Service Benefits (EOSB) under UAE Federal Decree-Law No. 33 of 2021. Total continuous service days = (Years * 365.25) + (Months * 30.4375) - Unpaid Leave Days. Total service years = Total service days / 365.25. If total service < 1 year (365 days), Gratuity = 0 AED. Daily Basic Wage = (Basic Salary * 12) / 365. For the first 5 years of service, Gratuity = Total Service Years (up to 5) * 21 * Daily Basic Wage. For service exceeding 5 years, Gratuity = (5 * 21 * Daily Basic Wage) + ((Total Service Years - 5) * 30 * Daily Basic Wage). Maximum Gratuity cap = 24 * Basic Monthly Salary (2 years' basic pay). Under Federal Decree-Law No. 33 of 2021, resignation does not reduce gratuity entitlement percentages after 1 year of service.",
-      "affiliate_targets": [
-        {
-          "name": "Bayzat",
-          "type": "software",
-          "description": "UAE payroll & HR management platform supporting automated EOSB calculations and WPS salary processing."
-        },
-        {
-          "name": "Wio Bank",
-          "type": "neobank",
-          "description": "Digital business bank account tailored for UAE SMEs with integrated employee payroll."
-        },
-        {
-          "name": "Workstem UAE",
-          "type": "software",
-          "description": "Cloud HR and payroll solution customized for UAE Labour Law compliance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "uae-corporate-tax-small-business-relief",
@@ -143,28 +127,7 @@
         }
       ],
       "formula_explanation": "Calculates UAE Corporate Tax liability under Federal Decree-Law No. 47 of 2022 and Ministerial Decision No. 73 of 2023 (Small Business Relief). Standard Rules: Taxable Net Profit up to 375,000 AED is taxed at 0%. Taxable Net Profit above 375,000 AED is taxed at 9%. Small Business Relief (SBR): If Annual Revenue <= 3,000,000 AED for tax periods ending on or before 31 December 2026 and the business elects SBR, Taxable Income is treated as 0 AED (Tax = 0 AED). Qualifying Free Zone Person (QFZP): 0% tax on Qualifying Income from transactions with other Free Zone entities or qualifying activities; 9% tax on Non-Qualifying Income or standard mainland profits.",
-      "affiliate_targets": [
-        {
-          "name": "Zoho Books UAE",
-          "type": "accounting",
-          "description": "FTA-accredited corporate tax and accounting software for UAE companies."
-        },
-        {
-          "name": "Virtuzone",
-          "type": "legal",
-          "description": "Leading business setup and corporate tax advisory service provider in UAE."
-        },
-        {
-          "name": "Wafeq",
-          "type": "accounting",
-          "description": "Bilingual Arabic/English invoicing and corporate tax accounting platform designed for UAE businesses."
-        },
-        {
-          "name": "Mashreq NeoBiz",
-          "type": "neobank",
-          "description": "Digital banking account designed for UAE SMEs and startups."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "dubai-dld-property-transfer-mortgage-calculator",
@@ -225,23 +188,7 @@
         }
       ],
       "formula_explanation": "Calculates total transaction costs for buying property in Dubai. DLD Transfer Fee = 4% of Property Price + AED 580 admin fee. Real Estate Agency Fee = 2% of Property Price + 5% VAT on fee (2.1% total). Property Registration Trustee Fee = AED 2,000 + 5% VAT (AED 2,100) if price < 500,000 AED; AED 4,000 + 5% VAT (AED 4,200) if price >= 500,000 AED. Mortgage Fees (if financed): Loan Amount = Property Price * (1 - Down Payment %). DLD Mortgage Registration Fee = 0.25% of Loan Amount + AED 290 admin fee. Bank Processing Fee = 1% of Loan Amount + 5% VAT. Valuation Fee ~ AED 2,500 + 5% VAT. Total Cash Required Upfront = Down Payment Amount + Sum of all fees.",
-      "affiliate_targets": [
-        {
-          "name": "Huspy",
-          "type": "software",
-          "description": "Leading digital property transaction and mortgage advisory platform in Dubai."
-        },
-        {
-          "name": "Mortgage Finder UAE",
-          "type": "insurance",
-          "description": "Top independent mortgage broker in the UAE comparing home loans across major banks."
-        },
-        {
-          "name": "Emirates NBD Mortgage",
-          "type": "neobank",
-          "description": "Primary home loan provider offering quick pre-approvals for Dubai real estate buyers."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "uae-vat-net-payable-calculator",
@@ -284,23 +231,7 @@
         }
       ],
       "formula_explanation": "Calculates VAT obligations under UAE Federal Decree-Law No. 8 of 2017. Output VAT (Sales Tax) = Taxable Sales * 0.05. Input VAT (Purchases Tax) = Taxable Expenses * 0.05. Net VAT Payable = Output VAT - Input VAT. If Net VAT Payable > 0, payment is due to Federal Tax Authority (FTA). If Net VAT Payable < 0, business is eligible for a VAT refund. Registration Thresholds: Mandatory Registration required if Annual Taxable Turnover > 375,000 AED in past 12 months or next 30 days. Voluntary Registration permitted if Annual Taxable Turnover > 187,500 AED.",
-      "affiliate_targets": [
-        {
-          "name": "Zoho Books UAE",
-          "type": "accounting",
-          "description": "FTA-accredited VAT accounting software for filing quarterly tax returns in UAE."
-        },
-        {
-          "name": "QuickBooks Online UAE",
-          "type": "accounting",
-          "description": "Popular small business accounting tool with UAE VAT rate reporting."
-        },
-        {
-          "name": "Creative Zone Tax",
-          "type": "legal",
-          "description": "FTA registered tax agents for UAE VAT registration, filing, and advisory."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "uae-gpssa-pension-payroll-calculator",
@@ -361,23 +292,7 @@
         }
       ],
       "formula_explanation": "Calculates GPSSA (General Pension and Social Security Authority) pension contributions and net take-home salary for UAE National employees. Under Federal Decree-Law No. 57 of 2023: Contribution salary is capped at AED 70,000 in Private Sector and AED 100,000 in Public Sector. Employee Contribution = 11% of Capped Contribution Salary. Employer Contribution = 15% of Capped Contribution Salary (Private sector employer pays 12.5% + Government pays 2.5% support via Nafis for private sector Emiratis). Total Contribution = 26%. Under Federal Law No. 7 of 1999: Employee Contribution = 5% of Contribution Salary (capped at AED 50,000 in private sector). Employer Contribution = 12.5% (Private) or 15% (Public). Employee Net Salary = Gross Salary - Employee Pension Contribution.",
-      "affiliate_targets": [
-        {
-          "name": "Bayzat",
-          "type": "software",
-          "description": "HR and automated payroll software handling GPSSA deductions and Emiratisation compliance."
-        },
-        {
-          "name": "Sarwa",
-          "type": "software",
-          "description": "UAE fintech investment platform offering high-yield savings and investment plans for expats and nationals."
-        },
-        {
-          "name": "Mashreq NeoBiz",
-          "type": "neobank",
-          "description": "UAE digital business bank facilitating localized payroll processing and social security payments."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

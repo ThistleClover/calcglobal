@@ -40,23 +40,136 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on United Kingdom revenue regulations.",
-      "affiliate_targets": [
+      "affiliate_targets": []
+    },
+    {
+      "id": "uk-vat-calculator",
+      "title_native": "UK VAT (Value Added Tax) Calculator",
+      "title_en": "UK VAT (Value Added Tax) Calculator",
+      "search_terms_native": [
+        "vat calculator uk 2026",
+        "calculate vat 20 percent standard rate",
+        "add vat remove vat calculator uk",
+        "flat rate scheme vat calculator hmrc",
+        "vat threshold 90000 uk registration"
+      ],
+      "description_native": "Calculate UK Value Added Tax (VAT) at standard (20%), reduced (5%), or zero (0%) rates, extract net/gross amounts, and calculate Flat Rate Scheme (FRS) liabilities.",
+      "category": "tax",
+      "last_updated": "August 2026",
+      "inputs": [
         {
-          "name": "Crunch",
-          "type": "software",
-          "description": "Top financial tool in United Kingdom"
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "uk-vat-calculator"
         },
         {
-          "name": "PayStream",
-          "type": "software",
-          "description": "Top financial tool in United Kingdom"
+          "name": "amount",
+          "label_native": "Transaction Amount (£)",
+          "type": "number",
+          "options": []
         },
         {
-          "name": "Xero",
-          "type": "software",
-          "description": "Top financial tool in United Kingdom"
+          "name": "calculation_type",
+          "label_native": "Calculation Mode",
+          "type": "select",
+          "options": [
+            {
+              "value": "add_vat",
+              "label": "Add VAT to Net Amount (Net → Gross)"
+            },
+            {
+              "value": "extract_vat",
+              "label": "Extract VAT from Gross Amount (Gross → Net)"
+            }
+          ]
+        },
+        {
+          "name": "vat_rate_scheme",
+          "label_native": "VAT Rate / Scheme",
+          "type": "select",
+          "options": [
+            {
+              "value": "standard_20",
+              "label": "Standard Rate (20%)"
+            },
+            {
+              "value": "reduced_5",
+              "label": "Reduced Rate (5% - domestic energy, children's car seats)"
+            },
+            {
+              "value": "zero_0",
+              "label": "Zero Rate (0% - food, books, children's clothes)"
+            },
+            {
+              "value": "flat_rate",
+              "label": "Flat Rate Scheme (FRS)"
+            }
+          ]
+        },
+        {
+          "name": "frs_sector_rate",
+          "label_native": "Flat Rate Scheme Sector Rate (if FRS selected)",
+          "type": "select",
+          "options": [
+            {
+              "value": "14.5",
+              "label": "IT Consultancy / Computer Services (14.5%)"
+            },
+            {
+              "value": "14.0",
+              "label": "Management Consultancy / Legal Services (14.0%)"
+            },
+            {
+              "value": "12.5",
+              "label": "Catering / Hotel / Accommodation (12.5%)"
+            },
+            {
+              "value": "12.0",
+              "label": "Business Services not listed elsewhere (12.0%)"
+            },
+            {
+              "value": "16.5",
+              "label": "Limited Cost Trader (16.5% - low goods expense)"
+            }
+          ]
+        },
+        {
+          "name": "frs_first_year_discount",
+          "label_native": "First Year FRS Discount (1% reduction)?",
+          "type": "select",
+          "options": [
+            {
+              "value": "no",
+              "label": "No (Standard sector rate)"
+            },
+            {
+              "value": "yes",
+              "label": "Yes (-1% discount in 1st year of VAT registration)"
+            }
+          ]
         }
-      ]
+      ],
+      "formula_explanation": "UK VAT Rules (HMRC 2026/27):\n1) Standard Rate (20%): Added to Net: Gross = Net × 1.20, VAT = Net × 0.20. Extracted from Gross: Net = Gross / 1.20, VAT = Gross × (1/6).\n2) Reduced Rate (5%): Added to Net: Gross = Net × 1.05, VAT = Net × 0.05. Extracted from Gross: Net = Gross / 1.05, VAT = Gross × (1/21).\n3) Flat Rate Scheme (FRS): You charge clients 20% VAT standard on your invoices, but pay HMRC a fixed percentage of your gross turnover (including VAT). First-year VAT registered businesses receive a 1% discount on their FRS sector rate.\n4) Mandatory Registration Threshold: £90,000 taxable turnover in any 12-month period. Deregistration threshold: £88,000. Flat Rate Scheme join threshold: £150,000.",
+      "article_faq": [
+        {
+          "question": "What is the UK VAT registration threshold for 2026/27?",
+          "answer": "The compulsory UK VAT registration threshold is £90,000 of taxable turnover within any rolling 12-month period. If your taxable turnover exceeds £90,000, you must register for VAT with HMRC. The deregistration threshold is £88,000."
+        },
+        {
+          "question": "What are the UK VAT rates?",
+          "answer": "The UK has three main VAT rates: Standard Rate (20%) applicable to most goods and services; Reduced Rate (5%) for items like domestic fuel/power and children's car seats; and Zero Rate (0%) for most food, books, newspapers, and children's clothing."
+        },
+        {
+          "question": "How does the HMRC Flat Rate Scheme (FRS) work?",
+          "answer": "Under the Flat Rate Scheme, you charge your clients the standard 20% VAT on invoices, but pay HMRC a lower, fixed percentage based on your industry sector (e.g., 14.5% for IT consultants) applied to your total gross turnover. You keep the difference as profit, but generally cannot reclaim VAT on purchases (except capital assets over £2,000)."
+        },
+        {
+          "question": "What is a Limited Cost Trader under the Flat Rate Scheme?",
+          "answer": "If a business spends less than 2% of its VAT-inclusive turnover (or less than £1,000 a year) on relevant goods (excluding services, food, vehicles, etc.), it is classified as a 'Limited Cost Trader' and must pay a high flat rate of 16.5%."
+        }
+      ],
+      "affiliate_targets": []
     }
   ]
 }

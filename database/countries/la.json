@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Laos revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BCEL Laos",
-          "type": "software",
-          "description": "Top financial tool in Laos"
-        },
-        {
-          "name": "JDB Bank",
-          "type": "software",
-          "description": "Top financial tool in Laos"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

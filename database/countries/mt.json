@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Malta revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BOV Malta",
-          "type": "software",
-          "description": "Top financial tool in Malta"
-        },
-        {
-          "name": "HSBC Malta",
-          "type": "software",
-          "description": "Top financial tool in Malta"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

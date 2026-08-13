@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Zimbabwe revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "EcoCash",
-          "type": "software",
-          "description": "Top financial tool in Zimbabwe"
-        },
-        {
-          "name": "CBZ Bank",
-          "type": "software",
-          "description": "Top financial tool in Zimbabwe"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

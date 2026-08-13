@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Zambia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Zanaco",
-          "type": "software",
-          "description": "Top financial tool in Zambia"
-        },
-        {
-          "name": "MTN MoMo Zambia",
-          "type": "software",
-          "description": "Top financial tool in Zambia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

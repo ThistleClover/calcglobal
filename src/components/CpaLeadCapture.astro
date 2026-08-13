@@ -1,0 +1,9 @@
+---
+import CpaLeadCaptureReact, { type CpaLeadCaptureProps } from './CpaLeadCapture';
+
+export type Props = CpaLeadCaptureProps;
+
+const props = Astro.props;
+---
+
+<CpaLeadCaptureReact client:visible {...props} />

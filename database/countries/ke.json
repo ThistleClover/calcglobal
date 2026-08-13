@@ -41,23 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Kenya revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "M-Pesa",
-          "type": "software",
-          "description": "Top financial tool in Kenya"
-        },
-        {
-          "name": "KCB",
-          "type": "software",
-          "description": "Top financial tool in Kenya"
-        },
-        {
-          "name": "Equity Bank",
-          "type": "software",
-          "description": "Top financial tool in Kenya"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

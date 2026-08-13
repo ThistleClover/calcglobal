@@ -74,28 +74,7 @@
         }
       ],
       "formula_explanation": "Calculates End of Service Benefits (EOSB) and final settlement under Qatar Labour Law No. 14 of 2004. Total service years = Years + (Months / 12) + (Days / 365). Minimum continuous service required is 1 year (365 days). If service < 1 year or if employment is terminated under Article 61 (gross misconduct), Gratuity = 0 QAR. For eligible employees, minimum legal gratuity = (Last Basic Salary / 30) * 21 * Total Service Years. (Contractual terms may specify higher days, but 21 days is the legal minimum). Unused Leave Pay = (Total Monthly Salary / 30) * Unused Leave Days. Total Final Settlement = Gratuity Amount + Unused Leave Pay.",
-      "affiliate_targets": [
-        {
-          "name": "QNB Business Banking (بنك قطر الوطني للأعمال)",
-          "type": "neobank",
-          "description": "حسابات الرواتب والمعاملات التجارية والخدمات المصرفية للشركات في قطر."
-        },
-        {
-          "name": "Commercial Bank of Qatar (CBQ Corporate)",
-          "type": "neobank",
-          "description": "حلول تحويل الرواتب وحماية الأجور WPS والنظام المصرفي الآلي للمنشآت."
-        },
-        {
-          "name": "ZenHR Qatar",
-          "type": "software",
-          "description": "نظام إدارة الموارد البشرية والرواتب السحابي المتوافق مع قانون العمل القطري."
-        },
-        {
-          "name": "Bayzat Qatar",
-          "type": "insurance",
-          "description": "منصة إدارة كشوف المرتبات والتأمين الصحي للموظفين في دولة قطر."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "qa-grsia-social-insurance-pension",
@@ -162,28 +141,7 @@
         }
       ],
       "formula_explanation": "Calculates monthly social security (GRSIA) contributions under Qatar Social Insurance Law No. 1 of 2022 (effective Jan 2023 / Cabinet Decision 2025). For expatriate employees: GRSIA contribution = 0 QAR (covered under EOSB). For Qatari national employees: Contributory Salary = Basic Salary + Social Allowance + Capped Housing Allowance. Housing Allowance is capped at 6,000 QAR/month. Total Contributory Salary is capped at 100,000 QAR/month. Employee Contribution = 7% of Contributory Salary (deducted from employee pay). Employer Contribution = 14% of Contributory Salary. Total GRSIA Contribution = 21% of Contributory Salary. Employee Net Take-Home Pay = (Basic Salary + Housing Allowance + Social Allowance) - Employee Contribution (7%).",
-      "affiliate_targets": [
-        {
-          "name": "Dukhan Bank Corporate (بنك دخان للأعمال)",
-          "type": "neobank",
-          "description": "خدمات تحويل الرواتب والحلول المصرفية المتوافقة مع الشريعة الإسلامية."
-        },
-        {
-          "name": "Masraf Al Rayan Enterprise (مصرف الريان للأعمال)",
-          "type": "neobank",
-          "description": "مصرف الريان لإدارة حسابات الشركات والتحويلات المعتمدة لهيئة التقاعد."
-        },
-        {
-          "name": "Workday Qatar HR",
-          "type": "software",
-          "description": "نظام الموارد البشرية وإدارة كشوف الرواتب للمؤسسات والشركات الكبرى في قطر."
-        },
-        {
-          "name": "Snoonu Corporate Payroll",
-          "type": "software",
-          "description": "حلول إدارة المدفوعات والرواتب المحلية للشركات الناشئة والمشاريع في قطر."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "qa-dhareeba-corporate-withholding-tax",
@@ -241,28 +199,7 @@
         }
       ],
       "formula_explanation": "Calculates Qatari Corporate Income Tax and Withholding Tax (WHT) administered by the General Tax Authority (GTA) via the Dhareeba e-portal under Law No. 24 of 2018. 1. Corporate Income Tax: Flat 10% rate on net taxable profit attributable to foreign partners. Foreign Taxable Profit Share = Net Taxable Profit * (Foreign Ownership % / 100). Corporate Tax Due = Foreign Taxable Profit Share * 10%. (Qatari and GCC partner shares are 0% exempt from corporate income tax). 2. Withholding Tax (WHT): 5% final tax deducted at source on payments made to non-residents for services performed in Qatar, royalties, technical fees, or commissions. WHT Payable = Non-Resident Payments * 5%. Total Tax Obligation to GTA Dhareeba Portal = Corporate Tax Due + WHT Payable.",
-      "affiliate_targets": [
-        {
-          "name": "Wafeq Qatar (برنامج وافق المحاسبي)",
-          "type": "accounting",
-          "description": "برنامج محاسبي سحابي معتمد لإدارة الفواتير والضرائب متوافق مع بوابة ضريبة."
-        },
-        {
-          "name": "Zoho Books Qatar",
-          "type": "accounting",
-          "description": "نظام المحاسبة وإصدار الفواتير الإلكترونية الملتزم بالمعايير الضريبية والهيئة العامة للضرائب."
-        },
-        {
-          "name": "KPMG Qatar Tax Advisory",
-          "type": "accounting",
-          "description": "خدمات استشارية ضريبية وإعداد الفحص وتدقيق الإقرارات عبر بوابة Dhareeba."
-        },
-        {
-          "name": "PwC Qatar Tax Services",
-          "type": "legal",
-          "description": "خدمات الامتثال الضريبي والتدقيق وتخكيم الضرائب للشركات الأجنبية في قطر."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "qa-real-estate-fee-mortgage-residency",
@@ -339,28 +276,7 @@
         }
       ],
       "formula_explanation": "Calculates total transaction costs, mortgage breakdown, and real estate residency eligibility in Qatar under Ministry of Justice and Qatar Central Bank (QCB) rules. 1. Government & Administrative Fees: Real Estate Registration Fee (Ministry of Justice) = Property Price * 0.25%. Estimated Real Estate Brokerage Fee = Property Price * 2.5%. Title Deed Issuance Fee ~ 300 QAR. 2. Real Estate Residency Eligibility (for non-Qataris in Freehold zones like The Pearl, Lusail, West Bay Lagoon): If Property Price >= 730,000 QAR ($200,000), buyer qualifies for renewable real estate residency. If Property Price >= 3,650,000 QAR ($1,000,000), buyer qualifies for Permanent Residency with healthcare and education benefits. 3. QCB Mortgage Guidelines: Minimum down payment = 20% for Qatari nationals, 30% for expatriates. Loan Amount = Property Price * (1 - Down Payment %). Bank Profit = Loan Amount * (Annual Profit Rate / 100) * Mortgage Years. Monthly Installment = (Loan Amount + Bank Profit) / (Mortgage Years * 12). Total Upfront Cash Required = Down Payment Amount + Registration Fee (0.25%) + Brokerage Fee (2.5%) + Admin Fees.",
-      "affiliate_targets": [
-        {
-          "name": "QNB Mortgage Finance (تمويل العقارات بنك قطر الوطني)",
-          "type": "neobank",
-          "description": "حلول التمويل العقاري والسكني الرائدة من بنك قطر الوطني."
-        },
-        {
-          "name": "Qatar Islamic Bank Mortgages (مصرف قطر الإسلامي)",
-          "type": "neobank",
-          "description": "تمويل العقارات بالمرابحة الإسلامية والأقساط الميسرة للمواطنين والمقيمين."
-        },
-        {
-          "name": "FG Realty Qatar",
-          "type": "business",
-          "description": "وكالة عقارية رائدة لتوفير فرص التملك الحر والإقامة الاستثمارية في قطر."
-        },
-        {
-          "name": "Saakin Qatar",
-          "type": "business",
-          "description": "منصة التسويق واستكشاف العقارات والمشاريع الاستثمارية المعتمدة في قطر."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "qa-freelance-company-setup-fees",
@@ -444,28 +360,7 @@
         }
       ],
       "formula_explanation": "Estimates setup and licensing costs for business entities in Qatar administered by Ministry of Commerce and Industry (MOCI), Qatar Chamber, and Municipality. 1. MOCI Commercial Registration (CR) Fee: Ranges between 1,500 QAR and 10,000 QAR annually based on activity code and capital tier. 2. Qatar Chamber Membership Fee: 1,000 QAR for capital up to 100,000 QAR, scaling up to 5,000 QAR for large capital/shareholding entities. 3. Municipal Commercial License & Signboard Fee: Estimated 1,020 QAR to 3,000 QAR annually depending on premises area and activity. 4. Establishment Card (Computer Card / Ministry of Interior) Fee: 200 QAR. 5. Total Estimated 1st Year Government Setup Cost = Sum of CR fee + Qatar Chamber fee + Municipal License fee + Computer Card fee. 6. Tax Compliance Requirement: All entities with foreign ownership must complete Dhareeba registration within 60 days of CR issuance.",
-      "affiliate_targets": [
-        {
-          "name": "Ministry of Commerce and Industry (MOCI Single Window)",
-          "type": "software",
-          "description": "البوابة الرسمية النافذة الواحدة لتأسيس الشركات وإصدار السجلات التجارية في قطر."
-        },
-        {
-          "name": "QNB Corporate Startup Banking Account",
-          "type": "neobank",
-          "description": "فتح الحساب المصرفي التجاري المباشر وتسهيلات البداية للشركات الجديدة."
-        },
-        {
-          "name": "Wafeq Qatar E-Invoicing",
-          "type": "accounting",
-          "description": "برنامج الفواتير والمحاسبة المعتمد للشركات الصغيرة والمتوسطة."
-        },
-        {
-          "name": "Daftra Qatar ERP & Accounting",
-          "type": "software",
-          "description": "نظام إدارة المبيعات والحسابات والمخزون الموجه للأنشطة التجارية في قطر."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

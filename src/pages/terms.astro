@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AdSlot from '../components/AdSlot.astro';
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 ---
 
@@ -30,5 +31,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     
     <h3>3. Limitations</h3>
     <p>In no event shall CalcGlobal or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on CalcGlobal's website.</p>
+
+    <AdSlot variant="rectangle" pageIntent="low" className="my-8 not-prose" />
   </div>
 </Layout>

@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Costa Rica revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BAC Credomatic",
-          "type": "software",
-          "description": "Top financial tool in Costa Rica"
-        },
-        {
-          "name": "Factura Feliz",
-          "type": "software",
-          "description": "Top financial tool in Costa Rica"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -1,6 +1,9 @@
 import { useState, useCallback } from 'react';
 import type { TaxInput, TaxResult, TaxBreakdownLine } from '../lib/engine/types';
 import { getUITranslation } from '../utils/translations';
+import { getAffiliatePartners } from '../utils/affiliateMatching';
+import AffiliateCard from './AffiliateCard';
+import CpaLeadCapture from './CpaLeadCapture';
 
 interface CalcInput {
   name: string;
@@ -18,12 +21,14 @@ interface Props {
     formula_explanation: string;
     currency?: string;
     currencySymbol?: string;
+    category?: string;
     affiliate_targets?: any[];
   };
   /** Serialized calculate function — passed as a string from build-time Astro */
   engineCode: string;
   locale: string;
   currencySymbol: string;
+  countryCode?: string;
 }
 
 function formatNum(value: number, locale: string): string {
@@ -125,12 +130,23 @@ function BreakdownTable({ lines, sym, locale }: { lines: TaxBreakdownLine[]; sym
   );
 }
 
-export default function InteractiveCalculator({ calc, engineCode, locale, currencySymbol }: Props) {
+export default function InteractiveCalculator({ calc, engineCode, locale, currencySymbol, countryCode }: Props) {
   const [values, setValues] = useState<Record<string, string>>({});
   const [result, setResult] = useState<TaxResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showMethodology, setShowMethodology] = useState(false);
+
+  const effectivePartners = getAffiliatePartners({
+    calcId: calc.id,
+    countryCode: countryCode || '',
+    category: calc.category,
+    title: calc.title_native,
+    description: calc.description_native,
+    netIncome: result?.netIncome,
+    grossIncome: result?.grossIncome,
+    affiliateTargets: calc.affiliate_targets,
+  });
 
   const handleChange = useCallback((name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }));
@@ -250,12 +266,40 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
         {/* RIGHT: Results */}
         <div className="p-4 sm:p-8 lg:p-10 lg:col-span-7 bg-slate-50/50 relative">
           {!result ? (
-            <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-slate-400">
-              <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-6 text-4xl transform -rotate-6">
-                🧮
+            <div className="flex flex-col items-center justify-between h-full min-h-[400px]">
+              <div className="flex flex-col items-center justify-center text-slate-400 py-12 flex-1">
+                <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-6 text-4xl transform -rotate-6">
+                  🧮
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{getUITranslation('ENTER_DETAILS_CALCULATE', locale)}</h3>
+                <p className="text-sm font-medium text-center max-w-xs">Fill in your details on the left to see your full tax breakdown and analysis.</p>
               </div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">{getUITranslation('ENTER_DETAILS_CALCULATE', locale)}</h3>
-              <p className="text-sm font-medium text-center max-w-xs">Fill in your details on the left to see your full tax breakdown and analysis.</p>
+
+              {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
+                <div className="w-full mt-auto pt-6 border-t border-slate-200">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-sm font-bold text-slate-900 flex items-center gap-2">
+                      <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                      {getUITranslation('RECOMMENDED_TOOLS', locale)}
+                    </p>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
+                      Sponsored
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => (
+                      <AffiliateCard
+                        key={idx}
+                        partner={partner}
+                        currencySymbol={currencySymbol}
+                        calculatorId={calc.id}
+                        category={calc.category}
+                        locale={locale}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ) : (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -322,7 +366,22 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                 </ul>
               )}
 
-              {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
+              {/* High-Intent CPA Consultation Banner */}
+              {(result.grossIncome >= 80000 || calc.category === 'tax' || calc.category === 'business' || calc.id.includes('scorp') || calc.id.includes('llc') || calc.id.includes('1099') || calc.id.includes('capital') || calc.id.includes('corporate') || calc.id.includes('ir35')) && (
+                <div className="my-8">
+                  <CpaLeadCapture
+                    variant="banner"
+                    title="Optimize Your 2026 Tax Strategy"
+                    subtitle={`Based on your ${sym}${formatNum(result.grossIncome, locale)} revenue, consult a licensed CPA for personalized tax optimization.`}
+                    location={countryCode ? countryCode.toUpperCase() : 'US'}
+                    calculatorId={calc.id}
+                    defaultRevenue={result.grossIncome >= 250000 ? '250k_plus' : result.grossIncome >= 100000 ? '100k_250k' : '50k_100k'}
+                    buttonText="Consult a CPA"
+                  />
+                </div>
+              )}
+
+              {effectivePartners && effectivePartners.length > 0 && (
                 <div className="mt-8 pt-8 border-t border-slate-200">
                   <div className="flex items-center justify-between mb-4">
                     <p className="text-sm font-bold text-slate-900 flex items-center gap-2">
@@ -333,42 +392,21 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                       Sponsored
                     </span>
                   </div>
-                  <div className="flex flex-col gap-3">
-                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => {
-                      let logoIcon = partner.logo;
-                      if (!logoIcon) {
-                        const type = (partner.type || '').toLowerCase();
-                        if (type.includes('bank') || type.includes('neo')) logoIcon = '🏦';
-                        else if (type.includes('soft') || type.includes('account')) logoIcon = '💻';
-                        else if (type.includes('insur')) logoIcon = '🛡️';
-                        else if (type.includes('leg') || type.includes('incorp')) logoIcon = '⚖️';
-                        else if (type.includes('pay') || type.includes('hr')) logoIcon = '💼';
-                        else if (type.includes('real') || type.includes('mortg')) logoIcon = '🏠';
-                        else logoIcon = '⚡';
-                      }
-                      return (
-                        <a
-                          key={idx}
-                          href={partner.url || '#'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group flex items-start gap-4 p-4 rounded-2xl border border-slate-200 bg-white hover:border-blue-300 hover:shadow-md transition-all duration-300"
-                        >
-                          <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                            {logoIcon}
-                          </div>
-                          <div className="flex-1 min-w-0 pr-1">
-                            <div className="flex items-center justify-between gap-2">
-                              <h4 className="font-bold text-slate-900 text-sm md:text-base group-hover:text-blue-700 transition-colors truncate">{partner.name}</h4>
-                              <span className="shrink-0 text-xs font-bold text-blue-600 group-hover:text-blue-800 flex items-center gap-1 bg-blue-50 px-2 py-1 rounded-md transition-colors">
-                                {partner.type === 'software' ? 'Try Free' : 'Get Started'} <span className="text-blue-400 group-hover:translate-x-0.5 transition-transform">→</span>
-                              </span>
-                            </div>
-                            <p className="text-sm text-slate-500 mt-1 leading-relaxed line-clamp-2">{partner.description}</p>
-                          </div>
-                        </a>
-                      );
-                    })}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {effectivePartners.slice(0, 2).map((partner: any, idx: number) => (
+                      <AffiliateCard
+                        key={idx}
+                        partner={partner}
+                        netIncome={result.netIncome}
+                        grossIncome={result.grossIncome}
+                        currencySymbol={sym}
+                        calculatorId={calc.id}
+                        category={calc.category}
+                        locale={locale}
+                        country={countryCode}
+                        position="results_panel"
+                      />
+                    ))}
                   </div>
                 </div>
               )}

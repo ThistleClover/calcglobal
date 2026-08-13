@@ -42,18 +42,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bosnia and Herzegovina revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Sparkasse BiH",
-          "type": "software",
-          "description": "Top financial tool in Bosnia and Herzegovina"
-        },
-        {
-          "name": "Raiffeisen BiH",
-          "type": "software",
-          "description": "Top financial tool in Bosnia and Herzegovina"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

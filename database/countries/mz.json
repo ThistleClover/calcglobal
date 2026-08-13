@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Mozambique revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Millennium BIM",
-          "type": "software",
-          "description": "Top financial tool in Mozambique"
-        },
-        {
-          "name": "M-Pesa MZ",
-          "type": "software",
-          "description": "Top financial tool in Mozambique"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

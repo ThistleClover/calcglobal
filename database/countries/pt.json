@@ -1,7 +1,10 @@
 {
   "country": "Portugal",
   "country_code": "PT",
-  "languages": ["pt", "en"],
+  "languages": [
+    "pt",
+    "en"
+  ],
   "calculators": [
     {
       "id": "simulador-salario-liquido-pt",
@@ -28,9 +31,18 @@
           "label_native": "Estado Civil e Titularidade",
           "type": "select",
           "options": [
-            {"value": "single", "label_native": "Não casado / Solteiro"},
-            {"value": "married_1_income", "label_native": "Casado (Único titular)"},
-            {"value": "married_2_incomes", "label_native": "Casado (Dois titulares)"}
+            {
+              "value": "single",
+              "label_native": "Não casado / Solteiro"
+            },
+            {
+              "value": "married_1_income",
+              "label_native": "Casado (Único titular)"
+            },
+            {
+              "value": "married_2_incomes",
+              "label_native": "Casado (Dois titulares)"
+            }
           ]
         },
         {
@@ -44,8 +56,14 @@
           "label_native": "Grau de Incapacidade (Deficiência >= 60%)",
           "type": "select",
           "options": [
-            {"value": "no", "label_native": "Não (Sem incapacidade)"},
-            {"value": "yes", "label_native": "Sim (Deficiente >= 60%)"}
+            {
+              "value": "no",
+              "label_native": "Não (Sem incapacidade)"
+            },
+            {
+              "value": "yes",
+              "label_native": "Sim (Deficiente >= 60%)"
+            }
           ]
         },
         {
@@ -53,9 +71,18 @@
           "label_native": "Região Fiscal",
           "type": "select",
           "options": [
-            {"value": "mainland", "label_native": "Portugal Continental"},
-            {"value": "madeira", "label_native": "Região Autónoma da Madeira"},
-            {"value": "azores", "label_native": "Região Autónoma dos Açores"}
+            {
+              "value": "mainland",
+              "label_native": "Portugal Continental"
+            },
+            {
+              "value": "madeira",
+              "label_native": "Região Autónoma da Madeira"
+            },
+            {
+              "value": "azores",
+              "label_native": "Região Autónoma dos Açores"
+            }
           ]
         },
         {
@@ -69,8 +96,14 @@
           "label_native": "Forma de Pagamento do Subsídio de Refeição",
           "type": "select",
           "options": [
-            {"value": "cash", "label_native": "Em Numerário / Transferência"},
-            {"value": "card", "label_native": "Cartão / Título de Refeição"}
+            {
+              "value": "cash",
+              "label_native": "Em Numerário / Transferência"
+            },
+            {
+              "value": "card",
+              "label_native": "Cartão / Título de Refeição"
+            }
           ]
         },
         {
@@ -84,35 +117,23 @@
           "label_native": "Pagamento de Sub. Férias e Natal em Duodécimos",
           "type": "select",
           "options": [
-            {"value": "none", "label_native": "Não (Recebe em 14 meses)"},
-            {"value": "half", "label_native": "50% em duodécimos"},
-            {"value": "full", "label_native": "100% em duodécimos"}
+            {
+              "value": "none",
+              "label_native": "Não (Recebe em 14 meses)"
+            },
+            {
+              "value": "half",
+              "label_native": "50% em duodécimos"
+            },
+            {
+              "value": "full",
+              "label_native": "100% em duodécimos"
+            }
           ]
         }
       ],
       "formula_explanation": "1. Social Security (TSU - Taxa Social Única): Employee pays 11% flat on Gross Base Salary (Salário Bruto). Employer pays 23.75%. \n2. IRS Withholding Tax (Retenção na Fonte): Applied under the marginal rate system (Decreto-Lei update / Portaria de tabelas de retenção do IRS). The marginal withholding formula: IRS_Withholding = (Gross_Salary * Marginal_Rate) - Deduction_Amount - (Dependent_Deduction * Num_Dependents). Specific tables apply for Mainland, Madeira, and Azores, with lower tax rates for disabled workers (incapacidade >= 60%). \n3. Meal Allowance Exemption: Tax-free limits per day are €6.00 for cash payouts and €9.60 for meal card payouts (Cartão de Refeição). Any amount exceeding the daily limit is added to the taxable salary base for both IRS and TSU. \n4. Duodécimos: If selected, 1/12th or 1/24th of Vacation and Christmas bonuses are added monthly, subject to IRS withholding tables and TSU. \n5. Net Monthly Salary = Gross Salary + Total Meal Allowance - TSU (11%) - IRS Withholding Tax.",
-      "affiliate_targets": [
-        {
-          "name": "Coverflex Portugal",
-          "type": "software",
-          "description": "Leading flexible benefits & meal card platform in Portugal offering tax savings for SME employers and employees."
-        },
-        {
-          "name": "Revolut Business PT",
-          "type": "neobank",
-          "description": "Digital bank account for automated salary direct deposit, multi-currency corporate expense cards, and low-cost SEPA transfers."
-        },
-        {
-          "name": "Edenred Portugal (Euroticket)",
-          "type": "software",
-          "description": "Popular meal voucher and employee benefits provider offering max tax-free meal allowance integration."
-        },
-        {
-          "name": "Bankinter Portugal",
-          "type": "accounting",
-          "description": "High-interest remuneration bank accounts for salary direct deposits ('Conta Mais Ordenado')."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "simulador-recibos-verdes-ss-irs-pt",
@@ -139,10 +160,22 @@
           "label_native": "Tipo de Atividade (Regime Simplificado)",
           "type": "select",
           "options": [
-            {"value": "services_art151", "label_native": "Prestação de Serviços (Art. 151º CIRS - Coeficiente 0.75)"},
-            {"value": "other_services", "label_native": "Outras Prestações de Serviços (Coeficiente 0.35)"},
-            {"value": "sales_goods", "label_native": "Venda de Mercadorias / Produtos (Coeficiente 0.15)"},
-            {"value": "local_housing", "label_native": "Alojamento Local (Coeficiente 0.35 / 0.50)"}
+            {
+              "value": "services_art151",
+              "label_native": "Prestação de Serviços (Art. 151º CIRS - Coeficiente 0.75)"
+            },
+            {
+              "value": "other_services",
+              "label_native": "Outras Prestações de Serviços (Coeficiente 0.35)"
+            },
+            {
+              "value": "sales_goods",
+              "label_native": "Venda de Mercadorias / Produtos (Coeficiente 0.15)"
+            },
+            {
+              "value": "local_housing",
+              "label_native": "Alojamento Local (Coeficiente 0.35 / 0.50)"
+            }
           ]
         },
         {
@@ -150,10 +183,22 @@
           "label_native": "Taxa de Retenção na Fonte de IRS Aplicada",
           "type": "select",
           "options": [
-            {"value": "25", "label_native": "25% (Taxa Normal Serviços Profissionais)"},
-            {"value": "16.5", "label_native": "16.5% (Atividades de elevado valor acrescentado / Propriedade intelectual)"},
-            {"value": "11.5", "label_native": "11.5% (Rendimentos categoria B genéricos)"},
-            {"value": "0", "label_native": "0% (Isento - Art. 101.º / Faturação anual < 15.000€)"}
+            {
+              "value": "25",
+              "label_native": "25% (Taxa Normal Serviços Profissionais)"
+            },
+            {
+              "value": "16.5",
+              "label_native": "16.5% (Atividades de elevado valor acrescentado / Propriedade intelectual)"
+            },
+            {
+              "value": "11.5",
+              "label_native": "11.5% (Rendimentos categoria B genéricos)"
+            },
+            {
+              "value": "0",
+              "label_native": "0% (Isento - Art. 101.º / Faturação anual < 15.000€)"
+            }
           ]
         },
         {
@@ -161,9 +206,18 @@
           "label_native": "Ajuste Opção Segurança Social (Declaração Trimestral)",
           "type": "select",
           "options": [
-            {"value": "-25", "label_native": "-25% (Fixar base no mínimo permitido)"},
-            {"value": "0", "label_native": "0% (Manter base de incidência padrão)"},
-            {"value": "+25", "label_native": "+25% (Aumentar base para proteção social maior)"}
+            {
+              "value": "-25",
+              "label_native": "-25% (Fixar base no mínimo permitido)"
+            },
+            {
+              "value": "0",
+              "label_native": "0% (Manter base de incidência padrão)"
+            },
+            {
+              "value": "+25",
+              "label_native": "+25% (Aumentar base para proteção social maior)"
+            }
           ]
         },
         {
@@ -171,8 +225,14 @@
           "label_native": "Isenção de Segurança Social (1º Ano de Atividade)",
           "type": "select",
           "options": [
-            {"value": "no", "label_native": "Não (Sujeito a contribuições para SS)"},
-            {"value": "yes", "label_native": "Sim (Isento de SS durante os primeiros 12 meses de atividade)"}
+            {
+              "value": "no",
+              "label_native": "Não (Sujeito a contribuições para SS)"
+            },
+            {
+              "value": "yes",
+              "label_native": "Sim (Isento de SS durante os primeiros 12 meses de atividade)"
+            }
           ]
         },
         {
@@ -180,34 +240,19 @@
           "label_native": "Regime de IVA",
           "type": "select",
           "options": [
-            {"value": "exempt_art53", "label_native": "Isento de IVA (Art. 53.º CIRS - Faturação anual < 15.000€)"},
-            {"value": "normal_23", "label_native": "Regime Geral de IVA (23% no Continente)"}
+            {
+              "value": "exempt_art53",
+              "label_native": "Isento de IVA (Art. 53.º CIRS - Faturação anual < 15.000€)"
+            },
+            {
+              "value": "normal_23",
+              "label_native": "Regime Geral de IVA (23% no Continente)"
+            }
           ]
         }
       ],
       "formula_explanation": "1. Taxable Base for IRS (Regime Simplificado - Art. 31º CIRS): Taxable Income = Gross Earnings * Activity Coefficient (0.75 for general professional services under Art. 151, 0.35 for unlisted services, 0.15 for sale of goods). \n2. IRS Withholding (Retenção na Fonte): Calculated directly on total gross invoice amount prior to VAT. Standard service withholding rate is 25%. Under Art. 53º (turnover threshold < €15,000 in 2026), sole traders can opt out of withholding. \n3. Social Security Contribution (Declaração Trimestral SS): Relevant monthly income base = (Gross Quarterly Income / 3) * 70% (for services; 20% for goods). Base Social Security tax rate is 21.4% (or 25.2% for Sole Proprietors / Empresários em Nome Individual). The calculated base can be adjusted by the contributor in steps of 5% up to +/- 25%. Minimum monthly contribution is €20. Maximum monthly cap applies according to IAS threshold (12 x IAS). \n4. Net Monthly Income = Monthly Gross - IRS Withholding Amount - Monthly Social Security Contribution.",
-      "affiliate_targets": [
-        {
-          "name": "Rauva",
-          "type": "neobank",
-          "description": "Portuguese digital business account tailored for freelancers and SMEs, integrating billing, certified invoicing, and automated tax withholding."
-        },
-        {
-          "name": "Jasmin Software / Primavera",
-          "type": "software",
-          "description": "Cloud invoicing software certified by Autoridade Tributária (AT) for Recibos Verdes and small businesses in Portugal."
-        },
-        {
-          "name": "Moloni Portugal",
-          "type": "accounting",
-          "description": "Popular online POS and billing software with SAFT-PT XML exporter and automated quarterly SS reporting integrations."
-        },
-        {
-          "name": "Accountable PT",
-          "type": "software",
-          "description": "Tax app specifically designed for independent workers and sole traders in Portugal to calculate VAT and quarterly SS declarations."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "simulador-imt-imposto-selo-pt",
@@ -234,10 +279,22 @@
           "label_native": "Finalidade do Imóvel",
           "type": "select",
           "options": [
-            {"value": "hpp", "label_native": "Habitação Própria e Permanente (HPP)"},
-            {"value": "secondary", "label_native": "Habitação Secundária ou Arrendamento"},
-            {"value": "rustic", "label_native": "Prédio Rústico (Terreno Agricola)"},
-            {"value": "commercial", "label_native": "Prédio Urbano Outros / Comercial / Garagem"}
+            {
+              "value": "hpp",
+              "label_native": "Habitação Própria e Permanente (HPP)"
+            },
+            {
+              "value": "secondary",
+              "label_native": "Habitação Secundária ou Arrendamento"
+            },
+            {
+              "value": "rustic",
+              "label_native": "Prédio Rústico (Terreno Agricola)"
+            },
+            {
+              "value": "commercial",
+              "label_native": "Prédio Urbano Outros / Comercial / Garagem"
+            }
           ]
         },
         {
@@ -245,8 +302,14 @@
           "label_native": "Localização do Imóvel",
           "type": "select",
           "options": [
-            {"value": "mainland", "label_native": "Portugal Continental"},
-            {"value": "islands", "label_native": "Regiões Autónomas dos Açores e Madeira"}
+            {
+              "value": "mainland",
+              "label_native": "Portugal Continental"
+            },
+            {
+              "value": "islands",
+              "label_native": "Regiões Autónomas dos Açores e Madeira"
+            }
           ]
         },
         {
@@ -254,34 +317,19 @@
           "label_native": "Elegível para Benefício IMT Jovem (Até 35 anos inclusive)",
           "type": "select",
           "options": [
-            {"value": "no", "label_native": "Não (Idade superior a 35 anos ou não cumpre requisitos)"},
-            {"value": "yes", "label_native": "Sim (Todos os compradores têm até 35 anos e é a 1ª HPP)"}
+            {
+              "value": "no",
+              "label_native": "Não (Idade superior a 35 anos ou não cumpre requisitos)"
+            },
+            {
+              "value": "yes",
+              "label_native": "Sim (Todos os compradores têm até 35 anos e é a 1ª HPP)"
+            }
           ]
         }
       ],
       "formula_explanation": "1. IMT Calculation (Imposto Municipal sobre as Transmissões Onerosas de Imóveis): IMT = (Property Price * Marginal Tax Rate) - Deduction Amount (Parcela a Abater). Brackets are updated annually by OE (State Budget). For Continental HPP: 0% up to €101,917; 2% from €101,917 to €139,412 (deduction €2,038.34); 5% from €139,412 to €190,086 (deduction €6,220.70); 7% from €190,086 to €316,772 (deduction €10,022.42); 8% from €316,772 to €633,453 (deduction €13,190.14); flat 6% above €633,453 up to €1,102,920; flat 7.5% above €1,102,920. \n2. Stamp Duty (Imposto do Selo de Aquisição): Flat 0.8% of the acquisition value (or Taxable Asset Value - VPT, whichever is higher). If mortgage is used, an additional Stamp Duty of 0.6% applies on the loan amount (for terms > 5 years). \n3. IMT Jovem Exemption Rule: Buyers aged 35 or under purchasing their first primary residence (HPP) receive 100% exemption on IMT for purchase prices up to €316,772. For values between €316,772 and €633,453, the marginal rate of 8% applies ONLY to the portion exceeding €316,772 (with corresponding max deduction). Additionally, IMT Jovem grants 100% exemption on the 0.8% Imposto do Selo up to €316,772. \n4. Total Property Taxes = IMT Payable + Stamp Duty Payable.",
-      "affiliate_targets": [
-        {
-          "name": "Doutor Finanças Crédito Habitação",
-          "type": "software",
-          "description": "Portugal's top free credit intermediary for negotiating low-spread mortgages and insurance across major Portuguese banks."
-        },
-        {
-          "name": "Idealista Crédito",
-          "type": "software",
-          "description": "Leading real estate marketplace mortgage comparison engine connecting buyers directly with banking offers."
-        },
-        {
-          "name": "Banco BPI / Crédito Habitação",
-          "type": "neobank",
-          "description": "Top retail mortgage lender in PT offering specialized financing conditions for young home buyers (IMT Jovem)."
-        },
-        {
-          "name": "Fidelidade / Seguros de Vida Habitação",
-          "type": "insurance",
-          "description": "Largest Portuguese insurer for compulsory real estate life and multi-risk property insurance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "simulador-mais-valias-imobiliarias-pt",
@@ -332,8 +380,14 @@
           "label_native": "Imóvel Vendido era Habitação Própria Permanente (HPP)?",
           "type": "select",
           "options": [
-            {"value": "yes", "label_native": "Sim (Habitação Própria e Permanente)"},
-            {"value": "no", "label_native": "Não (Habitação Secundária / Investimento / Terreno)"}
+            {
+              "value": "yes",
+              "label_native": "Sim (Habitação Própria e Permanente)"
+            },
+            {
+              "value": "no",
+              "label_native": "Não (Habitação Secundária / Investimento / Terreno)"
+            }
           ]
         },
         {
@@ -347,34 +401,19 @@
           "label_native": "Residência Fiscal do Vendedor",
           "type": "select",
           "options": [
-            {"value": "resident", "label_native": "Residente Fiscal em Portugal"},
-            {"value": "non_resident", "label_native": "Não Residente (UE / Fora da UE)"}
+            {
+              "value": "resident",
+              "label_native": "Residente Fiscal em Portugal"
+            },
+            {
+              "value": "non_resident",
+              "label_native": "Não Residente (UE / Fora da UE)"
+            }
           ]
         }
       ],
       "formula_explanation": "1. Currency Devaluation Coefficient (Coeficiente de Desvalorização da Moeda): Adjusted Purchase Price = Original Purchase Price * Coefficient(Purchase Year, published annually by Ordinance/Portaria do Ministério das Finanças). \n2. Gross Capital Gain (Mais-Valia Bruta): Gross Gain = Sale Price - Adjusted Purchase Price - Documented Expenses (e.g. Real estate agency commission, Energy Certificate, Mortgage cancellation fees, Notary/Registry fees, Home improvements done in the last 12 years). \n3. Tax Base Percentage (Artigo 43.º do CIRS): For Portuguese tax residents, only 50% of the net capital gain is added to the annual taxable income (agregado aos restantes rendimentos) and taxed at IRS progressive tax rates (13.25% to 48%). Following legal changes, non-residents are also taxed under the same 50% inclusion rule as EU residents. \n4. Reinvestment Exemption (Artigo 44.º do CIRS): If the sold property was the owner's primary residence (HPP), gains are fully or partially exempt from IRS if the sale proceeds (minus outstanding mortgage payoff) are reinvested in the purchase, construction, or land acquisition of another primary residence in Portugal or EU/EEA within 36 months after the sale (or 24 months prior to sale). Formula for taxable gain with partial reinvestment: Taxable Gain = Gross Gain * (1 - (Reinvested Amount / (Sale Price - Outstanding Mortgage Payoff))) * 50%.",
-      "affiliate_targets": [
-        {
-          "name": "Doutor Finanças Tax Advisory",
-          "type": "accounting",
-          "description": "Expert tax advisory and IRS representation services for capital gain optimization and reinvestment reporting."
-        },
-        {
-          "name": "Remax Portugal / ERA Imobiliária",
-          "type": "software",
-          "description": "Leading real estate networks providing certified property valuations and sales representation."
-        },
-        {
-          "name": "Taxfix Portugal / TaxDown PT",
-          "type": "software",
-          "description": "Automated IRS tax return filing software assisting with Annex G capital gains declarations."
-        },
-        {
-          "name": "Bankinter Reinvestimento HPP",
-          "type": "neobank",
-          "description": "Bank solutions for bridge loans and mortgage refinancing for primary home replacement."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "simulador-indemnizacao-despedimento-pt",
@@ -419,10 +458,22 @@
           "label_native": "Motivo da Cessação do Contrato",
           "type": "select",
           "options": [
-            {"value": "collective_extinction", "label_native": "Despedimento Coletivo / Extinção de Posto de Trabalho"},
-            {"value": "fixed_term_expiry", "label_native": "Caducidade de Contrato a Termo Certo (Iniciativa da Empresa)"},
-            {"value": "unlawful_dismissal", "label_native": "Despedimento Ilícito / Sem Justa Causa"},
-            {"value": "resignation_just_cause", "label_native": "Rescisão pelo Trabalhador com Justa Causa"}
+            {
+              "value": "collective_extinction",
+              "label_native": "Despedimento Coletivo / Extinção de Posto de Trabalho"
+            },
+            {
+              "value": "fixed_term_expiry",
+              "label_native": "Caducidade de Contrato a Termo Certo (Iniciativa da Empresa)"
+            },
+            {
+              "value": "unlawful_dismissal",
+              "label_native": "Despedimento Ilícito / Sem Justa Causa"
+            },
+            {
+              "value": "resignation_just_cause",
+              "label_native": "Rescisão pelo Trabalhador com Justa Causa"
+            }
           ]
         },
         {
@@ -433,28 +484,7 @@
         }
       ],
       "formula_explanation": "1. Legal Framework (Código do Trabalho Art. 366.º e Lei n.º 13/2023 Agenda do Trabalho Digno): Statutory severance pay depends on contract duration and start date regimes. Under current law (post-May 2023), compensation is calculated at 14 days of base salary + seniority pay per full year of service (or 24 days per year in specific fixed-term caducidade scenarios). For older contracts, transitional logic applies (30 days/yr prior to Nov 2011, 20 days/yr Nov 2011-Oct 2013, 12-14 days/yr post-Oct 2013). Statutory cap: Max 240 x IAS (Indexante dos Apoios Sociais) or 20 years of compensation limit. \n2. Unused Vacation Pay (Férias Não Gozadas): Each employee earns 2 days of vacation per month worked (up to 22 days per full calendar year). Salary pay for accrued unused vacation days = (Base Salary / 22) * Unused Days. \n3. Proportional Vacation Allowance (Subsídio de Férias Proporcional): Equal to the unused vacation pay. \n4. Proportional Christmas Allowance (Subsídio de Natal Proporcional): 1/12th of monthly base salary per full month worked in the current calendar year up to the termination date. \n5. Total Termination Payout = Statutory Severance Compensation + Unused Vacation Pay + Proportional Vacation Allowance + Proportional Christmas Allowance.",
-      "affiliate_targets": [
-        {
-          "name": "Legal2U Portugal / Advogados do Trabalho",
-          "type": "software",
-          "description": "Online employment law consultation platform connecting employees and employers with specialized Portuguese labor lawyers."
-        },
-        {
-          "name": "Randstad Portugal",
-          "type": "software",
-          "description": "Leading Portuguese job search, career transition, and outplacement agency."
-        },
-        {
-          "name": "Banco Montepio",
-          "type": "neobank",
-          "description": "Mutualist bank offering transitional savings accounts and unemployment support loans in Portugal."
-        },
-        {
-          "name": "Jobseeker PT",
-          "type": "software",
-          "description": "CV builder and career management platform targeting Portuguese professionals changing jobs."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

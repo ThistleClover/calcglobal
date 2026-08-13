@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Moldova revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "MAIB",
-          "type": "software",
-          "description": "Top financial tool in Moldova"
-        },
-        {
-          "name": "Victoriabank",
-          "type": "software",
-          "description": "Top financial tool in Moldova"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

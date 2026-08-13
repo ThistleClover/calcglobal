@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ghana revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "MTN MoMo",
-          "type": "software",
-          "description": "Top financial tool in Ghana"
-        },
-        {
-          "name": "Ecobank Ghana",
-          "type": "software",
-          "description": "Top financial tool in Ghana"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

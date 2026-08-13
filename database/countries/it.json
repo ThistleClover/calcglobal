@@ -1,7 +1,10 @@
 {
   "country": "Italy",
   "country_code": "IT",
-  "languages": ["it", "en"],
+  "languages": [
+    "it",
+    "en"
+  ],
   "calculators": [
     {
       "id": "calcolo-stipendio-netto-ral",
@@ -27,7 +30,10 @@
           "name": "mensilita",
           "label_native": "Numero di Mensilità",
           "type": "select",
-          "options": ["13 mensilità", "14 mensilità"]
+          "options": [
+            "13 mensilità",
+            "14 mensilità"
+          ]
         },
         {
           "name": "regione",
@@ -50,7 +56,11 @@
           "name": "tipo_contratto",
           "label_native": "Tipologia Contratto",
           "type": "select",
-          "options": ["Tempo Indeterminato", "Tempo Determinato", "Apprendistato"]
+          "options": [
+            "Tempo Indeterminato",
+            "Tempo Determinato",
+            "Apprendistato"
+          ]
         },
         {
           "name": "figli_a_carico",
@@ -60,23 +70,7 @@
         }
       ],
       "formula_explanation": "1. Imponibile Previdenziale: La Retribuzione Annua Lorda (RAL) viene decurtata dei contributi previdenziali a carico del lavoratore (INPS ~9,19% o 9,49% per particolari settori/apprendistato).\n2. Imponibile Fiscale (Imponibile IRPEF) = RAL - Contributi INPS dipendente.\n3. Calcolo IRPEF Lorda per scaglioni di reddito (Aliquote IRPEF vigenti: 23% fino a 28.000€, 35% tra 28.000€ e 50.000€, 43% oltre 50.000€).\n4. Detrazioni per Lavoro Dipendente e Carichi di Famiglia: Applicazione delle detrazioni decrescenti all'aumentare del reddito complessivo.\n5. IRPEF Netta = IRPEF Lorda - Totale Detrazioni Spettanti.\n6. Addizionali IRPEF: Calcolo dell'Addizionale Regionale (variabile tra 1,23% e 3,33% a seconda della regione) e dell'Addizionale Comunale (media ~0,8%).\n7. Stipendio Netto Annuo = Imponibile Fiscale - IRPEF Netta - Addizionale Regionale - Addizionale Comunale.\n8. Stipendio Netto Mensile = Stipendio Netto Annuo / Numero di mensilità contrattuali (13 o 14).",
-      "affiliate_targets": [
-        {
-          "name": "Fineco Bank",
-          "type": "neobank",
-          "description": "Primary banking choice for Italian professionals offering salary direct deposit, free digital management, and tax F24 payment features."
-        },
-        {
-          "name": "Factial / Personio",
-          "type": "software",
-          "description": "HR and automated payroll processing platforms serving SMBs and corporate teams managing employee salary structures."
-        },
-        {
-          "name": "Revolut Premium / N26",
-          "type": "neobank",
-          "description": "High-payout digital banking solution with automated budgeting and salary deposit rewards."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calcolo-partita-iva-forfettario",
@@ -124,7 +118,10 @@
           "name": "nuova_attivita",
           "label_native": "Aliquota Start-up (Primi 5 Anni)",
           "type": "select",
-          "options": ["Sì (Aliquota agevolata 5%)", "No (Aliquota ordinaria 15%)"]
+          "options": [
+            "Sì (Aliquota agevolata 5%)",
+            "No (Aliquota ordinaria 15%)"
+          ]
         },
         {
           "name": "contributi_pagati_anno_precedente",
@@ -134,23 +131,7 @@
         }
       ],
       "formula_explanation": "1. Reddito Lordo Imponibile (Teorico) = Fatturato Incassato * Coefficiente di Redditività ATECO.\n2. Imponibile Fiscale Netto = Reddito Lordo Imponibile - Contributi previdenziali versati nell'anno solare (principio di cassa).\n3. Imposta Sostitutiva = Imponibile Fiscale Netto * Aliquota Imposta (5% per le nuove attività nei primi 5 anni, oppure 15% per attività a regime).\n4. Contributi INPS Gestione Separata = Reddito Lordo Imponibile * 26,07% (oppure minimale fisso + aliquota eccedente per Artigiani/Commercianti con eventuale sconto del 35%).\n5. Totale Carico Fiscale e Previdenziale = Imposta Sostitutiva + Contributi INPS.\n6. Guadagno Netto Annuo = Fatturato Incassato - Totale Carico Fiscale e Previdenziale.\n7. Equivalente Mensile Netto = Guadagno Netto Annuo / 12.",
-      "affiliate_targets": [
-        {
-          "name": "Fiscozen",
-          "type": "accounting",
-          "description": "Leading Italian digital tax platform specialized in opening and managing Partita IVA Forfettaria with dedicated accountants."
-        },
-        {
-          "name": "FlexTax",
-          "type": "accounting",
-          "description": "Popular online accounting service for Italian freelancers providing tax filing, F24 generation, and dedicated consulting."
-        },
-        {
-          "name": "Qonto / Tot",
-          "type": "neobank",
-          "description": "Dedicated B2B business bank account designed for Italian Partita IVA holders with native F24 tax payment integration."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calcolo-tfr-buona-uscita",
@@ -188,7 +169,10 @@
           "name": "destinazione_tfr",
           "label_native": "Destinazione Accantonamento TFR",
           "type": "select",
-          "options": ["Lasciato in Azienda", "Destinato a Fondo Pensione Complementare"]
+          "options": [
+            "Lasciato in Azienda",
+            "Destinato a Fondo Pensione Complementare"
+          ]
         },
         {
           "name": "aliquota_media_irpef_5anni",
@@ -198,23 +182,7 @@
         }
       ],
       "formula_explanation": "1. Accantonamento Annuo Lordo = Retribuzione Utile Annua / 13,5.\n2. Quota Netta Annua = Accantonamento Annuo Lordo - (0,50% della retribuzione utile destinato al fondo garanzia INPS) ≈ 6,91% della RAL.\n3. Rivalutazione Annuale TFR in Azienda = Il montante maturato fino al 31 dicembre dell'anno precedente viene rivalutato a un tasso composto pari a: 1,5% fisso + (0,75 * Indice Inflazione ISTAT). Sulla rivalutazione si applica un'imposta sostitutiva del 17%.\n4. Tassazione Separata IRPEF al Momento del Licenziamento/Dimissioni: Il TFR lordo totale viene tassato con l'aliquota media IRPEF calcolata sui redditi del lavoratore negli ultimi 5 anni di servizio (in media tra il 23% e il 35%).\n5. Vantaggio Fondo Pensione: Se il TFR viene versato ad un Fondo Pensione Complementare, la tassazione finale alla prestazione si riduce dal 15% fino ad un minimo del 9% (in base agli anni di iscrizione al fondo), garantendo un sensibile risparmio fiscale rispetto al TFR in azienda.",
-      "affiliate_targets": [
-        {
-          "name": "Moneyfarm",
-          "type": "accounting",
-          "description": "Leading digital wealth manager in Italy providing tax-advantaged Personal Pension Plans (PIP / FPA) for optimal TFR transfer."
-        },
-        {
-          "name": "Fineco / Gimme5 Pension",
-          "type": "neobank",
-          "description": "Accessible investment platform allowing Italian workers to allocate TFR into supplementary retirement products."
-        },
-        {
-          "name": "Generali / Alleanza Assicurazioni",
-          "type": "insurance",
-          "description": "Major institutional insurance providers for private pension funds and supplementary retirement annuity policies."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calcolo-tasse-acquisto-casa-imposta-registro",
@@ -246,7 +214,11 @@
           "name": "tipologia_acquisto",
           "label_native": "Agevolazione Fiscale Immobile",
           "type": "select",
-          "options": ["Prima Casa", "Seconda Casa", "Immobile di Lusso (A/1, A/8, A/9)"]
+          "options": [
+            "Prima Casa",
+            "Seconda Casa",
+            "Immobile di Lusso (A/1, A/8, A/9)"
+          ]
         },
         {
           "name": "venditore",
@@ -265,23 +237,7 @@
         }
       ],
       "formula_explanation": "1. Valore Catastale (Prezzo-Valore per vendita da Privato):\n   - Prima Casa: Rendita Catastale * 1,05 * 110 = Rendita Catastale * 115,5.\n   - Seconda Casa: Rendita Catastale * 1,05 * 120 = Rendita Catastale * 126.\n2. Acquisto da Privato (Soggetto a Imposta di Registro su Valore Catastale):\n   - Prima Casa: Imposta di Registro 2% (minimo 1.000€) + Imposta Ipotecaria fissa 50€ + Imposta Catastale fissa 50€.\n   - Seconda Casa: Imposta di Registro 9% (minimo 1.000€) + Imposta Ipotecaria fissa 50€ + Imposta Catastale fissa 50€.\n3. Acquisto da Impresa Costruttrice (Soggetto ad IVA su Prezzo di Acquisto Effective):\n   - Prima Casa: IVA 4% + Imposta di Registro 200€ + Imposta Ipotecaria 200€ + Imposta Catastale 200€.\n   - Seconda Casa: IVA 10% (22% per immobili di lusso A/1, A/8, A/9) + Imposta di Registro 200€ + Imposta Ipotecaria 200€ + Imposta Catastale 200€.\n4. Imposta Sostitutiva sul Mutuo (trattenuta direttamente dalla banca erogante):\n   - Prima Casa: 0,25% dell'importo del mutuo.\n   - Seconda Casa: 2,00% dell'importo del mutuo.\n5. Totale Imposte = Imposta di Registro/IVA + Imposte Ipotecaria e Catastale + Imposta Sostitutiva Mutuo.",
-      "affiliate_targets": [
-        {
-          "name": "MutuiOnline.it",
-          "type": "accounting",
-          "description": "Italy's dominant mortgage comparison and brokerage portal for homebuyers securing competitive mortgage interest rates."
-        },
-        {
-          "name": "Facile.it Mutui",
-          "type": "accounting",
-          "description": "Major Italian aggregator for home loans, notary cost estimations, and property appraisal services."
-        },
-        {
-          "name": "Prima Assicurazioni",
-          "type": "insurance",
-          "description": "Leading digital insurance provider in Italy offering home structure, fire, and mortgage protection policies."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calcolo-fattura-elettronica-ritenuta-acconto",
@@ -344,23 +300,7 @@
         }
       ],
       "formula_explanation": "1. Compenso Base Professionale = B.\n2. Rivalsa Previdenziale (INPS o Cassa Professionale) = B * (Percentuale Cassa / 100).\n3. Imponibile IVA = Compenso Base + Rivalsa Previdenziale.\n4. Calcolo IVA = Imponibile IVA * (Aliquota IVA / 100).\n5. Totale Lordo Fattura = Imponibile IVA + IVA.\n6. Ritenuta d'Acconto (se applicabile per soggetti in Regime Ordinario verso clienti sostituti d'imposta in Italia) = Compenso Base * 20%.\n7. Netto a Pagare (Netto Incasso Professionista) = Totale Lordo Fattura - Ritenuta d'Acconto.\n8. Scorporo (Calcolo Inverso dal Totale Incassato): Parte dal valore finale incassato e ricava matematicamente l'Imponibile Base risolvendo le equazioni algebriche sui fattori IVA, Cassa e Ritenuta d'Acconto.",
-      "affiliate_targets": [
-        {
-          "name": "Fatture in Cloud (TeamSystem)",
-          "type": "software",
-          "description": "Italy's #1 cloud invoicing software for freelancers and small businesses with native SDI electronic billing."
-        },
-        {
-          "name": "Aruba Fatturazione Elettronica",
-          "type": "software",
-          "description": "Popular Italian digital identity and electronic invoicing service provider with automatic F24 and tax archive tools."
-        },
-        {
-          "name": "Finom / Qonto",
-          "type": "neobank",
-          "description": "All-in-one business account integrating electronic invoicing, sub-accounts, and automatic VAT set-aside tools."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

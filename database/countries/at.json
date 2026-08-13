@@ -75,28 +75,7 @@
         }
       ],
       "formula_explanation": "Gross Monthly Salary (12x standard payments + 2x special payments 13th/14th salary). Employee Social Security (SV-Beitrag): ~18.12% for employees (Pension 10.25%, Health 3.87%, Unemployment 0%-3% based on income bracket, Chamber fee 0.5%, Housing fee 0.5%). Taxable Base (Lohnsteuerbemessungsgrundlage) = Gross - SV - Pendlerpauschale. Income tax is calculated on regular monthly pay using progressive tax brackets (0% up to €13,539/yr, 20% to €21,992, 30% to €36,458, 40% to €70,365, 48% to €104,859, 50% to €1M). Special payments (13th/14th salary: Urlaubs- & Weihnachtsgeld) are taxed separately: first €620 tax-free per year, next tranche up to Jahressechstel taxed at a flat 6% rate. Tax reductions: Verkehrsabsetzbetrag (€496/yr), Pendlereuro (€6/km simple commute per year), Familienbonus Plus (€2,000/yr per child <18, €700/yr per child ≥18), and AVAB/AEAB. Net Annual Salary = Total Gross - Total SV - Total Tax.",
-      "affiliate_targets": [
-        {
-          "name": "durchblicker.at",
-          "type": "accounting",
-          "description": "Leading Austrian comparison portal for personal loans, bank accounts, and insurances."
-        },
-        {
-          "name": "Erste Bank George",
-          "type": "neobank",
-          "description": "Popular Austrian salary account with integrated budgeting and cashback features."
-        },
-        {
-          "name": "N26 Austria",
-          "type": "neobank",
-          "description": "Digital neobank offering free IBAN accounts, automated sub-accounts, and spending analytics."
-        },
-        {
-          "name": "UNIQA Insurance",
-          "type": "insurance",
-          "description": "Top private health and supplementary pension insurance provider in Austria."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "svs-beitraege-einkommensteuer-rechner",
@@ -152,28 +131,7 @@
         }
       ],
       "formula_explanation": "Net Profit (Gewinn) = Annual Revenue - Operating Expenses. SVS Social Security Base (Beitragsgrundlage) = Net Profit + SVS contributions paid. SVS Contribution Rates: Health Insurance (Krankenversicherung) 6.80%, Pension Insurance (Pensionsversicherung) 18.50%, Voluntary Self-Employed Provident Fund (Selbstständigenvorsorge) 1.53%, Accident Insurance (Unfallversicherung) flat ~€11.35/month (€136.20/yr). Minimum monthly threshold (Mindestbeitragsgrundlage) applies if profit is below minimum limit. Profit Tax Allowance (Gewinnfreibetrag - GFB): Grundfreibetrag is automatically 15% on profits up to €33,000 (max €4,950 tax exemption without investment proof). Profit above €33,000 gets an additional investment-based GFB (13% up to €178,000, 7% up to €300,000, 4.5% up to €580,000) matched by eligible investments. Taxable Income = Profit - SVS Contributions - Gewinnfreibetrag. Personal income tax is calculated via Austrian tax brackets.",
-      "affiliate_targets": [
-        {
-          "name": "sevdesk Österreich",
-          "type": "software",
-          "description": "Popular Cloud accounting and invoicing software tailored to Austrian SVS & USt requirements."
-        },
-        {
-          "name": "FreeFinance",
-          "type": "software",
-          "description": "Austrian accounting software specifically designed for self-employed and small businesses in Austria."
-        },
-        {
-          "name": "Qonto Austria",
-          "type": "neobank",
-          "description": "B2B neobank with Austrian IBAN, sub-accounts for SVS tax reserves, and automated invoice VAT matching."
-        },
-        {
-          "name": "Erste Bank Pro Konto",
-          "type": "neobank",
-          "description": "Dedicated business banking account for freelancers and sole proprietors in Austria."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "grunderwerbsteuer-grundbuch-rechner-oesterreich",
@@ -231,28 +189,7 @@
         }
       ],
       "formula_explanation": "Property Transfer Tax (Grunderwerbsteuer - GrESt): For standard third-party purchases, flat 3.5% of purchase price. For family transfers (Stufentarif): 0.5% for first €250,000 of value, 2.0% for next €150,000 (up to €400k), 3.5% above €400,000. Land Register Registration Fee (Grundbuchseintragungsgebühr): 1.1% of purchase price for ownership entry. Mortgage Registration Fee (Pfandrechtsintabulierung): 1.2% of mortgage loan amount. First Home Exemption (Eigenheimbefreiung 2024-2026): 0% Grundbuch and Pfandrecht fees for primary residences on amounts up to €500,000 (amounts between €500k and €2M taxed only on excess over €500k). Notary/Legal contract setup (Vertragserrichtung & Treuhandabwicklung): typically 1.5% to 2.5% + 20% USt. Realtor commission (Maklerprovision): 3.0% + 20% USt = 3.6% total.",
-      "affiliate_targets": [
-        {
-          "name": "durchblicker.at Immobilienkredit",
-          "type": "accounting",
-          "description": "Austria's premier mortgage comparison platform matching buyers with best Austrian bank loan rates."
-        },
-        {
-          "name": "Infina Immobilienfinanzierung",
-          "type": "accounting",
-          "description": "Independent mortgage broker network across Austria offering customized financing."
-        },
-        {
-          "name": "Optifin",
-          "type": "accounting",
-          "description": "Top digital housing loan comparison service in Austria with zero advisory fees."
-        },
-        {
-          "name": "GraWe / UNIQA Eigenheimversicherung",
-          "type": "insurance",
-          "description": "Comprehensive home and building insurance coverage for Austrian property buyers."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "gmbh-flexco-steuer-ausschuettungsrechner",
@@ -302,28 +239,7 @@
         }
       ],
       "formula_explanation": "Company Taxable Profit = EBIT - Director Salary (inclusive of employer social security & municipal tax Kommunalsteuer 3% + DB/DZ payroll taxes). Corporate Income Tax (Körperschaftsteuer - KöSt): 23% flat on taxable corporate profit. Minimum Corporate Tax (Mindest-KöSt): €500/year for first 5 years for foundation-privileged GmbH/FlexCo (€125/quarter), thereafter €1,750/year (€437.50/quarter). Retained Profit after KöSt can be paid out as dividends (Ausschüttung). Capital Gains Tax on Dividends (Kapitalertragsteuer - KESt): 27.5% flat rate withheld at source. Total effective dividend tax burden on corporate profit = 23% KöSt + (77% * 27.5% KESt) = 44.175% overall tax rate on retained corporate earnings. Director Salary portion is taxed at employee/ASVG level or GSVG self-employed level depending on shareholding percentage (>50% ownership = GSVG + regular income tax scale).",
-      "affiliate_targets": [
-        {
-          "name": "sevdesk Österreich",
-          "type": "software",
-          "description": "Automated accounting and corporate reporting platform for Austrian GmbHs and FlexCos."
-        },
-        {
-          "name": "BMD Software",
-          "type": "software",
-          "description": "Enterprise accounting and ERP suite widely used by Austrian tax advisors (Steuerberater)."
-        },
-        {
-          "name": "Qonto Austria",
-          "type": "neobank",
-          "description": "B2B corporate account for FlexCo / GmbH formation capital deposit (Stammkapital-Einzahlung) and team expense management."
-        },
-        {
-          "name": "Finom",
-          "type": "neobank",
-          "description": "Smart business account for Austrian SMEs with automated tax calculation and invoice management."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "abfertigung-urlaubsersatzleistung-rechner",
@@ -380,28 +296,7 @@
         }
       ],
       "formula_explanation": "Abfertigung Neu (MVK): Employer pays 1.53% of monthly gross salary (including special payments) into an employee pension fund (Mitarbeitervorsorgekasse). Entitlement for cash payout requires 3 years of contributions AND termination by employer, mutual consent, or retirement (no cash payout on voluntary resignation by employee, but capital stays in fund). Cash payout is taxed at a privileged flat rate of 6% (or 0% if rolled into pension). Abfertigung Alt: Staggered payout multiplier based on years of service (3 yrs = 2 months salary, 5 yrs = 3 months, 10 yrs = 4 months, 15 yrs = 6 months, 20 yrs = 9 months, 25 yrs = 12 months salary). Taxed at 6% privileged tax rate under § 67 EStG up to statutory caps. Unused Vacation Payout (Urlaubsersatzleistung): Calculates daily gross compensation = (Monthly Gross * 14 / 12) / 21.75 * Unused Days, subject to regular SV and wage tax. Aliquote Sonderzahlungen: Prorated 13th (Urlaubsgeld) and 14th (Weihnachtsgeld) salary calculated based on months worked in the current calendar year.",
-      "affiliate_targets": [
-        {
-          "name": "durchblicker.at Rechtsschutz",
-          "type": "insurance",
-          "description": "Comparison portal for legal protection insurance (Rechtsschutzversicherung) for labor law disputes."
-        },
-        {
-          "name": "UNIQA Rechtsschutz",
-          "type": "insurance",
-          "description": "Leading Austrian legal expense insurance provider covering employment and contract disputes."
-        },
-        {
-          "name": "ARAG Österreich",
-          "type": "insurance",
-          "description": "Specialized legal indemnity and labor court protection insurer."
-        },
-        {
-          "name": "Erste Bank Vorsorge",
-          "type": "neobank",
-          "description": "Pension fund and capital investment options for severance pay roll-overs in Austria."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

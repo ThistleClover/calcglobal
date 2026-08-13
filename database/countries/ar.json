@@ -74,28 +74,7 @@
         }
       ],
       "formula_explanation": "1. Aportes de Seguridad Social a cargo del empleado (17% obligatorio): Jubilación (11%), INSSJP / Ley 19.032 (3%), Obra Social (3%). Se aplican sobre el sueldo bruto hasta el Tope Imponible ANSES vigente. 2. Aporte Sindical (si corresponde): 2% o 3% sobre el sueldo bruto. 3. Base Sujeta a Impuesto a las Ganancias = Sueldo Bruto - Aportes Seg. Social (17%) - Aporte Sindical - Mínimo No Imponible (MNI) mensual - Deducción Especial acumulada - Cargas de Familia (Cónyuge + Hijos) - Deducciones informadas en SIRADIG ARCA (40%/100% alquiler con tope, servicio doméstico con tope MNI, medicina prepaga hasta 5% de ganancia neta, intereses hipotecarios). 4. Si la Ganancia Neta Sujeta a Impuesto > 0, se aplica la tabla de alícuotas progresivas del Art. 94 Ley de Ganancias (escalas del 5% al 35% con cuota fija más porcentaje sobre el excedente). 5. Sueldo Neto de Bolsillo = Sueldo Bruto + Aguinaldo (si aplica) - Aportes Ley (17%) - Aporte Sindical - Retención Impuesto a las Ganancias ARCA.",
-      "affiliate_targets": [
-        {
-          "name": "Brubank",
-          "type": "neobank",
-          "description": "Banco digital argentino regulado por el BCRA para la recepción de haberes y sueldo neto con cuenta en pesos y dólares sin costo de mantenimiento."
-        },
-        {
-          "name": "Mercado Pago",
-          "type": "neobank",
-          "description": "Cuenta digital e inversión diaria en fondo de mercado de dinero para generar rendimientos automáticos sobre el saldo del sueldo neto recibido."
-        },
-        {
-          "name": "tributo.simple",
-          "type": "software",
-          "description": "Aplicación de asesoría impositiva digital para trabajadores y profesionales en Argentina para la optimización de deducciones en SIRADIG ARCA."
-        },
-        {
-          "name": "Jobint / Bumeran",
-          "type": "software",
-          "description": "Portal de empleo e inteligencia salarial en Argentina para comparar sueldos de mercado por puesto y seniority."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "monotributo-afip-cuota",
@@ -172,28 +151,7 @@
         }
       ],
       "formula_explanation": "1. Comparación de los parámetros del contribuyente (Ingresos Brutos en 12 meses, Superficie m², Energía kW, Alquileres devengados) contra la Tabla Oficial de Categorías ARCA (Categorías A a la K). 2. La categoría asignada corresponde al parámetro más alto en el que encuadre el contribuyente. 3. Cálculo de la cuota mensual unificada: Cuota Base = Impuesto Integrado (según categoría A-K y tipo de actividad) + Aporte Jubilatorio SIPA + Aporte a la Obra Social. 4. Aplicación de Exenciones: Si el contribuyente trabaja en relación de dependencia o es locador de hasta 3 inmuebles, SIPA = 0 y Obra Social = 0 (paga únicamente el Impuesto Integrado). Si aporta a Caja Profesional provincial, SIPA = 0. 5. Si aplica Monotributo Unificado provincial, se suma la componente fija de Ingresos Brutos (IIBB) de la provincia correspondiente.",
-      "affiliate_targets": [
-        {
-          "name": "SOS Contador",
-          "type": "software",
-          "description": "Software de contabilidad y facturación electrónica en la nube especializado en la recategorización e impuestos de Monotributistas en Argentina."
-        },
-        {
-          "name": "Contabilium",
-          "type": "software",
-          "description": "Sistema de gestión y facturación AFIP/ARCA para pequeños negocios, emprendedores y monotributistas con integración a Mercado Pago."
-        },
-        {
-          "name": "Ualá",
-          "type": "neobank",
-          "description": "Tarjeta y cuenta fintech argentina para recibir pagos, cobrar QR y abonar la VEP del Monotributo de forma instantánea."
-        },
-        {
-          "name": "Taxhub",
-          "type": "accounting",
-          "description": "Estudio contable digital y app de liquidación de impuestos para trabajadores independientes en Argentina."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "indemnizacion-despido-lct",
@@ -262,28 +220,7 @@
         }
       ],
       "formula_explanation": "1. Indemnización por Antigüedad (Art. 245 LCT): Si la antigüedad incluye una fracción mayor a 3 meses, se computa como un año completo. Indemnización Base = MRMNH × Años de antigüedad computados. La ley fija un mínimo equivalente a 1 mes del mejor sueldo mensual. 2. Indemnización Sustitutiva de Preaviso (Art. 231/232 LCT): Si no se otorgó preaviso, se abona 1 mes de sueldo si la antigüedad es < 5 años, o 2 meses de sueldo si la antigüedad es > 5 años. Se adiciona la 12da parte por SAC sobre preaviso. 3. Integración del Mes de Despido (Art. 233 LCT): Si el despido no ocurre el último día hábil del mes, se pagan los días faltantes para completar el mes de salario + SAC sobre integración. 4. Liquidación Final Acumulada: A) Días trabajados del mes del despido. B) SAC Proporcional del semestre en curso (Días del semestre / 180 × 50% del mejor sueldo). C) Vacaciones No Gozadas = (MRMNH / 25) × Días proporcionales de vacaciones + SAC sobre vacaciones (8,33%). 5. Sumatoria Total Liquidación = Indemnización Antigüedad + Sustitutiva Preaviso (+ SAC) + Integración Mes (+ SAC) + Salario Pendiente + SAC Proporcional + Vacaciones Proporcionales (+ SAC).",
-      "affiliate_targets": [
-        {
-          "name": "Deel",
-          "type": "software",
-          "description": "Plataforma global de gestión de contratos de trabajo, nóminas y desvinculaciones laborales en cumplimiento con leyes de Argentina."
-        },
-        {
-          "name": "Legálitas / Abogados Laborales AR",
-          "type": "insurance",
-          "description": "Asesoramiento legal inmediato y patrocinio letrado para revisión de liquidaciones finales y reclamos laborales en SeCLO o Fuero del Trabajo."
-        },
-        {
-          "name": "TaxDown / Contadores",
-          "type": "accounting",
-          "description": "Asesoría fiscal para el tratamiento tributario de indemnizaciones por despido y exenciones en el Impuesto a las Ganancias."
-        },
-        {
-          "name": "Lemon Cash",
-          "type": "neobank",
-          "description": "Billetera virtual argentina para la recepción y custodia de fondos de liquidaciones finales con tarjeta Visa de cashback."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "gastos-escritura-inmobiliaria-argentina",
@@ -353,28 +290,7 @@
         }
       ],
       "formula_explanation": "1. Conversión de la operación a Pesos Argentinos (ARS) = Precio USD × Tipo de Cambio acordado / oficial de escrituración. 2. Impuesto de Sellos (Comprador 50% / Vendedor 50% salvo pacto en contrario): CABA (Alícuota general 3.5%, exención parcial/total para Vivienda Única según monto MNI), PBA (Alícuota general 2.0%). 3. Honorarios Escribano de Registro (A cargo del Comprador): Arancel sugerido de Colegio de Escribanos (1.5% a 2.0% + IVA sobre precio inmueble) + Gastos de escritura y fojas (aprox 0.5%). 4. Gastos Vendedor: Certificado de Dominio, Inhibición General de Bienes y Formulario COTI (AFIP/ARCA). 5. Comisión Inmobiliaria: Comprador (3% a 4% + IVA) y Vendedor (3% a 4% + IVA). 6. Impuesto a las Ganancias Cedular (Vendedor): 15% sobre la diferencia ajustada si el inmueble fue adquirido después del 01/01/2018.",
-      "affiliate_targets": [
-        {
-          "name": "Zonaprop",
-          "type": "software",
-          "description": "Portal inmobiliario líder en Argentina para buscar propiedades en venta, alquiler y comparar precios por metro cuadrado."
-        },
-        {
-          "name": "RE/MAX Argentina",
-          "type": "insurance",
-          "description": "Red de servicios inmobiliarios para la tasación profesional y corretaje de propiedades en todo el país."
-        },
-        {
-          "name": "Hipotecas Banco Nación / Banco Ciudad",
-          "type": "neobank",
-          "description": "Líneas de créditos hipotecarios UVA y tradicionales para la financiación de la primera vivienda en Argentina."
-        },
-        {
-          "name": "Contabilium / Escribanías",
-          "type": "accounting",
-          "description": "Asesoría impositiva para la tramitación de COTI ARCA y liquidación de tributos en escrituración."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "factura-e-exportacion-servicios",
@@ -435,28 +351,7 @@
         }
       ],
       "formula_explanation": "1. Monto Bruto Exportado (USD) = Factura E emitida en ARCA sin IVA (0%). 2. Deducción de Comisiones de Plataforma y Giros Internacionales: SWIFT bancario ($30-$60 USD) o Takenos / Payoneer / Wise (1% a 3%). 3. Divisas Disponibles en USD Neto = Monto Bruto USD - Comisiones de Cobro. 4. Conversión a ARS según el método seleccionado: Dólar MEP (USD Neto × Cotización Dólar MEP - Comisión ALyC) o Dólar BNA (USD Neto × Tipo de cambio BNA). 5. Descuento de Impuestos Locales: Cuota fija de Monotributo / Monotributo Tech o anticipos de Impuesto a las Ganancias (Responsable Inscripto). Exención del 100% de IVA e Ingresos Brutos en exportación de servicios. 6. Ingreso Neto Real = Total ARS obtenido tras comisiones y cuota impositiva.",
-      "affiliate_targets": [
-        {
-          "name": "Takenos",
-          "type": "neobank",
-          "description": "Plataforma fintech para creadores, freelancers y exportadores de servicios en Argentina para recibir pagos en USD/EUR y transferir a bancos o billeteras locales."
-        },
-        {
-          "name": "Payoneer",
-          "type": "neobank",
-          "description": "Solución financiera global para cobrar a empresas internacionales y usar fondos con tarjeta de débito en dólares."
-        },
-        {
-          "name": "SOS Contador",
-          "type": "accounting",
-          "description": "Estudio contable cloud especializado en la emisión de Facturas E, Monotributo Tech y normativa cambiaria del BCRA para profesionales."
-        },
-        {
-          "name": "Lemon Cash",
-          "type": "neobank",
-          "description": "Billetera cripto y fintech para dolarización e inversión de saldos provenientes del exterior."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

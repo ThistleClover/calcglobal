@@ -41,23 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Pakistan revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BEAMS",
-          "type": "software",
-          "description": "Top financial tool in Pakistan"
-        },
-        {
-          "name": "EasyPaisa",
-          "type": "software",
-          "description": "Top financial tool in Pakistan"
-        },
-        {
-          "name": "JazzCash",
-          "type": "software",
-          "description": "Top financial tool in Pakistan"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

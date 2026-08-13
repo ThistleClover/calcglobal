@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on El Salvador revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Banco Agricola",
-          "type": "software",
-          "description": "Top financial tool in El Salvador"
-        },
-        {
-          "name": "Chivo Wallet",
-          "type": "software",
-          "description": "Top financial tool in El Salvador"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

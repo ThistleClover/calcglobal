@@ -68,28 +68,7 @@
         }
       ],
       "formula_explanation": "1. Gross Annual Income = Monthly Gross Salary × 12.\n2. Basic Deduction (Grundavdrag): Calculated via Skatteverket formulas based on Price Base Amount (Prisbasbelopp PBB = 58,800 SEK for 2026). Ranges between ~16,800 SEK and ~40,500 SEK for earners under 66, and enhanced basic deduction up to ~130,000 SEK for earners aged 66+.\n3. Taxable Earned Income = Gross Annual Income - Grundavdrag.\n4. Municipal Tax (Kommunalskatt): Municipal Tax Rate % × Taxable Earned Income. (Includes municipal + regional tax + burial fee + optional church fee).\n5. Earned Income Tax Credit (Jobbskatteavdrag): Calculated as a direct credit against municipal tax based on earned income and PBB. Extended in 2026 with no high-income taper reduction.\n6. State Income Tax (Statlig inkomstskatt): 20% on Taxable Earned Income exceeding the skiktgräns (643,000 SEK taxable income / brytpunkt 660,400 SEK gross annual income for under 66; 760,500 SEK gross annual income for age 66+).\n7. Total Personal Income Tax = Municipal Tax - Jobbskatteavdrag + State Income Tax.\n8. Net Annual Income = Gross Annual Income - Total Personal Income Tax. Net Monthly Take-Home Pay = Net Annual Income / 12.",
-      "affiliate_targets": [
-        {
-          "name": "Revolut Sweden",
-          "type": "neobank",
-          "description": "Popular Swedish neobank offering instant salary deposits, free multi-currency accounts, and automated budgeting tools."
-        },
-        {
-          "name": "Unionen",
-          "type": "insurance",
-          "description": "Sweden's largest trade union providing white-collar workers with income insurance (inkomstförsäkring) covering up to 80% of salary upon job loss."
-        },
-        {
-          "name": "Avanza Bank",
-          "type": "software",
-          "description": "Leading Swedish digital investment bank and ISK broker targeting net salary monthly auto-savers."
-        },
-        {
-          "name": "Lunar Sweden",
-          "type": "neobank",
-          "description": "Nordic mobile bank with high-yield savings accounts and automated pay-check splitting features."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "se-aktiebolag-utdelning-lon",
@@ -148,28 +127,7 @@
         }
       ],
       "formula_explanation": "1. Employer Social Security Contributions (Arbetsgivaravgifter): 31.42% of Gross Director Salary. Total Payroll Cost = Gross Salary × 1.3142.\n2. Taxable Corporate Profit = Company Gross Profit - Total Payroll Cost - Business Expenses.\n3. Corporate Tax (Bolagsskatt): 20.6% × Taxable Corporate Profit. Net Distributable Profit = Taxable Corporate Profit × (1 - 0.206).\n4. K10 Dividend Allowance (Gränsbelopp):\n   - 2025 Förenklingsregeln: 2.75 × Inkomstbasbelopp (IBB) (209,550 SEK for 2025) × Ownership Share %.\n   - 2025 Huvudregeln: 50% of qualifying company payroll (subject to owner salary requirement: 6 IBB + 5% payroll or 9.6 IBB) × Ownership Share %.\n   - 2026 Unified Model: Base threshold (4 IBB = 322,400 SEK for 2026) + Salary-based space (payroll minus 8 IBB deduction) × Ownership Share %.\n5. Dividend Taxation:\n   - Dividends within Gränsbelopp: Taxed at favorable 20% capital rate (2/3 of 30%).\n   - Dividends exceeding Gränsbelopp (up to 90 IBB cap): Taxed as earned income (tjänsteinkomst) at marginal tax rate (~32-52%), but exempt from employer contributions.\n   - Dividends exceeding 90 IBB: Taxed at standard 30% capital tax rate.\n6. Total Net Combined Take-Home = Net Director Salary (after income tax & jobbskatteavdrag) + Net Distributed Dividends (after 20% / marginal dividend tax).",
-      "affiliate_targets": [
-        {
-          "name": "Fortnox",
-          "type": "software",
-          "description": "Dominant Swedish cloud accounting software for limited companies (Aktiebolag) featuring automated payroll and K10 dividend reporting."
-        },
-        {
-          "name": "Bokio",
-          "type": "software",
-          "description": "Popular automated accounting, invoicing, and corporate tax return platform tailored for Swedish small business owners."
-        },
-        {
-          "name": "Mynt",
-          "type": "neobank",
-          "description": "Swedish corporate smart credit card offering high limits, accounting synchronization, and expense management for Aktiebolag directors."
-        },
-        {
-          "name": "Qred",
-          "type": "neobank",
-          "description": "Leading Nordic business finance platform providing fast corporate loans and credit lines for growth companies."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "se-enskild-firma-skatt",
@@ -230,28 +188,7 @@
         }
       ],
       "formula_explanation": "1. Gross Business Operating Profit = Annual Gross Revenues - Business Expenses. (If umbrella employment, deduct umbrella commission fee of ~6% first).\n2. Allocation to Tax Allocation Reserve (Periodiseringsfond): Maximum 30% of operating profit can be deferred for up to 6 tax years. Net Business Profit (Överskott) = Operating Profit - Tax Reserve Deduction.\n3. Standard Allowance for Social Contributions (Schablonavdrag för egenavgifter): 25% standard deduction on Net Profit for age <67 (or 10% for age 67+). Estimated Taxable Base = Net Business Profit / 1.25.\n4. Self-Employed Social Security Contributions (Egenavgifter): 28.97% × Estimated Taxable Base (or 10.21% pension fee for age 67+).\n5. Taxable Earned Income (Beskattningsbar förvärvsinkomst) = Net Business Profit - Actual Egenavgifter - Basic Deduction (Grundavdrag).\n6. Personal Income Tax = Municipal Tax Rate × Taxable Earned Income - Jobbskatteavdrag + State Income Tax (20% above 643,000 SEK taxable income threshold).\n7. Net Take-Home Freelance Income = Net Business Profit - Actual Egenavgifter - Personal Income Tax.",
-      "affiliate_targets": [
-        {
-          "name": "Frilans Finans",
-          "type": "software",
-          "description": "Sweden's leading umbrella organization enabling freelancers to invoice client companies without registering a business entity."
-        },
-        {
-          "name": "Zervant",
-          "type": "software",
-          "description": "User-friendly electronic invoicing and expense tracking platform designed specifically for Nordic sole traders."
-        },
-        {
-          "name": "Svea Bank",
-          "type": "neobank",
-          "description": "Swedish business bank offering dedicated Enskild firma accounts with tax buffer savings sub-accounts and factoring."
-        },
-        {
-          "name": "Trygg-Hansa",
-          "type": "insurance",
-          "description": "Comprehensive commercial general liability (ansvarsförsäkring) and legal protection insurance for sole proprietors."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "se-bostadsvinstskatt-lagfart",
@@ -318,28 +255,7 @@
         }
       ],
       "formula_explanation": "1. Gross Capital Profit = Sale Price - Purchase Price.\n2. Total Allowable Deductions = Broker Commission + Sales Marketing Expenses + Qualified Renovation Expenses (Grundförbättringar full value within last 5 years + Reparationer/Underhåll bringing property to improved standard).\n3. Net Capital Gain (Vinst/Förlust) = Gross Capital Profit - Total Allowable Deductions.\n4. Capital Gains Tax on Private Residence (Vinstskatt privatbostad): Taxed at 22% effective rate (22/30 of profit subject to 30% capital tax). If capital loss, tax reduction is 50% of loss up to 100,000 SEK, plus 30% on loss exceeding 100,000 SEK.\n5. Tax Deferral (Uppskov med vinstskatt): Sellers purchasing a replacement dwelling can defer up to 3,000,000 SEK of capital gains. Annual deferral tax rate is 0% (abolished since 2021).\n6. Stamp Duty on Property Ownership Transfer (Stämpelskatt för lagfart): 1.5% of Sale Price (or tax assessment value if higher) + 825 SEK registration fee for individuals (4.25% for corporate buyers).\n7. New Mortgage Deed Fee (Pantbrev): 2% of new mortgage deed amount issued + 375 SEK administration fee per pantbrev.",
-      "affiliate_targets": [
-        {
-          "name": "SBAB",
-          "type": "neobank",
-          "description": "State-owned Swedish mortgage bank offering competitive interest rates and transparent online mortgage approvals."
-        },
-        {
-          "name": "Hemnet",
-          "type": "software",
-          "description": "Sweden's main property marketplace and home valuation portal for prospective home buyers and sellers."
-        },
-        {
-          "name": "Ordna Bolån",
-          "type": "software",
-          "description": "Digital mortgage brokerage platform comparing home loan offers across major Swedish commercial banks."
-        },
-        {
-          "name": "Mäklarhuset",
-          "type": "legal",
-          "description": "Established real estate brokerage network providing home valuation assessments and conveyancing assistance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "se-rot-rut-avdrag",
@@ -397,28 +313,7 @@
         }
       ],
       "formula_explanation": "1. Gross Invoice Amount = Labor Cost + Material and Travel Expenses.\n2. Potential ROT Tax Reduction: 30% × Labor Cost. Maximum ROT cap = 50,000 SEK per person per tax year.\n3. Potential RUT Tax Reduction: 50% × Labor Cost. Maximum total combined ROT + RUT cap = 75,000 SEK per person per tax year.\n4. Household Combined Capacity: Max ROT ceiling = 50,000 SEK × Number of Eligible Owners. Max total ROT+RUT ceiling = 75,000 SEK × Number of Eligible Owners.\n5. Remaining Household Allowance: ROT Cap Remaining = Min(50,000 SEK - Previous ROT, 75,000 SEK - Total Previous ROT+RUT) × Owners. RUT Cap Remaining = (75,000 SEK - Total Previous ROT+RUT) × Owners.\n6. Granted Tax Reduction = Min(Potential Tax Reduction, Remaining Allowance). Note: Tax reduction is limited by individual's total paid municipal/state tax for the year.\n7. Customer Payable Net Amount = Gross Invoice Amount - Granted Tax Reduction.",
-      "affiliate_targets": [
-        {
-          "name": "Offerta",
-          "type": "software",
-          "description": "Sweden's premier quotation network matching homeowners with certified contractors eligible for ROT and RUT tax deductions."
-        },
-        {
-          "name": "Bygghemma",
-          "type": "software",
-          "description": "Leading Nordic e-commerce store for building supplies, fixtures, and renovation materials."
-        },
-        {
-          "name": "Lendo",
-          "type": "neobank",
-          "description": "Dominant Swedish financial loan comparison platform for home improvement and renovation financing."
-        },
-        {
-          "name": "Freska",
-          "type": "software",
-          "description": "Popular home services platform specializing in recurring RUT-deductible home cleaning."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

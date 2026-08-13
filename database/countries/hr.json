@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Croatia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "MojPosao",
-          "type": "software",
-          "description": "Top financial tool in Croatia"
-        },
-        {
-          "name": "RBA",
-          "type": "software",
-          "description": "Top financial tool in Croatia"
-        },
-        {
-          "name": "Minimax",
-          "type": "software",
-          "description": "Top financial tool in Croatia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

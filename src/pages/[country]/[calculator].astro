@@ -1,13 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import InteractiveCalculator from '../../components/InteractiveCalculator';
-import AdSlot from '../../components/AdSlot.astro';
-import AffiliateCard from '../../components/AffiliateCard.astro';
+import CpaLeadCapture from '../../components/CpaLeadCapture.astro';
 import fs from 'fs';
 import path from 'path';
 import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
 import { getEngineKeyForCalc } from '../../lib/engine/factory';
 import { getTranslatedCategory, getUITranslation } from '../../utils/translations';
+import { getAffiliatePartners } from '../../utils/affiliateMatching';
 
 export function getStaticPaths() {
   const dbDir = path.join(process.cwd(), 'database', 'countries');
@@ -35,6 +35,25 @@ const { countryData, calcData } = Astro.props;
 const slug = countryData.country_code.toLowerCase();
 const meta = COUNTRY_METADATA[slug] || { lang: 'en', locale: 'en-US', currencySymbol: '$' };
 const engineKey = getEngineKeyForCalc(calcData.id) ?? slug;
+
+// Filter affiliate partners using strict brand matching rules
+const matchedAffiliates = getAffiliatePartners({
+  calcId: calcData.id,
+  countryCode: slug,
+  category: calcData.category,
+  title: calcData.title_en || calcData.title_native,
+  description: calcData.description_native,
+  affiliateTargets: calcData.affiliate_targets,
+});
+
+const updatedCalcData = {
+  ...calcData,
+  affiliate_targets: matchedAffiliates,
+};
+
+const isHighIntentCalc = calcData.category === 'tax' || calcData.category === 'business' || [
+  's-corp', 'llc', 'capital-gains', 'self-employment', '1099', 'corporate', 'ir35', 'sole-trader', 'gmbh', 'dividend', 'vat', 'payroll', 'tax'
+].some(kw => calcData.id.toLowerCase().includes(kw));
 
 // Serialize the real engine function at build time so it can be evaluated client-side
 // This avoids dynamic import() with template literals which breaks Vite's bundler
@@ -131,8 +150,8 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         <span class="text-white text-xs font-semibold truncate max-w-[200px] sm:max-w-none">{calcData.title_native}</span>
       </nav>
 
-      <!-- Title & Authority Metadata Row -->
-      <div class="flex items-center gap-3 flex-wrap mb-5">
+      <!-- Title & Authority Metadata Row with E-E-A-T Badges -->
+      <div class="flex items-center gap-2.5 flex-wrap mb-5">
         <span class="inline-flex items-center px-3 py-1 bg-white text-slate-900 text-xs font-bold rounded-lg tracking-wide shadow-sm border border-slate-200">
           {getTranslatedCategory(calcData.category, meta.lang)}
         </span>
@@ -142,6 +161,10 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             {meta.authorityAbbr} Compliant
           </span>
         )}
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-950/60 text-emerald-300 text-xs font-semibold rounded-lg border border-emerald-700/50 backdrop-blur-sm">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          Verified by CPAs
+        </span>
         {calcData.last_updated && (
           <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-green-900/40 text-green-400 text-xs font-semibold rounded-lg border border-green-700/50 backdrop-blur-sm">
             <span class="relative flex h-2 w-2">
@@ -151,6 +174,9 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             Updated {calcData.last_updated}
           </span>
         )}
+        <a href={`${base}/methodology`} class="inline-flex items-center gap-1 px-3 py-1 bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium rounded-lg border border-slate-700 transition-colors">
+          Audit Methodology &rarr;
+        </a>
       </div>
 
       <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-300">
@@ -168,14 +194,25 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <!-- The Interactive Calculator (React Island) -->
     <InteractiveCalculator
       client:visible
-      calc={calcData}
+      calc={updatedCalcData}
       engineCode={engineCode}
       locale={meta.locale}
       currencySymbol={meta.currencySymbol}
+      countryCode={slug}
     />
 
-    <!-- Strategic AdSlot 1 -->
-    <AdSlot variant="rectangle" className="my-10" />
+    <!-- Strategic Lead Capture section for high-intent calculators -->
+    {isHighIntentCalc && (
+      <section class="mt-12">
+        <CpaLeadCapture
+          variant="card"
+          title={`Consult a Verified ${countryData.country} CPA / Accountant`}
+          subtitle={`Get expert advice for ${calcData.title_en || calcData.title_native}. Save taxes, optimize entity structure, and ensure statutory compliance.`}
+          location={countryData.country}
+          calculatorId={calcData.id}
+        />
+      </section>
+    )}
 
     <!-- About & Calculation Methodology (Task 3 & E-E-A-T) -->
     {calcData.formula_explanation && (
@@ -195,9 +232,9 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             </div>
           </div>
           <div class="flex items-center gap-2">
-            <span class="text-xs font-bold px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-100">
-              2026/27 Tax Year
-            </span>
+            <a href={`${base}/methodology`} class="text-xs font-bold px-3 py-1.5 bg-blue-50 text-blue-700 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors flex items-center gap-1">
+              Audit Methodology &rarr;
+            </a>
           </div>
         </div>
 
@@ -213,27 +250,6 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         </div>
       </section>
     )}
-
-    <!-- Affiliate Partners (Prominent Recommended Tools Section) -->
-    {calcData.affiliate_targets && calcData.affiliate_targets.length > 0 && (
-      <section class="mt-12 bg-gradient-to-b from-slate-50 to-white rounded-3xl p-8 border border-slate-200 shadow-sm">
-        <div class="flex items-center justify-between mb-8">
-          <div>
-            <h2 class="text-2xl font-bold text-slate-900 mb-1">{getUITranslation('RECOMMENDED_TOOLS', meta.lang)}</h2>
-            <p class="text-sm text-slate-500">Trusted solutions for {countryData.country} professionals</p>
-          </div>
-          <span class="hidden sm:inline-flex px-3 py-1 bg-white border border-slate-200 shadow-sm text-xs font-bold text-slate-600 rounded-full uppercase tracking-wide">Verified Partners</span>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {calcData.affiliate_targets.slice(0, 3).map((partner: any) => (
-            <AffiliateCard partner={partner} />
-          ))}
-        </div>
-      </section>
-    )}
-
-    <!-- Strategic AdSlot 2 -->
-    <AdSlot variant="in-article" className="my-12" />
 
     <!-- Premium FAQ Section -->
     {calcData.article_faq && calcData.article_faq.length > 0 && (

@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Venezuela revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "SENIAT",
-          "type": "software",
-          "description": "Top financial tool in Venezuela"
-        },
-        {
-          "name": "Banesco",
-          "type": "software",
-          "description": "Top financial tool in Venezuela"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

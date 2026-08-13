@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Yemen revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "TBY",
-          "type": "software",
-          "description": "Top financial tool in Yemen"
-        },
-        {
-          "name": "Yemen Kuwait Bank",
-          "type": "software",
-          "description": "Top financial tool in Yemen"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

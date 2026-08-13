@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Lithuania revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Swedbank LT",
-          "type": "software",
-          "description": "Top financial tool in Lithuania"
-        },
-        {
-          "name": "SEB",
-          "type": "software",
-          "description": "Top financial tool in Lithuania"
-        },
-        {
-          "name": "Merkurita",
-          "type": "software",
-          "description": "Top financial tool in Lithuania"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

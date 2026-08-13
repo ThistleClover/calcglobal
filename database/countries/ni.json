@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Nicaragua revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Banpro",
-          "type": "software",
-          "description": "Top financial tool in Nicaragua"
-        },
-        {
-          "name": "Lafise",
-          "type": "software",
-          "description": "Top financial tool in Nicaragua"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

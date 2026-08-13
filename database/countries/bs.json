@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bahamas revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "RBC Bahamas",
-          "type": "software",
-          "description": "Top financial tool in Bahamas"
-        },
-        {
-          "name": "Scotiabank",
-          "type": "software",
-          "description": "Top financial tool in Bahamas"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

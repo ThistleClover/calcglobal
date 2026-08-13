@@ -42,18 +42,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Luxembourg revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BGL BNP Paribas",
-          "type": "software",
-          "description": "Top financial tool in Luxembourg"
-        },
-        {
-          "name": "BCEE",
-          "type": "software",
-          "description": "Top financial tool in Luxembourg"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

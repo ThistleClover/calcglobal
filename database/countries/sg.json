@@ -70,28 +70,7 @@
         }
       ],
       "formula_explanation": "1. Ordinary Wages (OW) Monthly CPF Ceiling: $6,800/mo (2024), $7,400/mo (2025), $8,000/mo (2026). OW Subject to CPF = Min(Gross Monthly Salary, OW Ceiling).\n2. Additional Wages (AW) Annual CPF Ceiling: $102,000 - Total Annual OW subject to CPF. AW Subject to CPF = Min(Annual Bonus, AW Ceiling).\n3. Full CPF Rates (Citizens & PR 3rd Year+):\n   - Age <= 55: Employee 20%, Employer 17% (Total 37%). Max Employee CPF OW cap = $1,480/mo (2025).\n   - Age > 55 to 60: Employee 17%, Employer 15.5% (Total 32.5%).\n   - Age > 60 to 65: Employee 12.5%, Employer 12% (Total 24.5%).\n   - Age > 65 to 70: Employee 7.5%, Employer 9% (Total 16.5%).\n   - Age > 70: Employee 5%, Employer 7.5% (Total 12.5%).\n4. Graduated PR Rates (Yr 1 Standard: Employee 5% / Employer 4%; Yr 2 Standard: Employee 15% / Employer 9%).\n5. Net Monthly Take-Home Pay = Gross Monthly Salary - Monthly Employee CPF.\n6. Annual Chargeable Income = Gross Annual Income (OW * 12 + AW) - Employee CPF Deductions - SRS Relief (Max $15,300 SC/PR, $35,700 Foreigner) - Earned Income Relief ($1,000-$8,000) - Other Reliefs (Subject to $80,000 total relief cap).\n7. IRAS Personal Income Tax (YA 2024/2025): First $20k (0%), next $10k (2%), next $10k (3.5%), next $40k (7%), next $40k (11.5%), next $40k (15%), next $40k (18%), next $40k (19%), next $40k (20%), next $40k (21%), next $180k (22%), next $500k (23%), >$1M (24%). Subtract 50% Personal Income Tax Rebate (capped at $200).",
-      "affiliate_targets": [
-        {
-          "name": "Endowus",
-          "type": "software",
-          "description": "Leading digital wealth platform in Singapore enabling users to invest CPF Ordinary Account (OA), Special Account (SA), and SRS savings."
-        },
-        {
-          "name": "Syfe",
-          "type": "software",
-          "description": "Popular robo-advisor and wealth manager offering SRS investment portfolios and high-yield cash management accounts."
-        },
-        {
-          "name": "DBS Bank",
-          "type": "neobank",
-          "description": "Singapore's flagship retail bank targeting salary crediting via DBS Multiplier to unlock high savings deposit rates."
-        },
-        {
-          "name": "MoneySmart Singapore",
-          "type": "software",
-          "description": "Dominant financial comparison platform for credit cards, personal loans, and wealth products in Singapore."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sg-stamp-duty-absd-calculator",
@@ -149,28 +128,7 @@
         }
       ],
       "formula_explanation": "1. Residential Buyer's Stamp Duty (BSD) Tiers:\n   - First S$180,000: 1%\n   - Next S$180,000 (S$180k - S$360k): 2%\n   - Next S$640,000 (S$360k - S$1.0M): 3%\n   - Next S$500,000 (S$1.0M - S$1.5M): 4%\n   - Next S$1,500,000 (S$1.5M - S$3.0M): 5%\n   - Portion exceeding S$3,000,000: 6%\n2. Non-Residential BSD Tiers:\n   - First S$180k (1%), Next S$180k (2%), Next S$640k (3%), Next S$500k (4%), Portion > S$1.5M (5%).\n3. Additional Buyer's Stamp Duty (ABSD) Rates (Residential):\n   - Singapore Citizen (SC): 1st property (0%), 2nd property (20%), 3rd+ (30%).\n   - Singapore PR (SPR): 1st property (5%), 2nd property (30%), 3rd+ (35%).\n   - Foreigner: 60% flat across all residential purchases.\n   - Entities / Corporate: 65% flat.\n   - Housing Developers: 35% + 5% non-remittable.\n4. Joint SC + SPR married couples purchasing their 1st residential property qualify for ABSD remission (0%).\n5. Total Property Stamp Duty = BSD + ABSD.",
-      "affiliate_targets": [
-        {
-          "name": "PropertyGuru Singapore",
-          "type": "software",
-          "description": "Singapore's leading property portal connecting property buyers with home listings and mortgage comparison services."
-        },
-        {
-          "name": "MortgageWise",
-          "type": "software",
-          "description": "Premier independent mortgage advisory firm in Singapore providing home loan rate comparison and refinancing services."
-        },
-        {
-          "name": "HSBC Singapore Home Loans",
-          "type": "neobank",
-          "description": "Major international bank offering high-value mortgage packages for Singapore residential and private property purchases."
-        },
-        {
-          "name": "SmartWealth SG",
-          "type": "software",
-          "description": "Financial planning network specializing in high-net-worth real estate structuring and property tax optimization."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sg-corporate-tax-sute-calculator",
@@ -219,28 +177,7 @@
         }
       ],
       "formula_explanation": "1. Singapore Flat Corporate Tax Rate: 17% on Net Chargeable Income.\n2. Startup Tax Exemption (SUTE) Scheme (First 3 YAs for eligible new startups):\n   - 75% exemption on first S$100,000 chargeable income (effective tax rate 4.25%). Max exempt = S$75,000.\n   - 50% exemption on next S$100,000 chargeable income (effective tax rate 8.5%). Max exempt = S$50,000.\n   - Maximum total SUTE exemption = S$125,000 per year.\n3. Partial Tax Exemption (PTE) Scheme (All other companies & post-3rd YA startups):\n   - 75% exemption on first S$10,000 chargeable income (effective tax rate 4.25%). Max exempt = S$7,500.\n   - 50% exemption on next S$190,000 chargeable income (effective tax rate 8.5%). Max exempt = S$95,000.\n   - Maximum total PTE exemption = S$102,500 per year.\n4. Gross Corporate Tax = (Chargeable Income - Exempt Income) * 17%.\n5. Corporate Income Tax (CIT) Rebate: 50% of Gross Corporate Tax, capped at S$40,000. Companies employing at least 1 local employee receive a minimum S$2,000 CIT Rebate Cash Payout.\n6. Net Corporate Tax Payable = Max(0, Gross Corporate Tax - CIT Rebate).\n7. Single-Tier Dividend System: Dividends distributed to shareholders out of after-tax corporate profits are 100% tax-free.",
-      "affiliate_targets": [
-        {
-          "name": "Sleek Singapore",
-          "type": "accounting",
-          "description": "Leading digital corporate secretarial, accounting, and tax filing service for Singapore startups and SMEs."
-        },
-        {
-          "name": "Osome Singapore",
-          "type": "software",
-          "description": "AI-driven corporate secretarial, bookkeeping, and incorporation platform tailored for Singapore entrepreneurs."
-        },
-        {
-          "name": "Aspire Financial",
-          "type": "neobank",
-          "description": "Top B2B business account and corporate card platform in Singapore offering multi-currency accounts and expense management."
-        },
-        {
-          "name": "Airwallex SG",
-          "type": "neobank",
-          "description": "Global multi-currency business account provider for Singapore companies executing cross-border payments."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sg-self-employed-medisave-tax-calculator",
@@ -302,28 +239,7 @@
         }
       ],
       "formula_explanation": "1. Net Trade Income (NTI) = Gross Trade Revenue - Max(Actual Allowable Expenses, Gross Revenue * 15% if using prescribed ratio).\n2. Compulsory Medisave Requirement: Self-Employed Persons (SEPs) earning NTI > S$6,000/year must contribute to CPF Medisave.\n3. Medisave Contribution Rates (Tiered by NTI level, capped at Medisave ceiling NTI S$72,000):\n   - Age <35: 4% to 8% of NTI (Max S$5,760/yr).\n   - Age 35-44: 4.5% to 9.5% of NTI (Max S$6,840/yr).\n   - Age 45-49: 5% to 10% of NTI (Max S$7,200/yr).\n   - Age 50+: 5.5% to 10.5% of NTI (Max S$7,560/yr).\n4. Medisave Tax Relief: Mandatory Medisave contributions made by self-employed individuals are 100% tax-deductible against Personal Income Tax.\n5. Total Taxable Income = NTI + Other Employment Income - Medisave Contribution - Voluntary SRS (max $15,300 SC/PR) - Earned Income Relief ($1,000-$8,000).\n6. IRAS Personal Income Tax is computed via progressive tax bands (0% to 24%) minus 50% Personal Income Tax Rebate (capped at $200).",
-      "affiliate_targets": [
-        {
-          "name": "Sleek SG",
-          "type": "accounting",
-          "description": "Digital bookkeeping, sole proprietor accounting, and IRAS tax filing platform in Singapore."
-        },
-        {
-          "name": "Wise Business",
-          "type": "neobank",
-          "description": "Low-cost multi-currency account for Singapore freelancers and independent contractors receiving international payments."
-        },
-        {
-          "name": "Income Insurance",
-          "type": "insurance",
-          "description": "Leading Singapore insurance provider offering Gigcover disability income protection for self-employed individuals."
-        },
-        {
-          "name": "Aspire",
-          "type": "neobank",
-          "description": "Free Singapore SME and freelancer business account with automated expense categorisation and cashback rewards."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sg-tenancy-stamp-duty-rental-tax-calculator",
@@ -380,28 +296,7 @@
         }
       ],
       "formula_explanation": "1. Average Annual Rent (AAV) = (Gross Monthly Rent * Lease Duration Months + Advance Premium) / (Lease Duration Months / 12).\n2. IRAS Tenancy Stamp Duty:\n   - For lease duration <= 4 years (<= 48 months): 0.4% of total rent payable across the full lease period.\n   - For lease duration > 4 years (> 48 months): 0.4% of 4 x AAV (equivalent to 1.6% of AAV).\n   - If advance premium paid: Additional 0.4% tax on the premium amount.\n3. Landlord Gross Annual Rental Income = Monthly Rent * 12.\n4. Landlord Taxable Net Rental Income:\n   - Deemed Expense Option: Net Rent = Gross Annual Rent - (Gross Annual Rent * 15%) - Annual Mortgage Interest.\n   - Actual Expense Option: Net Rent = Gross Annual Rent - Actual Allowable Expenses - Annual Mortgage Interest.\n5. Net Rental Income is added to personal income tax computation (taxed at progressive rates 0% to 24%) or corporate tax computation (taxed at 17%).",
-      "affiliate_targets": [
-        {
-          "name": "PropertyGuru Singapore",
-          "type": "software",
-          "description": "Singapore's primary property listing portal for landlords advertising residential and commercial rental units."
-        },
-        {
-          "name": "Singlife",
-          "type": "insurance",
-          "description": "Comprehensive landlord insurance coverage protecting against property damage, tenant default, and legal liability."
-        },
-        {
-          "name": "MoneySmart SG",
-          "type": "software",
-          "description": "Leading mortgage comparison site for property investors refinancing home loans to minimize rental interest expenses."
-        },
-        {
-          "name": "Sleek SG",
-          "type": "accounting",
-          "description": "Tax preparation and rental income bookkeeping service for individual landlords and investment companies."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

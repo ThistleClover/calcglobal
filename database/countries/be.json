@@ -66,28 +66,7 @@
         }
       ],
       "formula_explanation": "Gross Salary - Employee RSZ/ONSS (13.07%) = Taxable Gross Base. Fringe benefits (VAA company car) are added to Taxable Base. Professional Withholding Tax (Bedrijfsvoorheffing / Précompte professionnel) is calculated using progressive tax scales (25%, 40%, 45%, 50%), reduced by tax-free allowance (€10,570 base) and per-child dependent tax credits (e.g. €42/mo for 1 child, €118/mo for 2 children). Special Social Security Contribution (BBSZ / CSSS) is applied on a sliding scale up to €60.94/mo. Low earners get a Work Bonus (Werkbonus) reducing employee RSZ. Net Salary = Gross - RSZ - Withholding Tax - BBSZ.",
-      "affiliate_targets": [
-        {
-          "name": "Accountable",
-          "type": "accounting",
-          "description": "All-in-one tax and income tracking for Belgian employees converting to self-employed or freelancing."
-        },
-        {
-          "name": "Qonto Belgium",
-          "type": "neobank",
-          "description": "Leading business banking account in Belgium for freelancers with automated tax retention."
-        },
-        {
-          "name": "SD Worx / Partena Professional",
-          "type": "software",
-          "description": "Payroll software integration and HR management solutions for Belgian employers."
-        },
-        {
-          "name": "Hello bank! Belgium",
-          "type": "neobank",
-          "description": "Popular Belgian digital bank offering free salary accounts and mobile cashback."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "property-registration-notary-fees-belgium",
@@ -146,28 +125,7 @@
         }
       ],
       "formula_explanation": "Registration Tax (Verkooprecht / Droits d'enregistrement): Flanders reduced rate for sole primary home is 3% (1% for major energy renovation - IER), standard rate 12%. Brussels rate 12.5% with €200,000 tax-free Abattement allowance on properties ≤ €600,000. Wallonia rate 12.5% with €40,000 Abattement exemption for primary residence. Statutory Notary Fees (Honoraria) follow royal decree sliding bracket scale: 4.56% (<€7.5k) down to 0.057% (>€250k). Fixed administrative fees (~€800-€1,100) + 21% VAT on notary service. Mortgage Deed Costs include 1% mortgage registration duty, conservator fee, notary scale, and admin fees.",
-      "affiliate_targets": [
-        {
-          "name": "Hypotheek.be / Immotheker Finattect",
-          "type": "accounting",
-          "description": "Leading Belgian mortgage broker comparing 25+ mortgage lenders for optimal rates."
-        },
-        {
-          "name": "Keytrade Bank",
-          "type": "neobank",
-          "description": "Direct online mortgage provider in Belgium with competitive fixed rates and zero dossier fees."
-        },
-        {
-          "name": "KBC Woonkrediet",
-          "type": "insurance",
-          "description": "Top Belgian bank & home insurer offering integrated mortgage and property coverage."
-        },
-        {
-          "name": "AXA Belgium / Allianz",
-          "type": "insurance",
-          "description": "Comprehensive property insurance and compulsory outstanding balance insurance (schuldsaldoverzekering)."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sole-proprietorship-vs-bv-belgium",
@@ -213,28 +171,7 @@
         }
       ],
       "formula_explanation": "Sole Proprietorship: Net Profit = Revenue - Expenses. Social Security = 20.5% on net profit up to €70,857, 14.16% up to €104,422. Taxable net income after social security is taxed under personal income tax (25%-50% + municipal surcharge ~7%). Company (BV/SRL): Corporate Taxable Profit = Revenue - Expenses - Director Salary. SME Corporate Tax = 20% on first €100,000 (if min director salary of €45,000 is met), 25% on remaining. Post-tax company profits paid as dividends taxed at 15% (VVPRbis) or 30%. Director salary is taxed as personal income + social contributions. Crossover point for BV advantage is typically ~€45,000-€55,000 net profit.",
-      "affiliate_targets": [
-        {
-          "name": "Accountable",
-          "type": "accounting",
-          "description": "Top tax & accounting automation platform built specifically for Belgian freelancers and BV/SRL companies."
-        },
-        {
-          "name": "Dexxter",
-          "type": "software",
-          "description": "Dedicated accounting software engineered for Belgian sole proprietors (eenmanszaken)."
-        },
-        {
-          "name": "Qonto",
-          "type": "neobank",
-          "description": "B2B financial institution with Belgian IBAN, seamless corporate capital deposit certificates, and expense management."
-        },
-        {
-          "name": "Xerius / Acerta / Liantis",
-          "type": "accounting",
-          "description": "Official Belgian social insurance funds for self-employed status registration and compliance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "student-worker-tax-calculator-belgium",
@@ -286,28 +223,7 @@
         }
       ],
       "formula_explanation": "Students can work up to 600 hours per calendar year under solidarity rate (Solidariteitsbijdrage). Within 600 hours, employee RSZ is reduced to 2.71% (vs 13.07% standard) and no withholding tax is deducted. Above 600 hours, standard RSZ (13.07%) and tax withholding apply. Annual earnings up to €10,570 are exempt from personal tax (belastingvrije som). To remain dependent child for parents' tax deduction (kind ten laste), student net income cannot exceed €3,984 (married parents) or €5,750 (single parent), with the first tranche of student job earnings (~€3,190) legally excluded from the dependent calculation.",
-      "affiliate_targets": [
-        {
-          "name": "Hello bank! Belgium",
-          "type": "neobank",
-          "description": "Free digital bank account for youth and students in Belgium with mobile budgeting tools."
-        },
-        {
-          "name": "ING Student Account",
-          "type": "neobank",
-          "description": "Dedicated Belgian student bank account with payment card and student cashback."
-        },
-        {
-          "name": "Wise",
-          "type": "neobank",
-          "description": "Multi-currency international banking account for Belgian Erasmus and international students."
-        },
-        {
-          "name": "Finom",
-          "type": "neobank",
-          "description": "Fintech solution for student entrepreneurs (student-zelfstandige) managing invoice revenue."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "company-car-vaa-atn-calculator-belgium",
@@ -365,28 +281,7 @@
         }
       ],
       "formula_explanation": "Annual VAA/ATN = Catalog Value * Age Coefficient * CO2 Percentage * (6/7). Age coefficient reduces by 6%/year down to min 70% after 6 years. CO2 Percentage: Electric vehicles use min reference 4.0%. Petrol/Hybrid: 5.5% + (CO2 - Petrol_Reference) * 0.1%. Diesel: 5.5% + (CO2 - Diesel_Reference) * 0.1%. CO2 percentage capped between 4% and 18%. Legal minimum annual VAA applies (~€1,600). Net monthly tax cost to employee = (Annual VAA * Marginal Tax Rate) / 12. Corporate tax deductibility formula = 120% - (0.5% * fuel_coeff * CO2_g_km), with zero-emission EV cars 100% deductible.",
-      "affiliate_targets": [
-        {
-          "name": "LeasePlan Belgium / Arval",
-          "type": "software",
-          "description": "Leading corporate EV leasing and fleet management providers in Belgium."
-        },
-        {
-          "name": "EDI / MobilityPlus",
-          "type": "software",
-          "description": "Home and workplace EV charging infrastructure solutions with automatic split-billing."
-        },
-        {
-          "name": "Qover",
-          "type": "insurance",
-          "description": "Belgian digital insurance provider for fleet cars and Mobility Budget (Mobiliteitsbudget) alternatives."
-        },
-        {
-          "name": "Accountable",
-          "type": "accounting",
-          "description": "Belgian accounting app for optimizing car expense deductibility vs Mobility Budget for business owners."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

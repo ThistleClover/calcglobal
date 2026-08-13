@@ -89,23 +89,7 @@
         }
       ],
       "formula_explanation": "1. Net Chargeable Income (應課稅入息實額) = Total Income - Allowances - Deductions.\n2. Deductions include Mandatory MPF (capped at HK$18,000/year), VHIS Premiums (capped at HK$8,000 per insured person), QDTA/TVC combined (capped at HK$60,000), Self-Education (capped at HK$100,000), and Home Loan Interest (capped at HK$100,000).\n3. Progressive Rates: First HK$50k @ 2%, Next HK$50k @ 6%, Next HK$50k @ 10%, Next HK$50k @ 14%, Remainder @ 17%.\n4. Standard Tax Rates (Two-tiered): 15% on net income up to HK$5,000,000; 16% on income exceeding HK$5,000,000.\n5. Tax Payable is the lower of Progressive Tax calculation and Standard Rate Tax calculation, less any annual government statutory tax reduction (e.g. 100% capped at HK$3,000).",
-      "affiliate_targets": [
-        {
-          "name": "Bowtie Insurance (保泰人壽)",
-          "type": "insurance",
-          "description": "Hong Kong's leading virtual insurer for VHIS (自願醫保) tax deduction schemes with high user conversion."
-        },
-        {
-          "name": "TaxScouts / Sleek HK",
-          "type": "accounting",
-          "description": "High intent for high earners needing tax computation and personal tax filing assistance."
-        },
-        {
-          "name": "HSBC One / Standard Chartered Tax Loans",
-          "type": "neobank",
-          "description": "High conversion for low-interest annual tax loan applicants."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "hk-property-stamp-duty-mortgage-calculator",
@@ -156,23 +140,7 @@
         }
       ],
       "formula_explanation": "1. Ad Valorem Stamp Duty (AVD Scale 2 Rates): \n   - Up to HK$3,000,000: HK$100\n   - HK$3,000,001 to HK$3,528,240: HK$100 + 10% of excess over HK$3M\n   - HK$3,528,241 to HK$4,500,000: 1.50%\n   - HK$4,500,001 to HK$5,315,630: HK$67,500 + 10% of excess over HK$4.5M\n   - HK$5,315,631 to HK$7,200,000: 2.25%\n   - HK$7,200,001 to HK$9,607,060: HK$162,000 + 10% of excess over HK$7.2M\n   - HK$9,607,061 to HK$20,000,000: 3.75%\n   - Over HK$20,000,000: 4.25% (with smooth transition bracket up to HK$21,739,130).\n2. Mortgage Amount = Property Value × LTV%.\n3. Down Payment (首期) = Property Value - Mortgage Amount.\n4. Total Cash Required = Down Payment + Stamp Duty + Legal Fees (~0.5%) + Agency Commission (1%).\n5. Monthly Payment = P × [ r(1+r)^n ] / [ (1+r)^n - 1 ], where P = Mortgage Amount, r = monthly interest rate, n = tenure in months.",
-      "affiliate_targets": [
-        {
-          "name": "MoneyHero Mortgage",
-          "type": "accounting",
-          "description": "Leading HK Financial comparison portal offering bank mortgage referral cash rebates."
-        },
-        {
-          "name": "mReferral Mortgage Brokerage (中原按揭 / 美聯按揭)",
-          "type": "accounting",
-          "description": "Top HK mortgage referral brokers with substantial commission payouts per home buyer conversion."
-        },
-        {
-          "name": "HSBC / Bank of China Mortgage Services",
-          "type": "neobank",
-          "description": "Direct home loan application referral programs."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "hk-mpf-contribution-calculator",
@@ -211,23 +179,7 @@
         }
       ],
       "formula_explanation": "1. Mandatory Provident Fund Thresholds: Minimum Relevant Income = HK$7,100/month; Maximum Relevant Income = HK$30,000/month.\n2. Employee Contribution Rate = 5% of monthly relevant income (0% if monthly income < HK$7,100; capped at HK$1,500/month if income > HK$30,000).\n3. Employer Contribution Rate = 5% of monthly relevant income (5% regardless of min income limit; capped at HK$1,500/month if income > HK$30,000).\n4. Self-Employed Persons (SEP): Mandatory 5% of income, HK$0 if income < HK$7,100, capped at HK$1,500/month if income > HK$30,000.\n5. Net Monthly Salary = Monthly Income - Employee Mandatory MPF Contribution.",
-      "affiliate_targets": [
-        {
-          "name": "Manulife MPF (宏利強積金)",
-          "type": "insurance",
-          "description": "Market leader in Hong Kong MPF schemes offering high incentives for MPF account consolidation and TVC tax-deductible voluntary contributions."
-        },
-        {
-          "name": "HSBC MPF Direct",
-          "type": "neobank",
-          "description": "Major HK MPF scheme provider targeting corporate payroll setup and personal employee transfers."
-        },
-        {
-          "name": "Sun Life Hong Kong MPF",
-          "type": "insurance",
-          "description": "Popular MPF scheme manager with attractive customer onboarding rewards."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "hk-profits-tax-calculator",
@@ -275,28 +227,7 @@
         }
       ],
       "formula_explanation": "1. Assessable Profits (應評稅利潤) = Gross Revenue - Allowable Expenses.\n2. Two-Tiered Tax Rates for Corporations:\n   - Profits up to HK$2,000,000 @ 8.25%\n   - Profits exceeding HK$2,000,000 @ 16.5%\n3. Two-Tiered Tax Rates for Unincorporated Businesses:\n   - Profits up to HK$2,000,000 @ 7.5%\n   - Profits exceeding HK$2,000,000 @ 15.0%\n4. Standard Single Rate (if not eligible for two-tiered): 16.5% for Corporations; 15.0% for Unincorporated Businesses.\n5. Statutory Concession Deduction: Subtract government annual tax reduction (e.g. 100% capped at HK$3,000).\n6. Final Profits Tax Payable = Max(0, Calculated Tax - Tax Reduction).",
-      "affiliate_targets": [
-        {
-          "name": "Sleek Hong Kong",
-          "type": "software",
-          "description": "All-in-one corporate secretarial, company formation, and tax filing platform for HK SMEs with recurring high affiliate commissions."
-        },
-        {
-          "name": "Airwallex Hong Kong",
-          "type": "neobank",
-          "description": "Leading global cross-border payments and business account provider for HK businesses."
-        },
-        {
-          "name": "Xero HK",
-          "type": "software",
-          "description": "Dominant cloud accounting platform for HK small businesses and startups."
-        },
-        {
-          "name": "Neat Business Account",
-          "type": "neobank",
-          "description": "HK business neobank for fast digital account opening."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "hk-severance-long-service-payment-calculator",
@@ -341,23 +272,7 @@
         }
       ],
       "formula_explanation": "1. Capped Monthly Wage = Min(Last Month Wage, HK$22,500).\n2. Gross Statutory Payment (法定應得款額) = Capped Monthly Wage × (2 / 3) × Years of Service.\n3. Maximum Statutory Cap: Total payment is capped at HK$390,000.\n4. MPF Offsetting (強積金對沖金額): Employer can offset the statutory payment using the accrued benefits derived from employer's mandatory/voluntary MPF contributions.\n5. Net Payable by Employer = Max(0, Statutory Payment - Employer MPF Accrued Benefits).\n6. Un-offset Remainder paid to employee from MPF accrued benefits.",
-      "affiliate_targets": [
-        {
-          "name": "Sleek HK HR & Payroll",
-          "type": "software",
-          "description": "High intent for employers and HR managers managing employee offboarding and compliant statutory calculations."
-        },
-        {
-          "name": "Deel Hong Kong",
-          "type": "software",
-          "description": "Global HR and compliance platform for managing Hong Kong contracts, severance, and legal employment obligations."
-        },
-        {
-          "name": "Bowtie Group Health Insurance",
-          "type": "insurance",
-          "description": "Employee benefits platform targeted at corporate employers reviewing employee termination and healthcare packages."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ivory Coast revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Wave CI",
-          "type": "software",
-          "description": "Top financial tool in Ivory Coast"
-        },
-        {
-          "name": "NSIA Banque",
-          "type": "software",
-          "description": "Top financial tool in Ivory Coast"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

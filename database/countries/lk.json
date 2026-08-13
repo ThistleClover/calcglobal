@@ -42,18 +42,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Sri Lanka revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Commercial Bank LK",
-          "type": "software",
-          "description": "Top financial tool in Sri Lanka"
-        },
-        {
-          "name": "Sampath",
-          "type": "software",
-          "description": "Top financial tool in Sri Lanka"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

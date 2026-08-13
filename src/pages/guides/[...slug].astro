@@ -1,0 +1,374 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((entry) => {
+    const slug = (entry as any).slug || entry.id.replace(/\.md$/, '');
+    return {
+      params: { slug },
+      props: { entry },
+    };
+  });
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const slug = (entry as any).slug || entry.id.replace(/\.md$/, '');
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+
+const countryNames: Record<string, { name: string; flag: string }> = {
+  fr: { name: 'France', flag: 'fr' },
+  us: { name: 'United States', flag: 'us' },
+  uk: { name: 'United Kingdom', flag: 'gb' },
+  de: { name: 'Germany', flag: 'de' },
+  au: { name: 'Australia', flag: 'au' },
+  global: { name: 'Global', flag: 'un' },
+};
+
+const countryInfo = countryNames[entry.data.country] || { name: entry.data.country.toUpperCase(), flag: 'un' };
+
+// Article & Breadcrumb Schema for E-E-A-T
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": entry.data.title,
+  "description": entry.data.description,
+  "inLanguage": entry.data.country === 'fr' ? 'fr-FR' : 'en-US',
+  "datePublished": entry.data.pubDate.toISOString(),
+  "dateModified": (entry.data.updatedDate || entry.data.pubDate).toISOString(),
+  "author": {
+    "@type": "Person",
+    "name": entry.data.author,
+    "jobTitle": entry.data.authorRole
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "CalcGlobal",
+    "url": "https://calcglobal.org"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `https://calcglobal.org/guides/${slug}/`
+  }
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://calcglobal.org/" },
+    { "@type": "ListItem", "position": 2, "name": "Guides", "item": "https://calcglobal.org/guides/" },
+    { "@type": "ListItem", "position": 3, "name": entry.data.title, "item": `https://calcglobal.org/guides/${slug}/` }
+  ]
+};
+
+const formattedPubDate = entry.data.pubDate.toLocaleDateString(
+  entry.data.country === 'fr' ? 'fr-FR' : 'en-US',
+  { year: 'numeric', month: 'long', day: 'numeric' }
+);
+
+const formattedUpdatedDate = entry.data.updatedDate
+  ? entry.data.updatedDate.toLocaleDateString(
+      entry.data.country === 'fr' ? 'fr-FR' : 'en-US',
+      { year: 'numeric', month: 'long', day: 'numeric' }
+    )
+  : null;
+---
+
+<Layout
+  title={`${entry.data.title} | CalcGlobal`}
+  description={entry.data.description}
+  lang={entry.data.country === 'fr' ? 'fr' : 'en'}
+  structuredData={[breadcrumbSchema, articleSchema]}
+>
+  <!-- Guide Header / Hero -->
+  <header class="relative bg-slate-900 pt-16 pb-24 px-4 overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900 to-slate-900"></div>
+    <div class="max-w-4xl mx-auto relative z-10">
+      
+      <!-- Breadcrumbs -->
+      <nav class="text-slate-400 text-sm mb-6 flex items-center gap-2 font-medium flex-wrap">
+        <a href={`${base}/`} class="hover:text-white transition-colors">Home</a>
+        <span class="text-slate-600">/</span>
+        <a href={`${base}/guides/`} class="hover:text-white transition-colors">Guides</a>
+        <span class="text-slate-600">/</span>
+        <span class="text-slate-300 truncate max-w-xs">{entry.data.title}</span>
+      </nav>
+
+      <!-- Category & Country Meta -->
+      <div class="flex items-center gap-3 mb-6 flex-wrap">
+        <a
+          href={`${base}/${entry.data.country}/`}
+          class="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-800 text-slate-200 text-xs font-bold rounded-lg border border-slate-700 hover:bg-slate-700 transition-colors"
+        >
+          <img
+            src={`https://flagcdn.com/w20/${countryInfo.flag}.png`}
+            alt={`${countryInfo.name} flag`}
+            class="w-4 h-3 object-cover rounded-xs"
+          />
+          {countryInfo.name} Hub
+        </a>
+        
+        <span class="inline-block px-3 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold rounded-lg">
+          {entry.data.category}
+        </span>
+        
+        <span class="inline-block px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold rounded-lg">
+          ⏱️ {entry.data.readTime || '5 min'} read
+        </span>
+      </div>
+
+      <!-- Title & Subtitle -->
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+        {entry.data.title}
+      </h1>
+
+      <p class="text-slate-300 text-base md:text-lg leading-relaxed mb-8 border-l-4 border-blue-500 pl-4 py-1">
+        {entry.data.description}
+      </p>
+
+      <!-- E-E-A-T Author Card -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pt-6 border-t border-slate-800/80 text-sm text-slate-400">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-slate-700 flex items-center justify-center text-white font-bold text-base shadow-md">
+            {entry.data.author.charAt(0)}
+          </div>
+          <div>
+            <div class="text-white font-semibold">{entry.data.author}</div>
+            <div class="text-xs text-slate-400">{entry.data.authorRole}</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs">
+          <div>
+            <span class="text-slate-500 block">Published</span>
+            <time datetime={entry.data.pubDate.toISOString()} class="text-slate-300 font-medium">
+              {formattedPubDate}
+            </time>
+          </div>
+          {formattedUpdatedDate && (
+            <div class="border-l border-slate-800 pl-4">
+              <span class="text-slate-500 block">Updated</span>
+              <time datetime={entry.data.updatedDate?.toISOString()} class="text-emerald-400 font-medium">
+                {formattedUpdatedDate}
+              </time>
+            </div>
+          )}
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Body Content -->
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- Tags -->
+    {entry.data.tags && entry.data.tags.length > 0 && (
+      <div class="flex flex-wrap items-center gap-2 mb-8">
+        <span class="text-xs text-slate-500 font-bold uppercase tracking-wider">Tags:</span>
+        {entry.data.tags.map((tag) => (
+          <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-xs font-semibold rounded-md border border-slate-200">
+            #{tag}
+          </span>
+        ))}
+      </div>
+    )}
+
+    <!-- Markdown Content Container -->
+    <main class="guide-content bg-white rounded-3xl border border-slate-200 p-6 md:p-10 shadow-sm mb-12">
+      <Content />
+    </main>
+
+    <!-- Related Calculators Callout Box -->
+    {entry.data.relatedCalculators && entry.data.relatedCalculators.length > 0 && (
+      <div class="bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-8 text-white shadow-xl border border-slate-700">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center font-bold text-xl shadow-inner">
+            🧮
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">Interactive Tax & Financial Calculators</h3>
+            <p class="text-xs text-slate-400">Put these rules into practice with 2026 accurate algorithms</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+          {entry.data.relatedCalculators.map((calcId) => (
+            <a
+              href={`${base}/${entry.data.country}/${calcId}/`}
+              class="group bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/80 hover:border-blue-500/50 p-4 rounded-2xl transition-all duration-300 flex items-center justify-between"
+            >
+              <div>
+                <span class="text-xs font-semibold text-blue-400 block mb-1 uppercase tracking-wider">2026 Engine</span>
+                <span class="font-bold text-sm text-white group-hover:text-blue-300 transition-colors capitalize">
+                  {calcId.replace(/-/g, ' ')}
+                </span>
+              </div>
+              <div class="w-8 h-8 rounded-full bg-slate-700 group-hover:bg-blue-600 flex items-center justify-center text-slate-300 group-hover:text-white transition-colors">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Return to Guides Link -->
+    <div class="mt-12 text-center">
+      <a
+        href={`${base}/guides/`}
+        class="inline-flex items-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm rounded-xl transition-colors border border-slate-300"
+      >
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to All Editorial Guides
+      </a>
+    </div>
+
+  </div>
+</Layout>
+
+<style is:global>
+  /* Markdown Content Styling */
+  .guide-content {
+    color: #334155;
+    font-size: 1.0625rem;
+    line-height: 1.8;
+  }
+
+  .guide-content h2 {
+    color: #0f172a;
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e2e8f0;
+    letter-spacing: -0.025em;
+  }
+
+  .guide-content h3 {
+    color: #1e293b;
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-top: 1.75rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .guide-content p {
+    margin-bottom: 1.25rem;
+  }
+
+  .guide-content ul {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .guide-content ol {
+    list-style-type: decimal;
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .guide-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .guide-content blockquote {
+    border-left: 4px solid #3b82f6;
+    background-color: #f0f9ff;
+    color: #1e293b;
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.75rem 0.75rem 0;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-style: normal;
+  }
+
+  .guide-content blockquote p {
+    margin-bottom: 0;
+  }
+
+  .guide-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .guide-content th {
+    background-color: #0f172a;
+    color: #ffffff;
+    font-weight: 700;
+    text-align: left;
+    padding: 0.75rem 1rem;
+  }
+
+  .guide-content td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .guide-content tr:nth-child(even) {
+    background-color: #f8fafc;
+  }
+
+  .guide-content tr:hover {
+    background-color: #f1f5f9;
+  }
+
+  .guide-content hr {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 2.5rem 0;
+  }
+
+  .guide-content code {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.375rem;
+    font-size: 0.875em;
+    font-family: monospace;
+  }
+
+  .guide-content pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 1.25rem;
+    border-radius: 0.75rem;
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .guide-content pre code {
+    background-color: transparent;
+    color: inherit;
+    padding: 0;
+  }
+
+  .guide-content a {
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .guide-content a:hover {
+    color: #1d4ed8;
+  }
+</style>

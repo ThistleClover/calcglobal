@@ -117,32 +117,7 @@
           "answer": "An S-Corp election can significantly reduce your SE tax burden if your net profit exceeds approximately $80,000. With an S-Corp, you pay yourself a 'reasonable salary' subject to FICA payroll taxes, but the remaining profit is distributed as a K-1 dividend — exempt from the 15.3% SE tax. The savings must outweigh the additional payroll and accounting costs ($2,000–$5,000/year)."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "TurboTax Self-Employed",
-          "type": "software",
-          "url": "https://turbotax.intuit.com/personal-taxes/self-employed/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Leading US tax filing platform with automatic Schedule C expense matching and quarterly 1040-ES voucher generation."
-        },
-        {
-          "name": "QuickBooks Self-Employed",
-          "type": "software",
-          "url": "https://quickbooks.intuit.com/self-employed/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Real-time mileage tracking, expense categorization, and automatic quarterly tax estimates for 1099 contractors."
-        },
-        {
-          "name": "Novo Business Banking",
-          "type": "neobank",
-          "url": "https://www.novo.co/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Fee-free digital business account for US freelancers featuring automated Tax Reserves — automatically sets aside estimated taxes."
-        },
-        {
-          "name": "Catch.co",
-          "type": "insurance",
-          "url": "https://www.catch.co/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Automated tax withholdings, ACA health insurance, and retirement savings built for 1099 workers and gig economy professionals."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "s-corp-vs-llc-tax-savings-calculator",
@@ -222,32 +197,7 @@
           "answer": "To elect S-Corp status, file IRS Form 2553 (Election by a Small Business Corporation) within 2 months and 15 days of the start of the tax year or at any time during the preceding tax year."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Gusto Payroll",
-          "type": "software",
-          "url": "https://gusto.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Automated payroll processing, W-2 generation, and tax filing tailored for S-Corp owner-employees."
-        },
-        {
-          "name": "Collective.com",
-          "type": "accounting",
-          "url": "https://www.collective.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Full-service S-Corp tax, accounting, payroll, and Form 2553 election platform for solo founders."
-        },
-        {
-          "name": "LegalZoom",
-          "type": "legal",
-          "url": "https://www.legalzoom.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "LLC formation, state corporate registration, and IRS S-Corp tax election filing service."
-        },
-        {
-          "name": "Mercury Bank",
-          "type": "neobank",
-          "url": "https://mercury.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "FDIC-insured business banking designed for S-Corps with free wire transfers and corporate cards."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "w2-salary-paycheck-take-home-calculator",
@@ -376,26 +326,7 @@
           "answer": "States with 0% state income tax on W-2 wages include Texas, Florida, Washington, Nevada, Alaska, South Dakota, Tennessee, and Wyoming."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "SoFi Checking & Savings",
-          "type": "neobank",
-          "url": "https://www.sofi.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "High-yield savings account with early direct deposit and automated paycheck splitting."
-        },
-        {
-          "name": "Empower Wealth Management",
-          "type": "software",
-          "url": "https://www.empower.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Free paycheck, net worth, and 401(k) fee analyzer for US wage earners."
-        },
-        {
-          "name": "Betterment",
-          "type": "software",
-          "url": "https://www.betterment.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Automated investment and IRA platform with tax-smart automated paycheck recurring investments."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "us-home-sale-net-proceeds-capital-gains-calculator",
@@ -477,26 +408,7 @@
           "answer": "Long-term capital gains on home sales above the Section 121 exclusion are taxed at 0%, 15%, or 20% depending on overall taxable income, plus an optional 3.8% Net Investment Income Tax (NIIT) for high earners."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Clever Real Estate",
-          "type": "software",
-          "url": "https://listwithclever.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Discount listing agent service allowing home sellers to save up to 1.5% in real estate commissions."
-        },
-        {
-          "name": "Rocket Mortgage",
-          "type": "software",
-          "url": "https://www.rocketmortgage.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Mortgage payoff, bridge loans, and pre-approval for replacement primary residence purchase."
-        },
-        {
-          "name": "First American Title Insurance",
-          "type": "insurance",
-          "url": "https://www.firstam.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Closing escrow services and seller title transfer insurance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "us-small-business-lease-break-even-calculator",
@@ -563,26 +475,7 @@
           "answer": "The US federal C-Corporation tax rate is a flat 21%. State corporate tax rates range from 0% (TX, FL, WA) to over 9% (CA, NJ). Pass-through entities (LLCs/S-Corps) pass pre-tax profit to individual tax returns instead."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Toast POS",
-          "type": "software",
-          "url": "https://pos.toasttab.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "All-in-one restaurant POS, sales reporting, and inventory management hardware platform."
-        },
-        {
-          "name": "Next Insurance",
-          "type": "insurance",
-          "url": "https://www.nextinsurance.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Tailored commercial liability, property, and business interruption insurance for physical commercial spaces."
-        },
-        {
-          "name": "Ramp Corporate Cards",
-          "type": "neobank",
-          "url": "https://ramp.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Corporate card and spend management software with automated vendor price intelligence and rent tracking."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

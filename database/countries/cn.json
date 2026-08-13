@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on China revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Ping An",
-          "type": "software",
-          "description": "Top financial tool in China"
-        },
-        {
-          "name": "Alipay",
-          "type": "software",
-          "description": "Top financial tool in China"
-        },
-        {
-          "name": "Kingdee",
-          "type": "software",
-          "description": "Top financial tool in China"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

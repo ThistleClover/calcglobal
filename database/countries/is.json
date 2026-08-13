@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Iceland revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Arion banki",
-          "type": "software",
-          "description": "Top financial tool in Iceland"
-        },
-        {
-          "name": "Landsbankinn",
-          "type": "software",
-          "description": "Top financial tool in Iceland"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

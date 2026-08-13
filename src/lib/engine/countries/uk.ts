@@ -754,12 +754,129 @@ function calculateRedundancy(inputs: TaxInput): TaxResult {
 }
 
 // -------------------------------------------------------------
+// SECONDARY CALCULATOR 5: UK VAT (Value Added Tax) Calculator
+// -------------------------------------------------------------
+function calculateVAT(inputs: TaxInput): TaxResult {
+  const amt = Math.max(0, parseFloat(String(inputs.amount || inputs.gross_revenue || inputs.net_amount || 0)) || 0);
+  const calcType = String(inputs.calculation_type || 'add_vat').toLowerCase();
+  const scheme = String(inputs.vat_rate_scheme || 'standard_20').toLowerCase();
+  const frsSectorRate = Math.max(0, parseFloat(String(inputs.frs_sector_rate || 14.5)) || 14.5);
+  const frsDiscount = String(inputs.frs_first_year_discount || 'no').toLowerCase() === 'yes';
+
+  let netAmount = 0;
+  let vatAmount = 0;
+  let grossAmount = 0;
+  let vatRatePct = 20;
+
+  if (scheme === 'reduced_5') {
+    vatRatePct = 5;
+    if (calcType === 'extract_vat') {
+      grossAmount = amt;
+      netAmount = amt / 1.05;
+      vatAmount = amt - netAmount;
+    } else {
+      netAmount = amt;
+      vatAmount = amt * 0.05;
+      grossAmount = amt * 1.05;
+    }
+  } else if (scheme === 'zero_0') {
+    vatRatePct = 0;
+    netAmount = amt;
+    vatAmount = 0;
+    grossAmount = amt;
+  } else if (scheme === 'flat_rate') {
+    vatRatePct = 20;
+    const effectiveFrsRate = Math.max(0, frsSectorRate - (frsDiscount ? 1.0 : 0.0));
+
+    if (calcType === 'extract_vat') {
+      grossAmount = amt;
+      netAmount = amt / 1.20;
+      vatAmount = amt - netAmount;
+    } else {
+      netAmount = amt;
+      vatAmount = amt * 0.20;
+      grossAmount = amt * 1.20;
+    }
+
+    const hmrcVatDue = grossAmount * (effectiveFrsRate / 100);
+    const frsProfit = vatAmount - hmrcVatDue;
+
+    const breakdown = [
+      { label: 'Net Invoice Amount', value: netAmount },
+      { label: `Client VAT Charged (Standard 20%)`, value: vatAmount },
+      { label: 'Gross Invoice Total (Turnover)', value: grossAmount, isTotal: true },
+      { label: `Flat Rate Scheme Sector Rate (${effectiveFrsRate.toFixed(1)}%${frsDiscount ? ' incl. 1% 1st-year discount' : ''})`, value: effectiveFrsRate },
+      { label: `Flat Rate VAT Due to HMRC (${effectiveFrsRate.toFixed(1)}% of Gross)`, value: hmrcVatDue, isDeduction: true },
+      { label: frsProfit >= 0 ? 'Flat Rate Scheme Retained Profit' : 'Flat Rate Scheme Loss', value: Math.abs(frsProfit), isFinal: true },
+    ];
+
+    const insights = [
+      `Under FRS (${effectiveFrsRate.toFixed(1)}% sector rate), you collect £${Math.round(vatAmount).toLocaleString()} in VAT from your client and pay £${Math.round(hmrcVatDue).toLocaleString()} to HMRC.`,
+      frsProfit >= 0
+        ? `You retain £${Math.round(frsProfit).toLocaleString()} as additional profit under the Flat Rate Scheme.`
+        : `Under FRS, you pay £${Math.round(Math.abs(frsProfit)).toLocaleString()} more than standard VAT. Consider switching to standard accounting.`,
+      `Mandatory UK VAT registration threshold is £90,000 turnover per 12 months (£88,000 deregistration, £150,000 FRS join limit).`
+    ];
+
+    return {
+      grossIncome: grossAmount,
+      netIncome: netAmount + Math.max(0, frsProfit),
+      totalTax: hmrcVatDue,
+      effectiveRate: grossAmount > 0 ? hmrcVatDue / grossAmount : 0,
+      breakdown,
+      currency: 'GBP',
+      currencySymbol: '£',
+      additionalInsights: insights,
+    };
+  } else {
+    vatRatePct = 20;
+    if (calcType === 'extract_vat') {
+      grossAmount = amt;
+      netAmount = amt / 1.20;
+      vatAmount = amt - netAmount;
+    } else {
+      netAmount = amt;
+      vatAmount = amt * 0.20;
+      grossAmount = amt * 1.20;
+    }
+  }
+
+  const breakdown = [
+    { label: 'Net Amount (excluding VAT)', value: netAmount },
+    { label: `VAT Amount (${vatRatePct}%)`, value: vatAmount, isDeduction: calcType === 'extract_vat' },
+    { label: 'Gross Amount (including VAT)', value: grossAmount, isFinal: true },
+  ];
+
+  const insights = [
+    calcType === 'extract_vat'
+      ? `Extracted £${Math.round(vatAmount).toLocaleString()} VAT (${vatRatePct}%) from gross total of £${Math.round(grossAmount).toLocaleString()}.`
+      : `Added £${Math.round(vatAmount).toLocaleString()} VAT (${vatRatePct}%) to net amount of £${Math.round(netAmount).toLocaleString()}.`,
+    `UK VAT registration threshold is £90,000 taxable turnover in any rolling 12-month period.`
+  ];
+
+  return {
+    grossIncome: grossAmount,
+    netIncome: netAmount,
+    totalTax: vatAmount,
+    effectiveRate: grossAmount > 0 ? vatAmount / grossAmount : 0,
+    breakdown,
+    currency: 'GBP',
+    currencySymbol: '£',
+    additionalInsights: insights,
+  };
+}
+
+// -------------------------------------------------------------
 // MAIN ENGINE ROUTER
 // -------------------------------------------------------------
 export function calculate(inputs: TaxInput): TaxResult {
   const calcId = String(inputs.calculator_id || 'ir35-inside-outside-calculator');
 
   switch (calcId) {
+    case 'uk-vat-calculator':
+    case 'gb-vat-calculator':
+    case 'vat-calculator':
+      return calculateVAT(inputs);
     case 'sdlt-lbtt-ltt-stamp-duty-calculator':
       return calculateSDLT(inputs);
     case 'uk-gross-net-salary-pension-calculator':

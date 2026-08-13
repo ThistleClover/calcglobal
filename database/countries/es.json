@@ -97,28 +97,7 @@
         }
       ],
       "formula_explanation": "La nómina neta se obtiene restando del salario bruto dos deducciones obligatorias: 1) Cotización a la Seguridad Social a cargo del trabajador: Contingencias Comunes (4,70%), Desempleo (1,55% contrato indefinido / 1,60% temporal), Formación Profesional (0,10%) y MEI (Mecanismo de Equidad Intergeneracional, 0,12% obrero) sobre la Base de Cotización (mínimo 1.323€/mes, máximo 4.720,50€/mes). 2) Retención por IRPF: Se deduce el mínimo personal y familiar (base personal de 5.550€ + 2.400€ por 1º hijo, 2.700€ por 2º, 4.000€ por 3º, 4.500€ por 4º+ y extras por edad < 3 años o minusvalía). Se aplican los tramos progresivos estatal y autonómico (del 19% al 47%+). Sueldo Neto Anual = Sueldo Bruto - Cotizaciones SS - Retención IRPF. Se divide entre 12 o 14 pagas.",
-      "affiliate_targets": [
-        {
-          "name": "TaxDown",
-          "type": "software",
-          "description": "Plataforma fiscal digital para trabajadores en España que buscan optimizar su declaración de IRPF y maximizar devoluciones de hacienda."
-        },
-        {
-          "name": "Factorial HR",
-          "type": "software",
-          "description": "Software integral de gestión de RRHH y nóminas para empresas y PYMEs en España."
-        },
-        {
-          "name": "Payfit",
-          "type": "software",
-          "description": "Plataforma de nóminas automatizada para calcular retenciones de empleados y salarios brutos a netos."
-        },
-        {
-          "name": "Qonto",
-          "type": "neobank",
-          "description": "Cuenta bancaria digital de negocios y nóminas para profesionales e ingresos en euros."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "cuota-autonomos-ingresos-reales",
@@ -191,28 +170,7 @@
         }
       ],
       "formula_explanation": "1. Rendimiento Neto Mensual = Ingresos Brutos - Gastos Deducibles - Deducción adicional por Gastos de Difícil Justificación (7% para autónomos individuales, 3% para societarios). 2. Selección del tramo de cotización entre los 15 tramos establecidos por el RDL 13/2022 (desde rendimientos <670€/mes hasta >6.000€/mes). 3. Cálculo de la cuota aplicando el 31,30% sobre la base de cotización elegida dentro del tramo (Contingencias comunes 28,30% + Contingencias profesionales 1,30% + Cese de actividad 0,90% + Formación 0,10% + MEI 0,70%). Cuotas mínimas mensuales varían entre ~225€ y ~530€ según tramo. 4. Si aplica Tarifa Plana: 80€/mes durante los primeros 12 meses. 5. Si reside en Comunidad Autónoma con Cuota Cero (ej. Madrid, Andalucía, Murcia, Baleares), la cuota se bonifica al 100% (coste neto 0€).",
-      "affiliate_targets": [
-        {
-          "name": "Holded",
-          "type": "software",
-          "description": "Software ERP y contabilidad cloud líder para autónomos y PYMEs en España, con facturación electrónica e impuestos."
-        },
-        {
-          "name": "Declarando",
-          "type": "accounting",
-          "description": "Plataforma de gestión fiscal y asesoría contable especializada en maximizar el ahorro de cuota e IRPF de autónomos."
-        },
-        {
-          "name": "TaxScouts",
-          "type": "accounting",
-          "description": "Gestoría online con asesor personal para la presentación de altas y declaraciones de autónomos en España."
-        },
-        {
-          "name": "N26 Business",
-          "type": "neobank",
-          "description": "Cuenta bancaria para trabajadores autónomos con subcuentas para impuestos y cashback automático en compras."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "gastos-compra-vivienda-itp",
@@ -290,28 +248,7 @@
         }
       ],
       "formula_explanation": "1. Impuestos sobre la compraventa: A) Segunda Mano -> ITP según C.A. (Madrid 6%, Navarra/País Vasco 4%, Andalucía 7%, Cataluña 10%, Comunidad Valenciana 10%, Galicia 8%, etc.), con descuentos para jóvenes menores de 32-35 años o minusvalía. B) Obra Nueva -> IVA (10% general / 4% VPO) + AJD (0,5% a 1,5% según C.A.). 2. Notaría de Compraventa: Arancel oficial (RD 1426/1989), aproximadamente entre 600€ y 1.100€. 3. Registro de la Propiedad: Arancel oficial (RD 1427/1989), aprox. 400€ a 700€. 4. Gestoría y Tasación: Gestoría de tramitación (~300€-500€) y Tasación homologada Banco de España (~300€-600€ si requiere hipoteca). 5. Reparto de gastos de hipoteca (Ley 5/2019 de Crédito Inmobiliario): Notaría, Registro, Gestoría y AJD del préstamo corren 100% a cargo de la entidad bancaria; el comprador solo abona la Tasación de la vivienda. Total Desembolso Adicional = Impuestos + Notaría + Registro + Gestoría + Tasación.",
-      "affiliate_targets": [
-        {
-          "name": "Idealista Hipotecas",
-          "type": "insurance",
-          "description": "Intermediario de crédito inmobiliario líder para comparar tipos fijos, mixtos y variables de entidades bancarias."
-        },
-        {
-          "name": "Rastreator Hipotecas",
-          "type": "insurance",
-          "description": "Comparador digital para conseguir ofertas hipotecarias personalizadas y asesoramiento gratuito."
-        },
-        {
-          "name": "Finteca",
-          "type": "software",
-          "description": "Plataforma de gestión de préstamos hipotecarios para tramitar ofertas bancarias 100% online."
-        },
-        {
-          "name": "BBVA / Bankinter",
-          "type": "neobank",
-          "description": "Entidades bancarias con simuladores e hipotecas directas competitivas en el mercado español."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "finiquito-indemnizacion-despido",
@@ -379,28 +316,7 @@
         }
       ],
       "formula_explanation": "1. Salario Diario Base = Salario Bruto Anual / 365 días. 2. Finiquito: A) Salario pendiente = Días trabajados del mes × Salario Diario. B) Vacaciones no disfrutadas = Días pendientes × Salario Diario (sujeto a cotización e IRPF). C) Pagas extras pendientes (si son 14 pagas): Devengo proporcional del período transcurrido (semestral o anual) hasta la fecha de despido. 3. Indemnización por Despido (Arts. 53 y 56 Estatuto de los Trabajadores): A) Despido Objetivo/ETOP: 20 días por año trabajado, prorrateado por meses completos, con tope de 12 mensualidades (365 días de salario). B) Despido Improcedente: 33 días por año trabajado para el periodo posterior al 12/02/2012 (tope 24 mensualidades / 720 días). C) Fin de contrato temporal: 12 días por año trabajado. Exención IRPF: La indemnización legal está exenta de tributar IRPF hasta un máximo de 180.000€.",
-      "affiliate_targets": [
-        {
-          "name": "Legálitas",
-          "type": "insurance",
-          "description": "Asistencia jurídica especializada en derecho laboral para la revisión de finiquitos y papeletas de conciliación."
-        },
-        {
-          "name": "Reclamador.es",
-          "type": "accounting",
-          "description": "Plataforma de reclamaciones online para impugnar despidos improcedentes y reclamar indemnizaciones no pagadas."
-        },
-        {
-          "name": "LexGo App",
-          "type": "software",
-          "description": "Directorio y consulta con abogados laboralistas homologados en todas las provincias de España."
-        },
-        {
-          "name": "TaxDown",
-          "type": "software",
-          "description": "Asesoría fiscal digital para declarar indemnizaciones por despido e ingresos del trabajo correctamente en la Renta."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "iva-irpf-trimestral-autonomos",
@@ -477,28 +393,7 @@
         }
       ],
       "formula_explanation": "1. Liquidación Trimestral de IVA (Modelo 303): IVA Devengado (Base Facturada × % IVA) - IVA Soportado Deducible en compras/servicios. Si Resultado > 0, es la cantidad a ingresar a la Agencia Tributaria (AEAT). Si Resultado < 0, se acumula a compensar para trimestres siguientes (o a devolver en el 4T). 2. Retenciones de IRPF en Facturas de Venta: Base Imponible Facturada × % Retención (15% o 7%). El cliente ingresa esa retención a Hacienda en nombre del autónomo mediante el Modelo 111. 3. Pago a Cuenta IRPF (Modelo 130 - Estimación Directa Simplificada): Si se debe presentar Modelo 130, se calcula el 20% del Rendimiento Neto Acumulado del año (Ingresos Acumulados - Gastos Acumulados desde el 1 de enero), restando los pagos a cuenta realizados en trimestres anteriores y el importe acumulado de retenciones soportadas en factura.",
-      "affiliate_targets": [
-        {
-          "name": "Holded",
-          "type": "software",
-          "description": "Software de facturación electronica y contabilidad cloud que autogenera y exporta los Modelos 303, 130, 111 y 390."
-        },
-        {
-          "name": "Declarando",
-          "type": "accounting",
-          "description": "Asesoría fiscal digital con simulador de impuestos trimestrales y presentación directa en la sede de la AEAT."
-        },
-        {
-          "name": "Anfix",
-          "type": "software",
-          "description": "Plataforma de facturación y contabilidad integrada con TicketBAI y sistemas de la Agencia Tributaria."
-        },
-        {
-          "name": "Quaderno",
-          "type": "software",
-          "description": "Automatización del cálculo del IVA e impuestos de ventas para e-commerce, creadores de contenido y negocios SaaS."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

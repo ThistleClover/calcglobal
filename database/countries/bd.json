@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bangladesh revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "bkash",
-          "type": "software",
-          "description": "Top financial tool in Bangladesh"
-        },
-        {
-          "name": "Nagad",
-          "type": "software",
-          "description": "Top financial tool in Bangladesh"
-        },
-        {
-          "name": "BRAC Bank",
-          "type": "software",
-          "description": "Top financial tool in Bangladesh"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

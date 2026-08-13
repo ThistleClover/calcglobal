@@ -86,28 +86,7 @@
         }
       ],
       "formula_explanation": "Gross Salary (Bruttó bér). Employee deductions: Personal Income Tax (SZJA) standard 15%, Social Security Contribution (TB járulék) standard 18.5% (Pension 10%, Health 7%, Labor market 1.5%). Under 25 exemption: Tax base up to average wage cap (~576,601 HUF/month) is 0% SZJA. Mothers under 30 & Mothers with 4+ children (NÉTAK): 0% SZJA on full or capped wage. Personal disability relief: Tax base reduction equal to 33.33% of minimum wage (net HUF 11,550/month benefit). First marriage relief: Net tax benefit HUF 5,000/month for 24 months. Family tax base reduction (Családi adókedvezmény): 1 beneficiary child = HUF 66,670 base reduction (net HUF 10,000/mo benefit); 2 children = HUF 133,330/child base reduction (net HUF 20,000/child/mo, scaling up to HUF 40,000/child under 2025-2026 phased updates); 3+ children = HUF 220,000/child base reduction (net HUF 33,000/child/mo, scaling up to HUF 66,000/child). If tax relief exceeds 15% SZJA liability, remaining allowance reduces 18.5% TB contribution (Családi járulékkedvezmény). Employer Total Cost (Teljes munkáltatói teher) = Gross Salary + 13% SZOCHO (Szociális hozzájárulási adó).",
-      "affiliate_targets": [
-        {
-          "name": "Bankmonitor.hu",
-          "type": "accounting",
-          "description": "Hungary's leading financial comparison engine for personal loans, mortgages, and salary accounts."
-        },
-        {
-          "name": "OTP Bank",
-          "type": "neobank",
-          "description": "Hungary's largest retail bank offering digital salary accounts, mobile banking, and credit lines."
-        },
-        {
-          "name": "Wise Hungary",
-          "type": "neobank",
-          "description": "Popular multi-currency account with Hungarian HUF IBAN and instant transfers for workers and freelancers."
-        },
-        {
-          "name": "Revolut Magyarország",
-          "type": "neobank",
-          "description": "Widely used digital banking app in Hungary for everyday spending, forex exchange, and budgeting."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "atalanyado-kata-egyeni-vallalkozo-kalkulator",
@@ -171,28 +150,7 @@
         }
       ],
       "formula_explanation": "Gross Revenue (Árbevétel). Cost Rate (Költséghányad: 40%, 80%, or 90%). Calculated Expense = Revenue * Cost Rate. Income/Profit Base (Jövedelem) = Revenue - Expense. Tax-Free Income Exemption (Adómentes keret) = 10x annual minimum wage (~HUF 1.6-1.7M profit is 0% SZJA). Taxable SZJA Base = Profit exceeding Tax-Free Exemption. SZJA = 15% of Taxable Base. Social Security (TB 18.5%) and Social Contribution (SZOCHO 13%): For part-time (mellékállású) or student/retiree EV, TB and SZOCHO are calculated strictly on actual income exceeding the exemption threshold. For full-time (főállású) EV, statutory monthly minimum contribution bases apply even if profit is zero: TB minimum base = Minimum Wage (or Guaranteed Minimum Wage); SZOCHO minimum base = 112.5% of Minimum Wage (or Guaranteed Min Wage). Simplified HIPA (Sávos HIPA): Revenue 0-12M Ft = HUF 50,000 tax/year; 12M-18M Ft = HUF 120,000 tax/year; 18M-25M Ft = HUF 170,000 tax/year. Chamber of Commerce Fee (Kamarai hozzájárulás) = HUF 5,000/year. Net Entrepreneur Income = Revenue - SZJA - TB - SZOCHO - HIPA - Chamber Fee.",
-      "affiliate_targets": [
-        {
-          "name": "Billingo",
-          "type": "software",
-          "description": "Market-leading Hungarian cloud invoicing, tax automation, and accountant data exchange platform for sole proprietors."
-        },
-        {
-          "name": "Számlázz.hu",
-          "type": "software",
-          "description": "Top Hungarian online invoicing solution integrated with NAV auto-reporting and bank synchronization."
-        },
-        {
-          "name": "Wise Business",
-          "type": "neobank",
-          "description": "Multi-currency business account with low-cost HUF, EUR, and USD accounts for Hungarian freelancers."
-        },
-        {
-          "name": "Revolut Business Hungary",
-          "type": "neobank",
-          "description": "Digital business banking with corporate debit cards, FX management, and open API invoicing integration."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "ingatlan-illetek-es-szja-kalkulator",
@@ -277,28 +235,7 @@
         }
       ],
       "formula_explanation": "Property Transfer Duty (Visszterhes vagyonszerzési illeték): Standard rate 4% of market value up to 1 billion HUF (2% above). CSOK Plus / Falusi CSOK Buyers: 100% exempt (0% duty). Sale-Replacement Duty (Cserepótló illeték): If previous home was sold within 3 years prior or 1 year after purchase, duty base = Purchased Price - Sold Price. If sold price >= purchase price, duty = 0. First Home under 35 years: 50% duty reduction if purchase price is within statutory cap (up to HUF 15M / 40M). Attorney fee (Ügyvédi munkadíj): ~0.5% - 1.5% + VAT. Land Register Fee (Földhivatali díj): HUF 10,600/property. Real Estate SZJA (Ingatlaneladás adója): Taxable Gain = Sale Price - Original Cost - Documented Costs (renovations, attorney, realtor). Tapering factor based on years owned: 0-1 years = 100% of gain taxable; 2 years = 90%; 3 years = 60%; 4 years = 30%; 5+ years = 0% taxable (completely tax-free!). SZJA = 15% * Taxable Gain * Tapering Factor.",
-      "affiliate_targets": [
-        {
-          "name": "Bankmonitor.hu Lakáshitel",
-          "type": "accounting",
-          "description": "Premier Hungarian housing loan comparison engine matching homebuyers with top bank rates."
-        },
-        {
-          "name": "Money.hu",
-          "type": "accounting",
-          "description": "Leading Hungarian mortgage broker portal comparing OTP, K&H, Erste, CIB, and MBH housing loans."
-        },
-        {
-          "name": "OTP Bank Ingatlanhitel",
-          "type": "neobank",
-          "description": "Hungary's largest mortgage lender offering market loans and subsidized CSOK Plus financing."
-        },
-        {
-          "name": "K&H Bank Lakásbiztosítás",
-          "type": "insurance",
-          "description": "Major insurance provider in Hungary offering home and structural property coverage."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kiva-vs-tao-osztalekado-kalkulator",
@@ -342,28 +279,7 @@
         }
       ],
       "formula_explanation": "TAO Regime: Corporate Income Tax (TAO) = 9% of taxable profit (Revenue - Expenses - Payroll). Employer SZOCHO on payroll = 13% of gross wages. Profit after TAO can be distributed as Dividends. Dividend Taxation: SZJA = 15% flat; SZOCHO = 13%, but SZOCHO is capped at an annual maximum (24x minimum wage - existing szocho base paid during the year). Maximum dividend SZOCHO cap ~HUF 700k-800k. KIVA Regime: Replaces 9% TAO AND 13% Employer SZOCHO! KIVA Tax Rate = 10%. KIVA Tax Base = Total Gross Payroll + Net Dividend Payouts (minus capital additions). If company pays out dividends, KIVA is charged at 10% on payroll + dividends. Owners receiving KIVA dividend still pay individual 15% SZJA and 13% SZOCHO (up to annual cap). Comparison shows net profit after taxes and effective total tax burden percentage under both regimes.",
-      "affiliate_targets": [
-        {
-          "name": "Billingo Corporate",
-          "type": "software",
-          "description": "Comprehensive financial and invoicing suite for Hungarian Kft., Bt., and corporate entities."
-        },
-        {
-          "name": "Számlázz.hu Enterprise",
-          "type": "software",
-          "description": "Automated enterprise invoicing and NAV compliance platform for Hungarian businesses."
-        },
-        {
-          "name": "Wise Business",
-          "type": "neobank",
-          "description": "Corporate account for HUF/EUR corporate cash management, batch payroll, and international payouts."
-        },
-        {
-          "name": "Erste Bank Corporate",
-          "type": "neobank",
-          "description": "Business credit lines, merchant services, and commercial banking for SMEs in Hungary."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "tappenz-csed-gyed-gyes-kalkulator",
@@ -426,28 +342,7 @@
         }
       ],
       "formula_explanation": "Sick Leave (Betegszabadság): First 15 working days per year paid by employer at 70% of average gross wage. Subject to 15% SZJA, exempt from 18.5% TB. Sick Pay (Táppénz): From 16th calendar day, paid by state. Rate: 60% of daily gross earnings (50% if continuous insurance < 2 years or hospitalized). Daily max cap: 2x minimum wage / 30 days. CSED (Csecsemőgondozási díj): 100% of daily gross income base for 168 days (24 weeks). Exempt from 18.5% TB and SZOCHO! Only 15% SZJA applies (or 0% SZJA if Mother under 30 exemption applies). Net CSED often exceeds regular net salary! GYED (Gyermekgondozási díj): Paid until child reaches 2 years. Rate: 70% of daily gross income base, capped at 70% of 2x minimum wage (GYED plafon). Deductions: 15% SZJA + 10% nyugdíjjárulék (Pension contribution). GYES (Gyermekgondozási segély): Fixed monthly state support HUF 28,500 gross (-10% pension = HUF 25,650 net).",
-      "affiliate_targets": [
-        {
-          "name": "Generali Biztosító",
-          "type": "insurance",
-          "description": "Leading Hungarian insurer for private health, accident, and family protection plans."
-        },
-        {
-          "name": "NN Biztosító",
-          "type": "insurance",
-          "description": "Premier life, health, and family financial security insurer in Hungary."
-        },
-        {
-          "name": "Gránit Bank",
-          "type": "neobank",
-          "description": "Innovative Hungarian digital bank offering high-yield baby accounts - Babakötvény - and family banking."
-        },
-        {
-          "name": "CIB Bank",
-          "type": "neobank",
-          "description": "Full-service retail bank in Hungary with specialized family savings and personal loans."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

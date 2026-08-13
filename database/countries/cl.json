@@ -87,28 +87,7 @@
         }
       ],
       "formula_explanation": "1. Base Imponible Previsional = Min(Sueldo Bruto, Tope Imponible AFP/Salud de 84.3 UF aprox). 2. Descuento AFP = Base Imponible × (10% obligatorio + Comisión AFP elegida, ej. Uno 0.49%, ProVida 1.45%). 3. Descuento Salud = Para Fonasa: Base Imponible × 7%. Para Isapre: Max(Base Imponible × 7%, Monto Plan UF × Valor UF). 4. Descuento Seguro de Cesantía = Si es contrato indefinido: Min(Sueldo Bruto, Tope Imponible Cesantía 126.6 UF) × 0.6%. Si es plazo fijo: 0% cargo trabajador. 5. Renta Imponible Tributable = Sueldo Bruto - Cotizaciones Previsionales Obligatorias (AFP + Salud + Seguro Cesantía). 6. Impuesto Único de Segunda Categoría (IUSC): Se convierte la Renta Imponible a UTM y se aplica la tabla progresiva de IUSC (Tramos en UTM: <13.5 Exento; 13.5-30 4% - 0.54 rebaja; 30-50 8% - 1.74 rebaja; 50-70 13.5% - 4.49 rebaja; 70-90 23% - 11.14 rebaja; 90-120 30.4% - 17.8 rebaja; 120-310 35% - 23.32 rebaja; >310 40% - 38.82 rebaja). 7. Sueldo Líquido Final = Sueldo Bruto - Descuento AFP - Descuento Salud - Seguro Cesantía - IUSC.",
-      "affiliate_targets": [
-        {
-          "name": "Buk",
-          "type": "software",
-          "description": "Software integral líder en Chile para el cálculo de liquidaciones de sueldo, gestión de nóminas y cumplimiento con Previred."
-        },
-        {
-          "name": "Nubox Remuneraciones",
-          "type": "software",
-          "description": "Plataforma cloud para PYMEs que automatiza el cálculo de sueldos, contratos y cotizaciones ante las AFPs e Isapres."
-        },
-        {
-          "name": "Fintual",
-          "type": "software",
-          "description": "Administradora general de fondos y APV (Ahorro Previsional Voluntario) que optimiza el pago del Impuesto Único mediante beneficios tributarios (Art. 42 bis LIR)."
-        },
-        {
-          "name": "Global66",
-          "type": "neobank",
-          "description": "Cuenta global multi-divisa sin costos ocultos para recibir sueldos y realizar giros en pesos chilenos y moneda extranjera."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "boleta-honorarios-retencion-chile",
@@ -159,28 +138,7 @@
         }
       ],
       "formula_explanation": "1. Según la escala gradual de la Ley N° 21.133, la tasa de retención de impuestos sobre Boletas de Honorarios para el año 2026 es del 15.25%. 2. De Bruto a Líquido: Retención SII = Valor Bruto × 0.1525. Monto Líquido = Valor Bruto × (1 - 0.1525) = Valor Bruto × 0.8475. 3. De Líquido a Bruto: Valor Bruto = Monto Líquido / (1 - 0.1525) = Monto Líquido / 0.8475. Retención SII = Valor Bruto - Monto Líquido. 4. Operación Renta anual (Abril): El total retenido por el SII financia las cotizaciones obligatorias para independientes (Seguro de Accidentes del Trabajo, Ley SANNA, Salud 7%, AFP hasta el tope imponible y Seguro de Invalidez y Sobrevivencia - SIS). Si la retención supera las cotizaciones, el remanente se devuelve al trabajador mediante transferencia bancaria.",
-      "affiliate_targets": [
-        {
-          "name": "Chipax",
-          "type": "software",
-          "description": "Herramienta de control financiero y conciliación bancaria automática para profesionales independientes y emprendedores."
-        },
-        {
-          "name": "Nubox Facturación",
-          "type": "software",
-          "description": "Sistema de emisión de comprobantes y facturación electrónica directamente sincronizado con el SII."
-        },
-        {
-          "name": "Tenpo",
-          "type": "neobank",
-          "description": "Cuenta digital y tarjeta prepago/débito gratuita en Chile ideal para recibir pagos de honorarios y transferencias."
-        },
-        {
-          "name": "Global66",
-          "type": "neobank",
-          "description": "Cuenta global en dólares y euros para cobrar a clientes del exterior y abonar en cuentas bancarias chilenas a tipo de cambio transparente."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "finiquito-indemnizacion-chile",
@@ -248,28 +206,7 @@
         }
       ],
       "formula_explanation": "1. Antigüedad Laboral: Se computan los años completos trabajados. Las fracciones superiores a 6 meses se consideran como 1 año completo adicional. 2. Tope de Remuneración Mensual (Art. 172 Código del Trabajo): El salario mensual base para la indemnización no puede exceder el tope de 90 UF (salvo pacto individual o colectivo superior). 3. Indemnización por Años de Servicio (Art. 163): Salario mensual ajustado (máx 90 UF) × Número de años servidos (hasta un máximo de 11 años / 11 meses de sueldo). 4. Indemnización Sustitutiva de Aviso Previo: 1 mes de salario completo si no se avisó por escrito con 30 días de anticipación bajo Art. 161. 5. Feriado Proporcional (Vacaciones): El trabajador devenga 1.25 días hábiles de descanso por mes trabajado (15 días hábiles al año, o 20 en zonas extremas). Se computan los días hábiles acumulados más los días inhábiles (sábados, domingos y festivos) que comprenda el período de descanso simulado × Valor día hábil (Remuneración / 30). 6. Sueldo Pendiente: (Remuneración / 30) × Días efectivamente trabajados del mes del despido. Total Finiquito = Indemnización Años de Servicio + Aviso Previo + Feriado Proporcional + Sueldo Pendiente.",
-      "affiliate_targets": [
-        {
-          "name": "Buk",
-          "type": "software",
-          "description": "Software de RRHH que emite borradores de finiquito y cartas de aviso conformes a las exigencias de la Inspección del Trabajo (DT)."
-        },
-        {
-          "name": "LegalChile",
-          "type": "insurance",
-          "description": "Servicio de asesoría y representación jurídica especializada en la revisión de finiquitos y demandas laborales."
-        },
-        {
-          "name": "Talana",
-          "type": "software",
-          "description": "Plataforma de gestión laboral y nóminas en Chile para procesar finiquitos e indemnizaciones de trabajadores."
-        },
-        {
-          "name": "Deel",
-          "type": "software",
-          "description": "Plataforma global de contratación y nóminas para la desvinculación y pago de finiquitos en cumplimiento de las leyes locales chilenas."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "gastos-compra-vivienda-credito-hipotecario-chile",
@@ -319,28 +256,7 @@
         }
       ],
       "formula_explanation": "1. Monto del Crédito (UF) = Precio Propiedad UF × % Financiamiento. Pie (Enganche) = Precio Propiedad UF × (1 - % Financiamiento). 2. Impuesto de Timbres y Estampillas (ITE - D.L. 3475): Aplica sobre el monto prestado por el banco. Tasa General: 0.8% del crédito hipotecario. Tasa Reducida DFL 2 (1ª venta de casas/depto de <140 m²): 0.2% del crédito hipotecario. Si la compra es 100% contado, ITE = 0. 3. Conservador de Bienes Raíces (CBR): Arancel por inscripción de dominio, hipoteca y prohibiciones (promedio 0.2% a 0.3% del valor total del inmueble, aprox. 3 a 6 UF). 4. Gastos Notariales: Arancel de confección y firma de la escritura pública en notaría (aprox. 2.5 a 5 UF / $80.000 a $180.000 CLP). 5. Tasación Comercial del Inmueble: Peritaje de la propiedad exigido por la institución bancaria (aprox. 2.5 a 4 UF). 6. Estudio de Títulos y Borrador de Escritura: Honorarios legales de los abogados de la entidad financiera (aprox. 4 a 8 UF). Total Gastos Operacionales = Impuesto Timbres + CBR + Notaría + Tasación + Estudio Títulos.",
-      "affiliate_targets": [
-        {
-          "name": "ComparaOnline Hipotecarios",
-          "type": "insurance",
-          "description": "Comparador digital de créditos hipotecarios y seguros obligatorios de desgravamen e incendio en Chile."
-        },
-        {
-          "name": "Fintual",
-          "type": "software",
-          "description": "Plataforma de inversión de bajo costo para acumular el Pie de la vivienda en fondos mutuos nominados en UF."
-        },
-        {
-          "name": "Banco Falabella Hipotecario",
-          "type": "neobank",
-          "description": "Entidad financiera privada con simulación directa y aprobación rápida de créditos para la primera y segunda vivienda."
-        },
-        {
-          "name": "Portal Inmobiliario",
-          "type": "software",
-          "description": "Portal líder en Chile para cotizar propiedades nuevas y usadas con conexión a ejecutivos hipotecarios."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "impuesto-pyme-f29-chile",
@@ -401,28 +317,7 @@
         }
       ],
       "formula_explanation": "1. Renta Líquida Imponible (RLI) Pyme = Ingresos Anuales Percibidos - Gastos Anuales Pagados Deducibles. 2. Impuesto de Primera Categoría (IDPC Anual en F22): En Régimen Pro Pyme General (14 D3), IDPC = RLI × 25%. Los socios obtienen el 100% de crédito del IDPC al retirar utilidades en su Impuesto Global Complementario. En Régimen Pro Pyme Transparente (14 D8), IDPC = 0%, la RLI se asigna directamente a los socios para tributar a nivel personal. 3. Pagos Provisionales Mensuales (PPM): PPM Mensual = Ventas Netas Mensuales × Tasa PPM seleccionada (0.25% o 0.50%). El total acumulado en el año se resta del IDPC anual; si el monto de PPM supera el IDPC a pagar, el SII devuelve la diferencia a la Pyme. 4. Formulario F29 (IVA Mensual): IVA Débito Fiscal (Ventas) = Ventas Netas Mensuales × 19%. IVA Crédito Fiscal (Compras) = Compras Netas Mensuales × 19%. IVA a Pagar = Max(0, IVA Débito - IVA Crédito) + PPM Mensual.",
-      "affiliate_targets": [
-        {
-          "name": "Nubox Contabilidad",
-          "type": "software",
-          "description": "Software contable y tributario completo que autogenera el Formulario F29 y prepara la Renta F22 para Pymes chilenas."
-        },
-        {
-          "name": "Chipax",
-          "type": "software",
-          "description": "Plataforma de finanzas y tesorería conectada con el SII que sincroniza facturas de compra/venta para proyección de IVA y PPM."
-        },
-        {
-          "name": "Kame ERP",
-          "type": "software",
-          "description": "ERP integral en la nube con gestión de inventario, facturación electrónica, contabilidad y remuneraciones para empresas."
-        },
-        {
-          "name": "Mercado Pago Empresas",
-          "type": "neobank",
-          "description": "Plataforma de pagos y terminales POS con cuenta de empresa, remuneración diaria de saldos y reporte de ventas."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

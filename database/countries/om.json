@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Oman revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Bank Muscat",
-          "type": "software",
-          "description": "Top financial tool in Oman"
-        },
-        {
-          "name": "National Bank of Oman",
-          "type": "software",
-          "description": "Top financial tool in Oman"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

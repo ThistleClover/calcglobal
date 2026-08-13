@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Tunisia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BIAT",
-          "type": "software",
-          "description": "Top financial tool in Tunisia"
-        },
-        {
-          "name": "Attijari Bank Tunisie",
-          "type": "software",
-          "description": "Top financial tool in Tunisia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

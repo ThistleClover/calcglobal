@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Lebanon revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Blom Bank",
-          "type": "software",
-          "description": "Top financial tool in Lebanon"
-        },
-        {
-          "name": "Bank Audi",
-          "type": "software",
-          "description": "Top financial tool in Lebanon"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

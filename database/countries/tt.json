@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Trinidad and Tobago revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Republic Bank",
-          "type": "software",
-          "description": "Top financial tool in Trinidad and Tobago"
-        },
-        {
-          "name": "First Citizens",
-          "type": "software",
-          "description": "Top financial tool in Trinidad and Tobago"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

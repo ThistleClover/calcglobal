@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on North Macedonia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "NLB Banka MK",
-          "type": "software",
-          "description": "Top financial tool in North Macedonia"
-        },
-        {
-          "name": "Halkbank",
-          "type": "software",
-          "description": "Top financial tool in North Macedonia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

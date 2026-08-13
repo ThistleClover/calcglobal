@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Albania revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Credins Bank",
-          "type": "software",
-          "description": "Top financial tool in Albania"
-        },
-        {
-          "name": "Raiffeisen AL",
-          "type": "software",
-          "description": "Top financial tool in Albania"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

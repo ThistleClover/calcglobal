@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Cyprus revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Bank of Cyprus",
-          "type": "software",
-          "description": "Top financial tool in Cyprus"
-        },
-        {
-          "name": "Hellenic Bank",
-          "type": "software",
-          "description": "Top financial tool in Cyprus"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

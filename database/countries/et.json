@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Ethiopia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Telebirr",
-          "type": "software",
-          "description": "Top financial tool in Ethiopia"
-        },
-        {
-          "name": "Commercial Bank of Ethiopia",
-          "type": "software",
-          "description": "Top financial tool in Ethiopia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

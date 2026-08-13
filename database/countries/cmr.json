@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Cameroon revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Afriland First Bank",
-          "type": "software",
-          "description": "Top financial tool in Cameroon"
-        },
-        {
-          "name": "Orange Money",
-          "type": "software",
-          "description": "Top financial tool in Cameroon"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

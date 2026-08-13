@@ -149,32 +149,7 @@
           "answer": "Steuerklasse 3 lohnt sich, wenn ein Ehepartner deutlich mehr verdient als der andere. Der Besserverdienende wählt Klasse 3 (niedriger Steuerabzug), der andere Klasse 5 (hoher Abzug). Am Ende des Jahres wird die Gesamtsteuerlast durch eine gemeinsame Steuererklärung (Zusammenveranlagung) ausgeglichen."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "N26 Deutschland",
-          "type": "neobank",
-          "url": "https://n26.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Deutschlands führende Digitalbank mit kostenlosem Gehaltskonto, Spaces-Unterkonten und Echtzeit-Ausgabenanalyse."
-        },
-        {
-          "name": "Techniker Krankenkasse (TK)",
-          "type": "insurance",
-          "url": "https://www.tk.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Deutschlands beliebteste gesetzliche Krankenkasse mit niedrigem Zusatzbeitrag und umfangreichen digitalen Leistungen."
-        },
-        {
-          "name": "Taxfix",
-          "type": "software",
-          "url": "https://taxfix.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Beliebt bei Arbeitnehmern in Deutschland — durchschnittliche Steuererstattung von 1.095 € in unter 22 Minuten."
-        },
-        {
-          "name": "Trade Republic",
-          "type": "neobank",
-          "url": "https://traderepublic.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Deutschlands größter Neobroker mit 4% Zinsen auf Tagesgeld und automatisierten Spar-ETF-Plänen."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "gewerbesteuer-rechner",
@@ -247,32 +222,7 @@
           "answer": "Ja, Angehörige der Katalogberufe (§ 18 EStG) wie Ärzte, Anwälte, Steuerberater, Architekten, Journalisten und IT-Freiberufler sind vollständig von der Gewerbesteuer befreit und müssen kein Gewerbe beim Gewerbeamt anmelden."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "SevDesk (ELSTER-kompatibel)",
-          "type": "software",
-          "url": "https://sevdesk.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Führende Cloud-Buchhaltung in Deutschland für Gewerbetreibende mit direkter ELSTER-Schnittstelle für Gewerbesteuererklärungen."
-        },
-        {
-          "name": "Lexoffice",
-          "type": "software",
-          "url": "https://www.lexoffice.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Ausgezeichnete Buchhaltungssoftware mit automatisierter EÜR, Gewerbesteuer-Vorausberechnung und DATEV-Export."
-        },
-        {
-          "name": "Qonto Deutschland",
-          "type": "neobank",
-          "url": "https://qonto.com/de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Geschäftskonto für Gewerbetreibende mit deutscher IBAN, Unterkonten für Rücklagen (Gewerbesteuer) und DATEV-Schnittstelle."
-        },
-        {
-          "name": "Finom Deutschland",
-          "type": "neobank",
-          "url": "https://finom.co/de-de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Smartes Geschäftskonto für Einzelunternehmer und KMU mit automatisierter Rechnungserstellung und Steuer-Matching."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "umsatzsteuer-rechner",
@@ -375,32 +325,7 @@
           "answer": "Der ermäßigte Steuersatz von 7 % gilt unter anderem für Grundnahrungsmittel, Bücher, Zeitungen, Kunstgegenstände, Personenbeförderung im Nahverkehr und Kulturtickets."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "SevDesk (ELSTER-kompatibel)",
-          "type": "software",
-          "url": "https://sevdesk.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Erstellen Sie USt-konforme Rechnungen mit automatischer Kleinunternehmer-Klausel und ELSTER-UStVA-Übermittlung."
-        },
-        {
-          "name": "Lexoffice",
-          "type": "software",
-          "url": "https://www.lexoffice.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Automatisierter Belegupload, GoBD-konforme Rechnungen und 1-Klick Umsatzsteuer-Voranmeldung für Selbstständige."
-        },
-        {
-          "name": "Taxfix",
-          "type": "software",
-          "url": "https://taxfix.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Einfache Einkommensteuererklärung per Smartphone für Arbeitnehmer und Nebengewerbe."
-        },
-        {
-          "name": "N26 Deutschland",
-          "type": "neobank",
-          "url": "https://n26.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Kostenloses Geschäftskonto N26 Business mit automatischer USt-Rücklage und Unterkonten."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "freiberufler-einkommensteuer",
@@ -503,32 +428,7 @@
           "answer": "Ja, das Finanzamt setzt nach der ersten Steuererklärung vierteljährliche Einkommensteuer-Vorauszahlungen fest. Diese sind jeweils am 10. März, 10. Juni, 10. September und 10. Dezember fällig."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "SevDesk (ELSTER-kompatibel)",
-          "type": "software",
-          "url": "https://sevdesk.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "EÜR-Erstellung auf Knopfdruck mit direktem ELSTER-Export an das Finanzamt für Freiberufler."
-        },
-        {
-          "name": "Lexoffice",
-          "type": "software",
-          "url": "https://www.lexoffice.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Umfassendes Buchhaltungsprogramm für Freiberufler mit Belegdigitalisierung per App und DATEV-Schnittstelle."
-        },
-        {
-          "name": "N26 Deutschland",
-          "type": "neobank",
-          "url": "https://n26.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Girokonto für Freiberufler mit 0,1% Cashback und automatisierter Einnahmen-Kategorisierung."
-        },
-        {
-          "name": "Trade Republic",
-          "type": "neobank",
-          "url": "https://traderepublic.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Neobroker mit 4% Zinsen für die private Altersvorsorge und ETF-Sparpläne von Freiberuflern."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kurzarbeitergeld-rechner",
@@ -628,32 +528,7 @@
           "answer": "Ja. Wenn Sie im Kalenderjahr mehr als 410 € an Lohnersatzleistungen (wie Kurzarbeitergeld, Krankengeld oder Elterngeld) bezogen haben, sind Sie gesetzlich verpflichtet, bis zum 31. Juli des Folgejahres eine Steuererklärung abzugeben."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Taxfix",
-          "type": "software",
-          "url": "https://taxfix.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Erledigen Sie die Verpflichtende Steuererklärung nach Kurzarbeit (Progressionsvorbehalt) schnell und einfach."
-        },
-        {
-          "name": "N26 Deutschland",
-          "type": "neobank",
-          "url": "https://n26.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Digitales Girokonto mit Ausgabenverwaltung zur Überbrückung finanzieller Engpässe."
-        },
-        {
-          "name": "Trade Republic",
-          "type": "neobank",
-          "url": "https://traderepublic.com/de-de?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Flexibles Tagesgeld mit monatlicher Zinsgutschrift als Notfallgroschen."
-        },
-        {
-          "name": "Clark Digital Insurance Broker",
-          "type": "insurance",
-          "url": "https://www.clark.de/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Prüfen Sie Versicherungstarife und reduzieren Sie monatliche Fixkosten während der Kurzarbeit."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

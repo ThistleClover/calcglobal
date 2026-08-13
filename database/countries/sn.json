@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Senegal revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Wave Senegal",
-          "type": "software",
-          "description": "Top financial tool in Senegal"
-        },
-        {
-          "name": "CBAO",
-          "type": "software",
-          "description": "Top financial tool in Senegal"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

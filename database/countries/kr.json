@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on South Korea revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Douzone",
-          "type": "software",
-          "description": "Top financial tool in South Korea"
-        },
-        {
-          "name": "Toss Bank",
-          "type": "software",
-          "description": "Top financial tool in South Korea"
-        },
-        {
-          "name": "KakaoBank",
-          "type": "software",
-          "description": "Top financial tool in South Korea"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

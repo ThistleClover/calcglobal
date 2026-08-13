@@ -42,18 +42,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Rwanda revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "BK Rwanda",
-          "type": "software",
-          "description": "Top financial tool in Rwanda"
-        },
-        {
-          "name": "MTN MoMo Rwanda",
-          "type": "software",
-          "description": "Top financial tool in Rwanda"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

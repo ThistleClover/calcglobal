@@ -68,28 +68,7 @@
         }
       ],
       "formula_explanation": "Gross Business Profit = Annual Revenue - Business Expenses. Entrepreneur Deductions (Ondernemersaftrek): If Hours Criterion (1,225 hours/year) is met, deduct Zelfstandogenaaftrek (€2,470 in recent reform trajectory) and Startersaftrek (€2,123 extra for eligible starters). Taxable Profit after Deductions = Gross Profit - Entrepreneur Deductions. MKB-winstvrijstelling (12.7% reduction) is subtracted from Taxable Profit. Personal Taxable Base = Profit after MKB exemption - Pension annuity deduction. Box 1 Income Tax applies progressive tax rates: Bracket 1 (~36.97% up to ~€75,518) and Bracket 2 (~49.50% on excess). Tax credits applied: Algemene Heffingskorting (max ~€3,362, phased out with higher income) and Arbeidskorting (max ~€5,532, phased out with higher profit). Health Insurance Act Contribution (Zvw - Zorgverzekeringswet) for self-employed is calculated at ~5.32% up to max annual income cap (~€71,628). Net Annual Income = Profit - Box 1 Income Tax - Zvw Contribution + Tax Credits.",
-      "affiliate_targets": [
-        {
-          "name": "Moneybird",
-          "type": "accounting",
-          "description": "Top cloud accounting software in NL for freelancers with automated BTW filing and bank syncing."
-        },
-        {
-          "name": "e-Boekhouden.nl",
-          "type": "accounting",
-          "description": "Popular Dutch bookkeeping tool offering free accounting for starting ZZP'ers during first 15 months."
-        },
-        {
-          "name": "Knab",
-          "type": "neobank",
-          "description": "Leading Dutch digital bank for sole proprietors offering low-cost business accounts and integrated tax savings."
-        },
-        {
-          "name": "Brand New Day",
-          "type": "software",
-          "description": "Leading Dutch pension investment bank for freelancers utilizing tax-deductible Jaarruimte annuity accounts."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "bruto-netto-salaris-calculator",
@@ -156,28 +135,7 @@
         }
       ],
       "formula_explanation": "Gross Annual Base Salary = Monthly Gross * 12 (plus 8% holiday allowance if applicable). 30% Expat Ruling: If active, 30% (or stepped-down 20%/10%) of eligible gross income is paid as tax-free reimbursement (capped at Balkenende norm ~€233,000 max), leaving 70% taxable. Taxable Base = Taxable Gross - Employee Pension Contribution + Company Car Bijtelling. Payroll Tax (Loonheffing) is computed using Box 1 progressive brackets (~36.97% up to ~€75,518; 49.50% on excess). Tax credits applied: Algemene Heffingskorting and Arbeidskorting based on government payroll tables. Net Monthly Salary = Gross Base - Employee Pension - Net Loonheffing (after tax credits) - Car Bijtelling Net Deduction.",
-      "affiliate_targets": [
-        {
-          "name": "Wise",
-          "type": "neobank",
-          "description": "Essential multi-currency borderless banking for international expats moving to the Netherlands."
-        },
-        {
-          "name": "ABN AMRO International Clients",
-          "type": "neobank",
-          "description": "Major Dutch bank tailored for expat salary deposits and English-language banking services."
-        },
-        {
-          "name": "Employment Hero",
-          "type": "software",
-          "description": "Global HR & Dutch automated payroll platform for companies employing staff in NL."
-        },
-        {
-          "name": "Blue Umbrella",
-          "type": "accounting",
-          "description": "Specialized Dutch tax filing and 30%-regeling application services for international workers."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "overdrachtsbelasting-hypotheek-calculator",
@@ -241,28 +199,7 @@
         }
       ],
       "formula_explanation": "Property Transfer Tax (Overdrachtsbelasting): 0% Startersvrijstelling applies if buyer is aged 18-34, purchasing primary home, property price is <= Startersvrijstelling limit (~€510,000 - €525,000 threshold), and hasn't used exemption before. Standard owner-occupier rate (age 35+ or price above limit) is 2%. Investment property / second home / buy-to-let rate is 10.4%. Notary fees (leveringsakte & hypotheekakte) average ~€1,200 - €2,000. Certified valuation report (Taxatierapport) ~€650 - €850. Mortgage advice & mediation fees ~€1,500 - €3,000. Cadastral registry fees (Kadaster) ~€100 - €200. NHG Fee (Borgprovisie): 0.6% of total mortgage amount if mortgage <= NHG cap (~€435,000 limit). Total Buyer Costs (Kosten Koper / k.k.) = Transfer Tax + Notary + Valuation + Mortgage Fee + Cadastral + NHG Fee.",
-      "affiliate_targets": [
-        {
-          "name": "De Hypotheker",
-          "type": "accounting",
-          "description": "Largest independent mortgage advisory chain in NL matching 40+ Dutch mortgage lenders."
-        },
-        {
-          "name": "Hypotheek24.nl",
-          "type": "software",
-          "description": "Leading execution-only and online mortgage comparison platform with discounted broker fees."
-        },
-        {
-          "name": "Nationale-Nederlanden",
-          "type": "insurance",
-          "description": "Major Dutch financial institution providing competitive mortgage products and mandatory building insurance."
-        },
-        {
-          "name": "Interpolis / Centraal Beheer",
-          "type": "insurance",
-          "description": "Top-rated home owner-occupier building and contents insurance (opstal- en inboedelverzekering)."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "transitievergoeding-berekenen",
@@ -321,28 +258,7 @@
         }
       ],
       "formula_explanation": "Gross Monthly Base for Compensation = Gross Monthly Salary + (Gross Monthly Salary * Holiday Allowance %) + (Annual Fixed Bonuses / 12). Statutory Formula: 1/3 of Gross Monthly Base per full year of employment. Fractional years calculated pro-rata: (Gross Monthly Base / 3) * (Remaining Months / 12) + (Gross Monthly Base / 3) * (Remaining Days / 365). Statutory Maximum Cap: Maximum payout is capped at ~€94,000 - €99,000 (indexed annually) or 1 year's gross salary if annual salary exceeds the cap threshold. Net Severance: Severance is taxed in Box 1 under the green tax table rate (groene tabel) without labour tax credits.",
-      "affiliate_targets": [
-        {
-          "name": "DAS Rechtsbijstand",
-          "type": "insurance",
-          "description": "Leading Dutch legal expenses insurer and legal assistance service for employment dispute negotiations."
-        },
-        {
-          "name": "Brand MR",
-          "type": "software",
-          "description": "Accessible Dutch employment law firm specializing in settlement agreements (VSO - Vaststellingsovereenkomst)."
-        },
-        {
-          "name": "Brand New Day",
-          "type": "software",
-          "description": "Capital preservation and annuity rollover options for managing large lump-sum severance payouts."
-        },
-        {
-          "name": "Ontslag-Direct",
-          "type": "software",
-          "description": "Specialized legal consultation platform matching employees with Dutch dismissal law attorneys."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "bijtelling-auto-van-de-zaak-calculator",
@@ -406,28 +322,7 @@
         }
       ],
       "formula_explanation": "500 km Exemption: If private usage is <= 500 km per calendar year with a valid trip log (rittenregistratie), Bijtelling rate is 0%. Standard ICE (Petrol/Diesel/Hybrid): 22% of official catalog price per year. Electric Vehicles (EV): Reduced rate applies up to cap (e.g. 16%/17% up to €30,000 cap; 22% on excess above cap; phasing towards standard 22%). Youngtimers (vehicles 15+ years old): 35% bijtelling applied to current fair market value (dagwaarde) instead of original catalog price. Gross Annual Bijtelling = Taxable Value Base * Applicable Bijtelling Rate. Net Monthly Cost = (Gross Annual Bijtelling * Top Income Tax Bracket Rate) / 12.",
-      "affiliate_targets": [
-        {
-          "name": "LeasePlan Netherlands",
-          "type": "software",
-          "description": "Leading corporate vehicle operational leasing and EV fleet management provider in NL."
-        },
-        {
-          "name": "MisterGreen Electric Lease",
-          "type": "software",
-          "description": "Specialized Dutch Tesla and full-electric business vehicle leasing company."
-        },
-        {
-          "name": "Flitsmeister Track / Cartracker",
-          "type": "software",
-          "description": "Keurmerk-certified automated GPS trip registration system for proving <=500km private usage."
-        },
-        {
-          "name": "Univé Zakelijk",
-          "type": "insurance",
-          "description": "Major Dutch cooperative insurer offering business fleet and commercial vehicle coverage."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

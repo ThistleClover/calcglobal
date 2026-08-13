@@ -69,28 +69,7 @@
         }
       ],
       "formula_explanation": "Taxable gross income = Monthly Gross Salary + Fringe Benefits. Employee mandatory social insurance deductions include TyEL pension contribution (7.15% for ages 17–52 and 63–67, or 8.65% for ages 53–62), Unemployment Insurance (työttömyysvakuutusmaksu: 0.79%), and Daily Allowance contribution (sairaanhoitomaksu: ~1.01%). Earned income tax is calculated by summing State Income Tax (valtion tulovero 2026 progressive brackets: 0% up to €22,000, 12.64% €22,000–€32,600, 19.00% €32,600–€40,100, 30.25% €40,100–€52,100, 33.25% €52,100–€84,000, 37.50% above €84,000), Municipal Tax (kunnallisvero: municipality rate applied after perusvähennys and työtulovähennys), Church Tax (kirkkovero: 1.0%–2.1% if applicable), and Yle Tax (2.5% on earned income above €14,000, max €163/year). Net Salary = Gross Salary - TyEL - Unemployment Insurance - Sairaanhoitomaksu - Income Taxes. Total Employer Cost = Gross Salary + Employer TyEL (~17.34%) + Employer Unemployment (~0.27%–1.09%) + Group Life Insurance (~0.06%) + Accident Insurance (~0.50%) + Social Security Fee (sotumu: ~1.43%), totaling an additional ~20%–24% on top of gross salary.",
-      "affiliate_targets": [
-        {
-          "name": "Ukko Pro / Ukko.fi",
-          "type": "software",
-          "description": "Helppo palkanlaskenta- ja kevytyrittäjyysalusta pienyrityksille ja keikkatyöläisille"
-        },
-        {
-          "name": "Accountor / Netvisor",
-          "type": "software",
-          "description": "Suomen johtava taloushallinnon ja palkanlaskennan automaatiojärjestelmä"
-        },
-        {
-          "name": "Danske Bank Finland",
-          "type": "neobank",
-          "description": "Palkkatili- ja mobiilipankkiratkaisut kilpailukykyisillä eduilla Suomessa"
-        },
-        {
-          "name": "YTK Työttömyyskassa",
-          "type": "insurance",
-          "description": "Suomen suurin yleinen työttömyyskassa ansiosidonnaisen työttömyysturvan takaamiseen"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "toiminimi-vs-osakeyhtio-kevytyrittaja",
@@ -148,28 +127,7 @@
         }
       ],
       "formula_explanation": "Net Business Profit = Revenue - Expenses. For Toiminimi (Private Trader): Mandatory YEL pension contribution is 24.40% (or 19.032% for first-time entrepreneurs) of declared YEL work income (minimum threshold €9,423.09/yr). Taxable business profit is profit minus YEL. In 2026, Entrepreneur Deduction (yrittäjävähennys) reduces taxable profit by 5.5%. The remaining 94.5% is taxed as personal earned income (ansiotulo) and capital income (pääomatulo: 20% of net assets taxed at 30%/34%). For Osakeyhtiö (Oy): Company pays 20% Corporate Tax (yhteisövero) on net profit after deducting director salary and YEL. Net profit after tax can be distributed as dividends. Low-taxed dividend (huojennettu osinko) up to 8% of company net assets is 25% taxable capital income (effective tax rate 7.5%–8.5% up to €150,000 per owner). For Kevytyrittäjä (Light Entrepreneur): Invoicing service charges a 3%–5% service fee on gross invoice amount, and remaining funds are paid as personal salary subject to YEL (if income exceeds threshold) and progressive withholding tax.",
-      "affiliate_targets": [
-        {
-          "name": "Holvi Business Banking",
-          "type": "neobank",
-          "description": "Suomalainen yritystili, Mastercard ja automaattinen kirjanpito toiminimille ja pienyhtiöille"
-        },
-        {
-          "name": "Ukko Yrittäjä",
-          "type": "accounting",
-          "description": "Kattava digitaalinen kirjanpitopalvelu ja veroilmoitukset toiminimelle ja osakeyhtiölle"
-        },
-        {
-          "name": "Procountor Solo / Talenom",
-          "type": "software",
-          "description": "Nykyaikainen taloushallintoohjelmisto myyntilaskutukseen ja kuittien hallintaan"
-        },
-        {
-          "name": "Fennia / Pohjola Yrittäjävakuutus",
-          "type": "insurance",
-          "description": "Yrittäjän lakisääteiset YEL-vakuutukset sekä vapaaehtoiset tapaturma- ja toimintavakuutukset"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "varainsiirtovero-asuntolaina-laskuri",
@@ -227,28 +185,7 @@
         }
       ],
       "formula_explanation": "Debt-Free Purchase Price (velaton kauppahinta) = Purchase Price + Housing Company Debt. Transfer Tax (Varainsiirtovero) rates in Finland (updated 2024–2026): 1.5% for housing company shares (asunto-osakkeet) calculated on debt-free price, and 3.0% for real estate property (kiinteistöt) calculated on purchase price. Note: First-time homebuyer tax exemption (ensiasunnon verovapaus) was abolished; all buyers pay standard transfer tax. Additional property fees include Public Notary (kaupanvahvistaja) fee of €128–€140 and title registration (lainhuuto) fee (~€161) for real estate. Mortgage Loan Principal = Debt-Free Price - Down Payment + Transfer Tax (if financed). Monthly Payment is computed using standard annuity formula M = P * [r(1+r)^n] / [(1+r)^n - 1]. Due date for transfer tax is 2 months from deed signing for housing shares or at registration for real estate.",
-      "affiliate_targets": [
-        {
-          "name": "Sortter Asuntolaina",
-          "type": "software",
-          "description": "Suomalainen lainanvertailupalvelu asuntolainojen ja vakuudettomien rahoitusten kilpailutukseen"
-        },
-        {
-          "name": "Etua.fi",
-          "type": "software",
-          "description": "Suomen ensimmäinen finanssialan verkkoagentti asuntolainatarjousten kilpailuttamiseen"
-        },
-        {
-          "name": "OP Ryhmä / Nordea Asuntolaina",
-          "type": "neobank",
-          "description": "Suomen johtavat pankit asuntolainojen myöntämisessä ja omistaja-asiakasetujen tarjoamisessa"
-        },
-        {
-          "name": "If Vahinkovakuutus",
-          "type": "insurance",
-          "description": "Kattavat kotivakuutukset ja lainaturvavakuutukset asunto-osakkeisiin ja omakotitaloihin"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "paaomatulovero-osinko-vuokratulo-laskuri",
@@ -305,28 +242,7 @@
         }
       ],
       "formula_explanation": "Capital Income Tax (Pääomatulovero) scale: 30% for taxable capital income up to €30,000/year, and 34% for the portion exceeding €30,000. Capital Gain (Luovutusvoitto): Taxable Gain = Sale Price - Max(Actual Acquisition Cost + Selling Costs, Presumed Acquisition Cost / Hankintaolettama of 20% if held under 10 years, or 40% if held 10+ years). Rental Income (Vuokratulo): Net Taxable Rental Income = Gross Rent - Hoitovastike - Deductible Repair Costs - Mortgage Interest. Listed Dividend (Pörssiosinko): 85% of dividend is taxable capital income (taxed at 30%/34%), 15% is tax-free (effective tax rate 25.5% or 28.9%). Non-Listed Dividend (Listaamaton osinko): Huojennettu osinko (≤ 8% of net assets): 25% taxable capital income (effective rate 7.5% or 8.5%) up to €150,000 limit; above €150,000, 85% is taxable capital income.",
-      "affiliate_targets": [
-        {
-          "name": "Nordnet Finland",
-          "type": "software",
-          "description": "Pohjoismaiden johtava sijoitusalusta, Osakesäästötili (OST) ja kuukausisäästäminen"
-        },
-        {
-          "name": "SweepBank / Bank Norwegian",
-          "type": "neobank",
-          "description": "Korkeakorkoiset säästötilit sijoituspääoman joustavaan lepuuttamiseen"
-        },
-        {
-          "name": "Suomen Vuokranantajat ry",
-          "type": "accounting",
-          "description": "Asuntosijoittajan oikeudellinen neuvonta, vuokrasopimuspohjat ja verovähennysopas"
-        },
-        {
-          "name": "LähiTapiola / Turva Sijoitusvakuutus",
-          "type": "insurance",
-          "description": "Sijoitusvakuutukset ja varallisuuden suojaaminen verotuksellisesti edullisesti"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "ansiosidonnainen-irtisanomisaika-laskuri",
@@ -379,28 +295,7 @@
         }
       ],
       "formula_explanation": "Statutory Notice Period (Työsopimuslaki 6 luku 3 §): When employer terminates: under 1 year tenure = 14 days; 1–4 years = 1 month; 4–8 years = 2 months; 8–12 years = 4 months; over 12 years = 6 months. When employee resigns: up to 5 years tenure = 14 days; over 5 years = 1 month. Notice Period Salary = (Monthly Gross Salary / 21.5) * Working Days in Notice Period. Earnings-Related Unemployment Allowance (Ansiosidonnainen päiväraha): Daily Wage Base = Monthly Gross * 0.95 / 21.5. Basic Daily Allowance (peruspäiväraha) = €37.21/day. Full Allowance = Basic Allowance + 0.45 * (Daily Base - Basic Allowance) for daily wages up to €164.42/day (€3,534.95/mo), plus 0.20 * (Daily Base - €164.42) for surplus. Staggering (Porrastus 2024–2026): Days 1–40 = 100% of calculated allowance; Days 41–170 = 80% (-20% reduction); Days 171+ = 75% (-25% reduction). Paid 5 days per week.",
-      "affiliate_targets": [
-        {
-          "name": "YTK Työttömyyskassa",
-          "type": "insurance",
-          "description": "Suomen suurin riippumaton työttömyyskassa anse- ja ansioturvan takaamiseen"
-        },
-        {
-          "name": "KOKO kassa",
-          "type": "insurance",
-          "description": "Korkeakoulutettujen työttömyyskassa asiantuntijoille ja esimiehille"
-        },
-        {
-          "name": "Minilex Lakipalvelut",
-          "type": "accounting",
-          "description": "Laillistetut työoikeuden lakimiehet irtisanomistilanteiden ja sopimusten tarkistamiseen"
-        },
-        {
-          "name": "Duunitori / Uravalmennus",
-          "type": "software",
-          "description": "Suomen suurin työpaikkasivusto ja uravalmennuspalvelut nopeaan uudelleentyöllistymiseen"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

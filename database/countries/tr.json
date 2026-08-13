@@ -85,28 +85,7 @@
         }
       ],
       "formula_explanation": "1. SGK Worker Share = Gross Salary * 14% (capped at statutory SGK Ceiling = 7.5 * Minimum Wage). 2. Unemployment Worker Share = Gross Salary * 1%. 3. Taxable Base = Gross Salary - SGK Worker Share - Unemployment Worker Share. 4. Cumulative Tax Base = Previous Base + Taxable Base. Progressive Income Tax Brackets apply (15%, 20%, 27%, 35%, 40%). 5. Asgari Ücret Vergi İstisnası (Minimum Wage Exemption): Calculated Gross Income Tax and Stamp Tax are reduced by the income tax and stamp tax corresponding to the monthly Minimum Wage. 6. Stamp Tax (Damga Vergisi) = Gross Salary * 0.00759 (0.759%), minus Minimum Wage Stamp Tax exemption. 7. Net Salary = Gross Salary - SGK Worker (14%) - Unemployment Worker (1%) - Income Tax (after exemption) - Stamp Tax (after exemption) + Disability Benefit deduction. 8. Severance Pay (Kıdem Tazminatı) = Min(Gross Salary + regular side benefits, Kıdem Tazminatı Tavanı) * (Tenure Years + Tenure Months / 12). Exempt from Income Tax; subject only to 0.759% Stamp Tax. 9. Notice Pay (İhbar Tazminatı) = (Gross Salary / 30) * Statutory Notice Days (28 days for 0.5-1.5 yrs, 42 days for 1.5-3 yrs, 56 days for 3+ yrs). Subject to Income Tax (15%-40%) and Stamp Tax (0.759%).",
-      "affiliate_targets": [
-        {
-          "name": "Kolay İK",
-          "type": "software",
-          "description": "Leading HR & payroll automation SaaS in Turkey for employee management, leave tracking, and payroll processing."
-        },
-        {
-          "name": "Enpara.com / QNB",
-          "type": "neobank",
-          "description": "Popular commission-free banking service widely used by employees and businesses for payroll deposits and fee-free transfers."
-        },
-        {
-          "name": "Paraşüt (Mikro Group)",
-          "type": "accounting",
-          "description": "Top SME accounting software in Turkey for managing employee tax records, SGK payroll files, and e-invoicing."
-        },
-        {
-          "name": "Allianz Türkiye / Anadolu Sigorta",
-          "type": "insurance",
-          "description": "Major providers of Private Health Insurance (ÖSS) which yields tax base deduction advantages on monthly salary calculations."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "tapu-harci-deger-artis-kazanci-hesaplama",
@@ -173,28 +152,7 @@
         }
       ],
       "formula_explanation": "1. Title Deed Fee (Tapu Harcı): Standard statutory rate is 4% of the declared property value (must be >= municipal benchmark value / rayiç bedel). By default split as 2% Buyer + 2% Seller. Total Tapu Harcı = Declared Value * 4%. Plus fixed Revolving Fund Fee (Döner Sermaye Hizmet Bedeli + local coefficient). 2. Exemption Rule: If property is held for more than 5 full years (60 months), Capital Gains Tax (Değer Artış Kazancı Vergisi) is 0 TL. 3. If held <= 5 years: Adjusted Acquisition Price = Acquisition Price * (PPI index month before sale / PPI index month before purchase). Adjustment applies if inflation change is >= 10%. 4. Taxable Capital Gain = Sale Price - Adjusted Acquisition Price - Acquisition Title Deed Fees - Annual Exemption Allowance (statutory annual limit, e.g. TRY 87,000 in 2024 / updated annually). 5. If Taxable Capital Gain > 0, Income Tax is calculated progressively using standard Turkish Income Tax brackets (15% to 40%).",
-      "affiliate_targets": [
-        {
-          "name": "Garanti BBVA Konut Kredisi",
-          "type": "neobank",
-          "description": "Leading Turkish mortgage provider for homebuyers seeking real estate financing during title deed transfer."
-        },
-        {
-          "name": "Hepsiemlak / Sahibinden",
-          "type": "software",
-          "description": "Dominant real estate listing platforms in Turkey used for property valuation, buying, and selling."
-        },
-        {
-          "name": "DASK / AXA Sigorta",
-          "type": "insurance",
-          "description": "Mandatory Earthquake Insurance (DASK) required legally prior to executing property title transfers."
-        },
-        {
-          "name": "Ziraat Gayrimenkul Ekspertiz",
-          "type": "accounting",
-          "description": "Official real estate appraisal service provider for accurate property valuation declarations."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "sahis-sirketi-vergi-bagkur-hesaplama",
@@ -277,28 +235,7 @@
         }
       ],
       "formula_explanation": "1. Gross Annual Income = Monthly Revenue * 12. 2. Gross Annual Expenses = Monthly Expenses * 12. 3. Net Pre-Tax Income = Gross Annual Income - Gross Annual Expenses. 4. Young Entrepreneur Incentive (Genç Girişimci Desteği): First-time sole proprietors under age 29 receive 3 years of income tax exemption up to the statutory 75,000+ TL threshold (indexed to tax tariff tier 3) AND 1 year of state-paid Bağ-Kur social security premiums. 5. Taxable Base = Max(0, Net Pre-Tax Income - Young Entrepreneur Tax Exemption if applicable). 6. Income Tax (Gelir Vergisi) calculated on Taxable Base using Turkish progressive income tax brackets (15%, 20%, 27%, 35%, 40%). 7. Monthly Bağ-Kur Premium = Gross Minimum Wage * 34.5% (or 29.5% with 5% prompt payment incentive). 8. Fixed Monthly/Quarterly Stamp Duty (Damga Vergisi) for KDV, Muhtasar, and Geçici Vergi declarations (~statutory statutory fixed fees). 9. Net Annual Take-Home Profit = Net Pre-Tax Income - Income Tax - Annual Bağ-Kur Premiums - Annual Fixed Stamp Duties.",
-      "affiliate_targets": [
-        {
-          "name": "Paraşüt (Mikro Group)",
-          "type": "accounting",
-          "description": "Leading cloud accounting SaaS in Turkey tailored for sole proprietors and freelancers to manage e-Invoices and expense tracking."
-        },
-        {
-          "name": "Mükellef.co",
-          "type": "software",
-          "description": "All-in-one digital company formation and tax administration platform for Turkish solo founders and remote workers."
-        },
-        {
-          "name": "Enpara.com Şirket (QNB)",
-          "type": "neobank",
-          "description": "Zero-fee corporate digital banking service ideal for Turkish small business owners and freelancers."
-        },
-        {
-          "name": "Bizim Hesap",
-          "type": "software",
-          "description": "Affordable cloud ERP & e-Archive invoicing tool built for micro-businesses in Turkey."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "kira-stopaji-kdv-hesaplama",
@@ -367,28 +304,7 @@
         }
       ],
       "formula_explanation": "1. If Landlord is Individual (Şahıs): Subject to Rent Withholding Tax (Kira Stopajı) at statutory rate of 20%. Net Rent = Gross Rent * (1 - 0.20) = Gross Rent * 0.80. Gross Rent (Brüt Kira) = Net Rent / 0.80 = Net Rent * 1.25. Rent Withholding Tax (Kira Stopajı) = Gross Rent * 0.20 = Net Rent * 0.25. Payment to Landlord = Net Rent. Payment to Tax Office (Muhtasar Beyanname) = Rent Withholding Tax. Total Business Expense = Gross Rent. 2. If Landlord is Company/Corporation (Tüzel Kişi): No withholding tax; commercial rent invoice is issued with KDV. Gross Rent = Specified Amount. KDV Amount = Rent Amount * KDV Rate (20%). Total Cash Paid to Landlord = Rent Amount * (1 + KDV Rate). Input KDV (İndirilecek KDV) can be offset against business monthly sales KDV.",
-      "affiliate_targets": [
-        {
-          "name": "Mükellef.co",
-          "type": "software",
-          "description": "Automates commercial rent withholding calculations, quarterly Muhtasar tax declaration filings, and accounting records."
-        },
-        {
-          "name": "Paraşüt (Mikro Group)",
-          "type": "accounting",
-          "description": "Cloud accounting system for tracking office rent withholding expenses, landlord receipts, and deductible KDV."
-        },
-        {
-          "name": "Kolektif House / Workinton",
-          "type": "software",
-          "description": "Turkish coworking & virtual office providers offering tax address solutions with all-inclusive pricing (zero separate landlord stopaj hassle)."
-        },
-        {
-          "name": "Garanti BBVA Ticari",
-          "type": "neobank",
-          "description": "Commercial banking accounts with recurring automatic payment transfers for rent and withholding tax payments."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "mtv-noter-devir-masrafi-hesaplama",
@@ -517,28 +433,7 @@
         }
       ],
       "formula_explanation": "1. Notary Vehicle Transfer Fee (Noter Araç Devir Masrafı): Fixed statutory notary transaction fee (~TRY 1,489+ updated annually) + registration document fee (Ruhsat basım ücreti). If plate change is selected (Plaka değişimi), additional plate printing and stamp fee is added. 2. Motor Vehicle Tax (MTV): Computed semi-annually (paid in 2 equal installments in January and July). Annual total = 2 * semi-annual installment. Formula matches Engine Capacity Bracket, Age Tier, and Registration Period. For post-2018 registrations, MTV also factors in the vehicle benchmark value (Taşıt Değeri). Electric vehicles (EVs) pay 25% of the MTV charged for an equivalent internal combustion engine capacity kW bracket.",
-      "affiliate_targets": [
-        {
-          "name": "Sigortam.net",
-          "type": "insurance",
-          "description": "Leading Turkish insurance aggregator for comparing mandatory Traffic Insurance (Zorunlu Trafik Sigortası) and Kasko auto insurance."
-        },
-        {
-          "name": "Arabam.com / VavaCars",
-          "type": "software",
-          "description": "Popular Turkish car valuation platforms for buying, selling, and appraising pre-owned vehicles."
-        },
-        {
-          "name": "Garanti BBVA Taşıt Kredisi",
-          "type": "neobank",
-          "description": "Auto loan provider offering rapid approval for vehicle transfers and purchases."
-        },
-        {
-          "name": "Anadolu Sigorta / AXA",
-          "type": "insurance",
-          "description": "Top-tier insurance company providing comprehensive Kasko auto insurance coverage."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

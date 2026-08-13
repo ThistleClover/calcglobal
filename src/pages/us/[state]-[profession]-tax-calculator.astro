@@ -1,0 +1,789 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InteractiveCalculator from '../../components/InteractiveCalculator';
+import CpaLeadCapture from '../../components/CpaLeadCapture.astro';
+import { calculate } from '../../lib/engine/countries/us';
+
+export function getStaticPaths() {
+  const states = ['ca', 'ny', 'tx', 'fl', 'il'];
+  const professions = ['freelance-developer', 'consultant'];
+  const paths: any[] = [];
+
+  for (const state of states) {
+    for (const profession of professions) {
+      paths.push({
+        params: { state, profession },
+        props: { stateKey: state, professionKey: profession },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { stateKey, professionKey } = Astro.props;
+
+interface StateInfo {
+  code: string;
+  name: string;
+  taxType: string;
+  rateText: string;
+  authority: string;
+  authorityAbbr: string;
+  details: string;
+  cityTaxNote?: string;
+  highlights: string[];
+}
+
+interface ProfessionInfo {
+  slug: string;
+  name: string;
+  plural: string;
+  category: string;
+  overview: string;
+  sampleRevenues: number[];
+  deductions: { title: string; category: string; description: string; exampleItems: string[] }[];
+}
+
+const STATES_DATA: Record<string, StateInfo> = {
+  ca: {
+    code: 'CA',
+    name: 'California',
+    taxType: 'Progressive State Income Tax',
+    rateText: '1.0% – 12.3% (plus 1% Mental Health Services Tax over $1M)',
+    authority: 'California Franchise Tax Board (FTB)',
+    authorityAbbr: 'FTB',
+    details: 'California levies progressive personal income tax rates ranging from 1.0% up to 12.3% (with an additional 1.0% tax on taxable income over $1,000,000). Independent contractors must submit Franchise Tax Board (FTB) estimated quarterly tax payments in addition to federal IRS self-employment taxes.',
+    highlights: [
+      'Progressive state tax brackets ranging from 1.0% to 12.3%',
+      '1.0% Mental Health Services Tax on net income exceeding $1,000,000',
+      'FTB quarterly estimated payment deadlines: April 15, June 16, September 15, January 15',
+      'San Francisco Gross Receipts Tax & Los Angeles Business Tax may apply locally',
+    ],
+  },
+  ny: {
+    code: 'NY',
+    name: 'New York',
+    taxType: 'Progressive State & Local Income Tax',
+    rateText: '4.0% – 10.9% (+ 3.078% – 3.876% NYC Tax if resident)',
+    authority: 'New York State Department of Taxation and Finance',
+    authorityAbbr: 'NYSDTF',
+    details: 'New York State features progressive personal income tax brackets from 4.0% to 10.9%. NYC residents pay an additional NYC personal income tax (3.078%–3.876%). NYC self-employed freelancers with gross income over $100k may also be subject to the 4.0% NYC Unincorporated Business Tax (UBT).',
+    highlights: [
+      'Progressive NY state income tax brackets from 4.0% to 10.9%',
+      'NYC local income tax (3.078%–3.876%) for NYC resident freelancers',
+      'NYC Unincorporated Business Tax (UBT) of 4.0% on gross self-employment income over $100,000',
+      'Optional NY Pass-Through Entity Tax (PTET) election for S-Corporation / LLC owners',
+    ],
+  },
+  tx: {
+    code: 'TX',
+    name: 'Texas',
+    taxType: 'No State Income Tax',
+    rateText: '0.0% (No Personal State Income Tax)',
+    authority: 'Texas Comptroller of Public Accounts',
+    authorityAbbr: 'TX Comptroller',
+    details: 'Under Article 8 of the Texas Constitution, Texas imposes 0.0% personal income tax on individual earnings. 1099 freelancers and sole proprietors retain 100% of state-level income, directing all tax strategy toward 15.3% federal self-employment tax and Schedule C deductions.',
+    highlights: [
+      '0.0% state personal income tax guaranteed by the Texas Constitution',
+      '100% savings on state personal tax compared to CA/NY',
+      'Texas Franchise Tax applies only if annual gross revenue exceeds $2,470,000 threshold',
+      'Primary tax focus: 15.3% federal SE tax (12.4% Social Security + 2.9% Medicare)',
+    ],
+  },
+  fl: {
+    code: 'FL',
+    name: 'Florida',
+    taxType: 'No State Income Tax',
+    rateText: '0.0% (No Personal State Income Tax)',
+    authority: 'Florida Department of Revenue',
+    authorityAbbr: 'FL Dept of Rev',
+    details: 'Florida Constitution Article VII prohibits state personal income tax. Sole proprietors and 1099 independent contractors pay 0% state income tax on business profit. Federal income tax and 15.3% self-employment tax are the only primary income tax obligations.',
+    highlights: [
+      '0.0% state personal income tax under Florida Constitution Article VII',
+      'No state tax filings or state quarterly estimated payments for 1099 sole proprietors',
+      'Corporate income tax applies only to C-Corporations (not 1099 freelancers or S-Corps)',
+      'High net retention makes S-Corp election and federal §199A QBI deduction highly beneficial',
+    ],
+  },
+  il: {
+    code: 'IL',
+    name: 'Illinois',
+    taxType: 'Flat State Income Tax',
+    rateText: '4.95% Flat Income Tax Rate',
+    authority: 'Illinois Department of Revenue (IDOR)',
+    authorityAbbr: 'IDOR',
+    details: 'Illinois levies a flat 4.95% individual income tax rate under the Illinois Income Tax Act. Self-employed freelancers must pay IDOR quarterly estimated payments if their state tax liability exceeds $1,000. S-Corporations and Partnerships are also subject to the 1.5% Personal Property Replacement Tax (PPRT).',
+    highlights: [
+      'Flat 4.95% state income tax rate on net taxable income',
+      '1.5% Personal Property Replacement Tax (PPRT) for S-Corps and Partnerships',
+      'Pass-Through Entity (PTE) tax election available to bypass federal SALT $10k cap',
+      'IDOR quarterly estimated payments due April 15, June 16, September 15, January 15',
+    ],
+  },
+};
+
+const PROFESSIONS_DATA: Record<string, ProfessionInfo> = {
+  'freelance-developer': {
+    slug: 'freelance-developer',
+    name: 'Freelance Developer',
+    plural: 'Freelance Developers & Software Engineers',
+    category: 'Software Engineering & Tech Contracting',
+    overview: 'As a freelance software engineer, full-stack web developer, or mobile app developer operating as a 1099 contractor, your net profit is subject to 15.3% federal self-employment tax (Social Security & Medicare) plus state income tax. Deducting hardware, cloud hosting, and software subscriptions directly reduces your taxable Schedule C net profit.',
+    sampleRevenues: [75000, 120000, 180000, 250000],
+    deductions: [
+      {
+        title: 'Hardware & Workstation Gear',
+        category: 'Equipment & Capital Assets (IRC §179 / §168)',
+        description: 'Laptops, desktop rigs, 4K monitors, mechanical keyboards, ergonomic desk setups, test mobile devices, and local servers.',
+        exampleItems: ['MacBook Pro / ThinkPad workstations', 'Dual 4K color-accurate monitors', 'Standing desks & ergonomic office seating', 'Test iPhones, iPads, Android test devices'],
+      },
+      {
+        title: 'Software & SaaS Subscriptions',
+        category: 'Software Expenses (Schedule C Line 27a)',
+        description: 'Developer tooling, IDE licenses, AI code assistants, design tools, and productivity applications used in client projects.',
+        exampleItems: ['JetBrains All Products Pack / VS Code plugins', 'GitHub Copilot / OpenAI API / Claude Pro', 'Figma / Adobe Creative Cloud', 'Docker Desktop / JetBrains Fleet / Postman'],
+      },
+      {
+        title: 'Cloud Hosting & Infrastructure',
+        category: 'Utilities & Technology Services',
+        description: 'Server hosting, database instances, CDN services, domain registrations, and cloud deployment pipelines.',
+        exampleItems: ['AWS / Google Cloud / Microsoft Azure', 'Vercel Pro / Netlify / DigitalOcean', 'Supabase / MongoDB Atlas / Cloudflare', 'Domain names & SSL security certificates'],
+      },
+      {
+        title: 'Home Office Dedicated Workspace',
+        category: 'Business Use of Home (IRC §280A)',
+        description: 'Dedicated workspace portion of rent, mortgage interest, utilities, and high-speed fiber internet.',
+        exampleItems: ['Simplified $5/sq ft deduction (up to $1,500)', 'Actual expense method (rent % + electric + heating)', '100% of dedicated gigabit fiber internet line'],
+      },
+      {
+        title: 'Learning & Tech Conferences',
+        category: 'Education & Professional Development',
+        description: 'Technical courses, books, certification exams, and software engineering conference admissions.',
+        exampleItems: ['React Summit / AWS re:Invent tickets', 'Frontend Masters / O\'Reilly Learning', 'Udemy / Pluralsight / Coursera subscriptions', 'AWS / Google Cloud Certified exams'],
+      },
+      {
+        title: 'Subcontractor & API Expenses',
+        category: 'Contract Labor (Schedule C Line 11)',
+        description: 'Fees paid to freelance UI/UX designers, QA testers, security auditors, and third-party API services.',
+        exampleItems: ['Contract UI/UX designers & graphic artists', 'Freelance QA testing & code auditors', 'Stripe / Twilio / SendGrid / Auth0 usage fees'],
+      },
+    ],
+  },
+  consultant: {
+    slug: 'consultant',
+    name: 'Consultant',
+    plural: 'Independent Consultants & Strategy Advisors',
+    category: 'Management & Strategy Consulting',
+    overview: 'Independent management, IT, marketing, and financial consultants operating on 1099 contracts pay 15.3% federal self-employment tax on net profit plus state income tax. Maximizing professional service fees, travel costs, client entertainment, and home office expenses is vital to lowering effective tax rates.',
+    sampleRevenues: [90000, 150000, 225000, 350000],
+    deductions: [
+      {
+        title: 'Legal & Professional Services',
+        category: 'Legal & Accounting (Schedule C Line 17)',
+        description: 'Attorneys, CPAs, bookkeepers, contract review services, and financial advisory expenses.',
+        exampleItems: ['CPA annual tax preparation & advisory', 'Business contract lawyer retainer', 'QuickBooks Online / Xero accounting software', 'Bookkeeping & CFO consulting fees'],
+      },
+      {
+        title: 'Client Travel & Mileage',
+        category: 'Travel & Transportation (Schedule C Line 24a)',
+        description: 'Flights, hotels, Uber/rideshares, rental cars, and IRS standard mileage for client site visits.',
+        exampleItems: ['IRS standard mileage rate (67¢ per mile)', 'Airline tickets & hotel accommodations for client meetings', 'Uber / Lyft / Taxi rides for business travel', 'Parking fees & highway tolls'],
+      },
+      {
+        title: 'Client Business Meals',
+        category: 'Meals (Schedule C Line 24b — 50% Deductible)',
+        description: 'Dining expenses during business meetings with clients, prospective leads, and strategic partners.',
+        exampleItems: ['50% deductible business lunches with prospective clients', 'Dinner meetings discussing contract deliverables', 'Coffee meetings with industry partners'],
+      },
+      {
+        title: 'Phone & High-Speed Communications',
+        category: 'Utilities & Telecom (Schedule C Line 25)',
+        description: 'Dedicated business mobile phone line, video conferencing software, and home internet business percentage.',
+        exampleItems: ['Business cell phone plan (e.g. 80% business ratio)', 'Zoom Pro / Microsoft Teams / Google Workspace', 'High-speed home fiber internet'],
+      },
+      {
+        title: 'Business & E&O Insurance',
+        category: 'Insurance (Schedule C Line 15)',
+        description: 'Professional liability (Errors & Omissions), General Liability, and Cyber Insurance policies.',
+        exampleItems: ['Errors & Omissions (E&O) professional liability', 'Commercial General Liability insurance', 'Cyber Security Liability protection'],
+      },
+      {
+        title: 'Marketing & Brand Development',
+        category: 'Advertising (Schedule C Line 8)',
+        description: 'Website design, branding, lead generation tools, CRM software, and professional networking.',
+        exampleItems: ['LinkedIn Sales Navigator subscription', 'HubSpot / Salesforce CRM software', 'Website hosting & custom pitch deck design', 'Business card printing & brand strategy'],
+      },
+    ],
+  },
+};
+
+const stateInfo = STATES_DATA[stateKey];
+const professionInfo = PROFESSIONS_DATA[professionKey];
+
+if (!stateInfo || !professionInfo) {
+  throw new Error(`Invalid state (${stateKey}) or profession (${professionKey})`);
+}
+
+// Compute pre-calculated scenarios for the 4 revenue levels
+const scenarioResults = professionInfo.sampleRevenues.map(rev => {
+  const res = calculate({
+    calculator_id: 'us-1099-self-employment-tax-calculator',
+    net_1099_profit: rev,
+    state: stateInfo.code,
+    filing_status: 'single',
+    other_w2_income: 0,
+  });
+
+  const seTaxLine = res.breakdown.find(b => b.label.includes('Self-Employment Tax'))?.value || 0;
+  const fedIncomeTaxLine = res.breakdown.find(b => b.label.includes('Federal Income Tax'))?.value || 0;
+  const stateTaxLine = res.breakdown.find(b => b.label.includes('State Income Tax'))?.value || 0;
+
+  return {
+    gross: rev,
+    seTax: seTaxLine,
+    fedIncomeTax: fedIncomeTaxLine,
+    stateTax: stateTaxLine,
+    totalTax: res.totalTax,
+    netIncome: res.netIncome,
+    effectiveRate: (res.effectiveRate * 100).toFixed(1),
+    quarterlyPayment: res.quarterlyPayment || 0,
+  };
+});
+
+// Self-contained client-side calculation code string for InteractiveCalculator React island
+const clientEngineCode = `
+function applyBrackets(income, brackets) {
+  if (income <= 0 || !isFinite(income) || isNaN(income)) return 0;
+  let tax = 0, prev = 0;
+  for (const [limit, rate] of brackets) {
+    if (income <= prev) break;
+    const chunk = Math.min(income, limit) - prev;
+    tax += chunk * rate;
+    prev = limit;
+  }
+  return tax;
+}
+
+const BRACKETS_SINGLE = [[11925, 0.10], [48475, 0.12], [103350, 0.22], [197300, 0.24], [250525, 0.32], [626350, 0.35], [Infinity, 0.37]];
+const BRACKETS_JOINT = [[23850, 0.10], [96950, 0.12], [206700, 0.22], [394600, 0.24], [501050, 0.32], [751600, 0.35], [Infinity, 0.37]];
+const BRACKETS_HOH = [[17000, 0.10], [64850, 0.12], [103350, 0.22], [197300, 0.24], [250500, 0.32], [626350, 0.35], [Infinity, 0.37]];
+
+const CA_BRACKETS = [[10412, 0.01], [24684, 0.02], [38959, 0.04], [54081, 0.06], [68350, 0.08], [349137, 0.093], [418961, 0.103], [698271, 0.113], [Infinity, 0.123]];
+const NY_BRACKETS = [[8500, 0.04], [11700, 0.045], [13900, 0.0525], [80650, 0.055], [215400, 0.06], [1077550, 0.0685], [Infinity, 0.109]];
+
+function calcState(st, taxable) {
+  st = (st || '${stateInfo.code}').toUpperCase();
+  if (st === 'TX' || st === 'FL' || st === 'WA' || st === 'NV' || st === 'WY' || st === 'SD' || st === 'TN' || st === 'AK') return 0;
+  if (st === 'IL') return taxable * 0.0495;
+  if (st === 'CA') return applyBrackets(taxable, CA_BRACKETS);
+  if (st === 'NY') return applyBrackets(taxable, NY_BRACKETS);
+  return taxable * 0.05;
+}
+
+const profit = Number(inputs.net_1099_profit || 0);
+const filingStatus = String(inputs.filing_status || 'single');
+const w2Income = Number(inputs.other_w2_income || 0);
+const selectedState = String(inputs.state || '${stateInfo.code}');
+
+const seTaxable = Math.max(0, profit * 0.9235);
+const ssBase = Math.max(0, 176100 - w2Income);
+const ssIncome = Math.min(seTaxable, ssBase);
+const ssTax = ssIncome * 0.124;
+const medicareTax = seTaxable * 0.029;
+const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
+const amtExcess = Math.max(0, (seTaxable + w2Income) - amtThreshold);
+const addlMedicare = Math.min(seTaxable, amtExcess) * 0.009;
+
+const totalSE = ssTax + medicareTax + addlMedicare;
+const seDeduction = totalSE * 0.5;
+const agi = Math.max(0, profit - seDeduction);
+
+const qbiThreshold = filingStatus === 'married_joint' ? 394600 : 197300;
+const qbiDeduction = agi <= qbiThreshold ? Math.max(0, Math.min(profit, agi)) * 0.20 : 0;
+
+const stdDeductions = { single: 15000, married_joint: 30000, head_of_household: 22500, married_separate: 15000 };
+const stdDeduction = stdDeductions[filingStatus] || 15000;
+const taxable = Math.max(0, agi - stdDeduction - qbiDeduction);
+
+let brackets = BRACKETS_SINGLE;
+if (filingStatus === 'married_joint') brackets = BRACKETS_JOINT;
+else if (filingStatus === 'head_of_household') brackets = BRACKETS_HOH;
+
+const fedTax = applyBrackets(taxable, brackets);
+const stateTax = calcState(selectedState, taxable);
+const totalTax = totalSE + fedTax + stateTax;
+const netIncome = profit - totalTax;
+const effectiveRate = profit > 0 ? totalTax / profit : 0;
+const quarterlyPayment = (totalSE + fedTax) / 4;
+
+return {
+  grossIncome: profit,
+  netIncome: Math.max(0, netIncome),
+  totalTax: totalTax,
+  effectiveRate: effectiveRate,
+  currency: 'USD',
+  currencySymbol: '$',
+  quarterlyPayment: quarterlyPayment,
+  breakdown: [
+    { label: 'Gross 1099 Net Business Profit', value: profit },
+    { label: 'SE Tax Deduction (50% of SE Tax)', value: seDeduction, isDeduction: true },
+    { label: 'Adjusted Gross Income (AGI)', value: agi, isTotal: true },
+    { label: 'Standard Deduction (' + filingStatus.replace('_', ' ') + ')', value: stdDeduction, isDeduction: true },
+    ...(qbiDeduction > 0 ? [{ label: 'QBI Deduction (§199A — 20%)', value: qbiDeduction, isDeduction: true }] : []),
+    { label: 'Federal Taxable Income', value: taxable, isTotal: true },
+    { label: 'Federal Income Tax (2026 IRS Brackets)', value: fedTax, isDeduction: true, percentage: profit > 0 ? (fedTax / profit) * 100 : 0 },
+    { label: 'Self-Employment Tax (15.3% SS + Medicare)', value: totalSE, isDeduction: true, percentage: profit > 0 ? (totalSE / profit) * 100 : 0 },
+    ...(stateTax > 0 ? [{ label: selectedState.toUpperCase() + ' State Income Tax', value: stateTax, isDeduction: true, percentage: profit > 0 ? (stateTax / profit) * 100 : 0 }] : [{ label: selectedState.toUpperCase() + ' State Personal Tax (0.0%)', value: 0, isDeduction: true }]),
+    { label: 'Net Take-Home Income', value: Math.max(0, netIncome), isFinal: true }
+  ],
+  additionalInsights: [
+    profit > 176100 ? 'Income exceeds the $176,100 Social Security wage base cap. Social Security tax stops on earnings above cap.' : '15.3% SE tax applies to 92.35% of net profit.',
+    qbiDeduction > 0 ? 'Qualifies for §199A QBI deduction (20% of net income).' : 'QBI phase-out applies at high taxable income brackets.',
+    profit > 80000 ? 'At $' + profit.toLocaleString() + ' net profit, electing S-Corp status can save substantial self-employment tax.' : 'Schedule C sole proprietorship is optimal at this income level.',
+    'Quarterly estimated tax payments due April 15, June 16, Sept 15, Jan 15.'
+  ]
+};
+`;
+
+const calcConfig = {
+  id: 'us-1099-self-employment-tax-calculator',
+  title_native: `${stateInfo.name} ${professionInfo.name} Tax Calculator`,
+  description_native: `Calculate 2026 ${stateInfo.name} state income tax (${stateInfo.rateText}) and 15.3% federal self-employment tax for ${professionInfo.plural.toLowerCase()}.`,
+  inputs: [
+    { name: 'net_1099_profit', label_native: 'Annual Net 1099 Profit / Revenue ($)', type: 'number' },
+    {
+      name: 'state',
+      label_native: 'State of Residence',
+      type: 'select',
+      options: [
+        { value: 'CA', label: 'California (CA)' },
+        { value: 'NY', label: 'New York (NY)' },
+        { value: 'TX', label: 'Texas (TX)' },
+        { value: 'FL', label: 'Florida (FL)' },
+        { value: 'IL', label: 'Illinois (IL)' },
+      ],
+    },
+    {
+      name: 'filing_status',
+      label_native: 'IRS Filing Status',
+      type: 'select',
+      options: [
+        { value: 'single', label: 'Single' },
+        { value: 'married_joint', label: 'Married Filing Jointly' },
+        { value: 'head_of_household', label: 'Head of Household' },
+      ],
+    },
+    { name: 'other_w2_income', label_native: 'Other W-2 Employment Income ($)', type: 'number' },
+  ],
+  formula_explanation: `Calculation Methodology for ${stateInfo.name} ${professionInfo.name}s:\n1. Self-Employment Tax (15.3%): Computed on 92.35% of net Schedule C profit (12.4% Social Security up to $176,100 wage base cap + 2.9% Medicare + 0.9% Additional Medicare above $200k/$250k).\n2. SE Tax Deduction (§164(f)): 50% of self-employment tax is deducted from profit to calculate Adjusted Gross Income (AGI).\n3. Standard Deduction ($15,000 Single / $30,000 Joint) & §199A QBI Deduction (20% of net income) are subtracted to reach Federal Taxable Income.\n4. Federal Income Tax: Computed using 2026 progressive IRS brackets (10% to 37%).\n5. ${stateInfo.name} State Tax: ${stateInfo.details}`,
+  affiliate_targets: [
+    {
+      name: professionKey === 'freelance-developer' ? 'QuickBooks Self-Employed' : 'FreshBooks Accounting',
+      type: 'software',
+      description: professionKey === 'freelance-developer' ? 'Automatically track Schedule C expenses, cloud invoice receipts, and mileage.' : 'Invoicing, project expense tracking, and CPA report export for consultants.',
+      url: 'https://quickbooks.intuit.com',
+      logo: '💻',
+    },
+    {
+      name: 'Mercury Business Banking',
+      type: 'banking',
+      description: 'FDIC-insured business bank accounts with zero monthly fees for 1099 contractors and LLCs.',
+      url: 'https://mercury.com',
+      logo: '🏦',
+    },
+    {
+      name: 'Hiscox Professional Insurance',
+      type: 'insurance',
+      description: 'Professional liability (E&O) and cyber insurance tailored for independent developers & consultants.',
+      url: 'https://www.hiscox.com',
+      logo: '🛡️',
+    },
+  ],
+};
+
+const pageTitle = `2026 ${stateInfo.name} ${professionInfo.name} Tax Calculator | ${stateInfo.code} State & 1099 SE Tax`;
+const pageDescription = `Calculate 2026 ${stateInfo.name} state income tax (${stateInfo.rateText}) and 15.3% federal self-employment tax for ${professionInfo.plural.toLowerCase()} in ${stateInfo.name}. Schedule C deductions & net take-home pay.`;
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+const pageUrl = `https://calcglobal.org/us/${stateKey}-${professionKey}-tax-calculator/`;
+
+// Schemas
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://calcglobal.org/' },
+    { '@type': 'ListItem', position: 2, name: 'United States Hub', item: 'https://calcglobal.org/us/' },
+    { '@type': 'ListItem', position: 3, name: `${stateInfo.name} ${professionInfo.name} Tax Calculator`, item: pageUrl },
+  ],
+};
+
+const appSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: `${stateInfo.name} ${professionInfo.name} Tax Calculator 2026`,
+  operatingSystem: 'All',
+  applicationCategory: 'FinanceApplication',
+  browserRequirements: 'Requires JavaScript. Requires HTML5.',
+  softwareVersion: '2026.1',
+  url: pageUrl,
+  offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+  description: pageDescription,
+  provider: { '@type': 'Organization', name: 'CalcGlobal', url: 'https://calcglobal.org' },
+};
+
+const finProductSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FinancialProduct',
+  name: `1099 & ${stateInfo.code} State Tax Calculator for ${professionInfo.plural}`,
+  description: `Tax calculation model applying IRS 2026 self-employment tax (15.3%) and ${stateInfo.name} ${stateInfo.taxType}.`,
+  provider: { '@type': 'Organization', name: 'CalcGlobal', url: 'https://calcglobal.org' },
+};
+
+const faqs = [
+  {
+    question: `How is state income tax calculated for a ${professionInfo.name} in ${stateInfo.name}?`,
+    answer: `${stateInfo.name} taxes self-employed income under ${stateInfo.authority} guidelines. ${stateInfo.details} Federal standard deductions ($15,000 Single / $30,000 Joint) apply to federal taxable income, while state rules govern net state liability.`,
+  },
+  {
+    question: `What are the top Schedule C tax deductions for ${professionInfo.plural} in ${stateInfo.name}?`,
+    answer: `The top deductions include: ${professionInfo.deductions.map(d => d.title).join(', ')}. Deducting these expenses directly reduces net 1099 profit on Schedule C Line 31, saving both 15.3% federal self-employment tax and ${stateInfo.name} state income tax.`,
+  },
+  {
+    question: `When are 2026 quarterly estimated tax payments due in ${stateInfo.name}?`,
+    answer: `IRS and ${stateInfo.authorityAbbr} quarterly estimated tax payments are due: Q1 (April 15, 2026), Q2 (June 16, 2026), Q3 (September 15, 2026), and Q4 (January 15, 2027). Payments can be made electronically via IRS Direct Pay and the ${stateInfo.authorityAbbr} payment portal.`,
+  },
+  {
+    question: `Should a ${professionInfo.name} in ${stateInfo.name} form an LLC or elect S-Corp tax status?`,
+    answer: `Forming a Single-Member LLC provides liability protection. When net profit reaches $80,000–$100,000+, electing S-Corporation tax status (Form 2553) can save $5,000 to $12,000+ per year in 15.3% self-employment tax by splitting earnings into reasonable W-2 salary and tax-free K-1 distributions.`,
+  },
+  {
+    question: `How does the 15.3% federal self-employment tax work alongside ${stateInfo.name} state tax?`,
+    answer: `Federal SE tax consists of 12.4% Social Security (up to $176,100 wage base cap in 2026) and 2.9% Medicare tax. You receive a 50% SE tax deduction (§164(f)) on your federal Form 1040, which lowers your Adjusted Gross Income before federal and ${stateInfo.name} state income tax brackets are applied.`,
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(f => ({
+    '@type': 'Question',
+    name: f.question,
+    acceptedAnswer: { '@type': 'Answer', text: f.answer },
+  })),
+};
+
+const otherStates = Object.keys(STATES_DATA).filter(k => k !== stateKey);
+const otherProfessions = Object.keys(PROFESSIONS_DATA).filter(k => k !== professionKey);
+---
+
+<Layout
+  title={pageTitle}
+  description={pageDescription}
+  lang="en"
+  structuredData={[breadcrumbSchema, appSchema, finProductSchema, faqSchema]}
+>
+  <!-- Hero Section -->
+  <div class="relative bg-slate-900 pt-10 pb-24 px-4 overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-blue-900/30 via-slate-900 to-slate-900"></div>
+
+    <div class="max-w-5xl mx-auto relative z-10">
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 flex-wrap max-w-full overflow-x-auto mb-8 bg-slate-800/60 w-fit px-4 py-2 rounded-lg border border-slate-700/60 shadow-sm backdrop-blur-sm">
+        <a href={`${base}/`} class="text-xs font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+          Home
+        </a>
+        <span class="text-slate-600 text-xs">/</span>
+        <a href={`${base}/us`} class="text-xs font-medium text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
+          <img src="https://flagcdn.com/w20/us.png" alt="USA Flag" class="w-4 h-3 object-cover rounded-sm" />
+          United States Hub
+        </a>
+        <span class="text-slate-600 text-xs">/</span>
+        <span class="text-white text-xs font-semibold">{stateInfo.name} {professionInfo.name}</span>
+      </nav>
+
+      <!-- Authority Badges -->
+      <div class="flex items-center gap-3 flex-wrap mb-5">
+        <span class="inline-flex items-center px-3 py-1 bg-white text-slate-900 text-xs font-bold rounded-lg tracking-wide shadow-sm border border-slate-200">
+          🇺🇸 {stateInfo.name} ({stateInfo.code})
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-900/50 text-blue-300 text-xs font-semibold rounded-lg border border-blue-700/50 backdrop-blur-sm">
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+          {stateInfo.authorityAbbr} & IRS 2026 Rules
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-emerald-900/40 text-emerald-400 text-xs font-semibold rounded-lg border border-emerald-700/50 backdrop-blur-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          2026 Fiscal Year
+        </span>
+      </div>
+
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-slate-300">
+        {stateInfo.name} {professionInfo.name} Tax Calculator 2026
+      </h1>
+      <p class="text-slate-300 mt-4 max-w-3xl text-base md:text-lg leading-relaxed font-medium">
+        Accurate state and federal self-employment tax calculations for {professionInfo.plural.toLowerCase()} in {stateInfo.name}. Factor in {stateInfo.rateText}, IRS 15.3% SE tax, §199A QBI deduction, and Schedule C tax deductions.
+      </p>
+    </div>
+  </div>
+
+  <!-- Calculator Container -->
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 -mt-14 relative z-20">
+
+    <!-- Interactive React Island -->
+    <InteractiveCalculator
+      client:visible
+      calc={calcConfig}
+      engineCode={clientEngineCode}
+      locale="en-US"
+      currencySymbol="$"
+      countryCode="us"
+    />
+
+    <!-- State & Profession Tax Scenarios Matrix -->
+    <section class="mt-12 bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 pb-5 mb-6 gap-4">
+        <div>
+          <span class="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">Pre-Calculated Benchmarks</span>
+          <h2 class="text-2xl font-bold text-slate-900">
+            {stateInfo.name} {professionInfo.name} Income & Tax Scenarios
+          </h2>
+        </div>
+        <span class="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-lg border border-slate-200 w-fit">
+          IRS 2026 Single Filing Status
+        </span>
+      </div>
+
+      <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+        Below is a side-by-side comparison of net take-home earnings across typical annual revenue tiers for {professionInfo.plural.toLowerCase()} residing in {stateInfo.name}.
+      </p>
+
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="bg-slate-900 text-white text-xs uppercase tracking-wider font-bold">
+              <th class="py-3.5 px-4 rounded-tl-xl">Gross 1099 Revenue</th>
+              <th class="py-3.5 px-4">Federal SE Tax (15.3%)</th>
+              <th class="py-3.5 px-4">Federal Income Tax</th>
+              <th class="py-3.5 px-4">{stateInfo.code} State Tax</th>
+              <th class="py-3.5 px-4">Total Tax</th>
+              <th class="py-3.5 px-4">Net Take-Home</th>
+              <th class="py-3.5 px-4 rounded-tr-xl">Effective Rate</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 text-sm">
+            {scenarioResults.map((s, idx) => (
+              <tr class={idx % 2 === 0 ? 'bg-white hover:bg-slate-50' : 'bg-slate-50/50 hover:bg-slate-50'}>
+                <td class="py-4 px-4 font-extrabold text-slate-900">${s.gross.toLocaleString()}</td>
+                <td class="py-4 px-4 font-semibold text-amber-700">${Math.round(s.seTax).toLocaleString()}</td>
+                <td class="py-4 px-4 font-semibold text-slate-700">${Math.round(s.fedIncomeTax).toLocaleString()}</td>
+                <td class="py-4 px-4 font-semibold text-blue-700">${Math.round(s.stateTax).toLocaleString()}</td>
+                <td class="py-4 px-4 font-bold text-red-600">${Math.round(s.totalTax).toLocaleString()}</td>
+                <td class="py-4 px-4 font-black text-emerald-700">${Math.round(s.netIncome).toLocaleString()}</td>
+                <td class="py-4 px-4 font-bold text-slate-900">{s.effectiveRate}%</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-400 mt-4">
+        * Estimates assume Single filing status, standard deduction ($15,000), 2026 IRS tax brackets, 15.3% self-employment tax with 50% SE deduction, §199A QBI deduction where applicable, and {stateInfo.name} state income tax rules.
+      </p>
+    </section>
+
+    <!-- Targeted Profession Deductions Section -->
+    <section class="mt-12 bg-slate-900 rounded-3xl p-6 md:p-10 text-white shadow-xl border border-slate-800">
+      <div class="max-w-3xl mb-8">
+        <span class="px-3 py-1 bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold rounded-lg uppercase tracking-wider inline-block mb-3">
+          Tax Strategy & Deductions
+        </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">
+          Recommended Schedule C Tax Deductions for {professionInfo.plural}
+        </h2>
+        <p class="text-slate-300 text-sm md:text-base mt-2 leading-relaxed">
+          Every eligible business expense directly lowers your Schedule C net profit, reducing both your 15.3% federal self-employment tax and your {stateInfo.name} state tax.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {professionInfo.deductions.map(item => (
+          <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-6 hover:border-blue-500/50 transition-colors">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-lg text-white">{item.title}</h3>
+              <span class="text-[10px] font-bold text-blue-400 bg-blue-950 px-2 py-0.5 rounded border border-blue-800">
+                IRS Schedule C
+              </span>
+            </div>
+            <p class="text-xs font-semibold text-slate-400 mb-3">{item.category}</p>
+            <p class="text-xs text-slate-300 mb-4 leading-relaxed">{item.description}</p>
+            <div class="border-t border-slate-700/60 pt-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">Common Write-offs:</span>
+              <ul class="space-y-1">
+                {item.exampleItems.map(ex => (
+                  <li class="text-xs text-slate-300 flex items-center gap-2">
+                    <span class="text-emerald-400 font-bold">✓</span>
+                    <span>{ex}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- State Specific Rules & E-E-A-T Authority -->
+    <section class="mt-12 bg-white rounded-3xl border border-slate-200 p-6 md:p-8 shadow-sm">
+      <div class="flex items-center gap-4 border-b border-slate-100 pb-5 mb-6">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-2xl border border-blue-100 shrink-0">
+          🏛️
+        </div>
+        <div>
+          <h2 class="text-xl font-bold text-slate-900">{stateInfo.name} State Tax Rules & Regulations 2026</h2>
+          <p class="text-xs text-slate-500 font-medium">Verified from {stateInfo.authority} statutory guidance</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        {stateInfo.highlights.map(h => (
+          <div class="flex items-start gap-3 p-4 rounded-xl border border-slate-100 bg-slate-50">
+            <span class="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">i</span>
+            <p class="text-slate-700 text-sm leading-relaxed">{h}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="bg-blue-50/60 rounded-2xl p-6 border border-blue-100">
+        <h3 class="font-bold text-slate-900 text-base mb-2">Quarterly Estimated Tax Compliance</h3>
+        <p class="text-slate-700 text-sm leading-relaxed mb-4">
+          Self-employed professionals in {stateInfo.name} earning net 1099 profits must submit quarterly estimated payments to the IRS and {stateInfo.authorityAbbr} to prevent underpayment penalties under IRC §6654.
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center text-xs font-bold">
+          <div class="bg-white p-3 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block text-[10px] uppercase">Q1 Payment</span>
+            <span class="text-slate-900 font-extrabold text-sm">April 15, 2026</span>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block text-[10px] uppercase">Q2 Payment</span>
+            <span class="text-slate-900 font-extrabold text-sm">June 16, 2026</span>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block text-[10px] uppercase">Q3 Payment</span>
+            <span class="text-slate-900 font-extrabold text-sm">Sept 15, 2026</span>
+          </div>
+          <div class="bg-white p-3 rounded-xl border border-slate-200">
+            <span class="text-slate-400 block text-[10px] uppercase">Q4 Payment</span>
+            <span class="text-slate-900 font-extrabold text-sm">Jan 15, 2027</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CPA Lead Capture Section -->
+    <section class="mt-12">
+      <CpaLeadCapture
+        variant="card"
+        title={`Consult a Verified ${stateInfo.name} CPA / Accountant`}
+        subtitle={`Connect with licensed ${stateInfo.name} CPAs for personalized 1099 deduction strategy, S-Corp election planning, and ${stateInfo.authorityAbbr} quarterly tax compliance.`}
+        location={`${stateInfo.name}, US`}
+        calculatorId={`us-${stateInfo.code.toLowerCase()}-${professionInfo.slug}`}
+      />
+    </section>
+
+    <!-- Localized FAQ Accordion Section -->
+    <section class="mt-14">
+      <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold text-slate-900 mb-2">
+          {stateInfo.name} {professionInfo.name} Tax FAQ
+        </h2>
+        <p class="text-slate-500 text-sm">Frequently asked questions about state & self-employment tax in {stateInfo.name}</p>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map(f => (
+          <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow">
+            <h3 class="font-bold text-slate-900 text-base md:text-lg mb-3 flex items-start gap-3">
+              <span class="text-blue-600 font-black">Q.</span>
+              {f.question}
+            </h3>
+            <div class="flex items-start gap-3">
+              <span class="text-emerald-500 font-black opacity-0">A.</span>
+              <p class="text-slate-600 leading-relaxed text-sm md:text-base -ml-6 border-l-2 border-slate-100 pl-6">
+                {f.answer}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Programmatic SEO Internal Cross-Linking Grid -->
+    <section class="mt-16 bg-slate-100 rounded-3xl p-6 md:p-8 border border-slate-200">
+      <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+        <span>🔗</span> Explore Tax Calculators by State & Profession
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Cross link 1: Other States for current profession -->
+        <div>
+          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-3">
+            {professionInfo.name} Tax Calculators in Other States
+          </h3>
+          <ul class="space-y-2">
+            {otherStates.map(stKey => {
+              const st = STATES_DATA[stKey];
+              return (
+                <li>
+                  <a
+                    href={`${base}/us/${stKey}-${professionKey}-tax-calculator/`}
+                    class="group flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition-all text-xs font-semibold text-slate-700 hover:text-blue-700"
+                  >
+                    <span>{st.name} ({st.code}) {professionInfo.name} Tax Calculator</span>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+
+        <!-- Cross link 2: Other Professions in current state -->
+        <div>
+          <h3 class="text-sm font-bold text-slate-800 uppercase tracking-wider mb-3">
+            Other Profession Tax Calculators in {stateInfo.name}
+          </h3>
+          <ul class="space-y-2">
+            {otherProfessions.map(profKey => {
+              const prof = PROFESSIONS_DATA[profKey];
+              return (
+                <li>
+                  <a
+                    href={`${base}/us/${stateKey}-${profKey}-tax-calculator/`}
+                    class="group flex items-center justify-between p-3 rounded-xl bg-white border border-slate-200 hover:border-blue-400 hover:bg-blue-50/50 transition-all text-xs font-semibold text-slate-700 hover:text-blue-700"
+                  >
+                    <span>{stateInfo.name} {prof.name} Tax Calculator</span>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition-transform">→</span>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Legal Disclaimer -->
+    <div class="mt-14 bg-amber-50 border border-amber-200 rounded-2xl p-6 flex gap-4">
+      <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
+        <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
+      </div>
+      <p class="text-sm text-amber-900 leading-relaxed">
+        <strong>Disclaimer:</strong> This {stateInfo.name} {professionInfo.name} Tax Calculator provides estimates based on 2026 IRS tax brackets, 15.3% federal self-employment tax rules, and {stateInfo.name} state tax guidance. Tax laws change frequently and individual tax situations vary. Always consult a qualified CPA or licensed tax professional for personalized tax advice.
+      </p>
+    </div>
+  </div>
+</Layout>

@@ -21,6 +21,7 @@ export const ENGINE_MAP: Record<string, Record<string, string>> = {
     'uk-gross-net-salary-pension-calculator': 'uk',
     'uk-limited-company-director-salary-dividend-calculator': 'uk',
     'uk-statutory-redundancy-settlement-calculator': 'uk',
+    'uk-vat-calculator': 'uk',
   },
   fr: {
     'urssaf-cotisations-micro-entreprise': 'fr',
@@ -28,6 +29,8 @@ export const ENGINE_MAP: Record<string, Record<string, string>> = {
     'calculateur-salaire-brut-net-cout-employeur': 'fr',
     'indemnite-rupture-conventionnelle-licenciement': 'fr',
     'calculateur-plus-value-immobiliere': 'fr',
+    'sasu-impots-cotisations-dividendes': 'fr',
+    'eurl-impots-cotisations-dividendes': 'fr',
   },
   de: {
     'brutto-netto-rechner-deutschland': 'de',

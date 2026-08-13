@@ -85,28 +85,7 @@
         }
       ],
       "formula_explanation": "Net Business Income = Gross Revenue - Expenses - Blue Deduction. Taxable Income = Net Business Income - Basic Exemption (480,000 yen for income <= 24M yen) - Dependent Allowance (380,000 yen per qualifying dependent). National Income Tax = Taxable Income * Tax Bracket Rate (5% to 45%) - Progressive Deduction + 2.1% Reconstruction Special Income Tax. Local Residence Tax = Taxable Income * 10% + Per Capita Flat Rate (~5,000 yen). Personal Business Tax = (Net Business Income + Blue Deduction - 2,900,000 yen Owner Allowance) * Business Tax Rate (0% to 5%). National Health Insurance (NHI) = Income-based levy (~7%-10% of prior year net income) + Per-head levy (~40,000 yen/person) capped by municipal upper limit (~1,040,000 yen/year). Net Take-Home Pay = Net Business Income - Income Tax - Residence Tax - Business Tax - NHI.",
-      "affiliate_targets": [
-        {
-          "name": "freee (フリー確定申告)",
-          "type": "software",
-          "description": "国内シェアNo.1のクラウド個人事業主向け確定申告・会計ソフト"
-        },
-        {
-          "name": "マネーフォワード クラウド確定申告",
-          "type": "software",
-          "description": "銀行口座・クレジットカード連携に強い青色申告ソフト"
-        },
-        {
-          "name": "GMOあおぞらネット銀行",
-          "type": "neobank",
-          "description": "個人事業主・フリーランス向け手数料最安級の事業用ネット銀行口座"
-        },
-        {
-          "name": "やよいの青色申告 オンライン",
-          "type": "software",
-          "description": "初年度無料で初心者に人気トップクラスの確定申告ソフト"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "furusato-nozei-calculator",
@@ -162,23 +141,7 @@
         }
       ],
       "formula_explanation": "Residence Tax Income Portion (住民税所得割額) = (Gross Salary - Employment Income Deduction - Social Insurance Deduction - Basic Exemption - Dependent Deductions - Annual iDeCo) * 10%. Furusato Max Limit = (Residence Tax Income Portion * 20%) / (90% - Marginal Income Tax Rate * 1.021) + 2,000 yen. Edge case: Total tax deduction cannot exceed total residence tax + income tax paid. Actual out-of-pocket cost is exactly 2,000 yen when donation is within calculated limit.",
-      "affiliate_targets": [
-        {
-          "name": "楽天ふるさと納税",
-          "type": "software",
-          "description": "お買い物マラソンやSPUで最大30%相当の楽天ポイントが還元される最大手ポータル"
-        },
-        {
-          "name": "さとふる (Satofull)",
-          "type": "software",
-          "description": "認知度No.1・配送スピードと限定返礼品が豊富なふるさと納税サイト"
-        },
-        {
-          "name": "ふるなび (Furunavi)",
-          "type": "software",
-          "description": "家電・電化製品や金券・旅行券などの高還元返礼品に強みを持つポータル"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "take-home-pay-calculator",
@@ -256,23 +219,7 @@
         }
       ],
       "formula_explanation": "Standard Monthly Remuneration (標準報酬月額) calculated from Monthly Gross Salary. Health Insurance Premium = Standard Remuneration * Prefectural Health Rate / 2 (Employee half). Welfare Pension (厚生年金) = Standard Remuneration * 18.3% / 2 (9.15% Employee share, capped at 650,000 yen/month grade). Nursing Care Insurance (介護保険, ages 40-64) = Standard Remuneration * 1.60% / 2 (0.80% Employee share). Employment Insurance (雇用保険) = Gross Salary * 0.6% (General Industry Employee share). Income Tax Withholding = Calculated from National Tax Agency Compensation Withholding Table based on (Gross Salary - Social Insurance Deductions) and Dependent Count. Residence Tax = (Prior Year Income - Deductions) * 10% / 12 months. Monthly Take-Home Pay = Monthly Gross Salary - (Health Insurance + Pension + Nursing + Employment + Income Tax + Residence Tax).",
-      "affiliate_targets": [
-        {
-          "name": "リクルートエージェント (Recruit Agent)",
-          "type": "software",
-          "description": "日本最大級の転職エージェント。手取り・年収アップを目指す会社員向け高成約アフィリエイト"
-        },
-        {
-          "name": "ビズリーチ (BizReach)",
-          "type": "software",
-          "description": "年収600万円以上のハイクラス・ミドル層向けスカウト型転職サービス"
-        },
-        {
-          "name": "マイナビエージェント",
-          "type": "software",
-          "description": "20代〜30代の若手・中堅社会人向け手厚い転職サポート"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "real-estate-tax-registration-calculator",
@@ -327,28 +274,7 @@
         }
       ],
       "formula_explanation": "Real Estate Acquisition Tax (不動産取得税): Building Tax = (Building Assessed Value - 12,000,000 yen Special Reduction for qualifying residential property) * 3% (Residential tax rate). Land Tax = (Land Assessed Value * 1/2 [Residential Tax Base Tax Reduction] * 3%) - Tax Credit (minimum 45,000 yen or Land m2 value * 1/2 * 3% * Building Floor Area * 2). Registration License Tax (登録免許税): Building Ownership Preservation/Transfer Tax = Building Assessed Value * 0.15% (New home reduced) or 0.3% (Used home reduced). Land Ownership Transfer Tax = Land Assessed Value * 1.5% (Residential reduced rate). Mortgage Registration Tax = Mortgage Amount * 0.1% (Residential reduced rate for mortgage creation). Judicial Scrivener Fee (司法書士報酬) estimated at 80,000 to 150,000 yen.",
-      "affiliate_targets": [
-        {
-          "name": "モゲチェック (Mogecheck)",
-          "type": "fintech",
-          "description": "住宅ローンの一括比較・最適な金利プランの事前審査・提案サービス"
-        },
-        {
-          "name": "SUUMO 注文住宅 / 新築一戸建て",
-          "type": "software",
-          "description": "不動産購入・建築見積もり比較の日本最大手ポータル"
-        },
-        {
-          "name": "PayPay銀行 住宅ローン",
-          "type": "neobank",
-          "description": "業界最安水準の変動金利とネット完結手続きを提供するネオバンク住宅ローン"
-        },
-        {
-          "name": "ソニー銀行 住宅ローン",
-          "type": "neobank",
-          "description": "がん保障充実・手数料優遇でマイホーム購入者に人気のネット銀行"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "inheritance-gift-tax-calculator",
@@ -395,23 +321,7 @@
         }
       ],
       "formula_explanation": "Inheritance Tax Basic Exemption (基礎控除額) = 30,000,000 yen + (6,000,000 yen * Number of Statutory Heirs). Taxable Estate Net = Total Estate Value - Basic Exemption. If Taxable Estate Net <= 0, Total Tax is 0. Statutory Share Allocation: If spouse and children present, Spouse gets 50%, Children share 50% equally. Progressive Tax Table applied to each statutory share (10% under 10M yen up to 55% over 600M yen minus tax bracket deduction). Sum of all statutory taxes forms Total Inheritance Tax Pot. Allocated to each heir by actual inheritance percentage. Spouse Tax Credit (配偶者の税額軽減): Spouse pays 0 yen if Spouse's acquired portion <= max(160,000,000 yen, Spouse Statutory Share Value). Total Payable Tax = Sum of (Heir Allocated Tax - Applicable Credits).",
-      "affiliate_targets": [
-        {
-          "name": "税理士ドットコム (Zeirishi Dot Com)",
-          "type": "accounting",
-          "description": "日本最大級の税理士紹介・相談マッチングサービス (相続税申告の高単価成果報酬)"
-        },
-        {
-          "name": "三井住友信託銀行 (遺言信託・相続手続き)",
-          "type": "accounting",
-          "description": "資産家の相続手続き代行・遺言信託・事業承継サービス"
-        },
-        {
-          "name": "クラウド相続税申告サービス (Better Place / AI相続)",
-          "type": "software",
-          "description": "税理士に頼まず自分で相続税申告書を作成できるクラウドソフトウェア"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

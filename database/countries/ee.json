@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Estonia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "LHV Pank",
-          "type": "software",
-          "description": "Top financial tool in Estonia"
-        },
-        {
-          "name": "e-Residency",
-          "type": "software",
-          "description": "Top financial tool in Estonia"
-        },
-        {
-          "name": "Merit",
-          "type": "software",
-          "description": "Top financial tool in Estonia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

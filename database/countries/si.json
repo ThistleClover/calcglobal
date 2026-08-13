@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Slovenia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "eNovice",
-          "type": "software",
-          "description": "Top financial tool in Slovenia"
-        },
-        {
-          "name": "NLB",
-          "type": "software",
-          "description": "Top financial tool in Slovenia"
-        },
-        {
-          "name": "Minimax",
-          "type": "software",
-          "description": "Top financial tool in Slovenia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Slovakia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "SuperFaktura",
-          "type": "software",
-          "description": "Top financial tool in Slovakia"
-        },
-        {
-          "name": "KROS",
-          "type": "software",
-          "description": "Top financial tool in Slovakia"
-        },
-        {
-          "name": "Tatra banka",
-          "type": "software",
-          "description": "Top financial tool in Slovakia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

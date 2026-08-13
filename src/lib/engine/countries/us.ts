@@ -39,6 +39,27 @@ const STATE_RATES: Record<string, number> = {
   IL: 0.0495, WA: 0, OTHER: 0.05,
 };
 
+const CA_BRACKETS_SINGLE_2026: [number, number][] = [
+  [10412, 0.01], [24684, 0.02], [38959, 0.04], [54081, 0.06],
+  [68350, 0.08], [349137, 0.093], [418961, 0.103], [698271, 0.113],
+  [Infinity, 0.123],
+];
+
+const NY_BRACKETS_SINGLE_2026: [number, number][] = [
+  [8500, 0.04], [11700, 0.045], [13900, 0.0525], [80650, 0.055],
+  [215400, 0.06], [1077550, 0.0685], [Infinity, 0.109],
+];
+
+export function calculateStateTax(state: string, taxableIncome: number): number {
+  const st = (state || 'OTHER').toUpperCase();
+  if (st === 'TX' || st === 'FL' || st === 'WA' || st === 'NV' || st === 'WY' || st === 'SD' || st === 'TN' || st === 'AK') return 0;
+  if (st === 'IL') return taxableIncome * 0.0495;
+  if (st === 'CA') return applyBrackets(taxableIncome, CA_BRACKETS_SINGLE_2026);
+  if (st === 'NY') return applyBrackets(taxableIncome, NY_BRACKETS_SINGLE_2026);
+  const rate = STATE_RATES[st] ?? 0.05;
+  return taxableIncome * rate;
+}
+
 const SS_WAGE_BASE_2026 = 176100;
 
 /** 2026 Standard Deductions */
@@ -105,8 +126,8 @@ function calculatePrimary1099(inputs: TaxInput): TaxResult {
   const federalIncomeTax = applyBrackets(taxableIncome, brackets);
 
   // --- State Income Tax ---
-  const stateRate = STATE_RATES[state] ?? 0.05;
-  const stateTax = taxableIncome * stateRate;
+  const stateTax = calculateStateTax(state, taxableIncome);
+  const stateRate = taxableIncome > 0 ? stateTax / taxableIncome : (STATE_RATES[state.toUpperCase()] ?? 0);
 
   // --- Totals ---
   const totalTax = totalSETax + federalIncomeTax + stateTax;

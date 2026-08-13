@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Barbados revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "FirstBank Barbados",
-          "type": "software",
-          "description": "Top financial tool in Barbados"
-        },
-        {
-          "name": "CIBC FirstCarib",
-          "type": "software",
-          "description": "Top financial tool in Barbados"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

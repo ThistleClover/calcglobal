@@ -93,28 +93,7 @@
         }
       ],
       "formula_explanation": "Calculates Malaysia Personal Income Tax liability under the Income Tax Act 1967 for Years of Assessment 2024/2025. If Non-Resident: Taxable Income = Gross Annual Income; Income Tax = Gross Income * 30% (No tax reliefs or rebates applicable). If Resident: 1. Total Tax Reliefs = Individual Basic Relief (RM 9,000) + Spouse Relief (RM 4,000 if spouse has no income) + Child Relief (RM 2,000 per child) + EPF Relief (Min(EPF Paid, RM 4,000)) + Lifestyle Relief (Min(Lifestyle Expenses, RM 2,500)) + Medical & Parent Relief (Min(Medical Expenses, RM 10,000)). 2. Chargeable Income = Max(0, Gross Annual Income - Total Tax Reliefs). 3. Progressive Tax Brackets: First RM 5,000 @ 0%; RM 5,001-20,000 @ 1%; RM 20,001-35,000 @ 3%; RM 35,001-50,000 @ 6%; RM 50,001-70,000 @ 11%; RM 70,001-100,000 @ 19%; RM 100,001-400,000 @ 25%; RM 400,001-600,000 @ 26%; RM 600,001-2,000,000 @ 28%; Exceeding RM 2,000,000 @ 30%. 4. Tax Rebates: Individual Rebate of RM 400 applies if Chargeable Income <= RM 35,000 (+ RM 400 Spouse Rebate if eligible). Zakat payments are credited ringgit-for-ringgit against total tax charged. 5. Net Tax Payable = Max(0, Gross Tax Charged - Rebates - Zakat). Monthly Tax Deduction (PCB) = Net Tax Payable / 12.",
-      "affiliate_targets": [
-        {
-          "name": "Bukku Accounting",
-          "type": "software",
-          "description": "Malaysian cloud accounting and e-Invoicing software tailored for freelancers and SMEs handling tax filing."
-        },
-        {
-          "name": "TaxPod Malaysia",
-          "type": "accounting",
-          "description": "Leading tax advisory and educational platform for LHDN personal and corporate tax compliance."
-        },
-        {
-          "name": "StashAway Malaysia",
-          "type": "software",
-          "description": "Securities Commission regulated robo-adviser providing tax-efficient PRS (Private Retirement Scheme) and SRS investments."
-        },
-        {
-          "name": "RinggitPlus",
-          "type": "accounting",
-          "description": "Malaysia's premier financial comparison platform for tax-saving credit cards, personal loans, and fixed deposits."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "my-net-salary-epf-socso-eis",
@@ -203,28 +182,7 @@
         }
       ],
       "formula_explanation": "Calculates take-home net salary and statutory employer/employee payroll contributions under the Employment Act 1955, EPF Act 1991, SOCSO Act 1969, and Employment Insurance System (EIS) Act 2017. 1. EPF Contribution: Employee EPF = Monthly Salary * Selected Rate (11% or 9%). Employer EPF = 13% of Salary if Monthly Salary <= RM 5,000; 12% of Salary if Monthly Salary > RM 5,000 (Reduced to 4% for employees aged 60+). 2. SOCSO (PERKESO) Contribution (Updated 2024 Wage Ceiling Cap of RM 6,000): Category 1 (Under 60): Employee contribution is ~0.5% (capped at max RM 29.75); Employer contribution is ~1.75% (capped at max RM 104.15). Category 2 (Age 60+): Employee pays RM 0; Employer pays ~1.25% (capped at max RM 74.40). 3. EIS (SIP) Contribution: Wage ceiling cap of RM 6,000. Employee pays 0.2% (capped at max RM 11.90); Employer pays 0.2% (capped at max RM 11.90). 4. Net Take-Home Pay = Monthly Gross Salary - Employee EPF - Employee SOCSO - Employee EIS - Estimated PCB. Total Employer Employment Cost = Monthly Gross Salary + Employer EPF + Employer SOCSO + Employer EIS.",
-      "affiliate_targets": [
-        {
-          "name": "PayrollPanda",
-          "type": "software",
-          "description": "LHDN-approved HR and automated payroll software for Malaysian businesses, auto-calculating EPF, SOCSO, EIS, and PCB."
-        },
-        {
-          "name": "Employment Hero Malaysia",
-          "type": "software",
-          "description": "All-in-one cloud HR, payroll, and benefits platform for growing Malaysian enterprises."
-        },
-        {
-          "name": "AutoCount Payroll",
-          "type": "software",
-          "description": "Popular Malaysian payroll software compliant with statutory EPF, PERKESO, and e-Filing requirements."
-        },
-        {
-          "name": "Wise Malaysia",
-          "type": "neobank",
-          "description": "Low-cost international money transfer and multi-currency business account for paying foreign employees and freelancers in Malaysia."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "my-property-stamp-duty-legal-fee",
@@ -285,28 +243,7 @@
         }
       ],
       "formula_explanation": "Calculates property transaction acquisition fees in Malaysia including MOT Stamp Duty, Loan Agreement Stamp Duty, and Legal Fees under the Solicitors' Remuneration Order (SRO) 2023. 1. Stamp Duty on Memorandum of Transfer (MOT / Borang 14A): Calculated on Property Price: First RM 100,000 @ 1% = RM 1,000; Next RM 400,000 (RM 100,001 to RM 500,000) @ 2% = RM 8,000; Next RM 500,000 (RM 500,001 to RM 1,000,000) @ 3% = RM 15,000; Portion exceeding RM 1,000,000 @ 4%. First-Time Buyer Exemption: If Residential & First-Time Buyer & Property Price <= RM 500,000, MOT Stamp Duty is 100% EXEMPT (RM 0). 2. Stamp Duty on Loan Agreement: Standard rate is 0.50% of Loan Amount. First-Time Buyer Exemption: 100% EXEMPT if Property Price <= RM 500,000. 3. Legal Fees Scale for Sales & Purchase Agreement (SPA) under SRO 2023: First RM 500,000 @ 1.25% (min RM 500); Next RM 500,000 @ 1.00%; Next RM 2,000,000 @ 0.85%; Next RM 2,000,000 @ 0.70%; Next RM 2,000,000 @ 0.60%. Service Tax (SST) on legal fees is 8%. 4. Legal Fees for Loan Agreement follow the same SRO 2023 scale based on Loan Amount. 5. Total Upfront Cash Required = MOT Stamp Duty + Loan Stamp Duty + SPA Legal Fees + Loan Legal Fees + 8% Service Tax + Valuation & Disbursement Fees (~RM 1,500 - RM 2,500).",
-      "affiliate_targets": [
-        {
-          "name": "PropertyGuru Malaysia",
-          "type": "software",
-          "description": "Malaysia's leading online property marketplace for home buyers, searchers, and real estate loans."
-        },
-        {
-          "name": "iProperty Malaysia",
-          "type": "software",
-          "description": "Premier real estate portal connecting Malaysian property buyers with developers, agents, and mortgage pre-approvals."
-        },
-        {
-          "name": "Maybank Home Financing",
-          "type": "neobank",
-          "description": "Largest mortgage lender in Malaysia offering competitive interest rates and home financing solutions."
-        },
-        {
-          "name": "RinggitPlus Mortgage",
-          "type": "insurance",
-          "description": "Financial comparison broker for housing loans across Maybank, CIMB, RHB, and Public Bank."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "my-rpgt-cukai-keuntungan-harta-tanah",
@@ -395,23 +332,7 @@
         }
       ],
       "formula_explanation": "Calculates Real Property Gains Tax (RPGT / Cukai Keuntungan Harta Tanah - CKHT) under the Real Property Gains Tax Act 1976. 1. Net Disposal Consideration = Selling Price - Disposal Incidental Costs. 2. Adjusted Acquisition Price = Purchase Price + Acquisition Incidental Costs + Renovation Expenses. 3. Gross Chargeable Gain = Max(0, Net Disposal Consideration - Adjusted Acquisition Price). If Gross Chargeable Gain = 0, RPGT Payable = RM 0. 4. Statutory Exemption for Individuals: Deduction equal to the higher of RM 10,000 or 10% of Gross Chargeable Gain per disposal. 5. Net Chargeable Gain = Max(0, Gross Chargeable Gain - Statutory Exemption). 6. Lifetime Private Residence Exemption (Section 8 RPGT Act): If taxpayer is a Malaysian Citizen/PR and elects the once-in-a-lifetime exemption on a residential property, RPGT = RM 0. 7. Applicable Tax Rate Tiers (Post-2022 Rules): Malaysian Citizen / PR: Disposal within 3 years = 30%; 4th year = 20%; 5th year = 15%; 6th year onwards = 0%. Malaysian Company: Disposal within 3 years = 30%; 4th year = 20%; 5th year = 15%; 6th year onwards = 10%. Foreigner / Foreign Company: Disposal within 5 years = 30%; 6th year onwards = 10%. 8. RPGT Tax Payable = Net Chargeable Gain * Applicable Tax Rate.",
-      "affiliate_targets": [
-        {
-          "name": "TaxPod Malaysia",
-          "type": "accounting",
-          "description": "Specialized tax advisory service assisting property sellers with LHDN CKHT 1A/2A filings and tax exemptions."
-        },
-        {
-          "name": "MahWengKwai & Associates",
-          "type": "legal",
-          "description": "Established Malaysian law firm providing real estate conveyancing and RPGT tax litigation advice."
-        },
-        {
-          "name": "Juwai IQI Malaysia",
-          "type": "software",
-          "description": "Global real estate technology group providing property valuation and market intelligence for sellers in Malaysia."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "my-corporate-tax-sme-concession",
@@ -463,28 +384,7 @@
         }
       ],
       "formula_explanation": "Calculates corporate income tax for Malaysian Resident Companies (Sdn Bhd) under the Income Tax Act 1967 for Years of Assessment 2024/2025. 1. SME Eligibility Criteria: Paid-Up Capital <= RM 2,500,000 AND Annual Gross Turnover <= RM 50,000,000 AND not controlled (>50% shareholding) by a non-SME corporate parent. 2. Concessional Tax Brackets for Eligible SMEs: First RM 150,000 of Chargeable Taxable Profit @ 15% (max RM 22,500); Next RM 450,000 (RM 150,001 to RM 600,000) @ 17% (max RM 76,500); Remaining Chargeable Profit exceeding RM 600,000 @ standard 24%. 3. Tax Rates for Non-SME Companies / Exceeded Thresholds: Flat 24% tax rate applied on all Chargeable Taxable Profit. 4. Effective Corporate Tax Rate (%) = (Total Corporate Tax Payable / Taxable Net Profit) * 100.",
-      "affiliate_targets": [
-        {
-          "name": "Bukku Accounting",
-          "type": "accounting",
-          "description": "LHDN e-Invoicing ready cloud accounting software designed specifically for Malaysian SMEs and Sdn Bhd companies."
-        },
-        {
-          "name": "Financio Malaysia",
-          "type": "accounting",
-          "description": "User-friendly automated bookkeeping and corporate tax filing software for micro-SMEs in Malaysia."
-        },
-        {
-          "name": "HSBC Business Banking Malaysia",
-          "type": "neobank",
-          "description": "Commercial corporate bank account offering integrated multi-currency SME trade financing and payroll solutions."
-        },
-        {
-          "name": "BossBoleh",
-          "type": "legal",
-          "description": "Digital company secretarial platform for Sdn Bhd incorporation, tax compliance, and corporate governance in Malaysia."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

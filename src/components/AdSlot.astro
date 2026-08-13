@@ -4,9 +4,10 @@ interface Props {
   slotId?: string;
   format?: 'auto' | 'horizontal' | 'rectangle';
   className?: string;
+  pageIntent?: 'high' | 'low';
 }
 
-const { variant: propVariant, format, slotId, className = 'my-8' } = Astro.props;
+const { variant: propVariant, format, slotId, className = 'my-8', pageIntent = 'low' } = Astro.props;
 
 // Publisher ID
 const PUBLISHER_ID = 'ca-pub-6264279528687703';
@@ -31,25 +32,27 @@ if (variant === 'leaderboard') {
 }
 ---
 
-<div class={`adsense-wrapper flex justify-center w-full ${minHeightClass} ${className}`}>
-  <ins class="adsbygoogle w-full"
-       style="display:block; text-align:center;"
-       data-ad-client={PUBLISHER_ID}
-       data-ad-slot={slotId}
-       data-ad-format={adFormat}
-       {...(adLayout ? { 'data-ad-layout': adLayout } : {})}
-       data-full-width-responsive="true"></ins>
-  <script is:inline>
-    // Initialize the ad slot safely
-    (function() {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.warn('AdSense blocked or failed to load');
-      }
-    })();
-  </script>
-</div>
+{pageIntent !== 'high' && (
+  <div class={`adsense-wrapper flex justify-center w-full ${minHeightClass} ${className}`}>
+    <ins class="adsbygoogle w-full"
+         style="display:block; text-align:center;"
+         data-ad-client={PUBLISHER_ID}
+         data-ad-slot={slotId}
+         data-ad-format={adFormat}
+         {...(adLayout ? { 'data-ad-layout': adLayout } : {})}
+         data-full-width-responsive="true"></ins>
+    <script is:inline>
+      // Initialize the ad slot safely
+      (function() {
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (e) {
+          console.warn('AdSense blocked or failed to load');
+        }
+      })();
+    </script>
+  </div>
+)}
 
 <style>
   /* Fallback styling if ads are blocked so we don't leave an ugly blank space */

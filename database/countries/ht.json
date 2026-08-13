@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Haiti revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Unibank",
-          "type": "software",
-          "description": "Top financial tool in Haiti"
-        },
-        {
-          "name": "Sogebank",
-          "type": "software",
-          "description": "Top financial tool in Haiti"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

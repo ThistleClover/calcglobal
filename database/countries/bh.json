@@ -41,18 +41,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bahrain revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "NBB",
-          "type": "software",
-          "description": "Top financial tool in Bahrain"
-        },
-        {
-          "name": "Bank of Bahrain and Kuwait",
-          "type": "software",
-          "description": "Top financial tool in Bahrain"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

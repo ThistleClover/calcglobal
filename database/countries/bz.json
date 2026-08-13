@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Belize revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Belize Bank",
-          "type": "software",
-          "description": "Top financial tool in Belize"
-        },
-        {
-          "name": "Heritage Bank",
-          "type": "software",
-          "description": "Top financial tool in Belize"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

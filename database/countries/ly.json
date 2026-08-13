@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Libya revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Jumhouria Bank",
-          "type": "software",
-          "description": "Top financial tool in Libya"
-        },
-        {
-          "name": "Sahara Bank",
-          "type": "software",
-          "description": "Top financial tool in Libya"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

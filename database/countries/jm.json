@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Jamaica revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "NCB Jamaica",
-          "type": "software",
-          "description": "Top financial tool in Jamaica"
-        },
-        {
-          "name": "Sagicor",
-          "type": "software",
-          "description": "Top financial tool in Jamaica"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Myanmar revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "KBZ Pay",
-          "type": "software",
-          "description": "Top financial tool in Myanmar"
-        },
-        {
-          "name": "CB Bank",
-          "type": "software",
-          "description": "Top financial tool in Myanmar"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

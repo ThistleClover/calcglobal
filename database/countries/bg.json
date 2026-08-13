@@ -40,23 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Bulgaria revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Microinvest",
-          "type": "software",
-          "description": "Top financial tool in Bulgaria"
-        },
-        {
-          "name": "KIK.bg",
-          "type": "software",
-          "description": "Top financial tool in Bulgaria"
-        },
-        {
-          "name": "Fibank",
-          "type": "software",
-          "description": "Top financial tool in Bulgaria"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

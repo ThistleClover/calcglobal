@@ -113,28 +113,7 @@
         }
       ],
       "formula_explanation": "1. 1st Pillar AHV/IV/EO (AVS/AI/APG): 5.3% employee contribution on total gross salary (unlimited). Employer matches 5.3%.\n2. Unemployment Insurance ALV/AC: 1.1% on earnings up to CHF 148,200/year (0% above CHF 148,200 following the abolition of ALV2 solidarity contribution in 2023). Employer matches 1.1%.\n3. 2nd Pillar Occupational Pension BVG/LPP: Applied to Coordination Salary (Koordinationslohn = Gross Salary - CHF 25,725 coordination deduction; bounded between CHF 3,675 min and CHF 62,475 max). Retirement credit savings rates shared 50/50 employer/employee based on age brackets: Age 25-34 (7% total / 3.5% employee), Age 35-44 (10% total / 5.0% employee), Age 45-54 (15% total / 7.5% employee), Age 55-65 (18% total / 9.0% employee), plus risk insurance (~0.5% employee).\n4. Non-Occupational Accident Insurance NBU/AAN: ~0.8%-1.5% employee contribution depending on company risk classification.\n5. Daily Sickness Allowance KTG/APG: ~0.5% employee contribution.\n6. Quellensteuer / Income Tax: For B/L permit holders, cantonal Quellensteuer withholding tariffs (Tarif A single, B married single-earner, C married double-earner, H single parent) are applied directly to monthly gross pay. For C permit/citizens, net income after social deductions is subject to cantonal and federal tax scale.\n7. Child Allowance (Familienzulagen): +CHF 200 to CHF 300/month per child depending on canton (e.g. GE CHF 300, ZH CHF 200).\n8. Net Take-Home Pay = Gross Salary - AHV/IV/EO - ALV - BVG - NBU - KTG - Quellensteuer + Child Allowance.",
-      "affiliate_targets": [
-        {
-          "name": "Neon Bank",
-          "type": "neobank",
-          "description": "Leading Swiss digital bank with zero monthly account fees, free Swiss Mastercard, and instant salary deposit processing."
-        },
-        {
-          "name": "VIAC",
-          "type": "accounting",
-          "description": "Premier Swiss digital 3rd Pillar (Säule 3a) pension app for tax-exempt salary retirement savings."
-        },
-        {
-          "name": "Yuh",
-          "type": "neobank",
-          "description": "Popular Swiss multi-currency finance app backed by PostFinance and Swissquote offering zero-fee salary accounts."
-        },
-        {
-          "name": "Klara",
-          "type": "software",
-          "description": "Swiss cloud payroll and HR platform for small businesses automating Swiss decennial AHV/BVG payroll tax reporting."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "pillar-3a-tax-saving-switzerland",
@@ -223,28 +202,7 @@
         }
       ],
       "formula_explanation": "1. Maximum Statutory Contribution Limits (2025/2026): Employees with BVG pension fund can deduct up to CHF 7,258/year. Self-employed without BVG pension fund can deduct up to 20% of net earned income, capped at CHF 36,288/year.\n2. Marginal Tax Rate Determination: Combined Marginal Tax Rate = Federal Direct Tax (Direkte Bundessteuer) marginal rate + Cantonal Tax (Staatssteuer) marginal rate × Cantonal Tax Multiplier (Steuerfuss) + Municipal Tax (Gemeindesteuer). Marginal tax rates range from ~18% in low-tax cantons (Zug, Schwyz) to ~42% in high-tax cantons (Geneva, Vaud, Basel-Stadt).\n3. Immediate Annual Tax Saving = Min(Planned Contribution, Max Statutory Limit) × Combined Marginal Tax Rate.\n4. Wealth & Capital Tax Exemption: Pillar 3a assets are completely exempt from Swiss annual wealth tax (Vermögenssteuer) and income tax on dividends/interest during the accumulation phase.\n5. Withdrawal Taxation (Kapitalbezugssteuer): Payout at retirement (ages 60-65) is taxed separately from ordinary income at a reduced cantonal rate (~2% to 10%). Staggering withdrawals across up to 5 separate 3a accounts in different years minimizes progressive tax bracket escalation.",
-      "affiliate_targets": [
-        {
-          "name": "Finpension",
-          "type": "accounting",
-          "description": "Market-leading Swiss digital 3a provider offering up to 99% equity allocation with ultra-low 0.39% management fee."
-        },
-        {
-          "name": "VIAC",
-          "type": "accounting",
-          "description": "Pioneering Swiss 3a mobile app offering customizable stock strategies and free disability/life insurance cover."
-        },
-        {
-          "name": "Frankly (Zürcher Kantonalbank)",
-          "type": "neobank",
-          "description": "Trusted digital 3a solution backed by ZKB providing access to Swisscanto index funds."
-        },
-        {
-          "name": "Selma Finance",
-          "type": "software",
-          "description": "Swiss FINMA-regulated digital wealth manager offering automated Pillar 3a tax optimization and portfolio rebalancing."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "einzelfirma-vs-gmbh-switzerland",
@@ -325,28 +283,7 @@
         }
       ],
       "formula_explanation": "1. Sole Proprietorship (Einzelfirma / Raison individuelle):\n   - Net Profit = Revenue - Expenses.\n   - Self-Employed AHV/IV/EO Contribution: Sliding scale from 5.371% (profit < CHF 9,800) up to 10.0% (profit >= CHF 58,800) plus SVA administration fee (~1.5%-5.0% of AHV amount).\n   - Personal Income Tax: Net Profit minus AHV contributions is added to personal income and taxed under progressive cantonal and federal personal tax rates.\n   - Unlimited personal liability for all business debts.\n2. GmbH (Sàrl / SAGL):\n   - Minimum Share Capital required: CHF 20,000.\n   - Taxable Corporate Profit = Revenue - Expenses - Director Salary - Employer AHV/ALV/BVG Social Contributions.\n   - Corporate Income Tax (Gewinnsteuer): Combined Cantonal + Federal rate on net corporate profit ranges from ~11.8% (Zug, Nidwalden) to ~19.7% (Zurich) and ~14.0% (Geneva).\n   - Privileged Dividend Taxation (Teilbesteuerung von Dividenden): Distributed corporate profit paid as dividend to qualified shareholders (>=10% stake) receives a 30% federal tax relief (taxed at 70%) and 30%-50% cantonal tax relief.\n   - Director Personal Tax: Director salary is taxed as standard employee income + employee social security. Remaining net dividends taxed under privileged dividend rate.\n   - Limited liability restricted to GmbH share capital.\n3. Financial Crossover: GmbH typically provides net tax and risk advantages above CHF 80,000 to CHF 120,000 net profit per year.",
-      "affiliate_targets": [
-        {
-          "name": "Bexio",
-          "type": "software",
-          "description": "Switzerland's leading cloud accounting, invoicing, and MWST/VAT management software tailored for GmbH and sole traders."
-        },
-        {
-          "name": "Fasoon",
-          "type": "legal",
-          "description": "Top Swiss online company formation service offering free incorporation for GmbHs and sole proprietorships."
-        },
-        {
-          "name": "Klara",
-          "type": "software",
-          "description": "All-in-one Swiss business administration platform with automated booking, payroll, and direct ESTV VAT filings."
-        },
-        {
-          "name": "PostFinance Business / UBS",
-          "type": "neobank",
-          "description": "Premier Swiss corporate bank accounts providing capital contribution accounts (Kapitaleinzahlungskonto) for GmbH incorporation."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "real-estate-transfer-mortgage-switzerland",
@@ -426,28 +363,7 @@
         }
       ],
       "formula_explanation": "1. FINMA Mortgage Affordability Rules (Tragbarkeitsprüfung):\n   - Minimum Down Payment Required: 20% of purchase price (minimum 10% must be hard equity outside 2nd pillar pension withdrawals).\n   - Maximum Loan-to-Value (LTV): 80% (First Mortgage up to 66.7%, Second Mortgage 66.7% to 80%).\n   - Imputed Stress-Test Interest Rate: 5.0% per annum on total mortgage amount (Purchase Price - Down Payment).\n   - Property Maintenance & Operating Costs: Fixed at 1.0% per annum of purchase price.\n   - Amortisation: Second Mortgage (portion above 66.7% LTV) must be amortised linearly over 15 years (or by age 65).\n   - FINMA Affordability Test: Total Annual Carrying Cost = Imputed Interest (5%) + Maintenance (1%) + Annual Amortisation. Must NOT exceed 33% of Gross Annual Household Income.\n2. Cantonal Property Transfer Tax (Handänderungssteuer / Impôt sur les mutations):\n   - 0% (Abolished): ZH, SZ, GL, ZG, AG, SH, UR, TI (primary home).\n   - Bern (BE): 2.0% (exempt on first CHF 500,000 for primary residence).\n   - Vaud (VD): 2.2%.\n   - Geneva (GE): 3.0% (Centime additionnel exemptions apply for primary Centenaire home purchases).\n   - Valais (VS): 1.0% - 1.5%.\n   - Neuchâtel (NE): 3.3%.\n   - Fribourg (FR) & Lucerne (LU): 1.5%.\n3. Notary & Land Registry Fees (Notariats- und Grundbuchkosten): Official cantonal tariff scale: Notary fees (~0.1%-0.5% of price) + Land Registry entry (~0.1%-0.3%) + Mortgage Register Note creation fee (Schuldbrieferrichtung ~0.1%-0.3% of mortgage value).\n4. Total Purchase Closing Cost = Purchase Price + Handänderungssteuer + Notary & Land Register Fees + Mortgage Note Fees.",
-      "affiliate_targets": [
-        {
-          "name": "MoneyPark",
-          "type": "software",
-          "description": "Switzerland's largest independent mortgage broker comparing rates across 100+ Swiss banks and pension funds."
-        },
-        {
-          "name": "Swissquote Mortgage",
-          "type": "neobank",
-          "description": "Leading Swiss online banking group providing competitive online fixed-rate and SARON mortgage financing."
-        },
-        {
-          "name": "Houzy",
-          "type": "software",
-          "description": "Innovative Swiss proptech platform offering property valuation, mortgage comparison, and renovation cost forecasting."
-        },
-        {
-          "name": "Key4 by UBS",
-          "type": "neobank",
-          "description": "Digital real estate platform connecting Swiss property buyers with competitive mortgage offers and home insurance."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "eigenmietwert-rental-value-switzerland",
@@ -529,28 +445,7 @@
         }
       ],
       "formula_explanation": "1. Imputed Rental Value (Eigenmietwert / Valeur locative):\n   - Under Swiss tax law, home owners occupying their own property must add 60% to 70% of theoretical market rental value to taxable income.\n   - Cantonal formula: Estimated as ~60%-70% of market rent or 3.5%-4.5% of official taxable cadastral value (Steuerwert).\n2. Allowable Tax Deductions:\n   - 100% of actual Mortgage Interest Paid (Hypothekarzinsen) up to legal cap (taxable income + CHF 50,000).\n   - Property Maintenance Deduction (Unterhaltsabzug): Taxpayer chooses annually between:\n     a) Flat-rate deduction (Pauschalabzug): 10% of Eigenmietwert for properties <= 10 years old; 20% of Eigenmietwert for properties > 10 years old.\n     b) Actual Maintenance Costs (Tatsächliche Kosten): 100% of documented value-preserving repairs, energy-saving investments, and building maintenance expenses.\n3. Net Change in Taxable Base = Eigenmietwert - Mortgage Interest Paid - Max(Flat-Rate Maintenance, Actual Maintenance Costs).\n4. Net Income Tax Impact = Net Change in Taxable Base × Cantonal & Federal Combined Marginal Tax Rate. (If deductions exceed Eigenmietwert, owner gains net tax reduction; if Eigenmietwert exceeds deductions, owner pays net additional tax).",
-      "affiliate_targets": [
-        {
-          "name": "Houzy",
-          "type": "software",
-          "description": "Digital Swiss homeowner tool for optimizing property maintenance deductions, energy renovations, and Eigenmietwert calculations."
-        },
-        {
-          "name": "Taxeur / TaxFix Switzerland",
-          "type": "accounting",
-          "description": "Online Swiss tax declaration service maximizing property expense deductions and mortgage tax filings."
-        },
-        {
-          "name": "Swissquote",
-          "type": "neobank",
-          "description": "Swiss online financial services leader offering fixed and SARON mortgage refinancing solutions."
-        },
-        {
-          "name": "Generali Switzerland / AXA",
-          "type": "insurance",
-          "description": "Comprehensive property, building, and homeowner liability insurance coverage across Switzerland."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

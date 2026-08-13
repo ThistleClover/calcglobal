@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Serbia revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "Paušal.rs",
-          "type": "software",
-          "description": "Top financial tool in Serbia"
-        },
-        {
-          "name": "Raiffeisen RS",
-          "type": "software",
-          "description": "Top financial tool in Serbia"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

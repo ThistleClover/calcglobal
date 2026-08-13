@@ -1,7 +1,10 @@
 {
   "country": "Philippines",
   "country_code": "PH",
-  "languages": ["Tagalog", "English"],
+  "languages": [
+    "Tagalog",
+    "English"
+  ],
   "calculators": [
     {
       "id": "bir-sweldo-tax-calculator",
@@ -54,28 +57,7 @@
         }
       ],
       "formula_explanation": "1. STATUTORY MANDATORY DEDUCTIONS:\n- SSS Contribution (2024-2025 Schedule under RA 11199): Total SSS rate is 14% of Monthly Salary Credit (MSC), split as 9.5% Employer (ER) and 4.5% Employee (EE). Minimum MSC is ₱4,000 (EE contribution = ₱180). Maximum regular MSC is ₱30,000 (EE contribution capped at ₱1,350). For MSC over ₱20,000, mandatory Workers' Investment and Savings Program (WISP) applies.\n- PhilHealth Premium (RA 11223 Universal Health Care Act): Premium rate is 5.0% of Gross Basic Monthly Salary, shared 50/50 between ER and EE (EE share = 2.5%). Monthly floor is ₱10,000 basic salary (minimum EE premium = ₱250). Monthly ceiling is ₱100,000 basic salary (maximum EE premium = ₱2,500).\n- Pag-IBIG Fund (HDMF Circular No. 460): EE contribution rate is 2% of basic monthly salary. Maximum mandatory monthly salary base is capped at ₱10,000, resulting in a maximum mandatory EE contribution of ₱200/month (matching ER ₱200/month).\n\n2. BIR WITHHOLDING TAX (TRAIN Law - Republic Act 10963 Revised Tax Table):\n- Taxable Monthly Income = Gross Monthly Salary + Overtime/Holiday Pay - Total EE Mandatory Statutory Contributions (SSS EE + PhilHealth EE + Pag-IBIG EE) - Non-taxable De Minimis.\n- Monthly BIR Tax Brackets:\n  * ₱0 to ₱20,833 (Annual ₱250,000): 0% Tax (Exempt).\n  * ₱20,833.01 to ₱33,333: 15% of excess over ₱20,833.\n  * ₱33,333.01 to ₱66,666: ₱1,875 + 20% of excess over ₱33,333.\n  * ₱66,666.01 to ₱166,666: ₱8,541.67 + 25% of excess over ₱66,666.\n  * ₱166,666.01 to ₱666,666: ₱33,541.67 + 30% of excess over ₱166,666.\n  * Over ₱666,666: ₱183,541.67 + 35% of excess over ₱666,666.\n\n3. NET TAKE-HOME PAY:\n- Net Pay = Gross Monthly Salary + Overtime/Holiday Pay + De Minimis - SSS EE - PhilHealth EE - Pag-IBIG EE - BIR Withholding Tax.",
-      "affiliate_targets": [
-        {
-          "name": "Maya Bank",
-          "type": "neobank",
-          "description": "Leading Philippine digital bank offering high-yield savings accounts and automated digital payroll integration for Filipino workforce."
-        },
-        {
-          "name": "Sprout Solutions",
-          "type": "software",
-          "description": "Top Philippine HR and payroll software platform used by companies for automated BIR, SSS, PhilHealth, and Pag-IBIG compliance."
-        },
-        {
-          "name": "Taxumo",
-          "type": "software",
-          "description": "Automated Philippine online tax filing and remittance tool for mixed-income earners, freelancers, and professionals."
-        },
-        {
-          "name": "GCash (GSave / GInvest)",
-          "type": "neobank",
-          "description": "Primary Philippine mobile finance app for receiving salary payouts, automated micro-savings, and paying government statutory contributions."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "13th-month-separation-pay-calculator",
@@ -140,28 +122,7 @@
         }
       ],
       "formula_explanation": "1. 13TH MONTH PAY (Presidential Decree No. 851):\n- Formula: 13th Month Pay = (Basic Monthly Salary × Months Worked in Calendar Year) / 12.\n- Tax Exemption Limit: Under Republic Act 10653, 13th Month Pay and other benefits (bonuses, 14th month, performance incentives) are TAX-EXEMPT up to ₱90,000. Any excess above ₱90,000 is added to regular taxable income subject to BIR withholding tax rates.\n\n2. SEPARATION PAY (Labor Code of the Philippines, Articles 298 & 299):\n- Redundancy & Installation of Labor-saving Devices: 1 Month Basic Salary for every year of service. A fraction of at least 6 months is counted as 1 full year. Minimum payout = 1 Month Salary.\n- Retrenchment to prevent losses, Closure/Cessation of operations not due to serious financial losses, Incurable Disease: 0.5 Month Basic Salary for every year of service, or 1 Month Basic Salary, whichever is higher. A fraction of at least 6 months is counted as 1 full year.\n- Resignation: ₱0 separation pay required by law, unless specified in Employment Contract or CBA.\n- Taxability: Separation pay due to involuntary causes (redundancy, retrenchment, disease) is 100% EXEMPT from income tax (NIRC Sec 32B6b).\n\n3. RETIREMENT PAY (Republic Act 7641 - Retirement Pay Law):\n- Minimum Statutory Retirement Pay = 1/2 Month Basic Salary for every year of service (fraction of at least 6 months counted as 1 whole year).\n- Statutory Definition of '1/2 Month Salary' under RA 7641: 15 days basic salary + 5 days Service Incentive Leave (SIL) + (1/12 of 13th Month Pay = 2.5 days salary) = 22.5 days basic daily salary per year of service.\n- Daily Salary Formula = (Basic Monthly Salary × 12) / 261 days (or 313 days depending on company work schedule).\n- Retirement Pay is 100% TAX-EXEMPT provided the retiree is at least 50 years old and has served at least 5 years with the employer.",
-      "affiliate_targets": [
-        {
-          "name": "Tonik Bank",
-          "type": "neobank",
-          "description": "First Philippine digital bank offering high-yield Solo Stashes and Time Deposits (up to 6% p.a.) for severance and retirement lump sum payouts."
-        },
-        {
-          "name": "Sun Life Philippines",
-          "type": "insurance",
-          "description": "Leading Philippine wealth management provider for investing 13th month bonuses and retirement payouts into tax-exempt mutual funds."
-        },
-        {
-          "name": "Taxumo",
-          "type": "software",
-          "description": "Tax compliance platform helping employees and contractors compute tax liability on taxable excess 13th month benefits."
-        },
-        {
-          "name": "InLife (Insular Life)",
-          "type": "insurance",
-          "description": "Pioneer Filipino life insurer offering corporate retirement fund management and personal annuity plans."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "ph-real-estate-transfer-cgt-calculator",
@@ -229,28 +190,7 @@
         }
       ],
       "formula_explanation": "1. TAX BASE DETERMINATION:\n- Under NIRC Sec 24D, all real estate transfer taxes are computed based on the TAX BASE VALUE, defined as the HIGHEST among:\n  a. Gross Selling Price (GSP)\n  b. BIR Zonal Value\n  c. LGU Fair Market Value (Assessed Value in Provincial/City Tax Declaration)\n- Tax Base = MAX(Selling Price, BIR Zonal Value, LGU Fair Market Value).\n\n2. CAPITAL GAINS TAX (CGT - Individual Capital Asset):\n- CGT = Tax Base × 6%.\n- Payable to the BIR (BIR Form 1706) within 30 calendar days from notarization of the Deed of Absolute Sale.\n\n3. CREDITABLE WITHHOLDING TAX (CWT - Business/Developer Ordinary Asset):\n- Applies if seller is habitually engaged in real estate business: 1.5% to 6% depending on selling price bracket. Plus 12% VAT if transaction value exceeds VAT exempt threshold (₱3,600,000).\n\n4. DOCUMENTARY STAMP TAX (DST):\n- DST = Tax Base × 1.5% (₱15 for every ₱1,000 or fractional part thereof).\n- Payable to BIR (BIR Form 2000-OT) on or before 5th day of the month following notarization.\n\n5. LOCAL GOVERNMENT UNIT (LGU) TRANSFER TAX:\n- Metro Manila / Cities = Tax Base × 0.75%.\n- Provinces = Tax Base × 0.50%.\n- Payable to Local City/Provincial Treasurer prior to Title Transfer.\n\n6. LAND REGISTRATION AUTHORITY (LRA) REGISTRATION FEES:\n- Computed per LRA graduated fee schedule (approx. ₱8,000 to ₱15,000 base + 0.25% of Tax Base for higher values).\n\n7. NOTARIAL & INCIDENTAL FEES:\n- Customary Notarial Fee = 1.0% to 2.0% of Selling Price.\n- Real Property Tax (RPT) clearance and Certified True Copies = approx. ₱1,000 - ₱3,000.",
-      "affiliate_targets": [
-        {
-          "name": "GoTyme Bank",
-          "type": "neobank",
-          "description": "Philippine digital bank offering high-interest accounts and convenient online transactions for real estate down payments and tax remittances."
-        },
-        {
-          "name": "BPI / BDO Unibank",
-          "type": "accounting",
-          "description": "Major Philippine bank for housing loan financing, property escrow services, and manager's checks for BIR/LRA property transfer taxes."
-        },
-        {
-          "name": "Taxumo",
-          "type": "software",
-          "description": "Automated Philippine online tax filing service for processing BIR Capital Gains Tax (Form 1706) and DST (Form 2000-OT) filings."
-        },
-        {
-          "name": "Pru Life UK",
-          "type": "insurance",
-          "description": "Mortgage Redemption Insurance (MRI) provider securing real estate buyers against unpaid property debts in PH."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "ph-freelance-sme-tax-calculator",
@@ -312,28 +252,7 @@
         }
       ],
       "formula_explanation": "1. 8% FLAT INCOME TAX RATE OPTION (Sec 24A2b of NIRC - TRAIN Law):\n- Eligibility: Non-VAT registered self-employed individuals, freelancers, and sole proprietors whose annual gross sales/receipts do NOT exceed ₱3,000,000.\n- Tax Base = Gross Receipts - ₱250,000 (Exempt Annual Allowance for pure self-employed/freelancers).\n- 8% Flat Tax Payable = MAX(0, (Gross Receipts - ₱250,000) × 8%).\n- Percentage Tax Exempt: Taxpayers opting for 8% flat rate are EXEMPT from the 3% Percentage Tax under Section 116.\n\n2. GRADUATED INCOME TAX RATE OPTION (Sec 24A2a):\n- Deductions:\n  * 40% OSD Option: Taxable Income = Gross Receipts × 60%.\n  * Itemized Deductions Option: Taxable Income = Gross Receipts - Actual Allowable Business Expenses.\n- Graduated Tax Brackets:\n  * ₱0 to ₱250,000: 0% Tax.\n  * ₱250,001 to ₱400,000: 15% of excess over ₱250,000.\n  * ₱400,001 to ₱800,000: ₱22,500 + 20% of excess over ₱400,000.\n  * ₱800,001 to ₱2,000,000: ₱102,500 + 25% of excess over ₱800,000.\n  * ₱2,000,001 to ₱8,000,000: ₱402,500 + 30% of excess over ₱2,000,000.\n  * Over ₱8,000,000: ₱2,202,500 + 35% of excess over ₱8,000,000.\n- Percentage Tax (Sec 116): Non-VAT taxpayers on Graduated Rate must ALSO pay 3% Percentage Tax on Gross Receipts (Gross Receipts × 3%) via BIR Form 2551Q.\n- Total Tax (Graduated Option) = Graduated Income Tax + 3% Percentage Tax.\n\n3. VAT REGISTRATION THRESHOLD:\n- If Gross Receipts exceed ₱3,000,000, taxpayer MUST register for 12% VAT, cannot use the 8% flat rate, and must pay Graduated Income Tax + 12% Output VAT (minus Input VAT).",
-      "affiliate_targets": [
-        {
-          "name": "Taxumo",
-          "type": "software",
-          "description": "Top Philippine online tax platform designed for freelancers and sole proprietors to file BIR 1701Q, 1701A, and 2551Q seamlessly."
-        },
-        {
-          "name": "JuanTax",
-          "type": "software",
-          "description": "BIR-certified cloud tax software for filing quarterly and annual income tax returns with automatic 8% vs Graduated optimization."
-        },
-        {
-          "name": "Maya Business",
-          "type": "neobank",
-          "description": "Digital merchant account and payment gateway tailored for Philippine freelancers and e-commerce sole proprietors."
-        },
-        {
-          "name": "Bukku PH",
-          "type": "accounting",
-          "description": "Cloud accounting software built for Philippine SMEs, freelancers, and digital service exporters."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "ph-estate-donors-tax-calculator",
@@ -407,28 +326,7 @@
         }
       ],
       "formula_explanation": "1. ESTATE TAX COMPUTATION (TRAIN Law - Republic Act 10963):\n- Rate: Flat 6% on Net Taxable Estate.\n- Statutory Deductions Allowed:\n  a. Standard Deduction: ₱5,000,000 for Citizen/Resident Alien (₱500,000 for Non-Resident Alien). No receipts required.\n  b. Family Home Deduction: Up to ₱10,000,000 (must be the decedent's actual family home). If conjugal property, 50% of family home is deducted first, then up to ₱10,000,000 deduction is applied.\n  c. Claims against Estate & Unpaid Mortgages: Documented debts of decedent.\n  d. Surviving Spouse Share: 50% of Net Conjugal Estate.\n- Formula (Married Conjugal):\n  * Net Conjugal Estate = Gross Conjugal Estate - Claims/Mortgages.\n  * Spouse Share = Net Conjugal Estate / 2.\n  * Net Taxable Estate = Net Conjugal Estate - Spouse Share + Exclusive Estate - Standard Deduction (₱5M) - Family Home Deduction (max ₱10M) - Exclusive Claims.\n  * Estate Tax Due = MAX(0, Net Taxable Estate × 6%).\n- Filing: BIR Form 1801 within 1 year from date of death.\n\n2. DONOR'S TAX COMPUTATION (TRAIN Law - RA 10963):\n- Rate: Flat 6% on Total Net Gifts exceeding ₱250,000 per calendar year.\n- Statutory Exemption: Gifts up to ₱250,000 in a calendar year are 100% TAX-FREE regardless of donor-donee relationship.\n- Formula: Net Taxable Gift = MAX(0, Total Gifts in Calendar Year - ₱250,000).\n- Donor's Tax Due = Net Taxable Gift × 6%.\n- Filing: BIR Form 1800 within 30 days from date gift was made.",
-      "affiliate_targets": [
-        {
-          "name": "Taxumo Legal Services",
-          "type": "software",
-          "description": "Online BIR processing and estate tax amnesty assistance for Philippine families inheriting property."
-        },
-        {
-          "name": "Sun Life Financial PH",
-          "type": "insurance",
-          "description": "Estate liquidity insurance solutions ensuring beneficiaries have cash payout to settle 6% estate tax without liquidating real estate."
-        },
-        {
-          "name": "InLife Wealth",
-          "type": "insurance",
-          "description": "Trust and estate planning services for high-net-worth Filipino families and business owners."
-        },
-        {
-          "name": "Maya Bank",
-          "type": "neobank",
-          "description": "Digital banking for estate administrative accounts and digital payment of BIR estate/donor tax returns."
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

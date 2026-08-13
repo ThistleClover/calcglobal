@@ -40,18 +40,7 @@
         }
       ],
       "formula_explanation": "Computes progressive statutory income tax, social security withholdings, and net take-home salary based on Paraguay revenue regulations.",
-      "affiliate_targets": [
-        {
-          "name": "SET Paraguay",
-          "type": "software",
-          "description": "Top financial tool in Paraguay"
-        },
-        {
-          "name": "Itaú Paraguay",
-          "type": "software",
-          "description": "Top financial tool in Paraguay"
-        }
-      ]
+      "affiliate_targets": []
     }
   ]
 }

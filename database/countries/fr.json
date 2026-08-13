@@ -119,32 +119,7 @@
           "answer": "L'ACRE (Aide aux Créateurs et Repreneurs d'Entreprise) permet aux nouveaux auto-entrepreneurs de bénéficier d'une réduction de 50 % sur leurs cotisations URSSAF. Pour en bénéficier, vous devez en faire la demande lors de la création de votre activité auprès de l'URSSAF. L'exonération est totale la première année d'activité (taux réduit de moitié). Elle est accessible aux demandeurs d'emploi, jeunes de moins de 26 ans, bénéficiaires de minima sociaux, et autres profils spécifiques."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Qonto",
-          "type": "neobank",
-          "url": "https://qonto.com/fr?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Compte professionnel certifié pour auto-entrepreneurs avec déclaration et paiement URSSAF automatique depuis l'application."
-        },
-        {
-          "name": "Shine",
-          "type": "neobank",
-          "url": "https://shine.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Compte pro pour indépendants avec outil de facturation intégré, calcul des charges en temps réel et tableau de bord fiscal."
-        },
-        {
-          "name": "Abby",
-          "type": "software",
-          "url": "https://abby.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Logiciel de gestion et de comptabilité 100 % dédié aux auto-entrepreneurs français — facturation, déclarations URSSAF, suivi du CA."
-        },
-        {
-          "name": "Dougs",
-          "type": "accounting",
-          "url": "https://dougs.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Expert-comptable en ligne pour optimiser votre passage de micro-entreprise vers SASU ou EURL au bon moment."
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "frais-de-notaire-immobilier",
@@ -250,32 +225,7 @@
           "answer": "Les émoluments sont fixés par un barème national dégressif : 3,870 % de 0 à 6 500 €, 1,596 % de 6 500 à 17 000 €, 1,030 % de 17 000 à 60 000 €, et 0,799 % au-delà de 60 000 €, soumis à une TVA de 20 %."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Pretto",
-          "type": "broker",
-          "url": "https://www.pretto.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Courtier en prêt immobilier 100% en ligne pour comparer les meilleurs taux d'emprunt"
-        },
-        {
-          "name": "Meilleurtaux",
-          "type": "broker",
-          "url": "https://www.meilleurtaux.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Comparateur leader de crédit immobilier et d'assurance emprunteur"
-        },
-        {
-          "name": "Luko / Lemonade",
-          "type": "insurance",
-          "url": "https://www.lemonade.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Assurance habitation propriétaire non-occupant et assurance de prêt immobilier"
-        },
-        {
-          "name": "Beanstock",
-          "type": "software",
-          "url": "https://www.beanstock.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Plateforme d'investissement immobilier locatif clé en main avec simulation bancaire"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calculateur-salaire-brut-net-cout-employeur",
@@ -383,32 +333,7 @@
           "answer": "L'employeur applique directement votre taux individuel transmis par la Direction Générale des Finances Publiques (DGFiP) sur votre salaire net imposable. L'impôt est ainsi déduit automatiquement avant le virement de votre salaire mensuel."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "PayFit",
-          "type": "software",
-          "url": "https://payfit.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Logiciel de paie et de gestion RH automatisé pour PME françaises"
-        },
-        {
-          "name": "Alan",
-          "type": "insurance",
-          "url": "https://alan.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Assurance santé d'entreprise et mutuelle 100% digitale pour salariés et dirigeants"
-        },
-        {
-          "name": "Pennylane",
-          "type": "software",
-          "url": "https://www.pennylane.com/fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Plateforme de gestion financière de la paie et comptabilité d'entreprise"
-        },
-        {
-          "name": "Swile",
-          "type": "software",
-          "url": "https://www.swile.co/fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Carte et solution d'avantages salariés (titres-restaurant, chèques-cadeaux)"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "indemnite-rupture-conventionnelle-licenciement",
@@ -492,32 +417,7 @@
           "answer": "Le salaire de référence retenu est le montant le plus avantageux pour le salarié entre la moyenne des 12 derniers mois de salaire brut et la moyenne des 3 derniers mois (avec proratisation des primes annuelles)."
         }
       ],
-      "affiliate_targets": [
-        {
-          "name": "Captain Contrat",
-          "type": "legal",
-          "url": "https://www.captaincontrat.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Service d'assistance juridique pour rédaction de convention de rupture et conseil RH"
-        },
-        {
-          "name": "LegalPlace",
-          "type": "legal",
-          "url": "https://www.legalplace.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Plateforme d'accompagnement juridique et gestion de rupture conventionnelle d'employés"
-        },
-        {
-          "name": "Dougs",
-          "type": "accounting",
-          "url": "https://dougs.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Gestion de la paie, solde de tout compte et conseil social pour employeurs"
-        },
-        {
-          "name": "Juritravail",
-          "type": "legal",
-          "url": "https://www.juritravail.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Modèles d'actes et consultation d'avocat spécialisé en droit du travail"
-        }
-      ]
+      "affiliate_targets": []
     },
     {
       "id": "calculateur-plus-value-immobiliere",
@@ -647,32 +547,177 @@
           "answer": "La plus-value imposable est soumise au taux forfaitaire d'impôt sur le revenu de 19 % et aux prélèvements sociaux de 17,2 % (soit un taux global de 36,2 %). Une surtaxe progressive de 2 % à 6 % s'ajoute si la plus-value nette imposable dépasse 50 000 €."
         }
       ],
-      "affiliate_targets": [
+      "affiliate_targets": []
+    },
+    {
+      "id": "sasu-impots-cotisations-dividendes",
+      "title_native": "Simulateur SASU : Impôts, Cotisations & Dividendes",
+      "title_en": "SASU Tax & Social Contributions Calculator (France)",
+      "search_terms_native": [
+        "calcul charges sasu 2026",
+        "simulateur sasu president salaire dividendes",
+        "sasu impot sur les societes is ir",
+        "optimisation salaire dividendes sasu",
+        "cotisations urssaf sasu president assimile salarie"
+      ],
+      "description_native": "Simulez vos cotisations sociales URSSAF (Président assimilé salarié), l'impôt sur les sociétés (IS) ou sur le revenu (IR) et l'arbitrage salaire / dividendes en SASU.",
+      "category": "business",
+      "inputs": [
         {
-          "name": "Climb (ex-Tacotax)",
-          "type": "software",
-          "url": "https://climb.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Plateforme d'optimisation fiscale et d'accompagnement en gestion de patrimoine"
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "sasu-impots-cotisations-dividendes"
         },
         {
-          "name": "Legalstart",
-          "type": "legal",
-          "url": "https://www.legalstart.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Accompagnement juridique pour la déclaration fiscale et la création de SCI immobilière"
+          "name": "gross_revenue_or_profit",
+          "label_native": "Chiffre d'affaires HT ou Bénéfice brut avant rémunération (€)",
+          "type": "number",
+          "options": []
         },
         {
-          "name": "Beanstock",
-          "type": "software",
-          "url": "https://www.beanstock.fr/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Plateforme de réinvestissement locatif d'actifs immobiliers post-cession"
+          "name": "director_remuneration",
+          "label_native": "Rémunération brute annuelle du Président (€)",
+          "type": "number",
+          "options": []
         },
         {
-          "name": "Meilleurtaux",
-          "type": "broker",
-          "url": "https://www.meilleurtaux.com/?utm_source=calcglobal&utm_medium=affiliate",
-          "description": "Courtage pour réinvestissement en parts de SCPI ou nouveau projet immobilier"
+          "name": "tax_regime",
+          "label_native": "Régime fiscal de la SASU",
+          "type": "select",
+          "options": [
+            {
+              "value": "is",
+              "label": "Impôt sur les Sociétés (IS - 15% / 25%)"
+            },
+            {
+              "value": "ir",
+              "label": "Option Impôt sur le Revenu (IR - Pas d'IS, bénéfice imposable directement)"
+            }
+          ]
+        },
+        {
+          "name": "other_expenses",
+          "label_native": "Autres charges et frais généraux de l'entreprise (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "distribution_share",
+          "label_native": "Part du résultat net distribuée en dividendes (%)",
+          "type": "number",
+          "options": []
         }
-      ]
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "SASU (Société par Actions Simplifiée Unipersonnelle) :\n1) Statut du Président : Assimilé salarié (URSSAF ~75% à 80% de charges sociales sur le net perçu, soit environ 45% sur le brut).\n2) Régime IS (Impôt sur les Sociétés) : Taux réduit de 15% sur les bénéfices jusqu'à 42 500 €, puis 25% au-delà. Le solde constitue le bénéfice distribuable.\n3) Taxation des Dividendes en SASU (IS) : Soumis à la Flat Tax / Prélèvement Forfaitaire Unique (PFU 30% : 12,8% IR + 17,2% Prélèvements Sociaux). Pas de cotisations URSSAF sur les dividendes de SASU.\n4) Option IR (5 ans max) : Pas d'IS ni de PFU. Le bénéfice net est directement soumis au barème progressif de l'Impôt sur le Revenu de l'associé unique.",
+      "article_faq": [
+        {
+          "question": "Quelles sont les cotisations sociales du président de SASU en 2026 ?",
+          "answer": "Le président de SASU a le statut d'assimilé salarié. Les cotisations sociales URSSAF représentent environ 75% à 80% de sa rémunération nette (soit environ 45% de son salaire brut). Elles couvrent la santé, la retraite de base et complémentaire, mais n'incluent pas l'assurance chômage Pôle Emploi."
+        },
+        {
+          "question": "Comment sont taxés les dividendes en SASU ?",
+          "answer": "En SASU à l'IS, les dividendes ne sont pas soumis aux cotisations sociales URSSAF. Ils sont uniquement soumis au Prélèvement Forfaitaire Unique (PFU / Flat Tax) de 30% (12,8% d'impôt sur le revenu + 17,2% de prélèvements sociaux) ou au barème progressif avec abattement de 40%."
+        },
+        {
+          "question": "Quel est le barème de l'Impôt sur les Sociétés (IS) en 2026 ?",
+          "answer": "En 2026, l'Impôt sur les Sociétés (IS) s'applique au taux réduit de 15% sur la tranche de bénéfice allant jusqu'à 42 500 € (pour les PME éligibles), puis au taux normal de 25% sur la fraction supérieure."
+        },
+        {
+          "question": "Est-il préférable de se verser un salaire ou des dividendes en SASU ?",
+          "answer": "Le salaire permet de cotiser pour la retraite et la sécurité sociale, mais génère des charges sociales élevées (75-80%). Les dividendes ne génèrent pas de droits à la retraite mais ne subissent que 30% de Flat Tax (après IS). Un arbitrage mixte (salaire minimum pour la validation des trimestres + dividendes) est souvent optimal."
+        }
+      ],
+      "affiliate_targets": []
+    },
+    {
+      "id": "eurl-impots-cotisations-dividendes",
+      "title_native": "Simulateur EURL : Impôts, Cotisations TNS & Dividendes",
+      "title_en": "EURL Tax & TNS Social Contributions Calculator (France)",
+      "search_terms_native": [
+        "calcul charges eurl 2026",
+        "simulateur eurl gerant gerance tns ssi",
+        "eurl dividendes charges sociales urssaf 10 pourcent capital",
+        "eurl is ou ir comparatif",
+        "cotisations sociales gerant majoritaire eurl"
+      ],
+      "description_native": "Calculez les cotisations sociales TNS (Sécurité Sociale des Indépendants), l'IS ou l'IR, et l'impact fiscal des dividendes (assujettis aux charges URSSAF > 10% du capital).",
+      "category": "business",
+      "inputs": [
+        {
+          "name": "calculator_id",
+          "label_native": "hidden",
+          "type": "hidden",
+          "default": "eurl-impots-cotisations-dividendes"
+        },
+        {
+          "name": "gross_revenue_or_profit",
+          "label_native": "Chiffre d'affaires HT ou Bénéfice brut avant rémunération (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "director_remuneration",
+          "label_native": "Rémunération nette annuelle visée du Gérant (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "tax_regime",
+          "label_native": "Régime fiscal de l'EURL",
+          "type": "select",
+          "options": [
+            {
+              "value": "is",
+              "label": "Impôt sur les Sociétés (IS par option - 15% / 25%)"
+            },
+            {
+              "value": "ir",
+              "label": "Impôt sur le Revenu (IR par défaut - Rémunération non déductible)"
+            }
+          ]
+        },
+        {
+          "name": "capital_social",
+          "label_native": "Capital social + Apports en compte courant d'associé (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "other_expenses",
+          "label_native": "Autres charges et frais généraux de l'entreprise (€)",
+          "type": "number",
+          "options": []
+        },
+        {
+          "name": "distribution_share",
+          "label_native": "Part du résultat net distribuée en dividendes (%)",
+          "type": "number",
+          "options": []
+        }
+      ],
+      "last_updated": "Août 2026",
+      "formula_explanation": "EURL (Entreprise Unipersonnelle à Responsabilité Limitée) :\n1) Statut du Gérant : Travailleur Non Salarié (TNS - SSI/URSSAF ~45% de cotisations sociales sur la rémunération nette, soit environ 30% sur le chiffre d'affaires déduit).\n2) Régime IS : L'IS s'applique au taux réduit de 15% jusqu'à 42 500 € de bénéfice net, puis 25% au-delà. La rémunération du gérant et ses cotisations TNS sont déductibles de l'assiette IS.\n3) Règle Spécifique des Dividendes en EURL (IS) : Les dividendes versés au gérant associé unique sont soumis aux cotisations sociales TNS (45%) pour la fraction qui dépasse 10% du capital social (et apports en compte courant). La part inférieure à 10% du capital est soumise au PFU (30%).\n4) Régime IR (Par défaut) : L'EURL ne paie pas d'IS. Le bénéfice total de l'entreprise (après cotisations TNS) est imposé directement à l'IR du gérant.",
+      "article_faq": [
+        {
+          "question": "Quelles sont les cotisations sociales du gérant d'EURL en 2026 ?",
+          "answer": "Le gérant associé unique d'EURL a le statut de Travailleur Non Salarié (TNS). Ses cotisations sociales (URSSAF / SSI) représentent environ 45% de sa rémunération nette. Ce taux est nettement plus avantageux que celui de la SASU (75-80%)."
+        },
+        {
+          "question": "Comment sont imposés les dividendes en EURL à l'IS ?",
+          "answer": "Particularité de l'EURL : les dividendes versés au gérant qui dépassent 10% du capital social (augmenté des comptes courants d'associé) sont soumis aux cotisations sociales TNS (~45%). Seule la tranche de dividendes inférieure ou égale à 10% du capital est soumise au Prélèvement Forfaitaire Unique (PFU 30%)."
+        },
+        {
+          "question": "Quelle est la différence entre EURL à l'IS et EURL à l'IR ?",
+          "answer": "À l'IS, l'entreprise paie l'impôt sur les sociétés (15% / 25%) et le gérant n'est imposé personnellement que sur sa rémunération et ses dividendes. À l'IR (régime par défaut), la société ne paie pas d'IS et le gérant est imposé sur la totalité du bénéfice réalisé par l'entreprise, qu'il le prélève ou non."
+        },
+        {
+          "question": "Pourquoi le capital social est-il important en EURL ?",
+          "answer": "Un capital social plus élevé en EURL augmente le seuil des 10% en dessous duquel les dividendes échappent aux cotisations sociales TNS de 45% et restent taxés au PFU 30%."
+        }
+      ],
+      "affiliate_targets": []
     }
   ]
 }

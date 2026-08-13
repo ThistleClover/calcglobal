@@ -604,7 +604,7 @@ function calculateHecsRepayment(inputs: TaxInput): TaxResult {
     { label: 'Current Annual Repayment Income', value: income },
     { label: `Year 1 Compulsory Repayment (${(firstYearHecs.rate * 100).toFixed(1)}%)`, value: firstYearCompulsory, isDeduction: true },
     ...(voluntaryPayment > 0 ? [{ label: 'Year 1 Voluntary Repayment', value: voluntaryPayment, isDeduction: true }] : []),
-    { label: initialDebt === 0 ? 'No Debt Outstanding' : (isPaidOff ? 'Projected Years to Debt-Free' : 'Will never pay off (30+ years)'), value: initialDebt === 0 ? 0 : (isPaidOff ? years : null), isTotal: true },
+    { label: initialDebt === 0 ? 'No Debt Outstanding' : (isPaidOff ? 'Projected Years to Debt-Free' : 'Will never pay off (30+ years)'), value: initialDebt === 0 ? 0 : (isPaidOff ? years : 0), isTotal: true },
     { label: 'Total Compulsory Repayments Paid', value: totalCompulsory, isDeduction: true },
     ...(totalVoluntary > 0 ? [{ label: 'Total Voluntary Repayments Paid', value: totalVoluntary, isDeduction: true }] : []),
     { label: 'Total Indexation Added (CPI ~3.8%/yr)', value: totalIndexation, isDeduction: true },
