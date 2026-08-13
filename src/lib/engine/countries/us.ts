@@ -36,7 +36,8 @@ const BRACKETS_HOH_2026: [number, number][] = [
 
 const STATE_RATES: Record<string, number> = {
   CA: 0.093, NY: 0.0685, TX: 0, FL: 0,
-  IL: 0.0495, WA: 0, OTHER: 0.05,
+  IL: 0.0495, WA: 0, NV: 0, MA: 0.05, PA: 0.0307,
+  GA: 0.0539, NC: 0.0425, MI: 0.0425, OTHER: 0.05,
 };
 
 const CA_BRACKETS_SINGLE_2026: [number, number][] = [
@@ -50,12 +51,33 @@ const NY_BRACKETS_SINGLE_2026: [number, number][] = [
   [215400, 0.06], [1077550, 0.0685], [Infinity, 0.109],
 ];
 
+const NJ_BRACKETS_SINGLE_2026: [number, number][] = [
+  [20000, 0.014], [35000, 0.0175], [40000, 0.035], [75000, 0.05525],
+  [500000, 0.0637], [1000000, 0.0897], [Infinity, 0.1075],
+];
+
+const VA_BRACKETS_SINGLE_2026: [number, number][] = [
+  [3000, 0.02], [5000, 0.03], [17000, 0.05], [Infinity, 0.0575],
+];
+
+const OH_BRACKETS_SINGLE_2026: [number, number][] = [
+  [26050, 0], [100000, 0.0275], [115300, 0.035], [Infinity, 0.035],
+];
+
 export function calculateStateTax(state: string, taxableIncome: number): number {
   const st = (state || 'OTHER').toUpperCase();
   if (st === 'TX' || st === 'FL' || st === 'WA' || st === 'NV' || st === 'WY' || st === 'SD' || st === 'TN' || st === 'AK') return 0;
+  if (st === 'PA') return taxableIncome * 0.0307;
+  if (st === 'NC') return taxableIncome * 0.0425;
+  if (st === 'MI') return taxableIncome * 0.0425;
   if (st === 'IL') return taxableIncome * 0.0495;
+  if (st === 'MA') return taxableIncome * 0.05;
+  if (st === 'GA') return taxableIncome * 0.0539;
   if (st === 'CA') return applyBrackets(taxableIncome, CA_BRACKETS_SINGLE_2026);
   if (st === 'NY') return applyBrackets(taxableIncome, NY_BRACKETS_SINGLE_2026);
+  if (st === 'NJ') return applyBrackets(taxableIncome, NJ_BRACKETS_SINGLE_2026);
+  if (st === 'VA') return applyBrackets(taxableIncome, VA_BRACKETS_SINGLE_2026);
+  if (st === 'OH') return applyBrackets(taxableIncome, OH_BRACKETS_SINGLE_2026);
   const rate = STATE_RATES[st] ?? 0.05;
   return taxableIncome * rate;
 }

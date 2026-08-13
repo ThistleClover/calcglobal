@@ -5,8 +5,8 @@ import CpaLeadCapture from '../../components/CpaLeadCapture.astro';
 import { calculate } from '../../lib/engine/countries/us';
 
 export function getStaticPaths() {
-  const states = ['ca', 'ny', 'tx', 'fl', 'il'];
-  const professions = ['freelance-developer', 'consultant'];
+  const states = ['ca', 'ny', 'tx', 'fl', 'il', 'wa', 'nv', 'ma', 'pa', 'ga', 'oh', 'nc', 'mi', 'nj', 'va'];
+  const professions = ['freelance-developer', 'consultant', 'real-estate-agent', 'creator'];
   const paths: any[] = [];
 
   for (const state of states) {
@@ -121,6 +121,156 @@ const STATES_DATA: Record<string, StateInfo> = {
       'IDOR quarterly estimated payments due April 15, June 16, September 15, January 15',
     ],
   },
+  wa: {
+    code: 'WA',
+    name: 'Washington',
+    taxType: 'No State Personal Income Tax',
+    rateText: '0.0% (No Personal State Income Tax)',
+    authority: 'Washington Department of Revenue',
+    authorityAbbr: 'WA Dept of Revenue',
+    details: 'Washington does not impose a personal state income tax on individual wage or self-employment earnings. Freelancers and 1099 contractors pay 0% state income tax, although entity-level Business & Occupation (B&O) gross receipts tax may apply based on gross receipts.',
+    highlights: [
+      '0.0% state personal income tax on individual 1099 net earnings',
+      'No personal state income tax returns or state estimated income tax payments required',
+      'Business & Occupation (B&O) gross receipts tax applies to WA business revenues',
+      'Primary tax optimization centers on 15.3% federal self-employment tax and Schedule C write-offs',
+    ],
+  },
+  nv: {
+    code: 'NV',
+    name: 'Nevada',
+    taxType: 'No State Income Tax',
+    rateText: '0.0% (No Personal State Income Tax)',
+    authority: 'Nevada Department of Taxation',
+    authorityAbbr: 'NV Dept of Taxation',
+    details: 'Nevada Constitution Article 10 explicitly prohibits personal state income tax. 1099 independent contractors pay 0% state personal income tax on business earnings, retaining 100% of state-level income.',
+    highlights: [
+      '0.0% personal state income tax guaranteed by Nevada Constitution Article 10',
+      'Zero state income tax filings or state estimated tax vouchers for sole proprietors',
+      'Commerce Tax applies only to business entities exceeding $4,000,000 gross annual revenue',
+      'Direct focus on federal 15.3% self-employment tax and §199A QBI deduction',
+    ],
+  },
+  ma: {
+    code: 'MA',
+    name: 'Massachusetts',
+    taxType: 'Flat State Income Tax',
+    rateText: '5.0% Flat Rate (+ 4.0% Surtax over $1M)',
+    authority: 'Massachusetts Department of Revenue (DOR)',
+    authorityAbbr: 'MA DOR',
+    details: 'Massachusetts imposes a flat 5.0% personal income tax rate on taxable income. Taxable income exceeding $1,000,000 is subject to an additional 4.0% "Fair Share Amendment" surtax (9.0% top combined rate). 1099 contractors make quarterly payments to MA DOR.',
+    highlights: [
+      'Flat 5.0% state personal income tax rate on net taxable earnings',
+      '4.0% Fair Share Amendment surtax on taxable income exceeding $1,000,000',
+      'MA DOR estimated payments required if annual state tax liability exceeds $400',
+      'Elective Pass-Through Entity Tax (PTET) available for Massachusetts S-Corps and LLCs',
+    ],
+  },
+  pa: {
+    code: 'PA',
+    name: 'Pennsylvania',
+    taxType: 'Flat State Income Tax',
+    rateText: '3.07% Flat Income Tax Rate',
+    authority: 'Pennsylvania Department of Revenue',
+    authorityAbbr: 'PA Dept of Revenue',
+    details: 'Pennsylvania levies a flat 3.07% state personal income tax rate—the lowest flat rate in the nation among tax-imposing states. PA does not allow standard deductions or personal exemptions, but allowable Schedule C business expenses reduce net taxable income.',
+    highlights: [
+      'Flat 3.07% state personal income tax rate across all income brackets',
+      'No PA standard deduction or personal exemptions allowed on state returns',
+      'Net Schedule C business expenses directly reduce PA taxable net profit',
+      'Philadelphia Wage Tax or local municipal earned income tax (EIT) may apply additionally',
+    ],
+  },
+  ga: {
+    code: 'GA',
+    name: 'Georgia',
+    taxType: 'Flat State Income Tax',
+    rateText: '5.39% Flat Income Tax Rate (2026 HB 1015)',
+    authority: 'Georgia Department of Revenue',
+    authorityAbbr: 'GA Dept of Rev',
+    details: 'Georgia transitioned under state tax reform (HB 1437 / HB 1015) to a flat personal income tax system with a rate of 5.39% for 2026. Self-employed freelancers pay GA DOR quarterly estimated tax if state tax liability exceeds $500.',
+    highlights: [
+      'Flat 5.39% state personal income tax rate for 2026 fiscal year',
+      'State standard deduction ($12,000 Single / $24,000 Joint)',
+      'Georgia Elective Pass-Through Entity Tax available for S-Corps and LLCs',
+      'Quarterly estimated tax payments due April 15, June 16, September 15, January 15',
+    ],
+  },
+  oh: {
+    code: 'OH',
+    name: 'Ohio',
+    taxType: 'Progressive State Income Tax & BID',
+    rateText: '0.0% – 3.50% (Business Income Deduction up to $250k)',
+    authority: 'Ohio Department of Taxation',
+    authorityAbbr: 'OH Dept of Tax',
+    details: 'Ohio features progressive individual income tax rates up to 3.50%. Ohio also offers the Business Income Deduction (BID), allowing sole proprietors to deduct 100% of business income up to $250,000, with a flat 3.0% rate on business income above $250,000.',
+    highlights: [
+      'Progressive state brackets topping out at 3.50% for 2026',
+      'Ohio Business Income Deduction (BID) exempts up to $250,000 of sole proprietor net business income',
+      'Regional Income Tax Agency (RITA) / local municipal taxes (1.0%–2.5%) apply in most Ohio cities',
+      'State and municipal quarterly estimated tax payments required when liability exceeds $500',
+    ],
+  },
+  nc: {
+    code: 'NC',
+    name: 'North Carolina',
+    taxType: 'Flat State Income Tax',
+    rateText: '4.25% Flat Income Tax Rate',
+    authority: 'North Carolina Department of Revenue (NCDOR)',
+    authorityAbbr: 'NCDOR',
+    details: 'North Carolina imposes a flat personal income tax rate scheduled at 4.25% for 2026. Self-employed individuals benefit from generous NC standard deductions ($12,750 Single / $25,500 Joint) and pay NCDOR estimated taxes quarterly.',
+    highlights: [
+      'Flat 4.25% state personal income tax rate for tax year 2026',
+      'NC state standard deduction ($12,750 Single / $25,500 Joint)',
+      'NCDOR Pass-Through Entity Tax (PTET) election for S-Corporation and Partnership owners',
+      'Quarterly estimated tax payments required if state tax liability exceeds $1,000',
+    ],
+  },
+  mi: {
+    code: 'MI',
+    name: 'Michigan',
+    taxType: 'Flat State Income Tax',
+    rateText: '4.25% Flat Income Tax Rate',
+    authority: 'Michigan Department of Treasury',
+    authorityAbbr: 'MI Dept of Treasury',
+    details: 'Michigan imposes a flat 4.25% individual income tax rate. Independent 1099 contractors can claim personal exemptions ($5,600 in 2026) and must pay MI Department of Treasury estimated taxes if annual state tax liability exceeds $500.',
+    highlights: [
+      'Flat 4.25% state personal income tax rate',
+      'Michigan personal exemption allowance ($5,600 per exemption in 2026)',
+      'Detroit (2.4%) and 23 other Michigan cities levy additional local income taxes',
+      'Michigan Flow-Through Entity (FTE) tax election available for business owners',
+    ],
+  },
+  nj: {
+    code: 'NJ',
+    name: 'New Jersey',
+    taxType: 'Progressive State Income Tax',
+    rateText: '1.4% – 10.75% Progressive Brackets',
+    authority: 'New Jersey Division of Taxation',
+    authorityAbbr: 'NJ Div of Taxation',
+    details: 'New Jersey levies progressive personal income tax rates ranging from 1.4% up to 10.75% (for income over $1,000,000). NJ does not allow standard deductions on state income tax returns, making Schedule C business expense tracking critical.',
+    highlights: [
+      'Progressive state income tax brackets from 1.4% up to 10.75%',
+      'No state standard deduction in NJ—gross income minus business expenses forms tax base',
+      'NJ Business Alternative Income Tax (BAIT) election offers SALT cap workaround for LLCs/S-Corps',
+      'Quarterly estimated payments to NJ Division of Taxation required when tax exceeds $400',
+    ],
+  },
+  va: {
+    code: 'VA',
+    name: 'Virginia',
+    taxType: 'Progressive State Income Tax',
+    rateText: '2.0% – 5.75% (Top Bracket over $17,000)',
+    authority: 'Virginia Department of Taxation',
+    authorityAbbr: 'Virginia Tax',
+    details: 'Virginia levies progressive individual income tax rates from 2.0% to 5.75%, reaching the top 5.75% bracket on taxable income over $17,000. 1099 contractors pay quarterly estimated tax to Virginia Tax if state tax liability exceeds $150.',
+    highlights: [
+      'Progressive state income tax brackets from 2.0% to 5.75% (top rate starts at $17,000)',
+      'Virginia standard deduction of $8,000 for single filers / $16,000 for joint filers',
+      'Pass-Through Entity Tax (PTET) elective tax available for S-Corps and LLCs',
+      'Quarterly estimated tax payments due May 1, June 15, Sept 15, Jan 15',
+    ],
+  },
 };
 
 const PROFESSIONS_DATA: Record<string, ProfessionInfo> = {
@@ -216,6 +366,98 @@ const PROFESSIONS_DATA: Record<string, ProfessionInfo> = {
       },
     ],
   },
+  'real-estate-agent': {
+    slug: 'real-estate-agent',
+    name: 'Real Estate Agent',
+    plural: 'Real Estate Agents & Realtors',
+    category: 'Real Estate & Property Brokerage',
+    overview: 'As a 1099 independent real estate agent or Realtor, commission income is subject to 15.3% federal self-employment tax (Social Security and Medicare) in addition to federal and state income tax. Deducting MLS dues, brokerage desk fees, staging, marketing, photography, and extensive client travel mileage directly lowers taxable Schedule C net income.',
+    sampleRevenues: [65000, 110000, 185000, 300000],
+    deductions: [
+      {
+        title: 'Vehicle & Client Travel Mileage',
+        category: 'Travel & Vehicle Expenses (Schedule C Line 9)',
+        description: 'Driving for property showings, open houses, client consultations, listing appointments, and broker previews.',
+        exampleItems: ['IRS standard mileage deduction (67¢ per mile)', 'Actual auto expense method (gas, lease payments, insurance %)', 'Parking fees & highway tolls for property tours', 'Auto detailing for client-facing vehicles'],
+      },
+      {
+        title: 'MLS Dues, Licensing & Professional Subscriptions',
+        category: 'Dues & Subscriptions (Schedule C Line 27a)',
+        description: 'Mandatory MLS listing access fees, Realtor association dues, state real estate license renewals, and keybox access services.',
+        exampleItems: ['NAR (National Association of Realtors) annual dues', 'Local Board of Realtors & state licensing fees', 'Regional MLS monthly access subscriptions', 'Supra Key / SentriLock electronic lockbox services'],
+      },
+      {
+        title: 'Property Marketing, Staging & Media',
+        category: 'Advertising & Promotional (Schedule C Line 8)',
+        description: 'Professional photography, virtual tours, drone videography, open house staging, digital ads, yard signs, and property flyers.',
+        exampleItems: ['HDR real estate photography & 3D Matterport tours', 'Aerial drone videos & listing walkthroughs', 'Yard signboards, directional stakes & printed flyers', 'Facebook & Instagram targeted listing advertisements'],
+      },
+      {
+        title: 'Brokerage Desk & Transaction Fees',
+        category: 'Commissions & Fees (Schedule C Line 10)',
+        description: 'Brokerage desk fees, split commissions paid to assistant agents or transaction coordinators, and E&O insurance assessments.',
+        exampleItems: ['Monthly brokerage office desk fees', 'Transaction coordinator per-file management fees', 'Commission splits paid to co-listing agents', 'Brokerage technology & administrative fee splits'],
+      },
+      {
+        title: 'Client Gifts & Open House Expenses',
+        category: 'Client Gifts & Event Expenses (IRC §274)',
+        description: 'Closing gifts for home buyers/sellers (up to $25 statutory limit per recipient) and catering/refreshments for property open houses.',
+        exampleItems: ['Closing gifts for buyers and sellers ($25 limit)', 'Food, wine & catering for listing open houses', 'Promotional swag & branded client closing folders'],
+      },
+      {
+        title: 'Errors & Omissions (E&O) & Business Insurance',
+        category: 'Insurance (Schedule C Line 15)',
+        description: 'Real estate professional liability insurance, commercial general liability, and auto commercial endorsement.',
+        exampleItems: ['Real estate Errors & Omissions (E&O) insurance', 'Commercial general liability coverage', 'Rideshare / commercial business use vehicle insurance rider'],
+      },
+    ],
+  },
+  creator: {
+    slug: 'creator',
+    name: 'Content Creator',
+    plural: 'Content Creators, Influencers & YouTubers',
+    category: 'Digital Media & Entertainment',
+    overview: 'Content creators, YouTubers, streamers, and social media influencers operating as 1099 independent contractors pay 15.3% federal self-employment tax on net profit plus federal and state income tax. Taxable revenue from AdSense, brand sponsorships, affiliate links, and channel memberships can be significantly offset by deducting camera gear, studio lighting, editing software, home studio space, and production costs.',
+    sampleRevenues: [50000, 95000, 160000, 280000],
+    deductions: [
+      {
+        title: 'Audiovisual & Studio Camera Gear',
+        category: 'Equipment & Capital Assets (IRC §179 / §168)',
+        description: 'High-end cameras, lenses, microphones, studio lighting rigs, capture cards, and streaming control decks.',
+        exampleItems: ['Sony FX3 / A7S III camera bodies & cinema lenses', 'Shure SM7B microphones & audio interfaces', 'Elgato Stream Decks, Key Lights & green screens', '4K video monitors & teleprompter gear'],
+      },
+      {
+        title: 'Video Editing & Production Software',
+        category: 'Software & SaaS (Schedule C Line 27a)',
+        description: 'Subscriptions for video editing suites, audio processing, stock music libraries, thumbnail design, and channel analytics.',
+        exampleItems: ['Adobe Creative Cloud (Premiere Pro, After Effects, Photoshop)', 'Epidemic Sound / Artlist stock music subscriptions', 'vidIQ / TubeBuddy channel SEO tools', 'Canva Pro / Figma for thumbnail creation'],
+      },
+      {
+        title: 'Dedicated Production Studio & Set Construction',
+        category: 'Business Use of Home (IRC §280A)',
+        description: 'Dedicated filming studio room, acoustic soundproofing, background set decor, and high-speed internet pipeline.',
+        exampleItems: ['Dedicated home video filming studio space', 'Acoustic wall panels & sound treatment', 'Set decoration, prop lighting & backdrop design', '100% business portion of gigabit fiber internet'],
+      },
+      {
+        title: 'Contractors, Editors & Thumbnail Artists',
+        category: 'Contract Labor (Schedule C Line 11)',
+        description: 'Fees paid to freelance video editors, thumbnail designers, sound engineers, managers, and channel moderators.',
+        exampleItems: ['Freelance video editors & motion graphics animators', 'Custom YouTube thumbnail artists', 'Audio engineers & podcast sound editors', 'Community managers & Discord/Twitch moderators'],
+      },
+      {
+        title: 'Brand Trips, Vlogging Travel & Filming Expenses',
+        category: 'Travel & Transportation (Schedule C Line 24a)',
+        description: 'Travel costs incurred while filming vlog content on location, attending creator conventions, or participating in brand press trips.',
+        exampleItems: ['Flights & lodging for VidCon / TwitchCon / CES', 'Travel expenses for on-location filming shoots', 'Rental car & local transportation for travel vlogs'],
+      },
+      {
+        title: 'Props, Unboxing Items & Content Review Gear',
+        category: 'Supplies & Materials (Schedule C Line 22)',
+        description: 'Items purchased specifically to review, test, or feature in video content, provided they have no personal use outside production.',
+        exampleItems: ['Tech products bought specifically for video reviews', 'Cosmetics, apparel & props for themed content shoots', 'Gaming consoles & games for livestreaming reviews'],
+      },
+    ],
+  },
 };
 
 const stateInfo = STATES_DATA[stateKey];
@@ -271,13 +513,24 @@ const BRACKETS_HOH = [[17000, 0.10], [64850, 0.12], [103350, 0.22], [197300, 0.2
 
 const CA_BRACKETS = [[10412, 0.01], [24684, 0.02], [38959, 0.04], [54081, 0.06], [68350, 0.08], [349137, 0.093], [418961, 0.103], [698271, 0.113], [Infinity, 0.123]];
 const NY_BRACKETS = [[8500, 0.04], [11700, 0.045], [13900, 0.0525], [80650, 0.055], [215400, 0.06], [1077550, 0.0685], [Infinity, 0.109]];
+const NJ_BRACKETS = [[20000, 0.014], [35000, 0.0175], [40000, 0.035], [75000, 0.05525], [500000, 0.0637], [1000000, 0.0897], [Infinity, 0.1075]];
+const VA_BRACKETS = [[3000, 0.02], [5000, 0.03], [17000, 0.05], [Infinity, 0.0575]];
+const OH_BRACKETS = [[26050, 0], [100000, 0.0275], [115300, 0.035], [Infinity, 0.035]];
 
 function calcState(st, taxable) {
   st = (st || '${stateInfo.code}').toUpperCase();
   if (st === 'TX' || st === 'FL' || st === 'WA' || st === 'NV' || st === 'WY' || st === 'SD' || st === 'TN' || st === 'AK') return 0;
+  if (st === 'PA') return taxable * 0.0307;
+  if (st === 'NC') return taxable * 0.0425;
+  if (st === 'MI') return taxable * 0.0425;
   if (st === 'IL') return taxable * 0.0495;
+  if (st === 'MA') return taxable * 0.05;
+  if (st === 'GA') return taxable * 0.0539;
   if (st === 'CA') return applyBrackets(taxable, CA_BRACKETS);
   if (st === 'NY') return applyBrackets(taxable, NY_BRACKETS);
+  if (st === 'NJ') return applyBrackets(taxable, NJ_BRACKETS);
+  if (st === 'VA') return applyBrackets(taxable, VA_BRACKETS);
+  if (st === 'OH') return applyBrackets(taxable, OH_BRACKETS);
   return taxable * 0.05;
 }
 
@@ -362,6 +615,16 @@ const calcConfig = {
         { value: 'TX', label: 'Texas (TX)' },
         { value: 'FL', label: 'Florida (FL)' },
         { value: 'IL', label: 'Illinois (IL)' },
+        { value: 'WA', label: 'Washington (WA)' },
+        { value: 'NV', label: 'Nevada (NV)' },
+        { value: 'MA', label: 'Massachusetts (MA)' },
+        { value: 'PA', label: 'Pennsylvania (PA)' },
+        { value: 'GA', label: 'Georgia (GA)' },
+        { value: 'OH', label: 'Ohio (OH)' },
+        { value: 'NC', label: 'North Carolina (NC)' },
+        { value: 'MI', label: 'Michigan (MI)' },
+        { value: 'NJ', label: 'New Jersey (NJ)' },
+        { value: 'VA', label: 'Virginia (VA)' },
       ],
     },
     {

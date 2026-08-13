@@ -57,6 +57,7 @@ export default function CpaLeadCapture({
   const [annualRevenue, setAnnualRevenue] = useState(defaultRevenue);
   const [userLocation, setUserLocation] = useState(location);
   const [taxNeed, setTaxNeed] = useState('');
+  const [gdprConsent, setGdprConsent] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -70,7 +71,7 @@ export default function CpaLeadCapture({
   }, [location]);
 
   const validate = () => {
-    const errs: { fullName?: string; email?: string } = {};
+    const errs: { fullName?: string; email?: string; gdpr?: string } = {};
     if (!fullName.trim() || fullName.trim().length < 2) {
       errs.fullName = 'Please enter your full name.';
     }
@@ -78,7 +79,10 @@ export default function CpaLeadCapture({
     if (!email.trim() || !emailRegex.test(email.trim())) {
       errs.email = 'Please enter a valid email address.';
     }
-    setErrors(errs);
+    if (!gdprConsent) {
+      errs.gdpr = 'You must consent to data sharing to proceed.';
+    }
+    setErrors(errs as any);
     return Object.keys(errs).length === 0;
   };
 
@@ -137,6 +141,7 @@ export default function CpaLeadCapture({
     setFullName('');
     setEmail('');
     setTaxNeed('');
+    setGdprConsent(false);
     setErrors({});
   };
 
@@ -199,6 +204,8 @@ export default function CpaLeadCapture({
                 setAnnualRevenue={setAnnualRevenue}
                 taxNeed={taxNeed}
                 setTaxNeed={setTaxNeed}
+                gdprConsent={gdprConsent}
+                setGdprConsent={setGdprConsent}
                 loading={loading}
                 submitted={submitted}
                 refCode={refCode}
@@ -294,6 +301,8 @@ export default function CpaLeadCapture({
         setAnnualRevenue={setAnnualRevenue}
         taxNeed={taxNeed}
         setTaxNeed={setTaxNeed}
+        gdprConsent={gdprConsent}
+        setGdprConsent={setGdprConsent}
         loading={loading}
         submitted={submitted}
         refCode={refCode}
@@ -321,6 +330,8 @@ function CpaFormContent({
   setAnnualRevenue,
   taxNeed,
   setTaxNeed,
+  gdprConsent,
+  setGdprConsent,
   loading,
   submitted,
   refCode,
@@ -510,6 +521,23 @@ function CpaFormContent({
             className="w-full rounded-xl border border-slate-300 bg-white py-3 px-4 text-slate-900 text-sm font-medium focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm resize-none"
           ></textarea>
         </div>
+
+        {/* GDPR Consent Checkbox */}
+        <div className="flex items-start gap-3 mt-4">
+          <div className="flex items-center h-5">
+            <input
+              id="gdprConsent"
+              type="checkbox"
+              checked={gdprConsent}
+              onChange={e => setGdprConsent(e.target.checked)}
+              className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+            />
+          </div>
+          <label htmlFor="gdprConsent" className="text-xs text-slate-600 leading-relaxed">
+            I consent to sharing my information with verified CPA partners in accordance with the Privacy Policy. <span className="text-red-500">*</span>
+          </label>
+        </div>
+        {errors.gdpr && <p className="text-xs text-red-600 font-medium mt-1">{errors.gdpr}</p>}
 
         {/* Submit button */}
         <button
