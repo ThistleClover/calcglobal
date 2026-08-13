@@ -1,4 +1,5 @@
 export interface AffiliatePartner {
+  id?: string;
   name: string;
   type?: string;
   description: string;

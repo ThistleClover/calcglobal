@@ -275,7 +275,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                 <p className="text-sm font-medium text-center max-w-xs">Fill in your details on the left to see your full tax breakdown and analysis.</p>
               </div>
 
-              {calc.affiliate_targets && calc.affiliate_targets.length > 0 && (
+              {effectivePartners && effectivePartners.length > 0 && (
                 <div className="w-full mt-auto pt-6 border-t border-slate-200">
                   <div className="flex items-center justify-between mb-4">
                     <p className="text-sm font-bold text-slate-900 flex items-center gap-2">
@@ -287,7 +287,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {calc.affiliate_targets.slice(0, 2).map((partner: any, idx: number) => (
+                    {effectivePartners.slice(0, 2).map((partner: any, idx: number) => (
                       <AffiliateCard
                         key={idx}
                         partner={partner}

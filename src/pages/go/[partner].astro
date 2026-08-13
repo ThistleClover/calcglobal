@@ -1,0 +1,28 @@
+---
+import { GLOBAL_PARTNERS } from '../../utils/affiliateMatching';
+
+export function getStaticPaths() {
+  return GLOBAL_PARTNERS.map(partner => {
+    const partnerId = partner.id || partner.name.toLowerCase();
+    return {
+      params: { partner: partnerId },
+      props: { partnerUrl: partner.url },
+    };
+  });
+}
+
+const { partnerUrl } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex" />
+    <meta http-equiv="refresh" content={"0;url=" + partnerUrl} />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <p>Redirecting to partner... If you are not redirected automatically, <a href={partnerUrl}>click here</a>.</p>
+  </body>
+</html>

@@ -82,7 +82,7 @@ export default function CpaLeadCapture({
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
 
@@ -102,21 +102,34 @@ export default function CpaLeadCapture({
       calculatorId,
     };
 
-    setTimeout(() => {
+    const webhookUrl = "https://hook.eu1.make.com/scp48m1hrl9tz5hz925k2fhfbwd9xtlf";
+    if (webhookUrl) {
       try {
-        const existing = JSON.parse(localStorage.getItem('cpa_leads_v1') || '[]');
-        localStorage.setItem('cpa_leads_v1', JSON.stringify([leadData, ...existing]));
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(leadData),
+        });
       } catch (err) {
-        console.warn('Could not save CPA lead to localStorage:', err);
+        console.error('Error sending lead data to webhook:', err);
       }
+    }
 
-      setLoading(false);
-      setSubmitted(true);
-      setRefCode(generatedRef);
-      if (onSubmitSuccess) {
-        onSubmitSuccess(leadData);
-      }
-    }, 600);
+    try {
+      const existing = JSON.parse(localStorage.getItem('cpa_leads_v1') || '[]');
+      localStorage.setItem('cpa_leads_v1', JSON.stringify([leadData, ...existing]));
+    } catch (err) {
+      console.warn('Could not save CPA lead to localStorage:', err);
+    }
+
+    setLoading(false);
+    setSubmitted(true);
+    setRefCode(generatedRef);
+    if (onSubmitSuccess) {
+      onSubmitSuccess(leadData);
+    }
   };
 
   const handleReset = () => {

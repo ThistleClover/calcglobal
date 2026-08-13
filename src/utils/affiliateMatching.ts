@@ -1,4 +1,5 @@
 export interface AffiliatePartner {
+  id?: string;
   name: string;
   type?: string;
   description: string;
@@ -41,8 +42,9 @@ export function isPartnerAllowedForCalc(
   return true;
 }
 
-const GLOBAL_PARTNERS: AffiliatePartner[] = [
+export const GLOBAL_PARTNERS: AffiliatePartner[] = [
   {
+    id: 'sage',
     name: 'Sage',
     type: 'software',
     url: 'https://sagegmbh.sjv.io/YVKbYR',
@@ -51,6 +53,7 @@ const GLOBAL_PARTNERS: AffiliatePartner[] = [
     cta: 'Découvrir',
   },
   {
+    id: 'shopify',
     name: 'Shopify',
     type: 'ecommerce',
     url: 'https://shopify.pxf.io/QYEAXA',
@@ -60,7 +63,17 @@ const GLOBAL_PARTNERS: AffiliatePartner[] = [
   }
 ];
 
+export function getAffiliateRedirectUrl(partnerId: string): string {
+  return `/go/${partnerId}`;
+}
+
 export function getAffiliatePartners(options: MatchingOptions): AffiliatePartner[] {
-  // Per user request, ONLY return the two links we actually have, everywhere, regardless of context.
-  return GLOBAL_PARTNERS;
+  // Per user request, ONLY return the two links we actually have, everywhere, with /go/ router URLs.
+  return GLOBAL_PARTNERS.map(partner => {
+    const partnerId = partner.id || partner.name.toLowerCase();
+    return {
+      ...partner,
+      url: getAffiliateRedirectUrl(partnerId),
+    };
+  });
 }
