@@ -4,6 +4,20 @@ import { getUITranslation } from '../utils/translations';
 import { getAffiliatePartners } from '../utils/affiliateMatching';
 import AffiliateCard from './AffiliateCard';
 import CpaLeadCapture from './CpaLeadCapture';
+import { calculate as calculateUS } from '../lib/engine/countries/us';
+import { calculate as calculateUK } from '../lib/engine/countries/uk';
+import { calculate as calculateFR } from '../lib/engine/countries/fr';
+import { calculate as calculateDE } from '../lib/engine/countries/de';
+import { calculate as calculateAU } from '../lib/engine/countries/au';
+import { getEngineKeyForCalc } from '../lib/engine/factory';
+
+const ENGINES: Record<string, (inputs: TaxInput) => TaxResult> = {
+  us: calculateUS,
+  uk: calculateUK,
+  fr: calculateFR,
+  de: calculateDE,
+  au: calculateAU,
+};
 
 interface CalcInput {
   name: string;
@@ -24,8 +38,8 @@ interface Props {
     category?: string;
     affiliate_targets?: any[];
   };
-  /** Serialized calculate function — passed as a string from build-time Astro */
-  engineCode: string;
+  /** Optional fallback serialized calculate function — passed as a string if needed */
+  engineCode?: string;
   locale: string;
   currencySymbol: string;
   countryCode?: string;
@@ -156,11 +170,26 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
     setLoading(true);
     setError(null);
     try {
-      // Engine code is serialized at build-time and evaluated client-side.
-      // This is safe because the code comes entirely from our own TypeScript source.
-      // eslint-disable-next-line no-new-func
-      const calculateFn = new Function('inputs', engineCode) as (inputs: TaxInput) => TaxResult;
-      const res = calculateFn(values as TaxInput);
+      const allInputs: TaxInput = {
+        ...values,
+        calculator_id: values.calculator_id || calc.id,
+      };
+
+      const engineKey = (countryCode || getEngineKeyForCalc(calc.id) || '').toLowerCase();
+      const directEngine = ENGINES[engineKey];
+
+      let res: TaxResult;
+      if (directEngine) {
+        res = directEngine(allInputs);
+      } else if (engineCode && engineCode.trim().length > 0) {
+        // Fallback for custom injected engine code strings (e.g. programmatic SEO pages)
+        // eslint-disable-next-line no-new-func
+        const calculateFn = new Function('inputs', engineCode) as (inputs: TaxInput) => TaxResult;
+        res = calculateFn(allInputs);
+      } else {
+        throw new Error(`No calculation engine found for ${engineKey || calc.id}`);
+      }
+
       setResult(res);
     } catch (e) {
       setError('Calculation error. Please check your inputs and try again.');
@@ -168,7 +197,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
     } finally {
       setLoading(false);
     }
-  }, [values, engineCode]);
+  }, [values, engineCode, countryCode, calc.id]);
 
   const sym = result?.currencySymbol || currencySymbol;
   const netPct = result ? Math.max(0, Math.min(100, (result.netIncome / result.grossIncome) * 100)) : 0;

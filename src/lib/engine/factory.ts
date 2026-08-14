@@ -3,17 +3,20 @@
 // This is the Strategy Pattern — each country/calculator gets its own real logic.
 
 import type { TaxInput, TaxResult } from './types';
+import { calculate as calculateUS } from './countries/us';
+import { calculate as calculateUK } from './countries/uk';
+import { calculate as calculateFR } from './countries/fr';
+import { calculate as calculateDE } from './countries/de';
+import { calculate as calculateAU } from './countries/au';
 
 type EngineFunction = (inputs: TaxInput) => TaxResult;
 
-// Lazy-load engines to keep bundle small. Each engine is only loaded if its
-// calculator page is visited.
-const engineLoaders: Record<string, () => Promise<{ calculate: EngineFunction }>> = {
-  us: () => import('./countries/us'),
-  uk: () => import('./countries/uk'),
-  fr: () => import('./countries/fr'),
-  de: () => import('./countries/de'),
-  au: () => import('./countries/au'),
+const engines: Record<string, EngineFunction> = {
+  us: calculateUS,
+  uk: calculateUK,
+  fr: calculateFR,
+  de: calculateDE,
+  au: calculateAU,
 };
 
 // Map from calculator ID slug to engine key
@@ -56,16 +59,7 @@ const calcToEngine: Record<string, string> = {
 export async function getEngine(calculatorId: string): Promise<EngineFunction | null> {
   const engineKey = calcToEngine[calculatorId];
   if (!engineKey) return null;
-  
-  const loader = engineLoaders[engineKey];
-  if (!loader) return null;
-  
-  try {
-    const module = await loader();
-    return module.calculate;
-  } catch {
-    return null;
-  }
+  return engines[engineKey] ?? null;
 }
 
 export function getEngineKeyForCalc(calculatorId: string): string | null {

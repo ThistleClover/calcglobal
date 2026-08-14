@@ -54,22 +54,6 @@ const updatedCalcData = {
 const isHighIntentCalc = calcData.category === 'tax' || calcData.category === 'business' || [
   's-corp', 'llc', 'capital-gains', 'self-employment', '1099', 'corporate', 'ir35', 'sole-trader', 'gmbh', 'dividend', 'vat', 'payroll', 'tax'
 ].some(kw => calcData.id.toLowerCase().includes(kw));
-
-// Serialize the real engine function at build time so it can be evaluated client-side
-// This avoids dynamic import() with template literals which breaks Vite's bundler
-let engineCode = 'return { grossIncome: 0, netIncome: 0, totalTax: 0, effectiveRate: 0, breakdown: [], currency: "USD", currencySymbol: "$" };';
-try {
-  const engineModule = await import(`../../lib/engine/countries/${engineKey}.ts`);
-  // Serialize the calculate function body to a string that new Function('inputs', code) can execute
-  const fnStr = engineModule.calculate.toString();
-  // Extract function body (everything between first { and last })
-  const bodyStart = fnStr.indexOf('{') + 1;
-  const bodyEnd = fnStr.lastIndexOf('}');
-  engineCode = fnStr.substring(bodyStart, bodyEnd);
-} catch (e) {
-  console.warn(`[CalcGlobal] No engine for ${engineKey}, using fallback`);
-}
-
 const flagCode = slug === 'uk' ? 'gb' : slug;
 
 // SEO Structured Data
@@ -195,10 +179,9 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <InteractiveCalculator
       client:visible
       calc={updatedCalcData}
-      engineCode={engineCode}
       locale={meta.locale}
       currencySymbol={meta.currencySymbol}
-      countryCode={slug}
+      countryCode={engineKey}
     />
 
     <!-- Strategic Lead Capture section for high-intent calculators -->
