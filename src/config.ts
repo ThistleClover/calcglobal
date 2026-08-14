@@ -3,14 +3,31 @@
 // Other countries exist in the DB but won't generate pages until they have
 // real math engines and full content.
 
-export const ACTIVE_COUNTRIES = ['us', 'uk', 'fr', 'de', 'au'] as const;
+export const ACTIVE_COUNTRIES = [
+  'us',
+  'uk',
+  'fr',
+  'de',
+  'au',
+  'ca',
+  'es',
+  'it',
+  'in',
+  'jp',
+  'br',
+  'mx',
+  'ae',
+  'sg',
+  'ch',
+] as const;
+
 export type ActiveCountryCode = typeof ACTIVE_COUNTRIES[number];
 
 // Map of country code -> calculator ID -> engine module key
 export const ENGINE_MAP: Record<string, Record<string, string>> = {
   us: {
     'us-1099-self-employment-tax-calculator': 'us',
-    's-corp-vs-llc-tax-savings-calculator': 'us_scorp',
+    's-corp-vs-llc-tax-savings-calculator': 'us',
     'w2-salary-paycheck-take-home-calculator': 'us',
     'us-home-sale-net-proceeds-capital-gains-calculator': 'us',
     'us-small-business-lease-break-even-calculator': 'us',
@@ -46,6 +63,76 @@ export const ENGINE_MAP: Record<string, Record<string, string>> = {
     'superannuation-calculator': 'au',
     'stamp-duty-calculator': 'au',
   },
+  ca: {
+    'sole-proprietor-tax-cpp-qpp-calculator': 'ca',
+    'land-transfer-tax-first-time-buyer-calculator': 'ca',
+    'severance-pay-statutory-notice-calculator': 'ca',
+    'ccpc-corporate-tax-dividend-vs-salary-calculator': 'ca',
+    'gst-hst-qst-remittance-quick-method-calculator': 'ca',
+  },
+  es: {
+    'sueldo-neto-espana': 'es',
+    'cuota-autonomos-ingresos-reales': 'es',
+    'gastos-compra-vivienda-itp': 'es',
+    'finiquito-indemnizacion-despido': 'es',
+    'iva-irpf-trimestral-autonomos': 'es',
+  },
+  it: {
+    'calcolo-stipendio-netto-ral': 'it',
+    'calcolo-partita-iva-forfettario': 'it',
+    'calcolo-tfr-buona-uscita': 'it',
+    'calcolo-tasse-acquisto-casa-imposta-registro': 'it',
+    'calcolo-fattura-elettronica-ritenuta-acconto': 'it',
+  },
+  in: {
+    'income-tax-new-vs-old-regime-india': 'in',
+    'gratuity-act-calculation-india': 'in',
+    'section-44ada-44ad-presumptive-taxation-india': 'in',
+    'stamp-duty-property-registration-tds-194ia-india': 'in',
+    'gst-composition-vs-regular-tax-calculator-india': 'in',
+  },
+  jp: {
+    'kojin-jigyo-tax-calculator': 'jp',
+    'furusato-nozei-calculator': 'jp',
+    'take-home-pay-calculator': 'jp',
+    'real-estate-tax-registration-calculator': 'jp',
+    'inheritance-gift-tax-calculator': 'jp',
+  },
+  br: {
+    'calculadora-rescisao-clt-br': 'br',
+    'calculadora-fator-r-simples-nacional': 'br',
+    'calculadora-clt-vs-pj-br': 'br',
+    'calculadora-irrf-carne-leao-br': 'br',
+    'calculadora-itbi-escritura-cartorio-br': 'br',
+  },
+  mx: {
+    'sueldo-neto-mexico': 'mx',
+    'resico-isr-iva-calculator': 'mx',
+    'finiquito-liquidacion-despido-lft': 'mx',
+    'gastos-escrituracion-isai-hipoteca': 'mx',
+    'ptu-participacion-utilidades-lft': 'mx',
+  },
+  ae: {
+    'uae-end-of-service-gratuity': 'ae',
+    'uae-corporate-tax-small-business-relief': 'ae',
+    'dubai-dld-property-transfer-mortgage-calculator': 'ae',
+    'uae-vat-net-payable-calculator': 'ae',
+    'uae-gpssa-pension-payroll-calculator': 'ae',
+  },
+  sg: {
+    'sg-take-home-pay-cpf-calculator': 'sg',
+    'sg-stamp-duty-absd-calculator': 'sg',
+    'sg-corporate-tax-sute-calculator': 'sg',
+    'sg-self-employed-medisave-tax-calculator': 'sg',
+    'sg-tenancy-stamp-duty-rental-tax-calculator': 'sg',
+  },
+  ch: {
+    'gross-to-net-salary-switzerland': 'ch',
+    'pillar-3a-tax-saving-switzerland': 'ch',
+    'einzelfirma-vs-gmbh-switzerland': 'ch',
+    'real-estate-transfer-mortgage-switzerland': 'ch',
+    'eigenmietwert-rental-value-switzerland': 'ch',
+  },
 };
 
 export interface CountryMetadata {
@@ -76,8 +163,8 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
       'IRS 2026 Federal Tax Brackets & Standard Deductions',
       '15.3% Self-Employment Tax & SE Tax Deduction',
       'Single, Married Joint, Head of Household & State Tax (CA, NY, TX, FL, IL, WA)',
-      '1099, W-2, S-Corp Corporate Distributions & Capital Gains'
-    ]
+      '1099, W-2, S-Corp Corporate Distributions & Capital Gains',
+    ],
   },
   uk: {
     lang: 'en',
@@ -93,8 +180,8 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
       'HMRC 2026/27 Income Tax, Personal Allowance (£12,570), & NIC Thresholds',
       'IR35 Inside vs Outside PSC Take-Home Pay & Umbrella Fee Calculations',
       'Stamp Duty Land Tax (SDLT), LBTT (Scotland) & LTT (Wales) Tiers',
-      'Director Salary vs Dividend Tax Optimization & Statutory Redundancy Pay'
-    ]
+      'Director Salary vs Dividend Tax Optimization & Statutory Redundancy Pay',
+    ],
   },
   fr: {
     lang: 'fr',
@@ -110,8 +197,8 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
       'Cotisations sociales URSSAF 2026 & Versements libératoires de l\'impôt',
       'Conversion Salaire Brut / Net & Coût global employeur avec charges patronales',
       'Frais de Notaire immobilier (Émoluments, droits d\'enregistrement & débours)',
-      'Calcul des indemnités légales de rupture conventionnelle et licenciement'
-    ]
+      'Calcul des indemnités légales de rupture conventionnelle et licenciement',
+    ],
   },
   de: {
     lang: 'de',
@@ -127,8 +214,8 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
       'Brutto-Netto-Gehaltsrechner mit Kranken-, Renten- und Pflegeversicherung 2026',
       'Gewerbesteuer-Rechner mit Hebesätzen und § 35 EStG Anrechnung',
       'Umsatzsteuer 19% / 7% Vorsteuer und Ist-Versteuerung',
-      'Einkommensteuer für Freiberufler & Kurzarbeitergeld (KUG 60%/67%)'
-    ]
+      'Einkommensteuer für Freiberufler & Kurzarbeitergeld (KUG 60%/67%)',
+    ],
   },
   au: {
     lang: 'en',
@@ -144,7 +231,177 @@ export const COUNTRY_METADATA: Record<string, CountryMetadata> = {
       'ATO 2026/27 Individual Tax Brackets & 2% Medicare Levy',
       'HECS/HELP Income-Based Compulsory Repayment Rates',
       'Sole Trader Business Net Tax & GST Accounting',
-      'Superannuation Guarantee (11.5%) & State Stamp Duty Tiers'
-    ]
-  }
+      'Superannuation Guarantee (11.5%) & State Stamp Duty Tiers',
+    ],
+  },
+  ca: {
+    lang: 'en',
+    locale: 'en-CA',
+    currencySymbol: '$',
+    title: 'Canada Tax Calculators 2026 | CRA Sole Proprietor, CPP & Real Estate Tools',
+    h1: 'Canada Tax, Sole Proprietor & Payroll Calculators (CRA 2026 Rules)',
+    description: 'Free Canadian tax calculators verified against CRA 2026 guidelines. Calculate sole proprietorship tax, CPP/QPP contributions, Land Transfer Tax (LTT/PTT), severance notice, and CCPC integration.',
+    taxAuthority: 'Canada Revenue Agency (CRA) & Revenu Québec',
+    authorityAbbr: 'CRA',
+    intro: 'All Canada financial calculators incorporate official 2026 CRA federal tax brackets, provincial tax schedules (ON, BC, AB, QC), CPP Tier 1 and Tier 2 enhanced contribution ceilings ($71,300 YMPE / $81,200 YAMPE), and Small Business Deduction rates.',
+    features: [
+      'CRA 2026 Federal & Provincial Tax Brackets (ON, BC, AB, QC, etc.)',
+      'CPP/QPP Enhanced Tier 1 & Tier 2 Self-Employed Pension Contributions',
+      'Provincial & Municipal Land Transfer Tax (LTT, PTT, Welcoming Tax) with FTHB Rebates',
+      'CCPC Small Business Deduction & Dividend Integration Optimization',
+    ],
+  },
+  es: {
+    lang: 'es',
+    locale: 'es-ES',
+    currencySymbol: '€',
+    title: 'Calculadoras Fiscales y Laborales España 2026 | IRPF, Nómina y Autónomos',
+    h1: 'Calculadoras Fiscales y Laborales España (Reglas AEAT 2026)',
+    description: 'Calculadoras gratuitas y precisas adaptadas a las normativas de la Agencia Tributaria y Seguridad Social para 2026. Calcula tu sueldo neto, cuota de autónomos por ingresos reales, gastos de hipoteca e ITP, e indemnización por despido.',
+    taxAuthority: 'Agencia Estatal de Administración Tributaria (AEAT) & Seguridad Social',
+    authorityAbbr: 'AEAT / Seg. Social',
+    intro: 'Nuestras calculadoras para España integran la normativa fiscal de la AEAT para 2026, el sistema de cotización de autónomos por ingresos reales (RETA), la cotización del MEI y los tramos del IRPF autonómicos.',
+    features: [
+      'Cálculo de Sueldo Neto con tramos IRPF 2026, reducción por trabajo y MEI (6,47%)',
+      'Simulador de Cuotas RETA por Rendimientos Reales y Tarifa Plana 80 €',
+      'Gastos de Compra de Vivienda (ITP por CCAA, Notaría, Registro y AJD)',
+      'Indemnizaciones por Despido (33/20 días) y Liquidaciones del Estatuto de los Trabajadores',
+    ],
+  },
+  it: {
+    lang: 'it',
+    locale: 'it-IT',
+    currencySymbol: '€',
+    title: 'Calcolatori Fiscali e Stipendio Italia 2026 | IRPEF, Partita IVA e TFR',
+    h1: 'Calcolatori Fiscali e Stipendio Italia (Regole Agenzia delle Entrate 2026)',
+    description: 'Calcolatori gratuiti e conformi alle norme dell\'Agenzia delle Entrate e dell\'INPS per il 2026. Calcola lo stipendio netto da RAL (IRPEF a 3 scaglioni), regime forfettario 5%/15%, TFR e imposte acquisto prima casa.',
+    taxAuthority: 'Agenzia delle Entrate & INPS',
+    authorityAbbr: 'AdE / INPS',
+    intro: 'Tutti i calcolatori italiani incorporano la nuova riforma IRPEF a tre scaglioni (23%, 35%, 43%), le aliquote Gestione Separata INPS 2026, le detrazioni per lavoro dipendente e la tassazione agevolata per Partite IVA Forfettarie.',
+    features: [
+      'Calcolo Stipendio Netto da RAL con riforma IRPEF a 3 scaglioni e cuneo fiscale',
+      'Regime Forfettario Partita IVA (imposta sostitutiva 5%/15% e coefficienti ATECO)',
+      'Simulatore di liquidazione TFR in azienda vs Fondo Pensione integrativo',
+      'Imposta di Registro Prima Casa (2% / 9%), Ipotecaria, Catastale e regola prezzo-valore',
+    ],
+  },
+  in: {
+    lang: 'en',
+    locale: 'en-IN',
+    currencySymbol: '₹',
+    title: 'India Tax & Salary Calculators FY 2025-26 | Income Tax, Gratuity & 44ADA',
+    h1: 'India Income Tax, Gratuity & Business Calculators (FY 2025-26 / AY 2026-27)',
+    description: 'Accurate financial calculators for India. Compare New vs Old Tax Regime, calculate Payment of Gratuity Act gratuity, Section 44ADA presumptive tax, property stamp duty TDS 194-IA, and GST composition schemes.',
+    taxAuthority: 'Income Tax Department of India & GST Council',
+    authorityAbbr: 'ITD / GST',
+    intro: 'Engineered specifically for the Indian financial year 2025-26 (Assessment Year 2026-27), featuring the revised ₹75,000 standard deduction, Section 87A tax rebates up to ₹7,75,000, Section 44ADA thresholds, and Gratuity Act 1972 statutory rules.',
+    features: [
+      'New vs Old Tax Regime comparison with ₹75,000 Standard Deduction & 87A Rebate',
+      'Payment of Gratuity Act 1972 calculations (Formula: 15 × Basic × Tenure ÷ 26)',
+      'Section 44ADA / 44AD Presumptive Taxation for Freelancers, Doctors & Consultants',
+      'State Stamp Duty, Registration Fees & 1% TDS under Section 194-IA',
+    ],
+  },
+  jp: {
+    lang: 'ja',
+    locale: 'ja-JP',
+    currencySymbol: '¥',
+    title: '日本の税金・給与手取り計算機 2026 | 所得税・ふるさと納税・個人事業主',
+    h1: '日本の税金・給与手取り・確定申告シミュレーター（国税庁 2026年対応）',
+    description: '国税庁および総務省の最新税制に対応した無料の高精度計算ツール。給与手取り、個人事業主の青色申告税金、ふるさと納税上限額、不動産取得税、相続税・贈与税を正確にシミュレーション。',
+    taxAuthority: '国税庁 (National Tax Agency) & 各自治体',
+    authorityAbbr: '国税庁 / 自治体',
+    intro: '2026年（令和8年）の所得税率、給与所得控除、基礎控除（48万円）、社会保険料（健康保険・厚生年金・介護保険・雇用保険）、住民税（一律10%）の公式計算式に基づき構築されています。',
+    features: [
+      '給与手取り計算（健康保険、厚生年金、雇用保険、所得税、住民税の完全内訳）',
+      '個人事業主の青色申告特別控除（65万円）＆所得税・住民税・個人事業税シミュレーション',
+      'ふるさと納税控除上限額シミュレーター（2,000円の自己負担で最大化）',
+      '不動産取得税・登録免許税・仲介手数料および相続税・配偶者控除計算',
+    ],
+  },
+  br: {
+    lang: 'pt',
+    locale: 'pt-BR',
+    currencySymbol: 'R$ ',
+    title: 'Calculadoras Trabalhistas e Fiscais Brasil 2026 | Rescisão CLT, Simples e IRRF',
+    h1: 'Calculadoras Financeiras e Trabalhistas Brasil (Regras RFB e CLT 2026)',
+    description: 'Calculadoras gratuitas em conformidade com a CLT e Receita Federal do Brasil. Calcule rescisão de contrato de trabalho CLT, Fator R do Simples Nacional, comparativo CLT vs PJ, IRRF Carnê-Leão e ITBI com cartório.',
+    taxAuthority: 'Receita Federal do Brasil (RFB) & Ministério do Trabalho',
+    authorityAbbr: 'RFB / CLT',
+    intro: 'Ferramentas desenvolvidas conforme a legislação trabalhista brasileira (CLT) e tabelas progressivas 2025/2026 da Receita Federal, incluindo o novo desconto simplificado do IRPF (R$ 564,80), teto do INSS e regras do Simples Nacional.',
+    features: [
+      'Cálculo de Rescisão Trabalhista CLT (Aviso prévio indenizado, multa de 40% FGTS, 13º e férias)',
+      'Simulador de Fator R do Simples Nacional (Transição do Anexo V 15,5% para o Anexo III 6,0%)',
+      'Comparador Completo CLT vs PJ com benefícios, FGTS, férias e impostos',
+      'Carnê-Leão e IRRF Autônomo com deduções legais e desconto simplificado',
+    ],
+  },
+  mx: {
+    lang: 'es',
+    locale: 'es-MX',
+    currencySymbol: '$',
+    title: 'Calculadoras Fiscales y Laborales México 2026 | Sueldo Neto, RESICO y Liquidación',
+    h1: 'Calculadoras Fiscales y de Nómina México (Reglas SAT y LFT 2026)',
+    description: 'Calculadoras financieras gratuitas y precisas para México según el SAT, IMSS y LFT 2026. Calcula tu sueldo neto, impuestos RESICO e IVA, finiquito y liquidación por despido, gastos notariales ISAI y reparto de utilidades (PTU).',
+    taxAuthority: 'Servicio de Administración Tributaria (SAT) & IMSS',
+    authorityAbbr: 'SAT / IMSS',
+    intro: 'Calibradas con la tarifa del Art. 96 de la Ley del ISR 2026, cuotas obrero-patronales del IMSS, régimen RESICO con tasas del 1.0% al 2.5%, y los topes de 3 meses de la reforma de PTU de la Ley Federal del Trabajo.',
+    features: [
+      'Cálculo de Sueldo Neto Quincenal y Mensual con retención ISR y cuotas obreras IMSS',
+      'Simulador de Impuestos RESICO Persona Física (Tasas del 1% al 2.5%) y cálculo de IVA',
+      'Finiquito y Liquidación por Despido Injustificado (3 meses de indemnización constitucional y 20 días por año)',
+      'Reparto de Utilidades PTU con topes legales de 3 meses de salario',
+    ],
+  },
+  ae: {
+    lang: 'en',
+    locale: 'en-AE',
+    currencySymbol: 'AED ',
+    title: 'UAE Tax & Gratuity Calculators 2026 | End of Service, Corporate Tax & DLD',
+    h1: 'UAE Financial, Gratuity & Corporate Tax Calculators (2026 Laws)',
+    description: 'Free UAE financial calculators compliant with Federal Decree-Law No. 33 of 2021 (Labour Law) and Corporate Tax Law No. 47 of 2022. Calculate End of Service Gratuity, 0%/9% Corporate Tax with Small Business Relief, Dubai DLD property fees, VAT, and GPSSA pension.',
+    taxAuthority: 'Federal Tax Authority (FTA) & Ministry of Human Resources (MOHRE)',
+    authorityAbbr: 'FTA / MOHRE',
+    intro: 'Fully updated for 2026 UAE regulations, featuring the unified Labour Law gratuity formula, 9% Corporate Tax with AED 3,000,000 Small Business Relief (SBR), Dubai Land Department 4% property transfer fees, and GPSSA Decree-Law 57/2023.',
+    features: [
+      'UAE End of Service Gratuity calculation under Federal Decree-Law No. 33 of 2021',
+      'Corporate Tax & Small Business Relief (0% on revenue ≤ AED 3M / profit ≤ AED 375k)',
+      'Dubai DLD Property Transfer Fees (4%), Mortgage Registration & Trustee Fees',
+      'GPSSA National Pension Contributions & 5% VAT Net Tax Payable',
+    ],
+  },
+  sg: {
+    lang: 'en',
+    locale: 'en-SG',
+    currencySymbol: 'S$',
+    title: 'Singapore Tax Calculators YA 2026 | IRAS Take-Home Pay, CPF & ABSD Tools',
+    h1: 'Singapore Tax, CPF & Stamp Duty Calculators (IRAS YA 2026 Rules)',
+    description: 'Official Singapore tax calculators compliant with IRAS and CPF Board guidelines. Calculate take-home pay with the $8,000 CPF OW ceiling, Buyer Stamp Duty (BSD/ABSD), Corporate Tax SUTE exemptions, freelancer MediSave, and tenancy stamp duties.',
+    taxAuthority: 'Inland Revenue Authority of Singapore (IRAS) & CPF Board',
+    authorityAbbr: 'IRAS / CPF',
+    intro: 'Precision calculators for Year of Assessment (YA) 2026, incorporating the S$ 8,000 monthly CPF Ordinary Wage ceiling, progressive IRAS personal income tax rates (0% to 24%), residential ABSD property tiers, and Start-Up Tax Exemption (SUTE).',
+    features: [
+      'Take-Home Pay with 2026 CPF OW Ceiling (S$ 8,000) & IRAS Progressive Tax Tiers',
+      'Buyer’s Stamp Duty (BSD) & Additional Buyer’s Stamp Duty (ABSD) for Citizens, PRs & Foreigners',
+      'Corporate Income Tax with Start-Up Tax Exemption (SUTE - up to S$ 125,000 exempt)',
+      'Freelancer & Self-Employed MediSave Mandatory Contributions & Tenancy Stamp Duty',
+    ],
+  },
+  ch: {
+    lang: 'de',
+    locale: 'de-CH',
+    currencySymbol: 'CHF ',
+    title: 'Steuerrechner Schweiz 2026 | Brutto-Netto, Säule 3a, GmbH & Tragbarkeit',
+    h1: 'Steuerrechner & Lohnabrechnung Schweiz (ESTV / Steuerämter 2026)',
+    description: 'Präzise Steuer- und Finanzrechner für alle 26 Schweizer Kantone (ZH, BE, GE, VD, ZG, BS usw.). Berechnen Sie Ihren Nettolohn mit AHV/ALV/BVG, Säule 3a Steuerersparnis, Einzelfirma vs. GmbH, FINMA Hypotheken-Tragbarkeit und Eigenmietwert.',
+    taxAuthority: 'Eidgenössische Steuerverwaltung (ESTV) & Kantonale Steuerämter',
+    authorityAbbr: 'ESTV / AFC',
+    intro: 'Kalibriert für das Steuerjahr 2026 mit den offiziellen Sozialabzügen (AHV 5,3%, ALV 1,1%, BVG-Koordinationsabzug CHF 25\'725), Säule-3a-Höchstbeträgen (CHF 7\'258 / CHF 36\'288), kantonalen Steuerfüssen und FINMA-Tragbarkeitsregeln.',
+    features: [
+      'Brutto-Netto-Lohnrechner Schweiz mit AHV/IV/EO, ALV, NBUV, KTG und BVG 2. Säule',
+      'Säule 3a Steuerersparnis-Rechner nach Kanton und Grenzsteuersatz',
+      'Einzelfirma vs. GmbH Vergleichsrechner mit Teilbesteuerung der Dividenden (70%)',
+      'FINMA Hypotheken-Tragbarkeitsprüfung (5% kalkulatorischer Zins) & Eigenmietwert-Rechner',
+    ],
+  },
 };

@@ -9,6 +9,16 @@ import { calculate as calculateUK } from '../lib/engine/countries/uk';
 import { calculate as calculateFR } from '../lib/engine/countries/fr';
 import { calculate as calculateDE } from '../lib/engine/countries/de';
 import { calculate as calculateAU } from '../lib/engine/countries/au';
+import { calculate as calculateCA } from '../lib/engine/countries/ca';
+import { calculate as calculateES } from '../lib/engine/countries/es';
+import { calculate as calculateIT } from '../lib/engine/countries/it';
+import { calculate as calculateIN } from '../lib/engine/countries/in';
+import { calculate as calculateJP } from '../lib/engine/countries/jp';
+import { calculate as calculateBR } from '../lib/engine/countries/br';
+import { calculate as calculateMX } from '../lib/engine/countries/mx';
+import { calculate as calculateAE } from '../lib/engine/countries/ae';
+import { calculate as calculateSG } from '../lib/engine/countries/sg';
+import { calculate as calculateCH } from '../lib/engine/countries/ch';
 import { getEngineKeyForCalc } from '../lib/engine/factory';
 
 const ENGINES: Record<string, (inputs: TaxInput) => TaxResult> = {
@@ -17,6 +27,16 @@ const ENGINES: Record<string, (inputs: TaxInput) => TaxResult> = {
   fr: calculateFR,
   de: calculateDE,
   au: calculateAU,
+  ca: calculateCA,
+  es: calculateES,
+  it: calculateIT,
+  in: calculateIN,
+  jp: calculateJP,
+  br: calculateBR,
+  mx: calculateMX,
+  ae: calculateAE,
+  sg: calculateSG,
+  ch: calculateCH,
 };
 
 interface CalcInput {

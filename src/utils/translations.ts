@@ -17,6 +17,42 @@ export const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
     'TAX': 'Steuern',
     'VEHICLE': 'Fahrzeuge & Mobilität'
   },
+  'es': {
+    'BUSINESS': 'Empresa y Autónomos',
+    'EMPLOYMENT': 'Empleo y Nómina',
+    'REAL_ESTATE': 'Inmobiliario y Vivienda',
+    'LEGAL': 'Legal y Laboral',
+    'FINANCE': 'Finanzas e Inversión',
+    'TAX': 'Impuestos y Fiscalidad',
+    'VEHICLE': 'Vehículos y Movilidad'
+  },
+  'it': {
+    'BUSINESS': 'Aziende e Partita IVA',
+    'EMPLOYMENT': 'Lavoro e Stipendio',
+    'REAL_ESTATE': 'Immobiliare e Casa',
+    'LEGAL': 'Legale e Lavoro',
+    'FINANCE': 'Finanza e Investimenti',
+    'TAX': 'Tasse e Fisco',
+    'VEHICLE': 'Veicoli e Mobilità'
+  },
+  'pt': {
+    'BUSINESS': 'Empresas e PJ',
+    'EMPLOYMENT': 'Trabalho e CLT',
+    'REAL_ESTATE': 'Imóveis e Cartório',
+    'LEGAL': 'Jurídico e Trabalhista',
+    'FINANCE': 'Finanças e Investimentos',
+    'TAX': 'Impostos e Tributos',
+    'VEHICLE': 'Veículos e Mobilidade'
+  },
+  'ja': {
+    'BUSINESS': '法人・個人事業主',
+    'EMPLOYMENT': '給与・雇用・社会保険',
+    'REAL_ESTATE': '不動産・住宅',
+    'LEGAL': '法律・労働',
+    'FINANCE': '金融・資産運用',
+    'TAX': '税金・確定申告',
+    'VEHICLE': '自動車・モビリティ'
+  },
   'en': {
     'BUSINESS': 'Business & Self-Employed',
     'EMPLOYMENT': 'Employment & HR',
@@ -28,16 +64,17 @@ export const CATEGORY_TRANSLATIONS: Record<string, Record<string, string>> = {
   }
 };
 
-export function getTranslatedCategory(categoryKey: string, langCode: string): string {
+export function getTranslatedCategory(categoryKey: string, langCode: string = 'en'): string {
   if (!categoryKey) return '';
-  const baseLang = langCode.split('-')[0].toLowerCase();
+  const baseLang = (langCode || 'en').split('-')[0].toLowerCase();
+  const key = (categoryKey || '').toUpperCase();
   
-  if (CATEGORY_TRANSLATIONS[baseLang] && CATEGORY_TRANSLATIONS[baseLang][categoryKey]) {
-    return CATEGORY_TRANSLATIONS[baseLang][categoryKey];
+  if (CATEGORY_TRANSLATIONS[baseLang] && CATEGORY_TRANSLATIONS[baseLang][key]) {
+    return CATEGORY_TRANSLATIONS[baseLang][key];
   }
   
-  if (CATEGORY_TRANSLATIONS['en'][categoryKey]) {
-    return CATEGORY_TRANSLATIONS['en'][categoryKey];
+  if (CATEGORY_TRANSLATIONS['en'] && CATEGORY_TRANSLATIONS['en'][key]) {
+    return CATEGORY_TRANSLATIONS['en'][key];
   }
   
   return categoryKey.replace(/_/g, ' ').replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -84,6 +121,86 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'NET_INCOME': 'Nettoeinkommen',
     'TOTAL_TAX': 'Gesamtsteuer'
   },
+  'es': {
+    'RECOMMENDED_TOOLS': 'Herramientas recomendadas',
+    'GET_STARTED': 'Comenzar →',
+    'FAQ_TITLE': 'Preguntas Frecuentes',
+    'DISCLAIMER_TEXT': 'Aviso legal: Los resultados son estimaciones basadas en la normativa fiscal de 2026 y se facilitan solo con fines informativos. Su situación individual puede afectar a sus impuestos reales. Consulte siempre a un asesor fiscal o contable cualificado.',
+    'AFFILIATE_DISCLOSURE': 'Algunos enlaces son de afiliados. Podemos recibir una comisión sin coste adicional para usted.',
+    'ENTER_DETAILS': 'Introduzca sus datos',
+    'CALCULATE': 'Calcular',
+    'CALCULATING': 'Calculando...',
+    'ENTER_DETAILS_CALCULATE': 'Introduzca sus datos y haga clic en Calcular',
+    'ESTIMATED_NET': 'Ingreso Neto Estimado',
+    'EFFECTIVE_RATE': 'Tipo impositivo efectivo:',
+    'TAX_BREAKDOWN': 'Desglose de Impuestos',
+    'QUARTERLY_PAYMENT': 'Pago Fraccionado Trimestral Estimado',
+    'METHODOLOGY': 'Metodología de cálculo',
+    'QUARTERLY_DUE': 'Vencimiento: 20 Abr · 20 Jul · 20 Oct · 30 Ene',
+    'TAKE_HOME': 'Neto en Mano',
+    'NET_INCOME': 'Ingreso Neto',
+    'TOTAL_TAX': 'Total Impuestos'
+  },
+  'it': {
+    'RECOMMENDED_TOOLS': 'Strumenti consigliati',
+    'GET_STARTED': 'Inizia ora →',
+    'FAQ_TITLE': 'Domande Frequenti (FAQ)',
+    'DISCLAIMER_TEXT': 'Disclaimer: I risultati sono stime basate sulle aliquote e normative fiscali standard per il 2026 e hanno scopo puramente informativo. La tua situazione personale può variare l\'imposta effettiva. Consulta sempre un commercialista qualificato.',
+    'AFFILIATE_DISCLOSURE': 'Alcuni link sono partnership di affiliazione. Potremmo ricevere una commissione senza alcun costo aggiuntivo per te.',
+    'ENTER_DETAILS': 'Inserisci i tuoi dati',
+    'CALCULATE': 'Calcola',
+    'CALCULATING': 'Calcolo in corso...',
+    'ENTER_DETAILS_CALCULATE': 'Inserisci i tuoi dati e clicca su Calcola',
+    'ESTIMATED_NET': 'Reddito Netto Stimato',
+    'EFFECTIVE_RATE': 'Aliquota effettiva totale:',
+    'TAX_BREAKDOWN': 'Dettaglio Imposte e Contributi',
+    'QUARTERLY_PAYMENT': 'Acconto / Versamento Periodico Stimato',
+    'METHODOLOGY': 'Metodologia di calcolo',
+    'QUARTERLY_DUE': 'Scadenze F24: 16 del mese / Giugno · Novembre',
+    'TAKE_HOME': 'Netto in Busta / Tasca',
+    'NET_INCOME': 'Reddito Netto',
+    'TOTAL_TAX': 'Totale Fisco e INPS'
+  },
+  'pt': {
+    'RECOMMENDED_TOOLS': 'Ferramentas recomendadas',
+    'GET_STARTED': 'Acessar →',
+    'FAQ_TITLE': 'Perguntas Frequentes (FAQ)',
+    'DISCLAIMER_TEXT': 'Aviso legal: Os resultados são estimativas com base na legislação trabalhista e fiscal de 2026 para fins informativos. Fatores individuais podem alterar o cálculo real. Consulte sempre um contador ou advogado trabalhista.',
+    'AFFILIATE_DISCLOSURE': 'Alguns links são de parceiros afiliados. Podemos receber comissão sem nenhum custo extra para você.',
+    'ENTER_DETAILS': 'Informe seus dados',
+    'CALCULATE': 'Calcular',
+    'CALCULATING': 'Calculando...',
+    'ENTER_DETAILS_CALCULATE': 'Preencha os campos e clique em Calcular',
+    'ESTIMATED_NET': 'Rendimento Líquido Estimado',
+    'EFFECTIVE_RATE': 'Alíquota efetiva de tributação:',
+    'TAX_BREAKDOWN': 'Detalhamento de Descontos e Impostos',
+    'QUARTERLY_PAYMENT': 'Estimativa de Pagamento Periódico',
+    'METHODOLOGY': 'Metodologia de cálculo',
+    'QUARTERLY_DUE': 'Vencimentos DARF / DAS: Todo dia 20',
+    'TAKE_HOME': 'Líquido a Receber',
+    'NET_INCOME': 'Rendimento Líquido',
+    'TOTAL_TAX': 'Total de Deduções e Impostos'
+  },
+  'ja': {
+    'RECOMMENDED_TOOLS': 'おすすめのシミュレーター',
+    'GET_STARTED': '計算してみる →',
+    'FAQ_TITLE': 'よくあるご質問（FAQ）',
+    'DISCLAIMER_TEXT': '免責事項：計算結果は2026年（令和8年）の標準的な税法・社会保険料率に基づく概算シミュレーションであり、情報提供のみを目的としています。個別の控除条件や自治体により実際の納税額は異なる場合があります。正確な税務判断については税理士または所轄の税務署へご相談ください。',
+    'AFFILIATE_DISCLOSURE': '一部のリンクにはアフィリエイトパートナーシップが含まれています。ユーザー様に追加費用が発生することなく紹介手数料を受け取る場合があります。',
+    'ENTER_DETAILS': '条件を入力してください',
+    'CALCULATE': '計算する',
+    'CALCULATING': '計算中...',
+    'ENTER_DETAILS_CALCULATE': '数値を入力して「計算する」をクリックしてください',
+    'ESTIMATED_NET': '手取り概算額',
+    'EFFECTIVE_RATE': '実質負担率：',
+    'TAX_BREAKDOWN': '税金・社会保険料の内訳',
+    'QUARTERLY_PAYMENT': '予定納税・四半期目安額',
+    'METHODOLOGY': '計算の根拠・計算式',
+    'QUARTERLY_DUE': '納期目安：7月・11月・翌年3月',
+    'TAKE_HOME': '手取り額',
+    'NET_INCOME': '純所得・手取り',
+    'TOTAL_TAX': '税金・社会保険料合計'
+  },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools',
     'GET_STARTED': 'Get Started →',
@@ -106,16 +223,17 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
   }
 };
 
-export function getUITranslation(key: string, langCode: string): string {
+export function getUITranslation(key: string, langCode: string = 'en'): string {
   if (!key) return '';
-  const baseLang = langCode.split('-')[0].toLowerCase();
+  const baseLang = (langCode || 'en').split('-')[0].toLowerCase();
+  const upperKey = (key || '').toUpperCase();
   
-  if (UI_TRANSLATIONS[baseLang] && UI_TRANSLATIONS[baseLang][key]) {
-    return UI_TRANSLATIONS[baseLang][key];
+  if (UI_TRANSLATIONS[baseLang] && UI_TRANSLATIONS[baseLang][upperKey]) {
+    return UI_TRANSLATIONS[baseLang][upperKey];
   }
   
-  if (UI_TRANSLATIONS['en'][key]) {
-    return UI_TRANSLATIONS['en'][key];
+  if (UI_TRANSLATIONS['en'] && UI_TRANSLATIONS['en'][upperKey]) {
+    return UI_TRANSLATIONS['en'][upperKey];
   }
   
   return key;

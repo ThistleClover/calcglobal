@@ -11,7 +11,7 @@ const guidesCollection = defineCollection({
     author: z.string().default('CalcGlobal Editorial Team'),
     authorRole: z.string().default('Financial & Tax Specialist'),
     category: z.string(),
-    country: z.enum(['fr', 'us', 'uk', 'de', 'au', 'global']),
+    country: z.enum(['fr', 'us', 'uk', 'de', 'au', 'ca', 'es', 'it', 'in', 'jp', 'br', 'mx', 'ae', 'sg', 'ch', 'global']),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
     relatedCalculators: z.array(z.string()).default([]),

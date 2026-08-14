@@ -45,10 +45,10 @@ const orgSchema = {
     "@type": "ContactPoint",
     "contactType": "customer support",
     "url": "https://calcglobal.org/contact",
-    "availableLanguage": ["English", "French", "German"]
+    "availableLanguage": ["English", "French", "German", "Spanish", "Italian", "Portuguese", "Japanese", "Hindi", "Arabic"]
   },
-  "description": "Professional tax and financial calculators for the US, UK, France, Germany, and Australia. Verified against 2026 official authority rates.",
-  "areaServed": ["US", "GB", "FR", "DE", "AU"]
+  "description": "Professional tax and financial calculators for 15 countries worldwide. Verified against 2026 official tax authority rates.",
+  "areaServed": ["US", "GB", "FR", "DE", "AU", "CA", "ES", "IT", "IN", "JP", "BR", "MX", "AE", "SG", "CH"]
 };
 
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
@@ -56,7 +56,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 
 <Layout 
   title="CalcGlobal | Free Localized Tax & Financial Calculators" 
-  description="Access hyper-accurate, localized tax, payroll, and financial calculators for the US, UK, France, Germany, Australia, and more. Updated for the 2026 tax year."
+  description="Access hyper-accurate, localized tax, payroll, and financial calculators across 15 countries including the US, UK, France, Germany, Canada, Australia, Spain, Italy, India, Japan, Brazil, Mexico, UAE, Singapore, and Switzerland. Updated for the 2026 tax year."
   keywords="tax calculator, payroll calculator, income tax, IRS, HMRC, URSSAF, ATO, Finanzamt, 2026"
   structuredData={orgSchema}
 >
@@ -83,7 +83,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       </h1>
       
       <p class="text-base md:text-lg text-slate-400 max-w-2xl mx-auto mb-7 leading-relaxed font-medium">
-        Built by tax professionals. Verified against 2026 official authority rates for the US, UK, France, Germany, and Australia.
+        Built by tax professionals. Verified against 2026 official authority rates across 15 global tax jurisdictions.
       </p>
       
       <!-- Trust Signals Summary -->
@@ -94,18 +94,18 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
         </div>
         <div class="hidden sm:block w-px bg-slate-800"></div>
         <div class="flex flex-col items-center">
-          <span class="text-2xl font-bold text-white mb-1">{totalCalculators}</span>
+          <span class="text-2xl font-bold text-white mb-1">{totalCalculators}+</span>
           <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Calculators</span>
         </div>
         <div class="hidden sm:block w-px bg-slate-800"></div>
         <div class="flex flex-col items-center">
           <span class="text-2xl font-bold text-white mb-1">100%</span>
-          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Free to Use</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Free</span>
         </div>
         <div class="hidden sm:block w-px bg-slate-800"></div>
         <div class="flex flex-col items-center">
           <span class="text-2xl font-bold text-white mb-1">2026</span>
-          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Tax Year</span>
+          <span class="text-xs uppercase tracking-wider font-semibold text-slate-500">Verified</span>
         </div>
       </div>
     </div>
@@ -168,12 +168,12 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             <svg class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
             In Active Development
           </div>
-          <h2 class="text-3xl font-bold text-white mb-4">32+ New Countries Coming Soon</h2>
+          <h2 class="text-3xl font-bold text-white mb-4">Wave 3 Expansion: 20+ New Countries Coming Soon</h2>
           <p class="text-slate-400 max-w-2xl mx-auto mb-8">
-            Our tax engineers and fiscal analysts are currently encoding and validating official 2026 tax brackets for over 32 additional countries across the Americas, Europe, Asia, and Africa.
+            Our tax engineers and fiscal analysts are currently encoding and validating official 2026 tax brackets for our upcoming Wave 3 expansion across Europe, Asia-Pacific, Africa, and Latin America.
           </p>
           <div class="flex flex-wrap justify-center gap-3">
-            {['Canada', 'Spain', 'Italy', 'Japan', 'China', 'India', 'Singapore', 'UAE', 'South Africa', 'Senegal', '...and 22 more'].map(c => (
+            {['Netherlands 🇳🇱', 'Sweden 🇸🇪', 'Belgium 🇧🇪', 'Portugal 🇵🇹', 'Norway 🇳🇴', 'Poland 🇵🇱', 'Ireland 🇮🇪', 'New Zealand 🇳🇿', 'Austria 🇦🇹', 'Denmark 🇩🇰', 'South Africa 🇿🇦', 'Chile 🇨🇱', '...and 15+ more'].map(c => (
               <span class="px-3 py-1.5 bg-slate-800 text-slate-300 text-sm font-medium rounded-lg border border-slate-700/50 hover:bg-slate-700 transition-colors cursor-default">
                 {c}
               </span>
