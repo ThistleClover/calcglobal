@@ -7,9 +7,10 @@ interface Props {
   format?: 'auto' | 'horizontal' | 'rectangle';
   className?: string;
   pageIntent?: 'high' | 'low';
+  lang?: string;
 }
 
-const { variant: propVariant, format, slotId, className = 'my-8', pageIntent = 'low' } = Astro.props;
+const { variant: propVariant, format, slotId, className = 'my-8', pageIntent = 'low', lang } = Astro.props;
 
 // Publisher ID
 const PUBLISHER_ID = 'ca-pub-6264279528687703';
@@ -39,7 +40,7 @@ const uniqueId = Math.random().toString(36).substring(7);
 {pageIntent !== 'high' && (
   <div id={`ad-container-${uniqueId}`} class={`ad-container w-full ${className}`}>
     <div id={`fallback-${uniqueId}`} class="hidden w-full">
-      <AdFallback />
+      <AdFallback lang={lang} />
     </div>
     <div id={`adsense-${uniqueId}`} class={`adsense-wrapper flex justify-center w-full ${minHeightClass}`}>
       <ins class="adsbygoogle w-full"

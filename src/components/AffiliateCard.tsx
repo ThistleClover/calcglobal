@@ -113,7 +113,7 @@ export default function AffiliateCard({
       <a
         href={targetUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="sponsored noopener noreferrer"
         onClick={handleCtaClick}
         className="inline-flex items-center justify-center w-full rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 transition-colors gap-1.5 mt-2"
       >

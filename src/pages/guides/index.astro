@@ -18,6 +18,8 @@ const countryNames: Record<string, { name: string; flag: string }> = {
   global: { name: 'Global', flag: 'un' },
 };
 
+const uniqueCountries = [...new Set(sortedGuides.map(g => g.data.country))].sort();
+
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -78,27 +80,15 @@ const collectionPageSchema = {
       >
         🌐 All Guides ({sortedGuides.length})
       </button>
-      <button
-        type="button"
-        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-        data-country="fr"
-      >
-        🇫🇷 France ({sortedGuides.filter(g => g.data.country === 'fr').length})
-      </button>
-      <button
-        type="button"
-        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-        data-country="us"
-      >
-        🇺🇸 USA ({sortedGuides.filter(g => g.data.country === 'us').length})
-      </button>
-      <button
-        type="button"
-        class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200"
-        data-country="uk"
-      >
-        🇬🇧 UK ({sortedGuides.filter(g => g.data.country === 'uk').length})
-      </button>
+      {uniqueCountries.map(cc => {
+        const info = countryNames[cc] || { name: cc.toUpperCase(), flag: 'un' };
+        const count = sortedGuides.filter(g => g.data.country === cc).length;
+        return (
+          <button type="button" class="filter-btn px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-white text-slate-700 hover:bg-slate-100 border border-slate-200" data-country={cc}>
+            <img src={`https://flagcdn.com/w20/${info.flag}.png`} alt="" class="inline w-4 h-3 mr-1" width="80" height="60" decoding="async" /> {info.name} ({count})
+          </button>
+        );
+      })}
     </div>
 
     <!-- Guides Grid -->
@@ -119,6 +109,9 @@ const collectionPageSchema = {
                     src={`https://flagcdn.com/w20/${countryInfo.flag}.png`}
                     alt={`${countryInfo.name} flag`}
                     class="w-4 h-3 object-cover rounded-xs"
+                    width="80"
+                    height="60"
+                    decoding="async"
                   />
                   {countryInfo.name}
                 </span>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useId } from 'react';
 
 export interface CpaLeadCaptureProps {
   /** Title / headline for the lead capture form */
@@ -222,19 +222,21 @@ export default function CpaLeadCapture({
   }
 
   // Render Modal trigger button variant
-  if (variant === 'modal' && !isOpen) {
+  if (variant === 'modal') {
     return (
       <>
-        <button
-          onClick={() => setIsOpen(true)}
-          className="inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-5 rounded-xl text-sm transition-all shadow-md hover:shadow-lg border border-slate-700/80 active:scale-[0.98]"
-        >
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-          </svg>
-          <span>{title}</span>
-        </button>
+        {!isOpen && (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="inline-flex items-center gap-2.5 bg-slate-900 hover:bg-slate-800 text-white font-bold py-3 px-5 rounded-xl text-sm transition-all shadow-md hover:shadow-lg border border-slate-700/80 active:scale-[0.98]"
+          >
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>{title}</span>
+          </button>
+        )}
 
         {isOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/75 backdrop-blur-md animate-in fade-in duration-200">
@@ -263,6 +265,8 @@ export default function CpaLeadCapture({
                 setAnnualRevenue={setAnnualRevenue}
                 taxNeed={taxNeed}
                 setTaxNeed={setTaxNeed}
+                gdprConsent={gdprConsent}
+                setGdprConsent={setGdprConsent}
                 loading={loading}
                 submitted={submitted}
                 refCode={refCode}
@@ -340,6 +344,8 @@ function CpaFormContent({
   handleReset,
   onClose,
 }: any) {
+  const gdprId = useId();
+
   if (submitted) {
     return (
       <div className="text-center py-6 animate-in zoom-in-95 duration-300">
@@ -526,14 +532,14 @@ function CpaFormContent({
         <div className="flex items-start gap-3 mt-4">
           <div className="flex items-center h-5">
             <input
-              id="gdprConsent"
+              id={gdprId}
               type="checkbox"
               checked={gdprConsent}
               onChange={e => setGdprConsent(e.target.checked)}
               className="w-4 h-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
             />
           </div>
-          <label htmlFor="gdprConsent" className="text-xs text-slate-600 leading-relaxed">
+          <label htmlFor={gdprId} className="text-xs text-slate-600 leading-relaxed">
             I consent to sharing my information with verified CPA partners in accordance with the Privacy Policy. <span className="text-red-500">*</span>
           </label>
         </div>

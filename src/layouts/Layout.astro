@@ -100,7 +100,9 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" /></noscript>
     
     <!-- Structured Data -->
     {Array.isArray(structuredData) ? (
@@ -124,7 +126,7 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
         "url": siteUrl,
         "logo": `${siteUrl}/favicon.svg`,
         "knowsAbout": ["Tax Brackets 2026", "Self-Employment Tax", "PAYE Salary", "URSSAF Cotisations", "Brutto Netto Rechner", "ATO PAYG"],
-        "publishingPrinciples": `${siteUrl}/methodology`
+        "publishingPrinciples": `${siteUrl}/methodology/`
       }
     })} />
 
@@ -132,9 +134,10 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
   </head>
   
   <body class="bg-stone-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-blue-600 focus:rounded-lg focus:shadow-lg focus:font-semibold focus:text-sm focus:border focus:border-blue-200">Skip to content</a>
     
     <!-- E-E-A-T Top Trust Banner -->
-    <div class="bg-slate-950 text-slate-300 text-xs py-2 border-b border-slate-800">
+    <div class="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
         <div class="flex items-center gap-2 flex-wrap">
           <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
@@ -147,7 +150,7 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
           <span class="text-slate-400 hidden md:inline">100% Client-Side Privacy</span>
         </div>
         <div class="flex items-center gap-3">
-          <a href={`${base}/methodology`} class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1 hover:underline">
+          <a href={`${base}/methodology/`} class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1 hover:underline">
             <span>Audit Methodology</span>
             <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
           </a>
@@ -166,19 +169,19 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
         </a>
         <nav class="hidden sm:flex items-center gap-1">
           <a href={`${base}/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">All Countries</a>
-          <a href={`${base}/us`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
-          <a href={`${base}/uk`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
-          <a href={`${base}/fr`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
-          <a href={`${base}/de`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
-          <a href={`${base}/au`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
-          <a href={`${base}/methodology`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Methodology</a>
+          <a href={`${base}/us/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
+          <a href={`${base}/uk/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
+          <a href={`${base}/fr/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
+          <a href={`${base}/de/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
+          <a href={`${base}/au/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
+          <a href={`${base}/methodology/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Methodology</a>
           <a href={`${base}/guides/`} class="text-sm font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors">📚 Guides</a>
-          <a href={`${base}/contact`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Contact</a>
+          <a href={`${base}/contact/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Contact</a>
         </nav>
         
         <!-- Mobile menu button -->
         <div class="flex items-center sm:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-500" aria-expanded="false">
+          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-500" aria-expanded="false" aria-controls="mobile-menu">
             <span class="sr-only">Open main menu</span>
             <!-- Icon when menu is closed -->
             <svg class="block h-6 w-6" id="menu-icon-closed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -196,20 +199,20 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
       <div class="sm:hidden hidden border-t border-slate-200 bg-white" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
           <a href={`${base}/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">All Countries</a>
-          <a href={`${base}/us`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇺🇸 USA</a>
-          <a href={`${base}/uk`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇬🇧 UK</a>
-          <a href={`${base}/fr`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇫🇷 France</a>
-          <a href={`${base}/de`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇩🇪 Germany</a>
-          <a href={`${base}/au`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇦🇺 Australia</a>
-          <a href={`${base}/methodology`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Methodology & Audit</a>
+          <a href={`${base}/us/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇺🇸 USA</a>
+          <a href={`${base}/uk/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇬🇧 UK</a>
+          <a href={`${base}/fr/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇫🇷 France</a>
+          <a href={`${base}/de/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇩🇪 Germany</a>
+          <a href={`${base}/au/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇦🇺 Australia</a>
+          <a href={`${base}/methodology/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Methodology & Audit</a>
           <a href={`${base}/guides/`} class="block px-3 py-2 rounded-md text-base font-semibold text-blue-600 hover:bg-blue-50">📚 Guides & Tax Tips</a>
-          <a href={`${base}/contact`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Contact</a>
+          <a href={`${base}/contact/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Contact</a>
         </div>
       </div>
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow">
+    <main id="main-content" class="flex-grow">
       <slot />
     </main>
 
@@ -307,13 +310,16 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
             </div>
 
             <!-- Newsletter -->
-            <div class="bg-slate-800/30 p-5 rounded-2xl border border-slate-800">
+            <div class="bg-slate-800/30 p-5 rounded-2xl border border-slate-800" id="newsletter-container">
               <h3 class="text-white font-semibold text-sm mb-1">Stay updated on tax law changes</h3>
               <p class="text-xs text-slate-400 mb-3">Receive notification when tax authority brackets are updated for 2026/2027.</p>
-              <form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault();">
-                <input type="email" placeholder="Enter your email" class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" required />
+              <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2">
+                <input id="newsletter-email" type="email" placeholder="Enter your email" class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" required />
                 <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded-lg text-xs transition-colors whitespace-nowrap">Subscribe</button>
               </form>
+              <div id="newsletter-success" class="hidden text-xs text-emerald-400 font-medium py-2">
+                ✓ Thank you! We'll keep you updated.
+              </div>
             </div>
           </div>
         </div>
@@ -340,32 +346,32 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
           <div>
             <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Country Hubs (15)</h3>
             <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-              <a href={`${base}/us`} class="hover:text-blue-400 transition-colors">🇺🇸 USA</a>
-              <a href={`${base}/uk`} class="hover:text-blue-400 transition-colors">🇬🇧 UK</a>
-              <a href={`${base}/fr`} class="hover:text-blue-400 transition-colors">🇫🇷 France</a>
-              <a href={`${base}/de`} class="hover:text-blue-400 transition-colors">🇩🇪 Germany</a>
-              <a href={`${base}/ca`} class="hover:text-blue-400 transition-colors">🇨🇦 Canada</a>
-              <a href={`${base}/au`} class="hover:text-blue-400 transition-colors">🇦🇺 Australia</a>
-              <a href={`${base}/es`} class="hover:text-blue-400 transition-colors">🇪🇸 Spain</a>
-              <a href={`${base}/it`} class="hover:text-blue-400 transition-colors">🇮🇹 Italy</a>
-              <a href={`${base}/in`} class="hover:text-blue-400 transition-colors">🇮🇳 India</a>
-              <a href={`${base}/jp`} class="hover:text-blue-400 transition-colors">🇯🇵 Japan</a>
-              <a href={`${base}/br`} class="hover:text-blue-400 transition-colors">🇧🇷 Brazil</a>
-              <a href={`${base}/mx`} class="hover:text-blue-400 transition-colors">🇲🇽 Mexico</a>
-              <a href={`${base}/ae`} class="hover:text-blue-400 transition-colors">🇦🇪 UAE</a>
-              <a href={`${base}/sg`} class="hover:text-blue-400 transition-colors">🇸🇬 Singapore</a>
-              <a href={`${base}/ch`} class="hover:text-blue-400 transition-colors">🇨🇭 Switzerland</a>
+              <a href={`${base}/us/`} class="hover:text-blue-400 transition-colors">🇺🇸 USA</a>
+              <a href={`${base}/uk/`} class="hover:text-blue-400 transition-colors">🇬🇧 UK</a>
+              <a href={`${base}/fr/`} class="hover:text-blue-400 transition-colors">🇫🇷 France</a>
+              <a href={`${base}/de/`} class="hover:text-blue-400 transition-colors">🇩🇪 Germany</a>
+              <a href={`${base}/ca/`} class="hover:text-blue-400 transition-colors">🇨🇦 Canada</a>
+              <a href={`${base}/au/`} class="hover:text-blue-400 transition-colors">🇦🇺 Australia</a>
+              <a href={`${base}/es/`} class="hover:text-blue-400 transition-colors">🇪🇸 Spain</a>
+              <a href={`${base}/it/`} class="hover:text-blue-400 transition-colors">🇮🇹 Italy</a>
+              <a href={`${base}/in/`} class="hover:text-blue-400 transition-colors">🇮🇳 India</a>
+              <a href={`${base}/jp/`} class="hover:text-blue-400 transition-colors">🇯🇵 Japan</a>
+              <a href={`${base}/br/`} class="hover:text-blue-400 transition-colors">🇧🇷 Brazil</a>
+              <a href={`${base}/mx/`} class="hover:text-blue-400 transition-colors">🇲🇽 Mexico</a>
+              <a href={`${base}/ae/`} class="hover:text-blue-400 transition-colors">🇦🇪 UAE</a>
+              <a href={`${base}/sg/`} class="hover:text-blue-400 transition-colors">🇸🇬 Singapore</a>
+              <a href={`${base}/ch/`} class="hover:text-blue-400 transition-colors">🇨🇭 Switzerland</a>
             </div>
           </div>
 
           <div>
             <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Methodology & E-E-A-T</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href={`${base}/methodology`} class="hover:text-blue-400 transition-colors flex items-center gap-1.5"><span class="text-blue-400 font-bold">✓</span> Calculation Methodology</a></li>
-              <li><a href={`${base}/methodology#editorial-policy`} class="hover:text-blue-400 transition-colors">Editorial & Audit Policy</a></li>
-              <li><a href={`${base}/methodology#expert-reviewers`} class="hover:text-blue-400 transition-colors">CPA & Advisory Panel</a></li>
-              <li><a href={`${base}/methodology#privacy`} class="hover:text-blue-400 transition-colors">100% Client-Side Privacy</a></li>
-              <li><a href={`${base}/methodology#data-sources`} class="hover:text-blue-400 transition-colors">Official Data Sources</a></li>
+              <li><a href={`${base}/methodology/`} class="hover:text-blue-400 transition-colors flex items-center gap-1.5"><span class="text-blue-400 font-bold">✓</span> Calculation Methodology</a></li>
+              <li><a href={`${base}/methodology/#editorial-policy`} class="hover:text-blue-400 transition-colors">Editorial & Audit Policy</a></li>
+              <li><a href={`${base}/methodology/#expert-reviewers`} class="hover:text-blue-400 transition-colors">CPA & Advisory Panel</a></li>
+              <li><a href={`${base}/methodology/#privacy`} class="hover:text-blue-400 transition-colors">100% Client-Side Privacy</a></li>
+              <li><a href={`${base}/methodology/#data-sources`} class="hover:text-blue-400 transition-colors">Official Data Sources</a></li>
               <li><a href={`${base}/guides/`} class="hover:text-blue-400 transition-colors">Tax & Financial Guides</a></li>
             </ul>
           </div>
@@ -373,10 +379,10 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
           <div>
             <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal & Trust</h3>
             <ul class="space-y-2.5 text-sm">
-              <li><a href={`${base}/disclaimer`} class="hover:text-blue-400 transition-colors">Tax & Legal Disclaimer</a></li>
-              <li><a href={`${base}/privacy`} class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href={`${base}/terms`} class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-              <li><a href={`${base}/contact`} class="hover:text-blue-400 transition-colors">Contact Editorial Team</a></li>
+              <li><a href={`${base}/disclaimer/`} class="hover:text-blue-400 transition-colors">Tax & Legal Disclaimer</a></li>
+              <li><a href={`${base}/privacy/`} class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+              <li><a href={`${base}/terms/`} class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
+              <li><a href={`${base}/contact/`} class="hover:text-blue-400 transition-colors">Contact Editorial Team</a></li>
             </ul>
           </div>
         </div>
@@ -407,6 +413,29 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
           iconClosed.classList.toggle('block');
           iconOpen.classList.toggle('hidden');
           iconOpen.classList.toggle('block');
+        });
+      }
+
+      // Newsletter submit handler
+      const newsletterForm = document.getElementById('newsletter-form');
+      const newsletterEmail = document.getElementById('newsletter-email') as HTMLInputElement | null;
+      const newsletterSuccess = document.getElementById('newsletter-success');
+
+      if (newsletterForm && newsletterEmail && newsletterSuccess) {
+        newsletterForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const email = newsletterEmail.value.trim();
+          if (email) {
+            try {
+              const subs = JSON.parse(localStorage.getItem('calcglobal_newsletter_subscribers') || '[]');
+              subs.push({ email, subscribedAt: new Date().toISOString() });
+              localStorage.setItem('calcglobal_newsletter_subscribers', JSON.stringify(subs));
+            } catch (err) {
+              console.error('Failed to save to localStorage', err);
+            }
+            newsletterForm.classList.add('hidden');
+            newsletterSuccess.classList.remove('hidden');
+          }
         });
       }
     </script>

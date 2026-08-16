@@ -1,43 +1,11 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type { TaxInput, TaxResult, TaxBreakdownLine } from '../lib/engine/types';
+import { loadCountryEngine, type CalculateFunction } from '../lib/engine/loader';
+import { getEngineKeyForCalc } from '../lib/engine/factory';
 import { getUITranslation } from '../utils/translations';
 import { getAffiliatePartners } from '../utils/affiliateMatching';
 import AffiliateCard from './AffiliateCard';
 import CpaLeadCapture from './CpaLeadCapture';
-import { calculate as calculateUS } from '../lib/engine/countries/us';
-import { calculate as calculateUK } from '../lib/engine/countries/uk';
-import { calculate as calculateFR } from '../lib/engine/countries/fr';
-import { calculate as calculateDE } from '../lib/engine/countries/de';
-import { calculate as calculateAU } from '../lib/engine/countries/au';
-import { calculate as calculateCA } from '../lib/engine/countries/ca';
-import { calculate as calculateES } from '../lib/engine/countries/es';
-import { calculate as calculateIT } from '../lib/engine/countries/it';
-import { calculate as calculateIN } from '../lib/engine/countries/in';
-import { calculate as calculateJP } from '../lib/engine/countries/jp';
-import { calculate as calculateBR } from '../lib/engine/countries/br';
-import { calculate as calculateMX } from '../lib/engine/countries/mx';
-import { calculate as calculateAE } from '../lib/engine/countries/ae';
-import { calculate as calculateSG } from '../lib/engine/countries/sg';
-import { calculate as calculateCH } from '../lib/engine/countries/ch';
-import { getEngineKeyForCalc } from '../lib/engine/factory';
-
-const ENGINES: Record<string, (inputs: TaxInput) => TaxResult> = {
-  us: calculateUS,
-  uk: calculateUK,
-  fr: calculateFR,
-  de: calculateDE,
-  au: calculateAU,
-  ca: calculateCA,
-  es: calculateES,
-  it: calculateIT,
-  in: calculateIN,
-  jp: calculateJP,
-  br: calculateBR,
-  mx: calculateMX,
-  ae: calculateAE,
-  sg: calculateSG,
-  ch: calculateCH,
-};
 
 interface CalcInput {
   name: string;
@@ -165,11 +133,40 @@ function BreakdownTable({ lines, sym, locale }: { lines: TaxBreakdownLine[]; sym
 }
 
 export default function InteractiveCalculator({ calc, engineCode, locale, currencySymbol, countryCode }: Props) {
+  const [engine, setEngine] = useState<CalculateFunction | null>(null);
+  const [engineLoading, setEngineLoading] = useState(true);
   const [values, setValues] = useState<Record<string, string>>({});
   const [result, setResult] = useState<TaxResult | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showMethodology, setShowMethodology] = useState(false);
+
+  const engineKey = (countryCode || getEngineKeyForCalc(calc.id) || '').toLowerCase();
+
+  useEffect(() => {
+    let cancelled = false;
+    if (!engineKey) {
+      setEngineLoading(false);
+      return;
+    }
+    setEngineLoading(true);
+    loadCountryEngine(engineKey)
+      .then(fn => {
+        if (!cancelled) {
+          setEngine(() => fn);
+          setEngineLoading(false);
+        }
+      })
+      .catch(err => {
+        console.error('Failed to load engine:', err);
+        if (!cancelled) {
+          setEngineLoading(false);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [engineKey]);
 
   const effectivePartners = getAffiliatePartners({
     calcId: calc.id,
@@ -180,6 +177,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
     netIncome: result?.netIncome,
     grossIncome: result?.grossIncome,
     affiliateTargets: calc.affiliate_targets,
+    lang: locale ? locale.split('-')[0] : countryCode,
   });
 
   const handleChange = useCallback((name: string, value: string) => {
@@ -187,6 +185,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
   }, []);
 
   const handleCalculate = useCallback(() => {
+    if (engineLoading) return;
     setLoading(true);
     setError(null);
     try {
@@ -195,12 +194,9 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
         calculator_id: values.calculator_id || calc.id,
       };
 
-      const engineKey = (countryCode || getEngineKeyForCalc(calc.id) || '').toLowerCase();
-      const directEngine = ENGINES[engineKey];
-
       let res: TaxResult;
-      if (directEngine) {
-        res = directEngine(allInputs);
+      if (engine) {
+        res = engine(allInputs);
       } else if (engineCode && engineCode.trim().length > 0) {
         // Fallback for custom injected engine code strings (e.g. programmatic SEO pages)
         // eslint-disable-next-line no-new-func
@@ -212,12 +208,12 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
 
       setResult(res);
     } catch (e) {
-      setError('Calculation error. Please check your inputs and try again.');
+      setError(getUITranslation('CALC_ERROR', locale));
       console.error(e);
     } finally {
       setLoading(false);
     }
-  }, [values, engineCode, countryCode, calc.id]);
+  }, [values, engine, engineLoading, engineCode, engineKey, calc.id]);
 
   const sym = result?.currencySymbol || currencySymbol;
   const netPct = result ? Math.max(0, Math.min(100, (result.netIncome / result.grossIncome) * 100)) : 0;
@@ -259,7 +255,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                       onChange={e => handleChange(input.name, e.target.value)}
                       className="block w-full rounded-xl border border-slate-300 bg-white py-3.5 px-4 text-slate-900 text-sm font-medium focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm appearance-none"
                     >
-                      <option value="">Select...</option>
+                      <option value="">{getUITranslation('SELECT_PLACEHOLDER', locale)}</option>
                       {input.options?.map(opt => (
                         <option key={opt.value} value={opt.value}>{opt.label}</option>
                       ))}
@@ -290,10 +286,18 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
 
           <button
             onClick={handleCalculate}
-            disabled={loading}
+            disabled={loading || engineLoading}
             className="mt-10 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl text-base transition-all shadow-lg shadow-blue-600/25 active:scale-[0.98] flex items-center justify-center gap-2"
           >
-            {loading ? (
+            {engineLoading ? (
+              <>
+                <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+                </svg>
+                {getUITranslation('LOADING_CALC', locale)}
+              </>
+            ) : loading ? (
               <>
                 <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
@@ -321,7 +325,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                   🧮
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">{getUITranslation('ENTER_DETAILS_CALCULATE', locale)}</h3>
-                <p className="text-sm font-medium text-center max-w-xs">Fill in your details on the left to see your full tax breakdown and analysis.</p>
+                <p className="text-sm font-medium text-center max-w-xs">{getUITranslation('FILL_DETAILS', locale)}</p>
               </div>
 
               {effectivePartners && effectivePartners.length > 0 && (
@@ -332,7 +336,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                       {getUITranslation('RECOMMENDED_TOOLS', locale)}
                     </p>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
-                      Sponsored
+                      {getUITranslation('SPONSORED', locale)}
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -356,7 +360,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                 <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-emerald-500/20">
                   2
                 </div>
-                <h2 className="text-xl font-bold text-slate-900">Your Results</h2>
+                <h2 className="text-xl font-bold text-slate-900">{getUITranslation('YOUR_RESULTS', locale)}</h2>
               </div>
 
               <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
@@ -438,7 +442,7 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                       {getUITranslation('RECOMMENDED_TOOLS', locale)}
                     </p>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
-                      Sponsored
+                      {getUITranslation('SPONSORED', locale)}
                     </span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

@@ -1,55 +1,167 @@
 ---
 // src/components/AdFallback.astro
 // Native affiliate banners that bypass AdBlock using REAL monetization sources
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = 'en' } = Astro.props;
+const fallbackId = `affiliate-fallback-${Math.random().toString(36).slice(2, 8)}`;
+
+const normalizedLang = (lang || 'en').toLowerCase().slice(0, 2);
+
+const translations: Record<string, {
+  shopify: { title: string; desc: string; cta: string };
+  sage: { title: string; desc: string; cta: string };
+}> = {
+  fr: {
+    shopify: {
+      title: 'Lancez votre E-Commerce',
+      desc: 'Créez, gérez et développez votre boutique en ligne avec Shopify.',
+      cta: 'Essai Gratuit',
+    },
+    sage: {
+      title: 'Optimisez votre Comptabilité',
+      desc: 'Gagnez du temps avec le logiciel de gestion et facturation leader pour entrepreneurs.',
+      cta: 'Découvrir Sage',
+    },
+  },
+  en: {
+    shopify: {
+      title: 'Start your E-Commerce Store',
+      desc: 'Build, run, and grow your online business with Shopify.',
+      cta: 'Free Trial',
+    },
+    sage: {
+      title: 'Streamline your Accounting',
+      desc: 'Save time with leading accounting and invoicing software for businesses.',
+      cta: 'Explore Sage',
+    },
+  },
+  de: {
+    shopify: {
+      title: 'Starten Sie Ihren E-Commerce',
+      desc: 'Erstellen, verwalten und erweitern Sie Ihren Online-Shop mit Shopify.',
+      cta: 'Kostenlos testen',
+    },
+    sage: {
+      title: 'Optimieren Sie Ihre Buchhaltung',
+      desc: 'Sparen Sie Zeit mit führender Buchhaltungs- und Rechnungssoftware.',
+      cta: 'Sage entdecken',
+    },
+  },
+  es: {
+    shopify: {
+      title: 'Lanza tu tienda online',
+      desc: 'Crea, gestiona y haz crecer tu negocio en internet con Shopify.',
+      cta: 'Prueba Gratis',
+    },
+    sage: {
+      title: 'Optimiza tu Contabilidad',
+      desc: 'Ahorra tiempo con el software líder en gestión y facturación para empresas.',
+      cta: 'Descubrir Sage',
+    },
+  },
+  it: {
+    shopify: {
+      title: 'Avvia il tuo E-Commerce',
+      desc: 'Crea, gestisci e fai crescere il tuo negozio online con Shopify.',
+      cta: 'Prova Gratuita',
+    },
+    sage: {
+      title: 'Ottimizza la tua Contabilità',
+      desc: 'Risparmia tempo con il software leader di fatturazione e contabilità.',
+      cta: 'Scopri Sage',
+    },
+  },
+  pt: {
+    shopify: {
+      title: 'Inicie seu E-Commerce',
+      desc: 'Crie, gerencie e expanda sua loja virtual com a Shopify.',
+      cta: 'Teste Grátis',
+    },
+    sage: {
+      title: 'Otimize sua Contabilidade',
+      desc: 'Economize tempo com o software líder em gestão e faturamento empresarial.',
+      cta: 'Descubra Sage',
+    },
+  },
+  ja: {
+    shopify: {
+      title: 'ネットショップを開設',
+      desc: 'Shopifyでオンラインストアを作成、運営、拡大しましょう。',
+      cta: '無料体験',
+    },
+    sage: {
+      title: '会計業務を効率化',
+      desc: '事業者向けの主要な会計・請求管理ソフトウェアで時間を節約。',
+      cta: 'Sageを詳しく見る',
+    },
+  },
+};
+
+const t = translations[normalizedLang] || translations.en;
+
+const offers = [
+  {
+    url: '/go/shopify',
+    title: t.shopify.title,
+    desc: t.shopify.desc,
+    cta: t.shopify.cta,
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />',
+    iconBg: 'bg-purple-50',
+    iconText: 'text-purple-600',
+    titleHover: 'group-hover:text-purple-600',
+    btnBg: 'bg-purple-600',
+    btnHover: 'group-hover:bg-purple-700',
+  },
+  {
+    url: '/go/sage',
+    title: t.sage.title,
+    desc: t.sage.desc,
+    cta: t.sage.cta,
+    icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />',
+    iconBg: 'bg-emerald-50',
+    iconText: 'text-emerald-600',
+    titleHover: 'group-hover:text-emerald-600',
+    btnBg: 'bg-emerald-600',
+    btnHover: 'group-hover:bg-emerald-700',
+  },
+];
+
+const defaultOffer = offers[0];
 ---
+
 <div class="w-full rounded-xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition-shadow">
-  <div id="affiliate-fallback-container" class="w-full h-full">
+  <div id={fallbackId} class="w-full h-full">
     <!-- Default state (Shopify) -->
-    <a href="/go/shopify" target="_blank" rel="noopener noreferrer" class="block p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 no-underline group">
+    <a href={defaultOffer.url} target="_blank" rel="sponsored noopener noreferrer" class="block p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 no-underline group">
       <div class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 bg-purple-50 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
         <svg class="w-7 h-7 sm:w-8 sm:h-8 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          <Fragment set:html={defaultOffer.icon} />
         </svg>
       </div>
       <div class="flex-grow text-center sm:text-left">
-        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">Lancez votre E-Commerce</h4>
-        <p class="text-xs sm:text-sm text-slate-500">Créez, gérez et développez votre boutique en ligne avec Shopify.</p>
+        <h4 class="text-base sm:text-lg font-bold text-slate-900 mb-1 group-hover:text-purple-600 transition-colors">{defaultOffer.title}</h4>
+        <p class="text-xs sm:text-sm text-slate-500">{defaultOffer.desc}</p>
       </div>
       <div class="flex-shrink-0 mt-2 sm:mt-0">
         <span class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-purple-600 rounded-lg group-hover:bg-purple-700 transition-colors">
-          Essai Gratuit
+          {defaultOffer.cta}
         </span>
       </div>
     </a>
   </div>
 </div>
 
-<script is:inline>
-  const offers = [
-    {
-      url: '/go/shopify',
-      title: 'Lancez votre E-Commerce',
-      desc: 'Créez, gérez et développez votre entreprise partout avec Shopify.',
-      cta: 'Essai Gratuit',
-      icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />',
-      iconBg: 'bg-purple-50', iconText: 'text-purple-600', titleHover: 'group-hover:text-purple-600', btnBg: 'bg-purple-600', btnHover: 'group-hover:bg-purple-700'
-    },
-    {
-      url: '/go/sage',
-      title: 'Optimisez votre Comptabilité',
-      desc: 'Gagnez du temps avec le logiciel de gestion et facturation leader pour entrepreneurs.',
-      cta: 'Découvrir Sage',
-      icon: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />',
-      iconBg: 'bg-emerald-50', iconText: 'text-emerald-600', titleHover: 'group-hover:text-emerald-600', btnBg: 'bg-emerald-600', btnHover: 'group-hover:bg-emerald-700'
-    }
-  ];
-
+<script is:inline define:vars={{ fallbackId, offers }}>
   try {
     const offer = offers[Math.floor(Math.random() * offers.length)];
-    const container = document.getElementById('affiliate-fallback-container');
+    const container = document.getElementById(fallbackId);
     if (container) {
       container.innerHTML = `
-        <a href="${offer.url}" target="_blank" rel="noopener noreferrer" class="block p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 no-underline group">
+        <a href="${offer.url}" target="_blank" rel="sponsored noopener noreferrer" class="block p-5 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 no-underline group">
           <div class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 ${offer.iconBg} rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform">
             <svg class="w-7 h-7 sm:w-8 sm:h-8 ${offer.iconText}" fill="none" viewBox="0 0 24 24" stroke="currentColor">${offer.icon}</svg>
           </div>

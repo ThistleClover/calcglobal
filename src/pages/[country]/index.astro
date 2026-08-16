@@ -75,6 +75,9 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
             src={`https://flagcdn.com/w160/${flagCode}.png`}
             alt={`${data.country} flag`}
             class="w-full h-full object-cover"
+            width="80"
+            height="60"
+            decoding="async"
           />
         </div>
         <div>
@@ -96,7 +99,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
       {data.calculators.map((calc: any) => (
         <a
-          href={`${base}/${slug}/${calc.id}`}
+          href={`${base}/${slug}/${calc.id}/`}
           class="group bg-white rounded-2xl border border-slate-200/80 p-1 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col hover:border-blue-500/30"
         >
           <div class="bg-slate-50/50 rounded-xl p-6 h-full flex flex-col group-hover:bg-blue-50/30 transition-colors border border-transparent">

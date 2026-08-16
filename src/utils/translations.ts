@@ -99,7 +99,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Échéances: 15 Avr · 16 Juin · 15 Sep · 15 Jan',
     'TAKE_HOME': 'Net à Payer',
     'NET_INCOME': 'Revenu Net',
-    'TOTAL_TAX': 'Total Taxes'
+    'TOTAL_TAX': 'Total Taxes',
+    'SELECT_PLACEHOLDER': 'Sélectionner...',
+    'CALC_ERROR': 'Erreur de calcul. Veuillez vérifier vos données et réessayer.',
+    'LOADING_CALC': 'Chargement du simulateur...',
+    'YOUR_RESULTS': 'Vos Résultats',
+    'SPONSORED': 'Sponsorisé',
+    'FILL_DETAILS': 'Renseignez vos informations à gauche pour afficher le détail et l\'analyse de votre calcul.'
   },
   'de': {
     'RECOMMENDED_TOOLS': 'Empfohlene Tools',
@@ -119,7 +125,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Fällig: 15. Apr · 16. Jun · 15. Sep · 15. Jan',
     'TAKE_HOME': 'Netto',
     'NET_INCOME': 'Nettoeinkommen',
-    'TOTAL_TAX': 'Gesamtsteuer'
+    'TOTAL_TAX': 'Gesamtsteuer',
+    'SELECT_PLACEHOLDER': 'Auswählen...',
+    'CALC_ERROR': 'Berechnungsfehler. Bitte überprüfen Sie Ihre Eingaben und versuchen Sie es erneut.',
+    'LOADING_CALC': 'Rechner wird geladen...',
+    'YOUR_RESULTS': 'Ihre Ergebnisse',
+    'SPONSORED': 'Gesponsert',
+    'FILL_DETAILS': 'Geben Sie Ihre Daten links ein, um eine vollständige Aufschlüsselung und Analyse zu erhalten.'
   },
   'es': {
     'RECOMMENDED_TOOLS': 'Herramientas recomendadas',
@@ -139,7 +151,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Vencimiento: 20 Abr · 20 Jul · 20 Oct · 30 Ene',
     'TAKE_HOME': 'Neto en Mano',
     'NET_INCOME': 'Ingreso Neto',
-    'TOTAL_TAX': 'Total Impuestos'
+    'TOTAL_TAX': 'Total Impuestos',
+    'SELECT_PLACEHOLDER': 'Seleccionar...',
+    'CALC_ERROR': 'Error de cálculo. Por favor revise sus datos e inténtelo de nuevo.',
+    'LOADING_CALC': 'Cargando calculadora...',
+    'YOUR_RESULTS': 'Sus Resultados',
+    'SPONSORED': 'Patrocinado',
+    'FILL_DETAILS': 'Rellene sus datos a la izquierda para ver el desglose y análisis completo de sus impuestos.'
   },
   'it': {
     'RECOMMENDED_TOOLS': 'Strumenti consigliati',
@@ -159,7 +177,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Scadenze F24: 16 del mese / Giugno · Novembre',
     'TAKE_HOME': 'Netto in Busta / Tasca',
     'NET_INCOME': 'Reddito Netto',
-    'TOTAL_TAX': 'Totale Fisco e INPS'
+    'TOTAL_TAX': 'Totale Fisco e INPS',
+    'SELECT_PLACEHOLDER': 'Seleziona...',
+    'CALC_ERROR': 'Errore di calcolo. Verifica i dati inseriti e riprova.',
+    'LOADING_CALC': 'Caricamento calcolatore...',
+    'YOUR_RESULTS': 'I tuoi Risultati',
+    'SPONSORED': 'Sponsorizzato',
+    'FILL_DETAILS': 'Compila i dettagli a sinistra per visualizzare il riepilogo e l\'analisi fiscale completa.'
   },
   'pt': {
     'RECOMMENDED_TOOLS': 'Ferramentas recomendadas',
@@ -179,7 +203,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Vencimentos DARF / DAS: Todo dia 20',
     'TAKE_HOME': 'Líquido a Receber',
     'NET_INCOME': 'Rendimento Líquido',
-    'TOTAL_TAX': 'Total de Deduções e Impostos'
+    'TOTAL_TAX': 'Total de Deduções e Impostos',
+    'SELECT_PLACEHOLDER': 'Selecionar...',
+    'CALC_ERROR': 'Erro de cálculo. Verifique os dados informados e tente novamente.',
+    'LOADING_CALC': 'Carregando calculadora...',
+    'YOUR_RESULTS': 'Seus Resultados',
+    'SPONSORED': 'Patrocinado',
+    'FILL_DETAILS': 'Preencha os dados à esquerda para visualizar o detalhamento e a análise completa.'
   },
   'ja': {
     'RECOMMENDED_TOOLS': 'おすすめのシミュレーター',
@@ -199,7 +229,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': '納期目安：7月・11月・翌年3月',
     'TAKE_HOME': '手取り額',
     'NET_INCOME': '純所得・手取り',
-    'TOTAL_TAX': '税金・社会保険料合計'
+    'TOTAL_TAX': '税金・社会保険料合計',
+    'SELECT_PLACEHOLDER': '選択してください...',
+    'CALC_ERROR': '計算エラーが発生しました。入力内容をご確認の上、再試行してください。',
+    'LOADING_CALC': '計算機を読み込み中...',
+    'YOUR_RESULTS': '計算結果',
+    'SPONSORED': 'スポンサー',
+    'FILL_DETAILS': '左側の項目を入力すると、税金の内訳と詳細なシミュレーション結果が表示されます。'
   },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools',
@@ -219,7 +255,13 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'QUARTERLY_DUE': 'Due: Apr 15 · Jun 16 · Sep 15 · Jan 15',
     'TAKE_HOME': 'Take-Home',
     'NET_INCOME': 'Net Income',
-    'TOTAL_TAX': 'Total Tax'
+    'TOTAL_TAX': 'Total Tax',
+    'SELECT_PLACEHOLDER': 'Select...',
+    'CALC_ERROR': 'Calculation error. Please check your inputs and try again.',
+    'LOADING_CALC': 'Loading calculator...',
+    'YOUR_RESULTS': 'Your Results',
+    'SPONSORED': 'Sponsored',
+    'FILL_DETAILS': 'Fill in your details on the left to see your full tax breakdown and analysis.'
   }
 };
 

@@ -93,9 +93,10 @@ function applyEmployeeNI(income: number): number {
 }
 
 function applyEmployerNI(income: number): number {
-  // 13.8% on income above Secondary Threshold £9,100
-  const st = 9100;
-  return Math.max(0, income - st) * 0.138;
+  // Updated: Autumn Budget 2024, effective April 2025+
+  // 15.0% on income above Secondary Threshold £5,000
+  const st = 5000;
+  return Math.max(0, income - st) * 0.15;
 }
 
 // -------------------------------------------------------------
@@ -178,7 +179,7 @@ function calculateIR35(inputs: TaxInput): TaxResult {
     { label: 'Net Take-Home (Outside IR35)', value: outsideNetTakeHome, isFinal: true },
     { label: '━━ INSIDE IR35 (Umbrella / PAYE) ━━', value: 0, isTotal: true },
     { label: 'Umbrella Company Margin', value: umbrellaMarginAnnual, isDeduction: true },
-    { label: "Employer's NI (13.8%)", value: employerNI, isDeduction: true },
+    { label: "Employer's NI (15.0%)", value: employerNI, isDeduction: true },
     { label: 'Apprenticeship Levy (0.5%)', value: apprenticeLevy, isDeduction: true },
     { label: 'Gross Employee Wage', value: grossEmployeeWage, isTotal: true },
     { label: "Employee NI (8%/2%)", value: employeeNI, isDeduction: true },
@@ -574,7 +575,7 @@ function calculateDirectorOptimiser(inputs: TaxInput): TaxResult {
 
   // OPTIMAL STRATEGY (Salary £12,570 + Dividends)
   const directorSalary = 12570; // Uses PA, £0 Income Tax & £0 Employee NI
-  const employerNI = Math.max(0, directorSalary - 9100) * 0.138; // £478.86
+  const employerNI = applyEmployerNI(directorSalary);
   const totalEmploymentCost = directorSalary + employerNI;
 
   const taxableCorpProfit = Math.max(0, profitAfterPension - totalEmploymentCost);
@@ -621,7 +622,7 @@ function calculateDirectorOptimiser(inputs: TaxInput): TaxResult {
 
   // COMPARISON: 100% SALARY STRATEGY
   const salary100Cost = profitAfterPension;
-  const salary100Gross = salary100Cost <= 9100 ? salary100Cost : (salary100Cost + 9100 * 0.138) / 1.138;
+  const salary100Gross = salary100Cost <= 5000 ? salary100Cost : (salary100Cost + 5000 * 0.15) / 1.15;
   const salary100EmpEE = applyEmployeeNI(salary100Gross);
   const salary100IncomeTax = applyUKIncomeTax(salary100Gross + otherIncome, 12570);
   const salary100NetCash = Math.max(0, salary100Gross - salary100EmpEE - salary100IncomeTax);
@@ -632,7 +633,7 @@ function calculateDirectorOptimiser(inputs: TaxInput): TaxResult {
     { label: 'Company Annual Gross Profit', value: profitBeforeDirector },
     ...(pensionContribution > 0 ? [{ label: 'Employer Pension Contribution (CT Deductible)', value: pensionContribution, isDeduction: true }] : []),
     { label: 'Optimal Director Salary', value: directorSalary },
-    { label: "Employer's National Insurance (13.8% above £9,100)", value: employerNI, isDeduction: true },
+    { label: "Employer's National Insurance (15.0% above £5,000)", value: employerNI, isDeduction: true },
     { label: 'Taxable Corporate Profit', value: taxableCorpProfit, isTotal: true },
     { label: `Corporation Tax (${taxableCorpProfit <= 50000 ? '19%' : 'Marginal / 25%'})`, value: corpTax, isDeduction: true },
     { label: 'Distributable Profit (Dividends Available)', value: retainedProfit, isTotal: true },

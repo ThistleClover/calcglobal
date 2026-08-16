@@ -493,112 +493,6 @@ const scenarioResults = professionInfo.sampleRevenues.map(rev => {
   };
 });
 
-// Self-contained client-side calculation code string for InteractiveCalculator React island
-const clientEngineCode = `
-function applyBrackets(income, brackets) {
-  if (income <= 0 || !isFinite(income) || isNaN(income)) return 0;
-  let tax = 0, prev = 0;
-  for (const [limit, rate] of brackets) {
-    if (income <= prev) break;
-    const chunk = Math.min(income, limit) - prev;
-    tax += chunk * rate;
-    prev = limit;
-  }
-  return tax;
-}
-
-const BRACKETS_SINGLE = [[11925, 0.10], [48475, 0.12], [103350, 0.22], [197300, 0.24], [250525, 0.32], [626350, 0.35], [Infinity, 0.37]];
-const BRACKETS_JOINT = [[23850, 0.10], [96950, 0.12], [206700, 0.22], [394600, 0.24], [501050, 0.32], [751600, 0.35], [Infinity, 0.37]];
-const BRACKETS_HOH = [[17000, 0.10], [64850, 0.12], [103350, 0.22], [197300, 0.24], [250500, 0.32], [626350, 0.35], [Infinity, 0.37]];
-
-const CA_BRACKETS = [[10412, 0.01], [24684, 0.02], [38959, 0.04], [54081, 0.06], [68350, 0.08], [349137, 0.093], [418961, 0.103], [698271, 0.113], [Infinity, 0.123]];
-const NY_BRACKETS = [[8500, 0.04], [11700, 0.045], [13900, 0.0525], [80650, 0.055], [215400, 0.06], [1077550, 0.0685], [Infinity, 0.109]];
-const NJ_BRACKETS = [[20000, 0.014], [35000, 0.0175], [40000, 0.035], [75000, 0.05525], [500000, 0.0637], [1000000, 0.0897], [Infinity, 0.1075]];
-const VA_BRACKETS = [[3000, 0.02], [5000, 0.03], [17000, 0.05], [Infinity, 0.0575]];
-const OH_BRACKETS = [[26050, 0], [100000, 0.0275], [115300, 0.035], [Infinity, 0.035]];
-
-function calcState(st, taxable) {
-  st = (st || '${stateInfo.code}').toUpperCase();
-  if (st === 'TX' || st === 'FL' || st === 'WA' || st === 'NV' || st === 'WY' || st === 'SD' || st === 'TN' || st === 'AK') return 0;
-  if (st === 'PA') return taxable * 0.0307;
-  if (st === 'NC') return taxable * 0.0425;
-  if (st === 'MI') return taxable * 0.0425;
-  if (st === 'IL') return taxable * 0.0495;
-  if (st === 'MA') return taxable * 0.05;
-  if (st === 'GA') return taxable * 0.0539;
-  if (st === 'CA') return applyBrackets(taxable, CA_BRACKETS);
-  if (st === 'NY') return applyBrackets(taxable, NY_BRACKETS);
-  if (st === 'NJ') return applyBrackets(taxable, NJ_BRACKETS);
-  if (st === 'VA') return applyBrackets(taxable, VA_BRACKETS);
-  if (st === 'OH') return applyBrackets(taxable, OH_BRACKETS);
-  return taxable * 0.05;
-}
-
-const profit = Number(inputs.net_1099_profit || 0);
-const filingStatus = String(inputs.filing_status || 'single');
-const w2Income = Number(inputs.other_w2_income || 0);
-const selectedState = String(inputs.state || '${stateInfo.code}');
-
-const seTaxable = Math.max(0, profit * 0.9235);
-const ssBase = Math.max(0, 176100 - w2Income);
-const ssIncome = Math.min(seTaxable, ssBase);
-const ssTax = ssIncome * 0.124;
-const medicareTax = seTaxable * 0.029;
-const amtThreshold = filingStatus === 'married_joint' ? 250000 : filingStatus === 'married_separate' ? 125000 : 200000;
-const amtExcess = Math.max(0, (seTaxable + w2Income) - amtThreshold);
-const addlMedicare = Math.min(seTaxable, amtExcess) * 0.009;
-
-const totalSE = ssTax + medicareTax + addlMedicare;
-const seDeduction = totalSE * 0.5;
-const agi = Math.max(0, profit - seDeduction);
-
-const qbiThreshold = filingStatus === 'married_joint' ? 394600 : 197300;
-const qbiDeduction = agi <= qbiThreshold ? Math.max(0, Math.min(profit, agi)) * 0.20 : 0;
-
-const stdDeductions = { single: 15000, married_joint: 30000, head_of_household: 22500, married_separate: 15000 };
-const stdDeduction = stdDeductions[filingStatus] || 15000;
-const taxable = Math.max(0, agi - stdDeduction - qbiDeduction);
-
-let brackets = BRACKETS_SINGLE;
-if (filingStatus === 'married_joint') brackets = BRACKETS_JOINT;
-else if (filingStatus === 'head_of_household') brackets = BRACKETS_HOH;
-
-const fedTax = applyBrackets(taxable, brackets);
-const stateTax = calcState(selectedState, taxable);
-const totalTax = totalSE + fedTax + stateTax;
-const netIncome = profit - totalTax;
-const effectiveRate = profit > 0 ? totalTax / profit : 0;
-const quarterlyPayment = (totalSE + fedTax) / 4;
-
-return {
-  grossIncome: profit,
-  netIncome: Math.max(0, netIncome),
-  totalTax: totalTax,
-  effectiveRate: effectiveRate,
-  currency: 'USD',
-  currencySymbol: '$',
-  quarterlyPayment: quarterlyPayment,
-  breakdown: [
-    { label: 'Gross 1099 Net Business Profit', value: profit },
-    { label: 'SE Tax Deduction (50% of SE Tax)', value: seDeduction, isDeduction: true },
-    { label: 'Adjusted Gross Income (AGI)', value: agi, isTotal: true },
-    { label: 'Standard Deduction (' + filingStatus.replace('_', ' ') + ')', value: stdDeduction, isDeduction: true },
-    ...(qbiDeduction > 0 ? [{ label: 'QBI Deduction (§199A — 20%)', value: qbiDeduction, isDeduction: true }] : []),
-    { label: 'Federal Taxable Income', value: taxable, isTotal: true },
-    { label: 'Federal Income Tax (2026 IRS Brackets)', value: fedTax, isDeduction: true, percentage: profit > 0 ? (fedTax / profit) * 100 : 0 },
-    { label: 'Self-Employment Tax (15.3% SS + Medicare)', value: totalSE, isDeduction: true, percentage: profit > 0 ? (totalSE / profit) * 100 : 0 },
-    ...(stateTax > 0 ? [{ label: selectedState.toUpperCase() + ' State Income Tax', value: stateTax, isDeduction: true, percentage: profit > 0 ? (stateTax / profit) * 100 : 0 }] : [{ label: selectedState.toUpperCase() + ' State Personal Tax (0.0%)', value: 0, isDeduction: true }]),
-    { label: 'Net Take-Home Income', value: Math.max(0, netIncome), isFinal: true }
-  ],
-  additionalInsights: [
-    profit > 176100 ? 'Income exceeds the $176,100 Social Security wage base cap. Social Security tax stops on earnings above cap.' : '15.3% SE tax applies to 92.35% of net profit.',
-    qbiDeduction > 0 ? 'Qualifies for §199A QBI deduction (20% of net income).' : 'QBI phase-out applies at high taxable income brackets.',
-    profit > 80000 ? 'At $' + profit.toLocaleString() + ' net profit, electing S-Corp status can save substantial self-employment tax.' : 'Schedule C sole proprietorship is optimal at this income level.',
-    'Quarterly estimated tax payments due April 15, June 16, Sept 15, Jan 15.'
-  ]
-};
-`;
-
 const calcConfig = {
   id: 'us-1099-self-employment-tax-calculator',
   title_native: `${stateInfo.name} ${professionInfo.name} Tax Calculator`,
@@ -801,7 +695,6 @@ const otherProfessions = Object.keys(PROFESSIONS_DATA).filter(k => k !== profess
     <InteractiveCalculator
       client:visible
       calc={calcConfig}
-      engineCode={clientEngineCode}
       locale="en-US"
       currencySymbol="$"
       countryCode="us"

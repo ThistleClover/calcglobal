@@ -44,6 +44,7 @@ const matchedAffiliates = getAffiliatePartners({
   title: calcData.title_en || calcData.title_native,
   description: calcData.description_native,
   affiliateTargets: calcData.affiliate_targets,
+  lang: meta.lang,
 });
 
 const updatedCalcData = {
@@ -248,9 +249,8 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
                 <span class="text-blue-500 font-black">Q.</span>
                 {faq.question}
               </h3>
-              <div class="flex items-start gap-3">
-                <span class="text-emerald-500 font-black opacity-0">A.</span>
-                <p class="text-slate-600 leading-relaxed -ml-6 border-l-2 border-slate-100 pl-6">{faq.answer}</p>
+              <div class="border-l-2 border-slate-200 pl-5 ml-7">
+                <p class="text-slate-600 leading-relaxed">{faq.answer}</p>
               </div>
             </div>
           ))}
@@ -263,7 +263,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center shrink-0">
         <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
       </div>
-      <p class="text-sm text-amber-800 leading-relaxed" set:html={getUITranslation('DISCLAIMER_TEXT', meta.lang).replace('Disclaimer:', '<strong>Disclaimer:</strong>').replace('Avertissement :', '<strong>Avertissement :</strong>').replace('Haftungsausschluss:', '<strong>Haftungsausschluss:</strong>')} />
+      <p class="text-sm text-amber-800 leading-relaxed" set:html={getUITranslation('DISCLAIMER_TEXT', meta.lang).replace(/^([^:]+[::：])/, '<strong>$1</strong>')} />
     </div>
   </div>
 </Layout>
