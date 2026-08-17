@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import type { TaxInput, TaxResult, TaxBreakdownLine } from '../lib/engine/types';
 import { loadCountryEngine, type CalculateFunction } from '../lib/engine/loader';
 import { getEngineKeyForCalc } from '../lib/engine/factory';
@@ -26,7 +26,6 @@ interface Props {
     category?: string;
     affiliate_targets?: any[];
   };
-  /** Optional fallback serialized calculate function — passed as a string if needed */
   engineCode?: string;
   locale: string;
   currencySymbol: string;
@@ -41,46 +40,105 @@ function formatNum(value: number, locale: string): string {
   }).format(Math.round(value));
 }
 
-function DonutChart({ netPct, taxPct, locale }: { netPct: number; taxPct: number; locale: string }) {
-  const r = 54;
-  const circ = 2 * Math.PI * r;
-  const netDash = (netPct / 100) * circ;
-  const taxDash = (taxPct / 100) * circ;
+// Custom Animated Counter for Executive Numeric Readouts
+function AnimatedCounter({ target, sym, locale }: { target: number; sym: string; locale: string }) {
+  const [current, setCurrent] = useState(target);
+  const prevTarget = useRef(target);
+
+  useEffect(() => {
+    const start = prevTarget.current;
+    const diff = target - start;
+    if (diff === 0) return;
+
+    const duration = 500;
+    const startTime = performance.now();
+
+    function step(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      setCurrent(start + diff * ease);
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        prevTarget.current = target;
+        setCurrent(target);
+      }
+    }
+
+    const frameId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frameId);
+  }, [target]);
 
   return (
-    <div className="flex flex-col items-center gap-4">
-      <div className="relative drop-shadow-sm">
-        <svg width="140" height="140" viewBox="0 0 140 140" className="transform -rotate-90">
-          <circle cx="70" cy="70" r={r} fill="none" stroke="#f8fafc" strokeWidth="16" />
-          <circle cx="70" cy="70" r={r} fill="none" stroke="#f87171" strokeWidth="16"
-            strokeDasharray={`${taxDash} ${circ - taxDash}`}
+    <span className="font-mono tabular-nums tracking-tight">
+      {sym}{formatNum(current, locale)}
+    </span>
+  );
+}
+
+// Executive Donut Chart with Creamy Surfaces & Surgical Emerald
+function DonutChart({ netPct, taxPct, locale }: { netPct: number; taxPct: number; locale: string }) {
+  const r = 52;
+  const circ = 2 * Math.PI * r;
+  const netDash = Math.max(0, Math.min(circ, (netPct / 100) * circ));
+  const taxDash = Math.max(0, Math.min(circ, (taxPct / 100) * circ));
+
+  return (
+    <div className="flex flex-col items-center gap-2.5">
+      <div className="relative">
+        <svg width="128" height="128" viewBox="0 0 128 128" className="transform -rotate-90">
+          <circle 
+            cx="64" 
+            cy="64" 
+            r={r} 
+            fill="none" 
+            className="stroke-[#F0EEE8] dark:stroke-[#2A2622]" 
+            strokeWidth="12" 
+          />
+          <circle 
+            cx="64" 
+            cy="64" 
+            r={r} 
+            fill="none" 
+            stroke="#f87171" 
+            strokeWidth="12"
+            strokeDasharray={`${taxDash} ${circ}`}
             strokeDashoffset={0}
             strokeLinecap="round"
-            style={{ transition: 'stroke-dasharray 1s ease-out' }}
+            style={{ transition: 'stroke-dasharray 0.8s cubic-bezier(0.16, 1, 0.3, 1)' }}
           />
-          <circle cx="70" cy="70" r={r} fill="none" stroke="#34d399" strokeWidth="16"
-            strokeDasharray={`${netDash} ${circ - netDash}`}
+          <circle 
+            cx="64" 
+            cy="64" 
+            r={r} 
+            fill="none" 
+            stroke="#006948" 
+            strokeWidth="12"
+            strokeDasharray={`${netDash} ${circ}`}
             strokeDashoffset={-taxDash}
             strokeLinecap="round"
-            style={{ transition: 'stroke-dasharray 1s ease-out' }}
+            style={{ transition: 'stroke-dasharray 0.8s cubic-bezier(0.16, 1, 0.3, 1)' }}
           />
         </svg>
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-xl font-extrabold text-slate-900 tracking-tight">
+        <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+          <span className="text-lg font-bold font-mono tabular-nums text-[#1C1917] dark:text-[#F5F2EB]">
             {Math.round(netPct)}%
           </span>
-          <span className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">
+          <span className="text-[8px] font-bold text-[#78716C] dark:text-[#A8A29E] uppercase tracking-wider">
             {getUITranslation('TAKE_HOME', locale)}
           </span>
         </div>
       </div>
-      <div className="flex gap-4 text-xs font-semibold text-slate-600 bg-white/60 px-4 py-1.5 rounded-full border border-slate-200/60 shadow-sm backdrop-blur-sm">
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.6)]" />
+      
+      <div className="flex gap-2 text-[10px] font-semibold text-[#78716C] dark:text-[#A8A29E]">
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#006948]/10 text-[#006948] dark:text-[#85f8c4] border border-[#006948]/20">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#006948]" />
           {getUITranslation('NET_INCOME', locale)}
         </span>
-        <span className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full bg-red-400 shadow-[0_0_8px_rgba(248,113,113,0.6)]" />
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-red-500/10 text-red-700 dark:text-red-400 border border-red-500/20">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-400" />
           {getUITranslation('TOTAL_TAX', locale)}
         </span>
       </div>
@@ -88,41 +146,45 @@ function DonutChart({ netPct, taxPct, locale }: { netPct: number; taxPct: number
   );
 }
 
+// Executive Breakdown Table
 function BreakdownTable({ lines, sym, locale }: { lines: TaxBreakdownLine[]; sym: string; locale: string }) {
   return (
-    <div className="overflow-hidden rounded-xl border border-slate-200 shadow-sm bg-white">
-      <div className="divide-y divide-slate-100">
+    <div className="overflow-hidden rounded-xl border border-[#E7E2D7] dark:border-[#2A2622] bg-[#FDFCF9] dark:bg-[#1A1816]">
+      <div className="divide-y divide-[#E7E2D7]/80 dark:divide-[#2A2622]/80 text-xs">
         {lines.map((line, i) => {
-          const bgClass = line.isFinal 
-            ? 'bg-slate-50 font-bold border-t-2 border-slate-200' 
-            : line.isTotal 
-              ? 'bg-white font-semibold' 
-              : i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50';
-              
-          const textClass = line.isFinal 
-            ? 'text-slate-900' 
-            : line.isTotal 
-              ? 'text-slate-800' 
-              : 'text-slate-600';
-
-          const valueClass = line.isDeduction 
-            ? 'text-red-600 font-medium' 
-            : line.isFinal 
-              ? 'text-emerald-700 font-bold' 
-              : line.isTotal 
-                ? 'text-slate-900 font-semibold' 
-                : 'text-slate-700';
+          const isFinal = line.isFinal;
+          const isTotal = line.isTotal;
+          const isDeduction = line.isDeduction;
 
           return (
-            <div key={i} className={`flex items-center justify-between py-3 px-4 transition-colors hover:bg-slate-50 ${bgClass}`}>
-              <span className={`text-sm ${textClass}`}>{line.label}</span>
-              <span className={`text-sm tabular-nums tracking-tight ${valueClass}`}>
-                {line.isDeduction ? '−' : ''}{sym}{formatNum(Math.abs(line.value), locale)}
-                {line.percentage !== undefined ? (
-                  <span className="text-slate-400 font-normal ml-1.5 text-xs">
+            <div 
+              key={i} 
+              className={`flex items-center justify-between py-2.5 px-3.5 transition-colors ${
+                isFinal 
+                  ? 'bg-[#006948]/10 font-bold border-t border-[#006948]/30' 
+                  : isTotal 
+                    ? 'bg-[#F0EEE8] dark:bg-[#252220]/60 font-semibold' 
+                    : i % 2 === 0 ? 'bg-[#FDFCF9] dark:bg-[#1A1816]' : 'bg-[#F8F6F0] dark:bg-[#0F0E0C]'
+              }`}
+            >
+              <span className={`${isFinal ? 'text-[#006948] dark:text-[#6EE7B7]' : isTotal ? 'text-[#1C1917] dark:text-[#F5F2EB]' : 'text-[#78716C] dark:text-[#A8A29E]'}`}>
+                {line.label}
+              </span>
+              <span className={`font-mono tabular-nums tracking-tight ${
+                isDeduction 
+                  ? 'text-red-600 dark:text-red-400 font-medium' 
+                  : isFinal 
+                    ? 'text-[#006948] dark:text-[#6EE7B7] font-bold text-sm' 
+                    : isTotal 
+                      ? 'text-[#1C1917] dark:text-[#F5F2EB] font-semibold' 
+                      : 'text-[#1C1917] dark:text-[#F5F2EB]'
+              }`}>
+                {isDeduction ? '−' : ''}{sym}{formatNum(Math.abs(line.value), locale)}
+                {line.percentage !== undefined && (
+                  <span className="text-[#78716C] dark:text-[#A8A29E] font-normal ml-1.5 text-[10px]">
                     ({line.percentage.toFixed(1)}%)
                   </span>
-                ) : ''}
+                )}
               </span>
             </div>
           );
@@ -198,7 +260,6 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
       if (engine) {
         res = engine(allInputs);
       } else if (engineCode && engineCode.trim().length > 0) {
-        // Fallback for custom injected engine code strings (e.g. programmatic SEO pages)
         // eslint-disable-next-line no-new-func
         const calculateFn = new Function('inputs', engineCode) as (inputs: TaxInput) => TaxResult;
         res = calculateFn(allInputs);
@@ -213,133 +274,195 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
     } finally {
       setLoading(false);
     }
-  }, [values, engine, engineLoading, engineCode, engineKey, calc.id]);
+  }, [values, engine, engineLoading, engineCode, engineKey, calc.id, locale]);
+
+  const applyPreset = (inputName: string, amount: number) => {
+    handleChange(inputName, amount.toString());
+  };
 
   const sym = result?.currencySymbol || currencySymbol;
-  const netPct = result ? Math.max(0, Math.min(100, (result.netIncome / result.grossIncome) * 100)) : 0;
+  const netPct = result && result.grossIncome > 0 ? Math.max(0, Math.min(100, (result.netIncome / result.grossIncome) * 100)) : 0;
   const taxPct = 100 - netPct;
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200 shadow-lg overflow-hidden relative">
-      {/* Decorative gradient blur in background */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+    <div className="bg-[#FDFCF9] dark:bg-[#1A1816] rounded-2xl border border-[#E7E2D7] dark:border-[#2A2622] shadow-ambient dark:shadow-dark-ambient overflow-hidden relative transition-colors duration-300">
       
-      {/* Form + Result split */}
+      {/* 2-Column Split Interface */}
       <div className="grid grid-cols-1 lg:grid-cols-12 relative z-10">
         
-        {/* LEFT: Inputs */}
-        <div className="p-4 sm:p-8 lg:p-10 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-slate-200 bg-white/50 backdrop-blur-sm">
-          <div className="flex items-center gap-3 mb-8">
-            <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-blue-600/20">
-              1
+        {/* LEFT COLUMN: Input Control Center */}
+        <div className="p-6 sm:p-8 lg:col-span-5 border-b lg:border-b-0 lg:border-r border-[#E7E2D7] dark:border-[#2A2622] bg-[#F8F6F0]/70 dark:bg-[#0F0E0C]/50">
+          
+          <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#E7E2D7] dark:border-[#2A2622]">
+            <div className="flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#006948] dark:bg-[#6EE7B7]"></span>
+              <h2 className="text-xs font-bold text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider">
+                {getUITranslation('ENTER_DETAILS', locale)}
+              </h2>
             </div>
-            <h2 className="text-xl font-bold text-slate-900">{getUITranslation('ENTER_DETAILS', locale)}</h2>
+            <span className="text-[10px] font-mono text-[#78716C] dark:text-[#A8A29E]">
+              Tax Year 2026/27
+            </span>
           </div>
           
-          <div className="space-y-6">
+          <div className="space-y-4">
             {calc.inputs.map(input => {
               if (input.type === 'hidden' || input.name === 'calculator_id') return null;
               
-              const isCurrency = input.label_native.includes('€') || input.label_native.includes('$') || input.label_native.includes('£');
+              const isCurrency = input.label_native.includes('€') || 
+                                 input.label_native.includes('$') || 
+                                 input.label_native.includes('£') || 
+                                 input.label_native.includes('R$') || 
+                                 input.label_native.includes('CHF') ||
+                                 input.label_native.includes('AED') ||
+                                 input.label_native.includes('₹') ||
+                                 input.label_native.includes('¥') ||
+                                 input.name.includes('salary') ||
+                                 input.name.includes('income') ||
+                                 input.name.includes('revenue') ||
+                                 input.name.includes('profit') ||
+                                 input.name.includes('gross') ||
+                                 input.name.includes('price') ||
+                                 input.name.includes('salario') ||
+                                 input.name.includes('amount');
+
+              const isPrimaryIncome = isCurrency && (
+                input.name.includes('gross') || 
+                input.name.includes('salary') || 
+                input.name.includes('income') || 
+                input.name.includes('profit') || 
+                input.name.includes('revenue') || 
+                input.name.includes('salario') || 
+                input.name.includes('ral') ||
+                input.name.includes('brutto')
+              );
+
+              const currentVal = values[input.name] || '';
 
               return (
-              <div key={input.name} className="group">
-                <label htmlFor={input.name} className="block text-sm font-bold text-slate-700 mb-2 group-focus-within:text-blue-600 transition-colors">
-                  {input.label_native}
-                </label>
-                {input.type === 'select' ? (
-                  <div className="relative">
-                    <select
-                      id={input.name}
-                      value={values[input.name] || ''}
-                      onChange={e => handleChange(input.name, e.target.value)}
-                      className="block w-full rounded-xl border border-slate-300 bg-white py-3.5 px-4 text-slate-900 text-sm font-medium focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm appearance-none"
-                    >
-                      <option value="">{getUITranslation('SELECT_PLACEHOLDER', locale)}</option>
-                      {input.options?.map(opt => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                      ))}
-                    </select>
-                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                <div key={input.name} className="group">
+                  <label htmlFor={input.name} className="block text-[11px] font-semibold text-[#78716C] dark:text-[#A8A29E] mb-1">
+                    {input.label_native}
+                  </label>
+
+                  {input.type === 'select' ? (
+                    <div className="relative">
+                      <select
+                        id={input.name}
+                        value={currentVal}
+                        onChange={e => handleChange(input.name, e.target.value)}
+                        className="block w-full rounded-xl border border-[#E7E2D7] dark:border-[#2A2622] bg-[#FDFCF9] dark:bg-[#1A1816] py-2.5 px-3.5 text-[#1C1917] dark:text-[#F5F2EB] text-xs font-medium focus:ring-1 focus:ring-[#006948] focus:border-[#006948] transition-all shadow-xs appearance-none cursor-pointer"
+                      >
+                        <option value="">{getUITranslation('SELECT_PLACEHOLDER', locale)}</option>
+                        {input.options?.map(opt => (
+                          <option key={opt.value} value={opt.value}>{opt.label}</option>
+                        ))}
+                      </select>
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-[#78716C]">
+                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
                     </div>
-                  </div>
-                ) : (
-                  <div className="relative flex items-center">
-                    {isCurrency && (
-                      <span className="absolute left-4 text-slate-400 font-bold text-base select-none pointer-events-none">{currencySymbol}</span>
-                    )}
-                    <input
-                      id={input.name}
-                      type="number"
-                      value={values[input.name] || ''}
-                      onChange={e => handleChange(input.name, e.target.value)}
-                      placeholder="0"
-                      min="0"
-                      className={`block w-full rounded-xl border border-slate-300 py-3.5 pr-4 text-slate-900 text-base font-bold focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm ${isCurrency ? 'pl-9' : 'pl-4'}`}
-                    />
-                  </div>
-                )}
-              </div>
-            )})}
+                  ) : (
+                    <div className="space-y-1.5">
+                      <div className="relative flex items-center">
+                        {isCurrency && (
+                          <span className="absolute left-3 text-[#78716C] dark:text-[#A8A29E] font-mono font-bold text-xs select-none pointer-events-none">
+                            {currencySymbol}
+                          </span>
+                        )}
+                        <input
+                          id={input.name}
+                          type="number"
+                          value={currentVal}
+                          onChange={e => handleChange(input.name, e.target.value)}
+                          placeholder="0"
+                          min="0"
+                          className={`block w-full rounded-xl border border-[#E7E2D7] dark:border-[#2A2622] bg-[#FDFCF9] dark:bg-[#1A1816] py-2.5 pr-3 text-[#1C1917] dark:text-[#F5F2EB] font-mono text-sm font-bold focus:ring-1 focus:ring-[#006948] focus:border-[#006948] transition-all shadow-xs ${isCurrency ? 'pl-7' : 'pl-3.5'}`}
+                        />
+                      </div>
+                      
+                      {/* Creamy Presets Chips */}
+                      {isPrimaryIncome && (
+                        <div className="flex flex-wrap gap-1 pt-0.5">
+                          {[45000, 75000, 95000, 120000, 200000].map((preset) => (
+                            <button
+                              key={preset}
+                              type="button"
+                              onClick={() => applyPreset(input.name, preset)}
+                              className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#E7E2D7]/80 dark:bg-[#252220] text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#006948] hover:text-white dark:hover:bg-[#6EE7B7] dark:hover:text-[#002114] transition-colors cursor-pointer"
+                            >
+                              {currencySymbol}{preset >= 1000 ? `${preset / 1000}k` : preset}
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           <button
             onClick={handleCalculate}
             disabled={loading || engineLoading}
-            className="mt-10 w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-bold py-4 px-6 rounded-xl text-base transition-all shadow-lg shadow-blue-600/25 active:scale-[0.98] flex items-center justify-center gap-2"
+            className="mt-6 w-full bg-[#006948] hover:bg-[#005137] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold py-3 px-4 rounded-xl text-xs transition-all shadow-sm active:scale-[0.99] flex items-center justify-center gap-1.5 cursor-pointer"
           >
             {engineLoading ? (
               <>
-                <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <svg className="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                 </svg>
-                {getUITranslation('LOADING_CALC', locale)}
+                <span>{getUITranslation('LOADING_CALC', locale)}</span>
               </>
             ) : loading ? (
               <>
-                <svg className="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none">
+                <svg className="animate-spin w-3.5 h-3.5" viewBox="0 0 24 24" fill="none">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                   <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
                 </svg>
-                {getUITranslation('CALCULATING', locale)}
+                <span>{getUITranslation('CALCULATING', locale)}</span>
               </>
-            ) : getUITranslation('CALCULATE', locale)}
+            ) : (
+              <span>{getUITranslation('CALCULATE', locale)} →</span>
+            )}
           </button>
 
           {error && (
-            <p className="mt-4 text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3 border border-red-200 font-medium flex items-center gap-2">
-              <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <p className="mt-3 text-xs text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-950/40 rounded-xl px-3 py-2 border border-red-200 dark:border-red-800 font-medium flex items-center gap-2">
               {error}
             </p>
           )}
         </div>
 
-        {/* RIGHT: Results */}
-        <div className="p-4 sm:p-8 lg:p-10 lg:col-span-7 bg-slate-50/50 relative">
+        {/* RIGHT COLUMN: Output & Financial Intelligence Panel */}
+        <div className="p-6 sm:p-8 lg:col-span-7 bg-[#FDFCF9] dark:bg-[#1A1816] flex flex-col justify-between">
           {!result ? (
-            <div className="flex flex-col items-center justify-between h-full min-h-[400px]">
-              <div className="flex flex-col items-center justify-center text-slate-400 py-12 flex-1">
-                <div className="w-20 h-20 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center mb-6 text-4xl transform -rotate-6">
-                  🧮
+            <div className="flex flex-col items-center justify-between h-full min-h-[340px]">
+              <div className="flex flex-col items-center justify-center text-[#78716C] py-10 flex-1">
+                <div className="w-14 h-14 rounded-2xl bg-[#F8F6F0] dark:bg-[#0F0E0C] border border-[#E7E2D7] dark:border-[#2A2622] flex items-center justify-center mb-3 shadow-xs">
+                  <i className="ph ph-scales text-xl text-[#78716C] dark:text-[#A8A29E]"></i>
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{getUITranslation('ENTER_DETAILS_CALCULATE', locale)}</h3>
-                <p className="text-sm font-medium text-center max-w-xs">{getUITranslation('FILL_DETAILS', locale)}</p>
+                <h3 className="text-sm font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-1">
+                  {getUITranslation('ENTER_DETAILS_CALCULATE', locale)}
+                </h3>
+                <p className="text-xs text-[#78716C] text-center max-w-xs leading-relaxed">
+                  {getUITranslation('FILL_DETAILS', locale)}
+                </p>
               </div>
 
               {effectivePartners && effectivePartners.length > 0 && (
-                <div className="w-full mt-auto pt-6 border-t border-slate-200">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                      <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <div className="w-full mt-auto pt-4 border-t border-[#E7E2D7] dark:border-[#2A2622]">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-[11px] font-bold text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider">
                       {getUITranslation('RECOMMENDED_TOOLS', locale)}
                     </p>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
+                    <span className="text-[9px] font-mono text-[#78716C] uppercase">
                       {getUITranslation('SPONSORED', locale)}
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {effectivePartners.slice(0, 2).map((partner: any, idx: number) => (
                       <AffiliateCard
                         key={idx}
@@ -355,77 +478,73 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
               )}
             </div>
           ) : (
-            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shadow-md shadow-emerald-500/20">
-                  2
-                </div>
-                <h2 className="text-xl font-bold text-slate-900">{getUITranslation('YOUR_RESULTS', locale)}</h2>
-              </div>
-
-              <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-10 bg-white p-4 sm:p-6 rounded-2xl border border-slate-200 shadow-sm">
-                <div className="text-center md:text-left flex-1">
-                  <p className="text-sm font-bold text-slate-500 uppercase tracking-widest mb-2 flex items-center justify-center md:justify-start gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div className="animate-fade-in space-y-5">
+              
+              {/* Top Readout Card */}
+              <div className="p-5 rounded-xl bg-[#F8F6F0] dark:bg-[#0F0E0C] border border-[#E7E2D7] dark:border-[#2A2622] flex flex-col sm:flex-row items-center sm:items-start justify-between gap-4">
+                <div className="text-center sm:text-left flex-1">
+                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-[#78716C] dark:text-[#A8A29E] uppercase tracking-wider mb-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#006948] dark:bg-[#6EE7B7]"></span>
                     {getUITranslation('ESTIMATED_NET', locale)}
+                  </span>
+                  
+                  <div className="text-3xl sm:text-4xl font-black text-[#1C1917] dark:text-[#F5F2EB] tracking-tight break-words">
+                    <AnimatedCounter target={result.netIncome} sym={sym} locale={locale} />
+                    <span className="text-xs text-[#78716C] font-normal ml-1">/ yr</span>
+                  </div>
+
+                  <p className="text-xs text-[#78716C] font-mono mt-0.5">
+                    Est. {sym}{formatNum(result.netIncome / 12, locale)} / mo
                   </p>
-                  <p className="text-4xl sm:text-5xl md:text-6xl font-black text-slate-900 tabular-nums tracking-tight bg-clip-text text-transparent bg-gradient-to-br from-slate-900 to-slate-700 break-words">
-                    {sym}{formatNum(result.netIncome, locale)}
-                  </p>
-                  <div className="inline-flex items-center gap-2 mt-4 px-3 py-1.5 bg-slate-100 rounded-lg border border-slate-200">
-                    <span className="text-sm font-medium text-slate-500">{getUITranslation('EFFECTIVE_RATE', locale)}</span>
-                    <strong className="text-sm font-black text-slate-800">{(result.effectiveRate * 100).toFixed(1)}%</strong>
+
+                  <div className="flex items-center justify-center sm:justify-start gap-2 mt-3">
+                    <div className="px-2.5 py-0.5 rounded-full bg-[#F0EEE8] dark:bg-[#252220] text-[11px] font-medium text-[#1C1917] dark:text-[#F5F2EB] border border-[#E7E2D7] dark:border-[#2A2622]">
+                      <span>{getUITranslation('EFFECTIVE_RATE', locale)} </span>
+                      <strong className="font-mono font-bold text-[#006948] dark:text-[#6EE7B7]">
+                        {(result.effectiveRate * 100).toFixed(1)}%
+                      </strong>
+                    </div>
                   </div>
                 </div>
+                
                 <div className="shrink-0">
                   <DonutChart netPct={netPct} taxPct={taxPct} locale={locale} />
                 </div>
               </div>
 
-              <div className="mb-8">
-                <h3 className="text-sm font-bold text-slate-900 uppercase tracking-widest mb-4 flex items-center gap-2">
-                  <svg className="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 10h16M4 14h16M4 18h16" /></svg>
+              {/* Detailed Breakdown Section */}
+              <div>
+                <h3 className="text-[11px] font-bold text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider mb-2 flex items-center gap-1.5">
                   {getUITranslation('TAX_BREAKDOWN', locale)}
                 </h3>
                 <BreakdownTable lines={result.breakdown} sym={sym} locale={locale} />
               </div>
 
-              {result.quarterlyPayment && (
-                <div className="bg-amber-50 border border-amber-200/60 rounded-xl px-5 py-4 mb-6 shadow-sm flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                  </div>
+              {/* Quarterly Due Notice */}
+              {Boolean(result.quarterlyPayment && result.quarterlyPayment > 0) && (
+                <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5 flex items-start gap-3 text-xs">
+                  <i className="ph ph-calendar-check text-base text-amber-600 dark:text-amber-400"></i>
                   <div>
-                    <p className="text-sm font-bold text-amber-900/70 uppercase tracking-wider mb-1">{getUITranslation('QUARTERLY_PAYMENT', locale)}</p>
-                    <p className="text-2xl font-black text-amber-900 tabular-nums">{sym}{formatNum(result.quarterlyPayment, locale)}</p>
-                    <p className="text-xs font-semibold text-amber-700 mt-2 flex items-center gap-1.5">
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span className="font-bold text-amber-900 dark:text-amber-200 uppercase text-[10px] tracking-wide block">
+                      {getUITranslation('QUARTERLY_PAYMENT', locale)}
+                    </span>
+                    <span className="font-mono font-bold text-sm text-amber-950 dark:text-amber-100">
+                      {sym}{formatNum(result.quarterlyPayment, locale)}
+                    </span>
+                    <p className="text-amber-800 dark:text-amber-300 text-[11px] mt-0.5">
                       {getUITranslation('QUARTERLY_DUE', locale)}
                     </p>
                   </div>
                 </div>
               )}
 
-              {result.additionalInsights && result.additionalInsights.length > 0 && (
-                <ul className="space-y-2 mb-8">
-                  {result.additionalInsights.map((insight, i) => (
-                    <li key={i} className="text-sm font-medium text-slate-700 flex items-start gap-3 bg-blue-50/50 rounded-xl p-4 border border-blue-100/50">
-                      <div className="w-5 h-5 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
-                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                      </div>
-                      {insight}
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              {/* High-Intent CPA Consultation Banner */}
-              {(result.grossIncome >= 80000 || calc.category === 'tax' || calc.category === 'business' || calc.id.includes('scorp') || calc.id.includes('llc') || calc.id.includes('1099') || calc.id.includes('capital') || calc.id.includes('corporate') || calc.id.includes('ir35')) && (
-                <div className="my-8">
+              {/* High-Intent CPA Banner */}
+              {(result.grossIncome >= 80000 || calc.category === 'tax' || calc.category === 'business') && (
+                <div className="pt-1">
                   <CpaLeadCapture
                     variant="banner"
-                    title="Optimize Your 2026 Tax Strategy"
-                    subtitle={`Based on your ${sym}${formatNum(result.grossIncome, locale)} revenue, consult a licensed CPA for personalized tax optimization.`}
+                    title="Optimize Statutory Tax Architecture"
+                    subtitle={`With ${sym}${formatNum(result.grossIncome, locale)} revenue, evaluate CPA deductions.`}
                     location={countryCode ? countryCode.toUpperCase() : 'US'}
                     calculatorId={calc.id}
                     defaultRevenue={result.grossIncome >= 250000 ? '250k_plus' : result.grossIncome >= 100000 ? '100k_250k' : '50k_100k'}
@@ -434,18 +553,18 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
                 </div>
               )}
 
+              {/* Affiliate Recommendation Cards */}
               {effectivePartners && effectivePartners.length > 0 && (
-                <div className="mt-8 pt-8 border-t border-slate-200">
-                  <div className="flex items-center justify-between mb-4">
-                    <p className="text-sm font-bold text-slate-900 flex items-center gap-2">
-                      <svg className="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>
+                <div className="pt-3 border-t border-[#E7E2D7] dark:border-[#2A2622]">
+                  <div className="flex items-center justify-between mb-2">
+                    <p className="text-[11px] font-bold text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider">
                       {getUITranslation('RECOMMENDED_TOOLS', locale)}
                     </p>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200">
+                    <span className="text-[9px] font-mono text-[#78716C] uppercase">
                       {getUITranslation('SPONSORED', locale)}
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                     {effectivePartners.slice(0, 2).map((partner: any, idx: number) => (
                       <AffiliateCard
                         key={idx}
@@ -468,28 +587,46 @@ export default function InteractiveCalculator({ calc, engineCode, locale, curren
         </div>
       </div>
 
-      {/* Methodology accordion */}
-      <div className="border-t border-slate-200 bg-slate-50/50 relative z-10">
+      {/* Methodology Accordion */}
+      <div className="border-t border-[#E7E2D7] dark:border-[#2A2622] bg-[#F8F6F0] dark:bg-[#0F0E0C] relative z-10 transition-colors duration-300">
         <button
           onClick={() => setShowMethodology(m => !m)}
-          className="w-full flex items-center justify-between px-8 py-5 text-sm font-bold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
+          className="w-full flex items-center justify-between px-6 py-3 text-xs font-semibold text-[#78716C] dark:text-[#A8A29E] hover:text-[#1C1917] dark:hover:text-[#F5F2EB] transition-colors cursor-pointer"
         >
-          <span className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" /></svg>
-            {getUITranslation('METHODOLOGY', locale)}
-          </span>
-          <span className={`text-slate-400 transition-transform duration-300 ${showMethodology ? 'rotate-180' : ''}`}>
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /></svg>
+          <span>{getUITranslation('METHODOLOGY', locale)} (2026/27 Verified)</span>
+          <span className={`text-[#78716C] transition-transform duration-300 ${showMethodology ? 'rotate-180' : ''}`}>
+            ▼
           </span>
         </button>
         {showMethodology && (
-          <div className="px-8 pb-8 pt-2 animate-in slide-in-from-top-2 duration-300">
-            <div className="p-5 rounded-xl bg-white border border-slate-200 shadow-sm">
-              <p className="text-sm font-medium text-slate-600 leading-relaxed whitespace-pre-line">{calc.formula_explanation}</p>
+          <div className="px-6 pb-5 pt-1 animate-fade-in">
+            <div className="p-3.5 rounded-xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] text-xs text-[#78716C] dark:text-[#A8A29E] leading-relaxed whitespace-pre-line">
+              {calc.formula_explanation}
             </div>
           </div>
         )}
       </div>
+
+      {/* Sticky Mobile Floating Bar */}
+      {result && (
+        <div className="lg:hidden fixed bottom-3 inset-x-3 z-40 bg-[#1C1917]/95 dark:bg-[#F5F2EB]/95 text-white dark:text-[#1C1917] p-3 rounded-2xl shadow-2xl backdrop-blur-md flex items-center justify-between animate-slide-up border border-white/10 dark:border-black/10">
+          <div>
+            <span className="text-[9px] uppercase font-bold text-[#A8A29E] dark:text-[#78716C] tracking-wider block">
+              {getUITranslation('ESTIMATED_NET', locale)}
+            </span>
+            <span className="text-base font-black font-mono tabular-nums">
+              {sym}{formatNum(result.netIncome, locale)}
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => { const el = document.querySelector('.lg\\:col-span-7'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); else window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className="px-3 py-1.5 rounded-xl bg-white/20 dark:bg-black/10 text-xs font-semibold"
+          >
+            Breakdown ↑
+          </button>
+        </div>
+      )}
     </div>
   );
 }

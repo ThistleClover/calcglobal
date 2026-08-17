@@ -75,50 +75,46 @@ export default function AffiliateCard({
   };
 
   return (
-    <div className={`group relative bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-md hover:border-slate-300 transition-all duration-200 flex flex-col justify-between h-full ${className}`}>
+    <div className={`group relative bg-[#FDFCF9] dark:bg-[#1A1816] rounded-xl border border-[#E7E2D7] dark:border-[#2A2622] p-3.5 shadow-xs hover:border-[#78716C] dark:hover:border-[#A8A29E] transition-all duration-200 flex flex-col justify-between h-full ${className}`}>
       <div>
-        {/* Top Row: Logo & Sponsored Badge */}
-        <div className="flex items-center justify-between mb-3">
-          <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-xl shadow-inner group-hover:scale-105 transition-transform">
+        <div className="flex items-center justify-between mb-2">
+          <div className="w-8 h-8 rounded-lg bg-[#F8F6F0] dark:bg-[#0F0E0C] border border-[#E7E2D7] dark:border-[#2A2622] flex items-center justify-center text-base shadow-xs group-hover:scale-105 transition-transform">
             {logoIcon}
           </div>
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-slate-100/80 px-2 py-0.5 rounded border border-slate-200/60">
+          <span className="text-[9px] font-mono uppercase tracking-wider text-[#78716C] bg-[#F0EEE8] dark:bg-[#252220] px-1.5 py-0.5 rounded border border-[#E7E2D7] dark:border-[#2A2622]">
             Sponsored
           </span>
         </div>
 
-        {/* Partner Title */}
-        <h3 className="text-base font-bold text-slate-900 group-hover:text-slate-800 mb-1 transition-colors">
+        <h3 className="text-xs font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-1 transition-colors">
           {partner.name}
         </h3>
 
-        {/* Contextual Copy / Description */}
         {showContextual ? (
-          <div className="mb-4">
-            <p className="text-xs sm:text-sm font-semibold text-blue-700 bg-blue-50/80 p-2.5 rounded-lg border border-blue-100/80 leading-snug mb-2">
+          <div className="mb-2">
+            <p className="text-[11px] font-semibold text-[#006948] dark:text-[#6EE7B7] bg-[#006948]/10 p-1.5 rounded-lg leading-snug mb-1">
               {contextualHeadline}
             </p>
-            <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">
+            <p className="text-[11px] text-[#78716C] leading-relaxed line-clamp-2">
               {partner.description}
             </p>
           </div>
         ) : (
-          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+          <p className="text-[11px] text-[#78716C] leading-relaxed mb-2">
             {partner.description}
           </p>
         )}
       </div>
 
-      {/* CTA Button */}
       <a
         href={targetUrl}
         target="_blank"
         rel="sponsored noopener noreferrer"
         onClick={handleCtaClick}
-        className="inline-flex items-center justify-center w-full rounded-xl bg-slate-900 px-4 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 transition-colors gap-1.5 mt-2"
+        className="inline-flex items-center justify-center w-full rounded-lg bg-[#006948] hover:bg-[#005137] px-3 py-1.5 text-[11px] font-semibold text-white shadow-xs transition-colors gap-1 mt-1 cursor-pointer"
       >
         <span>{buttonText}</span>
-        <span className="text-slate-400 group-hover:translate-x-0.5 transition-transform">→</span>
+        <span>→</span>
       </a>
     </div>
   );

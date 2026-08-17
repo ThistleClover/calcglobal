@@ -95,6 +95,7 @@ export function calculate(inputs: TaxInput): TaxResult {
   switch (calcId) {
     case 's-corp-vs-llc-tax-savings-calculator':
       return calculateSCorpVsLLC(inputs);
+    case 'income-tax':
     case 'w2-salary-paycheck-take-home-calculator':
       return calculateW2Salary(inputs);
     case 'us-home-sale-net-proceeds-capital-gains-calculator':
@@ -107,7 +108,7 @@ export function calculate(inputs: TaxInput): TaxResult {
 }
 
 function calculatePrimary1099(inputs: TaxInput): TaxResult {
-  const profit = safeVal(inputs.net_1099_profit);
+  const profit = safeVal(inputs.net_1099_profit ?? inputs.gross_annual ?? inputs.gross_salary ?? inputs.gross_income);
   const filingStatus = String(inputs.filing_status || 'single');
   const w2Income = safeVal(inputs.other_w2_income);
   const state = String(inputs.state || 'OTHER');

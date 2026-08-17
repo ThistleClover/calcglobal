@@ -1,5 +1,6 @@
 ---
-// src/layouts/Layout.astro - Updated with E-E-A-T infrastructure and Trust Badges
+// src/layouts/Layout.astro - Creamy Executive Editorial (Apple / Notion Minimalist)
+import { ACTIVE_COUNTRIES } from '../config';
 
 interface Props {
   title: string;
@@ -23,28 +24,48 @@ const {
 
 const siteName = 'CalcGlobal';
 const siteUrl = Astro.site ? Astro.site.origin : 'https://calcglobal.org';
-const pageCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
+let rawCanonical = canonical || new URL(Astro.url.pathname, siteUrl).href;
+if (!rawCanonical.endsWith('/') && !rawCanonical.match(/\.[a-zA-Z0-9]+$/)) {
+  rawCanonical = `${rawCanonical}/`;
+}
+const pageCanonical = rawCanonical;
 const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
 const defaultOgImage = `${siteUrl}/og-image-placeholder.svg`;
 const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
+
+const topCountries = [
+  { code: 'us', label: 'USA', flagCode: 'us' },
+  { code: 'uk', label: 'UK', flagCode: 'gb' },
+  { code: 'fr', label: 'France', flagCode: 'fr' },
+  { code: 'de', label: 'Germany', flagCode: 'de' },
+  { code: 'ca', label: 'Canada', flagCode: 'ca' },
+  { code: 'au', label: 'Australia', flagCode: 'au' },
+  { code: 'ch', label: 'Switzerland', flagCode: 'ch' },
+  { code: 'ae', label: 'UAE', flagCode: 'ae' },
+  { code: 'sg', label: 'Singapore', flagCode: 'sg' },
+  { code: 'br', label: 'Brazil', flagCode: 'br' },
+];
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
   <head>
-    <meta name="impact-site-verification" content="18a3bfa8-eb14-4370-8f22-b3262780db9b">
-    <!-- Impact.com Publisher Tracking Tag -->
-    <script type="text/javascript" is:inline>(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7587737-5f1b-4a85-abac-a616e5c99e981.js','script','impactStat',document,window);impactStat('trackImpression');</script>
-
-    <!-- Skimlinks / Sovrn Commerce Global Monetization Tag -->
-    <script type="text/javascript" src={`https://s.skimresources.com/js/${skimlinksId}.skimlinks.js`} async is:inline></script>
+    <!-- Production Monetization & Ads (Impact, Skimlinks, AdSense) -->
+    {import.meta.env.PROD && (
+      <>
+        <meta name="impact-site-verification" content="18a3bfa8-eb14-4370-8f22-b3262780db9b" />
+        <script type="text/javascript" is:inline>(function(i,m,p,a,c,t){c.ire_o=p;c[p]=c[p]||function(){(c[p].a=c[p].a||[]).push(arguments)};t=a.createElement(m);var z=a.getElementsByTagName(m)[0];t.async=1;t.src=i;z.parentNode.insertBefore(t,z)})('https://utt.impactcdn.com/P-A7587737-5f1b-4a85-abac-a616e5c99e981.js','script','impactStat',document,window);impactStat('trackImpression');</script>
+        <script type="text/javascript" src={`https://s.skimresources.com/js/${skimlinksId}.skimlinks.js`} async is:inline></script>
+        <meta name="google-adsense-account" content="ca-pub-6264279528687703" />
+        <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6264279528687703" crossorigin="anonymous"></script>
+      </>
+    )}
 
     <!-- Google Consent Mode v2 Default Settings -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       
-      // Default to denied for EEA compliance. Google CMP updates this automatically on consent.
       gtag('consent', 'default', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
@@ -60,10 +81,24 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
       gtag('config', 'G-5TW23Q86KZ');
       gtag('config', 'G-RQCKV4XLF1');
     </script>
+
+    <!-- Theme Initializer (Defaults strictly to Light Mode unless explicitly switched) -->
+    <script is:inline>
+      (function() {
+        try {
+          const storedTheme = localStorage.getItem('calcglobal_theme');
+          if (storedTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="index, follow" />
-    <meta name="theme-color" content="#0f172a" />
     
     <!-- Primary SEO -->
     <meta name="google-site-verification" content="03WK3K5EsDUB6PL_hkntX6yyCkYwoCd-HaQwAR9Ll-Y" />
@@ -75,10 +110,6 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
     <link rel="apple-touch-icon" href={`${base}/apple-touch-icon.png`} />
-
-    <!-- Google AdSense -->
-    <meta name="google-adsense-account" content="ca-pub-6264279528687703">
-    <script async defer src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6264279528687703" crossorigin="anonymous"></script>
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -94,16 +125,15 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage || defaultOgImage} />
     
-    <!-- Technical -->
-    <meta name="generator" content={Astro.generator} />
-    
-    <!-- Fonts -->
+    <!-- Fonts: Geist, Inter & JetBrains Mono for High-Precision Editorial -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
     
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/fill/style.css" />
+
     <!-- Structured Data -->
     {Array.isArray(structuredData) ? (
       structuredData.map(schema => (
@@ -113,16 +143,16 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
       <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
     ) : null}
     
-    <!-- Website & Organization E-E-A-T Schema -->
+    <!-- Organization Schema -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": siteName,
       "url": siteUrl,
-      "description": "Hyper-localized tax, payroll, and financial calculators for global professionals",
+      "description": "Hyper-localized tax, payroll, and statutory calculations for global professionals",
       "publisher": {
         "@type": "Organization",
-        "name": "CalcGlobal Tax Advisory Team",
+        "name": "CalcGlobal Tax Advisory & Engineering",
         "url": siteUrl,
         "logo": `${siteUrl}/favicon.svg`,
         "knowsAbout": ["Tax Brackets 2026", "Self-Employment Tax", "PAYE Salary", "URSSAF Cotisations", "Brutto Netto Rechner", "ATO PAYG"],
@@ -133,295 +163,299 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
     <slot name="head" />
   </head>
   
-  <body class="bg-stone-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col overflow-x-hidden">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-blue-600 focus:rounded-lg focus:shadow-lg focus:font-semibold focus:text-sm focus:border focus:border-blue-200">Skip to content</a>
+  <body class="bg-[#F8F6F0] dark:bg-[#0F0E0C] text-[#1C1917] dark:text-[#F5F2EB] font-sans antialiased min-h-screen flex flex-col selection:bg-[#006948] selection:text-white dark:selection:bg-[#6EE7B7] dark:selection:text-[#0F0E0C] transition-colors duration-300">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white dark:focus:bg-[#1A1816] focus:text-neutral-900 dark:focus:text-white focus:rounded-xl focus:shadow-lg focus:font-semibold focus:text-sm focus:border focus:border-[#E7E2D7] dark:focus:border-[#2A2622]">Skip to content</a>
     
-    <!-- E-E-A-T Top Trust Banner -->
-    <div class="bg-slate-900 text-slate-300 text-xs py-2 border-b border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-2">
-        <div class="flex items-center gap-2 flex-wrap">
-          <span class="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
-            Verified by Tax Experts & CPAs
-          </span>
-          <span class="text-slate-700 hidden sm:inline">•</span>
-          <span class="text-slate-300">Updated for 2026 Fiscal Regulations</span>
-          <span class="text-slate-700 hidden md:inline">•</span>
-          <span class="text-slate-400 hidden md:inline">100% Client-Side Privacy</span>
-        </div>
-        <div class="flex items-center gap-3">
-          <a href={`${base}/methodology/`} class="text-blue-400 hover:text-blue-300 font-medium flex items-center gap-1 hover:underline">
-            <span>Audit Methodology</span>
-            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Header -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href={`${base}/`} class="flex items-center gap-2.5 group">
-          <div class="w-8 h-8 bg-slate-800 rounded-lg flex items-center justify-center text-white font-bold text-base tracking-tight group-hover:bg-slate-700 transition-colors">
-            CG
-          </div>
-          <span class="font-bold text-lg tracking-tight text-slate-900">CalcGlobal</span>
-        </a>
-        <nav class="hidden sm:flex items-center gap-1">
-          <a href={`${base}/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">All Countries</a>
-          <a href={`${base}/us/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇺🇸 USA</a>
-          <a href={`${base}/uk/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇬🇧 UK</a>
-          <a href={`${base}/fr/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇫🇷 France</a>
-          <a href={`${base}/de/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇩🇪 Germany</a>
-          <a href={`${base}/au/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">🇦🇺 Australia</a>
-          <a href={`${base}/methodology/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Methodology</a>
-          <a href={`${base}/guides/`} class="text-sm font-semibold text-blue-600 hover:text-blue-700 hover:bg-blue-50 px-3 py-2 rounded-lg transition-colors">📚 Guides</a>
-          <a href={`${base}/contact/`} class="text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 px-3 py-2 rounded-lg transition-colors">Contact</a>
-        </nav>
+    <!-- Floating Header Container -->
+    <header class="sticky top-0 z-50 pt-3 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto">
         
-        <!-- Mobile menu button -->
-        <div class="flex items-center sm:hidden">
-          <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-500" aria-expanded="false" aria-controls="mobile-menu">
-            <span class="sr-only">Open main menu</span>
-            <!-- Icon when menu is closed -->
-            <svg class="block h-6 w-6" id="menu-icon-closed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-            </svg>
-            <!-- Icon when menu is open -->
-            <svg class="hidden h-6 w-6" id="menu-icon-open" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
+        <!-- Main Floating Pill Navigation -->
+        <nav class="bg-[#FDFCF9]/90 dark:bg-[#1A1816]/90 backdrop-blur-md rounded-full border border-[#E7E2D7] dark:border-[#2A2622] shadow-sm px-4 sm:px-6 h-12 flex items-center justify-between gap-4 transition-colors duration-300">
+          
+          <!-- Brand Logo -->
+          <a href={`${base}/`} class="flex items-center gap-2.5 group shrink-0">
+            <div class="w-6 h-6 rounded-md bg-[#1C1917] dark:bg-[#F5F2EB] text-[#FDFCF9] dark:text-[#1C1917] flex items-center justify-center font-bold text-[10px] tracking-tight shadow-sm group-hover:scale-105 transition-transform duration-300">
+              CG
+            </div>
+            <span class="font-bold text-sm tracking-tight text-[#1C1917] dark:text-[#F5F2EB]">CalcGlobal</span>
+          </a>
+
+          <!-- Desktop Navigation Items -->
+          <ul class="hidden md:flex items-center gap-1 text-xs font-medium text-[#78716C] dark:text-[#A8A29E]">
+            <li>
+              <a href={`${base}/`} class="px-3 py-1.5 rounded-full hover:text-[#1C1917] dark:hover:text-white hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors duration-300">
+                Global Index
+              </a>
+            </li>
+            
+            <!-- Country Hubs Dropdown Pill -->
+            <li class="relative group">
+              <button class="px-3 py-1.5 rounded-full hover:text-[#1C1917] dark:hover:text-white hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors duration-300 flex items-center gap-1 cursor-pointer" aria-haspopup="true">
+                <span>Jurisdictions</span>
+                <i class="ph ph-caret-down text-xs text-[#78716C] dark:text-[#A8A29E] group-hover:rotate-180 transition-transform duration-300"></i>
+              </button>
+              <div class="absolute top-full left-0 mt-2 w-64 p-2 bg-[#FDFCF9] dark:bg-[#1A1816] rounded-2xl shadow-xl border border-[#E7E2D7] dark:border-[#2A2622] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50 transform origin-top-left scale-95 group-hover:scale-100">
+                <div class="grid grid-cols-2 gap-1 text-xs">
+                  {topCountries.map((c) => (
+                    <a href={`${base}/${c.code}/`} class="flex items-center gap-2 px-2.5 py-1.5 rounded-lg hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] text-[#1C1917] dark:text-[#F5F2EB] transition-colors duration-200">
+                      <img
+                        src={`https://flagcdn.com/w40/${c.flagCode}.png`}
+                        alt={`${c.label} flag`}
+                        class="w-4 h-3 object-cover rounded-xs shrink-0 shadow-xs"
+                        width="16"
+                        height="12"
+                        loading="lazy"
+                      />
+                      <span className="font-medium truncate">{c.label}</span>
+                    </a>
+                  ))}
+                </div>
+                <div class="mt-2 pt-2 border-t border-[#E7E2D7] dark:border-[#2A2622]">
+                  <a href={`${base}/`} class="block text-center text-[11px] font-semibold text-[#006948] dark:text-[#6EE7B7] py-1 hover:underline transition-colors">
+                    View All 15 Countries →
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a href={`${base}/methodology/`} class="px-3 py-1.5 rounded-full hover:text-[#1C1917] dark:hover:text-white hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors duration-300">
+                Methodology
+              </a>
+            </li>
+            <li>
+              <a href={`${base}/guides/`} class="px-3 py-1.5 rounded-full text-[#006948] dark:text-[#6EE7B7] hover:bg-[#E7E2D7]/50 dark:hover:bg-[#2A2622] transition-colors duration-300 font-semibold">
+                Guides
+              </a>
+            </li>
+            <li>
+              <a href={`${base}/contact/`} class="px-3 py-1.5 rounded-full hover:text-[#1C1917] dark:hover:text-white hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors duration-300">
+                Contact
+              </a>
+            </li>
+          </ul>
+
+          <!-- Right Controls (Theme Toggle + Mobile Hamburger) -->
+          <div class="flex items-center gap-2">
+            
+            <!-- Theme Switcher Button -->
+            <button 
+              type="button" 
+              id="theme-toggle"
+              aria-label="Toggle dark mode"
+              class="w-8 h-8 rounded-full bg-[#F0EEE8] dark:bg-[#2A2622] text-[#1C1917] dark:text-[#F5F2EB] flex items-center justify-center hover:scale-105 transition-all duration-300 cursor-pointer"
+            >
+              <!-- Sun Icon for Dark Mode -->
+              <i id="theme-icon-sun" class="ph ph-sun text-amber-400 text-sm hidden dark:block"></i>
+              <!-- Moon Icon for Light Mode -->
+              <i id="theme-icon-moon" class="ph ph-moon text-[#1C1917] text-sm block dark:hidden"></i>
+            </button>
+
+            <!-- Mobile Drawer Hamburger -->
+            <button 
+              type="button" 
+              id="mobile-drawer-button" 
+              class="md:hidden w-8 h-8 rounded-full bg-[#F0EEE8] dark:bg-[#2A2622] text-[#1C1917] dark:text-[#F5F2EB] flex items-center justify-center transition-colors duration-300" 
+              aria-expanded="false" 
+              aria-controls="mobile-drawer"
+            >
+              <span class="sr-only">Open main menu</span>
+              <i class="ph ph-list text-sm"></i>
+            </button>
+          </div>
+        </nav>
       </div>
 
-      <!-- Mobile menu -->
-      <div class="sm:hidden hidden border-t border-slate-200 bg-white" id="mobile-menu">
-        <div class="px-2 pt-2 pb-3 space-y-1">
-          <a href={`${base}/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">All Countries</a>
-          <a href={`${base}/us/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇺🇸 USA</a>
-          <a href={`${base}/uk/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇬🇧 UK</a>
-          <a href={`${base}/fr/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇫🇷 France</a>
-          <a href={`${base}/de/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇩🇪 Germany</a>
-          <a href={`${base}/au/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">🇦🇺 Australia</a>
-          <a href={`${base}/methodology/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Methodology & Audit</a>
-          <a href={`${base}/guides/`} class="block px-3 py-2 rounded-md text-base font-semibold text-blue-600 hover:bg-blue-50">📚 Guides & Tax Tips</a>
-          <a href={`${base}/contact/`} class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50">Contact</a>
+      <!-- Mobile Slide-over Drawer -->
+      <div id="mobile-drawer" class="fixed inset-0 z-50 hidden">
+        <div id="mobile-drawer-backdrop" class="fixed inset-0 bg-[#1C1917]/50 dark:bg-[#0F0E0C]/80 backdrop-blur-sm transition-opacity"></div>
+        
+        <div class="fixed inset-y-0 right-0 max-w-xs w-full bg-[#FDFCF9] dark:bg-[#1A1816] border-l border-[#E7E2D7] dark:border-[#2A2622] p-6 shadow-2xl flex flex-col justify-between overflow-y-auto transform transition-transform duration-300 translate-x-0">
+          <div>
+            <div class="flex items-center justify-between pb-4 border-b border-[#E7E2D7] dark:border-[#2A2622]">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-md bg-[#1C1917] dark:bg-[#F5F2EB] text-[#FDFCF9] dark:text-[#1C1917] flex items-center justify-center font-bold text-[10px]">
+                  CG
+                </div>
+                <span class="font-bold text-sm text-[#1C1917] dark:text-[#F5F2EB]">CalcGlobal</span>
+              </div>
+              <button type="button" id="mobile-drawer-close" class="w-8 h-8 rounded-lg text-[#78716C] dark:text-[#A8A29E] hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] hover:text-[#1C1917] dark:hover:text-[#F5F2EB] flex items-center justify-center transition-colors">
+                <i class="ph ph-x text-lg"></i>
+              </button>
+            </div>
+
+            <nav class="mt-6 space-y-1">
+              <a href={`${base}/`} class="flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-xs text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors">
+                <i class="ph ph-globe-hemisphere-west text-sm"></i> Global Calculators Index
+              </a>
+              <a href={`${base}/methodology/`} class="flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-xs text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors">
+                <i class="ph ph-clipboard-text text-sm"></i> Audit Methodology & CPA
+              </a>
+              <a href={`${base}/guides/`} class="flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-xs text-[#006948] dark:text-[#6EE7B7] hover:bg-[#E7E2D7]/40 dark:hover:bg-[#2A2622] transition-colors">
+                <i class="ph ph-books text-sm"></i> Tax Guides & Tips
+              </a>
+              <a href={`${base}/contact/`} class="flex items-center gap-2 px-3 py-2 rounded-xl font-medium text-xs text-[#1C1917] dark:text-[#F5F2EB] hover:bg-[#F0EEE8] dark:hover:bg-[#2A2622] transition-colors">
+                <i class="ph ph-envelope-simple text-sm"></i> Contact Team
+              </a>
+            </nav>
+
+            <div class="mt-6 pt-6 border-t border-[#E7E2D7] dark:border-[#2A2622]">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-[#78716C] dark:text-[#A8A29E] mb-3 block">
+                Top Jurisdictions
+              </span>
+              <div class="grid grid-cols-2 gap-2 text-xs">
+                {topCountries.map((c) => (
+                  <a href={`${base}/${c.code}/`} class="flex items-center gap-2 p-2 rounded-lg bg-[#F0EEE8] dark:bg-[#2A2622] text-[#1C1917] dark:text-[#F5F2EB] font-medium transition-colors hover:bg-[#E7E2D7] dark:hover:bg-[#3E3833]">
+                    <img
+                      src={`https://flagcdn.com/w40/${c.flagCode}.png`}
+                      alt={`${c.label} flag`}
+                      class="w-4 h-3 object-cover rounded-xs shrink-0 shadow-xs"
+                      width="16"
+                      height="12"
+                      loading="lazy"
+                    />
+                    <span>{c.label}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-6 border-t border-[#E7E2D7] dark:border-[#2A2622] text-[11px] text-[#78716C] dark:text-[#A8A29E] flex flex-col gap-1">
+            <span>© 2026 CalcGlobal</span>
+            <span class="text-[#006948] dark:text-[#6EE7B7] font-medium">Verified for 2026/27 Tax Year</span>
+          </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Content -->
+    <!-- Main Content Slot -->
     <main id="main-content" class="flex-grow">
       <slot />
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-slate-900 text-slate-400 pt-16 pb-10 mt-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <!-- E-E-A-T Trust & Methodology Header Row -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 pb-12 border-b border-slate-800 mb-12">
-          <!-- Social Proof & Expert Credentials -->
-          <div>
-            <div class="flex items-center gap-2 mb-3 flex-wrap">
-              <span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-bold uppercase tracking-wider">
-                Certified Tax Regulations 2026
-              </span>
-              <span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 border border-blue-500/20 text-xs font-bold uppercase tracking-wider">
-                Q1 2026 Audit Passed
-              </span>
-            </div>
-            <h2 class="font-bold text-xl text-white block mb-4">
-              Reviewed by Certified Tax Experts & CPAs
-            </h2>
-            <p class="text-sm text-slate-400 mb-6 max-w-lg leading-relaxed">
-              CalcGlobal is engineered by financial software architects and audited by Certified Public Accountants (CPAs). Every tax bracket, statutory threshold, standard deduction, and contribution rate is verified directly against official government tax authority releases.
-            </p>
-            
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-medium text-slate-300">
-              <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/60 flex flex-col items-start gap-1">
-                <span class="text-emerald-400 font-bold text-base">100%</span>
-                <span class="text-slate-400 text-[11px]">Client-Side Math</span>
-              </div>
-              <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/60 flex flex-col items-start gap-1">
-                <span class="text-blue-400 font-bold text-base">15</span>
-                <span class="text-slate-400 text-[11px]">Tax Jurisdictions</span>
-              </div>
-              <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/60 flex flex-col items-start gap-1">
-                <span class="text-purple-400 font-bold text-base">2026/27</span>
-                <span class="text-slate-400 text-[11px]">Fiscal Compliance</span>
-              </div>
-              <div class="bg-slate-800/80 p-2.5 rounded-xl border border-slate-700/60 flex flex-col items-start gap-1">
-                <span class="text-amber-400 font-bold text-base">78+</span>
-                <span class="text-slate-400 text-[11px]">Official Calculators</span>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Official Tax Authority Audit Badges & Newsletter -->
-          <div class="flex flex-col justify-between gap-6">
-            <div class="bg-slate-800/50 p-6 rounded-2xl border border-slate-700/50">
-              <h3 class="text-white font-semibold text-sm mb-3 uppercase tracking-wider flex items-center gap-2">
-                <svg class="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
-                Audited Authority Data Sources (15 Countries)
-              </h3>
-              <div class="flex flex-wrap gap-2 text-xs">
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇺🇸 IRS (USA)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇬🇧 HMRC (UK)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇫🇷 URSSAF & DGFiP
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇩🇪 Finanzamt & BMF
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇦🇺 ATO (Australia)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇨🇦 CRA (Canada)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇪🇸 AEAT (Spain)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇮🇹 AdE & INPS (Italy)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇯🇵 NTA (Japan)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇨🇭 ESTV (Switzerland)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇸🇬 IRAS (Singapore)
-                </span>
-                <span class="px-2.5 py-1.5 bg-slate-900 text-slate-300 rounded-lg border border-slate-700 flex items-center gap-1.5 font-medium">
-                  🇦🇪 FTA (UAE)
-                </span>
-              </div>
-              <p class="text-xs text-slate-500 mt-3 leading-normal">
-                CalcGlobal algorithm parameters are cross-referenced directly against published statutory laws from these primary authorities.
-              </p>
-            </div>
-
-            <!-- Newsletter -->
-            <div class="bg-slate-800/30 p-5 rounded-2xl border border-slate-800" id="newsletter-container">
-              <h3 class="text-white font-semibold text-sm mb-1">Stay updated on tax law changes</h3>
-              <p class="text-xs text-slate-400 mb-3">Receive notification when tax authority brackets are updated for 2026/2027.</p>
-              <form id="newsletter-form" class="flex flex-col sm:flex-row gap-2">
-                <input id="newsletter-email" type="email" placeholder="Enter your email" class="flex-grow bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-shadow" required />
-                <button type="submit" class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-4 py-2 rounded-lg text-xs transition-colors whitespace-nowrap">Subscribe</button>
-              </form>
-              <div id="newsletter-success" class="hidden text-xs text-emerald-400 font-medium py-2">
-                ✓ Thank you! We'll keep you updated.
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Main Footer Links -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-10 border-b border-slate-800">
-          <div class="col-span-1 md:col-span-1">
-            <a href={`${base}/`} class="flex items-center gap-2.5 group mb-4">
-              <div class="w-8 h-8 bg-slate-800 border border-slate-700 rounded-lg flex items-center justify-center text-white font-bold text-base tracking-tight group-hover:bg-slate-700 transition-colors">
+    <!-- Institutional Creamy Footer -->
+    <footer class="bg-[#FDFCF9] dark:bg-[#1A1816] border-t border-[#E7E2D7] dark:border-[#2A2622] pt-10 pb-12 mt-12 text-xs text-[#78716C] dark:text-[#A8A29E] transition-colors duration-300">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Links Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-10 border-b border-[#E7E2D7] dark:border-[#2A2622]">
+          <div class="md:col-span-1 fade-up stagger-1">
+            <div class="flex items-center gap-2 mb-3">
+              <div class="w-6 h-6 rounded-md bg-[#1C1917] dark:bg-[#F5F2EB] text-[#FDFCF9] dark:text-[#1C1917] flex items-center justify-center font-bold text-[10px]">
                 CG
               </div>
-              <span class="font-bold text-lg tracking-tight text-white">CalcGlobal</span>
-            </a>
-            <p class="text-sm leading-relaxed max-w-sm text-slate-400">
-              Accurate, localized financial calculators for tax, payroll, and legal compliance across 15 countries. 
-              Verified by certified tax experts for each country's 2026 tax year.
-            </p>
-            <p class="text-xs text-slate-500 mt-4 flex items-center gap-1.5">
-              <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" /></svg>
-              Estimates only. Always consult a qualified CPA or tax professional.
+              <span class="font-bold text-sm text-[#1C1917] dark:text-[#F5F2EB]">CalcGlobal</span>
+            </div>
+            <p class="leading-relaxed mb-3">
+              Precision tax and payroll models for contractors, executives, and remote teams.
             </p>
           </div>
 
-          <div>
-            <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Country Hubs (15)</h3>
-            <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
-              <a href={`${base}/us/`} class="hover:text-blue-400 transition-colors">🇺🇸 USA</a>
-              <a href={`${base}/uk/`} class="hover:text-blue-400 transition-colors">🇬🇧 UK</a>
-              <a href={`${base}/fr/`} class="hover:text-blue-400 transition-colors">🇫🇷 France</a>
-              <a href={`${base}/de/`} class="hover:text-blue-400 transition-colors">🇩🇪 Germany</a>
-              <a href={`${base}/ca/`} class="hover:text-blue-400 transition-colors">🇨🇦 Canada</a>
-              <a href={`${base}/au/`} class="hover:text-blue-400 transition-colors">🇦🇺 Australia</a>
-              <a href={`${base}/es/`} class="hover:text-blue-400 transition-colors">🇪🇸 Spain</a>
-              <a href={`${base}/it/`} class="hover:text-blue-400 transition-colors">🇮🇹 Italy</a>
-              <a href={`${base}/in/`} class="hover:text-blue-400 transition-colors">🇮🇳 India</a>
-              <a href={`${base}/jp/`} class="hover:text-blue-400 transition-colors">🇯🇵 Japan</a>
-              <a href={`${base}/br/`} class="hover:text-blue-400 transition-colors">🇧🇷 Brazil</a>
-              <a href={`${base}/mx/`} class="hover:text-blue-400 transition-colors">🇲🇽 Mexico</a>
-              <a href={`${base}/ae/`} class="hover:text-blue-400 transition-colors">🇦🇪 UAE</a>
-              <a href={`${base}/sg/`} class="hover:text-blue-400 transition-colors">🇸🇬 Singapore</a>
-              <a href={`${base}/ch/`} class="hover:text-blue-400 transition-colors">🇨🇭 Switzerland</a>
+          <div class="fade-up stagger-2">
+            <h3 class="font-bold text-[11px] text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider mb-3">
+              Top Jurisdictions
+            </h3>
+            <div class="grid grid-cols-2 gap-y-2 gap-x-3 text-xs">
+              <a href={`${base}/us/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/us.png" alt="USA flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>USA</span>
+              </a>
+              <a href={`${base}/uk/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/gb.png" alt="UK flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>UK</span>
+              </a>
+              <a href={`${base}/fr/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/fr.png" alt="France flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>France</span>
+              </a>
+              <a href={`${base}/de/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/de.png" alt="Germany flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>Germany</span>
+              </a>
+              <a href={`${base}/br/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/br.png" alt="Brazil flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>Brazil</span>
+              </a>
+              <a href={`${base}/ca/`} class="flex items-center gap-1.5 hover:text-[#1C1917] dark:hover:text-white transition-colors">
+                <img src="https://flagcdn.com/w40/ca.png" alt="Canada flag" class="w-3.5 h-2.5 object-cover rounded-xs" width="14" height="10" loading="lazy" />
+                <span>Canada</span>
+              </a>
             </div>
           </div>
 
-          <div>
-            <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Methodology & E-E-A-T</h3>
-            <ul class="space-y-2.5 text-sm">
-              <li><a href={`${base}/methodology/`} class="hover:text-blue-400 transition-colors flex items-center gap-1.5"><span class="text-blue-400 font-bold">✓</span> Calculation Methodology</a></li>
-              <li><a href={`${base}/methodology/#editorial-policy`} class="hover:text-blue-400 transition-colors">Editorial & Audit Policy</a></li>
-              <li><a href={`${base}/methodology/#expert-reviewers`} class="hover:text-blue-400 transition-colors">CPA & Advisory Panel</a></li>
-              <li><a href={`${base}/methodology/#privacy`} class="hover:text-blue-400 transition-colors">100% Client-Side Privacy</a></li>
-              <li><a href={`${base}/methodology/#data-sources`} class="hover:text-blue-400 transition-colors">Official Data Sources</a></li>
-              <li><a href={`${base}/guides/`} class="hover:text-blue-400 transition-colors">Tax & Financial Guides</a></li>
+          <div class="fade-up stagger-3">
+            <h3 class="font-bold text-[11px] text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider mb-3">
+              Methodology & Advisory
+            </h3>
+            <ul class="space-y-1.5 text-xs">
+              <li><a href={`${base}/methodology/`} class="hover:text-[#1C1917] dark:hover:text-white transition-colors">✓ Calculation Audit Standards</a></li>
+              <li><a href={`${base}/methodology/#privacy`} class="hover:text-[#1C1917] dark:hover:text-white transition-colors">Zero-Storage Privacy Model</a></li>
+              <li><a href={`${base}/guides/`} class="hover:text-[#1C1917] dark:hover:text-white transition-colors">Tax Architecture Guides</a></li>
+              <li><a href={`${base}/contact/`} class="hover:text-[#1C1917] dark:hover:text-white transition-colors">Contact Editorial Board</a></li>
             </ul>
           </div>
 
-          <div>
-            <h3 class="text-white font-semibold text-sm mb-4 uppercase tracking-wider">Legal & Trust</h3>
-            <ul class="space-y-2.5 text-sm">
-              <li><a href={`${base}/disclaimer/`} class="hover:text-blue-400 transition-colors">Tax & Legal Disclaimer</a></li>
-              <li><a href={`${base}/privacy/`} class="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href={`${base}/terms/`} class="hover:text-blue-400 transition-colors">Terms of Service</a></li>
-              <li><a href={`${base}/contact/`} class="hover:text-blue-400 transition-colors">Contact Editorial Team</a></li>
-            </ul>
+          <div class="fade-up stagger-3">
+            <h3 class="font-bold text-[11px] text-[#1C1917] dark:text-[#F5F2EB] uppercase tracking-wider mb-3">
+              Statutory Alerts
+            </h3>
+            <form id="newsletter-form" class="flex flex-col gap-2">
+              <input id="newsletter-email" type="email" placeholder="executive@company.com" class="w-full bg-[#F8F6F0] dark:bg-[#0F0E0C] border border-[#E7E2D7] dark:border-[#2A2622] rounded-xl px-3 py-2 text-xs text-[#1C1917] dark:text-[#F5F2EB] placeholder-[#78716C] dark:placeholder-[#A8A29E] focus:outline-none focus:ring-1 focus:ring-[#006948] dark:focus:ring-[#6EE7B7] transition-colors" required />
+              <button type="submit" class="bg-[#006948] text-white font-semibold px-3.5 py-1.5 rounded-xl text-xs hover:bg-[#005137] dark:bg-[#6EE7B7] dark:text-[#0F0E0C] dark:hover:bg-[#4ADE80] transition-colors cursor-pointer">
+                Subscribe Updates
+              </button>
+            </form>
           </div>
         </div>
 
-        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="text-xs text-slate-500">© 2026 CalcGlobal. All rights reserved.</p>
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-            <p class="text-xs text-slate-400">Verified by Tax Experts & CPAs - Updated for 2026/2027 Fiscal Year (Last Audit: Q1 2026)</p>
+        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+          <p>© 2026 CalcGlobal. Estimates only. Consult a licensed CPA for formal filings.</p>
+          <div class="flex items-center gap-3">
+            <a href={`${base}/privacy/`} class="hover:underline">Privacy</a>
+            <a href={`${base}/terms/`} class="hover:underline">Terms</a>
+            <a href={`${base}/disclaimer/`} class="hover:underline">Disclaimer</a>
           </div>
         </div>
       </div>
     </footer>
     
     <script>
-      // Mobile menu toggle logic
-      const btn = document.getElementById('mobile-menu-button');
-      const menu = document.getElementById('mobile-menu');
-      const iconClosed = document.getElementById('menu-icon-closed');
-      const iconOpen = document.getElementById('menu-icon-open');
-
-      if (btn && menu && iconClosed && iconOpen) {
-        btn.addEventListener('click', () => {
-          const expanded = btn.getAttribute('aria-expanded') === 'true' || false;
-          btn.setAttribute('aria-expanded', String(!expanded));
-          menu.classList.toggle('hidden');
-          iconClosed.classList.toggle('hidden');
-          iconClosed.classList.toggle('block');
-          iconOpen.classList.toggle('hidden');
-          iconOpen.classList.toggle('block');
+      // Theme Toggle Logic
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.toggle('dark');
+          localStorage.setItem('calcglobal_theme', isDark ? 'dark' : 'light');
         });
       }
 
-      // Newsletter submit handler
-      const newsletterForm = document.getElementById('newsletter-form');
-      const newsletterEmail = document.getElementById('newsletter-email') as HTMLInputElement | null;
-      const newsletterSuccess = document.getElementById('newsletter-success');
+      // Mobile Drawer Logic
+      const drawerBtn = document.getElementById('mobile-drawer-button');
+      const drawerClose = document.getElementById('mobile-drawer-close');
+      const drawer = document.getElementById('mobile-drawer');
+      const drawerBackdrop = document.getElementById('mobile-drawer-backdrop');
 
-      if (newsletterForm && newsletterEmail && newsletterSuccess) {
+      function toggleDrawer(open) {
+        if (!drawer) return;
+        if (open) {
+          drawer.classList.remove('hidden');
+          document.body.style.overflow = 'hidden';
+        } else {
+          drawer.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      }
+
+      if (drawerBtn) drawerBtn.addEventListener('click', () => toggleDrawer(true));
+      if (drawerClose) drawerClose.addEventListener('click', () => toggleDrawer(false));
+      if (drawerBackdrop) drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
+
+      // Newsletter form submission
+      const newsletterForm = document.getElementById('newsletter-form');
+      const newsletterEmail = document.getElementById('newsletter-email');
+
+      if (newsletterForm && newsletterEmail) {
         newsletterForm.addEventListener('submit', (e) => {
           e.preventDefault();
           const email = newsletterEmail.value.trim();
@@ -433,20 +467,86 @@ const skimlinksId = import.meta.env.PUBLIC_SKIMLINKS_ID || '193792X1669466';
             } catch (err) {
               console.error('Failed to save to localStorage', err);
             }
-            newsletterForm.classList.add('hidden');
-            newsletterSuccess.classList.remove('hidden');
+            newsletterForm.innerHTML = '<span class="text-[#006948] dark:text-[#6EE7B7] font-medium text-xs">✓ Subscribed to official statutory alerts.</span>';
           }
         });
       }
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+      });
     </script>
   </body>
 </html>
 
 <style is:global>
-  html { scroll-behavior: smooth; }
-  * { box-sizing: border-box; }
-  
-  /* Smooth number input appearance */
-  input[type=number]::-webkit-inner-spin-button,
-  input[type=number]::-webkit-outer-spin-button { opacity: 1; }
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .stagger-1 { transition-delay: 100ms; }
+  .stagger-2 { transition-delay: 200ms; }
+  .stagger-3 { transition-delay: 300ms; }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F8F6F0;
+  }
+  html.dark ::-webkit-scrollbar-track {
+    background: #0F0E0C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #E7E2D7;
+    border-radius: 4px;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    background: #2A2622;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #78716C;
+  }
+  html.dark ::-webkit-scrollbar-thumb:hover {
+    background: #A8A29E;
+  }
+
+  /* No Scrollbar Utility */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 </style>
