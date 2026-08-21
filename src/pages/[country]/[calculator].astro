@@ -9,6 +9,7 @@ import { ACTIVE_COUNTRIES, COUNTRY_METADATA } from '../../config';
 import { getEngineKeyForCalc } from '../../lib/engine/factory';
 import { getTranslatedCategory, getUITranslation } from '../../utils/translations';
 import { getAffiliatePartners } from '../../utils/affiliateMatching';
+import { getCalculatorFaqs } from '../../utils/faq';
 
 export function getStaticPaths() {
   const dbDir = path.join(process.cwd(), 'database', 'countries');
@@ -82,10 +83,12 @@ const calcSchema = {
   }
 };
 
-const faqSchema = calcData.article_faq && calcData.article_faq.length > 0 ? {
+const allFaqs = getCalculatorFaqs(calcData, countryData, meta.lang);
+
+const faqSchema = allFaqs && allFaqs.length > 0 ? {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": calcData.article_faq.map((faq: any) => ({
+  "mainEntity": allFaqs.map((faq: any) => ({
     "@type": "Question",
     "name": faq.question,
     "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
@@ -157,7 +160,7 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
     <!-- The Interactive Calculator Component -->
     <div class="mb-10">
       <InteractiveCalculator
-        client:visible
+        client:load
         calc={updatedCalcData}
         locale={meta.locale}
         currencySymbol={meta.currencySymbol}
@@ -204,23 +207,37 @@ const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
       </section>
     )}
 
-    <!-- FAQ Section -->
-    {calcData.article_faq && calcData.article_faq.length > 0 && (
+    <!-- FAQ Section (Collapsible Accordion UI) -->
+    {allFaqs && allFaqs.length > 0 && (
       <section class="mb-10">
-        <h2 class="text-base font-bold text-[#1C1917] dark:text-[#F5F2EB] mb-3 tracking-tight">
-          {getUITranslation('FAQ_TITLE', meta.lang)}
-        </h2>
+        <div class="flex items-center gap-2 mb-4">
+          <i class="ph ph-question text-xl text-[#006948] dark:text-[#6EE7B7]"></i>
+          <h2 class="text-base font-bold text-[#1C1917] dark:text-[#F5F2EB] tracking-tight">
+            {getUITranslation('FAQ_TITLE', meta.lang)}
+          </h2>
+        </div>
+
         <div class="space-y-2.5">
-          {calcData.article_faq.map((faq: any) => (
-            <div class="p-4 rounded-xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] shadow-ambient">
-              <h3 class="font-bold text-xs sm:text-sm text-[#1C1917] dark:text-[#F5F2EB] mb-1.5 flex items-start gap-2">
-                <span class="text-[#78716C]">Q.</span>
-                <span>{faq.question}</span>
-              </h3>
-              <p class="text-xs text-[#78716C] dark:text-[#A8A29E] pl-3.5 border-l border-[#E7E2D7] dark:border-[#2A2622] leading-relaxed">
-                {faq.answer}
-              </p>
-            </div>
+          {allFaqs.map((faq: any, index: number) => (
+            <details
+              class="group rounded-xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] shadow-ambient overflow-hidden transition-all duration-200"
+              open={index === 0}
+            >
+              <summary class="flex items-center justify-between p-4 cursor-pointer font-bold text-xs sm:text-sm text-[#1C1917] dark:text-[#F5F2EB] select-none hover:bg-[#F8F6F0] dark:hover:bg-[#252220]/50 transition-colors list-none">
+                <span class="flex items-start gap-2.5 pr-4">
+                  <span class="text-[#006948] dark:text-[#6EE7B7] font-mono font-bold text-xs mt-0.5">Q{index + 1}.</span>
+                  <span class="leading-snug">{faq.question}</span>
+                </span>
+                <span class="shrink-0 w-6 h-6 rounded-lg bg-[#F0EEE8] dark:bg-[#252220] flex items-center justify-center text-[#78716C] dark:text-[#A8A29E] group-open:rotate-180 transition-transform duration-200">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="6 9 12 15 18 9"/>
+                  </svg>
+                </span>
+              </summary>
+              <div class="px-4 pb-4 pt-1 text-xs text-[#78716C] dark:text-[#A8A29E] leading-relaxed border-t border-[#E7E2D7]/60 dark:border-[#2A2622]/60 mt-1">
+                <p class="pl-6 pt-2">{faq.answer}</p>
+              </div>
+            </details>
           ))}
         </div>
       </section>

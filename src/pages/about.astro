@@ -1,0 +1,192 @@
+---
+// src/pages/about.astro - Executive Editorial & CPA Advisory Credentials
+import Layout from '../layouts/Layout.astro';
+import AdSlot from '../components/AdSlot.astro';
+
+const base = import.meta.env.BASE_URL === '/' ? '' : import.meta.env.BASE_URL;
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About CalcGlobal | Tax Architecture & Computational Engineering",
+  "description": "CalcGlobal is a specialized financial computation platform delivering hyper-accurate statutory tax, payroll, and corporate financial modeling audited by chartered tax specialists.",
+  "url": "https://calcglobal.org/about/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "CalcGlobal Tax Advisory & Engineering",
+    "url": "https://calcglobal.org",
+    "logo": "https://calcglobal.org/favicon.svg",
+    "publishingPrinciples": "https://calcglobal.org/methodology/"
+  }
+};
+---
+
+<Layout
+  title="About CalcGlobal | Tax Engineering, CPA Board & Editorial Principles"
+  description="Discover CalcGlobal's mission, certified tax advisory board, computational methodology, zero-storage privacy model, and editorial disclosure."
+  structuredData={aboutSchema}
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 pt-10 pb-20">
+    
+    <!-- Breadcrumb -->
+    <nav class="text-xs text-[#78716C] dark:text-[#A8A29E] mb-6 flex items-center gap-2 font-medium">
+      <a href={`${base}/`} class="hover:text-[#1C1917] dark:hover:text-[#F5F2EB] transition-colors">Home</a>
+      <span class="text-[#E7E2D7]">/</span>
+      <span class="text-[#1C1917] dark:text-[#F5F2EB] font-semibold">About CalcGlobal</span>
+    </nav>
+
+    <!-- Header Hero -->
+    <div class="p-8 sm:p-10 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] shadow-ambient mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#006948]/10 text-[#006948] dark:text-[#6EE7B7] border border-[#006948]/20 text-xs font-semibold mb-4">
+        <i class="ph-fill ph-seal-check"></i>
+        Chartered Tax Advisory & Modeling
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1C1917] dark:text-[#F5F2EB] tracking-tight leading-tight mb-4">
+        Engineering Financial Clarity for Global Professionals
+      </h1>
+      <p class="text-sm sm:text-base text-[#78716C] dark:text-[#A8A29E] leading-relaxed">
+        CalcGlobal was founded to eliminate ambiguity in global taxation. We develop high-precision, client-side financial simulators and statutory compliance guides tailored for entrepreneurs, expatriates, remote contractors, and corporate executives across 15 major jurisdictions.
+      </p>
+    </div>
+
+    <!-- Core Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+      <div class="p-6 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622]">
+        <div class="w-10 h-10 rounded-xl bg-[#006948]/10 text-[#006948] dark:text-[#6EE7B7] flex items-center justify-center text-xl mb-4">
+          <i class="ph ph-cpu"></i>
+        </div>
+        <h3 class="font-bold text-base text-[#1C1917] dark:text-[#F5F2EB] mb-2">Deterministic Engine</h3>
+        <p class="text-xs text-[#78716C] dark:text-[#A8A29E] leading-relaxed">
+          Zero estimation heuristics. All calculations follow exact statutory brackets, social security ceilings, and progressive marginal rates updated for the 2026/2027 tax year.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622]">
+        <div class="w-10 h-10 rounded-xl bg-[#006948]/10 text-[#006948] dark:text-[#6EE7B7] flex items-center justify-center text-xl mb-4">
+          <i class="ph ph-shield-check"></i>
+        </div>
+        <h3 class="font-bold text-base text-[#1C1917] dark:text-[#F5F2EB] mb-2">Zero-Storage Privacy</h3>
+        <p class="text-xs text-[#78716C] dark:text-[#A8A29E] leading-relaxed">
+          Your compensation and revenue numbers never leave your browser. Calculations execute 100% locally via WebAssembly and TypeScript without server logging.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622]">
+        <div class="w-10 h-10 rounded-xl bg-[#006948]/10 text-[#006948] dark:text-[#6EE7B7] flex items-center justify-center text-xl mb-4">
+          <i class="ph ph-certificate"></i>
+        </div>
+        <h3 class="font-bold text-base text-[#1C1917] dark:text-[#F5F2EB] mb-2">CPA Audited</h3>
+        <p class="text-xs text-[#78716C] dark:text-[#A8A29E] leading-relaxed">
+          Every simulator formula is cross-checked against official revenue service documentation (IRS, HMRC, URSSAF, BMF, ATO, CRA) by our editorial review board.
+        </p>
+      </div>
+    </div>
+
+    <!-- Editorial Team & Review Board -->
+    <div class="p-8 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] mb-12">
+      <h2 class="text-xl sm:text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB] tracking-tight mb-4">
+        Editorial Standards & Review Board
+      </h2>
+      <p class="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] leading-relaxed mb-6">
+        Our editorial team produces comprehensive technical tax guides, comparative software reviews, and statutory compliance breakdowns. We adhere to rigorous editorial independence:
+      </p>
+
+      <div class="space-y-4 text-xs sm:text-sm text-[#1C1917] dark:text-[#F5F2EB]">
+        <div class="flex items-start gap-3">
+          <i class="ph-fill ph-check-circle text-[#006948] dark:text-[#6EE7B7] text-lg shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="font-semibold">Source Integrity:</strong> All tax brackets and threshold constants are sourced directly from published governmental statutes and official gazettes.
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="ph-fill ph-check-circle text-[#006948] dark:text-[#6EE7B7] text-lg shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="font-semibold">Regular Statutory Audits:</strong> Models are audited semi-annually and whenever mid-year statutory adjustments occur (e.g., inflation indexation, pension reforms).
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <i class="ph-fill ph-check-circle text-[#006948] dark:text-[#6EE7B7] text-lg shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="font-semibold">Commercial Transparency:</strong> When we recommend accounting software, corporate bank accounts, or incorporation services, affiliate relationships are clearly disclosed. Recommendations never compromise mathematical impartiality.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jurisdictions Covered -->
+    <div class="p-8 rounded-2xl bg-[#FDFCF9] dark:bg-[#1A1816] border border-[#E7E2D7] dark:border-[#2A2622] mb-12">
+      <h2 class="text-xl sm:text-2xl font-bold text-[#1C1917] dark:text-[#F5F2EB] tracking-tight mb-3">
+        Supported Global Jurisdictions
+      </h2>
+      <p class="text-xs sm:text-sm text-[#78716C] dark:text-[#A8A29E] leading-relaxed mb-6">
+        CalcGlobal maintains statutory models for 15 economic centers:
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 text-xs font-medium">
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇺🇸 United States</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇬🇧 United Kingdom</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇫🇷 France</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇩🇪 Germany</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇦🇺 Australia</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇨🇦 Canada</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇨🇭 Switzerland</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇪🇸 Spain</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇮🇹 Italy</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇦🇪 UAE</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇸🇬 Singapore</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇧🇷 Brazil</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇲🇽 Mexico</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇯🇵 Japan</span>
+        </div>
+        <div class="p-2.5 rounded-xl bg-[#F0EEE8] dark:bg-[#252220] flex items-center gap-2">
+          <span>🇮🇳 India</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact & Inquiries -->
+    <div class="p-8 rounded-2xl bg-[#006948] text-white flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div>
+        <h3 class="text-lg font-bold mb-1">Corporate & Partnership Inquiries</h3>
+        <p class="text-xs text-white/80">
+          Interested in featuring your B2B tax or financial software on CalcGlobal?
+        </p>
+      </div>
+      <a
+        href={`${base}/contact/`}
+        class="shrink-0 px-5 py-2.5 bg-white text-[#006948] font-semibold text-xs rounded-xl hover:bg-[#F8F6F0] transition-colors"
+      >
+        Contact Partnership Team
+      </a>
+    </div>
+
+    <AdSlot variant="rectangle" pageIntent="low" className="my-10" />
+  </div>
+</Layout>

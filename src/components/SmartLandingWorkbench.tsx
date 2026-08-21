@@ -3,8 +3,16 @@ import type { TaxInput, TaxResult, TaxBreakdownLine } from '../lib/engine/types'
 import { loadCountryEngine, type CalculateFunction } from '../lib/engine/loader';
 import { getUITranslation } from '../utils/translations';
 import { getAffiliatePartners } from '../utils/affiliateMatching';
+import {
+  trackCalculatorUsed,
+  trackCountrySwitched,
+  trackPresetClicked,
+  getIncomeTier,
+  getTaxBracketTier,
+} from '../utils/analytics';
 import AffiliateCard from './AffiliateCard';
 import CpaLeadCapture from './CpaLeadCapture';
+import ShareCalculationBar from './ShareCalculationBar';
 
 export interface CountryWorkbenchData {
   code: string;
@@ -277,12 +285,34 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
   const [showMethodology, setShowMethodology] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const autoCalculatedRef = useRef(false);
 
   // Auto-detect visitor location on mount
   useEffect(() => {
     const detected = detectVisitorCountry(availableCodes);
     if (detected && detected !== selectedCountryCode) {
       setSelectedCountryCode(detected);
+    }
+  }, []);
+
+  // Read URL search params on mount to pre-fill shared simulation values
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      const searchParams = new URLSearchParams(window.location.search);
+      const urlValues: Record<string, string> = {};
+      let hasUrlParams = false;
+      searchParams.forEach((val, key) => {
+        if (val && key !== 'calculator_id' && key !== 'country' && key !== 'c') {
+          urlValues[key] = val;
+          hasUrlParams = true;
+        }
+      });
+      if (hasUrlParams) {
+        setValues(prev => ({ ...prev, ...urlValues }));
+      }
+    } catch (e) {
+      console.debug('Failed to parse URL params in workbench:', e);
     }
   }, []);
 
@@ -337,6 +367,20 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
     };
   }, [selectedCountryCode]);
 
+  const handleCountrySelect = (newCountryCode: string) => {
+    if (newCountryCode !== selectedCountryCode) {
+      trackCountrySwitched({
+        previous_country: selectedCountryCode,
+        new_country: newCountryCode,
+        source: 'workbench_dropdown',
+      });
+    }
+    setSelectedCountryCode(newCountryCode);
+    const targetCountry = countries.find(c => c.code === newCountryCode);
+    setSelectedCalcId(targetCountry?.calculators[0]?.id || '');
+    setCountryDropdownOpen(false);
+  };
+
   const handleChange = useCallback((name: string, value: string) => {
     setValues(prev => ({ ...prev, [name]: value }));
   }, []);
@@ -359,6 +403,14 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
       }
 
       setResult(res);
+
+      trackCalculatorUsed({
+        calculator_id: activeCalc.id,
+        country_code: selectedCountryCode,
+        gross_income_tier: getIncomeTier(res.grossIncome),
+        tax_bracket: getTaxBracketTier(res.effectiveRate),
+        has_results: true,
+      });
     } catch (e) {
       setError(getUITranslation('CALC_ERROR', activeCountry.locale));
       console.error(e);
@@ -367,7 +419,21 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
     }
   }, [values, engine, engineLoading, activeCalc.id, selectedCountryCode, activeCountry.locale]);
 
+  // Auto-calculate if pre-filled from shared URL parameters
+  useEffect(() => {
+    if (!engineLoading && engine && Object.keys(values).length > 0 && !result && !autoCalculatedRef.current) {
+      autoCalculatedRef.current = true;
+      handleCalculate();
+    }
+  }, [engineLoading, engine, values, result, handleCalculate]);
+
   const applyPreset = (inputName: string, amount: number) => {
+    trackPresetClicked({
+      currency: sym || currencySymbol,
+      amount,
+      calculator_id: activeCalc.id,
+      input_name: inputName,
+    });
     handleChange(inputName, amount.toString());
   };
 
@@ -443,11 +509,7 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
                     <button
                       key={c.code}
                       type="button"
-                      onClick={() => {
-                        setSelectedCountryCode(c.code);
-                        setSelectedCalcId(c.calculators[0]?.id || '');
-                        setCountryDropdownOpen(false);
-                      }}
+                      onClick={() => handleCountrySelect(c.code)}
                       className={`w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-xs transition-colors text-left ${
                         c.code === selectedCountryCode 
                           ? 'bg-[#006948] text-white font-bold' 
@@ -773,6 +835,17 @@ export default function SmartLandingWorkbench({ countries, defaultCountryCode = 
                     />
                   </div>
                 )}
+
+                {/* Share Simulation Bar */}
+                <ShareCalculationBar
+                  calculatorId={activeCalc.id}
+                  countryCode={selectedCountryCode}
+                  title={`${activeCountry.name} - ${activeCalc.title}`}
+                  values={values}
+                  locale={activeCountry.locale}
+                  netIncome={result.netIncome}
+                  currencySymbol={sym}
+                />
 
                 {/* Affiliate Recommendation Cards */}
                 {effectivePartners && effectivePartners.length > 0 && (

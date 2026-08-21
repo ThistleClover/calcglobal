@@ -6,6 +6,7 @@ import {
   type AffiliatePartner,
   type AffiliateContext
 } from '../utils/affiliate';
+import { trackAffiliateClick, getIncomeTier } from '../utils/analytics';
 
 export interface AffiliateCardProps {
   partner: AffiliatePartner;
@@ -48,30 +49,16 @@ export default function AffiliateCard({
     const resolvedCountry = (country || (partner as any).country || (typeof window !== 'undefined' ? window.location.pathname.split('/')[1] : '') || 'US').toUpperCase();
     const ctaUrl = targetUrl;
     const cardPosition = position || 'results_panel';
+    const incomeTier = getIncomeTier(grossIncome || netIncome);
 
-    const payload = {
-      event_name: 'affiliate_card_click',
+    trackAffiliateClick({
       partner_name: partnerName,
+      partner_url: ctaUrl,
       calculator_id: calcId,
-      country: resolvedCountry,
-      cta_url: ctaUrl,
+      income_tier: incomeTier,
+      country_code: resolvedCountry,
       position: cardPosition,
-    };
-
-    try {
-      if (typeof window !== 'undefined') {
-        if (typeof (window as any).gtag === 'function') {
-          (window as any).gtag('event', 'affiliate_card_click', payload);
-        }
-        (window as any).dataLayer = (window as any).dataLayer || [];
-        (window as any).dataLayer.push({
-          event: 'affiliate_card_click',
-          ...payload,
-        });
-      }
-    } catch (err) {
-      console.error('GA4 affiliate_card_click tracking error:', err);
-    }
+    });
   };
 
   return (

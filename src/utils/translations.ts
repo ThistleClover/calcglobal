@@ -105,7 +105,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Chargement du simulateur...',
     'YOUR_RESULTS': 'Vos Résultats',
     'SPONSORED': 'Sponsorisé',
-    'FILL_DETAILS': 'Renseignez vos informations à gauche pour afficher le détail et l\'analyse de votre calcul.'
+    'FILL_DETAILS': 'Renseignez vos informations à gauche pour afficher le détail et l\'analyse de votre calcul.',
+    'SHARE_CALCULATION': 'Partager la simulation',
+    'COPY_LINK': 'Copier le lien',
+    'LINK_COPIED': 'Lien copié !'
   },
   'de': {
     'RECOMMENDED_TOOLS': 'Empfohlene Tools',
@@ -131,7 +134,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Rechner wird geladen...',
     'YOUR_RESULTS': 'Ihre Ergebnisse',
     'SPONSORED': 'Gesponsert',
-    'FILL_DETAILS': 'Geben Sie Ihre Daten links ein, um eine vollständige Aufschlüsselung und Analyse zu erhalten.'
+    'FILL_DETAILS': 'Geben Sie Ihre Daten links ein, um eine vollständige Aufschlüsselung und Analyse zu erhalten.',
+    'SHARE_CALCULATION': 'Berechnung teilen',
+    'COPY_LINK': 'Link kopieren',
+    'LINK_COPIED': 'Link kopiert!'
   },
   'es': {
     'RECOMMENDED_TOOLS': 'Herramientas recomendadas',
@@ -157,7 +163,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Cargando calculadora...',
     'YOUR_RESULTS': 'Sus Resultados',
     'SPONSORED': 'Patrocinado',
-    'FILL_DETAILS': 'Rellene sus datos a la izquierda para ver el desglose y análisis completo de sus impuestos.'
+    'FILL_DETAILS': 'Rellene sus datos a la izquierda para ver el desglose y análisis completo de sus impuestos.',
+    'SHARE_CALCULATION': 'Compartir simulación',
+    'COPY_LINK': 'Copiar enlace',
+    'LINK_COPIED': '¡Enlace copiado!'
   },
   'it': {
     'RECOMMENDED_TOOLS': 'Strumenti consigliati',
@@ -183,7 +192,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Caricamento calcolatore...',
     'YOUR_RESULTS': 'I tuoi Risultati',
     'SPONSORED': 'Sponsorizzato',
-    'FILL_DETAILS': 'Compila i dettagli a sinistra per visualizzare il riepilogo e l\'analisi fiscale completa.'
+    'FILL_DETAILS': 'Compila i dettagli a sinistra per visualizzare il riepilogo e l\'analisi fiscale completa.',
+    'SHARE_CALCULATION': 'Condividi simulazione',
+    'COPY_LINK': 'Copia link',
+    'LINK_COPIED': 'Link copiato!'
   },
   'pt': {
     'RECOMMENDED_TOOLS': 'Ferramentas recomendadas',
@@ -209,7 +221,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Carregando calculadora...',
     'YOUR_RESULTS': 'Seus Resultados',
     'SPONSORED': 'Patrocinado',
-    'FILL_DETAILS': 'Preencha os dados à esquerda para visualizar o detalhamento e a análise completa.'
+    'FILL_DETAILS': 'Preencha os dados à esquerda para visualizar o detalhamento e a análise completa.',
+    'SHARE_CALCULATION': 'Compartilhar simulação',
+    'COPY_LINK': 'Copiar link',
+    'LINK_COPIED': 'Link copiado!'
   },
   'ja': {
     'RECOMMENDED_TOOLS': 'おすすめのシミュレーター',
@@ -235,7 +250,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': '計算機を読み込み中...',
     'YOUR_RESULTS': '計算結果',
     'SPONSORED': 'スポンサー',
-    'FILL_DETAILS': '左側の項目を入力すると、税金の内訳と詳細なシミュレーション結果が表示されます。'
+    'FILL_DETAILS': '左側の項目を入力すると、税金の内訳と詳細なシミュレーション結果が表示されます。',
+    'SHARE_CALCULATION': 'シミュレーションを共有',
+    'COPY_LINK': 'リンクをコピー',
+    'LINK_COPIED': 'リンクをコピーしました！'
   },
   'en': {
     'RECOMMENDED_TOOLS': 'Recommended Tools',
@@ -261,7 +279,10 @@ export const UI_TRANSLATIONS: Record<string, Record<string, string>> = {
     'LOADING_CALC': 'Loading calculator...',
     'YOUR_RESULTS': 'Your Results',
     'SPONSORED': 'Sponsored',
-    'FILL_DETAILS': 'Fill in your details on the left to see your full tax breakdown and analysis.'
+    'FILL_DETAILS': 'Fill in your details on the left to see your full tax breakdown and analysis.',
+    'SHARE_CALCULATION': 'Share Calculation',
+    'COPY_LINK': 'Copy Link',
+    'LINK_COPIED': 'Link copied to clipboard!'
   }
 };
 
